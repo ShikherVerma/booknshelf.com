@@ -22,15 +22,19 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 
 // Sociallte auth
-Route::get('/auth/twitter', 'Auth\AuthController@redirectToProviderTwitter');
-Route::get('/auth/twitter/callback', 'Auth\AuthController@handleProviderCallbackTwitter');
+Route::get('auth/twitter', 'Auth\AuthController@redirectToProviderTwitter');
+Route::get('auth/twitter/callback', 'Auth\AuthController@handleProviderCallbackTwitter');
+
+Route::get('auth/facebook', 'Auth\AuthController@redirectToProviderFacebook');
+Route::get('auth/facebook/callback', 'Auth\AuthController@handleProviderCallbackFacebook');
 
 Route::get('register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
 Route::post('register', ['as' => 'register', 'uses' => 'Auth\AuthController@postRegister']);
-//'Auth\AuthController@confirmEmail'
+
+
+
 Route::get('register/confirm/{token}', function($token) {
 	User::where('verify_token', $token)->firstOrFail()->confirmEmail();
 	flash()->success('Sweet!', 'You are now confirmed. Thanks so much!');
-
 	return redirect('/home');
 });

@@ -15,7 +15,12 @@ elixir(function(mix) {
 	mix.sass('vendor/sweetalert.scss');
 
 	mix.styles([
-	    'sweetalert.css'
+		'bootstrap-social.css'
+	]);
+
+	mix.styles([
+	    'sweetalert.css',
+	    'all.css',
 	], 'public/css/booknshelf.css', 'public/css');
 
 	mix.scripts([

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Event;
 use App\User;
 use Validator;
+use Socialite;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Events\UserRegistered;
@@ -124,6 +125,18 @@ class AuthController extends Controller
     public function handleProviderCallbackTwitter()
     {
         $user = Socialite::driver('twitter')->user();
+        dd($user);
+        // $user->token;
+    }
+
+    public function redirectToProviderFacebook()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    public function handleProviderCallbackFacebook()
+    {
+        $user = Socialite::driver('facebook')->user();
         dd($user);
         // $user->token;
     }
