@@ -25,8 +25,8 @@ Route::get('/home', 'HomeController@index');
 Route::get('auth/twitter', 'Auth\AuthController@redirectToProviderTwitter');
 Route::get('auth/twitter/callback', 'Auth\AuthController@handleProviderCallbackTwitter');
 
-Route::get('auth/facebook', 'Auth\AuthController@redirectToProviderFacebook');
-Route::get('auth/facebook/callback', 'Auth\AuthController@handleProviderCallbackFacebook');
+Route::get('auth/facebook', 'Auth\AuthController@login_facebook');
+Route::get('login_facebook', 'Auth\AuthController@login_facebook');
 
 Route::get('register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
 Route::post('register', ['as' => 'register', 'uses' => 'Auth\AuthController@postRegister']);

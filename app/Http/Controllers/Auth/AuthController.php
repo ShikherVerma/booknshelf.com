@@ -6,6 +6,7 @@ use Event;
 use App\User;
 use Validator;
 use Socialite;
+use App\AuthenticateUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Events\UserRegistered;
@@ -45,6 +46,10 @@ class AuthController extends Controller
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
+//    public function login(AuthenticateUser $authenticateUser, Request $request)
+//    {
+//        $authenticateUser->execute($request->has('code'));
+//    }
     /**
      * Get a validator for an incoming registration request.
      *
@@ -129,15 +134,8 @@ class AuthController extends Controller
         // $user->token;
     }
 
-    public function redirectToProviderFacebook()
+    public function login_facebook(AuthenticateUser $authenticateUser, Request $request)
     {
-        return Socialite::driver('facebook')->redirect();
-    }
-
-    public function handleProviderCallbackFacebook()
-    {
-        $user = Socialite::driver('facebook')->user();
-        dd($user);
-        // $user->token;
+        return $authenticateUser->execute($request->has('code'));
     }
 }

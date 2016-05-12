@@ -6,11 +6,11 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
 
-                <div class="panel-body">
+<!--                 <div class="panel-body">
                     <a class="btn btn-block btn-social btn-twitter" href="{{ url('/auth/twitter') }}" >
                       <span class="fa fa-twitter"></span> Continue with Twitter
                     </a>
-                </div>
+                </div> -->
                 <div class="panel-body">
                     <a class="btn btn-block btn-social btn-facebook" href="{{ url('/auth/facebook') }}">
                       <span class="fa fa-facebook"></span> Continue with Facebook

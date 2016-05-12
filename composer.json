@@ -9,7 +9,8 @@
         "laravel/framework": "5.2.*",
         "laravel/socialite": "^2.0",
         "barryvdh/laravel-debugbar": "^2.2",
-        "barryvdh/laravel-ide-helper": "^2.1"
+        "barryvdh/laravel-ide-helper": "^2.1",
+        "phpspec/phpspec": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -17,7 +18,8 @@
         "phpunit/phpunit": "~4.0",
         "symfony/css-selector": "2.8.*|3.0.*",
         "symfony/dom-crawler": "2.8.*|3.0.*",
-        "laravel/homestead": "^3.0"
+        "laravel/homestead": "^3.0",
+        "laracasts/generators": "^1.1"
     },
     "autoload": {
         "classmap": [
