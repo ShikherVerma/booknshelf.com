@@ -10,16 +10,12 @@ class UserRepository {
     {
         // Retrieve the user by the attributes, or instantiate a new instance...
         $user = User::firstOrNew(['email' => $userData->email]);
+        // TODO: what do we do when user does not have password from
+        // facebook?
         $user->name = $userData->name;
-        $user->picture = $userData->avatar;
+        $user->avatar = $userData->avatar;
         $user->save();
         return $user;
-//        return $user;
-//        return User::firstOrCreate([
-//            'name' => $userData->name,
-//            'email' => $userData->email,
-//            'picture' => $userData->avatar,
-//        ]);
     }
 
 }

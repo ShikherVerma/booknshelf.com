@@ -15,7 +15,9 @@ class Shelf extends Model
      */
     protected $fillable = [
         'name',
-        'description'
+        'description',
+        'access_type',
+        'cover_picture'
     ];
 
     /**

@@ -21,17 +21,16 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-// Sociallte auth
-Route::get('auth/twitter', 'Auth\AuthController@redirectToProviderTwitter');
-Route::get('auth/twitter/callback', 'Auth\AuthController@handleProviderCallbackTwitter');
+// Socialite auth for facebook
+Route::get('auth/facebook', 'Auth\AuthController@loginFacebook');
+Route::get('login_facebook', 'Auth\AuthController@loginFacebook');
 
-Route::get('auth/facebook', 'Auth\AuthController@login_facebook');
-Route::get('login_facebook', 'Auth\AuthController@login_facebook');
-
+// register auth routes
 Route::get('register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
 Route::post('register', ['as' => 'register', 'uses' => 'Auth\AuthController@postRegister']);
 
-
+// shelf resource routes
+Route::resource('shelf', 'ShelfController');
 
 Route::get('register/confirm/{token}', function($token) {
 	User::where('verify_token', $token)->firstOrFail()->confirmEmail();

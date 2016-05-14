@@ -44,10 +44,6 @@ class AuthController extends Controller
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
     
-//    public function login(AuthenticateUser $authenticateUser, Request $request)
-//    {
-//        $authenticateUser->execute($request->has('code'));
-//    }
     /**
      * Get a validator for an incoming registration request.
      *
@@ -107,31 +103,7 @@ class AuthController extends Controller
         return redirect('/home');
     }
 
-    /**
-     * Redirect the user to the Twitter authentication page.
-     *
-     * @return Response
-     */
-    public function redirectToProviderTwitter()
-    {
-        // We can set the scope like this too
-        // return Socialite::driver('github')
-        //             ->scopes(['scope1', 'scope2'])->redirect();
-        return Socialite::driver('twitter')->redirect();
-    }
-
-    /**
-     * Obtain the user information from Twitter.
-     *
-     * @return Response
-     */
-    public function handleProviderCallbackTwitter()
-    {
-        $user = Socialite::driver('twitter')->user();
-        // $user->token;
-    }
-
-    public function login_facebook(AuthenticateUser $authenticateUser, Request $request)
+    public function loginFacebook(AuthenticateUser $authenticateUser, Request $request)
     {
         return $authenticateUser->execute($request->has('code'), $this);
     }

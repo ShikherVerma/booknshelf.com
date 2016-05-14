@@ -12,17 +12,18 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
+	// stylings
 	mix.sass('vendor/sweetalert.scss');
-
-	mix.styles([
-		'bootstrap-social.css'
-	]);
+	mix.less('app.less');
+	mix.styles(['bootstrap-social.css']);
 
 	mix.styles([
 	    'sweetalert.css',
+	    'app.css',
 	    'all.css',
 	], 'public/css/booknshelf.css', 'public/css');
 
+	// scripts
 	mix.scripts([
 	    'vendor/sweetalert-dev.js',
 	], 'public/js/booknshelf.js');

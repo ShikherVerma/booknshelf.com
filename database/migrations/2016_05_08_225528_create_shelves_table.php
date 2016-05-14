@@ -16,7 +16,9 @@ class CreateShelvesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->index();
             $table->string('name');
-            $table->string('description');
+            $table->string('description')->nullable();;
+            $table->string('cover_picture')->nullable();;
+            $table->enum('access_type', ['private', 'public'])->default('public');
             $table->timestamps();
         });
     }
