@@ -37,15 +37,13 @@ class AuthController extends Controller
     protected $redirectTo = '/';
 
     /**
-     * Create a new authentication controller instance.
-     *
-     * @return void
+     * Create a new authentication controller instance
      */
     public function __construct()
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
-
+    
 //    public function login(AuthenticateUser $authenticateUser, Request $request)
 //    {
 //        $authenticateUser->execute($request->has('code'));
@@ -130,12 +128,16 @@ class AuthController extends Controller
     public function handleProviderCallbackTwitter()
     {
         $user = Socialite::driver('twitter')->user();
-        dd($user);
         // $user->token;
     }
 
     public function login_facebook(AuthenticateUser $authenticateUser, Request $request)
     {
-        return $authenticateUser->execute($request->has('code'));
+        return $authenticateUser->execute($request->has('code'), $this);
+    }
+
+    public function userHasLoggedIn($user)
+    {
+        return redirect('/');
     }
 }

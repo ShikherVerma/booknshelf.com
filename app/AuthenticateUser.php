@@ -23,13 +23,15 @@ class AuthenticateUser extends Controller
 		$this->auth = $auth;
 	}
 
-    public function execute($hasCode)
+    public function execute($hasCode, $listener)
     {
 		if(!$hasCode) return $this->getAuthorizationFirst();
-        // so now we should either create a new user object or fetch existing one.
+        // either create a new user object or fetch existing one
         $user = $this->users->findByEmailOrCreate($this->getFacebookUser());
-
+        // log in the user
         $this->auth->login($user, true);
+
+		return $listener->userHasLoggedIn($user);
     }
 
 	private function getAuthorizationFirst()
