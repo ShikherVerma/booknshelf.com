@@ -89,12 +89,15 @@ module.exports = {
         getNotifications() {
             this.loadingNotifications = true;
 
-            this.$http.get('/notifications/recent')
-                .then(response => {
-                    this.notifications = response.data;
+            this.notifications = {'notifications': []};
 
-                    this.loadingNotifications = false;
-                });
+            this.loadingNotifications = false;
+            // this.$http.get('/notifications/recent')
+            //     .then(response => {
+            //         this.notifications = response.data;
+
+            //         this.loadingNotifications = false;
+            //     });
         },
 
         /**

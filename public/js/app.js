@@ -33668,15 +33668,17 @@ module.exports = {
          * Get the application notifications.
          */
         getNotifications: function getNotifications() {
-            var _this2 = this;
-
             this.loadingNotifications = true;
 
-            this.$http.get('/notifications/recent').then(function (response) {
-                _this2.notifications = response.data;
+            this.notifications = { 'notifications': [] };
 
-                _this2.loadingNotifications = false;
-            });
+            this.loadingNotifications = false;
+            // this.$http.get('/notifications/recent')
+            //     .then(response => {
+            //         this.notifications = response.data;
+
+            //         this.loadingNotifications = false;
+            //     });
         },
 
 
@@ -33704,7 +33706,7 @@ module.exports = {
          */
 
         hasUnreadAnnouncements: function hasUnreadAnnouncements() {
-            var _this3 = this;
+            var _this2 = this;
 
             if (this.notifications && this.user) {
                 if (!this.user.last_read_announcements_at) {
@@ -33712,7 +33714,7 @@ module.exports = {
                 }
 
                 return _.filter(this.notifications.announcements, function (announcement) {
-                    return moment.utc(_this3.user.last_read_announcements_at).isBefore(moment.utc(announcement.created_at));
+                    return moment.utc(_this2.user.last_read_announcements_at).isBefore(moment.utc(announcement.created_at));
                 }).length > 0;
             }
 
@@ -33867,15 +33869,14 @@ Vue.component('app-navbar', {
 'use strict';
 
 Vue.component('app-notifications', {
-    props: ['notifications', 'hasUnreadAnnouncements', 'loadingNotifications'],
+    props: ['notifications', 'loadingNotifications'],
 
     /**
      * The component's data.
      */
     data: function data() {
         return {
-            showingNotifications: true,
-            showingAnnouncements: false
+            showingNotifications: true
         };
     },
 
@@ -33887,30 +33888,6 @@ Vue.component('app-notifications', {
 
         showNotifications: function showNotifications() {
             this.showingNotifications = true;
-            this.showingAnnouncements = false;
-        },
-
-
-        /**
-         * Show the product announcements.
-         */
-        showAnnouncements: function showAnnouncements() {
-            this.showingNotifications = false;
-            this.showingAnnouncements = true;
-
-            this.updateLastReadAnnouncementsTimestamp();
-        },
-
-
-        /**
-         * Update the last read announcements timestamp.
-         */
-        updateLastReadAnnouncementsTimestamp: function updateLastReadAnnouncementsTimestamp() {
-            var _this = this;
-
-            this.$http.put('/user/last-read-announcements-at').then(function () {
-                _this.$dispatch('updateUser');
-            });
         }
     },
 
@@ -33926,8 +33903,6 @@ Vue.component('app-notifications', {
 
             if (this.showingNotifications) {
                 return this.notifications.notifications;
-            } else {
-                return this.notifications.announcements;
             }
         },
 
@@ -33937,14 +33912,6 @@ Vue.component('app-notifications', {
          */
         hasNotifications: function hasNotifications() {
             return this.notifications && this.notifications.notifications.length > 0;
-        },
-
-
-        /**
-         * Determine if the user has any announcements.
-         */
-        hasAnnouncements: function hasAnnouncements() {
-            return this.notifications && this.notifications.announcements.length > 0;
         }
     }
 });

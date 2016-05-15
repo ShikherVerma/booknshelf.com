@@ -27,4 +27,11 @@ class UserRepository {
         return $user;
     }
 
+    public function current()
+    {
+        if (Auth::check()) {
+            return $this->find(Auth::id());
+        }
+    }
+
 }

@@ -43,3 +43,5 @@ $router->get('/settings', 'SettingsController@show');
 // Profile Contact Information...
 $router->put('/settings/profile', 'SettingsController@updateProfile');
 $router->post('/settings/photo', 'SettingsController@updatePhoto');
+// User
+$router->get('/user/current', 'UserController@current');

@@ -1,7 +1,6 @@
 <!-- Notifications Modal -->
 <app-notifications
     :notifications="notifications"
-    :has-unread-announcements="hasUnreadAnnouncements"
     :loading-notifications="loadingNotifications" inline-template>
 
     <div>
@@ -10,12 +9,8 @@
                 <div class="modal-content">
                     <div class="modal-header text-center">
                         <div class="btn-group">
-                            <button class="btn btn-default" :class="{'active': showingNotifications}" @click="showNotifications" style="width: 50%;">
+                            <button class="btn btn-default" :class="{'active': showingNotifications}" @click="showNotifications" style="width: 100%;">
                                 Notifications
-                            </button>
-
-                            <button class="btn btn-default" :class="{'active': showingAnnouncements}" @click="showAnnouncements" style="width: 50%;">
-                                Announcements <i class="fa fa-circle text-danger p-l-xs" v-if="hasUnreadAnnouncements"></i>
                             </button>
                         </div>
                     </div>
@@ -72,38 +67,6 @@
                                     <!-- Notification Action -->
                                     <a :href="notification.action_url" class="btn btn-primary" v-if="notification.action_text">
                                         @{{ notification.action_text }}
-                                    </a>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- List Of Announcements -->
-                        <div v-if="showingAnnouncements && hasAnnouncements">
-                            <div class="notification" v-for="announcement in notifications.announcements">
-
-                                <!-- Notification Icon -->
-                                <figure>
-                                    <img :src="announcement.creator.photo_url" class="app-profile-photo">
-                                </figure>
-
-                                <!-- Announcement -->
-                                <div class="notification-content">
-                                    <div class="meta">
-                                        <p class="title">@{{ announcement.creator.name }}</p>
-
-                                        <div class="date">
-                                            @{{ announcement.created_at | relative }}
-                                        </div>
-                                    </div>
-
-                                    <div class="notification-body">
-                                        @{{{ announcement.parsed_body }}}
-                                    </div>
-
-                                    <!-- Announcement Action -->
-                                    <a :href="announcement.action_url" class="btn btn-primary" v-if="announcement.action_text">
-                                        @{{ announcement.action_text }}
                                     </a>
 
                                 </div>

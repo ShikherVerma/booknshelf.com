@@ -1,5 +1,5 @@
 Vue.component('app-notifications', {
-    props: ['notifications', 'hasUnreadAnnouncements', 'loadingNotifications'],
+    props: ['notifications', 'loadingNotifications'],
 
     /**
      * The component's data.
@@ -7,7 +7,6 @@ Vue.component('app-notifications', {
     data() {
         return {
             showingNotifications: true,
-            showingAnnouncements: false
         }
     },
 
@@ -18,30 +17,7 @@ Vue.component('app-notifications', {
          */
         showNotifications() {
             this.showingNotifications = true;
-            this.showingAnnouncements = false;
         },
-
-
-        /**
-         * Show the product announcements.
-         */
-        showAnnouncements() {
-            this.showingNotifications = false;
-            this.showingAnnouncements = true;
-
-            this.updateLastReadAnnouncementsTimestamp();
-        },
-
-
-        /**
-         * Update the last read announcements timestamp.
-         */
-        updateLastReadAnnouncementsTimestamp() {
-            this.$http.put('/user/last-read-announcements-at')
-                .then(() => {
-                    this.$dispatch('updateUser');
-                });
-        }
     },
 
 
@@ -56,8 +32,6 @@ Vue.component('app-notifications', {
 
             if (this.showingNotifications) {
                 return this.notifications.notifications;
-            } else {
-                return this.notifications.announcements;
             }
         },
 
@@ -68,13 +42,5 @@ Vue.component('app-notifications', {
         hasNotifications() {
             return this.notifications && this.notifications.notifications.length > 0;
         },
-
-
-        /**
-         * Determine if the user has any announcements.
-         */
-        hasAnnouncements() {
-            return this.notifications && this.notifications.announcements.length > 0;
-        }
     }
 });
