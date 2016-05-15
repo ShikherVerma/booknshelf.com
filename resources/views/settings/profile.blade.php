@@ -1,9 +1,9 @@
-<spark-profile :user="user" inline-template>
+<app-profile :user="user" inline-template>
     <div>
         <!-- Update Profile Photo -->
         @include('settings.profile.update-profile-photo')
 
-        <!-- Update Contact Information -->
-        @include('settings.profile.update-contact-information')
+        <!-- Update Profile Information -->
+        @include('settings.profile.update-profile-information')
     </div>
-</spark-profile>
+</app-profile>

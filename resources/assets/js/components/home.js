@@ -6,7 +6,7 @@ Vue.component('home', {
         return {
             tasks: [],
 
-            form: new SparkForm({
+            form: new AppForm({
                 name: ''
             })
         };

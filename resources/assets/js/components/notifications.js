@@ -1,4 +1,4 @@
-Vue.component('spark-notifications', {
+Vue.component('app-notifications', {
     props: ['notifications', 'hasUnreadAnnouncements', 'loadingNotifications'],
 
     /**

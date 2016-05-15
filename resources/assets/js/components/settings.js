@@ -1,6 +1,7 @@
-Vue.component('spark-settings', {
+Vue.component('app-settings', {
 
-    props: ['user', 'teams'],
+
+    props: ['user'],
 
 
     /**
@@ -10,19 +11,9 @@ Vue.component('spark-settings', {
 
 
     /**
-     * The component's data.
-     */
-    data() {
-        return {
-            billableType: 'user'
-        };
-    },
-
-
-    /**
      * Prepare the component.
      */
-    ready() {
-        this.usePushStateForTabs('.spark-settings-tabs');
-    },
+    // ready() {
+    //     this.usePushStateForTabs('.app-settings-tabs');
+    // },
 });

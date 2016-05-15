@@ -1,7 +1,7 @@
 /**
- * App helper class. Used to set common properties on all forms.
+ * AppForm helper class. Used to set common properties on all forms.
  */
-window.App = function (data) {
+window.AppForm = function (data) {
     var form = this;
 
     $.extend(this, data);
@@ -9,7 +9,7 @@ window.App = function (data) {
     /**
      * Create the form error helper instance.
      */
-    this.errors = new AppErrors();
+    this.errors = new AppFormErrors();
 
     this.busy = false;
     this.successful = false;

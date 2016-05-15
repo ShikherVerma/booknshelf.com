@@ -20,7 +20,9 @@
                 'userId' => Auth::id(),
                 'env' => config('app.env'),
                 'csrfToken' => csrf_token(),
-                'state' => [],
+                'state' => [
+                    'user' => Auth::user()
+                ],
             ]
         ); ?>
     </script>

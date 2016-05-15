@@ -50,6 +50,23 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Username</label>
+
+                            <div class="col-md-6">
+                                <input type="username" class="form-control" name="username" value="{{ old('username') }}">
+                                <span class="help-block">You'll use your username for sharing your amazing bookshelves
+                                </span>
+
+                                @if ($errors->has('username'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Password</label>
 

@@ -13,6 +13,7 @@ class AuthTest extends TestCase
         $response = $this->call('POST', '/register', [
                 'name' => 'JohnSnow',
                 'email' => 'john.snow@gmail.com',
+                'username' => 'john.snow',
                 'password' => 'password',
         ]);
         $this->assertEquals(302, $response->status());

@@ -1,11 +1,11 @@
-<spark-update-contact-information :user="user" inline-template>
+<app-update-profile-information :user="user" inline-template>
     <div class="panel panel-default">
-        <div class="panel-heading">Contact Information</div>
+        <div class="panel-heading">Profile Information</div>
 
         <div class="panel-body">
             <!-- Success Message -->
             <div class="alert alert-success" v-if="form.successful">
-                Your contact information has been updated!
+                Your profile has been updated!
             </div>
 
             <form class="form-horizontal" role="form">
@@ -35,6 +35,33 @@
                     </div>
                 </div>
 
+                <!-- Username  -->
+                <div class="form-group" :class="{'has-error': form.errors.has('username')}">
+                    <label class="col-md-4 control-label">Username</label>
+
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" name="username" v-model="form.username">
+
+                        <span class="help-block" v-show="form.errors.has('username')">
+                            @{{ form.errors.get('username') }}
+                        </span>
+                    </div>
+                </div>
+
+                <!-- About -->
+                <div class="form-group" :class="{'has-error': form.errors.has('about')}">
+                    <label class="col-md-4 control-label">About</label>
+
+                    <div class="col-md-6">
+                        <textarea class="form-control" name="about" v-model="form.about">
+                        </textarea>
+
+                        <span class="help-block" v-show="form.errors.has('about')">
+                            @{{ form.errors.get('about') }}
+                        </span>
+                    </div>
+                </div>
+
                 <!-- Update Button -->
                 <div class="form-group">
                     <div class="col-md-offset-4 col-md-6">
@@ -49,4 +76,4 @@
             </form>
         </div>
     </div>
-</spark-update-contact-information>
+</app-update-profile-information>

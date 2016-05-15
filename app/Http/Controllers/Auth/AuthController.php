@@ -43,7 +43,7 @@ class AuthController extends Controller
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
-    
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -55,6 +55,7 @@ class AuthController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
+            'username' => 'required|max:255|unique:users',
             'password' => 'required|min:6',
         ]);
     }
@@ -70,7 +71,7 @@ class AuthController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'username' => str_slug($data['email'], '_'),
+            'username' => $data['username'],
             'password' => bcrypt($data['password']),
         ]);
     }
@@ -96,7 +97,6 @@ class AuthController extends Controller
 
     public function confirmEmail($token)
     {
-        dd("getting here ...");
         User::where('verify_token', $token)->firstOrFail()->confirmEmail();
         flash()->success('Sweet!', 'You are now confirmed. Thanks so much!');
 

@@ -1,30 +1,10 @@
 module.exports = {
     computed: {
         /**
-         * Get the billable entity.
+         * Access the global App object.
          */
-        billable() {
-            if (this.billableType) {
-                return this.billableType == 'user' ? this.user : this.team;
-            } else {
-                return this.user;
-            }
-        },
-
-
-        /**
-         * Determine if the current billable entity is a user.
-         */
-        billingUser() {
-            return this.billableType && this.billableType == 'user';
-        },
-
-
-        /**
-         * Access the global Spark object.
-         */
-        spark() {
-            return window.Spark;
+        app() {
+            return window.App;
         }
     }
 };

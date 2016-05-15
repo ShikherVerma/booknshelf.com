@@ -18,8 +18,6 @@ class User extends Authenticatable
         'username',
         'avatar',
         'about',
-        'location',
-        'website',
     ];
 
     /**
@@ -28,7 +26,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
+        'is_verified',
+        'verify_token',
+        'created_at',
+        'updated_at'
     ];
 
     public function confirmEmail()

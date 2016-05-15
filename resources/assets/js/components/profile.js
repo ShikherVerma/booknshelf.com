@@ -1,3 +1,3 @@
-Vue.component('spark-profile', {
+Vue.component('app-profile', {
     props: ['user']
 });

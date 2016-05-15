@@ -20,8 +20,6 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('avatar')->nullable();
             $table->string('about')->nullable();
-            $table->string('website')->nullable();
-            $table->string('location')->nullable();
             $table->boolean('is_verified')->default(false);
             $table->string('verify_token')->nullable();
             $table->rememberToken();

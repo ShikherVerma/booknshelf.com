@@ -1,7 +1,6 @@
 Vue.component('app-navbar', {
     props: [
-        'user', 'teams', 'currentTeam',
-        'hasUnreadNotifications', 'hasUnreadAnnouncements'
+        'user', 'hasUnreadNotifications', 'hasUnreadAnnouncements'
     ],
 
 
@@ -13,12 +12,5 @@ Vue.component('app-navbar', {
             this.$dispatch('showNotifications');
         },
 
-
-        /**
-         * Show the customer support e-mail form.
-         */
-        showSupportForm() {
-            this.$dispatch('showSupportForm');
-        }
     }
 });

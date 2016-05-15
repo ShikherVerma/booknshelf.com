@@ -41,8 +41,5 @@ Route::get('register/confirm/{token}', function($token) {
 // Settings
 $router->get('/settings', 'SettingsController@show');
 // Profile Contact Information...
-$router->put('/settings/contact', 'SettingsController@updateContact');
-// Profile Photo...
+$router->put('/settings/profile', 'SettingsController@updateProfile');
 $router->post('/settings/photo', 'SettingsController@updatePhoto');
-// Security Settings...
-$router->put('/settings/password', 'SettingsController@updatePassword');

@@ -1,4 +1,4 @@
-<spark-update-profile-photo :user="user" inline-template>
+<app-update-profile-photo :user="user" inline-template>
     <div>
         <div class="panel panel-default" v-if="user">
             <div class="panel-heading">Profile Photo</div>
@@ -36,4 +36,4 @@
             </div>
         </div>
     </div>
-</spark-update-profile-photo>
+</app-update-profile-photo>

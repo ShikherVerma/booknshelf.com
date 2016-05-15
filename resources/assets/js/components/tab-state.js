@@ -1,4 +1,4 @@
-Vue.component('spark-settings', {
+Vue.component('app-settings', {
     pushStateSelector: null,
 
 
@@ -85,8 +85,8 @@ Vue.component('spark-settings', {
          * Broadcast that a tab change happened.
          */
         broadcastTabChange(hash, parameters) {
-            this.$dispatch('sparkHashChanged', hash, parameters);
-            this.$broadcast('sparkHashChanged', hash, parameters);
+            this.$dispatch('appHashChanged', hash, parameters);
+            this.$broadcast('appHashChanged', hash, parameters);
         }
     }
 });

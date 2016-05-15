@@ -1,5 +1,5 @@
 <!-- Notifications Modal -->
-<spark-notifications
+<app-notifications
     :notifications="notifications"
     :has-unread-announcements="hasUnreadAnnouncements"
     :loading-notifications="loadingNotifications" inline-template>
@@ -39,7 +39,7 @@
 
                                 <!-- Notification Icon -->
                                 <figure>
-                                    <img v-if="notification.creator" :src="notification.creator.photo_url" class="spark-profile-photo">
+                                    <img v-if="notification.creator" :src="notification.creator.photo_url" class="app-profile-photo">
 
                                     <span v-else class="fa-stack fa-2x">
                                         <i class="fa fa-circle fa-stack-2x"></i>
@@ -56,7 +56,7 @@
                                             </span>
 
                                             <span v-else>
-                                                Spark
+                                                app
                                             </span>
                                         </p>
 
@@ -84,7 +84,7 @@
 
                                 <!-- Notification Icon -->
                                 <figure>
-                                    <img :src="announcement.creator.photo_url" class="spark-profile-photo">
+                                    <img :src="announcement.creator.photo_url" class="app-profile-photo">
                                 </figure>
 
                                 <!-- Announcement -->
@@ -119,4 +119,4 @@
             </div>
         </div>
     </div>
-</spark-notifications>
+</app-notifications>

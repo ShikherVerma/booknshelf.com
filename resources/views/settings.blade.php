@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<spark-settings :user="user" :teams="teams" inline-template>
-    <div class="spark-screen container">
+<app-settings :user="user" inline-template>
+    <div class="app-screen container">
         <div class="row">
             <!-- Tabs -->
             <div class="col-md-4">
@@ -12,22 +12,14 @@
                     </div>
 
                     <div class="panel-body">
-                        <div class="spark-settings-tabs">
-                            <ul class="nav spark-settings-stacked-tabs" role="tablist">
+                        <div class="app-settings-tabs">
+                            <ul class="nav app-settings-stacked-tabs" role="tablist">
                                 <!-- Profile Link -->
                                 <li role="presentation">
                                     <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
                                         <i class="fa fa-fw fa-btn fa-edit"></i>Profile
                                     </a>
                                 </li>
-
-                                <!-- Security Link -->
-                                <li role="presentation">
-                                    <a href="#security" aria-controls="security" role="tab" data-toggle="tab">
-                                        <i class="fa fa-fw fa-btn fa-lock"></i>Security
-                                    </a>
-                                </li>
-
                             </ul>
                         </div>
                     </div>
@@ -41,15 +33,9 @@
                     <div role="tabpanel" class="tab-pane active" id="profile">
                         @include('settings.profile')
                     </div>
-
-                    <!-- Security -->
-                    <div role="tabpanel" class="tab-pane" id="security">
-                        @include('settings.security')
-                    </div>
-
                 </div>
             </div>
         </div>
     </div>
-</spark-settings>
+</app-settings>
 @endsection

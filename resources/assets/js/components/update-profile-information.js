@@ -1,4 +1,4 @@
-Vue.component('spark-update-contact-information', {
+Vue.component('app-update-profile-information', {
 
     props: ['user'],
 
@@ -7,10 +7,12 @@ Vue.component('spark-update-contact-information', {
      */
     data() {
         return {
-            form: $.extend(true, new SparkForm({
+            form: $.extend(true, new AppForm({
                 name: '',
-                email: ''
-            }), Spark.forms.updateContactInformation)
+                email: '',
+                username: '',
+                about: ''
+            }), App.forms.updateProfileInformation)
         };
     },
 
@@ -21,6 +23,8 @@ Vue.component('spark-update-contact-information', {
     ready() {
         this.form.name = this.user.name;
         this.form.email = this.user.email;
+        this.form.username = this.user.username;
+        this.form.about = this.user.about;
     },
 
 
@@ -29,7 +33,7 @@ Vue.component('spark-update-contact-information', {
          * Update the user's contact information.
          */
         update() {
-            Spark.put('/settings/contact', this.form)
+            App.put('/settings/profile', this.form)
                 .then(() => {
                     this.$dispatch('updateUser');
                 });

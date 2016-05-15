@@ -33563,7 +33563,7 @@ if ($('#app').length > 0) {
   require('./vue-bootstrap');
 }
 
-},{"./vue-bootstrap":75,"bootstrap/dist/js/npm":3,"jquery":16,"js-cookie":17,"moment":18,"promise":20,"underscore":28,"urijs":31}],54:[function(require,module,exports){
+},{"./vue-bootstrap":73,"bootstrap/dist/js/npm":3,"jquery":16,"js-cookie":17,"moment":18,"promise":20,"underscore":28,"urijs":31}],54:[function(require,module,exports){
 'use strict';
 
 require('./app-bootstrap');
@@ -33588,8 +33588,7 @@ module.exports = {
      * The application's data.
      */
     data: {
-        user: 'tigran',
-
+        user: App.state.user,
         loadingNotifications: false,
         notifications: null
     },
@@ -33600,10 +33599,6 @@ module.exports = {
     created: function created() {
         if (App.userId) {
             this.loadDataForAuthenticatedUser();
-        }
-
-        if (App.userId && App.usesApi) {
-            this.refreshApiTokenEveryFewMinutes();
         }
     },
 
@@ -33624,6 +33619,7 @@ module.exports = {
          */
 
         updateUser: function updateUser() {
+            console.log("Getting the user...");
             this.getUser();
         },
 
@@ -33798,18 +33794,12 @@ require('./settings');
  */
 require('./profile');
 require('./update-profile-photo');
-require('./update-contact-information');
-
-/**
- * Security Settings Components...
- */
-require('./security');
-require('./update-password');
+require('./update-profile-information');
 
 require('./home');
 require('./activity');
 
-},{"./activity":56,"./home":58,"./navbar":59,"./notifications":60,"./profile":61,"./security":62,"./settings":63,"./update-contact-information":65,"./update-password":66,"./update-profile-photo":67}],58:[function(require,module,exports){
+},{"./activity":56,"./home":58,"./navbar":59,"./notifications":60,"./profile":61,"./settings":62,"./update-profile-information":64,"./update-profile-photo":65}],58:[function(require,module,exports){
 'use strict';
 
 Vue.component('home', {
@@ -33819,7 +33809,7 @@ Vue.component('home', {
         return {
             tasks: [],
 
-            form: new SparkForm({
+            form: new AppForm({
                 name: ''
             })
         };
@@ -33860,7 +33850,7 @@ Vue.component('home', {
 'use strict';
 
 Vue.component('app-navbar', {
-    props: ['user', 'teams', 'currentTeam', 'hasUnreadNotifications', 'hasUnreadAnnouncements'],
+    props: ['user', 'hasUnreadNotifications', 'hasUnreadAnnouncements'],
 
     methods: {
         /**
@@ -33869,14 +33859,6 @@ Vue.component('app-navbar', {
 
         showNotifications: function showNotifications() {
             this.$dispatch('showNotifications');
-        },
-
-
-        /**
-         * Show the customer support e-mail form.
-         */
-        showSupportForm: function showSupportForm() {
-            this.$dispatch('showSupportForm');
         }
     }
 });
@@ -33884,7 +33866,7 @@ Vue.component('app-navbar', {
 },{}],60:[function(require,module,exports){
 'use strict';
 
-Vue.component('spark-notifications', {
+Vue.component('app-notifications', {
     props: ['notifications', 'hasUnreadAnnouncements', 'loadingNotifications'],
 
     /**
@@ -33970,73 +33952,28 @@ Vue.component('spark-notifications', {
 },{}],61:[function(require,module,exports){
 'use strict';
 
-Vue.component('spark-profile', {
+Vue.component('app-profile', {
     props: ['user']
 });
 
 },{}],62:[function(require,module,exports){
 'use strict';
 
-Vue.component('spark-security', {
-    props: ['user'],
+Vue.component('app-settings', {
 
-    /**
-     * The component's data.
-     */
-    data: function data() {
-        return {
-            twoFactorResetCode: null
-        };
-    },
+  props: ['user'],
 
+  /**
+   * Load mixins for the component.
+   */
+  mixins: [require('./tab-state')]
 
-    events: {
-        /**
-         * Display the received two-factor authentication code.
-         */
-
-        receivedTwoFactorResetCode: function receivedTwoFactorResetCode(code) {
-            this.twoFactorResetCode = code;
-
-            $('#modal-show-two-factor-reset-code').modal('show');
-        }
-    }
 });
 
-},{}],63:[function(require,module,exports){
+},{"./tab-state":63}],63:[function(require,module,exports){
 'use strict';
 
-Vue.component('spark-settings', {
-
-    props: ['user', 'teams'],
-
-    /**
-     * Load mixins for the component.
-     */
-    mixins: [require('./tab-state')],
-
-    /**
-     * The component's data.
-     */
-    data: function data() {
-        return {
-            billableType: 'user'
-        };
-    },
-
-
-    /**
-     * Prepare the component.
-     */
-    ready: function ready() {
-        this.usePushStateForTabs('.spark-settings-tabs');
-    }
-});
-
-},{"./tab-state":64}],64:[function(require,module,exports){
-'use strict';
-
-Vue.component('spark-settings', {
+Vue.component('app-settings', {
     pushStateSelector: null,
 
     methods: {
@@ -34125,16 +34062,16 @@ Vue.component('spark-settings', {
          * Broadcast that a tab change happened.
          */
         broadcastTabChange: function broadcastTabChange(hash, parameters) {
-            this.$dispatch('sparkHashChanged', hash, parameters);
-            this.$broadcast('sparkHashChanged', hash, parameters);
+            this.$dispatch('appHashChanged', hash, parameters);
+            this.$broadcast('appHashChanged', hash, parameters);
         }
     }
 });
 
-},{}],65:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 'use strict';
 
-Vue.component('spark-update-contact-information', {
+Vue.component('app-update-profile-information', {
 
     props: ['user'],
 
@@ -34143,10 +34080,12 @@ Vue.component('spark-update-contact-information', {
      */
     data: function data() {
         return {
-            form: $.extend(true, new SparkForm({
+            form: $.extend(true, new AppForm({
                 name: '',
-                email: ''
-            }), Spark.forms.updateContactInformation)
+                email: '',
+                username: '',
+                about: ''
+            }), App.forms.updateProfileInformation)
         };
     },
 
@@ -34157,6 +34096,8 @@ Vue.component('spark-update-contact-information', {
     ready: function ready() {
         this.form.name = this.user.name;
         this.form.email = this.user.email;
+        this.form.username = this.user.username;
+        this.form.about = this.user.about;
     },
 
 
@@ -34168,7 +34109,7 @@ Vue.component('spark-update-contact-information', {
         update: function update() {
             var _this = this;
 
-            Spark.put('/settings/contact', this.form).then(function () {
+            App.put('/settings/profile', this.form).then(function () {
                 _this.$dispatch('updateUser');
             });
         }
@@ -34176,42 +34117,10 @@ Vue.component('spark-update-contact-information', {
 
 });
 
-},{}],66:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 'use strict';
 
-Vue.component('spark-update-password', {
-
-    /**
-     * The component's data.
-     */
-
-    data: function data() {
-        return {
-            form: new SparkForm({
-                current_password: '',
-                password: '',
-                password_confirmation: ''
-            })
-        };
-    },
-
-
-    methods: {
-        /**
-         * Update the user's password.
-         */
-
-        update: function update() {
-            Spark.put('/settings/password', this.form);
-        }
-    }
-
-});
-
-},{}],67:[function(require,module,exports){
-'use strict';
-
-Vue.component('spark-update-profile-photo', {
+Vue.component('app-update-profile-photo', {
     props: ['user'],
 
     /**
@@ -34219,7 +34128,7 @@ Vue.component('spark-update-profile-photo', {
      */
     data: function data() {
         return {
-            form: new SparkForm({})
+            form: new AppForm({})
         };
     },
 
@@ -34252,25 +34161,19 @@ Vue.component('spark-update-profile-photo', {
          */
         gatherFormData: function gatherFormData() {
             var data = new FormData();
-
             data.append('photo', this.$els.photo.files[0]);
-
             return data;
         }
     },
 
     computed: {
-        /**
-         * Calculate the style attribute for the photo preview.
-         */
-
         previewStyle: function previewStyle() {
-            return 'background-image: url(' + this.user.photo_url + ')';
+            return 'background-image: url(' + this.user.avatar + ')';
         }
     }
 });
 
-},{}],68:[function(require,module,exports){
+},{}],66:[function(require,module,exports){
 'use strict';
 
 /**
@@ -34312,7 +34215,7 @@ Vue.filter('relative', function (value) {
     return moment.utc(value).local().fromNow();
 });
 
-},{}],69:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 'use strict';
 
 /**
@@ -34337,7 +34240,7 @@ require('./errors');
  */
 $.extend(App, require('./http'));
 
-},{"./errors":70,"./form":71,"./http":72}],70:[function(require,module,exports){
+},{"./errors":68,"./form":69,"./http":70}],68:[function(require,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
@@ -34404,13 +34307,13 @@ window.AppFormErrors = function () {
     };
 };
 
-},{}],71:[function(require,module,exports){
+},{}],69:[function(require,module,exports){
 "use strict";
 
 /**
- * App helper class. Used to set common properties on all forms.
+ * AppForm helper class. Used to set common properties on all forms.
  */
-window.App = function (data) {
+window.AppForm = function (data) {
   var form = this;
 
   $.extend(this, data);
@@ -34418,7 +34321,7 @@ window.App = function (data) {
   /**
    * Create the form error helper instance.
    */
-  this.errors = new AppErrors();
+  this.errors = new AppFormErrors();
 
   this.busy = false;
   this.successful = false;
@@ -34458,7 +34361,7 @@ window.App = function (data) {
   };
 };
 
-},{}],72:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -34510,7 +34413,7 @@ module.exports = {
     }
 };
 
-},{}],73:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -34548,42 +34451,22 @@ module.exports = {
     }
 };
 
-},{}],74:[function(require,module,exports){
-'use strict';
+},{}],72:[function(require,module,exports){
+"use strict";
 
 module.exports = {
     computed: {
         /**
-         * Get the billable entity.
+         * Access the global App object.
          */
 
-        billable: function billable() {
-            if (this.billableType) {
-                return this.billableType == 'user' ? this.user : this.team;
-            } else {
-                return this.user;
-            }
-        },
-
-
-        /**
-         * Determine if the current billable entity is a user.
-         */
-        billingUser: function billingUser() {
-            return this.billableType && this.billableType == 'user';
-        },
-
-
-        /**
-         * Access the global Spark object.
-         */
-        spark: function spark() {
-            return window.Spark;
+        app: function app() {
+            return window.App;
         }
     }
 };
 
-},{}],75:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 'use strict';
 
 /*
@@ -34621,6 +34504,6 @@ require('./filters');
  */
 require('./forms/bootstrap');
 
-},{"./filters":68,"./forms/bootstrap":69,"./interceptors":73,"./mixin":74,"vue":52,"vue-resource":37}]},{},[54]);
+},{"./filters":66,"./forms/bootstrap":67,"./interceptors":71,"./mixin":72,"vue":52,"vue-resource":37}]},{},[54]);
 
 //# sourceMappingURL=app.js.map

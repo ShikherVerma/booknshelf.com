@@ -1,4 +1,4 @@
-Vue.component('spark-update-profile-photo', {
+Vue.component('app-update-profile-photo', {
     props: ['user'],
 
     /**
@@ -6,7 +6,7 @@ Vue.component('spark-update-profile-photo', {
      */
     data() {
         return {
-            form: new SparkForm({})
+            form: new AppForm({})
         };
     },
 
@@ -40,20 +40,15 @@ Vue.component('spark-update-profile-photo', {
          */
         gatherFormData() {
             const data = new FormData();
-
             data.append('photo', this.$els.photo.files[0]);
-
             return data;
         }
     },
 
 
     computed: {
-        /**
-         * Calculate the style attribute for the photo preview.
-         */
         previewStyle() {
-            return `background-image: url(${this.user.photo_url})`;
+            return `background-image: url(${this.user.avatar})`;
         }
     }
 });

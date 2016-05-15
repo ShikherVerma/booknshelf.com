@@ -8,8 +8,7 @@ module.exports = {
      * The application's data.
      */
     data: {
-        user: 'tigran',
-
+        user: App.state.user,
         loadingNotifications: false,
         notifications: null,
     },
@@ -20,10 +19,6 @@ module.exports = {
     created() {
         if (App.userId) {
             this.loadDataForAuthenticatedUser();
-        }
-
-        if (App.userId && App.usesApi) {
-            this.refreshApiTokenEveryFewMinutes();
         }
     },
 
@@ -43,6 +38,7 @@ module.exports = {
          * Update the current user of the application.
          */
         updateUser() {
+            console.log("Getting the user...");
             this.getUser();
         },
 

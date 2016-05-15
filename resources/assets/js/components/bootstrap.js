@@ -27,14 +27,7 @@ require('./settings');
  */
 require('./profile');
 require('./update-profile-photo');
-require('./update-contact-information');
-
-
-/**
- * Security Settings Components...
- */
-require('./security');
-require('./update-password');
+require('./update-profile-information');
 
 
 require('./home');
