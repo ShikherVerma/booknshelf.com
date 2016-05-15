@@ -5,7 +5,9 @@
     "dev": "gulp watch"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
+    "gulp": "^3.9.1"
+  },
+  "dependencies": {
     "laravel-elixir": "^5.0.0",
     "bootstrap": "^3.0.0",
     "bootstrap-less": "^3.0.0",
@@ -19,6 +21,5 @@
     "urijs": "^1.17.0",
     "vue": "^1.0.13",
     "vue-resource": "^0.5.1"
-  },
-  "dependencies": {}
+  }
 }

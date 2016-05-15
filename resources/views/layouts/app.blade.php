@@ -14,6 +14,16 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="{{ elixir('css/booknshelf.css') }}">
+    <!-- Global App Object -->
+    <script>
+        window.App = <?php echo json_encode([
+                'userId' => Auth::id(),
+                'env' => config('app.env'),
+                'csrfToken' => csrf_token(),
+                'state' => [],
+            ]
+        ); ?>
+    </script>
 
 </head>
 <body class="with-navbar">
@@ -28,13 +38,16 @@
         <!-- Main Content -->
         @yield('content')
 
-        <!-- JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.15/vue.js"></script>
-        <script src="https://use.fontawesome.com/61a1688424.js"></script>
+        <!-- Application Level Modals -->
+        @if (Auth::check())
+            @include('modals.notifications')
+            @include('modals.session-expired')
+        @endif
 
+        <!-- JavaScript -->
+        <script src="https://use.fontawesome.com/61a1688424.js"></script>
         <script src="{{ elixir('js/booknshelf.js') }}"></script>
+        <script src="/js/app.js"></script>
 
         @include('shared.flash')
         @include('shared.errors')

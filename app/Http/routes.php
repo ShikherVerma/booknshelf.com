@@ -37,3 +37,12 @@ Route::get('register/confirm/{token}', function($token) {
 	flash()->success('Sweet!', 'You are now confirmed. Thanks so much!');
 	return redirect('/home');
 });
+
+// Settings
+$router->get('/settings', 'SettingsController@show');
+// Profile Contact Information...
+$router->put('/settings/contact', 'SettingsController@updateContact');
+// Profile Photo...
+$router->post('/settings/photo', 'SettingsController@updatePhoto');
+// Security Settings...
+$router->put('/settings/password', 'SettingsController@updatePassword');

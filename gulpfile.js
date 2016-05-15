@@ -23,6 +23,8 @@ elixir(function(mix) {
 	    'all.css',
 	], 'public/css/booknshelf.css', 'public/css');
 
+	mix.browserify('app.js');
+
 	// scripts
 	mix.scripts([
 	    'vendor/sweetalert-dev.js',
@@ -34,5 +36,8 @@ elixir(function(mix) {
 	// copy the img to public/ directory
 	mix.copy('resources/assets/img', 'public/img');
 
+	mix.browserSync({
+	    proxy: 'homestead.app'
+	});
 
 });
