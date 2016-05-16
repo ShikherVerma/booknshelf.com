@@ -11,7 +11,8 @@
         "barryvdh/laravel-debugbar": "^2.2",
         "barryvdh/laravel-ide-helper": "^2.1",
         "phpspec/phpspec": "^2.0",
-        "intervention/imagecache": "^2.3"
+        "intervention/imagecache": "^2.3",
+        "google/apiclient": "1.0.*@beta"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -48,7 +49,7 @@
         "post-install-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
             "php artisan optimize",
-            "ln -s public/storage storage/app/public"
+            "ln -s storage/app/public public/storage"
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",

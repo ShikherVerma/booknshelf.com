@@ -45,3 +45,6 @@ $router->put('/settings/profile', 'SettingsController@updateProfile');
 $router->post('/settings/photo', 'SettingsController@updatePhoto');
 // User
 $router->get('/user/current', 'UserController@current');
+
+// Books
+$router->get('/book/search', 'BookController@search');
