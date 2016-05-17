@@ -19,6 +19,11 @@ class BookController extends Controller
         $this->users = $users;
     }
 
+    public function index()
+    {
+        return view('search');
+    }
+
     public function search(Request $request)
     {
         $client = new \Google_Client();
