@@ -2,26 +2,12 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use App\Repositories\UserRepository;
-
 use App\Http\Requests;
-// if (file_exists(
-//     $configPath = '/vendor/google/apiclient/src/Google/Client.php')) {
-//     require_once $configPath;
-// }
-
-// if (file_exists(
-//     $configPath = '/vendor/google/apiclient/src/Google/Service/Books.php')) {
-//     require_once $configPath;
-// }
 
 require_once base_path('vendor/google/apiclient/src/Google/Client.php');
 require_once base_path('vendor/google/apiclient/src/Google/Service/Books.php');
-
-// $client->setApplicationName("My Application");
-// $client->setDeveloperKey("AIzaSyAHpivBebHQnitKHN6MTs8fb9nbFNtl3dQ");
 
 class BookController extends Controller
 {
@@ -41,12 +27,13 @@ class BookController extends Controller
 
         $service = new \Google_Service_Books($client);
 
-        $optParams = array('filter' => 'free-ebooks');
-        $results = $service->volumes->listVolumes('Henry David Thoreau', $optParams);
-        var_dump($results);
-        // foreach ($results as $item) {
-        //   echo $item['volumeInfo']['title'], "<br /> \n";
-        // }
-
+        // $optParams = array('filter' => 'free-ebooks');
+        $results = $service->volumes->listVolumes('How to win friends');
+        dd($results);
+        $final = [];
+        foreach ($results as $item) {
+            $final[] = $item['volumeInfo']['title'];
+        }
+        return json_encode($final);
     }
 }
