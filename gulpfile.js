@@ -28,6 +28,8 @@ elixir(function(mix) {
 	// scripts
 	mix.scripts([
 	    'vendor/sweetalert-dev.js',
+	    'vendor/typeahead.js',
+	    'helpers.js',
 	], 'public/js/booknshelf.js');
 
 	mix.version(['public/css/booknshelf.css','public/js/booknshelf.js']);

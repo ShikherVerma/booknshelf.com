@@ -4,7 +4,7 @@
 <div class="app-screen container">
     <div class="row">
         <!-- Tabs -->
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="panel panel-default panel-flush">
                 <input type="text" id="search-input" />
                 <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
@@ -30,7 +30,10 @@
         </div>
 
         <!-- Tab Panels -->
-        <div class="col-md-4">
+        <div class="col-md-6">
+            <div id="remote">
+              <input class="typeahead" type="text" placeholder="States of USA">
+            </div>
         </div>
     </div>
 </div>

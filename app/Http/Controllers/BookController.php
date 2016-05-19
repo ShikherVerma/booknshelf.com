@@ -26,6 +26,7 @@ class BookController extends Controller
 
     public function search(Request $request)
     {
+        $query = $request->q;
         $client = new \Google_Client();
         $client->setApplicationName("My Application");
         $client->setDeveloperKey("AIzaSyAyW_3rk7sDAGb0pYirC-E7tVQcka_MnY4");
@@ -33,8 +34,7 @@ class BookController extends Controller
         $service = new \Google_Service_Books($client);
 
         // $optParams = array('filter' => 'free-ebooks');
-        $results = $service->volumes->listVolumes('How to win friends');
-        dd($results);
+        $results = $service->volumes->listVolumes($query);
         $final = [];
         foreach ($results as $item) {
             $final[] = $item['volumeInfo']['title'];
