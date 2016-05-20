@@ -28,7 +28,7 @@ Vue.component('home', {
 
 
         create() {
-            Spark.post('/api/task', this.form)
+            App.post('/api/task', this.form)
                 .then(task => {
                     this.tasks.push(task);
 

@@ -16,3 +16,9 @@
         Crafted for you
     </a>
 </li>
+
+<li>
+    <a>
+        @include('search.book-search')
+    </a>
+</li>

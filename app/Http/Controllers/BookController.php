@@ -33,12 +33,12 @@ class BookController extends Controller
 
         $service = new \Google_Service_Books($client);
 
-        // $optParams = array('filter' => 'free-ebooks');
+        $optParams = array('filter' => 'free-ebooks');
         $results = $service->volumes->listVolumes($query);
-        $final = [];
+        $books = [];
         foreach ($results as $item) {
-            $final[] = $item['volumeInfo']['title'];
+            $books[] = $item['volumeInfo'];
         }
-        return json_encode($final);
+        return json_encode($books);
     }
 }

@@ -1,34 +1,20 @@
-// // constructs the suggestion engine
-// var states = new Bloodhound({
-//   datumTokenizer: Bloodhound.tokenizers.whitespace,
-//   queryTokenizer: Bloodhound.tokenizers.whitespace,
-//   // `states` is an array of state names defined in "The Basics"
-//   local: ['jersey city', 'something', 'book', 'amazing', 'awesome']
-// });
-
-// $('#bloodhound .typeahead').typeahead({
-//   hint: true,
-//   highlight: true,
-//   minLength: 1
-// },
-// {
-//   name: 'states',
-//   source: states
-// });
-
-
-var bestPictures = new Bloodhound({
-  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+var books = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('books'),
   queryTokenizer: Bloodhound.tokenizers.whitespace,
-  local: ['jersey city', 'something', 'book', 'amazing', 'awesome'],
+  prefetch: 'https://raw.githubusercontent.com/twitter/typeahead.js/gh-pages/data/countries.json',
   remote: {
     url: '../book/search?q=%QUERY',
     wildcard: '%QUERY'
   }
 });
 
-$('#remote .typeahead').typeahead(null, {
-  name: 'best-pictures',
-  display: 'value',
-  source: bestPictures
+$('#remote .typeahead').typeahead({
+  hint: true,
+  highlight: true,
+  minLength: 3
+},
+{
+  name: 'google-api-books',
+  display: 'books',
+  source: books
 });

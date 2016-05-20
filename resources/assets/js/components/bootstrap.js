@@ -32,3 +32,5 @@ require('./update-profile-information');
 
 require('./home');
 require('./activity');
+
+require('./book-search');
