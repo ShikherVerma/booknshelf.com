@@ -49,3 +49,4 @@ $router->get('/user/current', 'UserController@current');
 // Books
 $router->get('/book/autocomplete', 'BookController@index');
 $router->get('/book/search', 'BookController@search');
+$router->get('/book/{service_id}', 'BookController@show');
