@@ -6,7 +6,7 @@ use Event;
 use App\User;
 use Validator;
 use Socialite;
-use App\AuthenticateUser;
+use App\Http\Controllers\Auth\AuthenticateUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Events\UserRegistered;

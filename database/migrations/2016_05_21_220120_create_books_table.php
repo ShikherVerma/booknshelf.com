@@ -23,8 +23,8 @@ class CreateBooksTable extends Migration
             $table->string('publisher')->nullable();
             $table->date('published_date')->nullable();
             $table->integer('page_count')->nullable();
-            $table->decimal('rating')->nullable();
-            $table->smallInteger('ratings_count')->nullable();
+            $table->decimal('google_rating')->nullable();
+            $table->smallInteger('google_ratings_count')->nullable();
             $table->string('image')->nullable();
             $table->string('language')->nullable();
             $table->string('google_info_link')->nullable();

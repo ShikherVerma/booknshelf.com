@@ -160,9 +160,9 @@ return [
          * Other Service Providers...
          */
         Laravel\Socialite\SocialiteServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
+        // Barryvdh\Debugbar\ServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        AlgoliaSearch\Laravel\AlgoliaServiceProvider::class
+        // AlgoliaSearch\Laravel\AlgoliaServiceProvider::class
 
     ],
 

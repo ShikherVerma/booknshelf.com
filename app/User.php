@@ -48,4 +48,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Shelf::class)->orderBy('created_at', 'asc');
     }
+
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'is_verified' => 'boolean',
+    ];
 }
