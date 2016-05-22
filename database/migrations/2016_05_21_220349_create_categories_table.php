@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateShelvesTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,9 @@ class CreateShelvesTable extends Migration
      */
     public function up()
     {
-        Schema::create('shelves', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->index();
             $table->string('name');
-            $table->string('description')->nullable();;
-            $table->string('cover_picture')->nullable();;
-            $table->enum('access_type', ['private', 'public'])->default('public');
             $table->timestamps();
         });
     }
@@ -30,6 +26,7 @@ class CreateShelvesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('shelves');
+        Schema::drop('categories');
+
     }
 }

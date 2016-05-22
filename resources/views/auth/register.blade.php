@@ -16,6 +16,11 @@
                       <span class="fa fa-facebook"></span> Continue with Facebook
                     </a>
                 </div>
+                <div class="panel-body">
+                    <a class="btn btn-block btn-social btn-amazon" href="{{ url('/auth/amazon') }}">
+                      <span class="fa fa-amazon"></span> Continue with Goodreads
+                    </a>
+                </div>
 
                 <div class="panel-heading">Sign up</div>
                 <div class="panel-body">
