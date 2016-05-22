@@ -71,10 +71,19 @@
                                 @include('nav.developer')
                             @endif
 
-                            <!-- Your Settings -->
+                            <li>
+                                <a href="/tigran">
+                                    My Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/tigran/bookshelves">
+                                    My Bookshelves
+                                </a>
+                            </li>
                             <li>
                                 <a href="/settings">
-                                    <i class="fa fa-fw fa-btn fa-cog"></i>Your Settings
+                                    Settings
                                 </a>
                             </li>
 
@@ -83,7 +92,7 @@
                             <!-- Logout -->
                             <li>
                                 <a href="/logout">
-                                    <i class="fa fa-fw fa-btn fa-sign-out"></i>Logout
+                                    Logout
                                 </a>
                             </li>
                         </ul>
