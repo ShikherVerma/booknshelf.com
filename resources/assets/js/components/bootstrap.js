@@ -34,3 +34,5 @@ require('./home');
 require('./activity');
 
 require('./book-search');
+require('./book-list-item');
+require('./create-shelf');

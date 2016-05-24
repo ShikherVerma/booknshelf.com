@@ -2,7 +2,6 @@
 <app-navbar
     :user="user"
     :has-unread-notifications="hasUnreadNotifications"
-    :has-unread-announcements="hasUnreadAnnouncements"
     inline-template>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container" v-if="user">
@@ -38,7 +37,7 @@
                     <li>
                         <a @click="showNotifications" class="has-activity-indicator">
                             <div class="navbar-icon">
-                                <i class="activity-indicator" v-if="hasUnreadNotifications || hasUnreadAnnouncements"></i>
+                                <i class="activity-indicator" v-if="hasUnreadNotifications"></i>
                                 <i class="icon fa fa-bell"></i>
                             </div>
                         </a>
@@ -67,7 +66,7 @@
                             @endif
 
                             <!-- Developer -->
-                            @if (Auth::user()->email == 'tik.hakobyan@gmail.com2')
+                            @if (Auth::user()->email == 'tik.hakobyan@gmail.com')
                                 @include('nav.developer')
                             @endif
 

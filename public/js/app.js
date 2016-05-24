@@ -33563,7 +33563,7 @@ if ($('#app').length > 0) {
   require('./vue-bootstrap');
 }
 
-},{"./vue-bootstrap":74,"bootstrap/dist/js/npm":3,"jquery":16,"js-cookie":17,"moment":18,"promise":20,"underscore":28,"urijs":31}],54:[function(require,module,exports){
+},{"./vue-bootstrap":76,"bootstrap/dist/js/npm":3,"jquery":16,"js-cookie":17,"moment":18,"promise":20,"underscore":28,"urijs":31}],54:[function(require,module,exports){
 'use strict';
 
 require('./app-bootstrap');
@@ -33575,7 +33575,7 @@ var app = new Vue({
     mixins: [require('./booknshelf')]
 });
 
-},{"./app-bootstrap":53,"./booknshelf":55,"./components/bootstrap":58}],55:[function(require,module,exports){
+},{"./app-bootstrap":53,"./booknshelf":55,"./components/bootstrap":59}],55:[function(require,module,exports){
 'use strict';
 
 /**
@@ -33608,7 +33608,6 @@ module.exports = {
      */
     ready: function ready() {
         console.log('Application Ready.');
-
         this.whenReady();
     },
 
@@ -33631,6 +33630,9 @@ module.exports = {
             $('#modal-notifications').modal('show');
 
             this.markNotificationsAsRead();
+        },
+        showCreateShelfModal: function showCreateShelfModal() {
+            $('#modal-create-shelf').modal('show');
         }
     },
 
@@ -33770,6 +33772,13 @@ Vue.component('activity-log', {
 },{}],57:[function(require,module,exports){
 'use strict';
 
+Vue.component('app-book-list-item', {
+    props: ['user']
+});
+
+},{}],58:[function(require,module,exports){
+'use strict';
+
 Vue.component('app-book-search', {
 
     props: ['user'],
@@ -33838,7 +33847,7 @@ Vue.component('app-book-search', {
 
 });
 
-},{}],58:[function(require,module,exports){
+},{}],59:[function(require,module,exports){
 'use strict';
 
 /*
@@ -33873,8 +33882,19 @@ require('./home');
 require('./activity');
 
 require('./book-search');
+require('./book-list-item');
+require('./create-shelf');
 
-},{"./activity":56,"./book-search":57,"./home":59,"./navbar":60,"./notifications":61,"./profile":62,"./settings":63,"./update-profile-information":65,"./update-profile-photo":66}],59:[function(require,module,exports){
+},{"./activity":56,"./book-list-item":57,"./book-search":58,"./create-shelf":60,"./home":61,"./navbar":62,"./notifications":63,"./profile":64,"./settings":65,"./update-profile-information":67,"./update-profile-photo":68}],60:[function(require,module,exports){
+'use strict';
+
+Vue.component('app-create-shelf', {
+    props: [],
+
+    methods: {}
+});
+
+},{}],61:[function(require,module,exports){
 'use strict';
 
 Vue.component('home', {
@@ -33921,11 +33941,11 @@ Vue.component('home', {
     }
 });
 
-},{}],60:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-navbar', {
-    props: ['user', 'hasUnreadNotifications', 'hasUnreadAnnouncements'],
+    props: ['user', 'hasUnreadNotifications'],
 
     methods: {
         /**
@@ -33934,11 +33954,19 @@ Vue.component('app-navbar', {
 
         showNotifications: function showNotifications() {
             this.$dispatch('showNotifications');
+        },
+
+
+        /**
+         * Show the create new shelf modal
+         */
+        showCreateShelfModal: function showCreateShelfModal() {
+            this.$dispatch('showCreateShelfModal');
         }
     }
 });
 
-},{}],61:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-notifications', {
@@ -33989,14 +34017,14 @@ Vue.component('app-notifications', {
     }
 });
 
-},{}],62:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-profile', {
     props: ['user']
 });
 
-},{}],63:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-settings', {
@@ -34010,7 +34038,7 @@ Vue.component('app-settings', {
 
 });
 
-},{"./tab-state":64}],64:[function(require,module,exports){
+},{"./tab-state":66}],66:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-settings', {
@@ -34108,7 +34136,7 @@ Vue.component('app-settings', {
     }
 });
 
-},{}],65:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-update-profile-information', {
@@ -34157,7 +34185,7 @@ Vue.component('app-update-profile-information', {
 
 });
 
-},{}],66:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-update-profile-photo', {
@@ -34213,7 +34241,7 @@ Vue.component('app-update-profile-photo', {
     }
 });
 
-},{}],67:[function(require,module,exports){
+},{}],69:[function(require,module,exports){
 'use strict';
 
 /**
@@ -34255,7 +34283,7 @@ Vue.filter('relative', function (value) {
     return moment.utc(value).local().fromNow();
 });
 
-},{}],68:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 'use strict';
 
 /**
@@ -34280,7 +34308,7 @@ require('./errors');
  */
 $.extend(App, require('./http'));
 
-},{"./errors":69,"./form":70,"./http":71}],69:[function(require,module,exports){
+},{"./errors":71,"./form":72,"./http":73}],71:[function(require,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
@@ -34347,7 +34375,7 @@ window.AppFormErrors = function () {
     };
 };
 
-},{}],70:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 "use strict";
 
 /**
@@ -34401,7 +34429,7 @@ window.AppForm = function (data) {
   };
 };
 
-},{}],71:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -34453,7 +34481,7 @@ module.exports = {
     }
 };
 
-},{}],72:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -34491,7 +34519,7 @@ module.exports = {
     }
 };
 
-},{}],73:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 "use strict";
 
 module.exports = {
@@ -34506,7 +34534,7 @@ module.exports = {
     }
 };
 
-},{}],74:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 'use strict';
 
 /*
@@ -34544,6 +34572,6 @@ require('./filters');
  */
 require('./forms/bootstrap');
 
-},{"./filters":67,"./forms/bootstrap":68,"./interceptors":72,"./mixin":73,"vue":52,"vue-resource":37}]},{},[54]);
+},{"./filters":69,"./forms/bootstrap":70,"./interceptors":74,"./mixin":75,"vue":52,"vue-resource":37}]},{},[54]);
 
 //# sourceMappingURL=app.js.map

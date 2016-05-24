@@ -1,6 +1,6 @@
 Vue.component('app-navbar', {
     props: [
-        'user', 'hasUnreadNotifications', 'hasUnreadAnnouncements'
+        'user', 'hasUnreadNotifications'
     ],
 
 
@@ -8,8 +8,15 @@ Vue.component('app-navbar', {
          /**
           * Show the user's notifications.
           */
-         showNotifications() {
+        showNotifications() {
             this.$dispatch('showNotifications');
+        },
+
+        /**
+         * Show the create new shelf modal
+         */
+        showCreateShelfModal() {
+            this.$dispatch('showCreateShelfModal');
         },
 
     }

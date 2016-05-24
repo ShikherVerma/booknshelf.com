@@ -43,6 +43,7 @@
         <!-- Application Level Modals -->
         @if (Auth::check())
             @include('modals.notifications')
+            @include('modals.create-shelf')
             @include('modals.session-expired')
         @endif
 

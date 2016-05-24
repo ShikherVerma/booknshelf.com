@@ -8079,6 +8079,67 @@ fieldset[disabled] .btn-danger-outline.active {
 .terms-of-service li {
   line-height: 25px;
 }
+#modal-create-shelf .modal-header {
+  background: #fff;
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+#modal-create-shelf .modal-header .btn-group {
+  padding-top: 4px;
+  width: 100%;
+}
+#modal-create-shelf .modal-dialog {
+  height: 100%;
+  width: 100%;
+}
+#modal-create-shelf .modal-content {
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  background: white;
+  border-left: 1px solid #f0efef;
+}
+#modal-create-shelf .modal-body {
+  padding: 0;
+}
+#modal-create-shelf .modal-footer {
+  background: #fff;
+  border-top: 1px dashed rgba(0, 0, 0, 0.1);
+  width: 350px;
+}
+#modal-create-shelf .app-profile-photo {
+  height: 52px;
+  width: 52px;
+}
+#modal-create-shelf .fa-stack {
+  color: #d3e0e9;
+  font-size: 26px;
+}
+#modal-create-shelf h4 {
+  margin-bottom: 15px;
+  margin-top: 3px;
+}
+.modal.docked .modal-dialog {
+  position: fixed;
+  top: 0;
+  margin: 0;
+  height: 100vh;
+  width: 350px;
+}
+.modal.docked.docked-left .modal-dialog {
+  left: 0;
+}
+.modal.docked.docked-right .modal-dialog {
+  right: 0;
+}
+.modal.docked .modal-content {
+  border-radius: 0;
+  height: 100vh;
+}
+.modal.docked .modal-footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
 body {
   font-weight: 300;
 }

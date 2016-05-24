@@ -28,7 +28,6 @@ module.exports = {
      */
     ready() {
         console.log('Application Ready.');
-
         this.whenReady();
     },
 
@@ -42,8 +41,6 @@ module.exports = {
             this.getUser();
         },
 
-
-
         /**
          * Show the application's notifications.
          */
@@ -51,6 +48,10 @@ module.exports = {
             $('#modal-notifications').modal('show');
 
             this.markNotificationsAsRead();
+        },
+
+        showCreateShelfModal() {
+            $('#modal-create-shelf').modal('show');
         },
     },
 
