@@ -30,7 +30,7 @@ Route::get('register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRe
 Route::post('register', ['as' => 'register', 'uses' => 'Auth\AuthController@postRegister']);
 
 // shelf resource routes
-Route::resource('shelf', 'ShelfController');
+// Route::resource('shelf', 'ShelfController');
 
 Route::get('register/confirm/{token}', function($token) {
 	User::where('verify_token', $token)->firstOrFail()->confirmEmail();
@@ -50,3 +50,7 @@ $router->get('/user/current', 'UserController@current');
 // $router->get('/book/autocomplete', 'BookController@index');
 $router->get('/book/search', 'BookController@search');
 $router->get('/book/{service_id}', 'BookController@show');
+
+// Shelves
+$router->get('/shelves', 'ShelfController@index');
+$router->post('/shelf/create', 'ShelfController@create');

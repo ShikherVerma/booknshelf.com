@@ -1,74 +1,23 @@
 #modal-create-shelf {
 
-    .modal-header {
-        background: #fff;
-        border-bottom: 0;
-        margin-bottom: 0;
-        // height: 70px;
-
-        .btn-group {
-            padding-top: 4px;
-            width: 100%;
-        }
-    }
-
     .modal-dialog {
-        height: 100%;
-        width: 100%;
+        height: 90%;
+        width: 90%;
     }
 
     .modal-content {
-        overflow-y: scroll;
-        -webkit-overflow-scrolling: touch;
-        background: white;
-        border-left: 1px solid #f0efef;
+        margin: 0px auto;
+        padding: 20px 30px;
+        background-color: #fff;
+        border-radius: 2px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+        transition: all .3s ease;
     }
 
     .modal-body {
-        padding: 0;
     }
 
     .modal-footer {
-        background: #fff;
-        border-top: 1px dashed rgba(0,0,0,.1);
-        width: 350px;
     }
 
-    .app-profile-photo {
-        height: 52px;
-        width: 52px;
-    }
-
-
-    .fa-stack {
-        color: @app-border-color;
-        font-size: 26px;
-    }
-
-    h4 {
-        margin-bottom: 15px;
-        margin-top: 3px;
-    }
-}
-
-.modal.docked .modal-dialog {
-    position: fixed;
-    top: 0;
-    margin: 0;
-    height: 100vh;
-    width: 350px;
-}
-
-.modal.docked.docked-left .modal-dialog { left: 0; }
-.modal.docked.docked-right .modal-dialog { right: 0; }
-
-.modal.docked .modal-content {
-    border-radius: 0;
-    height: 100vh;
-}
-
-.modal.docked .modal-footer {
-    position: fixed;
-    bottom: 0;
-    right: 0;
 }

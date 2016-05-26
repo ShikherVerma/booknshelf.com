@@ -6,7 +6,7 @@
 </li>
 
 <li>
-    <a href="/activity">
+    <a href="/shelves">
         Bookshelves
     </a>
 </li>

@@ -13,7 +13,9 @@
         "phpspec/phpspec": "^2.0",
         "intervention/imagecache": "^2.3",
         "google/apiclient": "1.0.*@beta",
-        "algolia/algoliasearch-laravel": "^1.1"
+        "algolia/algoliasearch-laravel": "^1.1",
+        "guzzlehttp/guzzle": "~6.1.0",
+        "crewlabs/unsplash": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

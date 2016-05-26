@@ -7,6 +7,9 @@ use App\Http\Requests;
 use App\Repositories\ShelfRepository;
 use App\Shelf;
 
+
+use Crew\Unsplash;
+
 class ShelfController extends Controller
 {
 
@@ -16,46 +19,37 @@ class ShelfController extends Controller
     {
         $this->middleware('auth');
         $this->shelves = $shelves;
+        \Crew\Unsplash\HttpClient::init([
+            'applicationId' => env('UNSPLASH_APPLICATION_ID'),
+            'secret'        => env('UNSPLASH_SECRET'),
+            'callbackUrl'   => 'booknshelf.com/home'
+        ]);
     }
-    /**
-     * Display a list of all of the user's shelves.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function index(Request $request)
     {
-        return $this->shelves->forUser($request->user());
+        $response = \Crew\Unsplash\Photo::search('travel');
+        dd($response);
+        // return $response;
+        // return $this->shelves->forUser($request->user());
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Create a newly created resource in storage.
      */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function create(Request $request)
     {
         $this->validate($request, [
             'name' => 'required|max:255',
         ]);
 
-        $request->user()->shelves()->create([
+        return $request->user()->shelves()->create([
             'name' => $request->name,
             'description' => $request->description,
             'cover_picture' => $request->cover_picture,
+            'access_type' => 'public',
         ]);
 
-        return redirect('/tasks');
     }
 
     /**

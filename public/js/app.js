@@ -33891,7 +33891,44 @@ require('./create-shelf');
 Vue.component('app-create-shelf', {
     props: [],
 
-    methods: {}
+    data: function data() {
+        return {
+            form: new AppForm({
+                name: '',
+                description: ''
+            })
+        };
+    },
+
+
+    methods: {
+
+        /**
+         * Send a customer support request.
+         */
+
+        create: function create() {
+            var _this = this;
+
+            App.post('/shelf/create', this.form).then(function () {
+                $('#modal-create-shelf').modal('hide');
+
+                _this.showCreateSuccessMessage();
+
+                _this.form.name = '';
+                _this.form.description = '';
+            });
+        },
+        showCreateSuccessMessage: function showCreateSuccessMessage() {
+            swal({
+                title: 'Got It!',
+                text: 'We have received your message and will respond soon!',
+                type: 'success',
+                showConfirmButton: false,
+                timer: 2000
+            });
+        }
+    }
 });
 
 },{}],61:[function(require,module,exports){

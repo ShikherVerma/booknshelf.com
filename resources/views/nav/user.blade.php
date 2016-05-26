@@ -15,12 +15,8 @@
                         <span class="icon-bar"></span>
                     </button>
                 </div>
-
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="/home">
-                    <!-- app -->
-                    <img src="/img/mono-logo.png" style="height: 32px;">
-                </a>
+                @includeIf('nav.brand')
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">

@@ -1,55 +1,43 @@
 <?php
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use App\Trip;
+use App\Shelf;
 use App\User;
 
-class TripTest extends TestCase {
+class ShelfTest extends TestCase {
 
     use DatabaseTransactions;
 
 
-    // public function test_users_redirect_to_login_if_they_try_to_view_trip_lists_without_logging_in()
-    // {
-    //     $this->visit('/trips')->seePageIs('/login');
-    // }
+    public function test_users_redirect_to_login_if_they_try_to_view_shelves_without_logging_in()
+    {
+        $this->visit('/shelves')->seePageIs('/login');
+    }
 
-    // public function test_auth_users_can_create_trip()
-    // {
-    //     $user = factory(App\User::class)->create();
+    public function test_auth_users_can_create_shelves()
+    {
+        $user = factory(App\User::class)->create();
+        $response = $this->actingAs($user)
+                ->call('POST', '/shelf/create', [
+                'name' => 'Bookshelf Name Test',
+                'description' => 'Bookshelf description',
+        ]);
+        $this->assertEquals(200, $response->status());
+        $this->seeInDatabase('shelves',
+            ['name' => 'Bookshelf Name Test', 'description' => 'Bookshelf description']);
+    }
 
-    //     $this->actingAs($user)
-    //         ->visit('/trip/create')
-    //         ->type('Rochester, NY', 'from')
-    //         ->type('New York, New York', 'to')
-    //         ->type('12/12/2015', 'start_date')
-    //         ->select('passenger', 'role')
-    //         ->type('this is a test other info', 'other_info')
-    //         ->press('Create');
-
-    //     $this->seeInDatabase('trips', ['to' => 'New York, New York', 'from' => 'Rochester, NY']);
-
-    // }
-
-    // public function test_trip_should_have_all_required_fields_when_its_created()
-    // {
-    //     // `from` field is missing which a required field
-    //     $faker = Faker\Factory::create();
-    //     $user = factory(App\User::class)->create();
-    //     $trip = [
-    //         'type'            => 'long',
-    //         'to'              => $faker->streetAddress,
-    //         'start_date'      => $faker->date('m/d/Y'),
-    //         'return_date'     => $faker->date('m/d/Y'),
-    //         'role'            => 'driver',
-    //         'offers'          => 'coffee',
-    //         'other_info'      => $faker->text(100),
-    //         'available_seats' => $faker->biasedNumberBetween(1, 10)
-    //     ];
-    //     $this->actingAs($user)
-    //         ->post('/trip/store', $trip)
-    //         ->seeStatusCode(500);
-    // }
+    public function test_shelf_should_have_all_required_fields_when_its_created()
+    {
+        // `name` field is required
+        $user = factory(App\User::class)->create();
+        $response = $this->actingAs($user)
+                ->call('POST', '/shelf/create', [
+                'description' => 'Bookshelf description',
+        ]);
+        // TODO: Find a better way to test this.
+        $this->assertRedirectedTo('/');
+    }
 
     // public function test_users_cant_delete_tasks_of_other_users()
     // {
