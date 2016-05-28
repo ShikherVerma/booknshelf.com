@@ -8,6 +8,8 @@
 
     <title>@yield('title', 'Booknshelf')</title>
 
+    <link rel="icon" href="https://booknshelf.com/img/favicon.png" />
+
     <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css'>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
@@ -52,6 +54,8 @@
         <script src="https://use.fontawesome.com/61a1688424.js"></script>
         <script src="{{ elixir('js/booknshelf.js') }}"></script>
         <script src="/js/app.js"></script>
+        <!-- Compiled and minified JavaScript -->
+<!--          <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script> -->
 
         @include('shared.flash')
         @include('shared.errors')
