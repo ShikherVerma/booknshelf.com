@@ -13,15 +13,14 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
 	// stylings
-	// mix.sass('app.scss');
-	mix.less('spark.less');
-	// mix.styles(['bootstrap-social.css']);
+	mix.styles(['sweetalert.css', 'bootstrap-social.css'], 'public/css/helpers.css');
+	mix.less('app.less');
 
 	mix.styles([
-	    // 'app.css',
-	    'spark.css',
-	    // all.css has all css coming from mix.styles() combined
-	    'all.css',
+		// all.css has all css coming from mix.styles() combined
+		'helpers.css',
+		// app.css has all .less files merged into one single file
+	    'app.css',
 	], 'public/css/booknshelf.css', 'public/css');
 
 	// scripts
@@ -29,8 +28,11 @@ elixir(function(mix) {
 	mix.scripts([
 	    'vendor/sweetalert-dev.js',
 	    'vendor/typeahead.js',
-	    'vendor/materialize.js',
+	    'vendor/toolkit.js',
+	    'vendor/custom',
+	    'vendor/bootstrap',
 	    'helpers.js',
+	    'application.js',
 	], 'public/js/booknshelf.js');
 
 	mix.version(['public/css/booknshelf.css','public/js/booknshelf.js']);
