@@ -25,10 +25,6 @@
     </a>
 
     <ul class="dropdown-menu" role="menu">
-        <!-- Developer -->
-        @if (Auth::user()->email == 'tik.hakobyan@gmail.com')
-            @include('nav.developer')
-        @endif
         <li>
             <a href="/tigran">
                 Profile
@@ -36,7 +32,7 @@
         </li>
         <li>
             <a href="/tigran/bookshelves">
-                Bookshelves
+                My Bookshelves
             </a>
         </li>
         <li>

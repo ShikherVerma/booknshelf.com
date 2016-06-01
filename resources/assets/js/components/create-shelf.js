@@ -5,7 +5,8 @@ Vue.component('app-create-shelf', {
         return {
             form: new AppForm({
                 name: '',
-                description: ''
+                description: '',
+                access_type: '',
             })
         };
     },
@@ -31,7 +32,7 @@ Vue.component('app-create-shelf', {
         showCreateSuccessMessage() {
             swal({
                 title: 'Got It!',
-                text: 'We have received your message and will respond soon!',
+                text: 'Your bookshelf has successfully created.',
                 type: 'success',
                 showConfirmButton: false,
                 timer: 2000

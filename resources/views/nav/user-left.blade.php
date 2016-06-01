@@ -13,7 +13,7 @@
 
 <li>
     <a href="/activity">
-        Crafted for you
+        Crafted by us
     </a>
 </li>
 
