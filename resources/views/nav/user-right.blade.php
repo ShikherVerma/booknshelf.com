@@ -31,11 +31,6 @@
             </a>
         </li>
         <li>
-            <a href="/tigran/bookshelves">
-                My Bookshelves
-            </a>
-        </li>
-        <li>
             <a href="/settings">
                 Settings
             </a>

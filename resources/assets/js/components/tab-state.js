@@ -1,4 +1,4 @@
-Vue.component('app-settings', {
+module.exports = {
     pushStateSelector: null,
 
 
@@ -89,4 +89,4 @@ Vue.component('app-settings', {
             this.$broadcast('appHashChanged', hash, parameters);
         }
     }
-});
+};

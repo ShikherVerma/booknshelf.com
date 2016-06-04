@@ -29,6 +29,14 @@ require('./profile');
 require('./update-profile-photo');
 require('./update-profile-information');
 
+/**
+ * User's Profile Components
+ */
+require('./profile/profile-index');
+require('./profile/profile-header');
+require('./profile/profile-all-shelves');
+require('./profile/profile-liked-shelves');
+
 
 require('./home');
 require('./activity');

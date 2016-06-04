@@ -45,6 +45,9 @@ $router->put('/settings/profile', 'SettingsController@updateProfile');
 $router->post('/settings/photo', 'SettingsController@updatePhoto');
 // User
 $router->get('/user/current', 'UserController@current');
+$router->get('/user/shelves', 'UserController@shelves');
+// Profile
+$router->get('/{username}', 'UserController@profile');
 
 // Books
 // $router->get('/book/autocomplete', 'BookController@index');

@@ -33563,7 +33563,7 @@ if ($('#app').length > 0) {
   require('./vue-bootstrap');
 }
 
-},{"./vue-bootstrap":76,"bootstrap/dist/js/npm":3,"jquery":16,"js-cookie":17,"moment":18,"promise":20,"underscore":28,"urijs":31}],54:[function(require,module,exports){
+},{"./vue-bootstrap":80,"bootstrap/dist/js/npm":3,"jquery":16,"js-cookie":17,"moment":18,"promise":20,"underscore":28,"urijs":31}],54:[function(require,module,exports){
 'use strict';
 
 require('./app-bootstrap');
@@ -33878,6 +33878,14 @@ require('./profile');
 require('./update-profile-photo');
 require('./update-profile-information');
 
+/**
+ * User's Profile Components
+ */
+require('./profile/profile-index');
+require('./profile/profile-header');
+require('./profile/profile-all-shelves');
+require('./profile/profile-liked-shelves');
+
 require('./home');
 require('./activity');
 
@@ -33885,7 +33893,7 @@ require('./book-search');
 require('./book-list-item');
 require('./create-shelf');
 
-},{"./activity":56,"./book-list-item":57,"./book-search":58,"./create-shelf":60,"./home":61,"./navbar":62,"./notifications":63,"./profile":64,"./settings":65,"./update-profile-information":67,"./update-profile-photo":68}],60:[function(require,module,exports){
+},{"./activity":56,"./book-list-item":57,"./book-search":58,"./create-shelf":60,"./home":61,"./navbar":62,"./notifications":63,"./profile":64,"./profile/profile-all-shelves":65,"./profile/profile-header":66,"./profile/profile-index":67,"./profile/profile-liked-shelves":68,"./settings":69,"./update-profile-information":71,"./update-profile-photo":72}],60:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-create-shelf', {
@@ -34092,6 +34100,81 @@ Vue.component('app-profile', {
 },{}],65:[function(require,module,exports){
 'use strict';
 
+Vue.component('app-profile-all-shelves', {
+    props: ['shelves']
+});
+
+},{}],66:[function(require,module,exports){
+'use strict';
+
+Vue.component('app-profile-header', {
+    props: ['user']
+});
+
+},{}],67:[function(require,module,exports){
+'use strict';
+
+Vue.component('app-profile-index', {
+    props: ['user'],
+
+    /**
+     * Load mixins for the component.
+     */
+    mixins: [require('../tab-state')],
+
+    /**
+     * The component's data.
+     */
+    data: function data() {
+        return {
+            shelves: []
+        };
+    },
+
+
+    /**
+     * Prepare the component.
+     */
+    ready: function ready() {
+        this.usePushStateForTabs('.profile-index-tabs');
+        this.getShelves();
+    },
+
+
+    events: {
+        /**
+         * Broadcast that child components should update their shelves.
+         */
+
+        updateShelves: function updateShelves() {
+            this.getShelves();
+        }
+    },
+
+    methods: {
+        /**
+         * Get the current API tokens for the user.
+         */
+
+        getShelves: function getShelves() {
+            this.$http.get('/user/shelves').then(function (response) {
+                console.log(response.data);
+                this.shelves = response.data;
+            });
+        }
+    }
+});
+
+},{"../tab-state":70}],68:[function(require,module,exports){
+'use strict';
+
+Vue.component('app-profile-liked-shelves', {
+    props: ['user']
+});
+
+},{}],69:[function(require,module,exports){
+'use strict';
+
 Vue.component('app-settings', {
 
   props: ['user'],
@@ -34103,10 +34186,10 @@ Vue.component('app-settings', {
 
 });
 
-},{"./tab-state":66}],66:[function(require,module,exports){
+},{"./tab-state":70}],70:[function(require,module,exports){
 'use strict';
 
-Vue.component('app-settings', {
+module.exports = {
     pushStateSelector: null,
 
     methods: {
@@ -34199,9 +34282,9 @@ Vue.component('app-settings', {
             this.$broadcast('appHashChanged', hash, parameters);
         }
     }
-});
+};
 
-},{}],67:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-update-profile-information', {
@@ -34250,7 +34333,7 @@ Vue.component('app-update-profile-information', {
 
 });
 
-},{}],68:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-update-profile-photo', {
@@ -34306,7 +34389,7 @@ Vue.component('app-update-profile-photo', {
     }
 });
 
-},{}],69:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 'use strict';
 
 /**
@@ -34348,7 +34431,7 @@ Vue.filter('relative', function (value) {
     return moment.utc(value).local().fromNow();
 });
 
-},{}],70:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 'use strict';
 
 /**
@@ -34373,7 +34456,7 @@ require('./errors');
  */
 $.extend(App, require('./http'));
 
-},{"./errors":71,"./form":72,"./http":73}],71:[function(require,module,exports){
+},{"./errors":75,"./form":76,"./http":77}],75:[function(require,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
@@ -34440,7 +34523,7 @@ window.AppFormErrors = function () {
     };
 };
 
-},{}],72:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 "use strict";
 
 /**
@@ -34494,7 +34577,7 @@ window.AppForm = function (data) {
   };
 };
 
-},{}],73:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -34546,7 +34629,7 @@ module.exports = {
     }
 };
 
-},{}],74:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -34584,7 +34667,7 @@ module.exports = {
     }
 };
 
-},{}],75:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 "use strict";
 
 module.exports = {
@@ -34599,7 +34682,7 @@ module.exports = {
     }
 };
 
-},{}],76:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 'use strict';
 
 /*
@@ -34637,6 +34720,6 @@ require('./filters');
  */
 require('./forms/bootstrap');
 
-},{"./filters":69,"./forms/bootstrap":70,"./interceptors":74,"./mixin":75,"vue":52,"vue-resource":37}]},{},[54]);
+},{"./filters":73,"./forms/bootstrap":74,"./interceptors":78,"./mixin":79,"vue":52,"vue-resource":37}]},{},[54]);
 
 //# sourceMappingURL=app.js.map
