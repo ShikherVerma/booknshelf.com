@@ -33889,14 +33889,15 @@ require('./create-shelf');
 'use strict';
 
 Vue.component('app-create-shelf', {
-    props: [],
+    props: ['user'],
 
     data: function data() {
         return {
             form: new AppForm({
                 name: '',
                 description: '',
-                access_type: ''
+                access_type: '',
+                cover_photo: ''
             })
         };
     },
@@ -33920,6 +33921,25 @@ Vue.component('app-create-shelf', {
                 _this.form.description = '';
             });
         },
+
+
+        /**
+         * Update the bookshelf's cover photo.
+         */
+        updateCoverPhoto: function updateCoverPhoto(e) {
+            e.preventDefault();
+
+            this.form.startProcessing();
+
+            var data = new FormData();
+            console.log(this.$els.photo.files[0]);
+            data.append('photo', this.$els.photo.files[0]);
+
+            this.form.finishProcessing();
+            this.cover_photo = data.photo;
+
+            return data;
+        },
         showCreateSuccessMessage: function showCreateSuccessMessage() {
             swal({
                 title: 'Got It!',
@@ -33928,6 +33948,13 @@ Vue.component('app-create-shelf', {
                 showConfirmButton: false,
                 timer: 2000
             });
+        }
+    },
+
+    computed: {
+        previewStyle: function previewStyle() {
+            console.log(this.user.avatar);
+            return 'background-image: url(' + this.user.avatar + ')';
         }
     }
 });

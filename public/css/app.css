@@ -8016,6 +8016,15 @@ fieldset[disabled] .btn-danger-outline.active {
   vertical-align: middle;
   width: 150px;
 }
+.shelf-cover-photo-preview {
+  border-radius: 6px;
+  display: inline-block;
+  background-position: center;
+  background-size: cover;
+  height: 150px;
+  vertical-align: middle;
+  width: 150px;
+}
 .navbar-inverse .navbar-brand {
   color: #a4aaae;
   font-weight: 400;
@@ -8270,15 +8279,22 @@ fieldset[disabled] .btn-danger-outline.active {
 .terms-of-service li {
   line-height: 25px;
 }
+#modal-create-shelf .modal-header {
+  background-color: #028090;
+  color: white;
+  height: 100px;
+}
+#modal-create-shelf .modal-header > h3 {
+  vertical-align: middle;
+}
 #modal-create-shelf .modal-dialog {
-  height: 70%;
-  width: 70%;
+  height: 80%;
+  width: 80%;
 }
 #modal-create-shelf .modal-body {
   padding-buttom: 30px;
 }
 #modal-create-shelf .form-control {
-  height: 60px;
   font-size: 18px;
   border: 0px;
   border-bottom: 1px solid #ccd0d2;
@@ -8286,7 +8302,6 @@ fieldset[disabled] .btn-danger-outline.active {
   border-radius: 0px;
 }
 #modal-create-shelf .access-type {
-  font-size: 18px;
   color: #ccd0d2;
 }
 #modal-create-shelf .custom-control-indicator {
