@@ -5,39 +5,16 @@
             @include('profile.profile-header')
         </div>
 
-        <!-- Display User's Shelves -->
-        <div>
-            @include('profile.profile-all-shelves')
+        <div class="tab-content">
+            <!-- All Shelves -->
+            <div role="tabpanel" class="tab-pane active" id="bookshelves">
+                @include('profile.profile-all-shelves')
+            </div>
+            <!-- All Liked Shelves -->
+            <div role="tabpanel" class="tab-pane" id="likes">
+                @include('profile.profile-liked-shelves')
+            </div>
         </div>
 
-        <!-- Display User's Liked Shelves -->
-        <div>
-            @include('profile.profile-liked-shelves')
-        </div>
-
-        <div class="profile-index-tabs">
-            <ul class="nav spark-settings-stacked-tabs" role="tablist">
-                <li role="presentation">
-                    <a href="#subscription" aria-controls="subscription" role="tab" data-toggle="tab">
-                        <i class="fa fa-fw fa-btn fa-shopping-bag"></i>Subscription
-                    </a>
-                </li>
-
-                <!-- Payment Method Link -->
-                <li role="presentation">
-                    <a href="#payment-method" aria-controls="payment-method" role="tab" data-toggle="tab">
-                        <i class="fa fa-fw fa-btn fa-credit-card"></i>Payment Method
-                    </a>
-                </li>
-
-                <!-- Invoices Link -->
-                <li role="presentation">
-                    <a href="#invoices" aria-controls="invoices" role="tab" data-toggle="tab">
-                        <i class="fa fa-fw fa-btn fa-history"></i>Invoices
-                    </a>
-                </li>
-            </ul>
-        </div>
     </div>
-
 </app-profile-index>

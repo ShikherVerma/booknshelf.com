@@ -10,15 +10,23 @@
             </div>
         </div>
 
-        <nav class="profile-header-nav">
-            <ul class="nav nav-tabs">
-                <li class="active">
-                    <a href="#">Bookshelves</a>
+        <nav class="profile-header-nav profile-index-tabs">
+            <ul class="nav nav-tabs" role="tablist">
+
+                <li class="active" role="presentation">
+                    <a href="#bookshelves" aria-controls="bookshelves" role="tab" data-toggle="tab">
+                        Bookshelves
+                    </a>
                 </li>
-                <li>
-                    <a href="#">Likes</a>
+                <li role="presentation">
+                    <a href="#likes" aria-controls="likes" role="tab" data-toggle="tab">
+                        Likes
+                    </a>
                 </li>
+
             </ul>
         </nav>
+
+
     </div>
 </app-profile-header>

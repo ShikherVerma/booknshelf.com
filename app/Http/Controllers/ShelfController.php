@@ -81,8 +81,13 @@ class ShelfController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Shelf $shelf)
+    public function update(Request $request, $shelfId)
     {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+        ]);
+
+        $shelf = $request->user()->shelves()->where('id', $shelfId)->firstOrFail();
         $shelf->update($request->all());
     }
 
@@ -92,13 +97,12 @@ class ShelfController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, Shelf $shelf)
+    public function destroy(Request $request, $shelfId)
     {
+        $shelf = $request->user()->shelves()->where('id', $shelfId)->firstOrFail();
         $this->authorize('destroy', $shelf);
 
         $shelf->delete();
 
-        return redirect('/shelves');
-        //
     }
 }

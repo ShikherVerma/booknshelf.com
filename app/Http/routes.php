@@ -47,6 +47,7 @@ $router->post('/settings/photo', 'SettingsController@updatePhoto');
 $router->get('/user/current', 'UserController@current');
 $router->get('/user/shelves', 'UserController@shelves');
 // Profile
+// TODO: We have to verify that username exists otherwise redirect to /home
 $router->get('/{username}', 'UserController@profile');
 
 // Books
@@ -57,3 +58,5 @@ $router->get('/book/{service_id}', 'BookController@show');
 // Shelves
 $router->get('/shelves', 'ShelfController@index');
 $router->post('/shelf/create', 'ShelfController@create');
+$router->put('/shelf/{shelf_id}', 'ShelfController@update');
+$router->delete('/shelf/{shelf_id}', 'ShelfController@destroy');

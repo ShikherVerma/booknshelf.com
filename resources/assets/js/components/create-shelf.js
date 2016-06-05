@@ -39,7 +39,6 @@ Vue.component('app-create-shelf', {
             this.form.startProcessing();
 
             const data = new FormData();
-            console.log(this.$els.photo.files[0]);
             data.append('photo', this.$els.photo.files[0]);
 
             this.form.finishProcessing();

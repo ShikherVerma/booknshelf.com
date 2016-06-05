@@ -33940,7 +33940,6 @@ Vue.component('app-create-shelf', {
             this.form.startProcessing();
 
             var data = new FormData();
-            console.log(this.$els.photo.files[0]);
             data.append('photo', this.$els.photo.files[0]);
 
             this.form.finishProcessing();
@@ -34101,7 +34100,111 @@ Vue.component('app-profile', {
 'use strict';
 
 Vue.component('app-profile-all-shelves', {
-    props: ['shelves']
+    props: [],
+
+    /**
+     * The component's data.
+     */
+    data: function data() {
+        return {
+            shelves: [],
+            updatingShelf: null,
+            deletingShelf: null,
+
+            updateShelfForm: new AppForm({
+                name: '',
+                description: ''
+            }),
+
+            deleteShelfForm: new AppForm({})
+        };
+    },
+
+
+    methods: {
+
+        /**
+         * Get all bookshelves for the user.
+         */
+
+        getShelves: function getShelves() {
+            this.$http.get('/user/shelves').then(function (response) {
+                console.log(response.data);
+                this.shelves = response.data;
+            });
+        },
+
+
+        /**
+         * Show the edit shelf modal.
+         */
+        editShelf: function editShelf(shelf) {
+            this.updatingShelf = shelf;
+
+            this.initializeUpdateFormWith(shelf);
+
+            $('#modal-update-shelf').modal('show');
+        },
+
+
+        /**
+         * Initialize the edit form with the given shelf.
+         */
+        initializeUpdateFormWith: function initializeUpdateFormWith(shelf) {
+            this.updateShelfForm.name = shelf.name;
+            this.updateShelfForm.description = shelf.description;
+        },
+
+
+        /**
+         * Update the shelf being edited.
+         */
+        updateShelf: function updateShelf() {
+            var _this = this;
+
+            App.put('/shelf/' + this.updatingShelf.id, this.updateShelfForm).then(function () {
+                _this.getShelves();
+                $('#modal-update-shelf').modal('hide');
+            });
+        },
+
+
+        /**
+         * Get user confirmation that the shelf should be deleted.
+         */
+        approveShelfDelete: function approveShelfDelete(shelf) {
+            this.deletingShelf = shelf;
+            $('#modal-delete-shelf').modal('show');
+        },
+
+
+        /**
+         * Delete the specified shelf.
+         */
+        deleteShelf: function deleteShelf() {
+            var _this2 = this;
+
+            App.delete('/shelf/' + this.deletingShelf.id, this.deleteShelfForm).then(function () {
+                _this2.getShelves();
+                $('#modal-delete-shelf').modal('hide');
+            });
+        }
+    },
+
+    events: {
+
+        /**
+         * Handle this component becoming the active tab.
+         */
+
+        appHashChanged: function appHashChanged(hash) {
+            console.log(hash);
+            if (hash == 'bookshelves' && this.shelves.length === 0) {
+                this.getShelves();
+            }
+        }
+    }
+
 });
 
 },{}],66:[function(require,module,exports){
@@ -34115,16 +34218,27 @@ Vue.component('app-profile-header', {
 'use strict';
 
 Vue.component('app-profile-index', {
-    props: ['user'],
+  props: ['user'],
 
-    /**
-     * Load mixins for the component.
-     */
-    mixins: [require('../tab-state')],
+  /**
+   * Load mixins for the component.
+   */
+  mixins: [require('../tab-state')],
 
-    /**
-     * The component's data.
-     */
+  /**
+   * Prepare the component.
+   */
+  ready: function ready() {
+    this.usePushStateForTabs('.profile-index-tabs');
+  }
+});
+
+},{"../tab-state":70}],68:[function(require,module,exports){
+'use strict';
+
+Vue.component('app-profile-liked-shelves', {
+    props: [],
+
     data: function data() {
         return {
             shelves: []
@@ -34132,22 +34246,14 @@ Vue.component('app-profile-index', {
     },
 
 
-    /**
-     * Prepare the component.
-     */
-    ready: function ready() {
-        this.usePushStateForTabs('.profile-index-tabs');
-        this.getShelves();
-    },
-
-
     events: {
         /**
-         * Broadcast that child components should update their shelves.
+         * Handle this component becoming the active tab.
          */
-
-        updateShelves: function updateShelves() {
-            this.getShelves();
+        appHashChanged: function appHashChanged(hash) {
+            if (hash == 'likes' && this.shelves.length === 0) {
+                this.getLikedShelves();
+            }
         }
     },
 
@@ -34156,20 +34262,14 @@ Vue.component('app-profile-index', {
          * Get the current API tokens for the user.
          */
 
-        getShelves: function getShelves() {
+        getLikedShelves: function getLikedShelves() {
             this.$http.get('/user/shelves').then(function (response) {
                 console.log(response.data);
                 this.shelves = response.data;
             });
         }
     }
-});
 
-},{"../tab-state":70}],68:[function(require,module,exports){
-'use strict';
-
-Vue.component('app-profile-liked-shelves', {
-    props: ['user']
 });
 
 },{}],69:[function(require,module,exports){
