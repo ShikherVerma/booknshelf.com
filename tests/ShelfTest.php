@@ -4,10 +4,10 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\Shelf;
 use App\User;
 
-class ShelfTest extends TestCase {
+class ShelfTest extends TestCase
+{
 
     use DatabaseTransactions;
-
 
     public function test_users_redirect_to_login_if_they_try_to_view_shelves_without_logging_in()
     {
@@ -18,58 +18,117 @@ class ShelfTest extends TestCase {
     {
         $user = factory(App\User::class)->create();
         $response = $this->actingAs($user)
-                ->call('POST', '/shelf/create', [
+                ->call('POST', '/shelf/store', [
                 'name' => 'Bookshelf Name Test',
                 'description' => 'Bookshelf description',
         ]);
         $this->assertEquals(200, $response->status());
-        $this->seeInDatabase('shelves',
-            ['name' => 'Bookshelf Name Test', 'description' => 'Bookshelf description']);
+        $this->seeInDatabase('shelves', [
+            'name' => 'Bookshelf Name Test',
+            'description' => 'Bookshelf description',
+        ]);
     }
 
     public function test_shelf_should_have_all_required_fields_when_its_created()
     {
-        // `name` field is required
         $user = factory(App\User::class)->create();
-        $response = $this->actingAs($user)
-                ->call('POST', '/shelf/create', [
+        $this->actingAs($user);
+        $this->json('POST', '/shelf/store', [
                 'description' => 'Bookshelf description',
         ]);
-        // TODO: Find a better way to test this.
-        $this->assertRedirectedTo('/');
+        // `name` field is required so the response is not OK
+        $this->assertResponseStatus(422);
     }
 
-    // public function test_users_cant_delete_tasks_of_other_users()
-    // {
-    //     $this->withoutMiddleware();
+    public function test_shelf_has_correct_slug()
+    {
+        $user = factory(App\User::class)->create();
+        $this->actingAs($user);
+        $this->json('POST', '/shelf/store', [
+                'name' => 'Bookshelf Name Test With Slug'
+            ])->seeJson([
+                'slug' => 'bookshelf-name-test-with-slug'
+            ]);
+    }
 
-    //     $userOne = factory(User::class)->create();
-    //     $userTwo = factory(User::class)->create();
+    public function test_user_can_successfully_update_a_shelf()
+    {
+        $user = factory(App\User::class)->create();
+        $this->actingAs($user);
 
-    //     $userOne->trips()->save($tripOne = factory(Trip::class)->create(['user_id' => $userOne->id]));
-    //     $userTwo->trips()->save($tripTwo = factory(Trip::class)->create(['user_id' => $userTwo->id]));
+        $shelf = factory(App\Shelf::class)->create([
+            'name' => 'Bookshelf Name is not Changed',
+            'user_id' => $user->id
+        ]);
+        $this->json('PUT', '/shelf/'.$shelf->id, [
+                'name' => 'Bookshelf Name is Changed'
+        ]);
+        $this->assertResponseOk();
+        $this->seeInDatabase('shelves', [
+            'name' => 'Bookshelf Name is Changed',
+        ]);
+    }
 
-    //     $this->actingAs($userOne)
-    //         ->delete('/trip/' . $tripTwo->id)
-    //         ->assertResponseStatus(403);
-    // }
+    public function test_user_can_successfully_delete_a_shelf()
+    {
+        $user = factory(App\User::class)->create();
+        $this->actingAs($user);
 
-    // public function test_users_can_delete_their_trips()
-    // {
-    //     // do not run VerifyCsrfToken middleware
-    //     $this->withoutMiddleware();
+        $shelf = factory(App\Shelf::class)->create([
+            'name' => 'Bookshelf Name',
+            'user_id' => $user->id
+        ]);
+        $this->json('DELETE', '/shelf/'.$shelf->id);
+        $this->assertResponseOk();
+        $this->dontSeeInDatabase('shelves', [
+            'name' => 'Bookshelf Name',
+        ]);
+    }
 
-    //     $user = factory(User::class)->create();
-    //     $user->trips()->save($trip = factory(Trip::class)->create(['user_id' => $user->id]));
+    public function test_when_changing_shelf_name_slug_should_also_be_changed()
+    {
+    }
 
-    //     $this->actingAs($user)
-    //         ->delete('/trip/' . $trip->id)
-    //         # redirect
-    //         ->assertResponseStatus(302);
-    // }
+    public function test_users_cant_delete_shelves_of_other_users()
+    {
+        $userOne = factory(User::class)->create();
+        $userTwo = factory(User::class)->create();
 
-    /** @test */
+        $shelfOne = factory(App\Shelf::class)->create([
+            'name' => 'Bookshelf Name 1',
+            'user_id' => $userOne->id
+        ]);
+        $shelfTwo = factory(App\Shelf::class)->create([
+            'name' => 'Bookshelf Name 1',
+            'user_id' => $userTwo->id
+        ]);
+
+        $this->actingAs($userOne);
+        $this->json('DELETE', '/shelf/'.$shelfTwo->id);
+
+        $this->assertResponseStatus(404);
+    }
+
     public function test_users_cant_edit_trips_of_other_users()
     {
+        $userOne = factory(User::class)->create();
+        $userTwo = factory(User::class)->create();
+
+        $shelfOne = factory(App\Shelf::class)->create([
+            'name' => 'Bookshelf Name 1',
+            'user_id' => $userOne->id
+        ]);
+        $shelfTwo = factory(App\Shelf::class)->create([
+            'name' => 'Bookshelf Name 1',
+            'user_id' => $userTwo->id
+        ]);
+
+        $this->actingAs($userOne);
+        $this->json('PUT', '/shelf/'.$shelfTwo->id, [
+                'name' => 'Trying to change Bookshelf Name',
+                'description' => 'Some description'
+        ]);
+
+        $this->assertResponseStatus(404);
     }
 }

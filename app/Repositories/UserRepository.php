@@ -11,7 +11,7 @@ class UserRepository {
     {
         $user = User::firstOrNew(['email' => $userData->email]);
         $user->name = $userData->name;
-        $user->avatar = $userData->avatar;
+        $user->avatar = $userData->avatar_original;
         $user->is_verified = true;
         $this->verify_token = null;
         // if user already has a username do nothing.

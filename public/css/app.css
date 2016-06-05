@@ -7341,6 +7341,7 @@ img.zoom-img {
 .panel-profile .panel-heading {
   height: 150px;
   background-size: cover;
+  background-color: #028090;
 }
 .panel-profile-img {
   max-width: 100px;

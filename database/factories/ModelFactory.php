@@ -19,3 +19,11 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'password' => bcrypt(str_random(10)),
     ];
 });
+
+$factory->define(App\Shelf::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+        'description' => $faker->sentence(20),
+        'cover_color' => '#FFFDDD',
+    ];
+});

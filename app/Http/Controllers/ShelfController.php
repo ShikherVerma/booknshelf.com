@@ -7,9 +7,6 @@ use App\Http\Requests;
 use App\Repositories\ShelfRepository;
 use App\Shelf;
 
-
-use Crew\Unsplash;
-
 class ShelfController extends Controller
 {
 
@@ -19,25 +16,22 @@ class ShelfController extends Controller
     {
         $this->middleware('auth');
         $this->shelves = $shelves;
-        \Crew\Unsplash\HttpClient::init([
-            'applicationId' => env('UNSPLASH_APPLICATION_ID'),
-            'secret'        => env('UNSPLASH_SECRET'),
-            'callbackUrl'   => 'booknshelf.com/home'
-        ]);
     }
 
-    public function index(Request $request)
+    /**
+     * Get all of the application's recently created shelves.
+     *
+     * @return Response
+     */
+    public function all()
     {
-        $response = \Crew\Unsplash\Photo::search('travel');
-        dd($response);
-        // return $response;
-        // return $this->shelves->forUser($request->user());
+        return $this->shelves->recent();
     }
 
     /**
      * Create a newly created resource in storage.
      */
-    public function create(Request $request)
+    public function store(Request $request)
     {
         $this->validate($request, [
             'name' => 'required|max:255',
@@ -46,33 +40,21 @@ class ShelfController extends Controller
         return $request->user()->shelves()->create([
             'name' => $request->name,
             'description' => $request->description,
-            'cover_picture' => $request->cover_picture,
-            'access_type' => 'public',
+            'cover_color' => $request->cover_color,
+            'slug' => str_slug($request->name),
         ]);
 
     }
 
     /**
      * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($username, $slug)
     {
-        //
+        $shelf = Shelf::whereSlug($slug)->firstOrFail();
+        return $shelf;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Shelf $shelf)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -86,7 +68,6 @@ class ShelfController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
         ]);
-
         $shelf = $request->user()->shelves()->where('id', $shelfId)->firstOrFail();
         $shelf->update($request->all());
     }

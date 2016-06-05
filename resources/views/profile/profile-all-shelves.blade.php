@@ -1,28 +1,29 @@
-<app-profile-all-shelves inline-template>
+<app-profile-all-shelves :user=user inline-template>
     <div class="container m-y-md" v-if="shelves.length > 0">
         <div class="m-t">
             <div class="row">
-
-            <div class="col-md-6" v-for="shelf in shelves">
-                <div class="panel panel-default panel-profile">
-                    <div class="panel-heading" style="background-image: url(https://igcdn-photos-h-a.akamaihd.net/hphotos-ak-xfa1/t51.2885-15/11312291_348657648678007_1202941362_n.jpg);">
-                    </div>
-                    <div class="panel-body text-center">
-                        <img class="panel-profile-img" src="{{ asset('img/avatar-dhg.png') }}">
-                        <h5 class="panel-title">@{{ shelf.name }}</h5>
-                        <p class="m-b-md">@{{ shelf.description }}</p>
-                        <button class="btn btn-primary-outline btn-sm">
-                            <span class="icon icon-add-user"></span> Follow
-                        </button>
-                        <button class="btn btn-primary" @click="editShelf(shelf)">
-                            <i class="fa fa-pencil"></i>
-                        </button>
-                        <button class="btn btn-danger-outline" @click="approveShelfDelete(shelf)">
-                            <i class="fa fa-times"></i>
-                        </button>
-                    </div>
+                <div class="col-md-3" v-for="shelf in shelves">
+                        <div class="panel panel-default panel-profile">
+                            <div class="panel-heading">
+                                <a href="/@{{ user.username}}/shelves/@{{ shelf.id }}">
+                                    LINK TO SHELF
+                                </a>
+                            </div>
+                            <div class="panel-body text-center">
+                                <h5 class="panel-title">@{{ shelf.name }}</h5>
+                                <p class="m-b-md">@{{ shelf.description }}</p>
+                                <button class="btn btn-primary-outline btn-sm">
+                                    <span class="icon icon-add-user"></span> Follow
+                                </button>
+                                <button class="btn btn-primary" @click="editShelf(shelf)">
+                                    <i class="fa fa-pencil"></i>
+                                </button>
+                                <button class="btn btn-danger-outline" @click="approveShelfDelete(shelf)">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
                 </div>
-            </div>
 
             </div>
         </div>

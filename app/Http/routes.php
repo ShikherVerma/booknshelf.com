@@ -48,15 +48,14 @@ $router->get('/user/current', 'UserController@current');
 $router->get('/user/shelves', 'UserController@shelves');
 // Profile
 // TODO: We have to verify that username exists otherwise redirect to /home
+$router->get('/{username}/shelves/{shelf_id}', 'ShelfController@show');
 $router->get('/{username}', 'UserController@profile');
-
 // Books
 // $router->get('/book/autocomplete', 'BookController@index');
 $router->get('/book/search', 'BookController@search');
 $router->get('/book/{service_id}', 'BookController@show');
 
 // Shelves
-$router->get('/shelves', 'ShelfController@index');
-$router->post('/shelf/create', 'ShelfController@create');
+$router->post('/shelf/store', 'ShelfController@store');
 $router->put('/shelf/{shelf_id}', 'ShelfController@update');
 $router->delete('/shelf/{shelf_id}', 'ShelfController@destroy');

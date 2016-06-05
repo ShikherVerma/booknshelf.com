@@ -33619,7 +33619,7 @@ module.exports = {
 
         updateUser: function updateUser() {
             console.log("Getting the user...");
-            this.getUser();
+            // this.getUser();
         },
 
 
@@ -33904,23 +33904,17 @@ Vue.component('app-create-shelf', {
             form: new AppForm({
                 name: '',
                 description: '',
-                access_type: '',
-                cover_photo: ''
+                cover_color: ''
             })
         };
     },
 
 
     methods: {
-
-        /**
-         * Send a customer support request.
-         */
-
         create: function create() {
             var _this = this;
 
-            App.post('/shelf/create', this.form).then(function () {
+            App.post('/shelf/store', this.form).then(function () {
                 $('#modal-create-shelf').modal('hide');
 
                 _this.showCreateSuccessMessage();
@@ -33928,24 +33922,6 @@ Vue.component('app-create-shelf', {
                 _this.form.name = '';
                 _this.form.description = '';
             });
-        },
-
-
-        /**
-         * Update the bookshelf's cover photo.
-         */
-        updateCoverPhoto: function updateCoverPhoto(e) {
-            e.preventDefault();
-
-            this.form.startProcessing();
-
-            var data = new FormData();
-            data.append('photo', this.$els.photo.files[0]);
-
-            this.form.finishProcessing();
-            this.cover_photo = data.photo;
-
-            return data;
         },
         showCreateSuccessMessage: function showCreateSuccessMessage() {
             swal({
@@ -33956,14 +33932,8 @@ Vue.component('app-create-shelf', {
                 timer: 2000
             });
         }
-    },
-
-    computed: {
-        previewStyle: function previewStyle() {
-            console.log(this.user.avatar);
-            return 'background-image: url(' + this.user.avatar + ')';
-        }
     }
+
 });
 
 },{}],61:[function(require,module,exports){
@@ -34100,7 +34070,7 @@ Vue.component('app-profile', {
 'use strict';
 
 Vue.component('app-profile-all-shelves', {
-    props: [],
+    props: ['user'],
 
     /**
      * The component's data.

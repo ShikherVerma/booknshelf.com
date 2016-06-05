@@ -36,27 +36,6 @@
 
                         <div class="form-group form-group-lg">
                             <div class="col-md-6 col-md-offset-2">
-                                <input type="text" class="form-control" placeholder="Search photos for your bookshelf cover...">
-                            </div>
-                            <div class="col-md-4">
-                                <label type="button" class="btn btn-default-outline btn-upload" :disabled="form.busy">
-                                    <i class="fa fa-plus"></i>
-                                    <span>Upload an image</span>
-
-                                    <input v-el:photo type="file" class="form-control" name="photo" @change="updateCoverPhoto">
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Photo Preview-->
-                        <div class="form-group form-group-lg">
-                            <div class="col-md-6 col-md-offset-2">
-                                <span role="img" class="shelf-cover-photo-preview" :style="previewStyle"></span>
-                            </div>
-                        </div>
-
-                        <div class="form-group form-group-lg">
-                            <div class="col-md-6 col-md-offset-2">
                                 <button type="submit" class="btn-lg btn-info"
                                         @click.prevent="create"
                                         :disabled="form.busy">

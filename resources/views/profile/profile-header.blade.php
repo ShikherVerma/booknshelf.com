@@ -2,10 +2,10 @@
     <div class="profile-header">
         <div class="container">
             <div class="container-inner">
-                <img class="img-circle media-object" src="{{ asset('img/avatar-dhg.png') }}">
-                <h3 class="profile-header-user">Tigran Hakobyan</h3>
+                <img class="img-circle media-object" v-bind:src="user.avatar">
+                <h3 class="profile-header-user">@{{ user.name }}</h3>
                 <p class="profile-header-bio">
-                    I wish i was a little bit taller, wish i was a baller, wish i had a girl… also.
+                    @{{ user.about }}
                 </p>
             </div>
         </div>

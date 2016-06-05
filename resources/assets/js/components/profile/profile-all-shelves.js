@@ -1,5 +1,5 @@
 Vue.component('app-profile-all-shelves', {
-    props: [],
+    props: ['user'],
 
     /**
      * The component's data.
