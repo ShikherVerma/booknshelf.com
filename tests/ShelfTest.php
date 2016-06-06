@@ -87,6 +87,7 @@ class ShelfTest extends TestCase
 
     public function test_when_changing_shelf_name_slug_should_also_be_changed()
     {
+        // TODO: Implement this.
     }
 
     public function test_users_cant_delete_shelves_of_other_users()

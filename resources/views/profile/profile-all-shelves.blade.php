@@ -5,7 +5,7 @@
                 <div class="col-md-3" v-for="shelf in shelves">
                         <div class="panel panel-default panel-profile">
                             <div class="panel-heading">
-                                <a href="/@{{ user.username}}/shelves/@{{ shelf.id }}">
+                                <a href="/@{{ user.username}}/shelves/@{{ shelf.slug }}">
                                     LINK TO SHELF
                                 </a>
                             </div>
