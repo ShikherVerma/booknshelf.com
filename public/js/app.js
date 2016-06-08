@@ -33575,7 +33575,7 @@ var app = new Vue({
     mixins: [require('./booknshelf')]
 });
 
-},{"./app-bootstrap":53,"./booknshelf":55,"./components/bootstrap":59}],55:[function(require,module,exports){
+},{"./app-bootstrap":53,"./booknshelf":55,"./components/bootstrap":57}],55:[function(require,module,exports){
 'use strict';
 
 /**
@@ -33772,84 +33772,6 @@ Vue.component('activity-log', {
 },{}],57:[function(require,module,exports){
 'use strict';
 
-Vue.component('app-book-list-item', {
-    props: ['user']
-});
-
-},{}],58:[function(require,module,exports){
-'use strict';
-
-Vue.component('app-book-search', {
-
-    props: ['user'],
-
-    /**
-     * The component's data.
-     */
-    data: function data() {
-        return {
-            query: '',
-            books: []
-        };
-    },
-
-    /**
-     * Bootstrap the component.
-     */
-    ready: function ready() {
-        // $('#typeahead').typeahead(null, {
-        //     source: this.books
-        // });
-        var books = new Bloodhound({
-            // or Bloodhound.tokenizers.obj.whitespace('key_of_the_field'),
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: [],
-            remote: {
-                url: '/book/search?q=%QUERY',
-                wildcard: '%QUERY'
-            }
-        });
-
-        $('#typeahead').typeahead({
-            minLength: 3,
-            highlight: true,
-            hint: true
-        }, {
-            name: 'book-suggestions',
-            display: 'title',
-            source: books,
-            templates: {
-                suggestion: function suggestion(hit) {
-                    console.log(hit);
-                    return '<div>' + '<a href=/book/' + hit.service_id + '>' + '<h4 class="title">' + hit.title + '</h4>' + '<h5 class="authors">' + hit.authors[0] + '</h5>' + '</a>' + '</div>';
-                },
-                highlight: function highlight(h) {
-                    console.log(h);
-                }
-            }
-        }).on('typeahead:select', function (e, suggestion) {
-            this.query = suggestion.title;
-        }.bind(this));
-    },
-
-    methods: {
-        search: function search() {
-            var _this = this;
-
-            if (this.query.length < 3) return;
-            this.$http.get('/book/search?q=' + this.query).then(function (response) {
-                console.log(response.data);
-                _this.books = response.data;
-            });
-        }
-    }
-
-});
-
-},{}],59:[function(require,module,exports){
-'use strict';
-
 /*
  |--------------------------------------------------------------------------
  | Laravel Spark Components
@@ -33889,11 +33811,11 @@ require('./profile/profile-liked-shelves');
 require('./home');
 require('./activity');
 
-require('./book-search');
-require('./book-list-item');
+require('./search/book-search-bar');
+require('./search/book-search-content-item');
 require('./create-shelf');
 
-},{"./activity":56,"./book-list-item":57,"./book-search":58,"./create-shelf":60,"./home":61,"./navbar":62,"./notifications":63,"./profile":64,"./profile/profile-all-shelves":65,"./profile/profile-header":66,"./profile/profile-index":67,"./profile/profile-liked-shelves":68,"./settings":69,"./update-profile-information":71,"./update-profile-photo":72}],60:[function(require,module,exports){
+},{"./activity":56,"./create-shelf":58,"./home":59,"./navbar":60,"./notifications":61,"./profile":62,"./profile/profile-all-shelves":63,"./profile/profile-header":64,"./profile/profile-index":65,"./profile/profile-liked-shelves":66,"./search/book-search-bar":67,"./search/book-search-content-item":68,"./settings":69,"./update-profile-information":71,"./update-profile-photo":72}],58:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-create-shelf', {
@@ -33936,7 +33858,7 @@ Vue.component('app-create-shelf', {
 
 });
 
-},{}],61:[function(require,module,exports){
+},{}],59:[function(require,module,exports){
 'use strict';
 
 Vue.component('home', {
@@ -33983,7 +33905,7 @@ Vue.component('home', {
     }
 });
 
-},{}],62:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-navbar', {
@@ -34008,7 +33930,7 @@ Vue.component('app-navbar', {
     }
 });
 
-},{}],63:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-notifications', {
@@ -34059,14 +33981,14 @@ Vue.component('app-notifications', {
     }
 });
 
-},{}],64:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-profile', {
     props: ['user']
 });
 
-},{}],65:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-profile-all-shelves', {
@@ -34177,14 +34099,14 @@ Vue.component('app-profile-all-shelves', {
 
 });
 
-},{}],66:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-profile-header', {
     props: ['user']
 });
 
-},{}],67:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-profile-index', {
@@ -34203,7 +34125,7 @@ Vue.component('app-profile-index', {
   }
 });
 
-},{"../tab-state":70}],68:[function(require,module,exports){
+},{"../tab-state":70}],66:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-profile-liked-shelves', {
@@ -34242,7 +34164,63 @@ Vue.component('app-profile-liked-shelves', {
 
 });
 
-},{}],69:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
+'use strict';
+
+Vue.component('app-book-search-bar', {
+
+    props: [],
+
+    /**
+     * The component's data.
+     */
+    data: function data() {
+        return {
+            query: ''
+        };
+    },
+
+
+    methods: {
+        search: function search(e) {
+            console.log("broadcasting " + this.query);
+            this.$broadcast('searchChanged', this.query);
+            e.preventDefault();
+        }
+    }
+
+});
+
+},{}],68:[function(require,module,exports){
+'use strict';
+
+Vue.component('app-book-search-content-item', {
+    props: ['book'],
+
+    mixins: [require('./book-search-bar')],
+
+    data: function data() {
+        return {
+            books: []
+        };
+    },
+
+
+    events: {
+        searchChanged: function searchChanged(query) {
+            var _this = this;
+
+            console.log("listening and responding " + query);
+            this.$http.get('/books/search?q=' + query).then(function (response) {
+                _this.books = response.data;
+                console.log(_this.books);
+            });
+        }
+    }
+
+});
+
+},{"./book-search-bar":67}],69:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-settings', {

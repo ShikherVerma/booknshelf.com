@@ -41,6 +41,6 @@ require('./profile/profile-liked-shelves');
 require('./home');
 require('./activity');
 
-require('./book-search');
-require('./book-list-item');
+require('./search/book-search-bar');
+require('./search/book-search-content-item');
 require('./create-shelf');

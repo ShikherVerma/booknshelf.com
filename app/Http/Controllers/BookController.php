@@ -48,9 +48,11 @@ class BookController extends Controller
         $optParams = array(
             'maxResults' => '10',
             'printType' => 'books',
-            'projection' => 'full',
+            'projection' => 'lite',
+            'orderBy' => 'relevance',
         );
         $results = $this->service->volumes->listVolumes($query, $optParams);
+
         $books = [];
         foreach ($results as $item) {
             $books[] = [
@@ -67,6 +69,7 @@ class BookController extends Controller
             ];
         }
 
-        return view('search.book-list', ['books' => $books]);
+        return view('search-content', ['books' => $books]);
+
     }
 }

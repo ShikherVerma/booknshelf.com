@@ -19,6 +19,6 @@
 
 <li>
     <a>
-        @include('search.book-search')
+        @include('search.book-search-bar')
     </a>
 </li>

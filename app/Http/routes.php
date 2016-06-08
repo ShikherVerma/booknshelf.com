@@ -46,13 +46,14 @@ $router->post('/settings/photo', 'SettingsController@updatePhoto');
 // User
 $router->get('/user/current', 'UserController@current');
 $router->get('/user/shelves', 'UserController@shelves');
+// Books Search
+$router->get('/books/search', 'BookController@search');
 // Profile
 // TODO: We have to verify that username exists otherwise redirect to /home
 $router->get('/{username}/shelves/{shelf_id}', 'ShelfController@show');
 $router->get('/{username}', 'UserController@profile');
 // Books
 // $router->get('/book/autocomplete', 'BookController@index');
-$router->get('/book/search', 'BookController@search');
 $router->get('/book/{service_id}', 'BookController@show');
 
 // Shelves
