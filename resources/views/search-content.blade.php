@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container m-y-md">
+<div class="container">
     <div class="m-t">
         <div class="row">
             @foreach ($books as $book)
