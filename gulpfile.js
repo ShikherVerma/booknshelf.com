@@ -13,7 +13,7 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
 	// stylings
-	mix.styles(['sweetalert.css', 'bootstrap-social.css'], 'public/css/helpers.css');
+	mix.styles(['sweetalert.css', 'bootstrap-social.css', 'hover.css'], 'public/css/helpers.css');
 	mix.less('app.less');
 
 	mix.styles([

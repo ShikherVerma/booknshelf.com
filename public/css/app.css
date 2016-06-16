@@ -8311,6 +8311,53 @@ fieldset[disabled] .btn-danger-outline.active {
   margin-left: 4px;
   padding-right: 6px;
 }
+.search-container {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 70%;
+}
+.box {
+  text-decoration: none;
+  display: block;
+  border: 1px solid #b3c0ca;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px rgba(59, 112, 183, 0.18);
+  margin-bottom: 20px;
+  background-color: #fff;
+}
+.box-book {
+  cursor: pointer;
+  position: relative;
+  transition-duration: 150ms;
+}
+.box-book:hover {
+  transition-duration: 150ms;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+  z-index: 9;
+}
+.flexbox {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.p20 {
+  padding: 20px;
+}
+.box-img {
+  display: inherit;
+  border-right: 1px solid rgba(179, 192, 202, 0.5);
+}
+.book-title {
+  font-size: 18px;
+  line-height: 30px;
+}
 body {
   font-weight: 300;
 }

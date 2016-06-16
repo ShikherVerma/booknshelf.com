@@ -1,19 +1,19 @@
 <!-- Left Side Of Navbar -->
 <li>
-    <a href="/home">
-        Books
+    <a href="/discover">
+        Discover
     </a>
 </li>
 
 <li>
-    <a href="/shelves">
-        Bookshelves
-    </a>
-</li>
-
-<li>
-    <a href="/activity">
+    <a href="/crafted-by-us">
         Crafted by us
+    </a>
+</li>
+
+<li>
+    <a href="/tigran">
+        My Bookshelves
     </a>
 </li>
 

@@ -1,13 +1,17 @@
 <app-book-search-content-item inline-template>
-    <div class="col-md-offset-1 col-md-10">
-        <ul class="list-group">
-            <li class="list-group-item">
-                <img data-width="300" data-height="350" src="{{ $book['image'] }}">
-                <h5>{{ $book['title'] }}</h5>
-                <button class="btn btn-primary-outline btn-sm">
-                    <span class="icon icon-add-user"></span> Follow
-                </button>
-            </li>
-        </ul>
+    <div class="box box-book">
+        <div class="p20 clearfix flexbox">
+            <div class="box-img">
+                <a class="center-block" href="/">
+                    <img src="{{ $book['image'] }}" alt>
+                </a>
+            </div>
+            <div class="box-txt">
+                <div class="book-title">
+                    {{ $book['title'] }}
+                </div>
+            </div>
+
+        </div>
     </div>
 </app-book-search-content-item>
