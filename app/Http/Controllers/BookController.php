@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\UserRepository;
+use App\Repositories\BookRepository;
 use App\Http\Requests;
 
 require_once base_path('vendor/google/apiclient/src/Google/Client.php');
@@ -12,9 +13,10 @@ require_once base_path('vendor/google/apiclient/src/Google/Service/Books.php');
 class BookController extends Controller
 {
     private $users;
+    private $books;
     protected $service;
 
-    public function __construct(UserRepository $users)
+    public function __construct(UserRepository $users, BookRepository $books)
     {
         $this->middleware('auth');
 
@@ -23,6 +25,7 @@ class BookController extends Controller
         $client->setDeveloperKey(env('GOOGLE_DEV_KEY'));
         $this->service = new \Google_Service_Books($client);
         $this->users = $users;
+        $this->books = $books;
     }
 
     public function index()
@@ -52,24 +55,16 @@ class BookController extends Controller
             'orderBy' => 'relevance',
         );
         $results = $this->service->volumes->listVolumes($query, $optParams);
-
         $books = [];
         foreach ($results as $item) {
-            $books[] = [
-                'id' => $item['id'],
-                'title' => $item['volumeInfo']['title'],
-                'subtitle' => $item['volumeInfo']['subtitle'],
-                'description' => $item['volumeInfo']['description'],
-                'authors' => $item['volumeInfo']['authors'],
-                'published_date' => $item['volumeInfo']['publishedDate'],
-                'info_link' => $item['volumeInfo']['infoLink'],
-                'image' => $item['volumeInfo']['imageLinks']['thumbnail'],
-                'rating' => $item['volumeInfo']['averageRating'],
-                'ratings_count' => $item['volumeInfo']['ratingsCount'],
-            ];
+            $bookData = $this->books->extractGoogleVolumeData($item);
+            $book = $this->books->findByVolumeIdOrCreate($bookData);
+            // do some formatting here for authors and categories
+            // $book['authors'] = implode(',', $book->authors());
+            // $book['categories'] = implode(',', $book->categories());
+            $books[] = $book;
         }
-
-        return view('search-content', ['books' => $books]);
+        return view('books', ['books' => json_encode($books)]);
 
     }
 }

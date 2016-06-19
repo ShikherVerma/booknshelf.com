@@ -8311,7 +8311,7 @@ fieldset[disabled] .btn-danger-outline.active {
   margin-left: 4px;
   padding-right: 6px;
 }
-.search-container {
+.flex-container {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -8320,7 +8320,7 @@ fieldset[disabled] .btn-danger-outline.active {
   flex-direction: column;
   width: 70%;
 }
-.box {
+.flex-item {
   text-decoration: none;
   display: block;
   border: 1px solid #b3c0ca;
@@ -8328,35 +8328,53 @@ fieldset[disabled] .btn-danger-outline.active {
   box-shadow: 0 2px 2px rgba(59, 112, 183, 0.18);
   margin-bottom: 20px;
   background-color: #fff;
-}
-.box-book {
   cursor: pointer;
   position: relative;
   transition-duration: 150ms;
+  margin: 10px;
+  padding: 20px;
 }
-.box-book:hover {
+.flex-item:hover {
   transition-duration: 150ms;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
   z-index: 9;
 }
-.flexbox {
+.flex-book-container {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
 }
-.p20 {
-  padding: 20px;
-}
-.box-img {
-  display: inherit;
-  border-right: 1px solid rgba(179, 192, 202, 0.5);
+.flex-book-container-item {
+  padding-right: 20px;
+  width: 200px;
 }
 .book-title {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 30px;
+}
+.book-author {
+  font-size: 15px;
+}
+/* always present */
+.expand-transition {
+  transition: all .3s ease;
+  padding: 10px;
+  background-color: #eee;
+  overflow: hidden;
+}
+/* .expand-enter defines the starting state for entering */
+/* .expand-leave defines the ending state for leaving */
+.expand-enter,
+.expand-leave {
+  height: 0;
+  padding: 0 10px;
+  opacity: 0;
+}
+.hidden {
+  display: none;
 }
 body {
   font-weight: 300;

@@ -16,6 +16,7 @@ class CreateAuthorBookTable extends Migration
             $table->integer('author_id');
             $table->integer('book_id');
             $table->unique(['author_id', 'book_id']);
+            $table->timestamps();
         });
     }
 

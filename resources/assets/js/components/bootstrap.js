@@ -42,5 +42,8 @@ require('./home');
 require('./activity');
 
 require('./search/book-search-bar');
-require('./search/book-search-content-item');
 require('./create-shelf');
+
+// Books
+require('./books');
+require('./book-item');

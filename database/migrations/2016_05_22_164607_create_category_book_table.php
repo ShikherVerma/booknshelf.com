@@ -16,6 +16,7 @@ class CreateCategoryBookTable extends Migration
             $table->integer('category_id');
             $table->integer('book_id');
             $table->unique(['category_id', 'book_id']);
+            $table->timestamps();
         });
     }
 

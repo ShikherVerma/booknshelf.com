@@ -33563,7 +33563,7 @@ if ($('#app').length > 0) {
   require('./vue-bootstrap');
 }
 
-},{"./vue-bootstrap":80,"bootstrap/dist/js/npm":3,"jquery":16,"js-cookie":17,"moment":18,"promise":20,"underscore":28,"urijs":31}],54:[function(require,module,exports){
+},{"./vue-bootstrap":81,"bootstrap/dist/js/npm":3,"jquery":16,"js-cookie":17,"moment":18,"promise":20,"underscore":28,"urijs":31}],54:[function(require,module,exports){
 'use strict';
 
 require('./app-bootstrap');
@@ -33575,7 +33575,7 @@ var app = new Vue({
     mixins: [require('./booknshelf')]
 });
 
-},{"./app-bootstrap":53,"./booknshelf":55,"./components/bootstrap":57}],55:[function(require,module,exports){
+},{"./app-bootstrap":53,"./booknshelf":55,"./components/bootstrap":59}],55:[function(require,module,exports){
 'use strict';
 
 /**
@@ -33772,6 +33772,93 @@ Vue.component('activity-log', {
 },{}],57:[function(require,module,exports){
 'use strict';
 
+Vue.component('app-book-item', {
+    template: '#book-item',
+
+    props: ['book'],
+
+    ready: function ready() {},
+    data: function data() {
+        return {
+            shelves: [],
+            show: false,
+            loading: true,
+            showNewBookshelfForm: false,
+            addSuccessPopover: false,
+            form: new AppForm({
+                name: ''
+            })
+        };
+    },
+
+
+    methods: {
+        showSavePopover: function showSavePopover() {
+            this.addSuccessPopover = false;
+            this.show = !this.show;
+            // display a loading state here
+            this.getUserBookshelves();
+            this.loading = false;
+        },
+
+        // get user's all bookshelves
+        getUserBookshelves: function getUserBookshelves() {
+            this.$http.get('/user/shelves').then(function (response) {
+                console.log(response.data);
+                this.shelves = response.data;
+            });
+        },
+
+        // save the book in an existing bookshelf
+        saveBookToBookshelf: function saveBookToBookshelf() {
+            console.log(this.$els.book);
+            return true;
+        },
+
+        // save the books in a new bookshelf
+        saveBookToNewBookshelf: function saveBookToNewBookshelf() {
+            var _this = this;
+
+            // 1. Create a book object with the given GOOGLE BOOK ID
+            // 2. Create a new bookshelf
+            // 3. Call saveBookToBookshelf(bookId, shelfId)
+            App.post('/shelf/store', this.form).then(function () {
+                // this.showAddSuccessMessage();
+                _this.form.name = '';
+                // TODO: now we should add the book into the shelf
+                _this.show = false;
+                _this.addSuccessPopover = true;
+            });
+            // 1. Create a new bookshelf by name then save the book in that
+            return [];
+        },
+        showAddSuccessMessage: function showAddSuccessMessage() {
+            console.log('success');
+            return true;
+        }
+    },
+
+    events: {}
+
+});
+
+},{}],58:[function(require,module,exports){
+'use strict';
+
+Vue.component('app-books', {
+    template: '#books-list',
+
+    props: ['list'],
+
+    created: function created() {
+        this.list = JSON.parse(this.list);
+        console.log(this.list);
+    }
+});
+
+},{}],59:[function(require,module,exports){
+'use strict';
+
 /*
  |--------------------------------------------------------------------------
  | Laravel Spark Components
@@ -33812,10 +33899,13 @@ require('./home');
 require('./activity');
 
 require('./search/book-search-bar');
-require('./search/book-search-content-item');
 require('./create-shelf');
 
-},{"./activity":56,"./create-shelf":58,"./home":59,"./navbar":60,"./notifications":61,"./profile":62,"./profile/profile-all-shelves":63,"./profile/profile-header":64,"./profile/profile-index":65,"./profile/profile-liked-shelves":66,"./search/book-search-bar":67,"./search/book-search-content-item":68,"./settings":69,"./update-profile-information":71,"./update-profile-photo":72}],58:[function(require,module,exports){
+// Books
+require('./books');
+require('./book-item');
+
+},{"./activity":56,"./book-item":57,"./books":58,"./create-shelf":60,"./home":61,"./navbar":62,"./notifications":63,"./profile":64,"./profile/profile-all-shelves":65,"./profile/profile-header":66,"./profile/profile-index":67,"./profile/profile-liked-shelves":68,"./search/book-search-bar":69,"./settings":70,"./update-profile-information":72,"./update-profile-photo":73}],60:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-create-shelf', {
@@ -33858,7 +33948,7 @@ Vue.component('app-create-shelf', {
 
 });
 
-},{}],59:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 'use strict';
 
 Vue.component('home', {
@@ -33905,7 +33995,7 @@ Vue.component('home', {
     }
 });
 
-},{}],60:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-navbar', {
@@ -33930,7 +34020,7 @@ Vue.component('app-navbar', {
     }
 });
 
-},{}],61:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-notifications', {
@@ -33981,14 +34071,14 @@ Vue.component('app-notifications', {
     }
 });
 
-},{}],62:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-profile', {
     props: ['user']
 });
 
-},{}],63:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-profile-all-shelves', {
@@ -34099,14 +34189,14 @@ Vue.component('app-profile-all-shelves', {
 
 });
 
-},{}],64:[function(require,module,exports){
+},{}],66:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-profile-header', {
     props: ['user']
 });
 
-},{}],65:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-profile-index', {
@@ -34125,7 +34215,7 @@ Vue.component('app-profile-index', {
   }
 });
 
-},{"../tab-state":70}],66:[function(require,module,exports){
+},{"../tab-state":71}],68:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-profile-liked-shelves', {
@@ -34164,7 +34254,7 @@ Vue.component('app-profile-liked-shelves', {
 
 });
 
-},{}],67:[function(require,module,exports){
+},{}],69:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-book-search-bar', {
@@ -34191,36 +34281,7 @@ Vue.component('app-book-search-bar', {
 
 });
 
-},{}],68:[function(require,module,exports){
-'use strict';
-
-Vue.component('app-book-search-content-item', {
-    props: ['book'],
-
-    mixins: [require('./book-search-bar')],
-
-    data: function data() {
-        return {
-            books: []
-        };
-    },
-
-
-    events: {
-        searchChanged: function searchChanged(query) {
-            var _this = this;
-
-            console.log("listening and responding " + query);
-            this.$http.get('/books/search?q=' + query).then(function (response) {
-                _this.books = response.data;
-                console.log(_this.books);
-            });
-        }
-    }
-
-});
-
-},{"./book-search-bar":67}],69:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-settings', {
@@ -34234,7 +34295,7 @@ Vue.component('app-settings', {
 
 });
 
-},{"./tab-state":70}],70:[function(require,module,exports){
+},{"./tab-state":71}],71:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -34332,7 +34393,7 @@ module.exports = {
     }
 };
 
-},{}],71:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-update-profile-information', {
@@ -34381,7 +34442,7 @@ Vue.component('app-update-profile-information', {
 
 });
 
-},{}],72:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-update-profile-photo', {
@@ -34437,7 +34498,7 @@ Vue.component('app-update-profile-photo', {
     }
 });
 
-},{}],73:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 'use strict';
 
 /**
@@ -34479,7 +34540,7 @@ Vue.filter('relative', function (value) {
     return moment.utc(value).local().fromNow();
 });
 
-},{}],74:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 'use strict';
 
 /**
@@ -34504,7 +34565,7 @@ require('./errors');
  */
 $.extend(App, require('./http'));
 
-},{"./errors":75,"./form":76,"./http":77}],75:[function(require,module,exports){
+},{"./errors":76,"./form":77,"./http":78}],76:[function(require,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
@@ -34571,7 +34632,7 @@ window.AppFormErrors = function () {
     };
 };
 
-},{}],76:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 "use strict";
 
 /**
@@ -34625,7 +34686,7 @@ window.AppForm = function (data) {
   };
 };
 
-},{}],77:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -34677,7 +34738,7 @@ module.exports = {
     }
 };
 
-},{}],78:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -34715,7 +34776,7 @@ module.exports = {
     }
 };
 
-},{}],79:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 "use strict";
 
 module.exports = {
@@ -34730,7 +34791,7 @@ module.exports = {
     }
 };
 
-},{}],80:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 'use strict';
 
 /*
@@ -34768,6 +34829,6 @@ require('./filters');
  */
 require('./forms/bootstrap');
 
-},{"./filters":73,"./forms/bootstrap":74,"./interceptors":78,"./mixin":79,"vue":52,"vue-resource":37}]},{},[54]);
+},{"./filters":74,"./forms/bootstrap":75,"./interceptors":79,"./mixin":80,"vue":52,"vue-resource":37}]},{},[54]);
 
 //# sourceMappingURL=app.js.map
