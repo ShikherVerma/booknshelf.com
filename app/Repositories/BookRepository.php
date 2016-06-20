@@ -2,18 +2,35 @@
 
 namespace App\Repositories;
 
+use Image;
+use Storage;
+
 use App\Book;
 use App\Shelf;
+use App\Author;
+use App\Category;
 
 class BookRepository
 {
     public function findByVolumeIdOrCreate($bookData)
     {
+
         $book = Book::where('google_volume_id', $bookData['google_volume_id'])->first();
         if (empty($book)) {
             $book = Book::create($bookData);
-            $book->authors()->attach($bookData['authors']);
-            $book->categories()->attach($bookData['categories']);
+            // TODO: Store the cover of the book in local storage or S3?
+            // $image = Image::make($book->image);
+            // $disk = Storage::disk('public');
+            // $disk->put('covers/'.$book->google_volume_id, file_get_contents($image));
+            // dd($disk->url('covers/'.$book->google_volume_id));
+            foreach ($bookData['authors'] as $name) {
+                $author = Author::create(['name' => $name]);
+                $book->authors()->attach($author->id);
+            }
+            foreach ($bookData['categories'] as $name) {
+                $category = Category::firstOrCreate(['name' => $name]);
+                $book->categories()->attach($category->id);
+            }
         }
         return $book;
     }
@@ -35,8 +52,8 @@ class BookRepository
                 'image' => $item['volumeInfo']['imageLinks']['thumbnail'],
                 'language' => $item['volumeInfo']['language'],
                 'google_info_link' => $item['volumeInfo']['infoLink'],
-                'categories' => $item['volumeInfo']['categories'],
-                'authors' => $item['volumeInfo']['authors'],
+                'categories' => $item['volumeInfo']['categories'] ?? [],
+                'authors' => $item['volumeInfo']['authors'] ?? [],
         ];
     }
 }

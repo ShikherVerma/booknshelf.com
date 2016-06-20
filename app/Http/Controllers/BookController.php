@@ -51,7 +51,6 @@ class BookController extends Controller
         $optParams = array(
             'maxResults' => '10',
             'printType' => 'books',
-            'projection' => 'lite',
             'orderBy' => 'relevance',
         );
         $results = $this->service->volumes->listVolumes($query, $optParams);
@@ -60,7 +59,7 @@ class BookController extends Controller
             $bookData = $this->books->extractGoogleVolumeData($item);
             $book = $this->books->findByVolumeIdOrCreate($bookData);
             // do some formatting here for authors and categories
-            // $book['authors'] = implode(',', $book->authors());
+            $book['authors'] = implode(',', $book->authors());
             // $book['categories'] = implode(',', $book->categories());
             $books[] = $book;
         }

@@ -9,6 +9,8 @@ class Category extends Model
 {
     protected $table = 'categories';
 
+    protected $fillable = ['name'];
+
     /**
      * Get the book that owns the category.
      */

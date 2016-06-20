@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoryBookTable extends Migration
+class CreateBookCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateCategoryBookTable extends Migration
      */
     public function up()
     {
-        Schema::create('category_book', function (Blueprint $table) {
+        Schema::create('book_category', function (Blueprint $table) {
             $table->integer('category_id');
             $table->integer('book_id');
             $table->unique(['category_id', 'book_id']);
@@ -27,6 +27,6 @@ class CreateCategoryBookTable extends Migration
      */
     public function down()
     {
-        Schema::drop('category_book');
+        Schema::drop('book_category');
     }
 }

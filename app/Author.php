@@ -7,6 +7,7 @@ use App\Book;
 
 class Author extends Model
 {
+    protected $fillable = ['name'];
     /**
      * The books that belong to the author.
      */

@@ -32,7 +32,7 @@
                 </div>
                 <!-- Book Action Bars -->
                 <div class="flex-book-container-item">
-                    <a class="btn btn-default btn-sm" href="@{{ book.info_link }}" target="_blank">
+                    <a class="btn btn-default btn-sm" href="@{{ book.google_info_link }}" target="_blank">
                         <i class="fa fa-external-link" aria-hidden="true"></i>
                     </a>
                     <a class="btn btn-default btn-sm" href="#" @click="showSavePopover()">
