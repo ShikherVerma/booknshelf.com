@@ -17,8 +17,8 @@
                     </a>
                 </div>
                 <div class="panel-body">
-                    <a class="btn btn-block btn-social btn-amazon" href="{{ url('/auth/amazon') }}">
-                      <span class="fa fa-amazon"></span> Continue with Goodreads
+                    <a class="btn btn-block btn-social btn-twitter" href="{{ url('/auth/twitter') }}">
+                      <span class="fa fa-twitter"></span> Continue with Twitter
                     </a>
                 </div>
 

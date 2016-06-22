@@ -25,6 +25,10 @@ Route::get('/home', 'HomeController@index');
 Route::get('auth/facebook', 'Auth\AuthController@loginFacebook');
 Route::get('login_facebook', 'Auth\AuthController@loginFacebook');
 
+// Socialite auth for twitter
+Route::get('auth/twitter', 'Auth\AuthController@loginTwitter');
+Route::get('login_twitter', 'Auth\AuthController@loginTwitter');
+
 // register auth routes
 Route::get('register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
 Route::post('register', ['as' => 'register', 'uses' => 'Auth\AuthController@postRegister']);

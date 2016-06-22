@@ -108,6 +108,11 @@ class AuthController extends Controller
         return $authenticateUser->execute($request->has('code'), $this);
     }
 
+    public function loginTwitter(AuthenticateUser $authenticateUser, Request $request)
+    {
+        return $authenticateUser->executeTwitter($request->has('oauth_verifier'), $this);
+    }
+
     public function userHasLoggedIn($user)
     {
         return redirect('/');
