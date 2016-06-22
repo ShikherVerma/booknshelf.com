@@ -44,7 +44,7 @@
                         <i v-show="loading" class="fa fa-circle-o-notch fa-spin fa-2x fa-fw"></i>
                         <ul class="list-group" v-for="shelf in shelves">
                             <li id="@{{ book.id }}" class="list-group-item"
-                                @click="saveBookToBookshelf()">@{{ shelf.name }}</li>
+                                @click="storeBookToShelf(shelf.id)">@{{ shelf.name }}</li>
                         </ul>
                         <span @click="showNewBookshelfForm=!showNewBookshelfForm">Add New</span>
                         <!-- Add the book to a new bookshelf form -->
@@ -56,7 +56,7 @@
                                 </span>
                                 <span class="input-group-btn">
                                     <button type="submit" class="btn btn-default"
-                                            @click.prevent="saveBookToNewBookshelf"
+                                            @click.prevent="storeBookToNewBookshelf"
                                             :disabled="form.busy">
                                         Add
                                     </button>

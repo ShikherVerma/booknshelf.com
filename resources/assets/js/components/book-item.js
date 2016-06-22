@@ -36,12 +36,19 @@ Vue.component('app-book-item', {
                 });
         },
         // save the book in an existing bookshelf
-        saveBookToBookshelf() {
-            console.log(this.$els.book);
-            return true;
+        storeBookToShelf(shelfId) {
+            console.log(shelfId);
+            // 2. Create a new bookshelf
+            // 3. Call saveBookToBookshelf(bookId, shelfId)
+            this.$http.post(`/shelves/${shelfId}/books/${this.book.id}/store`)
+                    .then(function(response) {
+                        console.log(response.data);
+                    });
+            // 1. Create a new bookshelf by name then save the book in that
+            return [];
         },
         // save the books in a new bookshelf
-        saveBookToNewBookshelf() {
+        storeBookToNewBookshelf() {
             // 2. Create a new bookshelf
             // 3. Call saveBookToBookshelf(bookId, shelfId)
             App.post('/shelf/store', this.form)

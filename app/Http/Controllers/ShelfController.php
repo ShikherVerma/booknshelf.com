@@ -87,8 +87,14 @@ class ShelfController extends Controller
 
     }
 
-    public function addBookToShelf($shelfId, $bookId)
+    public function storeBookToShelf(Request $request, $shelfId, $bookId)
     {
+        // $this->validate($request, [
+        //     'shelf_id' => 'required',
+        //     'book_id' => 'required',
+        // ]);
+        // $shelfId = $request->shelf_id;
+        // $bookId = $request->book_id;
         // $shelf->books->create
         // 1. First we have to make sure that the current user owns/has the bookshelf
         // 2. Add the book to shelf

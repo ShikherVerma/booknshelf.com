@@ -48,6 +48,6 @@ class Book extends Model
      */
     public function shelves()
     {
-        return $this->belongsToMany('App\Shelf');
+        return $this->belongsToMany('App\Shelf')->withTimestamps();
     }
 }
