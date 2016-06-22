@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use Image;
 use Storage;
-
 use App\Book;
 use App\Shelf;
 use App\Author;
@@ -14,8 +13,8 @@ class BookRepository
 {
     public function findByVolumeIdOrCreate($bookData)
     {
-
         $book = Book::where('google_volume_id', $bookData['google_volume_id'])->first();
+        // TODO: When not storing this book we may consider updating the book to keep it up to date with Google Books API
         if (empty($book)) {
             $book = Book::create($bookData);
             // TODO: Store the cover of the book in local storage or S3?

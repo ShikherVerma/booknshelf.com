@@ -58,9 +58,18 @@ class BookController extends Controller
         foreach ($results as $item) {
             $bookData = $this->books->extractGoogleVolumeData($item);
             $book = $this->books->findByVolumeIdOrCreate($bookData);
+            $authors = [];
+            foreach ($book->authors()->get() as $author) {
+                $authors[] = $author->name;
+            }
+            $categories = [];
+            foreach ($book->categories()->get() as $category) {
+                $categories[] = $category->name;
+            }
             // do some formatting here for authors and categories
-            $book['authors'] = implode(',', $book->authors());
-            // $book['categories'] = implode(',', $book->categories());
+            // $book->authors() can be not iterable
+            $book['authors'] = implode(', ', $authors);
+            $book['categories'] = implode(', ', $categories);
             $books[] = $book;
         }
         return view('books', ['books' => json_encode($books)]);

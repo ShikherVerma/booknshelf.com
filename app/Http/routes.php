@@ -60,3 +60,5 @@ $router->get('/book/{service_id}', 'BookController@show');
 $router->post('/shelf/store', 'ShelfController@store');
 $router->put('/shelf/{shelf_id}', 'ShelfController@update');
 $router->delete('/shelf/{shelf_id}', 'ShelfController@destroy');
+// add the given book to the given shelf
+$router->delete('/shelf/{shelf_id}/add/{book_id}', 'ShelfController@addBookToShelf');

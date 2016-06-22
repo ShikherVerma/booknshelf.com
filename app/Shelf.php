@@ -27,4 +27,12 @@ class Shelf extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    /**
+     * The books that belong to this shelf
+     */
+    public function books()
+    {
+        return $this->belongsToMany('App\Book');
+    }
 }

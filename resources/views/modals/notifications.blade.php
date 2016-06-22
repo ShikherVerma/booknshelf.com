@@ -23,8 +23,7 @@
 
                         <div v-if=" ! loadingNotifications && activeNotifications.length == 0">
                             <div class="alert alert-warning m-b-none">
-                                We don't have anything to show you right now! But when we do,
-                                we'll be sure to let you know. Talk to you soon!
+                                Notifications are coming soon. We will make sure to let you know.
                             </div>
                         </div>
 

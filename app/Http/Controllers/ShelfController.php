@@ -86,4 +86,13 @@ class ShelfController extends Controller
         $shelf->delete();
 
     }
+
+    public function addBookToShelf($shelfId, $bookId)
+    {
+        // $shelf->books->create
+        // 1. First we have to make sure that the current user owns/has the bookshelf
+        // 2. Add the book to shelf
+        $shelf = $request->user()->shelves()->where('id', $shelfId)->firstOrFail();
+        $shelf->books()->attach($bookId);
+    }
 }

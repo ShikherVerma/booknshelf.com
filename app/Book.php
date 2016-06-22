@@ -42,4 +42,12 @@ class Book extends Model
     {
         return $this->belongsToMany('App\Category')->withTimestamps();
     }
+
+    /**
+     * Get all the shelves that this book belongs to.
+     */
+    public function shelves()
+    {
+        return $this->belongsToMany('App\Shelf');
+    }
 }

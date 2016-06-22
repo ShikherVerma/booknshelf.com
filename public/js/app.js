@@ -33819,7 +33819,6 @@ Vue.component('app-book-item', {
         saveBookToNewBookshelf: function saveBookToNewBookshelf() {
             var _this = this;
 
-            // 1. Create a book object with the given GOOGLE BOOK ID
             // 2. Create a new bookshelf
             // 3. Call saveBookToBookshelf(bookId, shelfId)
             App.post('/shelf/store', this.form).then(function () {
