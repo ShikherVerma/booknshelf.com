@@ -12,8 +12,6 @@ class UserRepository {
         $user = User::firstOrNew(['email' => $userData->email]);
         $user->name = $userData->name;
         $user->avatar = $userData->avatar_original;
-        $user->is_verified = true;
-        $this->verify_token = null;
         // if user already has a username do nothing.
         if(!$user->username) {
             // try to create a username for FB connected users

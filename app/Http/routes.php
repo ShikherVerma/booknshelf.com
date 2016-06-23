@@ -14,28 +14,23 @@ use App\User;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing');
 });
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/welcome', 'HomeController@welcome');
 
 // Socialite auth for facebook
 Route::get('auth/facebook', 'Auth\AuthController@loginFacebook');
 Route::get('login_facebook', 'Auth\AuthController@loginFacebook');
-
 // Socialite auth for twitter
 Route::get('auth/twitter', 'Auth\AuthController@loginTwitter');
 Route::get('login_twitter', 'Auth\AuthController@loginTwitter');
-
 // register auth routes
 Route::get('register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
 Route::post('register', ['as' => 'register', 'uses' => 'Auth\AuthController@postRegister']);
-
-// shelf resource routes
-// Route::resource('shelf', 'ShelfController');
-
 Route::get('register/confirm/{token}', function($token) {
 	User::where('verify_token', $token)->firstOrFail()->confirmEmail();
 	flash()->success('Sweet!', 'You are now confirmed. Thanks so much!');
@@ -48,14 +43,19 @@ $router->get('/settings', 'SettingsController@show');
 $router->put('/settings/profile', 'SettingsController@updateProfile');
 $router->post('/settings/photo', 'SettingsController@updatePhoto');
 // User
+$router->post('/user/welcome', 'UserController@welcome');
+//
 $router->get('/user/current', 'UserController@current');
 $router->get('/user/shelves', 'UserController@shelves');
+
 // Books Search
 $router->get('/books/search', 'BookController@search');
+
 // Profile
 // TODO: We have to verify that username exists otherwise redirect to /home
 $router->get('/{username}/shelves/{shelf_id}', 'ShelfController@show');
 $router->get('/{username}', 'UserController@profile');
+
 // Books
 // $router->get('/book/autocomplete', 'BookController@index');
 $router->get('/book/{service_id}', 'BookController@show');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdateUserRequest;
 use Intervention\Image\ImageManager;
 use Storage;
 
@@ -24,17 +25,14 @@ class SettingsController extends Controller
         return view('settings');
     }
 
-    public function updateProfile(Request $request)
+    public function updateProfile(UpdateUserRequest $request)
     {
         $this->validate($request, [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users,email,'.$request->user()->id,
-            'username' => 'required|max:255|unique:users,username,'.$request->user()->id,
+            'email' => 'email|max:255|unique:users,email,'.$request->user()->id,
             'about' => 'max:255',
         ]);
 
-        // if email changed then
-        // Event::fire(new UserEmailChanged($user));
         $request->user()->update([
             'name' => $request->name,
             'email' => $request->email,

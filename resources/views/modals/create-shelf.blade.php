@@ -15,7 +15,7 @@
                 <form class="form-horizontal p-b-none m-b-none" role="form">
                     <div class="modal-body">
 
-                        <div class="form-group form-group-lg" :class="{'has-error': form.errors.has('name')}">
+                        <div class="form-group" :class="{'has-error': form.errors.has('name')}">
                             <div class="col-md-8 col-md-offset-2">
                                 <input id="name" type="text" class="form-control" v-model="form.name" placeholder="Name">
                                 <span class="help-block" v-show="form.errors.has('name')">
@@ -24,7 +24,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group form-group-lg" :class="{'has-error': form.errors.has('description')}">
+                        <div class="form-group" :class="{'has-error': form.errors.has('description')}">
                             <div class="col-md-8 col-md-offset-2">
                                 <input id="description" type="text" class="form-control" v-model="form.description" placeholder="Description">
 
@@ -34,7 +34,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group form-group-lg">
+                        <div class="form-group">
                             <div class="col-md-6 col-md-offset-2">
                                 <button type="submit" class="btn-lg btn-info"
                                         @click.prevent="create"

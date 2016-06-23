@@ -52,12 +52,15 @@ class AuthController extends Controller
      */
     protected function validator(array $data)
     {
+        $messages = [
+            'regex'    => 'Only use letters, numbers and underscores for username.',
+        ];
+
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'username' => 'required|max:255|unique:users',
+            'name' => 'required|max:100',
+            'username' => 'required|regex:/^[a-zA-Z0-9_]+$/|max:30|unique:users',
             'password' => 'required|min:6',
-        ]);
+        ], $messages);
     }
 
     /**
@@ -70,7 +73,6 @@ class AuthController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-            'email' => $data['email'],
             'username' => $data['username'],
             'password' => bcrypt($data['password']),
         ]);
@@ -85,14 +87,12 @@ class AuthController extends Controller
                 $request, $validator
             );
         }
-
+        // display the welcome page here.
         $user = $this->create($request->all());
+        // after all is good with user creation send to the welcome page
         Auth::guard($this->getGuard())->login($user);
 
-        Event::fire(new UserRegistered($user));
-        flash()->info('Can you please verify your email?', '');
-
-        return redirect($this->redirectPath());
+        return redirect('/welcome');
     }
 
     public function confirmEmail($token)

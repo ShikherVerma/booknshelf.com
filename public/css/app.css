@@ -8284,32 +8284,6 @@ fieldset[disabled] .btn-danger-outline.active {
 #modal-create-shelf .modal-header {
   background-color: #028090;
   color: white;
-  height: 100px;
-}
-#modal-create-shelf .modal-header > h3 {
-  vertical-align: middle;
-}
-#modal-create-shelf .modal-dialog {
-  height: 80%;
-  width: 80%;
-}
-#modal-create-shelf .modal-body {
-  padding-buttom: 30px;
-}
-#modal-create-shelf .form-control {
-  font-size: 18px;
-  border: 0px;
-  border-bottom: 1px solid #ccd0d2;
-  box-shadow: none;
-  border-radius: 0px;
-}
-#modal-create-shelf .access-type {
-  color: #ccd0d2;
-}
-#modal-create-shelf .custom-control-indicator {
-  margin-top: 12px;
-  margin-left: 4px;
-  padding-right: 6px;
 }
 .flex-container {
   display: -webkit-flex;
