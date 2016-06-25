@@ -24,7 +24,7 @@ class UpdateUserRequest extends Request
     public function rules()
     {
         return [
-            'username' => 'required|regex:/^[a-zA-Z0-9_]+$/|max:30|unique:users',
+            'username' => 'required|regex:/^[a-zA-Z0-9_]+$/|max:30|unique:users,username,'.$this->user()->id,
         ];
     }
 

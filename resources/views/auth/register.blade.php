@@ -71,8 +71,8 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" name="register" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-user"></i>Sign up
+                                <button type="submit" name="register" class="btn btn-info-outline">
+                                    <i class="fa fa-btn"></i>Sign up
                                 </button>
                             </div>
                         </div>

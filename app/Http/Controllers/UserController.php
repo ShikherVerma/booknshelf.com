@@ -49,9 +49,8 @@ class UserController extends Controller
         $request->user()->update([
             'username' => $request->username,
             'about' => $request->about,
+            'is_onboarded' => true,
         ]);
-
-        flash()->success('Sweet!', 'You are all set. Start your reading journey!');
 
         return redirect('/');
     }

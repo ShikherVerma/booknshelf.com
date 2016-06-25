@@ -18,6 +18,7 @@ class User extends Authenticatable
         'username',
         'avatar',
         'about',
+        'is_onboarded'
     ];
 
     /**
@@ -28,18 +29,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'is_verified',
-        'verify_token',
+        'facebook_user_id',
+        'twitter_user_id',
         'created_at',
         'updated_at'
     ];
-
-    public function confirmEmail()
-    {
-        $this->is_verified = true;
-        $this->verify_token = null;
-        $this->save();
-    }
 
     /**
      * Get all of the user's shelves.
@@ -55,6 +49,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'is_verified' => 'boolean',
+        'is_onboarded' => 'boolean',
     ];
 }

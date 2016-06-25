@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+// onboarding welcome page
 Route::get('/welcome', 'HomeController@welcome');
 
 // Socialite auth for facebook
@@ -31,11 +32,6 @@ Route::get('login_twitter', 'Auth\AuthController@loginTwitter');
 // register auth routes
 Route::get('register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
 Route::post('register', ['as' => 'register', 'uses' => 'Auth\AuthController@postRegister']);
-Route::get('register/confirm/{token}', function($token) {
-	User::where('verify_token', $token)->firstOrFail()->confirmEmail();
-	flash()->success('Sweet!', 'You are now confirmed. Thanks so much!');
-	return redirect('/home');
-});
 
 // Settings
 $router->get('/settings', 'SettingsController@show');

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Contracts\Auth\Guard as Authenticator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 use App\Repositories\UserRepository;
 use App\Http\Requests;
 use Socialite;
@@ -23,28 +22,31 @@ class AuthenticateUser extends Controller
         $this->auth = $auth;
     }
 
-    public function execute($hasCode, $listener)
+    public function executeFacebook($hasCode, $listener)
     {
-        if(!$hasCode) return $this->getAuthorizationFirst();
+        if (!$hasCode) {
+            return $this->getAuthorizationFirst();
+        }
         // either create a new user object or fetch existing one
-        $user = $this->users->findByEmailOrCreate($this->getFacebookUser());
+        $user = $this->users->findByFacebookUserIdOrCreate($this->getFacebookUser());
         // log in the user
         $this->auth->login($user, true);
 
         return $listener->userHasLoggedIn($user);
     }
 
-        public function executeTwitter($hasCode, $listener)
-        {
-            if(!$hasCode) return $this->getTwitterAuthorizationFirst();
-            // either create a new user object or fetch existing one
-            dd($this->getTwitterUser());
-            // $user = $this->users->findByEmailOrCreate($this->getTwitterUser());
-            // // log in the user
-            // $this->auth->login($user, true);
-
-            // return $listener->userHasLoggedIn($user);
+    public function executeTwitter($hasVerified, $listener)
+    {
+        if (!$hasVerified) {
+            return $this->getTwitterAuthorizationFirst();
         }
+        // either create a new user object or fetch existing one
+        $user = $this->users->findByTwitterUserIdOrCreate($this->getTwitterUser());
+        // // log in the user
+        $this->auth->login($user, true);
+
+        return $listener->userHasLoggedIn($user);
+    }
 
     private function getAuthorizationFirst()
     {

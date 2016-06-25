@@ -20,6 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('avatar')->nullable();
             $table->string('about')->nullable();
+            $table->bigInteger('facebook_user_id')->nullable();
+            $table->bigInteger('twitter_user_id')->nullable();
+            $table->boolean('is_onboarded')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

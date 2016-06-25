@@ -35,6 +35,7 @@ class AuthController extends Controller
      * @var string
      */
     protected $redirectTo = '/';
+    protected $username = 'username';
 
     /**
      * Create a new authentication controller instance
@@ -105,7 +106,7 @@ class AuthController extends Controller
 
     public function loginFacebook(AuthenticateUser $authenticateUser, Request $request)
     {
-        return $authenticateUser->execute($request->has('code'), $this);
+        return $authenticateUser->executeFacebook($request->has('code'), $this);
     }
 
     public function loginTwitter(AuthenticateUser $authenticateUser, Request $request)
@@ -115,6 +116,10 @@ class AuthController extends Controller
 
     public function userHasLoggedIn($user)
     {
+        // if user is not onboarded then send user to the welcome page
+        if (!$user->is_onboarded) {
+            return redirect('/welcome');
+        }
         return redirect('/');
     }
 }
