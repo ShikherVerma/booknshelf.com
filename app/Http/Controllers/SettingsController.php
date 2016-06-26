@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UpdateUserRequest;
 use Intervention\Image\ImageManager;
 use Storage;
-
 use App\Http\Requests;
 use App\User;
 
@@ -44,7 +43,6 @@ class SettingsController extends Controller
 
     public function updatePhoto(Request $request)
     {
-
         $this->validate($request, [
             'photo' => 'required|image|max:4000',
         ]);
@@ -52,16 +50,15 @@ class SettingsController extends Controller
         $user = $request->user();
 
         $file = $data['photo'];
-
         $path = $file->hashName('profiles');
-        $disk = Storage::disk('public');
+        $s3 = Storage::disk('s3');
 
-        $disk->put(
+        $s3->put(
             $path, $this->formatImage($file)
         );
 
         $user->forceFill([
-            'avatar' => $disk->url($path),
+            'avatar' => $s3->url($path),
         ])->save();
 
         return response()->json($request->user()->toArray());
@@ -78,5 +75,4 @@ class SettingsController extends Controller
         return (string) $this->images->make($file->path())
                             ->fit(300)->encode();
     }
-
 }

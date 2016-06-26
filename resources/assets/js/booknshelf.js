@@ -37,8 +37,7 @@ module.exports = {
          * Update the current user of the application.
          */
         updateUser() {
-            console.log("Getting the user...");
-            // this.getUser();
+            this.getUser();
         },
 
         /**
@@ -46,7 +45,6 @@ module.exports = {
          */
         showNotifications() {
             $('#modal-notifications').modal('show');
-
             this.markNotificationsAsRead();
         },
 

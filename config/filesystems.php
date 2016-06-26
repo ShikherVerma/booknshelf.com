@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => 'local',
+    'default' => 's3',
 
     /*
     |--------------------------------------------------------------------------
@@ -56,10 +56,10 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => 'your-key',
-            'secret' => 'your-secret',
-            'region' => 'your-region',
-            'bucket' => 'your-bucket',
+            'key' => 'AKIAIUDUK46ZDVCEZJRA',
+            'secret' => 'L4vvwZHOOaGOy8J9pwytvPOeEwnSSSnj8ZExnmic',
+            'region' => 'us-west-2',
+            'bucket' => 'booknshelf-avatars',
         ],
 
     ],

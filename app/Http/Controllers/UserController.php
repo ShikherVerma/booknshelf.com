@@ -22,7 +22,7 @@ class UserController extends Controller
 
     public function current()
     {
-        $this->users->current();
+        return $this->users->current();
     }
 
     public function shelves()

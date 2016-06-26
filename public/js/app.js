@@ -33619,7 +33619,7 @@ module.exports = {
 
         updateUser: function updateUser() {
             console.log("Getting the user...");
-            // this.getUser();
+            this.getUser();
         },
 
 
