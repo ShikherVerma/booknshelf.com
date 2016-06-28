@@ -43,7 +43,7 @@
 
                 <div class="modal-body">
                     <!-- Update Shelf Form -->
-                    <form class="form-horizontal" role="form">
+                    <form class="form-horizontal" v-on:submit.prevent role="form">
                         <!-- Shelf Name -->
                         <div class="form-group" :class="{'has-error': updateShelfForm.errors.has('name')}">
                             <label class="col-md-4 control-label">Shelf Name</label>
@@ -78,7 +78,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
-                    <button type="button" class="btn btn-primary" @click="updateShelf" :disabled="updateShelfForm.busy">
+                    <button type="button" class="btn btn-primary" @click.prevent="updateShelf" :disabled="updateShelfForm.busy">
                         Update
                     </button>
                 </div>
@@ -106,7 +106,7 @@
                 <div class="modal-actions">
                     <button type="button" class="btn-default modal-action" data-dismiss="modal">No, Go Back</button>
 
-                    <button type="button" class="btn-danger modal-action" @click="deleteShelf" :disabled="deleteShelfForm.busy">
+                    <button type="button" class="btn-danger modal-action" @click.prevent="deleteShelf" :disabled="deleteShelfForm.busy">
                         Yes, Delete
                     </button>
                 </div>

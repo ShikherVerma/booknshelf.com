@@ -12,7 +12,7 @@
                     <h3 class="modal-title text-center">Create a new bookshelf</h3>
                 </div>
 
-                <form class="form-horizontal p-b-none m-b-none" role="form">
+                <form class="form-horizontal p-b-none m-b-none" v-on:submit.prevent role="form">
                     <div class="modal-body">
 
                         <div class="form-group" :class="{'has-error': form.errors.has('name')}">
@@ -26,7 +26,7 @@
 
                         <div class="form-group" :class="{'has-error': form.errors.has('description')}">
                             <div class="col-md-8 col-md-offset-2">
-                                <input id="description" type="text" class="form-control" v-model="form.description" placeholder="Description">
+                                <input id="description" type="text" class="form-control" v-model="form.description" placeholder="What is this bookshelf about?">
 
                                 <span class="help-block" v-show="form.errors.has('description')">
                                     @{{ form.errors.get('description') }}

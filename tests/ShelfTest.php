@@ -85,9 +85,22 @@ class ShelfTest extends TestCase
         ]);
     }
 
-    public function test_when_changing_shelf_name_slug_should_also_be_changed()
+    public function test_when_changing_shelf_name_slug_is_also_changed()
     {
-        // TODO: Implement this.
+        $user = factory(App\User::class)->create();
+        $this->actingAs($user);
+
+        $shelf = factory(App\Shelf::class)->create([
+            'name' => 'Bookshelf test name',
+            'user_id' => $user->id
+        ]);
+        $this->json('PUT', '/shelf/'.$shelf->id, [
+                'name' => 'Bookshelf test name changed'
+        ]);
+        $this->assertResponseOk();
+        $this->seeInDatabase('shelves', [
+            'slug' => str_slug('Bookshelf test name changed'),
+        ]);
     }
 
     public function test_users_cant_delete_shelves_of_other_users()
@@ -132,4 +145,28 @@ class ShelfTest extends TestCase
 
         $this->assertResponseStatus(404);
     }
+
+    public function test_users_cant_have_two_shelves_with_the_same_name()
+    {
+        $user = factory(User::class)->create();
+        $shelfOne = factory(App\Shelf::class)->create([
+            'name' => 'Bookshelf Name 1',
+            'slug' => 'bookshelf-name-1',
+            'user_id' => $user->id,
+        ]);
+
+
+        $response = $this->actingAs($user)
+                ->call('POST', '/shelf/store', [
+                'name' => 'Bookshelf Name 1',
+                'description' => 'Bookshelf description',
+        ]);
+
+        $this->assertResponseStatus(403);
+    }
+
+    public function test_users_can_store_books_to_shelves()
+    {
+    }
+
 }

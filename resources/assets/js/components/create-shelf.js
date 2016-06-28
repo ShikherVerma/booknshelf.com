@@ -6,7 +6,7 @@ Vue.component('app-create-shelf', {
             form: new AppForm({
                 name: '',
                 description: '',
-                cover_color: '',
+                cover: '',
             })
         };
     },

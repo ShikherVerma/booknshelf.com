@@ -32,4 +32,15 @@ class ShelfPolicy {
         Log::info("Trying to destroy a shelf for user: " . $user->email);
         return $user->id === $shelf->user_id;
     }
+
+    public function update(User $user, Shelf $shelf)
+    {
+        return $user->id === $shelf->user_id;
+    }
+
+    // shelf name is unique per user
+    public function uniqueSlug(User $user, Shelf $shelf)
+    {
+        return $user->shelves()->where('slug', $shelf->slug)->count() == 0;
+    }
 }

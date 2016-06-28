@@ -17,7 +17,7 @@ class Shelf extends Model
         'name',
         'description',
         'slug',
-        'cover_color'
+        'cover'
     ];
 
     /**

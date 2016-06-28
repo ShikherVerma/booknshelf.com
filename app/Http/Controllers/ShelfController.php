@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Repositories\ShelfRepository;
 use App\Shelf;
+use Gate;
 
 class ShelfController extends Controller
 {
@@ -37,13 +38,18 @@ class ShelfController extends Controller
             'name' => 'required|max:255',
         ]);
 
-        return $request->user()->shelves()->create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'cover_color' => $request->cover_color,
-            'slug' => str_slug($request->name),
-        ]);
+        $shelf = new Shelf;
+        $shelf->name = $request->name;
+        $shelf->description = $request->description;
+        $shelf->cover = $request->cover;
+        $shelf->slug = str_slug($request->name);
 
+        if (Gate::denies('uniqueSlug', $shelf)) {
+            $error = ['name' => ['You already have a bookshelf with this name.']];
+            return response()->json($error, 403);
+        }
+
+        return $request->user()->shelves()->save($shelf);
     }
 
     /**
@@ -69,7 +75,24 @@ class ShelfController extends Controller
             'name' => 'required|max:255',
         ]);
         $shelf = $request->user()->shelves()->where('id', $shelfId)->firstOrFail();
-        $shelf->update($request->all());
+
+        // the shelf name/slug should be unique per user
+        $newSlug = str_slug($request->name);
+        $count = $request->user()->shelves()->where('slug', $newSlug)->count();
+        if ($count != 0 && $newSlug != $shelf->slug) {
+            $error = ['name' => ['You already have a bookshelf with this name.']];
+            return response()->json($error, 403);
+        }
+
+        $this->authorize('update', $shelf);
+
+        $shelf->name = $request->name;
+        $shelf->description = $request->description;
+        $shelf->cover = $request->cover;
+        $shelf->slug = str_slug($request->name);
+        $shelf->save();
+
+        // $shelf->update($request->all());
     }
 
     /**
@@ -84,20 +107,10 @@ class ShelfController extends Controller
         $this->authorize('destroy', $shelf);
 
         $shelf->delete();
-
     }
 
     public function storeBookToShelf(Request $request, $shelfId, $bookId)
     {
-        // $this->validate($request, [
-        //     'shelf_id' => 'required',
-        //     'book_id' => 'required',
-        // ]);
-        // $shelfId = $request->shelf_id;
-        // $bookId = $request->book_id;
-        // $shelf->books->create
-        // 1. First we have to make sure that the current user owns/has the bookshelf
-        // 2. Add the book to shelf
         $shelf = $request->user()->shelves()->where('id', $shelfId)->firstOrFail();
         $shelf->books()->attach($bookId);
     }

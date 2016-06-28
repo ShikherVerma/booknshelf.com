@@ -25,7 +25,6 @@ Vue.component('app-profile-liked-shelves', {
         getLikedShelves() {
             this.$http.get('/user/shelves')
                     .then(function(response) {
-                        console.log(response.data);
                         this.shelves = response.data;
                     });
         },

@@ -17,12 +17,8 @@ Route::get('/', function () {
     return view('landing');
 });
 
+
 Route::auth();
-
-Route::get('/home', 'HomeController@index');
-// onboarding welcome page
-Route::get('/welcome', 'HomeController@welcome');
-
 // Socialite auth for facebook
 Route::get('auth/facebook', 'Auth\AuthController@loginFacebook');
 Route::get('login_facebook', 'Auth\AuthController@loginFacebook');
@@ -33,6 +29,10 @@ Route::get('login_twitter', 'Auth\AuthController@loginTwitter');
 Route::get('register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
 Route::post('register', ['as' => 'register', 'uses' => 'Auth\AuthController@postRegister']);
 
+
+Route::get('/home', 'HomeController@index');
+// onboarding welcome page
+Route::get('/welcome', 'HomeController@welcome');
 // Settings
 $router->get('/settings', 'SettingsController@show');
 // Profile Contact Information...

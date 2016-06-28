@@ -28,7 +28,6 @@ Vue.component('app-profile-all-shelves', {
         getShelves() {
             this.$http.get('/user/shelves')
                 .then(function(response) {
-                    console.log(response.data);
                     this.shelves = response.data;
                 });
         },
@@ -92,7 +91,6 @@ Vue.component('app-profile-all-shelves', {
          * Handle this component becoming the active tab.
          */
         appHashChanged(hash) {
-            console.log(hash);
             if (hash == 'bookshelves' && this.shelves.length === 0) {
                 this.getShelves();
             }

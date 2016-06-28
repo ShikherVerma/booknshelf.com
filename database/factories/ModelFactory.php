@@ -20,9 +20,11 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Shelf::class, function (Faker\Generator $faker) {
+    $name = $faker->name;
     return [
-        'name' => $faker->name,
+        'name' => $name,
         'description' => $faker->sentence(20),
-        'cover_color' => '#FFFDDD',
+        'slug' => str_slug($name),
+        'cover' => '#FFFDDD',
     ];
 });

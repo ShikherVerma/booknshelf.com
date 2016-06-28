@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Event;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Events\UserRegistered;
 use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\UserRepository;
 use App\Repositories\ShelfRepository;
@@ -46,11 +49,14 @@ class UserController extends Controller
             'about' => 'max:255',
         ]);
 
-        $request->user()->update([
+        $user = $request->user();
+        $user->update([
             'username' => $request->username,
             'about' => $request->about,
             'is_onboarded' => true,
         ]);
+
+        Event::fire(new UserRegistered($user));
 
         return redirect('/');
     }

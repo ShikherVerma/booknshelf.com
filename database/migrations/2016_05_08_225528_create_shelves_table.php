@@ -17,7 +17,7 @@ class CreateShelvesTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->string('name');
             $table->string('slug');
-            $table->string('cover_color')->nullable();
+            $table->string('cover')->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
         });

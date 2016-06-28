@@ -33618,7 +33618,6 @@ module.exports = {
          */
 
         updateUser: function updateUser() {
-            console.log("Getting the user...");
             this.getUser();
         },
 
@@ -33628,7 +33627,6 @@ module.exports = {
          */
         showNotifications: function showNotifications() {
             $('#modal-notifications').modal('show');
-
             this.markNotificationsAsRead();
         },
         showCreateShelfModal: function showCreateShelfModal() {
@@ -33921,7 +33919,7 @@ Vue.component('app-create-shelf', {
             form: new AppForm({
                 name: '',
                 description: '',
-                cover_color: ''
+                cover: ''
             })
         };
     },
@@ -34116,7 +34114,6 @@ Vue.component('app-profile-all-shelves', {
 
         getShelves: function getShelves() {
             this.$http.get('/user/shelves').then(function (response) {
-                console.log(response.data);
                 this.shelves = response.data;
             });
         },
@@ -34185,7 +34182,6 @@ Vue.component('app-profile-all-shelves', {
          */
 
         appHashChanged: function appHashChanged(hash) {
-            console.log(hash);
             if (hash == 'bookshelves' && this.shelves.length === 0) {
                 this.getShelves();
             }
@@ -34251,7 +34247,6 @@ Vue.component('app-profile-liked-shelves', {
 
         getLikedShelves: function getLikedShelves() {
             this.$http.get('/user/shelves').then(function (response) {
-                console.log(response.data);
                 this.shelves = response.data;
             });
         }
