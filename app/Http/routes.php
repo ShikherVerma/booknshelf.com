@@ -49,7 +49,7 @@ $router->get('/books/search', 'BookController@search');
 
 // Profile
 // TODO: We have to verify that username exists otherwise redirect to /home
-$router->get('/{username}/shelves/{shelf_id}', 'ShelfController@show');
+// $router->get('/{username}/shelves/{shelf_id}', 'ShelfController@show');
 $router->get('/{username}', 'UserController@profile');
 
 // Books
@@ -57,13 +57,15 @@ $router->get('/{username}', 'UserController@profile');
 $router->get('/book/{service_id}', 'BookController@show');
 
 // Shelves
-$router->post('/shelf/store', 'ShelfController@store');
-$router->put('/shelf/{shelf_id}', 'ShelfController@update');
-$router->delete('/shelf/{shelf_id}', 'ShelfController@destroy');
+$router->post('/shelves', 'ShelfController@store');
+$router->get('/shelves/{shelf_id}', 'ShelfController@show');
+$router->put('/shelves/{shelf_id}', 'ShelfController@update');
+$router->delete('/shelves/{shelf_id}', 'ShelfController@destroy');
+$router->post('/shelves/{shelf_id}/books', 'ShelfController@storeBookToShelf');
+$router->delete('/shelves/{shelf_id}/books', 'ShelfController@removeBookFromShelf');
 
-// add the given book to the given shelf
-$router->post('/shelves/{shelf_id}/books/{book_id}/store', 'ShelfController@storeBookToShelf');
-// get a specific book in the collection
+
+// get a specific book in the collection // TEMP
 $router->get('/shelves/{shelf_id}/books/{book_id}', 'ShelfController@storeBookToShelf');
-// get all the books in the collection
+// get all the books in the collection // TEMP
 $router->get('/shelves/{shelf_id}/books', 'ShelfController@storeBookToShelf');

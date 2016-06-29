@@ -14,12 +14,14 @@ Vue.component('app-book-item', {
             showNewBookshelfForm: false,
             addSuccessPopover: false,
             form: new AppForm({
+                id: '',
                 name: '',
             }),
         }
     },
 
     methods: {
+
         showSavePopover() {
             this.addSuccessPopover = false;
             this.show = !this.show;
@@ -27,6 +29,7 @@ Vue.component('app-book-item', {
             this.getUserBookshelves();
             this.loading = false;
         },
+
         // get user's all bookshelves
         getUserBookshelves() {
             this.$http.get('/user/shelves')
@@ -35,23 +38,22 @@ Vue.component('app-book-item', {
                     this.shelves = response.data;
                 });
         },
+
         // save the book in an existing bookshelf
         storeBookToShelf(shelfId) {
-            console.log(shelfId);
-            // 2. Create a new bookshelf
-            // 3. Call saveBookToBookshelf(bookId, shelfId)
-            this.$http.post(`/shelves/${shelfId}/books/${this.book.id}/store`)
-                    .then(function(response) {
-                        console.log(response.data);
-                    });
-            // 1. Create a new bookshelf by name then save the book in that
-            return [];
+            this.form.id = this.book.id;
+            console.log(this.book.id);
+            App.post(`/shelves/${shelfId}/books`, this.form)
+                .then(function(response) {
+                    console.log(response.data);
+                });
         },
+
         // save the books in a new bookshelf
         storeBookToNewBookshelf() {
             // 2. Create a new bookshelf
             // 3. Call saveBookToBookshelf(bookId, shelfId)
-            App.post('/shelf/store', this.form)
+            App.post('/shelves', this.form)
                 .then(() => {
                     // this.showAddSuccessMessage();
                     this.form.name = '';

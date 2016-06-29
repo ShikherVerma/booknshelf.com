@@ -16,8 +16,8 @@ class CreateBooksTable extends Migration
             $table->increments('id');
             $table->string('google_volume_id')->unique();
             $table->string('title');
-            $table->string('isbn_10');
-            $table->string('isbn_13');
+            $table->string('isbn_10')->nullable();
+            $table->string('isbn_13')->nullable();
             $table->string('subtitle')->nullable();
             $table->longText('description')->nullable();
             $table->string('publisher')->nullable();

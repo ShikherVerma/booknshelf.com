@@ -18,7 +18,7 @@ class ShelfTest extends TestCase
     {
         $user = factory(App\User::class)->create();
         $response = $this->actingAs($user)
-                ->call('POST', '/shelf/store', [
+                ->call('POST', '/shelves', [
                 'name' => 'Bookshelf Name Test',
                 'description' => 'Bookshelf description',
         ]);
@@ -33,7 +33,7 @@ class ShelfTest extends TestCase
     {
         $user = factory(App\User::class)->create();
         $this->actingAs($user);
-        $this->json('POST', '/shelf/store', [
+        $this->json('POST', '/shelves', [
                 'description' => 'Bookshelf description',
         ]);
         // `name` field is required so the response is not OK
@@ -44,7 +44,7 @@ class ShelfTest extends TestCase
     {
         $user = factory(App\User::class)->create();
         $this->actingAs($user);
-        $this->json('POST', '/shelf/store', [
+        $this->json('POST', '/shelves', [
                 'name' => 'Bookshelf Name Test With Slug'
             ])->seeJson([
                 'slug' => 'bookshelf-name-test-with-slug'
@@ -60,7 +60,7 @@ class ShelfTest extends TestCase
             'name' => 'Bookshelf Name is not Changed',
             'user_id' => $user->id
         ]);
-        $this->json('PUT', '/shelf/'.$shelf->id, [
+        $this->json('PUT', '/shelves/'.$shelf->id, [
                 'name' => 'Bookshelf Name is Changed'
         ]);
         $this->assertResponseOk();
@@ -78,7 +78,7 @@ class ShelfTest extends TestCase
             'name' => 'Bookshelf Name',
             'user_id' => $user->id
         ]);
-        $this->json('DELETE', '/shelf/'.$shelf->id);
+        $this->json('DELETE', '/shelves/'.$shelf->id);
         $this->assertResponseOk();
         $this->dontSeeInDatabase('shelves', [
             'name' => 'Bookshelf Name',
@@ -94,7 +94,7 @@ class ShelfTest extends TestCase
             'name' => 'Bookshelf test name',
             'user_id' => $user->id
         ]);
-        $this->json('PUT', '/shelf/'.$shelf->id, [
+        $this->json('PUT', '/shelves/'.$shelf->id, [
                 'name' => 'Bookshelf test name changed'
         ]);
         $this->assertResponseOk();
@@ -118,7 +118,7 @@ class ShelfTest extends TestCase
         ]);
 
         $this->actingAs($userOne);
-        $this->json('DELETE', '/shelf/'.$shelfTwo->id);
+        $this->json('DELETE', '/shelves/'.$shelfTwo->id);
 
         $this->assertResponseStatus(404);
     }
@@ -138,7 +138,7 @@ class ShelfTest extends TestCase
         ]);
 
         $this->actingAs($userOne);
-        $this->json('PUT', '/shelf/'.$shelfTwo->id, [
+        $this->json('PUT', '/shelves/'.$shelfTwo->id, [
                 'name' => 'Trying to change Bookshelf Name',
                 'description' => 'Some description'
         ]);
@@ -157,7 +157,7 @@ class ShelfTest extends TestCase
 
 
         $response = $this->actingAs($user)
-                ->call('POST', '/shelf/store', [
+                ->call('POST', '/shelves', [
                 'name' => 'Bookshelf Name 1',
                 'description' => 'Bookshelf description',
         ]);
@@ -168,5 +168,4 @@ class ShelfTest extends TestCase
     public function test_users_can_store_books_to_shelves()
     {
     }
-
 }

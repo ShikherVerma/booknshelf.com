@@ -16,7 +16,8 @@
         "algolia/algoliasearch-laravel": "^1.1",
         "guzzlehttp/guzzle": "~6.1.0",
         "crewlabs/unsplash": "^2.0",
-        "league/flysystem-aws-s3-v3": "~1.0"
+        "league/flysystem-aws-s3-v3": "~1.0",
+        "bugsnag/bugsnag-laravel": "1.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

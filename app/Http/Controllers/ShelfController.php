@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Repositories\ShelfRepository;
 use App\Shelf;
 use Gate;
+use DB;
 
 class ShelfController extends Controller
 {
@@ -19,19 +20,12 @@ class ShelfController extends Controller
         $this->shelves = $shelves;
     }
 
-    /**
-     * Get all of the application's recently created shelves.
-     *
-     * @return Response
-     */
+    // get all recently created bookshelves
     public function all()
     {
         return $this->shelves->recent();
     }
 
-    /**
-     * Create a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -52,23 +46,14 @@ class ShelfController extends Controller
         return $request->user()->shelves()->save($shelf);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show($username, $slug)
+    // show the user's shelf
+    public function show(Request $request, $shelfId)
     {
-        $shelf = Shelf::whereSlug($slug)->firstOrFail();
+        // return $request->user()->shelves()
+        $shelf = $request->user()->shelves()->where('id', $shelfId)->firstOrFail();
         return $shelf;
     }
 
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $shelfId)
     {
         $this->validate($request, [
@@ -91,16 +76,8 @@ class ShelfController extends Controller
         $shelf->cover = $request->cover;
         $shelf->slug = str_slug($request->name);
         $shelf->save();
-
-        // $shelf->update($request->all());
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Request $request, $shelfId)
     {
         $shelf = $request->user()->shelves()->where('id', $shelfId)->firstOrFail();
@@ -109,9 +86,34 @@ class ShelfController extends Controller
         $shelf->delete();
     }
 
-    public function storeBookToShelf(Request $request, $shelfId, $bookId)
+    public function storeBookToShelf(Request $request, $shelfId)
     {
+        $this->validate($request, [
+            'id' => 'required'
+        ]);
+        $bookId = $request->id;
+        $count = DB::table('book_shelf')->where([
+            'shelf_id' => $shelfId,
+            'book_id' => $bookId,
+        ])->count();
+
+        if ($count > 0) {
+            $error = ['name' => ['The book is already in this bookshelf']];
+            return response()->json($error, 403);
+        }
+
         $shelf = $request->user()->shelves()->where('id', $shelfId)->firstOrFail();
         $shelf->books()->attach($bookId);
     }
+
+    public function removeBookFromShelf(Request $request, $shelfId)
+    {
+        $this->validate($request, [
+            'id' => 'required'
+        ]);
+        $bookId = $request->id;
+        $shelf = $request->user()->shelves()->where('id', $shelfId)->firstOrFail();
+        $shelf->books()->detach($bookId);
+    }
+
 }

@@ -47,6 +47,10 @@ class BookController extends Controller
 
     public function search(Request $request)
     {
+        $this->validate($request, [
+            'q' => 'required',
+        ], ['required' => 'The book title can not be empty.']);
+
         $query = $request->q;
         $optParams = array(
             'maxResults' => '10',
@@ -66,8 +70,6 @@ class BookController extends Controller
             foreach ($book->categories()->get() as $category) {
                 $categories[] = $category->name;
             }
-            // do some formatting here for authors and categories
-            // $book->authors() can be not iterable
             $book['authors'] = implode(', ', $authors);
             $book['categories'] = implode(', ', $categories);
             $books[] = $book;

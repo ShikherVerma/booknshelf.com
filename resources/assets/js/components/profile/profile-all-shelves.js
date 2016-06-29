@@ -57,7 +57,7 @@ Vue.component('app-profile-all-shelves', {
          * Update the shelf being edited.
          */
         updateShelf() {
-            App.put(`/shelf/${this.updatingShelf.id}`, this.updateShelfForm)
+            App.put(`/shelves/${this.updatingShelf.id}`, this.updateShelfForm)
                 .then(() => {
                     this.getShelves();
                     $('#modal-update-shelf').modal('hide');
@@ -77,7 +77,7 @@ Vue.component('app-profile-all-shelves', {
          * Delete the specified shelf.
          */
         deleteShelf() {
-            App.delete(`/shelf/${this.deletingShelf.id}`, this.deleteShelfForm)
+            App.delete(`/shelves/${this.deletingShelf.id}`, this.deleteShelfForm)
                 .then(() => {
                     this.getShelves();
                     $('#modal-delete-shelf').modal('hide');

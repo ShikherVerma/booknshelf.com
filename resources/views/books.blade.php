@@ -9,10 +9,11 @@
         <span v-for="book in list">
             <app-book-item :book="book" ></app-book-item>
         </span>
+        <span v-if="list.length < 1">We couldn't find any book with the given name.</span>
     </template>
 
     <!-- Book Item Template -->
-    <template id="book-item">
+    <template id="book-item" :book="book">
         <div class="flex-item">
             <div class="flex-book-container">
                 <!-- Book Cover Img -->
@@ -40,7 +41,7 @@
                     </a>
 
                     <!-- Save Book to Bookshelf Popover -->
-                    <div class="save-popover" v-if="show">
+                    <div class="save-popover" v-if="show" id="@{{ book.id }}">
                         <i v-show="loading" class="fa fa-circle-o-notch fa-spin fa-2x fa-fw"></i>
                         <ul class="list-group" v-for="shelf in shelves">
                             <li id="@{{ book.id }}" class="list-group-item"

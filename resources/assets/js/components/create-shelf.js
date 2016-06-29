@@ -15,7 +15,7 @@ Vue.component('app-create-shelf', {
     methods: {
 
         create() {
-            App.post('/shelf/store', this.form)
+            App.post('/shelves', this.form)
                 .then(() => {
                     $('#modal-create-shelf').modal('hide');
 

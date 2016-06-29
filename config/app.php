@@ -162,7 +162,8 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         // Barryvdh\Debugbar\ServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        // AlgoliaSearch\Laravel\AlgoliaServiceProvider::class
+        // AlgoliaSearch\Laravel\AlgoliaServiceProvider::class,
+        Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider::class,
 
     ],
 
@@ -211,6 +212,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Bugsnag' => Bugsnag\BugsnagLaravel\BugsnagFacade::class,
     ],
 
 ];

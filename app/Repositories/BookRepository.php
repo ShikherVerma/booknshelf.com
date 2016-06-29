@@ -14,14 +14,9 @@ class BookRepository
     public function findByVolumeIdOrCreate($bookData)
     {
         $book = Book::where('google_volume_id', $bookData['google_volume_id'])->first();
-        // TODO: When not storing this book we may consider updating the book to keep it up to date with Google Books API
         if (empty($book)) {
             $book = Book::create($bookData);
-            // TODO: Store the cover of the book in local storage or S3?
-            // $image = Image::make($book->image);
-            // $disk = Storage::disk('public');
-            // $disk->put('covers/'.$book->google_volume_id, file_get_contents($image));
-            // dd($disk->url('covers/'.$book->google_volume_id));
+            // TODO: store the book cover in S3?
             foreach ($bookData['authors'] as $name) {
                 $author = Author::create(['name' => $name]);
                 $book->authors()->attach($author->id);
@@ -31,6 +26,11 @@ class BookRepository
                 $book->categories()->attach($category->id);
             }
         }
+        // update ratings and ratings count to keep it up to date
+        $book->update([
+            'google_average_rating' => $bookData['google_average_rating'],
+            'google_ratings_count' => $bookData['google_ratings_count']
+        ]);
         return $book;
     }
 
@@ -39,8 +39,8 @@ class BookRepository
         return [
                 'google_volume_id' => $item['id'],
                 'title' => $item['volumeInfo']['title'],
-                // 'isbn_10' => $item['volumeInfo']['industryIdentifiers']['ISBN_10'],
-                // 'isbn_13' => $item['volumeInfo']['industryIdentifiers']['ISBN_13'],
+                'isbn_13' => $item['volumeInfo']['industryIdentifiers'][0]['identifier'] ?? null,
+                'isbn_10' => $item['volumeInfo']['industryIdentifiers'][1]['identifier'] ?? null,
                 'subtitle' => $item['volumeInfo']['subtitle'],
                 'description' => $item['volumeInfo']['description'],
                 'publisher' => $item['volumeInfo']['publisher'],

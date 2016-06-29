@@ -33784,6 +33784,7 @@ Vue.component('app-book-item', {
             showNewBookshelfForm: false,
             addSuccessPopover: false,
             form: new AppForm({
+                id: '',
                 name: ''
             })
         };
@@ -33799,6 +33800,7 @@ Vue.component('app-book-item', {
             this.loading = false;
         },
 
+
         // get user's all bookshelves
         getUserBookshelves: function getUserBookshelves() {
             this.$http.get('/user/shelves').then(function (response) {
@@ -33807,17 +33809,16 @@ Vue.component('app-book-item', {
             });
         },
 
+
         // save the book in an existing bookshelf
         storeBookToShelf: function storeBookToShelf(shelfId) {
-            console.log(shelfId);
-            // 2. Create a new bookshelf
-            // 3. Call saveBookToBookshelf(bookId, shelfId)
-            this.$http.post('/shelves/' + shelfId + '/books/' + this.book.id + '/store').then(function (response) {
+            this.form.id = this.book.id;
+            console.log(this.book.id);
+            App.post('/shelves/' + shelfId + '/books', this.form).then(function (response) {
                 console.log(response.data);
             });
-            // 1. Create a new bookshelf by name then save the book in that
-            return [];
         },
+
 
         // save the books in a new bookshelf
         storeBookToNewBookshelf: function storeBookToNewBookshelf() {
@@ -33825,7 +33826,7 @@ Vue.component('app-book-item', {
 
             // 2. Create a new bookshelf
             // 3. Call saveBookToBookshelf(bookId, shelfId)
-            App.post('/shelf/store', this.form).then(function () {
+            App.post('/shelves', this.form).then(function () {
                 // this.showAddSuccessMessage();
                 _this.form.name = '';
                 // TODO: now we should add the book into the shelf
@@ -33929,7 +33930,7 @@ Vue.component('app-create-shelf', {
         create: function create() {
             var _this = this;
 
-            App.post('/shelf/store', this.form).then(function () {
+            App.post('/shelves', this.form).then(function () {
                 $('#modal-create-shelf').modal('hide');
 
                 _this.showCreateSuccessMessage();
@@ -34146,7 +34147,7 @@ Vue.component('app-profile-all-shelves', {
         updateShelf: function updateShelf() {
             var _this = this;
 
-            App.put('/shelf/' + this.updatingShelf.id, this.updateShelfForm).then(function () {
+            App.put('/shelves/' + this.updatingShelf.id, this.updateShelfForm).then(function () {
                 _this.getShelves();
                 $('#modal-update-shelf').modal('hide');
             });
@@ -34168,7 +34169,7 @@ Vue.component('app-profile-all-shelves', {
         deleteShelf: function deleteShelf() {
             var _this2 = this;
 
-            App.delete('/shelf/' + this.deletingShelf.id, this.deleteShelfForm).then(function () {
+            App.delete('/shelves/' + this.deletingShelf.id, this.deleteShelfForm).then(function () {
                 _this2.getShelves();
                 $('#modal-delete-shelf').modal('hide');
             });
