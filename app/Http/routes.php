@@ -30,7 +30,9 @@ Route::get('register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRe
 Route::post('register', ['as' => 'register', 'uses' => 'Auth\AuthController@postRegister']);
 
 
-Route::get('/home', 'HomeController@index');
+Route::get('/crafted-by-us', 'HomeController@craftedByus');
+// Route::get('/home', 'HomeController@index');
+
 // onboarding welcome page
 Route::get('/welcome', 'HomeController@welcome');
 // Settings

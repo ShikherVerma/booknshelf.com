@@ -26,8 +26,13 @@
 
     <ul class="dropdown-menu" role="menu">
         <li>
+            <a href="/tigran/bookshelves">
+                My Bookshelves
+            </a>
+        </li>
+        <li>
             <a href="/tigran">
-                Profile
+                My Profile
             </a>
         </li>
         <li>

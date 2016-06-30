@@ -35,7 +35,7 @@ class AuthTest extends TestCase
     {
         $user = $user ?: factory(App\User::class)->create([
             'password' => bcrypt('password'),
-            'username' => 'thisis_is_a_test_username'
+            'username' => 'this_is_a_test_username'
         ]);
 
         return $this->visit('login')

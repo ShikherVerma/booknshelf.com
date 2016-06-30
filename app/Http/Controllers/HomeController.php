@@ -31,4 +31,10 @@ class HomeController extends Controller
     {
         return view('welcome', ['user' => $request->user()]);
     }
+
+    public function craftedByUs(Request $request)
+    {
+        return view('crafted-by-us', ['user' => $request->user()]);
+    }
+
 }
