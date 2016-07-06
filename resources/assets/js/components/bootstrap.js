@@ -47,3 +47,6 @@ require('./create-shelf');
 // Books
 require('./books');
 require('./book-item');
+
+// Login
+require('./login-modal');

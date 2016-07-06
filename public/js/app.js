@@ -33563,7 +33563,7 @@ if ($('#app').length > 0) {
   require('./vue-bootstrap');
 }
 
-},{"./vue-bootstrap":81,"bootstrap/dist/js/npm":3,"jquery":16,"js-cookie":17,"moment":18,"promise":20,"underscore":28,"urijs":31}],54:[function(require,module,exports){
+},{"./vue-bootstrap":82,"bootstrap/dist/js/npm":3,"jquery":16,"js-cookie":17,"moment":18,"promise":20,"underscore":28,"urijs":31}],54:[function(require,module,exports){
 'use strict';
 
 require('./app-bootstrap');
@@ -33909,7 +33909,10 @@ require('./create-shelf');
 require('./books');
 require('./book-item');
 
-},{"./activity":56,"./book-item":57,"./books":58,"./create-shelf":60,"./home":61,"./navbar":62,"./notifications":63,"./profile":64,"./profile/profile-all-shelves":65,"./profile/profile-header":66,"./profile/profile-index":67,"./profile/profile-liked-shelves":68,"./search/book-search-bar":69,"./settings":70,"./update-profile-information":72,"./update-profile-photo":73}],60:[function(require,module,exports){
+// Login
+require('./login-modal');
+
+},{"./activity":56,"./book-item":57,"./books":58,"./create-shelf":60,"./home":61,"./login-modal":62,"./navbar":63,"./notifications":64,"./profile":65,"./profile/profile-all-shelves":66,"./profile/profile-header":67,"./profile/profile-index":68,"./profile/profile-liked-shelves":69,"./search/book-search-bar":70,"./settings":71,"./update-profile-information":73,"./update-profile-photo":74}],60:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-create-shelf', {
@@ -34002,6 +34005,16 @@ Vue.component('home', {
 },{}],62:[function(require,module,exports){
 'use strict';
 
+Vue.component('app-login-modal', {
+
+    props: [],
+
+    methods: {}
+});
+
+},{}],63:[function(require,module,exports){
+'use strict';
+
 Vue.component('app-navbar', {
     props: ['user', 'hasUnreadNotifications'],
 
@@ -34024,7 +34037,7 @@ Vue.component('app-navbar', {
     }
 });
 
-},{}],63:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-notifications', {
@@ -34075,14 +34088,14 @@ Vue.component('app-notifications', {
     }
 });
 
-},{}],64:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-profile', {
     props: ['user']
 });
 
-},{}],65:[function(require,module,exports){
+},{}],66:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-profile-all-shelves', {
@@ -34191,14 +34204,14 @@ Vue.component('app-profile-all-shelves', {
 
 });
 
-},{}],66:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-profile-header', {
     props: ['user']
 });
 
-},{}],67:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-profile-index', {
@@ -34217,7 +34230,7 @@ Vue.component('app-profile-index', {
   }
 });
 
-},{"../tab-state":71}],68:[function(require,module,exports){
+},{"../tab-state":72}],69:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-profile-liked-shelves', {
@@ -34255,7 +34268,7 @@ Vue.component('app-profile-liked-shelves', {
 
 });
 
-},{}],69:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-book-search-bar', {
@@ -34282,7 +34295,7 @@ Vue.component('app-book-search-bar', {
 
 });
 
-},{}],70:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-settings', {
@@ -34296,7 +34309,7 @@ Vue.component('app-settings', {
 
 });
 
-},{"./tab-state":71}],71:[function(require,module,exports){
+},{"./tab-state":72}],72:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -34394,7 +34407,7 @@ module.exports = {
     }
 };
 
-},{}],72:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-update-profile-information', {
@@ -34443,7 +34456,7 @@ Vue.component('app-update-profile-information', {
 
 });
 
-},{}],73:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-update-profile-photo', {
@@ -34499,7 +34512,7 @@ Vue.component('app-update-profile-photo', {
     }
 });
 
-},{}],74:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 'use strict';
 
 /**
@@ -34541,7 +34554,7 @@ Vue.filter('relative', function (value) {
     return moment.utc(value).local().fromNow();
 });
 
-},{}],75:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 'use strict';
 
 /**
@@ -34566,7 +34579,7 @@ require('./errors');
  */
 $.extend(App, require('./http'));
 
-},{"./errors":76,"./form":77,"./http":78}],76:[function(require,module,exports){
+},{"./errors":77,"./form":78,"./http":79}],77:[function(require,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
@@ -34633,7 +34646,7 @@ window.AppFormErrors = function () {
     };
 };
 
-},{}],77:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 "use strict";
 
 /**
@@ -34687,7 +34700,7 @@ window.AppForm = function (data) {
   };
 };
 
-},{}],78:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -34739,7 +34752,7 @@ module.exports = {
     }
 };
 
-},{}],79:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -34777,7 +34790,7 @@ module.exports = {
     }
 };
 
-},{}],80:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 "use strict";
 
 module.exports = {
@@ -34792,7 +34805,7 @@ module.exports = {
     }
 };
 
-},{}],81:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 'use strict';
 
 /*
@@ -34830,6 +34843,6 @@ require('./filters');
  */
 require('./forms/bootstrap');
 
-},{"./filters":74,"./forms/bootstrap":75,"./interceptors":79,"./mixin":80,"vue":52,"vue-resource":37}]},{},[54]);
+},{"./filters":75,"./forms/bootstrap":76,"./interceptors":80,"./mixin":81,"vue":52,"vue-resource":37}]},{},[54]);
 
 //# sourceMappingURL=app.js.map

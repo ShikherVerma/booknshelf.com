@@ -1,12 +1,12 @@
 <!-- Left Side Of Navbar -->
 <li>
-    <a>
-        @include('search.book-search-bar')
+    <a href="/crafted-by-us">
+        Crafted by us
     </a>
 </li>
 
 <li>
-    <a href="/crafted-by-us">
-        Crafted by us
+    <a>
+        @include('search.book-search-bar')
     </a>
 </li>
