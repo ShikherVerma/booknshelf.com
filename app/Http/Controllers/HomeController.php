@@ -17,11 +17,6 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('home');
@@ -32,9 +27,9 @@ class HomeController extends Controller
         return view('welcome', ['user' => $request->user()]);
     }
 
-    public function craftedByUs(Request $request)
+    public function landing(Request $request)
     {
-        return view('crafted-by-us', ['user' => $request->user()]);
+        return view('landing');
     }
 
 }

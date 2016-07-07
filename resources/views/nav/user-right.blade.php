@@ -26,12 +26,12 @@
 
     <ul class="dropdown-menu" role="menu">
         <li>
-            <a href="/tigran/bookshelves">
+            <a href="/{{ Auth::user()->username }}/bookshelves">
                 My Bookshelves
             </a>
         </li>
         <li>
-            <a href="/tigran">
+            <a href="/{{ Auth::user()->username }}">
                 My Profile
             </a>
         </li>

@@ -1,7 +1,6 @@
 <?php
 
 use App\User;
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -13,10 +12,11 @@ use App\User;
 |
 */
 
-Route::get('/', function () {
+// TODO: We should have one for guest and one landing page for
+// auth users
+$router->get('/', function() {
     return view('landing');
 });
-
 
 Route::auth();
 // Socialite auth for facebook
@@ -29,9 +29,7 @@ Route::get('login_twitter', 'Auth\AuthController@loginTwitter');
 Route::get('register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
 Route::post('register', ['as' => 'register', 'uses' => 'Auth\AuthController@postRegister']);
 
-
-Route::get('/crafted-by-us', 'HomeController@craftedByus');
-// Route::get('/home', 'HomeController@index');
+$router->get('/crafted-by-us', 'StaticPageController@craftedByus');
 
 // onboarding welcome page
 Route::get('/welcome', 'HomeController@welcome');
@@ -40,19 +38,17 @@ $router->get('/settings', 'SettingsController@show');
 // Profile Contact Information...
 $router->put('/settings/profile', 'SettingsController@updateProfile');
 $router->post('/settings/photo', 'SettingsController@updatePhoto');
+
 // User
+$router->get('/{username}', 'UserController@profile');
+$router->get('/{username}/bookshelves', 'UserController@profile');
 $router->post('/user/welcome', 'UserController@welcome');
-//
 $router->get('/user/current', 'UserController@current');
 $router->get('/user/shelves', 'UserController@shelves');
 
 // Books Search
 $router->get('/books/search', 'BookController@search');
 
-// Profile
-// TODO: We have to verify that username exists otherwise redirect to /home
-// $router->get('/{username}/shelves/{shelf_id}', 'ShelfController@show');
-$router->get('/{username}', 'UserController@profile');
 
 // Books
 // $router->get('/book/autocomplete', 'BookController@index');
@@ -66,8 +62,8 @@ $router->delete('/shelves/{shelf_id}', 'ShelfController@destroy');
 $router->post('/shelves/{shelf_id}/books', 'ShelfController@storeBookToShelf');
 $router->delete('/shelves/{shelf_id}/books', 'ShelfController@removeBookFromShelf');
 
-
 // get a specific book in the collection // TEMP
 $router->get('/shelves/{shelf_id}/books/{book_id}', 'ShelfController@storeBookToShelf');
 // get all the books in the collection // TEMP
 $router->get('/shelves/{shelf_id}/books', 'ShelfController@storeBookToShelf');
+

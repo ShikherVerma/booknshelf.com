@@ -31,6 +31,7 @@ class User extends Authenticatable
         'remember_token',
         'facebook_user_id',
         'twitter_user_id',
+        'is_onboarded',
         'created_at',
         'updated_at'
     ];
@@ -41,6 +42,16 @@ class User extends Authenticatable
     public function shelves()
     {
         return $this->hasMany(Shelf::class)->orderBy('created_at', 'asc');
+    }
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'username';
     }
 
     /**
