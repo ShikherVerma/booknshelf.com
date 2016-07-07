@@ -42,6 +42,7 @@ $router->post('/settings/photo', 'SettingsController@updatePhoto');
 // User
 $router->get('/{username}', 'UserController@profile');
 $router->get('/{username}/bookshelves', 'UserController@profile');
+$router->get('/{username}/shelves/{shelf_slug}', 'UserController@shelf');
 $router->post('/user/welcome', 'UserController@welcome');
 $router->get('/user/current', 'UserController@current');
 $router->get('/user/shelves', 'UserController@shelves');

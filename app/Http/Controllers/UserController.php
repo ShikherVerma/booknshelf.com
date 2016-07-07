@@ -34,6 +34,20 @@ class UserController extends Controller
         return response()->json($this->shelves->forUser($user)->toArray());
     }
 
+    public function shelf($username, $shelfSlug) {
+        $user = $this->users->current();
+        $shelf = $user->shelves()->where('slug', $shelfSlug)->firstOrFail();
+        $books = [];
+        foreach ($shelf->books()->get() as $book) {
+            $books[] = $book;
+        }
+        return view('shelf', [
+            'user' => $user,
+            'shelf' => $shelf,
+            'books' => json_encode($books),
+        ]);
+    }
+
     public function profile()
     {
         $user = $this->users->current();
