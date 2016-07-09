@@ -39,6 +39,8 @@ class UserController extends Controller
         $shelf = $user->shelves()->where('slug', $shelfSlug)->firstOrFail();
         $books = [];
         foreach ($shelf->books()->get() as $book) {
+            $book->categories = $book->categories();
+            $book->authors = $book->authors();
             $books[] = $book;
         }
         return view('shelf', [

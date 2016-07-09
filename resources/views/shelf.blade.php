@@ -1,51 +1,51 @@
 @extends('layouts.app')
 
 @section('content')
+<!-- Shelf Header  Template -->
 <div class="profile-header">
     <div class="container">
         <div class="container-inner">
-            <img class="img-circle media-object" src="{{ $shelf['cover'] }}">
-            <h3 class="profile-header-user">{{ $shelf['name'] }}</h3>
-            <p class="profile-header-bio">
-                {{ $shelf['description'] or ''}}
+            <h3 class="shelf-header-name">{{ $shelf->name }}</h3>
+            <p class="shelf-header-desc">
+                {{ $shelf->description or ''}}
             </p>
+            <span class="shelf-header-owner">
+                <img src="{{ Auth::user()->avatar }}" class="app-nav-profile-photo small-profile-photo">
+                {{ $user->name }}
+            </span>
         </div>
     </div>
 </div>
 
 <div class="container m-y-md">
-    <app-books list="{{ $books }}"></app-books>
+    <app-shelf shelf="{{ $shelf }}" books="{{ $books }}"></app-shelf>
 
-    <!-- Book List Template -->
-    <template id="books-list">
+    <!-- Shelf Template -->
+    <template id="shelf" :books="books">
         <div class="m-t">
             <div class="row">
-                <span v-for="book in list">
-                    <app-book-item :book="book" ></app-book-item>
+                <span v-for="book in books">
+                    <app-shelf-book-item :shelf="shelf" :book="book" ></app-shelf-book-item>
                 </span>
             </div>
         </div>
-        <span v-if="list.length < 1">There are no books in this bookshelf.</span>
+        <span v-if="books.length < 1">There are no books in this bookshelf yet.</span>
     </template>
 
-    <!-- Book Item Template -->
-    <template id="book-item" :book="book">
-
+    <!-- Shelf Book Item Template -->
+    <template id="shelf-book-item" :shelf="shelf" :book="book">
         <div class="col-md-3">
-            <div class="panel panel-default panel-profile">
-                <div class="panel-heading">
-                    LINK TO Book
-                </div>
-                <div class="panel-body text-center">
-                    <h5 class="panel-title">@{{ book.title }}</h5>
-                    <p class="m-b-md">Something else here</p>
-                    <button class="btn btn-danger-outline" @click="alert('shelf')">
-                        <i class="fa fa-times"></i>
-                    </button>
+            <div class="panel book-card">
+                <div class="book-card-body">
+                    <h5 class="panel-title" >@{{ book.title }}</h5>
+                    <div class="shelf-card-actions-bar">
+                        <button class="btn btn-sm btn-danger-outline" @click="removeBookFromShelf()">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-
     </template>
 
 </div>

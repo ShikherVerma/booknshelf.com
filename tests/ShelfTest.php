@@ -168,4 +168,8 @@ class ShelfTest extends TestCase
     public function test_users_can_store_books_to_shelves()
     {
     }
+
+    public function test_users_can_remove_a_book_from_shelf()
+    {
+    }
 }

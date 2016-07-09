@@ -7486,6 +7486,57 @@ img.zoom-img {
 .border-none {
   border: 0;
 }
+.shelf-card {
+  height: 210px;
+}
+.shelf-card-body {
+  position: relative;
+  padding: 15px;
+  height: 100%;
+}
+.shelf-card-title {
+  font-size: 17px;
+}
+.shelf-card-desc {
+  font-size: 14px;
+}
+.shelf-card-actions-bar {
+  position: absolute;
+  bottom: 7px;
+}
+.shelf-card-actions-bar > button {
+  margin: 4px;
+}
+.profile-header {
+  height: 300px;
+}
+.shelf-header {
+  height: 300px;
+}
+.shelf-header-name {
+  margin-top: 22px;
+  color: #fff;
+}
+.shelf-header-desc {
+  font-size: 15px;
+  color: #fff;
+}
+.shelf-header-owner {
+  color: #fff;
+}
+.book-card {
+  height: 210px;
+}
+.book-card-body {
+  position: relative;
+  padding: 15px;
+  height: 100%;
+}
+.small-profile-photo {
+  height: 40px !important;
+  width: 40px !important;
+  border: none !important;
+}
 .alert {
   font-weight: 300;
 }

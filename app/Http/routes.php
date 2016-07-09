@@ -60,11 +60,11 @@ $router->post('/shelves', 'ShelfController@store');
 $router->get('/shelves/{shelf_id}', 'ShelfController@show');
 $router->put('/shelves/{shelf_id}', 'ShelfController@update');
 $router->delete('/shelves/{shelf_id}', 'ShelfController@destroy');
+$router->get('/shelves/{shelf_id}/books', 'ShelfController@getAllShelfBooks');
 $router->post('/shelves/{shelf_id}/books', 'ShelfController@storeBookToShelf');
 $router->delete('/shelves/{shelf_id}/books', 'ShelfController@removeBookFromShelf');
 
 // get a specific book in the collection // TEMP
-$router->get('/shelves/{shelf_id}/books/{book_id}', 'ShelfController@storeBookToShelf');
+// $router->get('/shelves/{shelf_id}/books/{book_id}', 'ShelfController@storeBookToShelf');
 // get all the books in the collection // TEMP
-$router->get('/shelves/{shelf_id}/books', 'ShelfController@storeBookToShelf');
 

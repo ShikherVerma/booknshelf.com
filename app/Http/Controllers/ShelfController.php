@@ -116,4 +116,9 @@ class ShelfController extends Controller
         $shelf->books()->detach($bookId);
     }
 
+    public function getAllShelfBooks(Request $request, $shelfId)
+    {
+        $shelf = $request->user()->shelves()->where('id', $shelfId)->firstOrFail();
+        return response()->json($shelf->books()->get());
+    }
 }

@@ -45,8 +45,12 @@ require('./search/book-search-bar');
 require('./create-shelf');
 
 // Books
-require('./books');
-require('./book-item');
+require('./book/books');
+require('./book/book-item');
 
 // Login
 require('./login-modal');
+
+// Shelf
+require('./shelf/shelf.js');
+require('./shelf/shelf-book-item.js');

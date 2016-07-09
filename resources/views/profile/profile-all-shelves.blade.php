@@ -3,26 +3,22 @@
         <div class="m-t">
             <div class="row">
                 <div class="col-md-3" v-for="shelf in shelves">
-                        <div class="panel panel-default panel-profile">
-                            <div class="panel-heading">
-                                <a href="/@{{ user.username}}/shelves/@{{ shelf.slug }}">
-                                    LINK TO SHELF
-                                </a>
-                            </div>
-                            <div class="panel-body text-center">
-                                <h5 class="panel-title">@{{ shelf.name }}</h5>
-                                <p class="m-b-md">@{{ shelf.description }}</p>
-                                <button class="btn btn-primary-outline btn-sm">
-                                    <span class="icon icon-add-user"></span> Follow
-                                </button>
-                                <button class="btn btn-primary" @click="editShelf(shelf)">
+                    <div class="panel shelf-card">
+                        <div class="shelf-card-body">
+                            <a href="/@{{ user.username}}/shelves/@{{ shelf.slug }}">
+                                <h5 class="shelf-card-title">@{{ shelf.name }}</h5>
+                            </a>
+                            <p class="shelf-card-desc" >@{{ shelf.description }}</p>
+                            <div class="shelf-card-actions-bar">
+                                <button class="btn btn-sm btn-default-outline" @click="editShelf(shelf)">
                                     <i class="fa fa-pencil"></i>
                                 </button>
-                                <button class="btn btn-danger-outline" @click="approveShelfDelete(shelf)">
+                                <button class="btn btn-sm btn-danger-outline" @click="approveShelfDelete(shelf)">
                                     <i class="fa fa-times"></i>
                                 </button>
                             </div>
                         </div>
+                    </div>
                 </div>
 
             </div>

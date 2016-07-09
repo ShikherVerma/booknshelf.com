@@ -33563,7 +33563,7 @@ if ($('#app').length > 0) {
   require('./vue-bootstrap');
 }
 
-},{"./vue-bootstrap":82,"bootstrap/dist/js/npm":3,"jquery":16,"js-cookie":17,"moment":18,"promise":20,"underscore":28,"urijs":31}],54:[function(require,module,exports){
+},{"./vue-bootstrap":84,"bootstrap/dist/js/npm":3,"jquery":16,"js-cookie":17,"moment":18,"promise":20,"underscore":28,"urijs":31}],54:[function(require,module,exports){
 'use strict';
 
 require('./app-bootstrap');
@@ -33906,13 +33906,17 @@ require('./search/book-search-bar');
 require('./create-shelf');
 
 // Books
-require('./books');
-require('./book-item');
+require('./book/books');
+require('./book/book-item');
 
 // Login
 require('./login-modal');
 
-},{"./activity":56,"./book-item":57,"./books":58,"./create-shelf":60,"./home":61,"./login-modal":62,"./navbar":63,"./notifications":64,"./profile":65,"./profile/profile-all-shelves":66,"./profile/profile-header":67,"./profile/profile-index":68,"./profile/profile-liked-shelves":69,"./search/book-search-bar":70,"./settings":71,"./update-profile-information":73,"./update-profile-photo":74}],60:[function(require,module,exports){
+// Shelf
+require('./shelf/shelf.js');
+require('./shelf/shelf-book-item.js');
+
+},{"./activity":56,"./book/book-item":57,"./book/books":58,"./create-shelf":60,"./home":61,"./login-modal":62,"./navbar":63,"./notifications":64,"./profile":65,"./profile/profile-all-shelves":66,"./profile/profile-header":67,"./profile/profile-index":68,"./profile/profile-liked-shelves":69,"./search/book-search-bar":70,"./settings":71,"./shelf/shelf-book-item.js":72,"./shelf/shelf.js":73,"./update-profile-information":75,"./update-profile-photo":76}],60:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-create-shelf', {
@@ -34230,7 +34234,7 @@ Vue.component('app-profile-index', {
   }
 });
 
-},{"../tab-state":72}],69:[function(require,module,exports){
+},{"../tab-state":74}],69:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-profile-liked-shelves', {
@@ -34309,7 +34313,71 @@ Vue.component('app-settings', {
 
 });
 
-},{"./tab-state":72}],72:[function(require,module,exports){
+},{"./tab-state":74}],72:[function(require,module,exports){
+'use strict';
+
+Vue.component('app-shelf-book-item', {
+    template: '#shelf-book-item',
+
+    props: ['shelf', 'book'],
+
+    data: function data() {
+        return {
+            form: new AppForm({
+                id: ''
+            })
+        };
+    },
+
+
+    methods: {
+        // remove the book from the bookshelf
+
+        removeBookFromShelf: function removeBookFromShelf() {
+            var _this = this;
+
+            this.form.id = this.book.id;
+            var shelfId = this.shelf.id;
+            App.delete('/shelves/' + shelfId + '/books', this.form).then(function () {
+                _this.$dispatch('updateShelf');
+            });
+        }
+    }
+
+});
+
+},{}],73:[function(require,module,exports){
+'use strict';
+
+Vue.component('app-shelf', {
+    template: '#shelf',
+
+    props: ['shelf', 'books'],
+
+    created: function created() {
+        this.books = JSON.parse(this.books);
+        this.shelf = JSON.parse(this.shelf);
+    },
+
+
+    methods: {
+        getBooks: function getBooks() {
+            var shelfId = this.shelf.id;
+            this.$http.get('/shelves/' + shelfId + '/books').then(function (response) {
+                this.books = response.data;
+            });
+        }
+    },
+
+    events: {
+        updateShelf: function updateShelf() {
+            this.getBooks();
+        }
+    }
+
+});
+
+},{}],74:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -34407,7 +34475,7 @@ module.exports = {
     }
 };
 
-},{}],73:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-update-profile-information', {
@@ -34456,7 +34524,7 @@ Vue.component('app-update-profile-information', {
 
 });
 
-},{}],74:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-update-profile-photo', {
@@ -34512,7 +34580,7 @@ Vue.component('app-update-profile-photo', {
     }
 });
 
-},{}],75:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 'use strict';
 
 /**
@@ -34554,7 +34622,7 @@ Vue.filter('relative', function (value) {
     return moment.utc(value).local().fromNow();
 });
 
-},{}],76:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 'use strict';
 
 /**
@@ -34579,7 +34647,7 @@ require('./errors');
  */
 $.extend(App, require('./http'));
 
-},{"./errors":77,"./form":78,"./http":79}],77:[function(require,module,exports){
+},{"./errors":79,"./form":80,"./http":81}],79:[function(require,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
@@ -34646,7 +34714,7 @@ window.AppFormErrors = function () {
     };
 };
 
-},{}],78:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 "use strict";
 
 /**
@@ -34700,7 +34768,7 @@ window.AppForm = function (data) {
   };
 };
 
-},{}],79:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -34752,7 +34820,7 @@ module.exports = {
     }
 };
 
-},{}],80:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -34790,7 +34858,7 @@ module.exports = {
     }
 };
 
-},{}],81:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 "use strict";
 
 module.exports = {
@@ -34805,7 +34873,7 @@ module.exports = {
     }
 };
 
-},{}],82:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 'use strict';
 
 /*
@@ -34843,6 +34911,6 @@ require('./filters');
  */
 require('./forms/bootstrap');
 
-},{"./filters":75,"./forms/bootstrap":76,"./interceptors":80,"./mixin":81,"vue":52,"vue-resource":37}]},{},[54]);
+},{"./filters":77,"./forms/bootstrap":78,"./interceptors":82,"./mixin":83,"vue":52,"vue-resource":37}]},{},[54]);
 
 //# sourceMappingURL=app.js.map
