@@ -33781,6 +33781,7 @@ Vue.component('app-book-item', {
             shelves: [],
             show: false,
             loading: true,
+            active: false,
             showNewBookshelfForm: false,
             addSuccessPopover: false,
             form: new AppForm({
@@ -33792,6 +33793,9 @@ Vue.component('app-book-item', {
 
 
     methods: {
+        mouseOver: function mouseOver() {
+            this.active = !this.active;
+        },
         showSavePopover: function showSavePopover() {
             this.addSuccessPopover = false;
             this.show = !this.show;
@@ -33850,13 +33854,13 @@ Vue.component('app-book-item', {
 'use strict';
 
 Vue.component('app-books', {
-    template: '#books-list',
+    template: '#books',
 
-    props: ['list'],
+    props: ['books'],
 
     created: function created() {
-        this.list = JSON.parse(this.list);
-        console.log(this.list);
+        this.books = JSON.parse(this.books);
+        console.log(this.books);
     }
 });
 

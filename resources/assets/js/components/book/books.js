@@ -1,10 +1,10 @@
 Vue.component('app-books', {
-    template: '#books-list',
+    template: '#books',
 
-    props: ['list'],
+    props: ['books'],
 
     created() {
-        this.list = JSON.parse(this.list);
-        console.log(this.list);
+        this.books = JSON.parse(this.books);
+        console.log(this.books);
     }
 });

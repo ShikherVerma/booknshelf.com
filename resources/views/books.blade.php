@@ -1,78 +1,66 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container flex-container">
-    <app-books list="{{ $books }}"></app-books>
+<div class="container p-t-md">
 
-    <!-- Book List Template -->
-    <template id="books-list">
-        <span v-for="book in list">
-            <app-book-item :book="book" ></app-book-item>
-        </span>
-        <span v-if="list.length < 1">We couldn't find any book with the given name.</span>
-    </template>
+    <div class="row">
 
-    <!-- Book Item Template -->
-    <template id="book-item" :book="book">
-        <div class="flex-item">
-            <div class="flex-book-container">
-                <!-- Book Cover Img -->
-                <div class="flex-book-container-item">
-                    <img style="width: 150px;" :src="book.image">
-                </div>
-                <!-- Book Info -->
-                <div class="flex-book-container-item">
-                    <div class="flex-container">
-                        <div class="book-title">
-                            @{{ book.title }}
-                        </div>
-                        <div class="book-author">
-                            @{{ book.authors }}
-                        </div>
-                    </div>
-                </div>
-                <!-- Book Action Bars -->
-                <div class="flex-book-container-item">
-                    <a class="btn btn-default btn-sm" href="@{{ book.google_info_link }}" target="_blank">
-                        <i class="fa fa-external-link" aria-hidden="true"></i>
-                    </a>
-                    <a class="btn btn-default btn-sm" href="#" @click="showSavePopover()">
-                        <i class="fa fa-list"></i> Save
-                    </a>
-
-                    <!-- Save Book to Bookshelf Popover -->
-                    <div class="save-popover" v-if="show" id="@{{ book.id }}">
-                        <i v-show="loading" class="fa fa-circle-o-notch fa-spin fa-2x fa-fw"></i>
-                        <ul class="list-group" v-for="shelf in shelves">
-                            <li id="@{{ book.id }}" class="list-group-item"
-                                @click="storeBookToShelf(shelf.id)">@{{ shelf.name }}</li>
-                        </ul>
-                        <span @click="showNewBookshelfForm=!showNewBookshelfForm">Add New</span>
-                        <!-- Add the book to a new bookshelf form -->
-                        <form class="form-horizontal p-b-none m-b-none" role="form">
-                            <div v-show="showNewBookshelfForm" class="input-group">
-                                <input v-model="form.name" placeholder="Name" type="text" class="form-control" placeholder="Name">
-                                <span class="help-block" v-show="form.errors.has('name')">
-                                    @{{ form.errors.get('name') }}
-                                </span>
-                                <span class="input-group-btn">
-                                    <button type="submit" class="btn btn-default"
-                                            @click.prevent="storeBookToNewBookshelf"
-                                            :disabled="form.busy">
-                                        Add
-                                    </button>
-                                </span>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="nice-work-popover" v-show="addSuccessPopover" transition="expand">
-                        Greate! "This book" has been added to your bookshelf "this bookshelf".
-                    </div>
-                </div>
-            </div>
-
+        <div class="col-md-8 col-md-offset-1">
+            <app-books books="{{ $books }}"></app-books>
         </div>
-    </template>
+
+        <div class="col-md-3">
+            <div class="alert alert-warning alert-dismissible hidden-xs" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <a class="alert-link" href="profile/index.html">Visit your profile!</a> Check your self, you aren't looking too good.
+            </div>
+        </div>
+
+    </div>
 
 </div>
+
+<!-- Books Template -->
+<template id="books">
+    <ul class="list-group media-list media-list-stream">
+            <app-book-item v-for="book in books" :book="book" ></app-book-item>
+        <span v-if="books.length < 1">We couldn't find any book with the given name.</span>
+    </ul>
+</template>
+
+<!-- Book Item Template -->
+<template id="book-item" :book="book">
+    <li class="media list-group-item p-a book-search-item" @mouseover="mouseOver">
+        <a class="media-left" href="#">
+            <img class="media-object img-circle img-circle-book-cover" data-action="zoom" :src="book.image">
+        </a>
+        <div class="media-body">
+            <div class="media-body-text">
+                <div class="media-heading">
+                    <small class="pull-right text-muted">12 min</small>
+                    <h5>@{{ book.title }}</h5>
+                </div>
+                <p>
+                    @{{ book.authors }}
+                </p>
+            </div>
+            <div class="media-footer book-search-item-footer" v-show="active">
+<!--                 <app-book-action-bar :book="book" ></app-book-action-bar> -->
+                <small>
+                  <a class="btn btn-default btn-sm btn-action" href="#" @click="showSavePopover()">
+                      <i class="fa fa-th-list"></i> Save
+                  </a>
+                </small>
+                <small class="text-muted">
+                    <a class="btn btn-default btn-sm btn-tiny" href="@{{ book.google_info_link }}" target="_blank">
+                        <i class="fa fa-external-link" aria-hidden="true"></i>
+                    </a>
+                </small>
+            </div>
+        </div>
+    </li>
+</template>
+
 @endsection

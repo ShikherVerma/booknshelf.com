@@ -11,6 +11,7 @@ Vue.component('app-book-item', {
             shelves: [],
             show: false,
             loading: true,
+            active: false,
             showNewBookshelfForm: false,
             addSuccessPopover: false,
             form: new AppForm({
@@ -21,6 +22,10 @@ Vue.component('app-book-item', {
     },
 
     methods: {
+
+        mouseOver() {
+            this.active = !this.active;
+        },
 
         showSavePopover() {
             this.addSuccessPopover = false;
