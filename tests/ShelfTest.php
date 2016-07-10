@@ -123,7 +123,7 @@ class ShelfTest extends TestCase
         $this->assertResponseStatus(404);
     }
 
-    public function test_users_cant_edit_trips_of_other_users()
+    public function test_users_cant_edit_shelves_of_other_users()
     {
         $userOne = factory(User::class)->create();
         $userTwo = factory(User::class)->create();
@@ -167,9 +167,49 @@ class ShelfTest extends TestCase
 
     public function test_users_can_store_books_to_shelves()
     {
+        $user = factory(User::class)->create();
+        $shelf = factory(App\Shelf::class)->create([
+            'name' => 'Bookshelf Name 1',
+            'slug' => 'bookshelf-name-1',
+            'user_id' => $user->id,
+        ]);
+        $book = factory(App\Book::class)->create();
+        $response = $this->actingAs($user)
+                ->call('POST', '/shelves/'.$shelf->id.'/books', [
+                'id' => $book->id,
+        ]);
+        $this->assertResponseOk();
+        $this->seeInDatabase('book_shelf', [
+            'shelf_id' => $shelf->id,
+            'book_id' => $book->id
+        ]);
     }
 
     public function test_users_can_remove_a_book_from_shelf()
     {
+        $user = factory(User::class)->create();
+        $shelf = factory(App\Shelf::class)->create([
+            'name' => 'Bookshelf Name 1',
+            'slug' => 'bookshelf-name-1',
+            'user_id' => $user->id,
+        ]);
+        $book = factory(App\Book::class)->create();
+        $this->actingAs($user)
+            ->call('POST', '/shelves/'.$shelf->id.'/books', [
+            'id' => $book->id,
+        ]);
+        $this->assertResponseOk();
+        $this->seeInDatabase('book_shelf', [
+            'shelf_id' => $shelf->id,
+            'book_id' => $book->id
+        ]);
+        $this->actingAs($user)
+            ->call('DELETE', '/shelves/'.$shelf->id.'/books', [
+            'id' => $book->id,
+        ]);
+        $this->dontSeeInDatabase('book_shelf', [
+            'shelf_id' => $shelf->id,
+            'book_id' => $book->id
+        ]);
     }
 }

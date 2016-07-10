@@ -28,3 +28,11 @@ $factory->define(App\Shelf::class, function (Faker\Generator $faker) {
         'cover' => '#FFFDDD',
     ];
 });
+
+$factory->define(App\Book::class, function (Faker\Generator $faker) {
+    $title = $faker->name;
+    return [
+        'title' => $title,
+        'google_volume_id' => $faker->uuid,
+    ];
+});
