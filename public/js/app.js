@@ -33563,7 +33563,7 @@ if ($('#app').length > 0) {
   require('./vue-bootstrap');
 }
 
-},{"./vue-bootstrap":84,"bootstrap/dist/js/npm":3,"jquery":16,"js-cookie":17,"moment":18,"promise":20,"underscore":28,"urijs":31}],54:[function(require,module,exports){
+},{"./vue-bootstrap":85,"bootstrap/dist/js/npm":3,"jquery":16,"js-cookie":17,"moment":18,"promise":20,"underscore":28,"urijs":31}],54:[function(require,module,exports){
 'use strict';
 
 require('./app-bootstrap');
@@ -33575,7 +33575,7 @@ var app = new Vue({
     mixins: [require('./booknshelf')]
 });
 
-},{"./app-bootstrap":53,"./booknshelf":55,"./components/bootstrap":59}],55:[function(require,module,exports){
+},{"./app-bootstrap":53,"./booknshelf":55,"./components/bootstrap":60}],55:[function(require,module,exports){
 'use strict';
 
 /**
@@ -33770,6 +33770,82 @@ Vue.component('activity-log', {
 },{}],57:[function(require,module,exports){
 'use strict';
 
+Vue.component('app-book-item-save-modal', {
+
+    props: ['book'],
+
+    data: function data() {
+        return {
+            show: false,
+            shelves: [],
+            loading: true,
+            showModal: false,
+            showNewBookshelfForm: false,
+            success: false,
+            form: new AppForm({
+                id: '',
+                name: ''
+            })
+        };
+    },
+    // book: null,
+
+
+    methods: {
+        // get user's all bookshelves
+
+        getUserBookshelves: function getUserBookshelves() {
+            this.$http.get('/user/shelves').then(function (response) {
+                this.loading = false;
+                this.shelves = response.data;
+            });
+        },
+
+
+        // save the book to an existing bookshelf
+        storeBookToShelf: function storeBookToShelf(shelfId) {
+            var _this = this;
+
+            this.form.id = this.book.id;
+            console.log(this.book.id);
+            App.post('/shelves/' + shelfId + '/books', this.form).then(function () {
+                _this.success = true;
+            });
+        },
+
+
+        // save the books in a new bookshelf
+        storeBookToNewBookshelf: function storeBookToNewBookshelf() {
+            var _this2 = this;
+
+            // 2. Create a new bookshelf
+            // 3. Call saveBookToBookshelf(bookId, shelfId)
+            App.post('/shelves', this.form).then(function () {
+                _this2.form.name = '';
+                // TODO: now we should add the book into the shelf
+                _this2.show = false;
+                _this2.addSuccessPopover = true;
+            });
+            // 1. Create a new bookshelf by name then save the book in that
+            return [];
+        }
+    },
+
+    events: {
+        showSaveModal: function showSaveModal() {
+            this.show = true;
+            this.loading = true;
+            this.getUserBookshelves();
+            console.log(this.book.title);
+            console.log(this.book.id);
+        }
+    }
+
+});
+
+},{}],58:[function(require,module,exports){
+'use strict';
+
 Vue.component('app-book-item', {
     template: '#book-item',
 
@@ -33782,6 +33858,7 @@ Vue.component('app-book-item', {
             show: false,
             loading: true,
             active: false,
+            showModal: false,
             showNewBookshelfForm: false,
             addSuccessPopover: false,
             form: new AppForm({
@@ -33794,6 +33871,7 @@ Vue.component('app-book-item', {
 
     methods: {
         mouseOver: function mouseOver() {
+            if (this.active) return;
             this.active = !this.active;
         },
         showSavePopover: function showSavePopover() {
@@ -33805,44 +33883,42 @@ Vue.component('app-book-item', {
         },
 
 
-        // get user's all bookshelves
-        getUserBookshelves: function getUserBookshelves() {
-            this.$http.get('/user/shelves').then(function (response) {
-                console.log(response.data);
-                this.shelves = response.data;
-            });
-        },
+        // // get user's all bookshelves
+        // getUserBookshelves() {
+        //     this.$http.get('/user/shelves')
+        //         .then(function(response) {
+        //             console.log(response.data);
+        //             this.shelves = response.data;
+        //         });
+        // },
 
+        // // save the book in an existing bookshelf
+        // storeBookToShelf(shelfId) {
+        //     this.form.id = this.book.id;
+        //     console.log(this.book.id);
+        //     App.post(`/shelves/${shelfId}/books`, this.form)
+        //         .then(function(response) {
+        //             console.log(response.data);
+        //         });
+        // },
 
-        // save the book in an existing bookshelf
-        storeBookToShelf: function storeBookToShelf(shelfId) {
-            this.form.id = this.book.id;
-            console.log(this.book.id);
-            App.post('/shelves/' + shelfId + '/books', this.form).then(function (response) {
-                console.log(response.data);
-            });
-        },
+        // // save the books in a new bookshelf
+        // storeBookToNewBookshelf() {
+        //     // 2. Create a new bookshelf
+        //     // 3. Call saveBookToBookshelf(bookId, shelfId)
+        //     App.post('/shelves', this.form)
+        //         .then(() => {
+        //             this.form.name = '';
+        //             // TODO: now we should add the book into the shelf
+        //             this.show = false;
+        //             this.addSuccessPopover = true;
+        //         });
+        //     // 1. Create a new bookshelf by name then save the book in that
+        //     return [];
+        // },
 
-
-        // save the books in a new bookshelf
-        storeBookToNewBookshelf: function storeBookToNewBookshelf() {
-            var _this = this;
-
-            // 2. Create a new bookshelf
-            // 3. Call saveBookToBookshelf(bookId, shelfId)
-            App.post('/shelves', this.form).then(function () {
-                // this.showAddSuccessMessage();
-                _this.form.name = '';
-                // TODO: now we should add the book into the shelf
-                _this.show = false;
-                _this.addSuccessPopover = true;
-            });
-            // 1. Create a new bookshelf by name then save the book in that
-            return [];
-        },
-        showAddSuccessMessage: function showAddSuccessMessage() {
-            console.log('success');
-            return true;
+        showSaveModal: function showSaveModal() {
+            this.$broadcast('showSaveModal');
         }
     },
 
@@ -33850,7 +33926,7 @@ Vue.component('app-book-item', {
 
 });
 
-},{}],58:[function(require,module,exports){
+},{}],59:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-books', {
@@ -33864,7 +33940,7 @@ Vue.component('app-books', {
     }
 });
 
-},{}],59:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 'use strict';
 
 /*
@@ -33912,6 +33988,7 @@ require('./create-shelf');
 // Books
 require('./book/books');
 require('./book/book-item');
+require('./book/book-item-save');
 
 // Login
 require('./login-modal');
@@ -33920,7 +33997,7 @@ require('./login-modal');
 require('./shelf/shelf.js');
 require('./shelf/shelf-book-item.js');
 
-},{"./activity":56,"./book/book-item":57,"./book/books":58,"./create-shelf":60,"./home":61,"./login-modal":62,"./navbar":63,"./notifications":64,"./profile":65,"./profile/profile-all-shelves":66,"./profile/profile-header":67,"./profile/profile-index":68,"./profile/profile-liked-shelves":69,"./search/book-search-bar":70,"./settings":71,"./shelf/shelf-book-item.js":72,"./shelf/shelf.js":73,"./update-profile-information":75,"./update-profile-photo":76}],60:[function(require,module,exports){
+},{"./activity":56,"./book/book-item":58,"./book/book-item-save":57,"./book/books":59,"./create-shelf":61,"./home":62,"./login-modal":63,"./navbar":64,"./notifications":65,"./profile":66,"./profile/profile-all-shelves":67,"./profile/profile-header":68,"./profile/profile-index":69,"./profile/profile-liked-shelves":70,"./search/book-search-bar":71,"./settings":72,"./shelf/shelf-book-item.js":73,"./shelf/shelf.js":74,"./update-profile-information":76,"./update-profile-photo":77}],61:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-create-shelf', {
@@ -33963,7 +34040,7 @@ Vue.component('app-create-shelf', {
 
 });
 
-},{}],61:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 'use strict';
 
 Vue.component('home', {
@@ -34010,7 +34087,7 @@ Vue.component('home', {
     }
 });
 
-},{}],62:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-login-modal', {
@@ -34020,7 +34097,7 @@ Vue.component('app-login-modal', {
     methods: {}
 });
 
-},{}],63:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-navbar', {
@@ -34045,7 +34122,7 @@ Vue.component('app-navbar', {
     }
 });
 
-},{}],64:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-notifications', {
@@ -34096,14 +34173,14 @@ Vue.component('app-notifications', {
     }
 });
 
-},{}],65:[function(require,module,exports){
+},{}],66:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-profile', {
     props: ['user']
 });
 
-},{}],66:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-profile-all-shelves', {
@@ -34212,14 +34289,14 @@ Vue.component('app-profile-all-shelves', {
 
 });
 
-},{}],67:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-profile-header', {
     props: ['user']
 });
 
-},{}],68:[function(require,module,exports){
+},{}],69:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-profile-index', {
@@ -34238,7 +34315,7 @@ Vue.component('app-profile-index', {
   }
 });
 
-},{"../tab-state":74}],69:[function(require,module,exports){
+},{"../tab-state":75}],70:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-profile-liked-shelves', {
@@ -34276,7 +34353,7 @@ Vue.component('app-profile-liked-shelves', {
 
 });
 
-},{}],70:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-book-search-bar', {
@@ -34303,7 +34380,7 @@ Vue.component('app-book-search-bar', {
 
 });
 
-},{}],71:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-settings', {
@@ -34317,7 +34394,7 @@ Vue.component('app-settings', {
 
 });
 
-},{"./tab-state":74}],72:[function(require,module,exports){
+},{"./tab-state":75}],73:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-shelf-book-item', {
@@ -34350,7 +34427,7 @@ Vue.component('app-shelf-book-item', {
 
 });
 
-},{}],73:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-shelf', {
@@ -34381,7 +34458,7 @@ Vue.component('app-shelf', {
 
 });
 
-},{}],74:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -34479,7 +34556,7 @@ module.exports = {
     }
 };
 
-},{}],75:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-update-profile-information', {
@@ -34528,7 +34605,7 @@ Vue.component('app-update-profile-information', {
 
 });
 
-},{}],76:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-update-profile-photo', {
@@ -34584,7 +34661,7 @@ Vue.component('app-update-profile-photo', {
     }
 });
 
-},{}],77:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 'use strict';
 
 /**
@@ -34626,7 +34703,7 @@ Vue.filter('relative', function (value) {
     return moment.utc(value).local().fromNow();
 });
 
-},{}],78:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 'use strict';
 
 /**
@@ -34651,7 +34728,7 @@ require('./errors');
  */
 $.extend(App, require('./http'));
 
-},{"./errors":79,"./form":80,"./http":81}],79:[function(require,module,exports){
+},{"./errors":80,"./form":81,"./http":82}],80:[function(require,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
@@ -34718,7 +34795,7 @@ window.AppFormErrors = function () {
     };
 };
 
-},{}],80:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 "use strict";
 
 /**
@@ -34772,7 +34849,7 @@ window.AppForm = function (data) {
   };
 };
 
-},{}],81:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -34824,7 +34901,7 @@ module.exports = {
     }
 };
 
-},{}],82:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -34862,7 +34939,7 @@ module.exports = {
     }
 };
 
-},{}],83:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 "use strict";
 
 module.exports = {
@@ -34877,7 +34954,7 @@ module.exports = {
     }
 };
 
-},{}],84:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 'use strict';
 
 /*
@@ -34915,6 +34992,6 @@ require('./filters');
  */
 require('./forms/bootstrap');
 
-},{"./filters":77,"./forms/bootstrap":78,"./interceptors":82,"./mixin":83,"vue":52,"vue-resource":37}]},{},[54]);
+},{"./filters":78,"./forms/bootstrap":79,"./interceptors":83,"./mixin":84,"vue":52,"vue-resource":37}]},{},[54]);
 
 //# sourceMappingURL=app.js.map

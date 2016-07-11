@@ -47,9 +47,8 @@
                 </p>
             </div>
             <div class="media-footer book-search-item-footer" v-show="active">
-<!--                 <app-book-action-bar :book="book" ></app-book-action-bar> -->
                 <small>
-                  <a class="btn btn-default btn-sm btn-action" href="#" @click="showSavePopover()">
+                  <a class="btn btn-default btn-sm btn-action" href="#" @click="showSaveModal()">
                       <i class="fa fa-th-list"></i> Save
                   </a>
                 </small>
@@ -58,6 +57,7 @@
                         <i class="fa fa-external-link" aria-hidden="true"></i>
                     </a>
                 </small>
+                @include('modals.book-item-save-modal')
             </div>
         </div>
     </li>
