@@ -117,7 +117,6 @@
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
   transition: all .3s ease;
-  font-family: Helvetica, Arial, sans-serif;
 }
 
 .modal-header h3 {
@@ -127,6 +126,8 @@
 
 .modal-body {
   margin: 20px 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .modal-default-button {
@@ -150,4 +151,19 @@
 .modal-leave .modal-container {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
+}
+
+.shelf-list-item {
+  margin-bottom: 10px;
+}
+.shelf-list-item:hover {
+  background-color: darken(@book-search-item-bg, 3%);
+}
+
+.add-new-shelf-button {
+  background-color: #E2E8DD;
+}
+
+.add-new-shelf-button:hover {
+  background-color: darken(#E2E8DD, 3%);
 }

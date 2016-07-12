@@ -14340,7 +14340,6 @@ fieldset[disabled] .btn-danger-outline.active {
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all .3s ease;
-  font-family: Helvetica, Arial, sans-serif;
 }
 .modal-header h3 {
   margin-top: 0;
@@ -14368,6 +14367,18 @@ fieldset[disabled] .btn-danger-outline.active {
 .modal-leave .modal-container {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
+}
+.shelf-list-item {
+  margin-bottom: 10px;
+}
+.shelf-list-item:hover {
+  background-color: #f7f7f7;
+}
+.add-new-shelf-button {
+  background-color: #E2E8DD;
+}
+.add-new-shelf-button:hover {
+  background-color: #dae2d4;
 }
 body {
   font-weight: 300;

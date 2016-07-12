@@ -13,7 +13,6 @@ Vue.component('app-book-item-save-modal', {
                 id: '',
                 name: '',
             }),
-            // book: null,
         }
     },
 
@@ -27,34 +26,31 @@ Vue.component('app-book-item-save-modal', {
                 });
         },
 
-        // save the book to an existing bookshelf
-        storeBookToShelf(shelfId, shelfName) {
+        storeBookToShelf(shelfId) {
             this.form.id = this.book.id;
-            console.log(this.book.id);
             App.post(`/shelves/${shelfId}/books`, this.form)
                 .then(() => {
-                    this.success();
+                    this.success = true;
                 });
         },
 
-        // save the books in a new bookshelf
         storeBookToNewBookshelf() {
-            // 2. Create a new bookshelf
-            // 3. Call saveBookToBookshelf(bookId, shelfId)
             App.post('/shelves', this.form)
-                .then(() => {
+                .then((response) => {
+                    var shelfId = response.id;
                     this.form.name = '';
-                    // TODO: now we should add the book into the shelf
-                    this.show = false;
-                    this.addSuccessPopover = true;
+                    // add the book to the new shelf
+                    this.storeBookToShelf(shelfId)
+                    this.success = true;
                 });
-            // 1. Create a new bookshelf by name then save the book in that
-            return [];
         },
 
-        success() {
-            this.success = true;
+        close() {
+            this.show = false;
+            this.success = false;
+            this.showNewShelfForm = false;
         }
+
     },
 
     events: {
@@ -62,9 +58,15 @@ Vue.component('app-book-item-save-modal', {
             this.show = true;
             this.loading = true;
             this.getUserBookshelves();
-            console.log(this.book.title);
-            console.log(this.book.id);
         }
     },
+
+    ready: function () {
+        document.addEventListener("keydown", (e) => {
+            if (this.show && e.keyCode == 27) {
+                this.close();
+            }
+        });
+    }
 
 })
