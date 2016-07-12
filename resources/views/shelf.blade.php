@@ -17,36 +17,50 @@
     </div>
 </div>
 
-<div class="container m-y-md">
-    <app-shelf shelf="{{ $shelf }}" books="{{ $books }}"></app-shelf>
-
-    <!-- Shelf Template -->
-    <template id="shelf" :books="books">
-        <div class="m-t">
-            <div class="row">
-                <span v-for="book in books">
-                    <app-shelf-book-item :shelf="shelf" :book="book" ></app-shelf-book-item>
-                </span>
-            </div>
+<div class="container p-t-md">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <app-shelf shelf="{{ $shelf }}" books="{{ $books }}"></app-shelf>
         </div>
-        <span v-if="books.length < 1">There are no books in this bookshelf yet.</span>
-    </template>
+    </div>
+</div>
 
-    <!-- Shelf Book Item Template -->
-    <template id="shelf-book-item" :shelf="shelf" :book="book">
-        <div class="col-md-3">
-            <div class="panel book-card">
-                <div class="book-card-body">
-                    <h5 class="panel-title" >@{{ book.title }}</h5>
-                    <div class="shelf-card-actions-bar">
-                        <button class="btn btn-sm btn-danger-outline" @click="removeBookFromShelf()">
+<!-- Shelf Template -->
+<template id="shelf" :books="books">
+    <ul class="list-group media-list media-list-stream">
+        <app-shelf-book-item v-for="book in books" :shelf="shelf" :book="book" ></app-shelf-book-item>
+        <span v-if="books.length < 1">There are no books in this bookshelf yet.</span>
+    <ul>
+</template>
+
+<!-- Shelf Book Item Template -->
+<template id="shelf-book-item" :shelf="shelf" :book="book">
+    <li class="media list-group-item p-a book-search-item">
+        <a class="media-left" href="#">
+            <img class="media-object img-circle img-circle-book-cover" data-action="zoom" :src="book.image">
+        </a>
+        <div class="media-body">
+            <div class="media-body-text">
+                <div class="media-heading">
+                    <small class="pull-right text-muted">
+                        <button @click="removeBookFromShelf()" class="close">
                             <i class="fa fa-times"></i>
                         </button>
-                    </div>
+                    </small>
+                    <h5>@{{ book.title }}
+                        <small class="text-muted">
+                            <a href="@{{ book.google_info_link }}" target="_blank">
+                                <i class="fa fa-external-link" aria-hidden="true"></i>
+                            </a>
+                        </small>
+                    </h5>
                 </div>
+                <p>
+                    @{{ book.authors }}
+                </p>
             </div>
         </div>
-    </template>
+    </li>
+</template>
 
-</div>
 @endsection

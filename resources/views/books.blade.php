@@ -25,7 +25,7 @@
 <!-- Books Template -->
 <template id="books">
     <ul class="list-group media-list media-list-stream">
-            <app-book-item v-for="book in books" :book="book" ></app-book-item>
+        <app-book-item v-for="book in books" :book="book" ></app-book-item>
         <span v-if="books.length < 1">We couldn't find any book with the given name.</span>
     </ul>
 </template>
