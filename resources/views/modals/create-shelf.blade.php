@@ -9,7 +9,7 @@
                         <i class="fa fa-times" aria-hidden="true"></i>
 
                     </button>
-                    <h3 class="modal-title text-center">Create a new bookshelf</h3>
+                    <h4 class="text-center">Create a new bookshelf</h4>
                 </div>
 
                 <form class="form-horizontal p-b-none m-b-none" v-on:submit.prevent role="form">
@@ -36,7 +36,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-2">
-                                <button type="submit" class="btn-lg btn-info"
+                                <button type="submit" class="btn btn-default-outline"
                                         @click.prevent="create"
                                         :disabled="form.busy">
                                     Create

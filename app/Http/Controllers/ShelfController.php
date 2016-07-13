@@ -49,8 +49,8 @@ class ShelfController extends Controller
     // show the user's shelf
     public function show(Request $request, $shelfId)
     {
-        // return $request->user()->shelves()
         $shelf = $request->user()->shelves()->where('id', $shelfId)->firstOrFail();
+        dd($shelf);
         return $shelf;
     }
 
@@ -119,6 +119,19 @@ class ShelfController extends Controller
     public function getAllShelfBooks(Request $request, $shelfId)
     {
         $shelf = $request->user()->shelves()->where('id', $shelfId)->firstOrFail();
-        return response()->json($shelf->books()->get());
+        $books = [];
+        foreach ($shelf->books()->get() as $book) {
+            $authors = [];
+            foreach ($book->authors()->get() as $author) {
+                $authors[] = $author->name;
+            }
+            foreach ($book->categories()->get() as $category) {
+                $categories[] = $category->name;
+            }
+            $book['authors'] = implode(', ', $authors);
+            $book['categories'] = implode(', ', $categories);
+            $books[] = $book;
+        }
+        return response()->json($books);
     }
 }

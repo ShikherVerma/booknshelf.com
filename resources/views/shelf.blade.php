@@ -56,7 +56,7 @@
                     </h5>
                 </div>
                 <p>
-                    @{{ book.authors }}
+                    @{{ book.authors[0].name }}
                 </p>
             </div>
         </div>

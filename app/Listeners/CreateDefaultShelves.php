@@ -29,9 +29,9 @@ class CreateDefaultShelves
         // get the user from the event first
         $user = $event->user;
         $user->shelves()->create([
-            'name' => 'Currently Reading',
-            'description' => "The books I'm currently reading",
-            'slug' => str_slug('Currently Reading'),
+            'name' => "Books I have read",
+            'description' => "The books I've read",
+            'slug' => str_slug('Books I have read'),
         ]);
         $user->shelves()->create([
             'name' => 'Wishlist',
