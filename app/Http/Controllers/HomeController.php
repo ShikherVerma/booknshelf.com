@@ -27,7 +27,7 @@ class HomeController extends Controller
         return view('welcome', ['user' => $request->user()]);
     }
 
-    public function landing(Request $request)
+    public function landing()
     {
         return view('landing');
     }

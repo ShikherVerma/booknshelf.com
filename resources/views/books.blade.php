@@ -39,7 +39,10 @@
         <div class="media-body">
             <div class="media-body-text">
                 <div class="media-heading">
-                    <small class="pull-right text-muted">12 min</small>
+                    <small class="pull-right text-muted">
+                        <!-- Recommend a book here -->
+                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                    </small>
                     <h5>@{{ book.title }}</h5>
                 </div>
                 <p>

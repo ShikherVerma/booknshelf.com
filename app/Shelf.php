@@ -29,10 +29,21 @@ class Shelf extends Model
     }
 
     /**
-     * The books that belong to this shelf
+     * Return the books that belong to this shelf.
      */
     public function books()
     {
         return $this->belongsToMany('App\Book')->withTimestamps();
+    }
+
+    public function setSlugAttribute($value)
+    {
+        $this->attributes['slug'] = str_slug($value);
+    }
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = $value;
+        $this->attributes['slug'] = str_slug($value);
     }
 }

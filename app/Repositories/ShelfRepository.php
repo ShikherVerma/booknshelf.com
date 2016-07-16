@@ -24,4 +24,9 @@ class ShelfRepository {
                     ->orderBy('created_at', 'asc')
                     ->get();
     }
+
+    public function exists(User $user, $shelfName)
+    {
+        return $user->shelves()->where('slug', str_slug($shelfName))->count() > 0;
+    }
 }

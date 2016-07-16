@@ -4,7 +4,9 @@
           <input id="book-search" type="text" class="form-control"
             placeholder="Search for great books..." name="q">
           <span class="input-group-btn">
-            <button class="btn btn-default" type="submit">Search</button>
+            <button class="btn btn-default" type="submit">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
           </span>
         </div>
     </form>

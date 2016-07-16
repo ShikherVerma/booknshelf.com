@@ -9,6 +9,12 @@ class ShelfTest extends TestCase
 
     use DatabaseTransactions;
 
+    public function setUp()
+    {
+        parent::setUp();
+        $this->user = factory(App\User::class)->create();
+    }
+
     public function test_users_redirect_to_login_if_they_try_to_view_shelves_without_logging_in()
     {
         $this->visit('/shelves')->seePageIs('/login');
@@ -16,8 +22,7 @@ class ShelfTest extends TestCase
 
     public function test_auth_users_can_create_shelves()
     {
-        $user = factory(App\User::class)->create();
-        $response = $this->actingAs($user)
+        $response = $this->actingAs($this->user)
                 ->call('POST', '/shelves', [
                 'name' => 'Bookshelf Name Test',
                 'description' => 'Bookshelf description',
@@ -31,8 +36,7 @@ class ShelfTest extends TestCase
 
     public function test_shelf_should_have_all_required_fields_when_its_created()
     {
-        $user = factory(App\User::class)->create();
-        $this->actingAs($user);
+        $this->actingAs($this->user);
         $this->json('POST', '/shelves', [
                 'description' => 'Bookshelf description',
         ]);
@@ -42,8 +46,7 @@ class ShelfTest extends TestCase
 
     public function test_shelf_has_correct_slug()
     {
-        $user = factory(App\User::class)->create();
-        $this->actingAs($user);
+        $this->actingAs($this->user);
         $this->json('POST', '/shelves', [
                 'name' => 'Bookshelf Name Test With Slug'
             ])->seeJson([
@@ -53,16 +56,16 @@ class ShelfTest extends TestCase
 
     public function test_user_can_successfully_update_a_shelf()
     {
-        $user = factory(App\User::class)->create();
-        $this->actingAs($user);
+        $this->actingAs($this->user);
 
         $shelf = factory(App\Shelf::class)->create([
             'name' => 'Bookshelf Name is not Changed',
-            'user_id' => $user->id
+            'user_id' => $this->user->id
         ]);
         $this->json('PUT', '/shelves/'.$shelf->id, [
                 'name' => 'Bookshelf Name is Changed'
         ]);
+
         $this->assertResponseOk();
         $this->seeInDatabase('shelves', [
             'name' => 'Bookshelf Name is Changed',
@@ -72,11 +75,11 @@ class ShelfTest extends TestCase
     public function test_user_can_successfully_delete_a_shelf()
     {
         $user = factory(App\User::class)->create();
-        $this->actingAs($user);
+        $this->actingAs($this->user);
 
         $shelf = factory(App\Shelf::class)->create([
             'name' => 'Bookshelf Name',
-            'user_id' => $user->id
+            'user_id' => $this->user->id
         ]);
         $this->json('DELETE', '/shelves/'.$shelf->id);
         $this->assertResponseOk();
@@ -88,11 +91,11 @@ class ShelfTest extends TestCase
     public function test_when_changing_shelf_name_slug_is_also_changed()
     {
         $user = factory(App\User::class)->create();
-        $this->actingAs($user);
+        $this->actingAs($this->user);
 
         $shelf = factory(App\Shelf::class)->create([
             'name' => 'Bookshelf test name',
-            'user_id' => $user->id
+            'user_id' => $this->user->id
         ]);
         $this->json('PUT', '/shelves/'.$shelf->id, [
                 'name' => 'Bookshelf test name changed'
@@ -105,7 +108,7 @@ class ShelfTest extends TestCase
 
     public function test_users_cant_delete_shelves_of_other_users()
     {
-        $userOne = factory(User::class)->create();
+        $userOne = $this->user;
         $userTwo = factory(User::class)->create();
 
         $shelfOne = factory(App\Shelf::class)->create([
@@ -125,7 +128,7 @@ class ShelfTest extends TestCase
 
     public function test_users_cant_edit_shelves_of_other_users()
     {
-        $userOne = factory(User::class)->create();
+        $userOne = $this->user;
         $userTwo = factory(User::class)->create();
 
         $shelfOne = factory(App\Shelf::class)->create([
@@ -148,15 +151,13 @@ class ShelfTest extends TestCase
 
     public function test_users_cant_have_two_shelves_with_the_same_name()
     {
-        $user = factory(User::class)->create();
         $shelfOne = factory(App\Shelf::class)->create([
             'name' => 'Bookshelf Name 1',
             'slug' => 'bookshelf-name-1',
-            'user_id' => $user->id,
+            'user_id' => $this->user->id,
         ]);
 
-
-        $response = $this->actingAs($user)
+        $response = $this->actingAs($this->user)
                 ->call('POST', '/shelves', [
                 'name' => 'Bookshelf Name 1',
                 'description' => 'Bookshelf description',
@@ -167,14 +168,13 @@ class ShelfTest extends TestCase
 
     public function test_users_can_store_books_to_shelves()
     {
-        $user = factory(User::class)->create();
         $shelf = factory(App\Shelf::class)->create([
             'name' => 'Bookshelf Name 1',
             'slug' => 'bookshelf-name-1',
-            'user_id' => $user->id,
+            'user_id' => $this->user->id,
         ]);
         $book = factory(App\Book::class)->create();
-        $response = $this->actingAs($user)
+        $response = $this->actingAs($this->user)
                 ->call('POST', '/shelves/'.$shelf->id.'/books', [
                 'id' => $book->id,
         ]);
@@ -187,14 +187,13 @@ class ShelfTest extends TestCase
 
     public function test_users_can_remove_a_book_from_shelf()
     {
-        $user = factory(User::class)->create();
         $shelf = factory(App\Shelf::class)->create([
             'name' => 'Bookshelf Name 1',
             'slug' => 'bookshelf-name-1',
-            'user_id' => $user->id,
+            'user_id' => $this->user->id,
         ]);
         $book = factory(App\Book::class)->create();
-        $this->actingAs($user)
+        $this->actingAs($this->user)
             ->call('POST', '/shelves/'.$shelf->id.'/books', [
             'id' => $book->id,
         ]);
@@ -203,7 +202,7 @@ class ShelfTest extends TestCase
             'shelf_id' => $shelf->id,
             'book_id' => $book->id
         ]);
-        $this->actingAs($user)
+        $this->actingAs($this->user)
             ->call('DELETE', '/shelves/'.$shelf->id.'/books', [
             'id' => $book->id,
         ]);

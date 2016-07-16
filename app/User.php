@@ -14,7 +14,6 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
         'username',
         'avatar',
         'about',
@@ -41,7 +40,7 @@ class User extends Authenticatable
      */
     public function shelves()
     {
-        return $this->hasMany(Shelf::class)->orderBy('created_at', 'asc');
+        return $this->hasMany(Shelf::class)->orderBy('created_at', 'desc');
     }
 
     /**

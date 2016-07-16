@@ -3,35 +3,13 @@
 @section('content')
 <div class="container p-t-md">
     <div class="row">
-
-        <div class="col-md-2">
-            <div class="panel panel-default visible-md-block visible-lg-block">
-                <div class="panel-body">
-                    <section>
-                        <ul class="nav nav-pills nav-stacked">
-                            <li role="presentation"><a href="/">Home</a></li>
-                            <li role="presentation"><a href="#">Bookshelves</a></li>
-                            <li role="presentation"><a href="#">Curated By Us</a></li>
-                        </ul>
-                    </section>
-
-                    <section>
-                        <ul class="nav nav-pills">
-                        </ul>
-                    </section>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-7">
+      <div class="col-md-9">
           <ul class="list-group media-list media-list-stream">
 
 
             <li class="media list-group-item p-a">
-              <a class="media-left" href="#">
-                <img
-                  class="media-object img-circle"
-                  src="assets/img/avatar-fat.jpg">
+                <a class="media-left" href="#">
+                    <img class="media-object img-circle" src="assets/img/avatar-fat.jpg">
               </a>
               <div class="media-body">
                 <div class="media-body-text">

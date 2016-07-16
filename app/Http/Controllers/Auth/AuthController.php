@@ -88,9 +88,8 @@ class AuthController extends Controller
                 $request, $validator
             );
         }
-        // display the welcome page here.
         $user = $this->create($request->all());
-        // after all is good with user creation send to the welcome page
+
         Auth::guard($this->getGuard())->login($user);
 
         return redirect('/welcome');
@@ -116,7 +115,7 @@ class AuthController extends Controller
 
     public function userHasLoggedIn($user)
     {
-        // if user is not onboarded then send user to the welcome page
+        // if user is not on-boarded then send user to the welcome page
         if (!$user->is_onboarded) {
             return redirect('/welcome');
         }

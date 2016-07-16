@@ -43,4 +43,5 @@ class ShelfPolicy {
     {
         return $user->shelves()->where('slug', $shelf->slug)->count() == 0;
     }
+
 }
