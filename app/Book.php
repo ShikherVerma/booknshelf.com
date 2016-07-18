@@ -3,8 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Author;
-use App\Category;
 
 class Book extends Model
 {

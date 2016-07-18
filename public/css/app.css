@@ -7540,6 +7540,12 @@ img.zoom-img {
   width: 40px !important;
   border: none !important;
 }
+.max-width-1000 {
+  max-width: 1100px !important;
+}
+.home-container-content {
+  padding: 35px 0 0 0;
+}
 .alert {
   font-weight: 300;
 }
@@ -8156,7 +8162,8 @@ fieldset[disabled] .btn-danger-outline.active {
   border-bottom: 2px solid #f5f8fa;
 }
 .navbar-inner {
-  padding: 6px;
+  padding-top: 6px;
+  padding-bottom: 6px;
   font-weight: 400;
   cursor: pointer;
 }

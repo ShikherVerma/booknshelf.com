@@ -1,5 +1,5 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container navbar-outer">
+    <div class="container navbar-outer max-width-1000">
         <div class="navbar-header">
             <!-- Collapsed Hamburger -->
             <div class="hamburger">
@@ -28,7 +28,7 @@
             </ul>
         </div>
     </div>
-    <div class="container navbar-inner">
+    <div class="container navbar-inner max-width-1000">
         <div class="row">
             <div class="col-md-1">
                 <a href="/login" class="navbar-link">Our Picks</a>
