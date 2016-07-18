@@ -7420,6 +7420,9 @@ img.zoom-img {
 .p-l-none {
   padding-left: 0;
 }
+.p-main {
+  padding: 60px;
+}
 .m-t-lg {
   margin-top: 20px;
 }
@@ -8148,6 +8151,14 @@ fieldset[disabled] .btn-danger-outline.active {
 }
 .with-navbar {
   padding-top: 60px;
+}
+.navbar-outer {
+  border-bottom: 2px solid #f5f8fa;
+}
+.navbar-inner {
+  padding: 6px;
+  font-weight: 400;
+  cursor: pointer;
 }
 #book-search {
   width: 300px;

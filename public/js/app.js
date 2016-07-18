@@ -34021,7 +34021,7 @@ Vue.component('app-create-shelf', {
             App.post('/shelves', this.form).then(function () {
                 $('#modal-create-shelf').modal('hide');
 
-                // this.showCreateSuccessMessage();
+                _this.showCreateSuccessMessage();
 
                 _this.form.name = '';
                 _this.form.description = '';

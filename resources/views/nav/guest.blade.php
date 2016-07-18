@@ -1,5 +1,5 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
+    <div class="container navbar-outer">
         <div class="navbar-header">
             <!-- Collapsed Hamburger -->
             <div class="hamburger">
@@ -26,6 +26,13 @@
                 <li><a href="/login" class="navbar-link">Login</a></li>
                 <li><a href="/register" class="navbar-link">Register</a></li>
             </ul>
+        </div>
+    </div>
+    <div class="container navbar-inner">
+        <div class="row">
+            <div class="col-md-1">
+                <a href="/login" class="navbar-link">Our Picks</a>
+            </div>
         </div>
     </div>
 </nav>

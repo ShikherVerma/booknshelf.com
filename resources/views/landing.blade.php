@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container p-t-md">
+<div class="container p-main">
     <div class="row">
       <div class="col-md-9">
           <ul class="list-group media-list media-list-stream">
