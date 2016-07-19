@@ -33937,7 +33937,6 @@ Vue.component('app-books', {
 
     created: function created() {
         this.books = JSON.parse(this.books);
-        console.log(this.books);
     }
 });
 
@@ -34201,8 +34200,8 @@ Vue.component('app-profile-all-shelves', {
          * Get all bookshelves for the user.
          */
 
-        getShelves: function getShelves() {
-            this.$http.get('/user/shelves').then(function (response) {
+        getUserShelves: function getUserShelves() {
+            this.$http.get('/users/' + this.user.id + '/shelves').then(function (response) {
                 this.shelves = response.data;
             });
         },
@@ -34236,7 +34235,7 @@ Vue.component('app-profile-all-shelves', {
             var _this = this;
 
             App.put('/shelves/' + this.updatingShelf.id, this.updateShelfForm).then(function () {
-                _this.getShelves();
+                _this.getUserShelves();
                 $('#modal-update-shelf').modal('hide');
             });
         },
@@ -34258,7 +34257,7 @@ Vue.component('app-profile-all-shelves', {
             var _this2 = this;
 
             App.delete('/shelves/' + this.deletingShelf.id, this.deleteShelfForm).then(function () {
-                _this2.getShelves();
+                _this2.getUserShelves();
                 $('#modal-delete-shelf').modal('hide');
             });
         }
@@ -34272,7 +34271,7 @@ Vue.component('app-profile-all-shelves', {
 
         appHashChanged: function appHashChanged(hash) {
             if (hash == 'bookshelves' && this.shelves.length === 0) {
-                this.getShelves();
+                this.getUserShelves();
             }
         }
     }
@@ -34290,19 +34289,24 @@ Vue.component('app-profile-header', {
 'use strict';
 
 Vue.component('app-profile-index', {
-  props: ['user'],
+    props: ['user'],
 
-  /**
-   * Load mixins for the component.
-   */
-  mixins: [require('../tab-state')],
+    created: function created() {
+        this.user = JSON.parse(this.user);
+    },
 
-  /**
-   * Prepare the component.
-   */
-  ready: function ready() {
-    this.usePushStateForTabs('.profile-index-tabs');
-  }
+
+    /**
+     * Load mixins for the component.
+     */
+    mixins: [require('../tab-state')],
+
+    /**
+     * Prepare the component.
+     */
+    ready: function ready() {
+        this.usePushStateForTabs('.profile-index-tabs');
+    }
 });
 
 },{"../tab-state":74}],69:[function(require,module,exports){

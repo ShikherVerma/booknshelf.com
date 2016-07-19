@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class StaticPageController extends Controller
+class PageController extends Controller
 {
     public function craftedByUs(Request $request)
     {

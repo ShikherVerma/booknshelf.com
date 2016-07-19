@@ -5,18 +5,20 @@
                 <div class="col-md-3" v-for="shelf in shelves">
                     <div class="panel shelf-card">
                         <div class="shelf-card-body">
-                            <a href="/@{{ user.username}}/shelves/@{{ shelf.slug }}">
+                            <a href="/@{{ '@' + user.username}}/shelves/@{{ shelf.slug }}">
                                 <h5 class="shelf-card-title">@{{ shelf.name }}</h5>
                             </a>
                             <p class="shelf-card-desc" >@{{ shelf.description }}</p>
-                            <div class="shelf-card-actions-bar">
-                                <button class="btn btn-sm btn-default-outline" @click="editShelf(shelf)">
-                                    <i class="fa fa-pencil"></i>
-                                </button>
-                                <button class="btn btn-sm btn-danger-outline" @click="approveShelfDelete(shelf)">
-                                    <i class="fa fa-times"></i>
-                                </button>
-                            </div>
+                            @if (Auth::check())
+                                <div class="shelf-card-actions-bar">
+                                    <button class="btn btn-sm btn-default-outline" @click="editShelf(shelf)">
+                                        <i class="fa fa-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger-outline" @click="approveShelfDelete(shelf)">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

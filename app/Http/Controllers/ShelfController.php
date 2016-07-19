@@ -19,7 +19,6 @@ class ShelfController extends Controller
         $this->shelves = $shelves;
     }
 
-    // get all recently created bookshelves
     public function all()
     {
         return $this->shelves->recent();
@@ -80,12 +79,13 @@ class ShelfController extends Controller
         $shelf->delete();
     }
 
-    public function storeBookToShelf(Request $request, $shelfId)
+    public function storeBook(Request $request, $shelfId)
     {
         $this->validate($request, [
             'id' => 'required'
         ]);
         $bookId = $request->id;
+        // TODO: This should be in a repository.
         $count = DB::table('book_shelf')->where([
             'shelf_id' => $shelfId,
             'book_id' => $bookId,
@@ -100,7 +100,7 @@ class ShelfController extends Controller
         $shelf->books()->attach($bookId);
     }
 
-    public function removeBookFromShelf(Request $request, $shelfId)
+    public function removeBook(Request $request, $shelfId)
     {
         $this->validate($request, [
             'id' => 'required'
@@ -110,22 +110,11 @@ class ShelfController extends Controller
         $shelf->books()->detach($bookId);
     }
 
-    public function getAllShelfBooks(Request $request, $shelfId)
+    public function getBooks(Request $request, $shelfId)
     {
         $shelf = $request->user()->shelves()->where('id', $shelfId)->firstOrFail();
-        $books = [];
-        foreach ($shelf->books()->get() as $book) {
-            $authors = [];
-            foreach ($book->authors()->get() as $author) {
-                $authors[] = $author->name;
-            }
-            foreach ($book->categories()->get() as $category) {
-                $categories[] = $category->name;
-            }
-            $book['authors'] = implode(', ', $authors);
-            $book['categories'] = implode(', ', $categories);
-            $books[] = $book;
-        }
+        $books = $this->shelves->books($shelf);
+
         return response()->json($books);
     }
 }

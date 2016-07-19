@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Event;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Events\UserRegistered;
 use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\UserRepository;
@@ -18,9 +16,43 @@ class UserController extends Controller
 
     public function __construct(UserRepository $users, ShelfRepository $shelves)
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => [
+            'profile',
+            'allShelves',
+            'shelf'
+        ]]);
+
         $this->users = $users;
         $this->shelves = $shelves;
+    }
+
+    public function profile($username)
+    {
+        $user = $this->users->findByUsername($username);
+        return view('profile', [
+            'user' => json_encode($user),
+            'shelves' => $this->shelves->forUser($user),
+        ]);
+    }
+
+    public function allShelves($userId)
+    {
+        $user = $this->users->findById($userId);
+        return response()->json($this->shelves->forUser($user)->toArray());
+    }
+
+    public function shelf($username, $slug)
+    {
+        $user = $this->users->findByUsername($username);
+        $shelf = $this->shelves->findBySlug($user, $slug);
+
+        $books = $this->shelves->books($shelf);
+
+        return view('shelf', [
+            'user' => $user,
+            'shelf' => $shelf,
+            'books' => json_encode($books),
+        ]);
     }
 
     public function current()
@@ -32,32 +64,6 @@ class UserController extends Controller
     {
         $user = $this->users->current();
         return response()->json($this->shelves->forUser($user)->toArray());
-    }
-
-    public function shelf($username, $shelfSlug) {
-        $user = $this->users->current();
-        $shelf = $user->shelves()->where('slug', $shelfSlug)->firstOrFail();
-        $books = [];
-        foreach ($shelf->books()->get() as $book) {
-            $book->categories = $book->categories()->get();
-            $book->authors = $book->authors()->get();
-            $books[] = $book;
-        }
-        // dd($books);
-        return view('shelf', [
-            'user' => $user,
-            'shelf' => $shelf,
-            'books' => json_encode($books),
-        ]);
-    }
-
-    public function profile()
-    {
-        $user = $this->users->current();
-        return view('profile', [
-            'user' => $user,
-            'shelves' => $this->shelves->forUser($user),
-        ]);
     }
 
     public function welcome(UpdateUserRequest $request)

@@ -1,4 +1,4 @@
-<app-profile-index :user="user" inline-template>
+<app-profile-index user="{{ $user }}" inline-template>
     <div>
         <!-- Profile Header -->
         <div>

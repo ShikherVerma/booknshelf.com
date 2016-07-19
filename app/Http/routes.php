@@ -12,8 +12,6 @@ use App\User;
 |
 */
 
-// TODO: We should have one for guest and one landing page for
-// auth users
 $router->get('/', function() {
     return view('landing');
 });
@@ -29,7 +27,7 @@ Route::get('login_twitter', 'Auth\AuthController@loginTwitter');
 Route::get('register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
 Route::post('register', ['as' => 'register', 'uses' => 'Auth\AuthController@postRegister']);
 
-$router->get('/crafted-by-us', 'StaticPageController@craftedByus');
+$router->get('/crafted-by-us', 'PageController@craftedByus');
 
 // onboarding welcome page
 Route::get('/welcome', 'HomeController@welcome');
@@ -40,9 +38,11 @@ $router->put('/settings/profile', 'SettingsController@updateProfile');
 $router->post('/settings/photo', 'SettingsController@updatePhoto');
 
 // User
-$router->get('/{username}', 'UserController@profile');
-$router->get('/{username}/bookshelves', 'UserController@profile');
-$router->get('/{username}/shelves/{shelf_slug}', 'UserController@shelf');
+$router->get('/@{username}', 'UserController@profile');
+$router->get('/users/{user_id}/shelves', 'UserController@allShelves');
+
+$router->get('/@{username}/bookshelves', 'UserController@profile');
+$router->get('/@{username}/shelves/{shelf_slug}', 'UserController@shelf');
 $router->post('/user/welcome', 'UserController@welcome');
 $router->get('/user/current', 'UserController@current');
 $router->get('/user/shelves', 'UserController@shelves');
@@ -60,9 +60,9 @@ $router->post('/shelves', 'ShelfController@store');
 $router->get('/shelves/{shelf_id}', 'ShelfController@show');
 $router->put('/shelves/{shelf_id}', 'ShelfController@update');
 $router->delete('/shelves/{shelf_id}', 'ShelfController@destroy');
-$router->get('/shelves/{shelf_id}/books', 'ShelfController@getAllShelfBooks');
-$router->post('/shelves/{shelf_id}/books', 'ShelfController@storeBookToShelf');
-$router->delete('/shelves/{shelf_id}/books', 'ShelfController@removeBookFromShelf');
+$router->get('/shelves/{shelf_id}/books', 'ShelfController@getBooks');
+$router->post('/shelves/{shelf_id}/books', 'ShelfController@storeBook');
+$router->delete('/shelves/{shelf_id}/books', 'ShelfController@removeBook');
 
 // get a specific book in the collection // TEMP
 // $router->get('/shelves/{shelf_id}/books/{book_id}', 'ShelfController@storeBookToShelf');

@@ -8,6 +8,16 @@ use Auth;
 class UserRepository
 {
 
+    public function findByUsername($username)
+    {
+        return User::whereUsername($username)->first();
+    }
+
+    public function findById($id)
+    {
+        return User::findOrFail($id);
+    }
+
     public function findByFacebookUserIdOrCreate($userData)
     {
         $user = User::firstOrNew(['facebook_user_id' => $userData->id]);

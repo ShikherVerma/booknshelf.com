@@ -5,6 +5,5 @@ Vue.component('app-books', {
 
     created() {
         this.books = JSON.parse(this.books);
-        console.log(this.books);
     }
 });

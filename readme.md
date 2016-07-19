@@ -1,6 +1,11 @@
 ### Engineering todo
 
-#### July 14th
+#### July 19th
+- You should be able to share your profile on twitter and facebook.
+
+
+
+#### July 19th
 
 - Build the landing page by the design we decided with nyut
     - Make all layout changes

@@ -25,8 +25,8 @@ Vue.component('app-profile-all-shelves', {
         /**
          * Get all bookshelves for the user.
          */
-        getShelves() {
-            this.$http.get('/user/shelves')
+        getUserShelves() {
+            this.$http.get(`/users/${this.user.id}/shelves`)
                 .then(function(response) {
                     this.shelves = response.data;
                 });
@@ -59,7 +59,7 @@ Vue.component('app-profile-all-shelves', {
         updateShelf() {
             App.put(`/shelves/${this.updatingShelf.id}`, this.updateShelfForm)
                 .then(() => {
-                    this.getShelves();
+                    this.getUserShelves();
                     $('#modal-update-shelf').modal('hide');
                 })
         },
@@ -79,7 +79,7 @@ Vue.component('app-profile-all-shelves', {
         deleteShelf() {
             App.delete(`/shelves/${this.deletingShelf.id}`, this.deleteShelfForm)
                 .then(() => {
-                    this.getShelves();
+                    this.getUserShelves();
                     $('#modal-delete-shelf').modal('hide');
                 });
         }
@@ -92,7 +92,7 @@ Vue.component('app-profile-all-shelves', {
          */
         appHashChanged(hash) {
             if (hash == 'bookshelves' && this.shelves.length === 0) {
-                this.getShelves();
+                this.getUserShelves();
             }
         }
 

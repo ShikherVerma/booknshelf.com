@@ -10,7 +10,7 @@
                 {{ $shelf->description or ''}}
             </p>
             <span class="shelf-header-owner">
-                <img src="{{ Auth::user()->avatar }}" class="app-nav-profile-photo small-profile-photo">
+                <img src="{{ $user->avatar }}" class="app-nav-profile-photo small-profile-photo">
                 {{ $user->name }}
             </span>
         </div>
@@ -42,11 +42,13 @@
         <div class="media-body">
             <div class="media-body-text">
                 <div class="media-heading">
-                    <small class="pull-right text-muted">
-                        <button @click="removeBookFromShelf()" class="close">
-                            <i class="fa fa-times"></i>
-                        </button>
-                    </small>
+                    @if (Auth::check())
+                        <small class="pull-right text-muted">
+                            <button @click="removeBookFromShelf()" class="close">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </small>
+                    @endif
                     <h5>@{{ book.title }}
                         <small class="text-muted">
                             <a href="@{{ book.google_info_link }}" target="_blank">

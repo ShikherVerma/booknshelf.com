@@ -29,4 +29,21 @@ class ShelfRepository {
     {
         return $user->shelves()->where('slug', str_slug($shelfName))->count() > 0;
     }
+
+    public function findBySlug(User $user, $slug)
+    {
+        return $user->shelves()->where('slug', $slug)->firstOrFail();
+    }
+
+    public function findById($id)
+    {
+        return Shelf::findOrFail($id);
+    }
+
+    public function books($shelf)
+    {
+        $books = $shelf->books()->orderBy('created_at', 'desc')->get();
+        $books->load('categories', 'authors');
+        return $books->toArray();
+    }
 }
