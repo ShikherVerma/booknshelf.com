@@ -16,7 +16,10 @@ class AuthTest extends TestCase
                 'password' => 'password',
         ]);
         $this->assertEquals(302, $response->status());
-        $this->seeInDatabase('users', ['name' => 'JohnSnow']);
+        $this->seeInDatabase('users', [
+            'name' => 'JohnSnow',
+            'username' => 'john_snow',
+        ]);
     }
 
     // letters, numbers and underscores only
