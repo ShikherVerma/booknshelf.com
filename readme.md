@@ -1,8 +1,16 @@
 ### Engineering todo
 
 #### July 19th
-- You should be able to share your profile on twitter and facebook.
 
+- FIX: Password is null when signin up with username.
+- Fix up and setup production env variables for beta.booknshelf.com so nyut can start creating the bookshelves.
+    + forge configuration (FB keys, etc)
+    + database refresh
+    - new booknshelf user with this username
+    - etc, follow all awesome stuff that laravel suggests
+- Refactor book search and controller and write tests for books (Maybe a book interface)
+- Implement recommend someone a book or bookshelf (share the bookshelf) (via email, on FB or TWT)
+- You should be able to share your profile on twitter and facebook.
 
 
 #### July 19th
@@ -11,7 +19,6 @@
     - Make all layout changes
     - Figure out a better shelves layout
     - On hover effect
-- Refactor the code and write more test. Go over the existing code and make it more compact
 
 
 Later?
