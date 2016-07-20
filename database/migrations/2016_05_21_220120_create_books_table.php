@@ -29,7 +29,6 @@ class CreateBooksTable extends Migration
             $table->string('language')->nullable();
             $table->string('google_info_link')->nullable();
             $table->timestamps();
-            // $table->index(['title', 'created_at']);
         });
     }
 

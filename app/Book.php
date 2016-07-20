@@ -28,6 +28,10 @@ class Book extends Model
         'google_info_link',
     ];
 
+    protected $casts = [
+        'field_name' => 'json'
+    ];
+
     /**
      * Get the authors for the book.
      */

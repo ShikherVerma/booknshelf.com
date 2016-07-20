@@ -12,6 +12,7 @@ class CreateBookShelfTable extends Migration
      */
     public function up()
     {
+
         Schema::create('book_shelf', function (Blueprint $table) {
             $table->integer('shelf_id');
             $table->integer('book_id');

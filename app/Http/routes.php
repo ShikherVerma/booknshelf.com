@@ -1,6 +1,5 @@
 <?php
 
-use App\User;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -40,20 +39,14 @@ $router->post('/settings/photo', 'SettingsController@updatePhoto');
 // User
 $router->get('/@{username}', 'UserController@profile');
 $router->get('/users/{user_id}/shelves', 'UserController@allShelves');
-
 $router->get('/@{username}/bookshelves', 'UserController@profile');
 $router->get('/@{username}/shelves/{shelf_slug}', 'UserController@shelf');
 $router->post('/user/welcome', 'UserController@welcome');
 $router->get('/user/current', 'UserController@current');
 $router->get('/user/shelves', 'UserController@shelves');
 
-// Books Search
+// Book Search
 $router->get('/books/search', 'BookController@search');
-
-
-// Books
-// $router->get('/book/autocomplete', 'BookController@index');
-$router->get('/book/{service_id}', 'BookController@show');
 
 // Shelves
 $router->post('/shelves', 'ShelfController@store');
@@ -63,8 +56,3 @@ $router->delete('/shelves/{shelf_id}', 'ShelfController@destroy');
 $router->get('/shelves/{shelf_id}/books', 'ShelfController@getBooks');
 $router->post('/shelves/{shelf_id}/books', 'ShelfController@storeBook');
 $router->delete('/shelves/{shelf_id}/books', 'ShelfController@removeBook');
-
-// get a specific book in the collection // TEMP
-// $router->get('/shelves/{shelf_id}/books/{book_id}', 'ShelfController@storeBookToShelf');
-// get all the books in the collection // TEMP
-

@@ -46,7 +46,9 @@
                     <h5>@{{ book.title }}</h5>
                 </div>
                 <p>
-                    @{{ book.authors }}
+                    <span v-for="(index, author) in book.authors">
+                        @{{ author.name }}<span v-if="index !== book.authors.length - 1">, </span>
+                    </span>
                 </p>
             </div>
             <div class="media-footer book-search-item-footer" v-show="active">

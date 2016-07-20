@@ -58,7 +58,9 @@
                     </h5>
                 </div>
                 <p>
-                    @{{ book.authors[0].name }}
+                    <span v-for="(index, author) in book.authors">
+                        @{{ author.name }}<span v-if="index !== book.authors.length - 1">, </span>
+                    </span>
                 </p>
             </div>
         </div>

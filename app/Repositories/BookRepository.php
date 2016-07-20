@@ -18,7 +18,7 @@ class BookRepository
             $book = Book::create($bookData);
             // TODO: store the book cover in S3?
             foreach ($bookData['authors'] as $name) {
-                $author = Author::create(['name' => $name]);
+                $author = Author::firstOrCreate(['name' => $name]);
                 $book->authors()->attach($author->id);
             }
             foreach ($bookData['categories'] as $name) {

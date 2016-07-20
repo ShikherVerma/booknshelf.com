@@ -33,17 +33,6 @@ class BookController extends Controller
         return view('search');
     }
 
-    public function show($serviceId)
-    {
-        // 1. get the book from books api using service id
-        // 2. create a new book object using the book volume info
-        // 3. return newly created book object to user
-        // 4. do we want to catch any exception here and do what?g
-        $results = $this->service->volumes->get($serviceId);
-        $bookInfo = $results['volumeInfo'];
-
-        dd($bookInfo);
-    }
 
     public function search(Request $request)
     {
@@ -57,22 +46,12 @@ class BookController extends Controller
             'printType' => 'books',
             'orderBy' => 'relevance',
         );
-        $results = $this->service->volumes->listVolumes($query, $optParams);
-        $books = [];
-        foreach ($results as $item) {
-            $bookData = $this->books->extractGoogleVolumeData($item);
+        $volumes = $this->service->volumes->listVolumes($query, $optParams);
+        foreach ($volumes as $volume) {
+            $bookData = $this->books->extractGoogleVolumeData($volume);
             $book = $this->books->findByVolumeIdOrCreate($bookData);
-            $authors = [];
-            foreach ($book->authors()->get() as $author) {
-                $authors[] = $author->name;
-            }
-            $categories = [];
-            foreach ($book->categories()->get() as $category) {
-                $categories[] = $category->name;
-            }
-            $book['authors'] = implode(', ', $authors);
-            $book['categories'] = implode(', ', $categories);
-            $books[] = $book;
+            $book->load('categories', 'authors');
+            $books[] = $book->toArray();
         }
         return view('books', ['books' => json_encode($books)]);
 
