@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\ShelfRepository;
+use App\Events\ShelfUpdated;
+use Event;
 use App\Shelf;
 use Gate;
 use DB;
@@ -98,6 +100,9 @@ class ShelfController extends Controller
 
         $shelf = $request->user()->shelves()->where('id', $shelfId)->firstOrFail();
         $shelf->books()->attach($bookId);
+
+        // Trigger an event so the cover of the shelf will be updated.
+        Event::fire(new ShelfUpdated($shelf));
     }
 
     public function removeBook(Request $request, $shelfId)
@@ -108,6 +113,8 @@ class ShelfController extends Controller
         $bookId = $request->id;
         $shelf = $request->user()->shelves()->where('id', $shelfId)->firstOrFail();
         $shelf->books()->detach($bookId);
+
+        Event::fire(new ShelfUpdated($shelf));
     }
 
     public function getBooks(Request $request, $shelfId)

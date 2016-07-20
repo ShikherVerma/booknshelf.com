@@ -34,14 +34,14 @@
 <template id="book-item" :book="book">
     <li class="media list-group-item p-a book-search-item" @mouseover="mouseOver">
         <a class="media-left" href="#">
-            <img class="media-object img-circle img-circle-book-cover" data-action="zoom" :src="book.image">
+            <img class="media-object img-circle img-circle-book-cover" style="width: 150px;" :src="book.image">
         </a>
         <div class="media-body">
             <div class="media-body-text">
                 <div class="media-heading">
                     <small class="pull-right text-muted">
                         <!-- Recommend a book here -->
-                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                        {{--<i class="fa fa-ellipsis-v" aria-hidden="true"></i>--}}
                     </small>
                     <h5>@{{ book.title }}</h5>
                 </div>

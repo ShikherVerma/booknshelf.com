@@ -2,15 +2,8 @@
 
 #### July 19th
 
-+ FIX: Password is null when signin up with username.
-+ Fix up and setup production env variables for beta.booknshelf.com so nyut can start creating the bookshelves.
-    + forge configuration (FB keys, etc)
-    + database refresh
-    + new booknshelf user with this username
-- Refactor book search and controller and write tests for books (Maybe a book interface)
-- Implement recommend someone a book or bookshelf (share the bookshelf) (via email, on FB or TWT)
-- You should be able to share your profile on twitter and facebook.
 - Book covers should automatically created from book covers that are in that shelf, use Intervention\Image\ImageManager;
+    - Maybe trigger an event
 
 
 #### July 19th

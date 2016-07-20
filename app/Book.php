@@ -28,16 +28,12 @@ class Book extends Model
         'google_info_link',
     ];
 
-    protected $casts = [
-        'field_name' => 'json'
-    ];
-
     /**
      * Get the authors for the book.
      */
     public function authors()
     {
-        return $this->belongsToMany('App\Author');
+        return $this->belongsToMany('App\Author')->withTimestamps();
     }
 
     public function categories()

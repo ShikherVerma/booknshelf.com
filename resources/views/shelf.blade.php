@@ -13,6 +13,12 @@
                 <img src="{{ $user->avatar }}" class="app-nav-profile-photo small-profile-photo">
                 {{ $user->name }}
             </span>
+            <section>
+                <!-- Your save button code -->
+                <div class="fb-save"
+                  data-uri="https://booknshelf.com/">
+                </div>
+            </section>
         </div>
     </div>
 </div>
