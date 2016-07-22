@@ -18,7 +18,14 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                &nbsp;
+                <li>
+                    <a>
+                        @include('search.shelf-search-bar')
+                    </a>
+                </li>
+                <li>
+                    <a href="/our-picks" class="navbar-link">Our Picks</a>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -26,13 +33,6 @@
                 <li><a href="/login" class="navbar-link">Login</a></li>
                 <li><a href="/register" class="navbar-link">Register</a></li>
             </ul>
-        </div>
-    </div>
-    <div class="container navbar-inner max-width-1000">
-        <div class="row">
-            <div class="col-md-1">
-                <a href="/login" class="navbar-link">Our Picks</a>
-            </div>
         </div>
     </div>
 </nav>

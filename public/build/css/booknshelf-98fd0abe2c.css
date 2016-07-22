@@ -14119,7 +14119,7 @@ fieldset[disabled] .btn-danger-outline.active {
   float: right;
 }
 .with-navbar {
-  padding-top: 60px;
+  padding-top: 30px;
 }
 .navbar-outer {
   border-bottom: 2px solid #f5f8fa;
@@ -14253,12 +14253,6 @@ fieldset[disabled] .btn-danger-outline.active {
   position: fixed;
   bottom: 0;
   right: 0;
-}
-.btn-plan {
-  width: 150px;
-}
-.plan-feature-list li {
-  line-height: 35px;
 }
 .app-settings-stacked-tabs {
   border-radius: 4px;

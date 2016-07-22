@@ -1,17 +1,23 @@
 ### Engineering todo
 
 #### July 22th
+- Landing page and home page redesign
+    - Outer and inner navbars
+    - 2 columns, left big side and right sidebar for categories
+    - Hover on shelves effect, fix it
+    - Welcoming alert for visitors.
+    - bookshelves cover image by books
+    - Change the font, make it pretty.
 
 
-- The design of bookshelf when you are in it: possibly make two narrow columns listing books
-instead of one. 
+### TODO Before Launch
+- Mixpanel tracking
+- Add all Metas and SEO stuff needed.
 
 
-- We need to add a sign / button next to the book in the search page that has already been saved to your bookshelf.  
-This way you can't try to save something twice and you can clearly see that you added the book 
-
-
-#### July 23th
+#### July 23th (Making Booknshelf Pretty)
+ - The design of bookshelf when you are in it: possibly make two narrow columns listing books
+instead of one.
 - default color for bookshelves?
 - better bookshelf covers?
 - Custom 404 page

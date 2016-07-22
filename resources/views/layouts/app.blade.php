@@ -31,7 +31,6 @@
     </script>
 </head>
 <body class="with-navbar">
-<div id="fb-root"></div>
     <div id="app">
         <!-- Navigation -->
         @if (Auth::check())
