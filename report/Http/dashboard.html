@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /home/vagrant/booknshelf/app/Http</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/nv.d3.min.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="../js/html5shiv.min.js"></script>
+  <script src="../js/respond.min.js"></script>
+  <![endif]-->
+ </head>
+ <body>
+  <header>
+   <div class="container">
+    <div class="row">
+     <div class="col-md-12">
+      <ol class="breadcrumb">
+        <li><a href="../index.html">/home/vagrant/booknshelf/app</a></li>
+        <li><a href="index.html">Http</a></li>
+        <li class="active">(Dashboard)</li>
+
+      </ol>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Flash.php.html#7">Flash</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/PasswordController.php.html#8">PasswordController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Middleware/Authenticate.php.html#8">Authenticate</a></td><td class="text-right">40%</td></tr>
+       <tr><td><a href="Controllers/Auth/AuthController.php.html#17">AuthController</a></td><td class="text-right">65%</td></tr>
+       <tr><td><a href="Middleware/RedirectIfAuthenticated.php.html#8">RedirectIfAuthenticated</a></td><td class="text-right">66%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Controllers/Auth/AuthController.php.html#17">AuthController</a></td><td class="text-right">14</td></tr>
+       <tr><td><a href="Middleware/Authenticate.php.html#8">Authenticate</a></td><td class="text-right">7</td></tr>
+       <tr><td><a href="Middleware/RedirectIfAuthenticated.php.html#8">RedirectIfAuthenticated</a></td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Controllers/Auth/AuthController.php.html#98"><abbr title="AuthController::confirmEmail">confirmEmail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/AuthController.php.html#106"><abbr title="AuthController::loginFacebook">loginFacebook</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/AuthController.php.html#111"><abbr title="AuthController::loginTwitter">loginTwitter</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/AuthController.php.html#116"><abbr title="AuthController::userHasLoggedIn">userHasLoggedIn</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/Auth/PasswordController.php.html#28"><abbr title="PasswordController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Flash.php.html#9"><abbr title="Flash::info">info</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Flash.php.html#14"><abbr title="Flash::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Flash.php.html#23"><abbr title="Flash::success">success</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Flash.php.html#28"><abbr title="Flash::error">error</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Middleware/Authenticate.php.html#18"><abbr title="Authenticate::handle">handle</abbr></a></td><td class="text-right">40%</td></tr>
+       <tr><td><a href="Middleware/RedirectIfAuthenticated.php.html#18"><abbr title="RedirectIfAuthenticated::handle">handle</abbr></a></td><td class="text-right">66%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Middleware/Authenticate.php.html#18"><abbr title="Authenticate::handle">handle</abbr></a></td><td class="text-right">7</td></tr>
+       <tr><td><a href="Controllers/Auth/AuthController.php.html#116"><abbr title="AuthController::userHasLoggedIn">userHasLoggedIn</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Middleware/RedirectIfAuthenticated.php.html#18"><abbr title="RedirectIfAuthenticated::handle">handle</abbr></a></td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 2.2.4</a> using <a href="https://secure.php.net/" target="_top">PHP 7.0.3-13+deb.sury.org~trusty+1</a> and <a href="https://phpunit.de/">PHPUnit 4.8.27</a> at Fri Jul 22 3:35:06 UTC 2016.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../js/jquery.min.js" type="text/javascript"></script>
+  <script src="../js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="../js/holder.min.js" type="text/javascript"></script>
+  <script src="../js/d3.min.js" type="text/javascript"></script>
+  <script src="../js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([2,0,0,0,0,1,0,2,0,0,0,13], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([9,0,0,0,0,1,0,1,0,0,0,43], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(key, y, e, graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[65.217391304348,10,"<a href=\"Controllers\/Auth\/AuthController.php.html#17\">AuthController<\/a>"],[100,9,"<a href=\"Controllers\/Auth\/AuthenticateUser.php.html#12\">AuthenticateUser<\/a>"],[0,1,"<a href=\"Controllers\/Auth\/PasswordController.php.html#8\">PasswordController<\/a>"],[100,4,"<a href=\"Controllers\/BookController.php.html#13\">BookController<\/a>"],[100,0,"<a href=\"Controllers\/Controller.php.html#11\">Controller<\/a>"],[100,4,"<a href=\"Controllers\/HomeController.php.html#8\">HomeController<\/a>"],[100,1,"<a href=\"Controllers\/PageController.php.html#9\">PageController<\/a>"],[100,5,"<a href=\"Controllers\/SettingsController.php.html#12\">SettingsController<\/a>"],[100,13,"<a href=\"Controllers\/ShelfController.php.html#13\">ShelfController<\/a>"],[100,7,"<a href=\"Controllers\/UserController.php.html#12\">UserController<\/a>"],[0,4,"<a href=\"Flash.php.html#7\">Flash<\/a>"],[100,0,"<a href=\"Kernel.php.html#7\">Kernel<\/a>"],[40,4,"<a href=\"Middleware\/Authenticate.php.html#8\">Authenticate<\/a>"],[100,0,"<a href=\"Middleware\/EncryptCookies.php.html#7\">EncryptCookies<\/a>"],[66.666666666667,2,"<a href=\"Middleware\/RedirectIfAuthenticated.php.html#8\">RedirectIfAuthenticated<\/a>"],[100,0,"<a href=\"Middleware\/VerifyCsrfToken.php.html#7\">VerifyCsrfToken<\/a>"],[100,0,"<a href=\"Requests\/Request.php.html#7\">Request<\/a>"],[100,3,"<a href=\"Requests\/UpdateUserRequest.php.html#7\">UpdateUserRequest<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(key, y, e, graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[100,1,"<a href=\"Controllers\/Auth\/AuthController.php.html#43\">AuthController::__construct<\/a>"],[100,1,"<a href=\"Controllers\/Auth\/AuthController.php.html#54\">AuthController::validator<\/a>"],[100,1,"<a href=\"Controllers\/Auth\/AuthController.php.html#73\">AuthController::create<\/a>"],[100,2,"<a href=\"Controllers\/Auth\/AuthController.php.html#82\">AuthController::postRegister<\/a>"],[0,1,"<a href=\"Controllers\/Auth\/AuthController.php.html#98\">AuthController::confirmEmail<\/a>"],[0,1,"<a href=\"Controllers\/Auth\/AuthController.php.html#106\">AuthController::loginFacebook<\/a>"],[0,1,"<a href=\"Controllers\/Auth\/AuthController.php.html#111\">AuthController::loginTwitter<\/a>"],[0,2,"<a href=\"Controllers\/Auth\/AuthController.php.html#116\">AuthController::userHasLoggedIn<\/a>"],[100,1,"<a href=\"Controllers\/Auth\/AuthenticateUser.php.html#18\">AuthenticateUser::__construct<\/a>"],[100,2,"<a href=\"Controllers\/Auth\/AuthenticateUser.php.html#25\">AuthenticateUser::executeFacebook<\/a>"],[100,2,"<a href=\"Controllers\/Auth\/AuthenticateUser.php.html#38\">AuthenticateUser::executeTwitter<\/a>"],[100,1,"<a href=\"Controllers\/Auth\/AuthenticateUser.php.html#51\">AuthenticateUser::getAuthorizationFirst<\/a>"],[100,1,"<a href=\"Controllers\/Auth\/AuthenticateUser.php.html#56\">AuthenticateUser::getFacebookUser<\/a>"],[100,1,"<a href=\"Controllers\/Auth\/AuthenticateUser.php.html#61\">AuthenticateUser::getTwitterAuthorizationFirst<\/a>"],[100,1,"<a href=\"Controllers\/Auth\/AuthenticateUser.php.html#66\">AuthenticateUser::getTwitterUser<\/a>"],[0,1,"<a href=\"Controllers\/Auth\/PasswordController.php.html#28\">PasswordController::__construct<\/a>"],[100,1,"<a href=\"Controllers\/BookController.php.html#19\">BookController::__construct<\/a>"],[100,1,"<a href=\"Controllers\/BookController.php.html#31\">BookController::index<\/a>"],[100,2,"<a href=\"Controllers\/BookController.php.html#37\">BookController::search<\/a>"],[100,1,"<a href=\"Controllers\/HomeController.php.html#15\">HomeController::__construct<\/a>"],[100,1,"<a href=\"Controllers\/HomeController.php.html#20\">HomeController::index<\/a>"],[100,1,"<a href=\"Controllers\/HomeController.php.html#25\">HomeController::welcome<\/a>"],[100,1,"<a href=\"Controllers\/HomeController.php.html#30\">HomeController::landing<\/a>"],[100,1,"<a href=\"Controllers\/PageController.php.html#11\">PageController::craftedByUs<\/a>"],[100,1,"<a href=\"Controllers\/SettingsController.php.html#16\">SettingsController::__construct<\/a>"],[100,1,"<a href=\"Controllers\/SettingsController.php.html#22\">SettingsController::show<\/a>"],[100,1,"<a href=\"Controllers\/SettingsController.php.html#27\">SettingsController::updateProfile<\/a>"],[100,1,"<a href=\"Controllers\/SettingsController.php.html#44\">SettingsController::updatePhoto<\/a>"],[100,1,"<a href=\"Controllers\/SettingsController.php.html#73\">SettingsController::formatImage<\/a>"],[100,1,"<a href=\"Controllers\/ShelfController.php.html#18\">ShelfController::__construct<\/a>"],[100,1,"<a href=\"Controllers\/ShelfController.php.html#24\">ShelfController::all<\/a>"],[100,2,"<a href=\"Controllers\/ShelfController.php.html#29\">ShelfController::store<\/a>"],[100,1,"<a href=\"Controllers\/ShelfController.php.html#51\">ShelfController::show<\/a>"],[100,3,"<a href=\"Controllers\/ShelfController.php.html#56\">ShelfController::update<\/a>"],[100,1,"<a href=\"Controllers\/ShelfController.php.html#76\">ShelfController::destroy<\/a>"],[100,2,"<a href=\"Controllers\/ShelfController.php.html#84\">ShelfController::storeBook<\/a>"],[100,1,"<a href=\"Controllers\/ShelfController.php.html#108\">ShelfController::removeBook<\/a>"],[100,1,"<a href=\"Controllers\/ShelfController.php.html#120\">ShelfController::getBooks<\/a>"],[100,1,"<a href=\"Controllers\/UserController.php.html#17\">UserController::__construct<\/a>"],[100,1,"<a href=\"Controllers\/UserController.php.html#29\">UserController::profile<\/a>"],[100,1,"<a href=\"Controllers\/UserController.php.html#38\">UserController::allShelves<\/a>"],[100,1,"<a href=\"Controllers\/UserController.php.html#44\">UserController::shelf<\/a>"],[100,1,"<a href=\"Controllers\/UserController.php.html#58\">UserController::current<\/a>"],[100,1,"<a href=\"Controllers\/UserController.php.html#63\">UserController::shelves<\/a>"],[100,1,"<a href=\"Controllers\/UserController.php.html#69\">UserController::welcome<\/a>"],[0,1,"<a href=\"Flash.php.html#9\">Flash::info<\/a>"],[0,1,"<a href=\"Flash.php.html#14\">Flash::create<\/a>"],[0,1,"<a href=\"Flash.php.html#23\">Flash::success<\/a>"],[0,1,"<a href=\"Flash.php.html#28\">Flash::error<\/a>"],[40,4,"<a href=\"Middleware\/Authenticate.php.html#18\">Authenticate::handle<\/a>"],[66.666666666667,2,"<a href=\"Middleware\/RedirectIfAuthenticated.php.html#18\">RedirectIfAuthenticated::handle<\/a>"],[100,1,"<a href=\"Requests\/UpdateUserRequest.php.html#14\">UpdateUserRequest::authorize<\/a>"],[100,1,"<a href=\"Requests\/UpdateUserRequest.php.html#24\">UpdateUserRequest::rules<\/a>"],[100,1,"<a href=\"Requests\/UpdateUserRequest.php.html#36\">UpdateUserRequest::messages<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

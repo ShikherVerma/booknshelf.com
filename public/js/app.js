@@ -34260,6 +34260,9 @@ Vue.component('app-profile-all-shelves', {
                 _this2.getUserShelves();
                 $('#modal-delete-shelf').modal('hide');
             });
+        },
+        onOwnProfile: function onOwnProfile() {
+            return App.userId === this.user.id;
         }
     },
 
@@ -34394,7 +34397,7 @@ Vue.component('app-settings', {
 Vue.component('app-shelf-book-item', {
     template: '#shelf-book-item',
 
-    props: ['shelf', 'book'],
+    props: ['shelf', 'book', 'user'],
 
     data: function data() {
         return {
@@ -34416,6 +34419,9 @@ Vue.component('app-shelf-book-item', {
             App.delete('/shelves/' + shelfId + '/books', this.form).then(function () {
                 _this.$dispatch('updateShelf');
             });
+        },
+        onOwnProfile: function onOwnProfile() {
+            return App.userId === this.user.id;
         }
     }
 

@@ -19,10 +19,7 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\UserRegistered' => [
             // 'App\Listeners\SendWelcomeEmail',
             'App\Listeners\CreateDefaultShelves',
-        ],
-        'App\Events\ShelfUpdated' => [
-            'App\Listeners\UpdateShelfCover',
-        ],
+        ]
     ];
 
     /**

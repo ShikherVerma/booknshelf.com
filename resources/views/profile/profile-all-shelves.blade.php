@@ -9,8 +9,8 @@
                                 <h5 class="shelf-card-title">@{{ shelf.name }}</h5>
                             </a>
                             <p class="shelf-card-desc" >@{{ shelf.description }}</p>
-                            @if (Auth::check())
-                                <div class="shelf-card-actions-bar">
+                                {{--Show this if current auth user is on her profile page--}}
+                                <div v-show="onOwnProfile()" class="shelf-card-actions-bar">
                                     <button class="btn btn-sm btn-default-outline" @click="editShelf(shelf)">
                                         <i class="fa fa-pencil"></i>
                                     </button>
@@ -18,7 +18,6 @@
                                         <i class="fa fa-times"></i>
                                     </button>
                                 </div>
-                            @endif
                         </div>
                     </div>
                 </div>

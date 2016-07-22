@@ -1,7 +1,7 @@
 Vue.component('app-shelf-book-item', {
     template: '#shelf-book-item',
 
-    props: ['shelf', 'book'],
+    props: ['shelf', 'book', 'user'],
 
     data() {
         return {
@@ -21,6 +21,9 @@ Vue.component('app-shelf-book-item', {
                     this.$dispatch('updateShelf');
                 });
         },
+        onOwnProfile() {
+            return App.userId === this.user.id;
+        }
     }
 
 });

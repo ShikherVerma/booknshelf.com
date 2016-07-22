@@ -82,6 +82,10 @@ Vue.component('app-profile-all-shelves', {
                     this.getUserShelves();
                     $('#modal-delete-shelf').modal('hide');
                 });
+        },
+
+        onOwnProfile() {
+            return App.userId === this.user.id;
         }
     },
 

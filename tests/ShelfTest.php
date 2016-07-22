@@ -168,16 +168,21 @@ class ShelfTest extends TestCase
 
     public function test_users_can_store_books_to_shelves()
     {
+        $this->withoutJobs();
+
         $shelf = factory(App\Shelf::class)->create([
             'name' => 'Bookshelf Name 1',
             'slug' => 'bookshelf-name-1',
             'user_id' => $this->user->id,
+            'cover' => 'http://books.google.com/books?id=gt7EQgH8-b4C&dq=thin+air&hl=&as_pt=BOOKS&source=gbs_api',
         ]);
         $book = factory(App\Book::class)->create();
         $response = $this->actingAs($this->user)
                 ->call('POST', '/shelves/'.$shelf->id.'/books', [
                 'id' => $book->id,
         ]);
+
+        // $this->expectsJobs(\App\Jobs\UpdateShelfCover::class);
         $this->assertResponseOk();
         $this->seeInDatabase('book_shelf', [
             'shelf_id' => $shelf->id,
@@ -187,16 +192,21 @@ class ShelfTest extends TestCase
 
     public function test_users_can_remove_a_book_from_shelf()
     {
+        $this->withoutJobs();
+
         $shelf = factory(App\Shelf::class)->create([
             'name' => 'Bookshelf Name 1',
             'slug' => 'bookshelf-name-1',
             'user_id' => $this->user->id,
+            'cover' => 'http://books.google.com/books?id=gt7EQgH8-b4C&dq=thin+air&hl=&as_pt=BOOKS&source=gbs_api',
         ]);
         $book = factory(App\Book::class)->create();
         $this->actingAs($this->user)
             ->call('POST', '/shelves/'.$shelf->id.'/books', [
             'id' => $book->id,
         ]);
+
+        // $this->expectsJobs(\App\Jobs\UpdateShelfCover::class);
         $this->assertResponseOk();
         $this->seeInDatabase('book_shelf', [
             'shelf_id' => $shelf->id,

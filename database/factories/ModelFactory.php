@@ -25,7 +25,7 @@ $factory->define(App\Shelf::class, function (Faker\Generator $faker) {
         'name' => $name,
         'description' => $faker->sentence(20),
         'slug' => str_slug($name),
-        'cover' => '#FFFDDD',
+        'cover' => 'http://books.google.com/books?id=gt7EQgH8-b4C&dq=thin+air&hl=&as_pt=BOOKS&source=gbs_api',
     ];
 });
 

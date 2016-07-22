@@ -30,7 +30,7 @@ class CreateDefaultShelves
         $user = $event->user;
         $user->shelves()->create([
             'name' => "Books I have read",
-            'description' => "The books I've read",
+            'description' => "The books I've enjoyed reading",
             'slug' => str_slug('Books I have read'),
         ]);
         $user->shelves()->create([

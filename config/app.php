@@ -164,6 +164,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         // AlgoliaSearch\Laravel\AlgoliaServiceProvider::class,
         Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider::class,
+        GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
 
     ],
 

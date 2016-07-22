@@ -13,12 +13,6 @@
                 <img src="{{ $user->avatar }}" class="app-nav-profile-photo small-profile-photo">
                 {{ $user->name }}
             </span>
-            <section>
-                <!-- Your save button code -->
-                <div class="fb-save"
-                  data-uri="https://booknshelf.com/">
-                </div>
-            </section>
         </div>
     </div>
 </div>
@@ -34,7 +28,7 @@
 <!-- Shelf Template -->
 <template id="shelf" :books="books">
     <ul class="list-group media-list media-list-stream">
-        <app-shelf-book-item v-for="book in books" :shelf="shelf" :book="book" ></app-shelf-book-item>
+        <app-shelf-book-item v-for="book in books" :shelf="shelf" :book="book" :user="{{ json_encode($user) }}"></app-shelf-book-item>
         <span v-if="books.length < 1">There are no books in this bookshelf yet.</span>
     <ul>
 </template>
@@ -48,13 +42,11 @@
         <div class="media-body">
             <div class="media-body-text">
                 <div class="media-heading">
-                    @if (Auth::check())
-                        <small class="pull-right text-muted">
-                            <button @click="removeBookFromShelf()" class="close">
-                                <i class="fa fa-times"></i>
-                            </button>
-                        </small>
-                    @endif
+                    <small v-show="onOwnProfile()" class="pull-right text-muted">
+                        <button @click="removeBookFromShelf()" class="close">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </small>
                     <h5>@{{ book.title }}
                         <small class="text-muted">
                             <a href="@{{ book.google_info_link }}" target="_blank">

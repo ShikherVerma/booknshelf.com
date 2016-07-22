@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\ShelfRepository;
 use App\Events\ShelfUpdated;
-use Event;
+use App\Jobs\UpdateShelfCover;
 use App\Shelf;
 use Gate;
 use DB;
@@ -101,8 +101,8 @@ class ShelfController extends Controller
         $shelf = $request->user()->shelves()->where('id', $shelfId)->firstOrFail();
         $shelf->books()->attach($bookId);
 
-        // Trigger an event so the cover of the shelf will be updated.
-        Event::fire(new ShelfUpdated($shelf));
+        // Send a job so the cover of the shelf will be updated.
+        $this->dispatch(new UpdateShelfCover($shelf));
     }
 
     public function removeBook(Request $request, $shelfId)
@@ -114,7 +114,7 @@ class ShelfController extends Controller
         $shelf = $request->user()->shelves()->where('id', $shelfId)->firstOrFail();
         $shelf->books()->detach($bookId);
 
-        Event::fire(new ShelfUpdated($shelf));
+        $this->dispatch(new UpdateShelfCover($shelf));
     }
 
     public function getBooks(Request $request, $shelfId)
