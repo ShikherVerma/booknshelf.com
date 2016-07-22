@@ -11,7 +11,6 @@ Vue.component('app-create-shelf', {
         };
     },
 
-
     methods: {
 
         create() {
@@ -20,6 +19,9 @@ Vue.component('app-create-shelf', {
                     $('#modal-create-shelf').modal('hide');
 
                     this.showCreateSuccessMessage();
+
+                    // reload the user shelves
+                    this.$dispatch('reloadUserShelves');
 
                     this.form.name = '';
                     this.form.description = '';

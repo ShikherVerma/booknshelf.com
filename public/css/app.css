@@ -8433,6 +8433,9 @@ fieldset[disabled] .btn-danger-outline.active {
 .add-new-shelf-button:hover {
   background-color: #dae2d4;
 }
+.error-block {
+  color: #bf5329;
+}
 body {
   font-weight: 300;
 }

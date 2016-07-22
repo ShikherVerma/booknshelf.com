@@ -33631,6 +33631,9 @@ module.exports = {
         },
         showCreateShelfModal: function showCreateShelfModal() {
             $('#modal-create-shelf').modal('show');
+        },
+        reloadUserShelves: function reloadUserShelves() {
+            this.$broadcast('reloadUserShelves');
         }
     },
 
@@ -33804,6 +33807,7 @@ Vue.component('app-book-item-save-modal', {
             this.form.id = this.book.id;
             App.post('/shelves/' + shelfId + '/books', this.form).then(function () {
                 _this.success = true;
+                _this.$dispatch('bookSaved');
             });
         },
         storeBookToNewBookshelf: function storeBookToNewBookshelf() {
@@ -33821,6 +33825,7 @@ Vue.component('app-book-item-save-modal', {
             this.show = false;
             this.success = false;
             this.showNewShelfForm = false;
+            this.form.errors.forget();
         }
     },
 
@@ -33859,9 +33864,8 @@ Vue.component('app-book-item', {
             show: false,
             loading: true,
             active: false,
-            showModal: false,
-            showNewBookshelfForm: false,
             addSuccessPopover: false,
+            saved: false,
             form: new AppForm({
                 id: '',
                 name: ''
@@ -33882,48 +33886,16 @@ Vue.component('app-book-item', {
             this.getUserBookshelves();
             this.loading = false;
         },
-
-
-        // // get user's all bookshelves
-        // getUserBookshelves() {
-        //     this.$http.get('/user/shelves')
-        //         .then(function(response) {
-        //             console.log(response.data);
-        //             this.shelves = response.data;
-        //         });
-        // },
-
-        // // save the book in an existing bookshelf
-        // storeBookToShelf(shelfId) {
-        //     this.form.id = this.book.id;
-        //     console.log(this.book.id);
-        //     App.post(`/shelves/${shelfId}/books`, this.form)
-        //         .then(function(response) {
-        //             console.log(response.data);
-        //         });
-        // },
-
-        // // save the books in a new bookshelf
-        // storeBookToNewBookshelf() {
-        //     // 2. Create a new bookshelf
-        //     // 3. Call saveBookToBookshelf(bookId, shelfId)
-        //     App.post('/shelves', this.form)
-        //         .then(() => {
-        //             this.form.name = '';
-        //             // TODO: now we should add the book into the shelf
-        //             this.show = false;
-        //             this.addSuccessPopover = true;
-        //         });
-        //     // 1. Create a new bookshelf by name then save the book in that
-        //     return [];
-        // },
-
         showSaveModal: function showSaveModal() {
             this.$broadcast('showSaveModal');
         }
     },
 
-    events: {}
+    events: {
+        bookSaved: function bookSaved() {
+            this.saved = true;
+        }
+    }
 
 });
 
@@ -34021,6 +33993,9 @@ Vue.component('app-create-shelf', {
                 $('#modal-create-shelf').modal('hide');
 
                 _this.showCreateSuccessMessage();
+
+                // reload the user shelves
+                _this.$dispatch('reloadUserShelves');
 
                 _this.form.name = '';
                 _this.form.description = '';
@@ -34182,12 +34157,10 @@ Vue.component('app-profile-all-shelves', {
             shelves: [],
             updatingShelf: null,
             deletingShelf: null,
-
             updateShelfForm: new AppForm({
                 name: '',
                 description: ''
             }),
-
             deleteShelfForm: new AppForm({})
         };
     },
@@ -34275,6 +34248,9 @@ Vue.component('app-profile-all-shelves', {
             if (hash == 'bookshelves' && this.shelves.length === 0) {
                 this.getUserShelves();
             }
+        },
+        reloadUserShelves: function reloadUserShelves() {
+            this.getUserShelves();
         }
     }
 
@@ -34368,7 +34344,6 @@ Vue.component('app-book-search-bar', {
 
     methods: {
         search: function search(e) {
-            console.log("broadcasting " + this.query);
             this.$broadcast('searchChanged', this.query);
             e.preventDefault();
         }

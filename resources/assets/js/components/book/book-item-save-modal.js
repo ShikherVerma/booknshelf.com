@@ -31,6 +31,7 @@ Vue.component('app-book-item-save-modal', {
             App.post(`/shelves/${shelfId}/books`, this.form)
                 .then(() => {
                     this.success = true;
+                    this.$dispatch('bookSaved');
                 });
         },
 
@@ -49,6 +50,7 @@ Vue.component('app-book-item-save-modal', {
             this.show = false;
             this.success = false;
             this.showNewShelfForm = false;
+            this.form.errors.forget();
         }
 
     },

@@ -13,7 +13,6 @@ Vue.component('app-book-search-bar', {
 
     methods: {
         search: function(e) {
-            console.log("broadcasting " + this.query);
             this.$broadcast('searchChanged', this.query);
             e.preventDefault();
         }

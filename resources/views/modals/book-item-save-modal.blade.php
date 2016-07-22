@@ -17,6 +17,9 @@
                             <span class="loading-spin">
                                 <i v-show="loading" class="fa fa-circle-o-notch fa-spin fa-2x fa-fw"></i>
                             </span>
+                            <span class="help-block error-block" v-show="form.errors.has('name')">
+                                @{{ form.errors.get('name') }}
+                            </span>
                             <ul class="list-group" v-for="shelf in shelves">
                                 <li id="@{{ book.id }}" class="list-group-item shelf-list-item"
                                     @click="storeBookToShelf(shelf.id)">@{{ shelf.name }}
@@ -33,7 +36,7 @@
                                     <div class="input-group">
                                         <input v-model="form.name" type="text" class="form-control"
                                             placeholder="The name of the new bookshelf">
-                                        <span class="help-block" v-show="form.errors.has('name')">
+                                        <span class="help-block error-block" v-show="form.errors.has('name')">
                                             @{{ form.errors.get('name') }}
                                         </span>
                                         <span class="input-group-btn">

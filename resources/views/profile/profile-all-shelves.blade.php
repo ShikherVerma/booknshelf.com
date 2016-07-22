@@ -3,7 +3,10 @@
         <div class="m-t">
             <div class="row">
                 <div class="col-md-3" v-for="shelf in shelves">
-                    <div class="panel shelf-card">
+                    <div class="panel shelf-card" style="position: relative;">
+                        <div style="position: absolute;">
+                            <img class="media-object" width="250px;" height="200px;" :src="shelf.cover">
+                        </div>
                         <div class="shelf-card-body">
                             <a href="/@{{ '@' + user.username}}/shelves/@{{ shelf.slug }}">
                                 <h5 class="shelf-card-title">@{{ shelf.name }}</h5>

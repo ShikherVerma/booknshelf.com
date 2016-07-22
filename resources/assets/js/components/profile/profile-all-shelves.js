@@ -9,13 +9,11 @@ Vue.component('app-profile-all-shelves', {
             shelves: [],
             updatingShelf: null,
             deletingShelf: null,
-
             updateShelfForm: new AppForm({
                 name: '',
                 description: '',
             }),
-
-            deleteShelfForm: new AppForm({})
+            deleteShelfForm: new AppForm({}),
         }
     },
 
@@ -98,7 +96,11 @@ Vue.component('app-profile-all-shelves', {
             if (hash == 'bookshelves' && this.shelves.length === 0) {
                 this.getUserShelves();
             }
-        }
+        },
+
+        reloadUserShelves() {
+            this.getUserShelves();
+        },
 
     },
 

@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\UpdateUserRequest;
+use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
 use Storage;
-use App\Http\Requests;
-use App\User;
 
 class SettingsController extends Controller
 {

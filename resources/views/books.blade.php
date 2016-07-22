@@ -52,9 +52,14 @@
                 </p>
             </div>
             <div class="media-footer book-search-item-footer" v-show="active">
-                <small>
+                <small v-show="!saved">
                   <a class="btn btn-default btn-sm btn-action" href="#" @click="showSaveModal()">
                       <i class="fa fa-th-list"></i> Save
+                  </a>
+                </small>
+                <small v-show="saved">
+                  <a class="btn btn-success btn-sm btn-action" href="#" @click="showSaveModal()">
+                      <i class="fa fa-check"></i> Saved
                   </a>
                 </small>
                 <small class="text-muted">

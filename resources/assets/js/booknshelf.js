@@ -51,6 +51,10 @@ module.exports = {
         showCreateShelfModal() {
             $('#modal-create-shelf').modal('show');
         },
+
+        reloadUserShelves() {
+            this.$broadcast('reloadUserShelves');
+        }
     },
 
 

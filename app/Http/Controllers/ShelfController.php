@@ -94,7 +94,7 @@ class ShelfController extends Controller
         ])->count();
 
         if ($count > 0) {
-            $error = ['name' => ['The book is already in this bookshelf']];
+            $error = ['name' => ['This book is already in this bookshelf.']];
             return response()->json($error, 403);
         }
 

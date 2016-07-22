@@ -2,15 +2,14 @@
 
 namespace App\Jobs;
 
-use App\Jobs\Job;
+use App\Shelf;
 use Hash;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Intervention\Image\ImageManager;
 use Log;
 use Storage;
-use App\Shelf;
-use Intervention\Image\ImageManager;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class UpdateShelfCover extends Job implements ShouldQueue
 {
@@ -48,7 +47,7 @@ class UpdateShelfCover extends Job implements ShouldQueue
         // TODO: What if the book does not have a cover? It's empty.
         $img = $imageManager->make($covers[0]);
         // paste another image
-        $img->blur(40);
+        $img->blur(15);
         $path = Hash::make($this->shelf->id) . '.png';
         Log::info('Showing the path of the file: '. $path);
 
@@ -62,11 +61,5 @@ class UpdateShelfCover extends Job implements ShouldQueue
         // delete the job
         $this->delete();
 
-        // TODO:
-        // 1. Get the top three book covers from the shelf (3 most recent ones)
-        // 2. Add them all together as a single image
-        // 3. blur them 50%
-        // 4. store the image in s3
-        // 5. store the image s3 path in the database
     }
 }

@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Repositories\UserRepository;
 use App\Repositories\BookRepository;
-use App\Http\Requests;
+use App\Repositories\UserRepository;
+use Illuminate\Http\Request;
 
 require_once base_path('vendor/google/apiclient/src/Google/Client.php');
 require_once base_path('vendor/google/apiclient/src/Google/Service/Books.php');
@@ -53,7 +52,10 @@ class BookController extends Controller
             $book->load('categories', 'authors');
             $books[] = $book->toArray();
         }
-        return view('books', ['books' => json_encode($books)]);
+        return view('books', [
+            'books' => json_encode($books),
+            'q' => $query
+        ]);
 
     }
 }
