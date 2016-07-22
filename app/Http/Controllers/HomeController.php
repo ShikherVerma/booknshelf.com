@@ -12,7 +12,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct(ShelfRepository $)
+    public function __construct(ShelfRepository $shelves)
     {
         $this->middleware('auth', ['except' => [
             'index'
