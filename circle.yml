@@ -4,3 +4,5 @@ machine:
 dependencies:
     pre:
     - composer install --no-interaction --no-dev --prefer-dist
+    post:
+    - php artisan migrate --env=$ENVIRONMENT
