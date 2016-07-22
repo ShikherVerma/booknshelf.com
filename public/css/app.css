@@ -8344,6 +8344,108 @@ fieldset[disabled] .btn-danger-outline.active {
 .terms-of-service li {
   line-height: 25px;
 }
+#fh5co-board .item {
+  margin: 10px 10px 20px 10px;
+  background: whitespace;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+}
+#fh5co-board .item a {
+  display: block;
+}
+#fh5co-board .item .fh5co-desc {
+  padding: 20px;
+  float: left;
+  line-height: 24px;
+}
+#fh5co-board .item .fh5co-item-title {
+  font-size: 17px;
+  line-height: 24px;
+  margin: 0;
+  padding: 0;
+}
+#fh5co-board .item img {
+  max-width: 100%;
+}
+#fh5co-board .item .fh5co-board-img {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  overflow: hidden;
+}
+#fh5co-board .item .image-popup:hover img {
+  opacity: .5;
+}
+.js .animate-box {
+  opacity: 0;
+}
+.mfp-with-zoom .mfp-container,
+.mfp-with-zoom.mfp-bg {
+  opacity: 0;
+  -webkit-backface-visibility: hidden;
+  /* ideally, transition speed should match zoom duration */
+  transition: all 0.3s ease-out;
+}
+.mfp-with-zoom.mfp-ready .mfp-container {
+  opacity: 1;
+}
+.mfp-with-zoom.mfp-ready.mfp-bg {
+  opacity: 0.8;
+}
+.mfp-with-zoom.mfp-removing .mfp-container,
+.mfp-with-zoom.mfp-removing.mfp-bg {
+  opacity: 0;
+}
+/* Image Alignment */
+img.fh5co-align-right {
+  float: right;
+  margin: 0 0 .5em 1em;
+}
+@media screen and (max-width: 480px) {
+  img.fh5co-align-right {
+    width: 100%;
+    margin: 0 0 .5em 0;
+  }
+}
+img.fh5co-align-left {
+  float: left;
+  margin: 0 1em .5em 0;
+}
+@media screen and (max-width: 480px) {
+  img.fh5co-align-left {
+    width: 100%;
+    margin: 0 0 .5em 0;
+  }
+}
+img.fh5co-align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+a > img.fh5co-align-right {
+  float: right;
+  margin: 0 0 .5em 1em;
+}
+@media screen and (max-width: 480px) {
+  a > img.fh5co-align-right {
+    width: 100%;
+    margin: 0 0 .5em 0;
+  }
+}
+a > img.fh5co-align-left {
+  float: left;
+  margin: 0 1em .5em 0;
+}
+@media screen and (max-width: 480px) {
+  a > img.fh5co-align-left {
+    width: 100%;
+    margin: 0 0 .5em 0;
+  }
+}
+a > img.fh5co-align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 .book-search-item {
   cursor: pointer;
 }

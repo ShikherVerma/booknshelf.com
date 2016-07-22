@@ -9,6 +9,44 @@
 <div class="container max-width-1000">
     <div class="row">
         <div class="col-md-9">
+            <div id="fh5co-board" data-columns>
+                <div class="item animate-box">
+                    <div>
+                        <a href="images/img_1.jpg" class="image-popup fh5co-board-img" title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, eos?"><img src="images/img_1.jpg" alt="Free HTML5 Bootstrap template"></a>
+                    </div>
+                    <div class="fh5co-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, eos?</div>
+                </div>
+                <div class="item animate-box">
+                    <div>
+                        <a href="images/img_2.jpg" class="image-popup fh5co-board-img"><img src="images/img_2.jpg" alt="Free HTML5 Bootstrap template"></a>
+                        <div class="fh5co-desc">Veniam voluptatum voluptas tempora debitis harum totam vitae hic quos.</div>
+                    </div>
+                </div>
+                <div class="item animate-box">
+                    <div>
+                        <a href="images/img_3.jpg" class="image-popup fh5co-board-img"><img src="images/img_3.jpg" alt="Free HTML5 Bootstrap template"></a>
+                        <div class="fh5co-desc">Optio commodi quod vitae, vel, officiis similique quaerat odit dicta.</div>
+                    </div>
+                </div>
+                <div class="item animate-box">
+                    <div>
+                        <a href="images/img_4.jpg" class="image-popup fh5co-board-img"><img src="images/img_4.jpg" alt="Free HTML5 Bootstrap template"></a>
+                        <div class="fh5co-desc">Dolore itaque deserunt sit, at exercitationem delectus, consequuntur quaerat sapiente.</div>
+                    </div>
+                </div>
+                <div class="item animate-box">
+                    <div>
+                        <a href="images/img_5.jpg" class="image-popup fh5co-board-img"><img src="images/img_5.jpg" alt="Free HTML5 Bootstrap template"></a>
+                        <div class="fh5co-desc">Tempora distinctio inventore, nisi excepturi pariatur tempore sit quasi animi.</div>
+                    </div>
+                </div>
+                <div class="item animate-box">
+                    <div>
+                        <a href="images/img_6.jpg" class="image-popup fh5co-board-img"><img src="images/img_6.jpg" alt="Free HTML5 Bootstrap template"></a>
+                        <div class="fh5co-desc">Sequi, eaque suscipit accusamus. Necessitatibus libero, unde a nesciunt repellendus!</div>
+                    </div>
+                </div>
+            </div>
 
         </div>
 

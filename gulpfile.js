@@ -13,7 +13,16 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
 	// stylings
-	mix.styles(['sweetalert.css', 'bootstrap-social.css', 'hover.css'], 'public/css/helpers.css');
+	mix.styles([
+		'sweetalert.css',
+		'bootstrap-social.css',
+		'hover.css',
+		'animate.css',
+		'icomoon.css',
+		'magnific-popup.css',
+		'salvattore.css',
+	], 'public/css/helpers.css');
+
 	mix.less('app.less');
 
 	mix.styles([
@@ -33,6 +42,13 @@ elixir(function(mix) {
 	    'vendor/bootstrap',
 	    'helpers.js',
 	    'application.js',
+
+	    'vendor/hydrogen/jquery.easing.1.3.js',
+	    'vendor/hydrogen/jquery.waypoints.min.js',
+	    'vendor/hydrogen/jquery.magnific-popup.min.js',
+	    'vendor/hydrogen/salvattore.min.js',
+	    'vendor/hydrogen/main.js',
+
 	], 'public/js/booknshelf.js');
 
 	mix.version(['public/css/booknshelf.css','public/js/booknshelf.js']);
