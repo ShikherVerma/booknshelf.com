@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\Repositories\ShelfRepository;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,9 +12,11 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(ShelfRepository $)
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => [
+            'index'
+        ]]);
     }
 
     public function index()

@@ -11,9 +11,7 @@
 |
 */
 
-$router->get('/', function() {
-    return view('landing');
-});
+$router->get('/', 'HomeController@index');
 
 Route::auth();
 // Socialite auth for facebook
