@@ -59,6 +59,9 @@ class UpdateShelfCover extends Job implements ShouldQueue
             'cover' => $s3->url($path),
         ])->save();
 
+        // delete the job
+        $this->delete();
+
         // TODO:
         // 1. Get the top three book covers from the shelf (3 most recent ones)
         // 2. Add them all together as a single image

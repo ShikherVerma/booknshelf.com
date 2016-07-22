@@ -34030,7 +34030,6 @@ Vue.component('app-create-shelf', {
             swal({
                 title: 'Got It!',
                 text: 'Your bookshelf has successfully created.',
-                type: 'success',
                 showConfirmButton: false,
                 timer: 2000
             });
