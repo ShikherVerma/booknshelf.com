@@ -5,4 +5,4 @@ dependencies:
     pre:
     - composer install --no-interaction --no-dev --prefer-dist
     post:
-    - php artisan migrate --force
+    - php artisan migrate --force --env=local
