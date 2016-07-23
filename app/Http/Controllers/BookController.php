@@ -46,12 +46,15 @@ class BookController extends Controller
             'orderBy' => 'relevance',
         );
         $volumes = $this->service->volumes->listVolumes($query, $optParams);
+
+        $books = [];
         foreach ($volumes as $volume) {
             $bookData = $this->books->extractGoogleVolumeData($volume);
             $book = $this->books->findByVolumeIdOrCreate($bookData);
             $book->load('categories', 'authors');
             $books[] = $book->toArray();
         }
+        
         $mostSavedBooks = $this->books->getMostSaved();
         return view('books', [
             'books' => json_encode($books),

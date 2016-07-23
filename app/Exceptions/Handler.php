@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 // use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Bugsnag\BugsnagLaravel\BugsnagExceptionHandler as ExceptionHandler;
+use Whoops\Exception\ErrorException;
 
 class Handler extends ExceptionHandler
 {
@@ -50,6 +51,9 @@ class Handler extends ExceptionHandler
             return response()->view('errors.404', [], 404);
         }
 
+        if ($e instanceof ErrorException) {
+            return response()->view('errors.500', [], 500);
+        }
         return parent::render($request, $e);
     }
 }

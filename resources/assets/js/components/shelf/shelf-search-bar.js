@@ -20,7 +20,6 @@ Vue.component('app-shelf-search-bar', {
 
             this.index.search(this.query, function(error, results) {
                 this.shelves = results.hits;
-                console.log(this.shelves);
             }.bind(this));
         }
     }
