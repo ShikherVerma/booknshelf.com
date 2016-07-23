@@ -39,7 +39,6 @@ elixir(function(mix) {
 	    'vendor/toolkit.js',
 	    'vendor/custom',
 	    'vendor/bootstrap',
-	    'helpers.js',
 	    'application.js',
 
 	    'vendor/hydrogen/jquery.easing.1.3.js',
