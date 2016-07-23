@@ -43,17 +43,17 @@
             </div>
             <div class="media-footer book-search-item-footer" v-show="active">
                 <small v-show="!saved">
-                  <a class="btn btn-default btn-sm btn-action" href="#" @click="showSaveModal()">
-                      <i class="fa fa-th-list"></i> Save
-                  </a>
+                    <button class="btn btn-default btn-sm btn-action" @click="showSaveModal()" type="button">
+                        <span class="icon icon-add-to-list"></span> Save
+                    </button>
                 </small>
                 <small v-show="saved">
-                  <a class="btn btn-success btn-sm btn-action" href="#" @click="showSaveModal()">
-                      <i class="fa fa-check"></i> Saved
-                  </a>
+                    <button class="btn btn-success btn-sm btn-action" @click="showSaveModal()" type="button">
+                        <span class="icon icon-check"></span> Saved
+                    </button>
                 </small>
-                <small class="text-muted">
-                    <a class="btn btn-default btn-sm btn-tiny" href="@{{ book.google_info_link }}" target="_blank">
+                <small>
+                    <a class="btn btn-default btn-sm btn-action" href="@{{ book.google_info_link }}" target="_blank" type="button">
                         <i class="fa fa-external-link" aria-hidden="true"></i>
                     </a>
                 </small>

@@ -18,7 +18,6 @@ elixir(function(mix) {
 		'bootstrap-social.css',
 		'hover.css',
 		'animate.css',
-		'icomoon.css',
 		'magnific-popup.css',
 		'salvattore.css',
 	], 'public/css/helpers.css');

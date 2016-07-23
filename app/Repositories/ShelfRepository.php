@@ -14,6 +14,8 @@ class ShelfRepository {
 
     public function ourPicks()
     {
+        // TODO: This should return only the shelves that have at least one book.
+        // This also should not return the default shelves?
         return Shelf::with('user')->orderBy('created_at', 'desc')->take(50)->get();
     }
 

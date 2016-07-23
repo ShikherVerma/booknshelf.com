@@ -22,6 +22,9 @@ Vue.component('app-shelf', {
         updateShelf() {
             this.getBooks();
         },
+        showPleaseLoginModal() {
+            this.$broadcast('showPleaseLoginModal');
+        }
     },
 
 });

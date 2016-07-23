@@ -1,12 +1,9 @@
 ### Engineering todo
 
 #### July 23th
-- When looking at other shelf books you should be able to save it to your bookshelf if you want.
-    - When you’re not logged in you should see a login popup instead of your bookshelves
-    - Login and then you can save it.
-- Default cover for bookshelves
-- I think for the first version let's show only our picked bookshelves.
+- Default cover for bookshelves?
 - Change the font, make it pretty.
+- Change the action buttons, make them pretty
 
 
 ### TODO Before Launch

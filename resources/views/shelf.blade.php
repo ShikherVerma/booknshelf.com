@@ -27,6 +27,9 @@
 
 <!-- Shelf Template -->
 <template id="shelf" :books="books">
+    @if(!Auth::check())
+        @include('modals.please-login-modal')
+    @endif
     <ul class="list-group media-list media-list-stream">
         <app-shelf-book-item v-for="book in books" :shelf="shelf" :book="book" :user="{{ json_encode($user) }}"></app-shelf-book-item>
         <span v-if="books.length < 1">There are no books in this bookshelf yet.</span>
@@ -60,8 +63,14 @@
                         @{{ author.name }}<span v-if="index !== book.authors.length - 1">, </span>
                     </span>
                 </p>
+                <small v-show="!saved">
+                    <button class="btn btn-default btn-sm btn-action" @click="showSaveModal()">
+                        <span class="icon icon-add-to-list"></span> Save
+                    </button>
+                </small>
             </div>
         </div>
+        @include('modals.book-item-save-modal')
     </li>
 </template>
 

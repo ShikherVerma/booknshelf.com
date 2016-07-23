@@ -21,8 +21,18 @@ Vue.component('app-shelf-book-item', {
                     this.$dispatch('updateShelf');
                 });
         },
+
         onOwnProfile() {
             return App.userId === this.user.id;
+        },
+
+        showSaveModal() {
+            // if user is authenticated then show the save modal, otherwise login modal
+            if (App.userId) {
+                this.$broadcast('showSaveModal')
+            } else {
+                this.$dispatch('showPleaseLoginModal');
+            }
         }
     }
 
