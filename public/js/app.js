@@ -33563,7 +33563,7 @@ if ($('#app').length > 0) {
   require('./vue-bootstrap');
 }
 
-},{"./vue-bootstrap":85,"bootstrap/dist/js/npm":3,"jquery":16,"js-cookie":17,"moment":18,"promise":20,"underscore":28,"urijs":31}],54:[function(require,module,exports){
+},{"./vue-bootstrap":86,"bootstrap/dist/js/npm":3,"jquery":16,"js-cookie":17,"moment":18,"promise":20,"underscore":28,"urijs":31}],54:[function(require,module,exports){
 'use strict';
 
 require('./app-bootstrap');
@@ -33967,10 +33967,11 @@ require('./book/book-item-save-modal');
 // Shelf
 require('./shelf/shelf.js');
 require('./shelf/shelf-book-item.js');
+require('./shelf/shelf-search-bar.js');
 
 require('./please-login-modal.js');
 
-},{"./activity":56,"./book/book-item":58,"./book/book-item-save-modal":57,"./book/books":59,"./create-shelf":61,"./home":62,"./navbar":63,"./notifications":64,"./please-login-modal.js":65,"./profile":66,"./profile/profile-all-shelves":67,"./profile/profile-header":68,"./profile/profile-index":69,"./profile/profile-liked-shelves":70,"./search/book-search-bar":71,"./settings":72,"./shelf/shelf-book-item.js":73,"./shelf/shelf.js":74,"./update-profile-information":76,"./update-profile-photo":77}],61:[function(require,module,exports){
+},{"./activity":56,"./book/book-item":58,"./book/book-item-save-modal":57,"./book/books":59,"./create-shelf":61,"./home":62,"./navbar":63,"./notifications":64,"./please-login-modal.js":65,"./profile":66,"./profile/profile-all-shelves":67,"./profile/profile-header":68,"./profile/profile-index":69,"./profile/profile-liked-shelves":70,"./search/book-search-bar":71,"./settings":72,"./shelf/shelf-book-item.js":73,"./shelf/shelf-search-bar.js":74,"./shelf/shelf.js":75,"./update-profile-information":77,"./update-profile-photo":78}],61:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-create-shelf', {
@@ -34332,7 +34333,7 @@ Vue.component('app-profile-index', {
     }
 });
 
-},{"../tab-state":75}],70:[function(require,module,exports){
+},{"../tab-state":76}],70:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-profile-liked-shelves', {
@@ -34410,7 +34411,7 @@ Vue.component('app-settings', {
 
 });
 
-},{"./tab-state":75}],73:[function(require,module,exports){
+},{"./tab-state":76}],73:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-shelf-book-item', {
@@ -34457,6 +34458,39 @@ Vue.component('app-shelf-book-item', {
 },{}],74:[function(require,module,exports){
 'use strict';
 
+Vue.component('app-shelf-search-bar', {
+
+    props: [],
+
+    data: function data() {
+        return {
+            query: '',
+            shelves: []
+        };
+    },
+
+
+    ready: function ready() {
+        this.client = algoliasearch('T0H494PKEG', 'dcdaf55ad36be23423eb00e8faa8089d');
+        this.index = this.client.initIndex('shelves_local');
+    },
+
+    methods: {
+        search: function search() {
+            if (this.query.length < 3) return;
+
+            this.index.search(this.query, function (error, results) {
+                this.shelves = results.hits;
+                console.log(this.shelves);
+            }.bind(this));
+        }
+    }
+
+});
+
+},{}],75:[function(require,module,exports){
+'use strict';
+
 Vue.component('app-shelf', {
     template: '#shelf',
 
@@ -34488,7 +34522,7 @@ Vue.component('app-shelf', {
 
 });
 
-},{}],75:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -34586,7 +34620,7 @@ module.exports = {
     }
 };
 
-},{}],76:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-update-profile-information', {
@@ -34635,7 +34669,7 @@ Vue.component('app-update-profile-information', {
 
 });
 
-},{}],77:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-update-profile-photo', {
@@ -34691,7 +34725,7 @@ Vue.component('app-update-profile-photo', {
     }
 });
 
-},{}],78:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 'use strict';
 
 /**
@@ -34733,7 +34767,7 @@ Vue.filter('relative', function (value) {
     return moment.utc(value).local().fromNow();
 });
 
-},{}],79:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 'use strict';
 
 /**
@@ -34758,7 +34792,7 @@ require('./errors');
  */
 $.extend(App, require('./http'));
 
-},{"./errors":80,"./form":81,"./http":82}],80:[function(require,module,exports){
+},{"./errors":81,"./form":82,"./http":83}],81:[function(require,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
@@ -34825,7 +34859,7 @@ window.AppFormErrors = function () {
     };
 };
 
-},{}],81:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 "use strict";
 
 /**
@@ -34879,7 +34913,7 @@ window.AppForm = function (data) {
   };
 };
 
-},{}],82:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -34931,7 +34965,7 @@ module.exports = {
     }
 };
 
-},{}],83:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -34969,7 +35003,7 @@ module.exports = {
     }
 };
 
-},{}],84:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 "use strict";
 
 module.exports = {
@@ -34984,7 +35018,7 @@ module.exports = {
     }
 };
 
-},{}],85:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 'use strict';
 
 /*
@@ -35022,6 +35056,6 @@ require('./filters');
  */
 require('./forms/bootstrap');
 
-},{"./filters":78,"./forms/bootstrap":79,"./interceptors":83,"./mixin":84,"vue":52,"vue-resource":37}]},{},[54]);
+},{"./filters":79,"./forms/bootstrap":80,"./interceptors":84,"./mixin":85,"vue":52,"vue-resource":37}]},{},[54]);
 
 //# sourceMappingURL=app.js.map

@@ -47,6 +47,7 @@ $router->get('/user/shelves', 'UserController@shelves');
 $router->get('/books/search', 'BookController@search');
 
 // Shelves
+$router->get('/shelves/search', 'ShelfController@search');
 $router->post('/shelves', 'ShelfController@store');
 $router->get('/shelves/{shelf_id}', 'ShelfController@show');
 $router->put('/shelves/{shelf_id}', 'ShelfController@update');

@@ -1,9 +1,7 @@
 ### Engineering todo
 
 #### July 23th
-- Default cover for bookshelves?
-- Change the font, make it pretty.
-- Change the action buttons, make them pretty
+- Algolia search for bookshelves and users
 
 
 ### TODO Before Launch
@@ -16,4 +14,5 @@
 instead of one.
 - default color for bookshelves?
 - better bookshelf covers?
-- Custom 404 page
+- Change the font, make it pretty.
+- Change the action buttons, make them pretty

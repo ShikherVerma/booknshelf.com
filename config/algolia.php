@@ -39,7 +39,7 @@ return [
 
         'main' => [
             'id' => 'T0H494PKEG',
-            'key' => '9fa1054e478ea1dc6499ec8584040039',
+            'key' => '7bf20f6f4a74b6501130169bf8450e18',
         ],
 
         'alternative' => [

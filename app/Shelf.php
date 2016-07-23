@@ -3,9 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use AlgoliaSearch\Laravel\AlgoliaEloquentTrait;
 
 class Shelf extends Model
 {
+    use AlgoliaEloquentTrait;
+
+    public static $perEnvironment = true;
+
     protected $table = 'shelves';
 
     /**
@@ -45,5 +50,16 @@ class Shelf extends Model
     {
         $this->attributes['name'] = $value;
         $this->attributes['slug'] = str_slug($value);
+    }
+
+    public function getAlgoliaRecord()
+    {
+        /**
+         * Load the user relation so that it's available
+         *  in the laravel toArray method
+         */
+        $this->user;
+
+       return $this->toArray();
     }
 }

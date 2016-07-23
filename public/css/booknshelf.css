@@ -19109,6 +19109,25 @@ fieldset[disabled] .btn-danger-outline.active {
 #book-search {
   width: 300px;
 }
+#shelf-search {
+  width: 300px;
+}
+.media-shelf {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  float: left;
+  min-width: 300px;
+  padding: 4px 0;
+  margin: 2px 0 0 0;
+  list-style: none;
+  background-color: #ffffff;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.media-shelf em {
+  background: yellow;
+}
 .panel-heading {
   font-size: 15px;
   font-weight: 400;

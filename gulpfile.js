@@ -35,7 +35,7 @@ elixir(function(mix) {
 	mix.browserify('app.js');
 	mix.scripts([
 	    'vendor/sweetalert-dev.js',
-	    'vendor/typeahead.js',
+	    // 'vendor/typeahead.js',
 	    'vendor/toolkit.js',
 	    'vendor/custom',
 	    'vendor/bootstrap',
