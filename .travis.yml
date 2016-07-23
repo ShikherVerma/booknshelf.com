@@ -2,12 +2,11 @@ language: php
 
 php:
   - 7.0.4
-  - hhvm
+#  - hhvm
 
 before_script:
   - cp .env.travis .env
   - mysql -e 'create database homestead;'
-  - composer self-update
   - composer install --dev --prefer-source --no-interaction
   - php artisan key:generate
   - php artisan migrate --force
