@@ -5,12 +5,12 @@
     </a>
 </li>
 <li>
-    <a>
+    <a href="/">
         Our Picks
     </a>
 </li>
 <li>
-    <a>
+    <a href="/{{ '@' . Auth::user()->username }}/bookshelves">
         My Bookshelves
     </a>
 </li>
