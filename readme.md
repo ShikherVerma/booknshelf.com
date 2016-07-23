@@ -1,15 +1,12 @@
 ### Engineering todo
 
-#### July 22th
+#### July 23th
+- When looking at other shelf books you should be able to save it to your bookshelf if you want.
+    - When you’re not logged in you should see a login popup instead of your bookshelves
+    - Login and then you can save it.
 - Default cover for bookshelves
 - I think for the first version let's show only our picked bookshelves.
-- Landing page and home page redesign
-    - Outer and inner navbars
-    - 2 columns, left big side and right sidebar for categories
-    - Hover on shelves effect, fix it
-    - Welcoming alert for visitors.
-    - bookshelves cover image by books
-    - Change the font, make it pretty.
+- Change the font, make it pretty.
 
 
 ### TODO Before Launch
