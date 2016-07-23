@@ -33,24 +33,26 @@
         </div>
 
         <div class="col-md-3">
-
-            <div class="alert alert-warning alert-dismissible hidden-xs" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <a class="alert-link" href="profile/index.html">Visit your profile!</a> Check your self, you aren't looking too good.
-            </div>
-
+            s
             <div class="panel panel-default m-b-md hidden-xs">
                 <div class="panel-body">
-                    <ul class="media-list media-list-stream">
-                        <li class="media m-b">
-                            <div class="media-body">
-                                <div class="media-body-actions">
-<!--                                     <button class="btn btn-primary-outline btn-sm">
-                                        <span class="icon icon-add-user"></span> Business
-                                    </button> -->
+                    <h5>
+                        Top Profiles
+                    </h5>
+                    <ul class="media-list media-list-users list-group">
+                        @foreach ($users as $user)
+                            <li class="list-group-item">
+                                <div class="media">
+                                    <a class="media-left" href="#">
+                                        <img class="media-object img-circle" src="{{ $user['avatar'] or '' }}">
+                                    </a>
+                                    <div class="media-body">
+                                        <strong>{{ $user['name'] }}</strong>
+                                        <small><a href="/{{ '@' . $user['username'] }}">{{ $user['username'] }}</a></small>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

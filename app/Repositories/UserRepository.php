@@ -18,6 +18,12 @@ class UserRepository
         return User::findOrFail($id);
     }
 
+    public function ourPicks()
+    {
+        // for now do random
+        return User::orderByRaw("RAND()")->take(5)->get();
+    }
+
     public function findByFacebookUserIdOrCreate($userData)
     {
         $user = User::firstOrNew(['facebook_user_id' => $userData->id]);

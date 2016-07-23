@@ -1,5 +1,5 @@
 <app-profile-header :user=user inline-template>
-    <div class="profile-header">
+    <div class="profile-header p-t-lg">
         <div class="container">
             <div class="container-inner">
                 <img class="img-circle media-object" v-bind:src="user.avatar">
