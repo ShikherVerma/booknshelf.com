@@ -13,4 +13,5 @@ dependencies:
       - php artisan key:generate
       - php artisan migrate --force
 
-    post: vendor/bin/phpunit
+    post:
+      - vendor/bin/phpunit
