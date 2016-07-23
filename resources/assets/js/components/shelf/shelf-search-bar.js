@@ -11,7 +11,7 @@ Vue.component('app-shelf-search-bar', {
 
     ready: function() {
         this.client = algoliasearch('T0H494PKEG', 'dcdaf55ad36be23423eb00e8faa8089d');
-        this.index = this.client.initIndex('shelves_local');
+        this.index = this.client.initIndex('shelves_production');
     },
 
     methods: {

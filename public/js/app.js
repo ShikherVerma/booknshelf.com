@@ -34472,7 +34472,7 @@ Vue.component('app-shelf-search-bar', {
 
     ready: function ready() {
         this.client = algoliasearch('T0H494PKEG', 'dcdaf55ad36be23423eb00e8faa8089d');
-        this.index = this.client.initIndex('shelves_local');
+        this.index = this.client.initIndex('shelves_production');
     },
 
     methods: {
@@ -34481,7 +34481,6 @@ Vue.component('app-shelf-search-bar', {
 
             this.index.search(this.query, function (error, results) {
                 this.shelves = results.hits;
-                console.log(this.shelves);
             }.bind(this));
         }
     }
