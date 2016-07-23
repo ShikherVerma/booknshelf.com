@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    protected $shelves;
     /**
      * Create a new controller instance.
      *
@@ -17,11 +18,13 @@ class HomeController extends Controller
         $this->middleware('auth', ['except' => [
             'index'
         ]]);
+        $this->shelves = $shelves;
     }
 
     public function index()
     {
-        return view('home');
+        $shelves = $this->shelves->ourPicks();
+        return view('home', ['shelves' => $shelves->toArray()]);
     }
 
     public function welcome(Request $request)

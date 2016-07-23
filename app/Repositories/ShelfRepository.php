@@ -12,6 +12,11 @@ class ShelfRepository {
         return Shelf::with('user')->orderBy('created_at', 'desc')->take(10)->get();
     }
 
+    public function ourPicks()
+    {
+        return Shelf::with('user')->orderBy('created_at', 'desc')->take(50)->get();
+    }
+
     /**
      * Get all of the shelves for a given user.
      *
