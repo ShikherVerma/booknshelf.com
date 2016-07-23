@@ -33,7 +33,6 @@
         </div>
 
         <div class="col-md-3">
-            s
             <div class="panel panel-default m-b-md hidden-xs">
                 <div class="panel-body">
                     <h5>
