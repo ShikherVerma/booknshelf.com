@@ -2,12 +2,9 @@
 
 @section('content')
 
-@if (!Auth::check())
-    @include('landing.welcome-message')
-@endif
+@include('landing.welcome-message')
 
 <!-- Books Template -->
-
 <div class="container max-width-1000">
     <div class="row">
         <div class="col-md-9">

@@ -4,7 +4,7 @@
     :has-unread-notifications="hasUnreadNotifications"
     inline-template>
     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container" v-if="user">
+        <div class="container navbar-outer max-width-1000" v-if="user">
             <div class="navbar-header">
                 <!-- Collapsed Hamburger -->
                 <div class="hamburger">
@@ -30,5 +30,13 @@
                 </ul>
             </div>
         </div>
+        {{--<div class="container navbar-inner max-width-1000" v-if="user">--}}
+            {{--<div class="collapse navbar-collapse" id="app-navbar-collapse">--}}
+                {{--<!-- Left Side Of Navbar -->--}}
+                {{--<ul class="nav navbar-nav">--}}
+                    {{--@includeIf('nav.user-inner-left')--}}
+                {{--</ul>--}}
+            {{--</div>--}}
+        {{--</div>--}}
     </nav>
 </app-navbar>

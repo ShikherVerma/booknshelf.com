@@ -1,6 +1,7 @@
 ### Engineering todo
 
 #### July 22th
+- Default cover for bookshelves
 - I think for the first version let's show only our picked bookshelves.
 - Landing page and home page redesign
     - Outer and inner navbars

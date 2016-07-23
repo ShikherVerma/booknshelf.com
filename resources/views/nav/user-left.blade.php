@@ -4,7 +4,6 @@
         @include('search.book-search-bar')
     </a>
 </li>
-
 <li>
     <a>
         Our Picks
@@ -13,5 +12,10 @@
 <li>
     <a>
         My Bookshelves
+    </a>
+</li>
+<li>
+    <a @click="showCreateShelfModal">
+            Create
     </a>
 </li>

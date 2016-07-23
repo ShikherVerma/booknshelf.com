@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container m-t-lg">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
 
                 <div class="panel-body">
@@ -16,10 +16,6 @@
                       <span class="fa fa-twitter"></span> Continue with Twitter
                     </a>
                 </div>
-                <div class="panel-body">
-                    <span>We'll never post to Twitter or Facebook without your permission.</span>
-                </div>
-
 
                 <div class="panel-heading">Sign up</div>
                 <div class="panel-body">

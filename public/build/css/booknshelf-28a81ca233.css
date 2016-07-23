@@ -19399,10 +19399,7 @@ fieldset[disabled] .btn-danger-outline.active {
   border-bottom: 2px solid #f5f8fa;
 }
 .navbar-inner {
-  padding-top: 6px;
-  padding-bottom: 6px;
   font-weight: 400;
-  cursor: pointer;
 }
 #book-search {
   width: 300px;
@@ -19601,6 +19598,10 @@ fieldset[disabled] .btn-danger-outline.active {
   font-size: 13px;
   float: left;
   padding: 5px;
+}
+#fh5co-board .item .shelf-profile :hover {
+  background-color: #cccccc;
+  color: white;
 }
 #fh5co-board .item .fh5co-item-title {
   font-size: 17px;
