@@ -1,8 +1,6 @@
 machine:
     php:
-        version:
-          - 7.0.4
-
+        version: 7.0.4
 dependencies:
     pre:
       - cp .env.travis .env
@@ -13,4 +11,4 @@ dependencies:
       - php artisan migrate --force
 
     post:
-      - vendor/bin/phpunit
+    - vendor/bin/phpunit
