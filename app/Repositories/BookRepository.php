@@ -2,12 +2,11 @@
 
 namespace App\Repositories;
 
-use Image;
-use Storage;
-use App\Book;
-use App\Shelf;
 use App\Author;
+use App\Book;
 use App\Category;
+use DB;
+use Image;
 
 class BookRepository
 {
@@ -54,5 +53,18 @@ class BookRepository
                 'categories' => $item['volumeInfo']['categories'] ?? [],
                 'authors' => $item['volumeInfo']['authors'] ?? [],
         ];
+    }
+
+    public function getMostSaved()
+    {
+        // TODO: Can we improve this query here?
+        return DB::table('book_shelf')
+                    ->join('books', 'book_shelf.book_id', '=', 'books.id')
+                    ->selectRaw('books.*, count(*) as `aggregate`')
+                    ->groupBy('book_shelf.book_id')
+                    ->orderBy('aggregate', 'desc')
+                    ->distinct('title')
+                    ->take(5)
+                    ->get();
     }
 }

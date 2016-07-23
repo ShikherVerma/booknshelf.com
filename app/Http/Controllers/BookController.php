@@ -52,8 +52,10 @@ class BookController extends Controller
             $book->load('categories', 'authors');
             $books[] = $book->toArray();
         }
+        $mostSavedBooks = $this->books->getMostSaved();
         return view('books', [
             'books' => json_encode($books),
+            'mostSavedBooks' => $mostSavedBooks,
             'q' => $query
         ]);
 

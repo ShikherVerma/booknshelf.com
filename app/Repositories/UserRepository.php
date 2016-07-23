@@ -10,7 +10,7 @@ class UserRepository
 
     public function findByUsername($username)
     {
-        return User::whereUsername($username)->first();
+        return User::whereUsername($username)->firstOrfail();
     }
 
     public function findById($id)
