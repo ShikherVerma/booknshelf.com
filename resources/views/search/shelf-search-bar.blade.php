@@ -1,5 +1,5 @@
 
-<app-shelf-search-bar inline-template>
+<app-shelf-search-bar :user="user" inline-template>
     <form class="navbar-form" role="form" v-on:submit.prevent="search">
         <div class="input-group">
             <input id="book-search" type="text" class="form-control"
@@ -10,7 +10,9 @@
             <template v-if="shelves.length > 0">
                 <ul class="media-list media-list-users list-group media-shelf">
                     <li v-for="shelf in shelves" class="list-group-item">
-                        <h5 v-html="shelf._highlightResult.name.value"></h5>
+                        <a href="/@@{{shelf.user.username}}/shelves/@{{ shelf.slug }}">
+                            <h5 v-html="shelf._highlightResult.name.value"></h5>
+                        </a>
                     </li>
                 </ul>
             </template>

@@ -28,8 +28,6 @@ Vue.component('app-create-shelf', {
                 .then(() => {
                     $('#modal-create-shelf').modal('hide');
 
-                    // this.showCreateSuccessMessage();
-
                     // reload the user shelves
                     this.$dispatch('reloadUserShelves');
 

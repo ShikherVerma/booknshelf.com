@@ -34004,8 +34004,6 @@ Vue.component('app-create-shelf', {
             App.post('/shelves', this.form).then(function () {
                 $('#modal-create-shelf').modal('hide');
 
-                // this.showCreateSuccessMessage();
-
                 // reload the user shelves
                 _this.$dispatch('reloadUserShelves');
 

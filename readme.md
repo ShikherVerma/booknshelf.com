@@ -1,14 +1,14 @@
 ### Engineering todo
 
 #### July 24th
-- Fix InvalidArgumentException("Driver [{$config['driver']}] is not supported. Bugsnag (NOT FIXED YET)
-+ Save profile pics in disks
+- Fix shelf search on landing
+- FIX!! This content should also be served over HTTPS.
 - Fix the book search hover thing!!! finally!
 - covers on shelves to write the name and description, same for actions
 - Mixpanel tracking
 - Add all Metas and SEO stuff needed.
-- Create shelf redesign like other modals
 - Fix shelf searching, should be clickable
+- You should be able to save directly from "Most Saved Books" to your shelves
 
 
 ### TODO Before Launch
