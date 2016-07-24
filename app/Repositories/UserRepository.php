@@ -2,11 +2,15 @@
 
 namespace App\Repositories;
 
+use App\Jobs\SetUserAvatar;
 use App\User;
 use Auth;
+use Illuminate\Foundation\Bus\DispatchesJobs;
 
 class UserRepository
 {
+
+    use DispatchesJobs;
 
     public function findByUsername($username)
     {
@@ -44,6 +48,9 @@ class UserRepository
             $user->username = $newUsername;
         }
         $user->save();
+
+        $this->dispatch(new SetUserAvatar($user));
+
         return $user;
     }
 
@@ -67,6 +74,9 @@ class UserRepository
             $user->username = $newUsername;
         }
         $user->save();
+
+        $this->dispatch(new SetUserAvatar($user));
+
         return $user;
     }
 

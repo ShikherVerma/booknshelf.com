@@ -1,7 +1,8 @@
 ### Engineering todo
 
 #### July 24th
-- Fix InvalidArgumentException("Driver [{$config['driver']}] is not supported. Bugsnag
+- Fix InvalidArgumentException("Driver [{$config['driver']}] is not supported. Bugsnag (NOT FIXED YET)
+- Save profile pics in disks
 - Fix the book search hover thing!!! finally!
 - covers on shelves to write the name and description, same for actions
 - Mixpanel tracking

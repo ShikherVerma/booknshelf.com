@@ -41,8 +41,7 @@ class UpdateShelfCover extends Job implements ShouldQueue
         }
 
         if(empty($covers)) {
-            $this->delete();
-            return;
+            return $this->delete();
         }
 
         $s3 = Storage::disk('s3');

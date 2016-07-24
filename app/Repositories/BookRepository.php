@@ -54,7 +54,7 @@ class BookRepository
                 'page_count' => $item['volumeInfo']['pageCount'],
                 'google_average_rating' => $item['volumeInfo']['averageRating'],
                 'google_ratings_count' => $item['volumeInfo']['ratingsCount'],
-                'image' => $item['volumeInfo']['imageLinks']['thumbnail'],
+                'image' => $item['volumeInfo']['imageLinks']['thumbnail'] ?? null,
                 'language' => $item['volumeInfo']['language'],
                 'google_info_link' => $item['volumeInfo']['infoLink'],
                 'categories' => $item['volumeInfo']['categories'] ?? [],
