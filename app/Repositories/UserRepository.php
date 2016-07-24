@@ -33,7 +33,11 @@ class UserRepository
         $user = User::firstOrNew(['facebook_user_id' => $userData->id]);
         $user->name = $userData->name;
         $user->email = $userData->email;
-        $user->avatar = $userData->avatar_original;
+        $avatar = $userData->avatar_original;
+        $user->avatar = $avatar;
+        if(!is_null($avatar)) {
+            $user->avatar = preg_replace("/^http:/i", "https:", $avatar);
+        }
         $user->facebook_user_id = $userData->id;
         // if user already has a username do nothing.
         if (!$user->username) {
@@ -59,7 +63,11 @@ class UserRepository
         $user = User::firstOrNew(['twitter_user_id' => $userData->id]);
         $user->name = $userData->name;
         $user->email = $userData->email;
-        $user->avatar = $userData->avatar_original;
+        $avatar = $userData->avatar_original;
+        $user->avatar = $avatar;
+        if(!is_null($avatar)) {
+            $user->avatar = preg_replace("/^http:/i", "https:", $avatar);
+        }
         $user->twitter_user_id = $userData->id;
         // if user already has a username do nothing.
         if (!$user->username) {

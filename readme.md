@@ -1,6 +1,7 @@
 ### Engineering todo
 
 #### July 24th
+    
 - Fix shelf search on landing
 - FIX!! This content should also be served over HTTPS.
 - Fix the book search hover thing!!! finally!
@@ -12,6 +13,7 @@
 
 
 ### TODO Before Launch
+- WATCH THE LARACASE DEPLOYING VIDEO
 - Create all my own shelves
 
 
