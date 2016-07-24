@@ -2,7 +2,7 @@
 
 @section('content')
 <app-settings :user="user" inline-template>
-    <div class="app-screen container m-t-lg">
+    <div class="app-screen container max-width-1000 m-t-lg">
         <div class="row">
             <!-- Tabs -->
             <div class="col-md-4">

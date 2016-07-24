@@ -33630,7 +33630,7 @@ module.exports = {
             this.markNotificationsAsRead();
         },
         showCreateShelfModal: function showCreateShelfModal() {
-            $('#modal-create-shelf').modal('show');
+            this.$broadcast('showCreateNewShelfModal');
         },
         reloadUserShelves: function reloadUserShelves() {
             this.$broadcast('reloadUserShelves');
@@ -33979,6 +33979,8 @@ Vue.component('app-create-shelf', {
 
     data: function data() {
         return {
+            show: false,
+            success: false,
             form: new AppForm({
                 name: '',
                 description: '',
@@ -33989,19 +33991,29 @@ Vue.component('app-create-shelf', {
 
 
     methods: {
+        close: function close() {
+            this.show = false;
+            this.success = false;
+            this.form.errors.forget();
+            this.form.name = '';
+            this.form.description = '';
+        },
         create: function create() {
             var _this = this;
 
             App.post('/shelves', this.form).then(function () {
                 $('#modal-create-shelf').modal('hide');
 
-                _this.showCreateSuccessMessage();
+                // this.showCreateSuccessMessage();
 
                 // reload the user shelves
                 _this.$dispatch('reloadUserShelves');
 
                 _this.form.name = '';
                 _this.form.description = '';
+                _this.form.errors.forget();
+
+                _this.success = true;
             });
         },
         showCreateSuccessMessage: function showCreateSuccessMessage() {
@@ -34012,6 +34024,22 @@ Vue.component('app-create-shelf', {
                 timer: 2000
             });
         }
+    },
+
+    events: {
+        showCreateNewShelfModal: function showCreateNewShelfModal() {
+            this.show = true;
+        }
+    },
+
+    ready: function ready() {
+        var _this2 = this;
+
+        document.addEventListener("keydown", function (e) {
+            if (_this2.show && e.keyCode == 27) {
+                _this2.close();
+            }
+        });
     }
 
 });

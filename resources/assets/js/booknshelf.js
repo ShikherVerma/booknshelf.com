@@ -49,7 +49,7 @@ module.exports = {
         },
 
         showCreateShelfModal() {
-            $('#modal-create-shelf').modal('show');
+            this.$broadcast('showCreateNewShelfModal');
         },
 
         reloadUserShelves() {

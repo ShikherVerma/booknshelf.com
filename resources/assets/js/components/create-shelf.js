@@ -3,6 +3,8 @@ Vue.component('app-create-shelf', {
 
     data() {
         return {
+            show: false,
+            success: false,
             form: new AppForm({
                 name: '',
                 description: '',
@@ -13,18 +15,29 @@ Vue.component('app-create-shelf', {
 
     methods: {
 
+        close() {
+            this.show = false;
+            this.success = false;
+            this.form.errors.forget();
+            this.form.name = '';
+            this.form.description = '';
+        },
+
         create() {
             App.post('/shelves', this.form)
                 .then(() => {
                     $('#modal-create-shelf').modal('hide');
 
-                    this.showCreateSuccessMessage();
+                    // this.showCreateSuccessMessage();
 
                     // reload the user shelves
                     this.$dispatch('reloadUserShelves');
 
                     this.form.name = '';
                     this.form.description = '';
+                    this.form.errors.forget();
+
+                    this.success = true;
                 });
         },
 
@@ -35,7 +48,22 @@ Vue.component('app-create-shelf', {
                 showConfirmButton: false,
                 timer: 2000
             });
+        },
+
+    },
+
+    events: {
+        showCreateNewShelfModal() {
+            this.show = true;
         }
     },
+
+    ready: function () {
+        document.addEventListener("keydown", (e) => {
+            if (this.show && e.keyCode == 27) {
+                this.close();
+            }
+        });
+    }
 
 });

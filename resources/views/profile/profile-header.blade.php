@@ -1,7 +1,7 @@
 <app-profile-header :user=user inline-template>
     <div class="profile-header p-t-lg">
-        <div class="container">
-            <div class="container-inner">
+        <div class="container max-width-1000">
+            <div class="container-inner ">
                 <img class="img-circle media-object" v-bind:src="user.avatar">
                 <h3 class="profile-header-user">@{{ user.name }}</h3>
                 {{--<div class="panel panel-default panel-link-list">--}}
