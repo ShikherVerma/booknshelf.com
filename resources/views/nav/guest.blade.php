@@ -23,9 +23,6 @@
                         @include('search.shelf-search-bar')
                     </a>
                 </li>
-<!--                 <li>
-                    <a href="/our-picks" class="navbar-link">Our Picks</a>
-                </li> -->
             </ul>
 
             <!-- Right Side Of Navbar -->

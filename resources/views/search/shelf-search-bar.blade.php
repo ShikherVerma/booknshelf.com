@@ -7,11 +7,13 @@
                    placeholder="Search for great bookshelves ..."
                    v-on:keyup="search"
             >
-            <ul class="media-list media-list-users list-group media-shelf">
-                <li v-for="shelf in shelves" class="list-group-item">
-                    <h5 v-html="shelf._highlightResult.name.value"></h5>
-                </li>
-            </ul>
+            <template v-if="shelves.length > 0">
+                <ul class="media-list media-list-users list-group media-shelf">
+                    <li v-for="shelf in shelves" class="list-group-item">
+                        <h5 v-html="shelf._highlightResult.name.value"></h5>
+                    </li>
+                </ul>
+            </template>
 
         </div>
     </form>
