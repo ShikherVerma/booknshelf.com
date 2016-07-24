@@ -47,7 +47,7 @@ class UpdateShelfCover extends Job implements ShouldQueue
         // TODO: What if the book does not have a cover? It's empty.
         $img = $imageManager->make($covers[0]);
         // paste another image
-        $img->blur(10);
+        $img->blur(5);
         $path = Hash::make($this->shelf->id) . '.png';
         Log::info('Showing the path of the file: '. $path);
 

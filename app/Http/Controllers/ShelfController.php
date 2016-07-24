@@ -17,26 +17,13 @@ class ShelfController extends Controller
 
     public function __construct(ShelfRepository $shelves)
     {
-        $this->middleware('auth', ['except' =>
-            ['search']
-        ]);
+        $this->middleware('auth');
         $this->shelves = $shelves;
     }
 
     public function all()
     {
         return $this->shelves->recent();
-    }
-
-    public function search(Request $request)
-    {
-        $this->validate($request, [
-            'q' => 'required',
-        ]);
-        $q = $request->q;
-
-        $result = Shelf::search($q);
-        dd($result);
     }
 
     public function store(Request $request)
