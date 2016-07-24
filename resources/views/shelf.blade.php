@@ -11,7 +11,7 @@
             </p>
             <span class="shelf-header-owner">
                 <img src="{{ $user->avatar }}" class="app-nav-profile-photo small-profile-photo">
-                {{ $user->name }}
+                by <a href="/{{ '@' . $user->username }}">{{ $user->name }}</a>
             </span>
         </div>
     </div>
@@ -39,7 +39,7 @@
     <div class="col-md-6 shelf-book-item">
         <div class="panel p-a">
             <a class="media-left" href="#">
-                <img class="media-object img-circle-book-cover" :src="book.image">
+                <img class="media-object" width="110px;" height="150px;" :src="book.image">
             </a>
             <div class="media-body">
                 <div class="media-body-text">
