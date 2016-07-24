@@ -4,7 +4,7 @@
           <input id="book-search" type="text" value="{{ $q or '' }}" class="form-control"
             placeholder="Search for great books ..." name="q">
           <span class="input-group-btn">
-            <button class="btn btn-default" type="submit">
+            <button class="btn btn-default btn-search" type="submit">
                 <i class="fa fa-search" aria-hidden="true"></i>
             </button>
           </span>

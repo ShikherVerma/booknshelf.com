@@ -1,5 +1,5 @@
 // Body
-@body-bg: #f5f8fa;
+@body-bg: #e8edeb;
 
 // Font size
 @font-size-base: 14px;
@@ -14,7 +14,7 @@
 @panel-inner-border: @app-border-color;
 
 // Brands
-@brand-primary: #05668D;
+@brand-primary: #072b54;
 @brand-info: #028090;
 @brand-success: #02C39A;
 @brand-warning: #cbb956;
@@ -24,6 +24,7 @@
 @font-family-sans-serif: "Open Sans", Helvetica, Arial, sans-serif;
 @line-height-base: 1.6;
 @text-color: #636b6f;
+@navbar-text-color: #98E2D5;
 
 // Buttons
 @btn-default-color: @text-color;
@@ -39,11 +40,11 @@
 @navbar-height: 30px;
 @navbar-margin-bottom: 0;
 
-@navbar-inverse-bg: #fff;
-@navbar-inverse-color:  lighten(@text-color, 30%);
+@navbar-inverse-bg: #072b54;
+@navbar-inverse-color:  @navbar-text-color;
 @navbar-inverse-border: @app-border-color;
 
-@navbar-inverse-link-color: lighten(@text-color, 25%);
+@navbar-inverse-link-color: @navbar-text-color;
 @navbar-inverse-link-active-bg: transparent;
 @navbar-inverse-link-active-color: @navbar-inverse-link-hover-color;
 @navbar-inverse-link-hover-color: darken(@navbar-inverse-link-color, 5%);
@@ -75,3 +76,7 @@
 @btn-danger-border: darken(@btn-danger-bg, 5%);
 
 @padding-base-vertical: 6px;
+
+@alert-info-bg:               white;
+@alert-info-text:             #072b54;
+@alert-info-border:           @alert-info-bg;

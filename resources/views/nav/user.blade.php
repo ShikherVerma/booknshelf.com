@@ -30,13 +30,5 @@
                 </ul>
             </div>
         </div>
-        {{--<div class="container navbar-inner max-width-1000" v-if="user">--}}
-            {{--<div class="collapse navbar-collapse" id="app-navbar-collapse">--}}
-                {{--<!-- Left Side Of Navbar -->--}}
-                {{--<ul class="nav navbar-nav">--}}
-                    {{--@includeIf('nav.user-inner-left')--}}
-                {{--</ul>--}}
-            {{--</div>--}}
-        {{--</div>--}}
     </nav>
 </app-navbar>

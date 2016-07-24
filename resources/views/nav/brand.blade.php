@@ -1,3 +1,3 @@
 <a class="navbar-brand" href="/">
-  <img src="" alt="brand">
+  <img src="/img/logo.png" height="35px" width="35px" alt="brand">
 </a>

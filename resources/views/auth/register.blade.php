@@ -5,6 +5,7 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
+                <div class="panel-heading">Sign up</div>
 
                 <div class="panel-body">
                     <a class="btn btn-block btn-social btn-facebook" href="{{ url('/auth/facebook') }}">
@@ -17,7 +18,6 @@
                     </a>
                 </div>
 
-                <div class="panel-heading">Sign up</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {!! csrf_field() !!}
@@ -67,7 +67,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" name="register" class="btn btn-info-outline">
+                                <button type="submit" name="register" class="btn btn-primary">
                                     <i class="fa fa-btn"></i>Sign up
                                 </button>
                             </div>

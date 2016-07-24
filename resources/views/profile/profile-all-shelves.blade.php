@@ -1,5 +1,5 @@
 <app-profile-all-shelves :user=user inline-template>
-    <div class="container m-y-md max-width-1000" v-if="shelves.length > 0">
+    <div class="container max-width-1000" v-if="shelves.length > 0">
         <div class="m-t">
             <div class="row">
                 <div class="col-md-3" v-for="shelf in shelves">

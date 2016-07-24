@@ -17,11 +17,6 @@
 
     <ul class="dropdown-menu" role="menu">
         <li>
-            <a href="/{{ '@' . Auth::user()->username }}/bookshelves">
-                My Bookshelves
-            </a>
-        </li>
-        <li>
             <a href="/{{ '@' . Auth::user()->username }}">
                 My Profile
             </a>

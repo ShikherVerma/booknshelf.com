@@ -5,7 +5,7 @@
             @include('profile.profile-header')
         </div>
 
-        <div class="tab-content">
+        <div class="tab-content profile-tabs">
             <!-- All Shelves -->
             <div role="tabpanel" class="tab-pane active" id="bookshelves">
                 @include('profile.profile-all-shelves')
