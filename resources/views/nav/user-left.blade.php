@@ -6,16 +6,16 @@
 </li>
 <li>
     <a href="/">
-        Our Picks
+        OUR PICKS
     </a>
 </li>
 <li>
     <a href="/{{ '@' . Auth::user()->username }}/bookshelves">
-        My Bookshelves
+        MY BOOKSHELVES
     </a>
 </li>
 <li>
     <a @click="showCreateShelfModal">
-            Create
+            CREATE
     </a>
 </li>

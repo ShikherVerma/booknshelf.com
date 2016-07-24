@@ -18127,6 +18127,7 @@ img.zoom-img {
   padding: 0 10px 18px;
   font-size: 15px;
   color: #072b54 !important;
+  font-weight: bold;
 }
 .profile-header-nav .nav-tabs > li > a {
   transition: color 0.2s ease-in-out;
@@ -18501,7 +18502,6 @@ img.zoom-img {
   background-color: #c7cccb;
 }
 .dropdown-menu {
-  background-color: #c7cccb;
   color: #072b54;
 }
 .alert {

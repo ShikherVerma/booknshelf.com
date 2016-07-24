@@ -3,7 +3,7 @@
     <a @click="showNotifications" class="has-activity-indicator">
         <div class="navbar-icon">
             <i class="activity-indicator" v-if="hasUnreadNotifications"></i>
-            <span class="icon icon-bell"></span>
+            <i class="fa fa-lg fa-bell"></i>
         </div>
     </a>
 </li>

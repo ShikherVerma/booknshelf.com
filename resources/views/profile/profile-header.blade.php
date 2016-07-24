@@ -15,12 +15,12 @@
 
                 <li class="active" role="presentation">
                     <a href="#bookshelves" aria-controls="bookshelves" role="tab" data-toggle="tab">
-                        Bookshelves
+                        BOOKSHELVES
                     </a>
                 </li>
                 <li role="presentation">
                     <a href="#likes" aria-controls="likes" role="tab" data-toggle="tab">
-                        Likes
+                        LIKES
                     </a>
                 </li>
 

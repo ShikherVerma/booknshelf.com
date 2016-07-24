@@ -1,7 +1,7 @@
 ### Engineering todo
 
 #### July 24th
-    
+ - Shelf page double columns
 - Fix shelf search on landing
 - Fix the book search hover thing!!! finally!
 - covers on shelves to write the name and description, same for actions
