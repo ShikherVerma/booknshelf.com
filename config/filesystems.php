@@ -59,17 +59,8 @@ return [
             'key' => 'AKIAIUDUK46ZDVCEZJRA',
             'secret' => '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',
             'region' => 'us-west-2',
-            'bucket' => 'booknshelf-avatars',
-        ],
-
-        's3-booknshelf' => [
-            'driver' => 's3',
-            'key' => 'AKIAIUDUK46ZDVCEZJRA',
-            'secret' => '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',
-            'region' => 'us-west-2',
             'bucket' => 'booknshelf',
         ],
-
     ],
 
 ];

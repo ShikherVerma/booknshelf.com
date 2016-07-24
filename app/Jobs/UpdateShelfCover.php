@@ -47,11 +47,10 @@ class UpdateShelfCover extends Job implements ShouldQueue
 
         $s3 = Storage::disk('s3');
         // create a new image directly from an url
-        // TODO: What if the book does not have a cover? It's empty.
         $img = $imageManager->make($covers[0]);
         // paste another image
         $img->blur(2);
-        $path = Hash::make($this->shelf->id) . '.png';
+        $path = 'shelf-covers/' . $this->shelf->id . '.png';
         Log::info('Showing the path of the file: '. $path);
 
         $s3->put($path, (string)$img->fit(300)->encode());

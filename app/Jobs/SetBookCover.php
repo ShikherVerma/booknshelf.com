@@ -37,7 +37,7 @@ class SetBookCover extends Job implements ShouldQueue
             $this->delete();
             return;
         }
-        $s3 = Storage::disk('s3-booknshelf');
+        $s3 = Storage::disk('s3');
         // create a new image directly from an url
         $img = $imageManager->make($this->book->image);
         $path = 'book-covers/' . $this->book->google_volume_id . '.png';
