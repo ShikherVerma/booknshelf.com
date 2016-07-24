@@ -17,6 +17,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="{{ elixir('css/booknshelf.css') }}">
+
     <!-- Global App Object -->
     <script>
         window.App = <?php echo json_encode([

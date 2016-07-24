@@ -1,12 +1,17 @@
 ### Engineering todo
 
-#### July 23th
-- save book covers in s3
+#### July 24th
+- Fix InvalidArgumentException("Driver [{$config['driver']}] is not supported. Bugsnag
+- Fix the book search hover thing!!! finally!
+- covers on shelves to write the name and description, same for actions
+- Mixpanel tracking
+- Add all Metas and SEO stuff needed.
+- Create shelf redesign like other modals
+- Fix shelf searching, should be clickable
 
 
 ### TODO Before Launch
-- Mixpanel tracking
-- Add all Metas and SEO stuff needed.
+- Create all my own shelves
 
 
 #### July 23th (Making Booknshelf Pretty)

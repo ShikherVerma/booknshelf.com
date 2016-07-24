@@ -35,15 +35,11 @@ elixir(function(mix) {
 	mix.browserify('app.js');
 	mix.scripts([
 	    'vendor/sweetalert-dev.js',
-	    // 'vendor/typeahead.js',
-	    'vendor/toolkit.js',
-	    'vendor/custom',
+        'vendor/toolkit.js',
 	    'vendor/bootstrap',
-	    'application.js',
 
 	    'vendor/hydrogen/jquery.easing.1.3.js',
 	    'vendor/hydrogen/jquery.waypoints.min.js',
-	    'vendor/hydrogen/jquery.magnific-popup.min.js',
 	    'vendor/hydrogen/salvattore.min.js',
 	    'vendor/hydrogen/main.js',
 
@@ -54,9 +50,5 @@ elixir(function(mix) {
 	mix.copy('resources/assets/fonts', 'public/build/fonts');
 	// copy the img to public/ directory
 	mix.copy('resources/assets/img', 'public/img');
-
-	// mix.browserSync({
-	//     proxy: 'homestead.app'
-	// });
 
 });

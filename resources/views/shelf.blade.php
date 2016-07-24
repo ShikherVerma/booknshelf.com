@@ -40,7 +40,7 @@
 <template id="shelf-book-item" :shelf="shelf" :book="book">
     <li class="media list-group-item p-a book-search-item">
         <a class="media-left" href="#">
-            <img class="media-object img-circle img-circle-book-cover" data-action="zoom" :src="book.image">
+            <img class="media-object img-circle img-circle-book-cover" :src="book.image">
         </a>
         <div class="media-body">
             <div class="media-body-text">

@@ -52,7 +52,7 @@
 					$(this.element).addClass('fadeInUp animated');
 				}
 
-			} , { offset: '55%' } );
+			} , { offset: '35%' } );
 		}
 
 	};
