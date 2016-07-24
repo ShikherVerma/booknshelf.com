@@ -9,7 +9,7 @@
 
     <title>@yield('title', 'Booknshelf')</title>
 
-    <link rel="icon" href="https://booknshelf.com/img/favicon.png" />
+    <link rel="icon" href="/img/favicon.ico" />
 
     <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css'>
