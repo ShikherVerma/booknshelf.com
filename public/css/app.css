@@ -8798,15 +8798,17 @@ img.zoom-img {
   height: 300px;
 }
 .shelf-header-name {
-  margin-top: 22px;
-  color: #fff;
+  margin-top: 24px;
+  color: #072b54;
 }
 .shelf-header-desc {
-  font-size: 15px;
-  color: #fff;
+  font-size: 17px;
+  color: #072b54;
 }
 .shelf-header-owner {
-  color: #fff;
+  font-size: 15px;
+  color: #072b54;
+  font-weight: bold;
 }
 .book-card {
   height: 210px;
@@ -9846,6 +9848,11 @@ a > img.fh5co-align-center {
 }
 .error-block {
   color: #bf5329;
+}
+.shelf-book-item .shelf-book-item-title {
+  font-size: 15px;
+  font-weight: bold;
+  color: #072b54;
 }
 body {
   font-weight: 300;

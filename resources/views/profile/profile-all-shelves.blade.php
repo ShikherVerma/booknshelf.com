@@ -29,7 +29,7 @@
         </div>
     </div>
 
-    <!-- Update Token Modal -->
+    <!-- Update Shelf Modal -->
     <div class="modal" id="modal-update-shelf" tabindex="-1" role="dialog">
         <div class="modal-dialog" v-if="updatingShelf">
             <div class="modal-content">
