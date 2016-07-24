@@ -13,7 +13,8 @@
                     <div class="item animate-box">
                         <div>
                             @if($shelf['cover'])
-                                <a href="{{ $shelf['cover']}}" class="image-popup fh5co-board-img" title="{{ $shelf['name'] }}">
+                                <a href="/{{ '@' . $shelf['user']['username'] . '/shelves/' . $shelf['slug'] }}"
+                                   class="fh5co-board-img" title="{{ $shelf['name'] }}">
                                     <img src="{{ $shelf['cover']}}" alt="{{ $shelf['description'] or '' }}">
                                 </a>
                             @endif

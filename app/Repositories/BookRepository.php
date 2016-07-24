@@ -5,11 +5,15 @@ namespace App\Repositories;
 use App\Author;
 use App\Book;
 use App\Category;
+use App\Jobs\SetBookCover;
 use DB;
+use Illuminate\Foundation\Bus\DispatchesJobs;
 use Image;
 
 class BookRepository
 {
+    use DispatchesJobs;
+
     public function findByVolumeIdOrCreate($bookData)
     {
         $book = Book::where('google_volume_id', $bookData['google_volume_id'])->first();
@@ -24,7 +28,10 @@ class BookRepository
                 $category = Category::firstOrCreate(['name' => $name]);
                 $book->categories()->attach($category->id);
             }
+            $this->dispatch(new SetBookCover($book));
         }
+
+
         // update ratings and ratings count to keep it up to date
         $book->update([
             'google_average_rating' => $bookData['google_average_rating'],

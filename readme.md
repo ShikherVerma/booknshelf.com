@@ -1,7 +1,7 @@
 ### Engineering todo
 
 #### July 23th
-- Algolia search for bookshelves and users
+- save book covers in s3
 
 
 ### TODO Before Launch

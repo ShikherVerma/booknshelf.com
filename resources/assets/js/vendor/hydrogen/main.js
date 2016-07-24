@@ -58,7 +58,7 @@
 	};
 
 	$(function(){
-		magnifPopup();
+		// magnifPopup();
 		animateBoxWayPoint();
 	});
 

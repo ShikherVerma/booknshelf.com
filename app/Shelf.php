@@ -52,6 +52,11 @@ class Shelf extends Model
         $this->attributes['slug'] = str_slug($value);
     }
 
+    public function getShelfUrl()
+    {
+        return '/@' . $this->user()->username . '/shelves/' . $this->slug;
+    }
+
     public function getAlgoliaRecord()
     {
         /**

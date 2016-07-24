@@ -40,7 +40,10 @@ class UpdateShelfCover extends Job implements ShouldQueue
             $covers[] = $book['image'];
         }
 
-        if(empty($covers)) return;
+        if(empty($covers)) {
+            $this->delete();
+            return;
+        }
 
         $s3 = Storage::disk('s3');
         // create a new image directly from an url
