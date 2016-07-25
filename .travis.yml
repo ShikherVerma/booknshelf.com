@@ -13,4 +13,5 @@ before_script:
   - php artisan migrate --force
   - vendor/bin/codecept build
 
-script: vendor/bin/codecept run
+#script: vendor/bin/codecept run
+script: vendor/bin/phpunit
