@@ -21,7 +21,8 @@
         "predis/predis": "~1.0",
         "graham-campbell/exceptions": "^8.7",
         "codeception/codeception": "^2.2",
-        "fzaninotto/faker": "^1.6"
+        "fzaninotto/faker": "^1.6",
+        "mixpanel/mixpanel-php": "^2.6"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

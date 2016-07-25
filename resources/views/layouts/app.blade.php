@@ -30,6 +30,7 @@
             ]
         ); ?>
     </script>
+    @include('shared.analytics')
 </head>
 <body class="with-navbar">
     <div id="app">

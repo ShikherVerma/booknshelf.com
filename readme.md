@@ -1,11 +1,11 @@
 ### Engineering todo
 
 #### July 24th
-- Make Travis CI pass.
-- Fix home page shelves display sql query. Display only our shelves.
-- Mixpanel tracking
+
+- Make sure default shelves are created when you sign up.
 - EMAIL ALL SIGNED UP PEOPLE AND TELL ALL MY FRIENDS... :)
     - Go with the launch plan
+- Make Travis CI pass.
 
 ### TODO Before Big Launch
 - Fix the book search hover thing!!! finally!

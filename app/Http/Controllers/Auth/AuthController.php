@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Event;
-use App\User;
-use Validator;
-use Socialite;
-use App\Http\Controllers\Auth\AuthenticateUser;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Events\UserRegistered;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Socialite;
+use Validator;
+use App\Events\UserRegistered;
+use Event;
 
 class AuthController extends Controller
 {
@@ -43,6 +42,7 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->mp = \Mixpanel::getInstance(env("MIXPANEL_TOKEN"));
     }
 
     /**
@@ -91,6 +91,14 @@ class AuthController extends Controller
         $user = $this->create($request->all());
 
         Auth::guard($this->getGuard())->login($user);
+
+        Event::fire(new UserRegistered($user));
+
+        // create/update a profile for user id
+        $this->mp->people->set($user->id, array(
+            'name' =>    $user->name,
+            'username'  => $user->username
+        ));
 
         return redirect('/welcome');
     }

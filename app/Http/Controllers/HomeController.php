@@ -22,13 +22,19 @@ class HomeController extends Controller
         $this->middleware('auth', ['except' => [
             'index'
         ]]);
+        // get the Mixpanel class instance, replace with your project token
+        $this->mp = \Mixpanel::getInstance(env("MIXPANEL_TOKEN"));
         $this->shelves = $shelves;
         $this->users = $users;
         $this->books = $books;
+
     }
 
     public function index()
     {
+
+        // track an event
+        $this->mp->track("Visited Home Page");
         $shelves = $this->shelves->ourPicks();
         $users = $this->users->ourPicks();
         $books = $this->books->getMostSaved();
