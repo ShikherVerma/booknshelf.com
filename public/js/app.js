@@ -34503,7 +34503,12 @@ Vue.component('app-shelf-search-bar', {
 
     methods: {
         search: function search() {
-            if (this.query.length < 3) return;
+            if (this.query.length == 0) {
+                this.shelves = [];
+            }
+            if (this.query.length < 3) {
+                return;
+            }
 
             this.index.search(this.query, function (error, results) {
                 this.shelves = results.hits;

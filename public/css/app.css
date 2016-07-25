@@ -8854,6 +8854,9 @@ img.zoom-img {
 .dropdown-menu {
   color: #072b54;
 }
+.please-login-message {
+  color: #072b54;
+}
 .alert {
   font-weight: 300;
 }
