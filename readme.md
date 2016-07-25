@@ -4,7 +4,6 @@
 - Fix shelf search on landing
 - Fix the book search hover thing!!! finally!
 - Fix home page shelves display sql query. Display only our shelves.
-- Final review for our pitch
 - Mixpanel tracking
 
 

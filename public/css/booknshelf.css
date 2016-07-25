@@ -18436,6 +18436,7 @@ img.zoom-img {
 }
 .shelf-card-item {
   border: 1px;
+  min-height: 240px;
 }
 .shelf-card-item-cover {
   width: 100% !important;
