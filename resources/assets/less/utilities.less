@@ -2,9 +2,24 @@
     border: 0;
 }
 
-.shelf-card {
-    height: 210px;
+.shelf-card-item {
+    border: 1px;
 }
+
+.shelf-card-item-cover {
+    width: 100% !important;
+}
+
+.shelf-caption {
+    background-color: white;
+    opacity: 0.85;
+    font-weight: bold;
+    color: @brand-primary;
+    padding: 7px;
+    text-align: center;
+    font-size: 16px;
+}
+
 .shelf-card-body {
     position: relative;
     padding: 15px;
@@ -18,7 +33,11 @@
 }
 .shelf-card-actions-bar {
     position: absolute;
-    bottom: 7px;
+    bottom: 0;
+    background-color: white;
+    color: @brand-primary;
+    text-align: center;
+    opacity: 0.85;
 }
 .shelf-card-actions-bar > button {
     margin: 4px;

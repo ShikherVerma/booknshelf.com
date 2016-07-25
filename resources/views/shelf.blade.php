@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Shelf Header  Template -->
-<div class="profile-header">
+<div class="profile-header profile-header-shelf">
     <div class="container max-width-1000">
         <div class="container-inner">
             <h3 class="shelf-header-name">{{ $shelf->name }}</h3>
@@ -38,7 +38,7 @@
 <template id="shelf-book-item" :shelf="shelf" :book="book">
     <div class="col-md-6 shelf-book-item">
         <div class="panel p-a">
-            <a class="media-left" href="#">
+            <a class="media-left">
                 <img class="media-object" width="110px;" height="150px;" :src="book.image">
             </a>
             <div class="media-body">
@@ -73,40 +73,6 @@
         </div>
         @include('modals.book-item-save-modal')
     </div>
-    {{--<li class="media list-group-item p-a book-search-item">--}}
-        {{--<a class="media-left" href="#">--}}
-            {{--<img class="media-object img-circle img-circle-book-cover" :src="book.image">--}}
-        {{--</a>--}}
-        {{--<div class="media-body">--}}
-            {{--<div class="media-body-text">--}}
-                {{--<div class="media-heading">--}}
-                    {{--<small v-show="onOwnProfile()" class="pull-right text-muted">--}}
-                        {{--<button @click="removeBookFromShelf()" class="close">--}}
-                            {{--<i class="fa fa-times"></i>--}}
-                        {{--</button>--}}
-                    {{--</small>--}}
-                    {{--<h5>@{{ book.title }}--}}
-                        {{--<small class="text-muted">--}}
-                            {{--<a href="@{{ book.google_info_link }}" target="_blank">--}}
-                                {{--<i class="fa fa-external-link" aria-hidden="true"></i>--}}
-                            {{--</a>--}}
-                        {{--</small>--}}
-                    {{--</h5>--}}
-                {{--</div>--}}
-                {{--<p>--}}
-                    {{--<span v-for="(index, author) in book.authors">--}}
-                        {{--@{{ author.name }}<span v-if="index !== book.authors.length - 1">, </span>--}}
-                    {{--</span>--}}
-                {{--</p>--}}
-                {{--<small v-show="!saved">--}}
-                    {{--<button class="btn btn-default btn-sm btn-action" @click="showSaveModal()">--}}
-                        {{--<span class="icon icon-add-to-list"></span> Save--}}
-                    {{--</button>--}}
-                {{--</small>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-        {{--@include('modals.book-item-save-modal')--}}
-    {{--</li>--}}
 </template>
 
 @endsection

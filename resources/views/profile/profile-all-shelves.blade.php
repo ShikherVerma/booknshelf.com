@@ -3,24 +3,22 @@
         <div class="m-t">
             <div class="row">
                 <div class="col-md-3" v-for="shelf in shelves">
-                    <div class="panel shelf-card" style="position: relative;">
-                        <div style="position: absolute;">
-                            <img class="media-object" width="250px;" height="200px;" :src="shelf.cover">
-                        </div>
-                        <div class="shelf-card-body">
+                    <div class="panel shelf-card-item pos-r">
+                        <div class="shelf-caption w-full pos-a">
                             <a href="/@{{ '@' + user.username}}/shelves/@{{ shelf.slug }}">
-                                <h5 class="shelf-card-title">@{{ shelf.name }}</h5>
+                                   @{{ shelf.name }}
                             </a>
-                            <p class="shelf-card-desc" >@{{ shelf.description }}</p>
-                                {{--Show this if current auth user is on her profile page--}}
-                                <div v-show="onOwnProfile()" class="shelf-card-actions-bar">
-                                    <button class="btn btn-sm btn-default-outline" @click="editShelf(shelf)">
-                                        <i class="fa fa-pencil"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-danger-outline" @click="approveShelfDelete(shelf)">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </div>
+                        </div>
+                        <div v-show="onOwnProfile()" class="shelf-card-actions-bar w-full pos-a">
+                            <button class="btn btn-sm btn-default-outline" @click="editShelf(shelf)">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                            <button class="btn btn-sm btn-danger-outline" @click="approveShelfDelete(shelf)">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                        <div>
+                            <img class="media-object shelf-card-item-cover" :src="shelf.cover">
                         </div>
                     </div>
                 </div>
@@ -33,7 +31,7 @@
     <div class="modal" id="modal-update-shelf" tabindex="-1" role="dialog">
         <div class="modal-dialog" v-if="updatingShelf">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header p-a">
                     <button type="button " class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 
                     <h4 class="modal-title">
@@ -90,7 +88,7 @@
     <div class="modal fade" id="modal-delete-shelf" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-sm" v-if="deletingShelf">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header p-a">
                     <button type="button " class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 
                     <h4 class="modal-title">

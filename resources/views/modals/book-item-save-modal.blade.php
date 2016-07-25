@@ -5,11 +5,11 @@
             <div class="modal-container" @click.stop>
                 <div class="modal-header">
                     <button @click="close()" type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <i class="fa fa-times" aria-hidden="true"></i>
+                        <span class="icon icon-cross"></span>
                     </button>
-                    <slot name="header">
-                        Add to Bookshelf
-                    </slot>
+                    <h4 name="header">
+                        Save to Bookshelf
+                    </h4>
                 </div>
                 <div class="modal-body p-a-0">
                     <div class="modal-body-scroller">

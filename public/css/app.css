@@ -5043,7 +5043,6 @@ button.close {
   filter: alpha(opacity=50);
 }
 .modal-header {
-  padding: 15px;
   border-bottom: 1px solid #e5e5e5;
 }
 .modal-header .close {
@@ -8770,8 +8769,20 @@ img.zoom-img {
 .border-none {
   border: 0;
 }
-.shelf-card {
-  height: 210px;
+.shelf-card-item {
+  border: 1px;
+}
+.shelf-card-item-cover {
+  width: 100% !important;
+}
+.shelf-caption {
+  background-color: white;
+  opacity: 0.85;
+  font-weight: bold;
+  color: #072b54;
+  padding: 7px;
+  text-align: center;
+  font-size: 16px;
 }
 .shelf-card-body {
   position: relative;
@@ -8786,7 +8797,11 @@ img.zoom-img {
 }
 .shelf-card-actions-bar {
   position: absolute;
-  bottom: 7px;
+  bottom: 0;
+  background-color: white;
+  color: #072b54;
+  text-align: center;
+  opacity: 0.85;
 }
 .shelf-card-actions-bar > button {
   margin: 4px;
@@ -9796,7 +9811,7 @@ a > img.fh5co-align-center {
   vertical-align: middle;
 }
 .modal-container {
-  width: 400px;
+  width: 500px;
   margin: 0px auto;
   padding: 20px 30px;
   background-color: #fff;
@@ -9833,6 +9848,9 @@ a > img.fh5co-align-center {
 }
 .shelf-list-item {
   margin-bottom: 10px;
+  color: #072b54;
+  font-weight: bold;
+  cursor: pointer;
 }
 .shelf-list-item:hover {
   background-color: #f7f7f7;
@@ -9850,6 +9868,9 @@ a > img.fh5co-align-center {
   font-size: 15px;
   font-weight: bold;
   color: #072b54;
+}
+.profile-header-shelf {
+  background-color: whitesmoke;
 }
 body {
   font-weight: 300;

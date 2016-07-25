@@ -7,9 +7,9 @@
                     <button @click="close()" type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <i class="fa fa-times" aria-hidden="true"></i>
                     </button>
-                    <slot name="header">
+                    <h4>
                         Create a new bookshelf
-                    </slot>
+                    </h4>
                 </div>
                 <div v-show="success">
                     <p>You've successfully created a bookshelf</p>
@@ -38,7 +38,7 @@
 
                             <div class="form-group">
                                 <div class="col-md-6">
-                                    <button type="submit" class="btn btn-default-outline"
+                                    <button type="submit" class="btn btn-primary"
                                             @click.prevent="create"
                                             :disabled="form.busy">
                                         Create

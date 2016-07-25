@@ -7,7 +7,7 @@
         <div class="modal docked docked-right" id="modal-notifications" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header text-center">
+                    <div class="modal-header text-center p-a">
                         <div class="btn-group">
                             <button class="btn btn-default" :class="{'active': showingNotifications}" @click="showNotifications" style="width: 100%;">
                                 Notifications
@@ -22,7 +22,7 @@
                         </div>
 
                         <div v-if=" ! loadingNotifications && activeNotifications.length == 0">
-                            <div class="alert alert-warning m-b-none">
+                            <div class="alert alert-info m-b-none m-a">
                                 Notifications are coming soon. We will make sure to let you know.
                             </div>
                         </div>
