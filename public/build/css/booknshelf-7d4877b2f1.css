@@ -18537,6 +18537,10 @@ img.zoom-img {
 .btn-default:hover {
   background-color: white;
 }
+.btn-danger:hover {
+  background: #bf5329;
+  color: white;
+}
 .btn-default-outline {
   color: #636b6f;
   background-color: transparent;
