@@ -2,7 +2,6 @@
 
 #### July 24th
 
-- Make sure default shelves are created when you sign up.
 - EMAIL ALL SIGNED UP PEOPLE AND TELL ALL MY FRIENDS... :)
     - Go with the launch plan
 - Make Travis CI pass.
