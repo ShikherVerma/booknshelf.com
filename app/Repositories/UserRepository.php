@@ -6,6 +6,7 @@ use App\Jobs\SetUserAvatar;
 use App\User;
 use Auth;
 use Illuminate\Foundation\Bus\DispatchesJobs;
+use Faker\Factory;
 
 class UserRepository
 {
@@ -46,7 +47,7 @@ class UserRepository
             // make sure we do not have this username already in db
             if (User::where('username', $newUsername)->count() > 0) {
                 // if we do then generate a random fake username
-                $faker = \Faker\Factory::create();
+                $faker = Factory::create();
                 $newUsername = str_replace('.', '_', $faker->unique()->userName);
             }
             $user->username = $newUsername;
@@ -76,7 +77,7 @@ class UserRepository
             // make sure we do not have this username already in db
             if (User::where('username', $newUsername)->count() > 0) {
                 // if we do then generate a random fake username
-                $faker = \Faker\Factory::create();
+                $faker = Factory::create();
                 $newUsername = str_replace('.', '_', $faker->unique()->userName);
             }
             $user->username = $newUsername;
