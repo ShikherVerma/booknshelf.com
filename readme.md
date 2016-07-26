@@ -2,9 +2,10 @@
 
 #### July 26th
 - Bookshelf cover, pretty, fix it. Not blurred. Maybe top 3 books next to each other?
+- Improved shelves search, include users with the result.
 
 
-
+#####
 - Make shelf covers pretty.
 - Better UI for mobile and ipad
 - Be able to save Most Saved Books
