@@ -35,7 +35,7 @@
 
         <div class="col-md-3">
             @include('books.popular', ['mostSavedBooks' => $mostSavedBooks])
-            <div class="panel panel-default m-b-md hidden-xs">
+<!--             <div class="panel panel-default m-b-md hidden-xs">
                 <div class="panel-body">
                     <h5>
                         Top Profiles
@@ -56,7 +56,7 @@
                         @endforeach
                     </ul>
                 </div>
-            </div>
+            </div> -->
 
         </div>
 
