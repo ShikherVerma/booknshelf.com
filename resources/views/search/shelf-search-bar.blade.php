@@ -4,7 +4,7 @@
         <div class="input-group">
             <input id="book-search" type="text" class="form-control"
                    v-model="query"
-                   placeholder="Search for great bookshelves ..."
+                   placeholder="Search for users or bookshelves ..."
                    v-on:keyup="search"
             >
             <template v-if="shelves.length > 0">
@@ -12,6 +12,9 @@
                     <li v-for="shelf in shelves" class="list-group-item">
                         <a href="/@@{{shelf.user.username}}/shelves/@{{ shelf.slug }}">
                             <h5 v-html="shelf._highlightResult.name.value"></h5>
+                        </a>
+                        <a href="/@@{{shelf.user.username}}">
+                            by <span v-html="shelf._highlightResult.user.name.value"></span>
                         </a>
                     </li>
                 </ul>
