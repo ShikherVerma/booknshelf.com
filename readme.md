@@ -5,6 +5,7 @@
 - EMAIL ALL SIGNED UP PEOPLE AND TELL ALL MY FRIENDS... :)
     - Go with the launch plan
 - Make Travis CI pass.
+- Better Mixpanel Tracking
 
 ### TODO Before Big Launch
 - Fix the book search hover thing!!! finally!

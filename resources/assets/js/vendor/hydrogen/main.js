@@ -59,7 +59,7 @@
 
 	$(function(){
 		// magnifPopup();
-		animateBoxWayPoint();
+		// animateBoxWayPoint();
 	});
 
 

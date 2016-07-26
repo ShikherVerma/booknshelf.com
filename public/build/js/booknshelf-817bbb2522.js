@@ -6707,7 +6707,7 @@ function(){"use strict";if(window.matchMedia&&window.matchMedia("all").addListen
 
 	$(function(){
 		// magnifPopup();
-		animateBoxWayPoint();
+		// animateBoxWayPoint();
 	});
 
 
