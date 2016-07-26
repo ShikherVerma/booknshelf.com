@@ -18,7 +18,11 @@ class ShelfRepository {
     public function ourPicks()
     {
         try {
-            $shelves = User::where('username', 'booknshelf')->firstOrFail()->shelves()->get();
+            $shelves = User::where('username', 'tigran')
+                ->firstOrFail()
+                ->shelves()
+                ->whereNotNull('cover')
+                ->get();
             $shelves->load('user');
         } catch (Exception $e) {
             Log::error("Could not find any shelves with username booknshelf");

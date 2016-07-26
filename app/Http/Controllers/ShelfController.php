@@ -36,7 +36,6 @@ class ShelfController extends Controller
         $shelf->forceFill([
             'name' => $request->name,
             'description' => $request->description,
-            'cover' => $request->cover,
             'slug' => $request->name,
         ]);
 
