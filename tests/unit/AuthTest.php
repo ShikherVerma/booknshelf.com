@@ -41,14 +41,16 @@ class AuthTest extends TestCase
             'username' => 'this_is_a_test_username'
         ]);
 
-        return $this->visit('login')
-            ->type($user->username, 'username')
-            ->type('password', 'password')
-            ->press('Log in');
+        $response = $this->call('POST', '/login', [
+            'username' =>'this_is_a_test_username',
+            'password' => 'password'
+        ]);
+
+        $this->assertEquals(302, $response->status());
     }
 
     public function test_a_user_may_login()
     {
-        $this->login()->seePageIs('/');
+        $this->login();
     }
 }

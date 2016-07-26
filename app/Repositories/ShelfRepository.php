@@ -4,6 +4,9 @@ namespace App\Repositories;
 
 use App\User;
 use App\Shelf;
+use Illuminate\Database\Eloquent\Collection;
+use Log;
+use Mockery\CountValidator\Exception;
 
 class ShelfRepository {
 
@@ -14,8 +17,14 @@ class ShelfRepository {
 
     public function ourPicks()
     {
-        $shelves = User::where('username', 'booknshelf')->first()->shelves()->get();
-        $shelves->load('user');
+        try {
+            $shelves = User::where('username', 'booknshelf')->firstOrFail()->shelves()->get();
+            $shelves->load('user');
+        } catch (Exception $e) {
+            Log::error("Could not find any shelves with username booknshelf");
+            // empty collection for now
+            $shelves = collect([]);
+        }
         return $shelves;
     }
 
