@@ -33,6 +33,7 @@ class UpdateShelfCover extends Job implements ShouldQueue
      */
     public function handle(ImageManager $imageManager)
     {
+        // TODO: Fix this here. Let's make cover pretty.
         $books = $this->shelf->books()->whereNotNull('image')
             ->orderBy('created_at', 'desc')->take(1)->get()->toArray();
         $covers = [];
@@ -48,7 +49,8 @@ class UpdateShelfCover extends Job implements ShouldQueue
         // create a new image directly from an url
         $img = $imageManager->make($covers[0]);
         // paste another image
-        $img->blur(2);
+        // TODO: Do not blur, think of a new way to create pretty shelves.
+        // $img->blur(2);
         $path = 'shelf-covers/' . $this->shelf->id . '.png';
         Log::info('Showing the path of the file: '. $path);
 

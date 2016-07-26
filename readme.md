@@ -1,13 +1,18 @@
 ### Engineering todo
 
-#### July 24th
+#### July 26th
 
-- EMAIL ALL SIGNED UP PEOPLE AND TELL ALL MY FRIENDS... :)
-    - Go with the launch plan
+- Make shelf covers pretty.
+- Better UI for mobile and ipad
+- Be able to save Most Saved Books
+- Show the most popular books, how?
+- Better search for shelves, include user and cover?
 - Make Travis CI pass.
+- Books and shelves likes???
 - Better Mixpanel Tracking
 
 ### TODO Before Big Launch
+- More shelves
 - Fix the book search hover thing!!! finally!
 - Ask google to increase the api cap
 - You should be able to save directly from "Most Saved Books" to your shelves
