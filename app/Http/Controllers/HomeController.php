@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App;
 use App\Repositories\BookRepository;
 use App\Repositories\ShelfRepository;
 use App\Repositories\UserRepository;
@@ -23,7 +24,13 @@ class HomeController extends Controller
             'index'
         ]]);
         // get the Mixpanel class instance, replace with your project token
-        $this->mp = \Mixpanel::getInstance(env("MIXPANEL_TOKEN"));
+        // TODO: Temorary. Use env() helper instead.
+        if (App::environment('local')) {
+            $token = "0fcf6a1878e403ddaff32ae3e7146da2";
+        } else {
+            $token = "8a108f77a10d4deca20b2f5ed0e59999";
+        }
+        $this->mp = \Mixpanel::getInstance($token);
         $this->shelves = $shelves;
         $this->users = $users;
         $this->books = $books;
