@@ -1,6 +1,9 @@
 ### Engineering todo
 
 #### July 26th
+- Bookshelf cover, pretty, fix it. Not blurred. Maybe top 3 books next to each other?
+
+
 
 - Make shelf covers pretty.
 - Better UI for mobile and ipad
