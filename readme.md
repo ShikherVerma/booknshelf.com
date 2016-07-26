@@ -2,8 +2,8 @@
 
 #### July 26th
 - Bookshelf cover, pretty, fix it. Not blurred. Maybe top 3 books next to each other?
-- Improved shelves search, include users with the result.
-
++ Improved shelves search, include users with the result.
+- Fix Travis CI.
 
 #####
 - Make shelf covers pretty.
