@@ -42,7 +42,7 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
-        $this->mp = \Mixpanel::getInstance(env("MIXPANEL_TOKEN"));
+        $this->mp = \Mixpanel::getInstance("8a108f77a10d4deca20b2f5ed0e59999");
     }
 
     /**
