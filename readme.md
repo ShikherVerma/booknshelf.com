@@ -1,8 +1,8 @@
 ### Engineering todo
 
 #### July 26th
-- Bookshelf cover, pretty, fix it. Not blurred. Maybe top 3 books next to each other?
-- Run a console script that updates all created shelf covers
++ Bookshelf cover, pretty, fix it. Not blurred. Maybe top 3 books next to each other?
+- create a new artisan command that updates all created shelf covers
 
 #####
 - Make shelf covers pretty.
