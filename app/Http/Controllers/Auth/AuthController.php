@@ -92,7 +92,7 @@ class AuthController extends Controller
 
         Auth::guard($this->getGuard())->login($user);
 
-        Event::fire(new UserRegistered($user));
+        // Event::fire(new UserRegistered($user));
 
         // create/update a profile for user id
         $this->mp->people->set($user->id, array(
