@@ -44,6 +44,7 @@ class UpdateShelfCover extends Job implements ShouldQueue
         $canvas = $imageManager->canvas(300, 300);
 
         if (count($covers) === 0) {
+            Log::info("The shelf does not have any covers ...");
             return $this->delete();
         } elseif (count($covers) === 1) {
             $cover = $imageManager->make($covers[0])->fit(200, 300);

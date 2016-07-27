@@ -30,7 +30,7 @@ class UserController extends Controller
     {
         $user = $this->users->findByUsername($username);
         return view('profile', [
-            'user' => json_encode($user),
+            'user' => $user,
             'shelves' => $this->shelves->forUser($user),
         ]);
     }

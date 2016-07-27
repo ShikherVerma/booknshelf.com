@@ -7,7 +7,7 @@
         <div class="container-inner">
             <h3 class="shelf-header-name">{{ $shelf->name }}</h3>
             <p class="shelf-header-desc">
-                {{ $shelf->description or ''}}
+                {{ $shelf->description}}
             </p>
             <span class="shelf-header-owner">
                 <img src="{{ $user->avatar }}" class="app-nav-profile-photo small-profile-photo">

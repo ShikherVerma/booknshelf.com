@@ -2,7 +2,7 @@
     <div>
         <!-- Profile Header -->
         <div>
-            @include('profile.profile-header')
+            @include('profile.profile-header', $user)
         </div>
 
         <div class="tab-content profile-tabs">
