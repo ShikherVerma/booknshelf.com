@@ -4,19 +4,19 @@
 
         <div class="panel-body">
             <!-- Success Message -->
-            <div class="alert alert-success" v-if="form.successful">
+            <div class="alert alert-success" style="display: none;" v-show="form.successful">
                 Your profile has been updated!
             </div>
 
             <form class="form-horizontal" role="form">
                 <!-- Name -->
-                <div class="form-group" :class="{'has-error': form.errors.has('name')}">
+                <div class="form-group"  :class="{'has-error': form.errors.has('name')}">
                     <label class="col-md-4 control-label">Name</label>
 
                     <div class="col-md-6">
                         <input type="text" class="form-control" name="name" v-model="form.name">
 
-                        <span class="help-block" v-show="form.errors.has('name')">
+                        <span class="help-block" style="display: none;" v-show="form.errors.has('name')">
                             @{{ form.errors.get('name') }}
                         </span>
                     </div>
@@ -29,7 +29,7 @@
                     <div class="col-md-6">
                         <input type="email" class="form-control" name="email" v-model="form.email">
 
-                        <span class="help-block" v-show="form.errors.has('email')">
+                        <span class="help-block" style="display: none;" v-show="form.errors.has('email')">
                             @{{ form.errors.get('email') }}
                         </span>
                     </div>
@@ -42,7 +42,7 @@
                     <div class="col-md-6">
                         <input type="text" class="form-control" name="username" v-model="form.username">
 
-                        <span class="help-block" v-show="form.errors.has('username')">
+                        <span class="help-block" style="display: none;" v-show="form.errors.has('username')">
                             @{{ form.errors.get('username') }}
                         </span>
                     </div>
@@ -56,7 +56,7 @@
                         <textarea class="form-control" name="about" v-model="form.about">
                         </textarea>
 
-                        <span class="help-block" v-show="form.errors.has('about')">
+                        <span class="help-block"  style="display: none;" v-show="form.errors.has('about')">
                             @{{ form.errors.get('about') }}
                         </span>
                     </div>

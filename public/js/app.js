@@ -33590,7 +33590,13 @@ module.exports = {
     data: {
         user: App.state.user,
         loadingNotifications: false,
-        notifications: null
+        notifications: null,
+
+        supportForm: new AppForm({
+            from: '',
+            subject: '',
+            message: ''
+        })
     },
 
     /**
@@ -33628,6 +33634,22 @@ module.exports = {
         showNotifications: function showNotifications() {
             $('#modal-notifications').modal('show');
             this.markNotificationsAsRead();
+        },
+
+
+        /**
+         * Show the customer support e-mail form.
+         */
+        showSupportForm: function showSupportForm() {
+            if (this.user) {
+                this.supportForm.from = this.user.email;
+            }
+
+            $('#modal-support').modal('show');
+
+            setTimeout(function () {
+                $('#support-subject').focus();
+            }, 500);
         },
         showCreateShelfModal: function showCreateShelfModal() {
             this.$broadcast('showCreateNewShelfModal');
@@ -33700,6 +33722,23 @@ module.exports = {
             _.each(this.notifications.notifications, function (notification) {
                 notification.read = 1;
             });
+        },
+
+
+        /**
+         * Send a customer support request.
+         */
+        sendSupportRequest: function sendSupportRequest() {
+            var _this2 = this;
+
+            App.post('/support/email', this.supportForm).then(function () {
+                $('#modal-support').modal('hide');
+
+                _this2.showSupportRequestSuccessMessage();
+
+                _this2.supportForm.subject = '';
+                _this2.supportForm.message = '';
+            });
         }
     },
 
@@ -33709,7 +33748,7 @@ module.exports = {
          */
 
         hasUnreadAnnouncements: function hasUnreadAnnouncements() {
-            var _this2 = this;
+            var _this3 = this;
 
             if (this.notifications && this.user) {
                 if (!this.user.last_read_announcements_at) {
@@ -33717,7 +33756,7 @@ module.exports = {
                 }
 
                 return _.filter(this.notifications.announcements, function (announcement) {
-                    return moment.utc(_this2.user.last_read_announcements_at).isBefore(moment.utc(announcement.created_at));
+                    return moment.utc(_this3.user.last_read_announcements_at).isBefore(moment.utc(announcement.created_at));
                 }).length > 0;
             }
 

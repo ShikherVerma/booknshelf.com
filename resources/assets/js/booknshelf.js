@@ -11,6 +11,12 @@ module.exports = {
         user: App.state.user,
         loadingNotifications: false,
         notifications: null,
+
+        supportForm: new AppForm({
+            from: '',
+            subject: '',
+            message: ''
+        })
     },
 
     /**
@@ -46,6 +52,21 @@ module.exports = {
         showNotifications() {
             $('#modal-notifications').modal('show');
             this.markNotificationsAsRead();
+        },
+
+        /**
+         * Show the customer support e-mail form.
+         */
+        showSupportForm() {
+            if (this.user) {
+                this.supportForm.from = this.user.email;
+            }
+
+            $('#modal-support').modal('show');
+
+            setTimeout(() => {
+                $('#support-subject').focus();
+            }, 500);
         },
 
         showCreateShelfModal() {
@@ -119,6 +140,22 @@ module.exports = {
                 notification.read = 1;
             });
         },
+
+        /**
+         * Send a customer support request.
+         */
+        sendSupportRequest() {
+            App.post('/support/email', this.supportForm)
+                .then(() => {
+                    $('#modal-support').modal('hide');
+
+                    this.showSupportRequestSuccessMessage();
+
+                    this.supportForm.subject = '';
+                    this.supportForm.message = '';
+                });
+        },
+
     },
 
 

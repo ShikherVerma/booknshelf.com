@@ -178,7 +178,7 @@ class ShelfTest extends TestCase
         ]);
 
          $this->expectsJobs(\App\Jobs\UpdateShelfCover::class);
-        
+
         $this->assertResponseOk();
         $this->seeInDatabase('book_shelf', [
             'shelf_id' => $shelf->id,

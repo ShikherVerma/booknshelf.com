@@ -4,7 +4,7 @@
             <div class="panel-heading">Profile Photo</div>
 
             <div class="panel-body">
-                <div class="alert alert-danger" v-if="form.errors.has('photo')">
+                <div class="alert alert-danger" style="display: none;" v-if="form.errors.has('photo')">
                     @{{ form.errors.get('photo') }}
                 </div>
 

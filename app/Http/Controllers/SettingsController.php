@@ -17,9 +17,11 @@ class SettingsController extends Controller
         $this->images = $images;
     }
 
-    public function show()
+    public function show(Request $request)
     {
-        return view('settings');
+        return view('settings',[
+            'user' => $request->user(),
+        ]);
     }
 
     public function updateProfile(UpdateUserRequest $request)
