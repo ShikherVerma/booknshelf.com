@@ -34433,8 +34433,14 @@ Vue.component('app-settings', {
   /**
    * Load mixins for the component.
    */
-  mixins: [require('./tab-state')]
+  mixins: [require('./tab-state')],
 
+  /**
+   * Prepare the component.
+   */
+  ready: function ready() {
+    this.usePushStateForTabs('.app-settings-tabs');
+  }
 });
 
 },{"./tab-state":76}],73:[function(require,module,exports){

@@ -13,7 +13,7 @@ Vue.component('app-settings', {
     /**
      * Prepare the component.
      */
-    // ready() {
-    //     this.usePushStateForTabs('.app-settings-tabs');
-    // },
+    ready() {
+        this.usePushStateForTabs('.app-settings-tabs');
+    },
 });

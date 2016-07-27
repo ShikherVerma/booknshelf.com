@@ -8,4 +8,3 @@
     like profile.js file and blade for setting panel.
     - Use this approach everywhere, even when diplaying the shelves.
     - why is spark loading so smooth but booknshelf not???
-- Wrtie more tests and do some clean up in frontend and backend.

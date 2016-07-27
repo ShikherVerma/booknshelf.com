@@ -15,11 +15,6 @@ class ShelfTest extends TestCase
         $this->user = factory(App\User::class)->create();
     }
 
-    public function test_users_redirect_to_login_if_they_try_to_view_shelves_without_logging_in()
-    {
-//        $this->visit('/shelves')->seePageIs('/login');
-    }
-
     public function test_auth_users_can_create_shelves()
     {
         $response = $this->actingAs($this->user)
@@ -182,7 +177,8 @@ class ShelfTest extends TestCase
                 'id' => $book->id,
         ]);
 
-        // $this->expectsJobs(\App\Jobs\UpdateShelfCover::class);
+         $this->expectsJobs(\App\Jobs\UpdateShelfCover::class);
+        
         $this->assertResponseOk();
         $this->seeInDatabase('book_shelf', [
             'shelf_id' => $shelf->id,
@@ -206,7 +202,8 @@ class ShelfTest extends TestCase
             'id' => $book->id,
         ]);
 
-        // $this->expectsJobs(\App\Jobs\UpdateShelfCover::class);
+        $this->expectsJobs(\App\Jobs\UpdateShelfCover::class);
+
         $this->assertResponseOk();
         $this->seeInDatabase('book_shelf', [
             'shelf_id' => $shelf->id,
