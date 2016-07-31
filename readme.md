@@ -1,5 +1,6 @@
 ### Engineering
 
 
-#### July 27th
-- think about what is the next important feature I should build? Look at my notes.
+#### July 31th
+- [ ] Share your profile on social networks (twitter and facebook), or share bookshelves
+- [ ] Follow bookshelves

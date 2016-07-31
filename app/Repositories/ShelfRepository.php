@@ -17,8 +17,10 @@ class ShelfRepository {
 
     public function ourPicks()
     {
+        $popularUsername = env('POPULAR_USERNAME') ?? 'booknshelf';
+
         try {
-            $shelves = User::where('username', 'booknshelf')
+            $shelves = User::where('username', $popularUsername)
                 ->firstOrFail()
                 ->shelves()
                 ->whereNotNull('cover')
