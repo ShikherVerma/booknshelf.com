@@ -16,10 +16,10 @@ elixir(function(mix) {
 	mix.styles([
 		'sweetalert.css',
 		'bootstrap-social.css',
-		'hover.css',
-		'animate.css',
-		'magnific-popup.css',
-		'salvattore.css',
+		// 'hover.css',
+		// 'animate.css',
+		// 'magnific-popup.css',
+		// 'salvattore.css',
 	], 'public/css/helpers.css');
 
 	mix.less('app.less');
@@ -38,11 +38,10 @@ elixir(function(mix) {
         'vendor/toolkit.js',
 	    'vendor/bootstrap',
 
-	    'vendor/hydrogen/jquery.easing.1.3.js',
-	    'vendor/hydrogen/jquery.waypoints.min.js',
-	    'vendor/hydrogen/salvattore.min.js',
-	    'vendor/hydrogen/main.js',
-
+	    // 'vendor/hydrogen/jquery.easing.1.3.js',
+	    // 'vendor/hydrogen/jquery.waypoints.min.js',
+	    // 'vendor/hydrogen/salvattore.min.js',
+	    // 'vendor/hydrogen/main.js',
 	], 'public/js/booknshelf.js');
 
 	mix.version(['public/css/booknshelf.css','public/js/booknshelf.js']);

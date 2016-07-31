@@ -22,7 +22,7 @@ class LoginCest
 
         $I->amOnPage("/");
 
-        $I->click('Login');
+        $I->click('LOGIN');
         $I->fillField('username', 'milesaaa');
         $I->fillField('password', '');
 

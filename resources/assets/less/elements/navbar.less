@@ -82,6 +82,8 @@
 
 .media-shelf {
   position: absolute;
+  max-height: 400px;
+  overflow-y: auto;
   top: 100%;
   left: 0;
   z-index: 1000;
@@ -92,8 +94,11 @@
   list-style: none;
   background-color: #ffffff;
   border-color: rgba(0, 0, 0, 0.2);
-    li {
-
+    li > h5 {
+      color: @brand-primary;
+    }
+    li:hover {
+      background-color: lighten(#98E2D5, 20%);
     }
     em {
         background: #98E2D5;

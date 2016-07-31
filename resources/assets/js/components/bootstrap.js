@@ -36,6 +36,7 @@ require('./profile/profile-index');
 require('./profile/profile-header');
 require('./profile/profile-all-shelves');
 require('./profile/profile-liked-shelves');
+require('./profile/profile-shelf-item');
 
 
 require('./home');

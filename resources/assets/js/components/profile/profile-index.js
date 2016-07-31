@@ -1,9 +1,5 @@
 Vue.component('app-profile-index', {
-    props: ['user'],
-
-    created() {
-        this.user = JSON.parse(this.user);
-    },
+    props: ['user', 'shelves'],
 
     /**
      * Load mixins for the component.

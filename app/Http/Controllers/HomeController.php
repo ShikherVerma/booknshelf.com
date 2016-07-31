@@ -23,31 +23,17 @@ class HomeController extends Controller
         $this->middleware('auth', ['except' => [
             'index'
         ]]);
-        // get the Mixpanel class instance, replace with your project token
-        // TODO: Temorary. Use env() helper instead.
-        if (App::environment('local')) {
-            $token = "0fcf6a1878e403ddaff32ae3e7146da2";
-        } else {
-            $token = "8a108f77a10d4deca20b2f5ed0e59999";
-        }
-        $this->mp = \Mixpanel::getInstance($token);
         $this->shelves = $shelves;
         $this->users = $users;
         $this->books = $books;
-
     }
 
     public function index()
     {
-
-        // track an event
-        $this->mp->track("Visited Home Page");
         $shelves = $this->shelves->ourPicks();
-        $users = $this->users->ourPicks();
         $books = $this->books->getMostSaved();
         return view('home', [
             'shelves' => $shelves->toArray(),
-            'users' => $users->toArray(),
             'mostSavedBooks' => $books,
         ]);
     }
@@ -61,5 +47,4 @@ class HomeController extends Controller
     {
         return view('landing');
     }
-
 }

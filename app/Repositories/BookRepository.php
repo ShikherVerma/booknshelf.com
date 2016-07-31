@@ -31,7 +31,6 @@ class BookRepository
             $this->dispatch(new SetBookCover($book));
         }
 
-
         // update ratings and ratings count to keep it up to date
         $book->update([
             'google_average_rating' => $bookData['google_average_rating'],
@@ -54,7 +53,6 @@ class BookRepository
             'page_count' => $item['volumeInfo']['pageCount'],
             'google_average_rating' => $item['volumeInfo']['averageRating'],
             'google_ratings_count' => $item['volumeInfo']['ratingsCount'],
-//            'image' => $item['volumeInfo']['imageLinks']['thumbnail'] ?? null,
             'language' => $item['volumeInfo']['language'],
             'google_info_link' => $item['volumeInfo']['infoLink'],
             'categories' => $item['volumeInfo']['categories'] ?? [],

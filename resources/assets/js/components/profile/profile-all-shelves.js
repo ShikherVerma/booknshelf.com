@@ -1,12 +1,11 @@
 Vue.component('app-profile-all-shelves', {
-    props: ['user'],
+    props: ['shelves', 'user'],
 
     /**
      * The component's data.
      */
     data() {
         return {
-            shelves: [],
             updatingShelf: null,
             deletingShelf: null,
             updateShelfForm: new AppForm({
@@ -31,18 +30,6 @@ Vue.component('app-profile-all-shelves', {
         },
 
         /**
-         * Show the edit shelf modal.
-         */
-        editShelf(shelf) {
-            this.updatingShelf = shelf;
-
-            this.initializeUpdateFormWith(shelf);
-
-            $('#modal-update-shelf').modal('show');
-        },
-
-
-        /**
          * Initialize the edit form with the given shelf.
          */
         initializeUpdateFormWith(shelf) {
@@ -63,15 +50,6 @@ Vue.component('app-profile-all-shelves', {
         },
 
         /**
-         * Get user confirmation that the shelf should be deleted.
-         */
-        approveShelfDelete(shelf) {
-            this.deletingShelf = shelf;
-            $('#modal-delete-shelf').modal('show');
-        },
-
-
-        /**
          * Delete the specified shelf.
          */
         deleteShelf() {
@@ -82,13 +60,25 @@ Vue.component('app-profile-all-shelves', {
                 });
         },
 
-        onOwnProfile() {
-            return App.userId === this.user.id;
-        }
     },
 
     events: {
 
+        showEditShelfModal(shelf) {
+            this.updatingShelf = shelf;
+
+            this.initializeUpdateFormWith(shelf);
+
+            $('#modal-update-shelf').modal('show');
+        },
+
+        /**
+         * Get user confirmation that the shelf should be deleted.
+         */
+        showDeleteShelfModal(shelf) {
+            this.deletingShelf = shelf;
+            $('#modal-delete-shelf').modal('show');
+        },
         /**
          * Handle this component becoming the active tab.
          */

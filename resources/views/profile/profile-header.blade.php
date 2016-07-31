@@ -1,4 +1,4 @@
-<app-profile-header :user=user inline-template>
+<app-profile-header inline-template>
     <div class="profile-header p-t-lg">
         <div class="container max-width-1000">
             <div class="container-inner ">
@@ -26,7 +26,6 @@
 
             </ul>
         </nav>
-
 
     </div>
 </app-profile-header>

@@ -33563,7 +33563,7 @@ if ($('#app').length > 0) {
   require('./vue-bootstrap');
 }
 
-},{"./vue-bootstrap":86,"bootstrap/dist/js/npm":3,"jquery":16,"js-cookie":17,"moment":18,"promise":20,"underscore":28,"urijs":31}],54:[function(require,module,exports){
+},{"./vue-bootstrap":87,"bootstrap/dist/js/npm":3,"jquery":16,"js-cookie":17,"moment":18,"promise":20,"underscore":28,"urijs":31}],54:[function(require,module,exports){
 'use strict';
 
 require('./app-bootstrap');
@@ -33655,6 +33655,7 @@ module.exports = {
             this.$broadcast('showCreateNewShelfModal');
         },
         reloadUserShelves: function reloadUserShelves() {
+            console.log("broadcasting reloadUserShelves .. ");
             this.$broadcast('reloadUserShelves');
         }
     },
@@ -33989,6 +33990,7 @@ require('./profile/profile-index');
 require('./profile/profile-header');
 require('./profile/profile-all-shelves');
 require('./profile/profile-liked-shelves');
+require('./profile/profile-shelf-item');
 
 require('./home');
 require('./activity');
@@ -34010,7 +34012,7 @@ require('./shelf/shelf-search-bar.js');
 
 require('./please-login-modal.js');
 
-},{"./activity":56,"./book/book-item":58,"./book/book-item-save-modal":57,"./book/books":59,"./create-shelf":61,"./home":62,"./navbar":63,"./notifications":64,"./please-login-modal.js":65,"./profile":66,"./profile/profile-all-shelves":67,"./profile/profile-header":68,"./profile/profile-index":69,"./profile/profile-liked-shelves":70,"./search/book-search-bar":71,"./settings":72,"./shelf/shelf-book-item.js":73,"./shelf/shelf-search-bar.js":74,"./shelf/shelf.js":75,"./update-profile-information":77,"./update-profile-photo":78}],61:[function(require,module,exports){
+},{"./activity":56,"./book/book-item":58,"./book/book-item-save-modal":57,"./book/books":59,"./create-shelf":61,"./home":62,"./navbar":63,"./notifications":64,"./please-login-modal.js":65,"./profile":66,"./profile/profile-all-shelves":67,"./profile/profile-header":68,"./profile/profile-index":69,"./profile/profile-liked-shelves":70,"./profile/profile-shelf-item":71,"./search/book-search-bar":72,"./settings":73,"./shelf/shelf-book-item.js":74,"./shelf/shelf-search-bar.js":75,"./shelf/shelf.js":76,"./update-profile-information":78,"./update-profile-photo":79}],61:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-create-shelf', {
@@ -34258,14 +34260,13 @@ Vue.component('app-profile', {
 'use strict';
 
 Vue.component('app-profile-all-shelves', {
-    props: ['user'],
+    props: ['shelves', 'user'],
 
     /**
      * The component's data.
      */
     data: function data() {
         return {
-            shelves: [],
             updatingShelf: null,
             deletingShelf: null,
             updateShelfForm: new AppForm({
@@ -34287,18 +34288,6 @@ Vue.component('app-profile-all-shelves', {
             this.$http.get('/users/' + this.user.id + '/shelves').then(function (response) {
                 this.shelves = response.data;
             });
-        },
-
-
-        /**
-         * Show the edit shelf modal.
-         */
-        editShelf: function editShelf(shelf) {
-            this.updatingShelf = shelf;
-
-            this.initializeUpdateFormWith(shelf);
-
-            $('#modal-update-shelf').modal('show');
         },
 
 
@@ -34325,15 +34314,6 @@ Vue.component('app-profile-all-shelves', {
 
 
         /**
-         * Get user confirmation that the shelf should be deleted.
-         */
-        approveShelfDelete: function approveShelfDelete(shelf) {
-            this.deletingShelf = shelf;
-            $('#modal-delete-shelf').modal('show');
-        },
-
-
-        /**
          * Delete the specified shelf.
          */
         deleteShelf: function deleteShelf() {
@@ -34343,18 +34323,30 @@ Vue.component('app-profile-all-shelves', {
                 _this2.getUserShelves();
                 $('#modal-delete-shelf').modal('hide');
             });
-        },
-        onOwnProfile: function onOwnProfile() {
-            return App.userId === this.user.id;
         }
     },
 
     events: {
+        showEditShelfModal: function showEditShelfModal(shelf) {
+            this.updatingShelf = shelf;
+
+            this.initializeUpdateFormWith(shelf);
+
+            $('#modal-update-shelf').modal('show');
+        },
+
+
+        /**
+         * Get user confirmation that the shelf should be deleted.
+         */
+        showDeleteShelfModal: function showDeleteShelfModal(shelf) {
+            this.deletingShelf = shelf;
+            $('#modal-delete-shelf').modal('show');
+        },
 
         /**
          * Handle this component becoming the active tab.
          */
-
         appHashChanged: function appHashChanged(hash) {
             if (hash == 'bookshelves' && this.shelves.length === 0) {
                 this.getUserShelves();
@@ -34370,35 +34362,28 @@ Vue.component('app-profile-all-shelves', {
 },{}],68:[function(require,module,exports){
 'use strict';
 
-Vue.component('app-profile-header', {
-    props: ['user']
-});
+Vue.component('app-profile-header', {});
 
 },{}],69:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-profile-index', {
-    props: ['user'],
+  props: ['user', 'shelves'],
 
-    created: function created() {
-        this.user = JSON.parse(this.user);
-    },
+  /**
+   * Load mixins for the component.
+   */
+  mixins: [require('../tab-state')],
 
-
-    /**
-     * Load mixins for the component.
-     */
-    mixins: [require('../tab-state')],
-
-    /**
-     * Prepare the component.
-     */
-    ready: function ready() {
-        this.usePushStateForTabs('.profile-index-tabs');
-    }
+  /**
+   * Prepare the component.
+   */
+  ready: function ready() {
+    this.usePushStateForTabs('.profile-index-tabs');
+  }
 });
 
-},{"../tab-state":76}],70:[function(require,module,exports){
+},{"../tab-state":77}],70:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-profile-liked-shelves', {
@@ -34439,6 +34424,33 @@ Vue.component('app-profile-liked-shelves', {
 },{}],71:[function(require,module,exports){
 'use strict';
 
+Vue.component('app-profile-shelf-item', {
+
+    props: ['shelf', 'user'],
+
+    methods: {
+        canEditOrDelete: function canEditOrDelete() {
+            return App.userId === this.user.id;
+        },
+        showDeleteShelfModal: function showDeleteShelfModal() {
+            this.$dispatch('showDeleteShelfModal', this.shelf);
+        },
+        showEditShelfModal: function showEditShelfModal() {
+            this.$dispatch('showEditShelfModal', this.shelf);
+        }
+    },
+
+    computed: {
+        url: function url() {
+            return '/@' + this.user.username + '/shelves/' + this.shelf.slug;
+        }
+    }
+
+});
+
+},{}],72:[function(require,module,exports){
+'use strict';
+
 Vue.component('app-book-search-bar', {
 
     props: [],
@@ -34462,7 +34474,7 @@ Vue.component('app-book-search-bar', {
 
 });
 
-},{}],72:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-settings', {
@@ -34482,7 +34494,7 @@ Vue.component('app-settings', {
   }
 });
 
-},{"./tab-state":76}],73:[function(require,module,exports){
+},{"./tab-state":77}],74:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-shelf-book-item', {
@@ -34526,7 +34538,7 @@ Vue.component('app-shelf-book-item', {
 
 });
 
-},{}],74:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-shelf-search-bar', {
@@ -34563,7 +34575,7 @@ Vue.component('app-shelf-search-bar', {
 
 });
 
-},{}],75:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-shelf', {
@@ -34597,7 +34609,7 @@ Vue.component('app-shelf', {
 
 });
 
-},{}],76:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -34695,7 +34707,7 @@ module.exports = {
     }
 };
 
-},{}],77:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-update-profile-information', {
@@ -34744,7 +34756,7 @@ Vue.component('app-update-profile-information', {
 
 });
 
-},{}],78:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 'use strict';
 
 Vue.component('app-update-profile-photo', {
@@ -34800,7 +34812,7 @@ Vue.component('app-update-profile-photo', {
     }
 });
 
-},{}],79:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 'use strict';
 
 /**
@@ -34842,7 +34854,7 @@ Vue.filter('relative', function (value) {
     return moment.utc(value).local().fromNow();
 });
 
-},{}],80:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 'use strict';
 
 /**
@@ -34867,7 +34879,7 @@ require('./errors');
  */
 $.extend(App, require('./http'));
 
-},{"./errors":81,"./form":82,"./http":83}],81:[function(require,module,exports){
+},{"./errors":82,"./form":83,"./http":84}],82:[function(require,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
@@ -34934,7 +34946,7 @@ window.AppFormErrors = function () {
     };
 };
 
-},{}],82:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 "use strict";
 
 /**
@@ -34988,7 +35000,7 @@ window.AppForm = function (data) {
   };
 };
 
-},{}],83:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -35040,7 +35052,7 @@ module.exports = {
     }
 };
 
-},{}],84:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -35078,7 +35090,7 @@ module.exports = {
     }
 };
 
-},{}],85:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 "use strict";
 
 module.exports = {
@@ -35093,7 +35105,7 @@ module.exports = {
     }
 };
 
-},{}],86:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 'use strict';
 
 /*
@@ -35131,6 +35143,6 @@ require('./filters');
  */
 require('./forms/bootstrap');
 
-},{"./filters":79,"./forms/bootstrap":80,"./interceptors":84,"./mixin":85,"vue":52,"vue-resource":37}]},{},[54]);
+},{"./filters":80,"./forms/bootstrap":81,"./interceptors":85,"./mixin":86,"vue":52,"vue-resource":37}]},{},[54]);
 
 //# sourceMappingURL=app.js.map

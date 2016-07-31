@@ -42,7 +42,6 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
-        $this->mp = \Mixpanel::getInstance("8a108f77a10d4deca20b2f5ed0e59999");
     }
 
     /**
@@ -93,12 +92,6 @@ class AuthController extends Controller
         Auth::guard($this->getGuard())->login($user);
 
         // Event::fire(new UserRegistered($user));
-
-        // create/update a profile for user id
-        $this->mp->people->set($user->id, array(
-            'name' =>    $user->name,
-            'username'  => $user->username
-        ));
 
         return redirect('/welcome');
     }

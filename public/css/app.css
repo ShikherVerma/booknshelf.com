@@ -8778,12 +8778,20 @@ img.zoom-img {
 }
 .shelf-caption {
   background-color: white;
-  opacity: 0.85;
+  opacity: 0.90;
   font-weight: bold;
   color: #072b54;
   padding: 7px;
   text-align: center;
   font-size: 16px;
+}
+.shelf-creator {
+  vertical-align: middle;
+}
+.shelf-creator a:hover {
+  text-decoration: none;
+  color: #0b4383;
+  cursor: pointer;
 }
 .shelf-card-body {
   position: relative;
@@ -8802,7 +8810,7 @@ img.zoom-img {
   background-color: white;
   color: #072b54;
   text-align: center;
-  opacity: 0.85;
+  opacity: 0.90;
 }
 .shelf-card-actions-bar > button {
   margin: 4px;
@@ -9481,6 +9489,8 @@ fieldset[disabled] .btn-danger-outline.active {
 }
 .media-shelf {
   position: absolute;
+  max-height: 400px;
+  overflow-y: auto;
   top: 100%;
   left: 0;
   z-index: 1000;
@@ -9491,6 +9501,12 @@ fieldset[disabled] .btn-danger-outline.active {
   list-style: none;
   background-color: #ffffff;
   border-color: rgba(0, 0, 0, 0.2);
+}
+.media-shelf li > h5 {
+  color: #072b54;
+}
+.media-shelf li:hover {
+  background-color: #e8f8f5;
 }
 .media-shelf em {
   background: #98E2D5;

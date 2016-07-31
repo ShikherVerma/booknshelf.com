@@ -6,6 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="oRlwQCWDSEBrMAdKd3t3_3pCA9sFayLgZdgLer2TKfM" />
+    <link rel="canonical" href="https://www.booknshelf.com/" />
+    <meta name="description" content="Booknshelf is a place to discover great books, bookshelves and share them with your friends."/>
+    <meta property="fb:app_id" content="1899203000306326" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="twitter:site" content="@booknshelf" />
+    <meta name="twitter:title" content="Booknshelf" />
+    <meta name="twitter:description" content="Booknshelf is a place to discover great books, bookshelves and share them with your friends." />
+    <meta name="twitter:creator" content="@booknshelf" />
+    <meta property="og:site_name" content="Booknshelf" />
+    <meta property="og:title" content="Booknshelf" />
+    <meta property="og:description" content="Booknshelf is a place to discover great books, bookshelves and share them with your friends." />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://www.booknshelf.com/" />
 
     <title>@yield('title', 'Booknshelf')</title>
 

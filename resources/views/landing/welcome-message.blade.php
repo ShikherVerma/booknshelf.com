@@ -5,7 +5,7 @@
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="text-center">Welcome to Booknshelf</h4>
                 <h5 class="text-center">
-                    Booknshelf is a website that makes it easy to find great books, bookshelves and share them with your friends.
+                    A place to discover great books, bookshelves and share them with your friends.
                 </h5>
             </div>
         </div>

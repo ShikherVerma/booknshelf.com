@@ -18,7 +18,7 @@ class ShelfRepository {
     public function ourPicks()
     {
         try {
-            $shelves = User::where('username', 'booknshelf')
+            $shelves = User::where('username', 'tigran')
                 ->firstOrFail()
                 ->shelves()
                 ->whereNotNull('cover')

@@ -13,8 +13,8 @@
                         <a href="/@@{{shelf.user.username}}/shelves/@{{ shelf.slug }}">
                             <h5 v-html="shelf._highlightResult.name.value"></h5>
                         </a>
-                        <a href="/@@{{shelf.user.username}}">
-                            by <span v-html="shelf._highlightResult.user.name.value"></span>
+                        by<a href="/@@{{shelf.user.username}}">
+                            <span v-html="shelf._highlightResult.user.name.value"></span>
                         </a>
                     </li>
                 </ul>
