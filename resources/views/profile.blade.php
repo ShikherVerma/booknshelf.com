@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+{{ $user->name }}'s profile on Booknshelf
+@endsection
+
 @section('content')
     <app-profile-index :user="{{ $user }}" :shelves="{{ $shelves }}" inline-template>
         <div>
