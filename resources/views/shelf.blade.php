@@ -11,7 +11,7 @@
             </p>
             <span class="shelf-header-owner">
                 <img src="{{ $user->avatar }}" class="app-nav-profile-photo small-profile-photo">
-                by <a href="/{{ '@' . $user->username }}">{{ $user->name }}</a>
+                by <a href="{{ route('profile_path', ['username' => $user->username]) }}">{{ $user->name }}</a>
             </span>
         </div>
     </div>

@@ -35,10 +35,10 @@ $router->put('/settings/profile', 'SettingsController@updateProfile');
 $router->post('/settings/photo', 'SettingsController@updatePhoto');
 
 // User
-$router->get('/@{username}', 'UserController@profile');
+$router->get('/@{username}',  ['as' => 'profile_path', 'uses' => 'UserController@profile']);
 $router->get('/users/{user_id}/shelves', 'UserController@allShelves');
 $router->get('/@{username}/bookshelves', 'UserController@profile');
-$router->get('/@{username}/shelves/{shelf_slug}', 'UserController@shelf');
+$router->get('/@{username}/shelves/{shelf_slug}', ['as' => 'shelf_path', 'uses' => 'UserController@shelf']);
 $router->post('/user/welcome', 'UserController@welcome');
 $router->get('/user/current', 'UserController@current');
 $router->get('/user/shelves', 'UserController@shelves');

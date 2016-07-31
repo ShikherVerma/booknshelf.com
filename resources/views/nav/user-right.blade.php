@@ -17,7 +17,7 @@
 
     <ul class="dropdown-menu" role="menu">
         <li>
-            <a href="/{{ '@' . Auth::user()->username }}">
+            <a href="{{ route('profile_path', ['username' => Auth::user()->username]) }}">
                 My Profile
             </a>
         </li>

@@ -14,7 +14,7 @@
                     <div class="col-md-4">
                        <!--  Home Page Shelf Item -->
                         <div class="panel shelf-card-item pos-r">
-                            <a href="/{{ '@' . $shelf['user']['username'] . '/shelves/' . $shelf['slug'] }}">
+                            <a href="{{ route('shelf_path', ['username' => $shelf['user']['username'], 'shelf_slig' =>$shelf['slug']]) }}">
                                 <div class="shelf-caption w-full pos-a">
                                      {{ $shelf['name'] }}
                                 </div>
@@ -26,7 +26,7 @@
                                             <img class="app-nav-profile-photo small-profile-photo" src="{{ $shelf['user']['avatar'] }}">
                                         </a>
                                         <div class="media-body shelf-creator">
-                                            <a href="/{{ '@' . $shelf['user']['username'] }}">
+                                            <a href="{{ route('profile_path', ['username' => $shelf['user']['username']]) }}">
                                                 <strong>{{ $shelf['user']['name'] }}</strong>
                                                 <small>{{ "@" . $shelf['user']['username'] }}</small>
                                             </a>
@@ -34,7 +34,7 @@
                                     </div>
                                 </li>
                             </div>
-                            <a href="/{{ '@' . $shelf['user']['username'] . '/shelves/' . $shelf['slug'] }}">
+                            <a href="{{ route('shelf_path', ['username' => $shelf['user']['username'], 'shelf_slig' =>$shelf['slug']]) }}">
                                 <div>
                                     <img class="media-object shelf-card-item-cover" width="300" height="300" src="{{ $shelf['cover'] or '' }}">
                                 </div>
