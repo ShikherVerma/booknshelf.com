@@ -16,6 +16,9 @@
  *
  * @SuppressWarnings(PHPMD)
 */
+
+use Laracasts\TestDummy\Factory as TestDummy;
+
 class FunctionalTester extends \Codeception\Actor
 {
     use _generated\FunctionalTesterActions;
@@ -23,4 +26,45 @@ class FunctionalTester extends \Codeception\Actor
    /**
     * Define custom actions here
     */
+    /**
+     * Prepare Larabook account, and log in.
+     */
+    public function signIn(FunctionalTester $I)
+    {
+        $name = 'Tester name';
+        $username = 'foobar';
+        $password = bcrypt('foopassword');
+
+        $this->haveAnAccount(compact('name', 'username','password'));
+
+        $I->amOnPage('/login');
+        $I->fillField('username', $username);
+        $I->fillField('password', 'foopassword');
+        $I->click('login');
+
+    }
+
+    /**
+     * Create a Larabook user account in the database.
+     *
+     * @param array $overrides
+     * @return mixed
+     */
+    public function haveAnAccount($overrides = [])
+    {
+        return $this->haveUser($overrides);
+    }
+
+    /**
+     * Insert a dummy record into a database table.
+     *
+     * @param $model
+     * @param array $overrides
+     * @return mixed
+     */
+    public function haveUser($overrides = [])
+    {
+        $user = TestDummy::create('App\User', $overrides);
+        return $user;
+    }
 }

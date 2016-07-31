@@ -15,6 +15,11 @@ class ShelfRepository {
         return Shelf::with('user')->orderBy('created_at', 'desc')->take(10)->get();
     }
 
+    /**
+     *  Show all the popular shelves created by us.
+     *
+     * @return \Illuminate\Support\Collection
+     */
     public function ourPicks()
     {
         $popularUsername = env('POPULAR_USERNAME') ?? 'booknshelf';
@@ -47,6 +52,13 @@ class ShelfRepository {
                     ->get();
     }
 
+    /**
+     * Check if the given user has as shelf with the given slug.
+     *
+     * @param User $user
+     * @param $shelfName
+     * @return bool
+     */
     public function exists(User $user, $shelfName)
     {
         return $user->shelves()->where('slug', str_slug($shelfName))->count() > 0;

@@ -6,7 +6,6 @@ namespace _generated;
 // @codingStandardsIgnoreFile
 
 use Codeception\Module\Asserts;
-use Helper\Unit;
 use Codeception\Module\Laravel5;
 
 trait UnitTesterActions

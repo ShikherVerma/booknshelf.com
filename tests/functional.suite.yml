@@ -9,4 +9,4 @@ modules:
     enabled:
         - Laravel5:
             environment_file: .env.testing
-        - \Helper\Acceptance
+        # - \Helper\Acceptance

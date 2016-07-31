@@ -9,4 +9,4 @@ modules:
     enabled:
         - Laravel5:
             url: http://homestead.app
-        - \Helper\Acceptance
+        # - \Helper\Acceptance
