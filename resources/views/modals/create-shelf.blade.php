@@ -19,7 +19,7 @@
 
                             <div class="form-group" :class="{'has-error': form.errors.has('name')}">
                                 <div class="col-md-12">
-                                    <input id="name" type="text" class="form-control" v-model="form.name" placeholder="Name">
+                                    <input id="name" name="name" type="text" class="form-control" v-model="form.name" placeholder="Name">
                                     <span class="help-block" v-show="form.errors.has('name')">
                                         @{{ form.errors.get('name') }}
                                     </span>

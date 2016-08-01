@@ -67,4 +67,11 @@ class FunctionalTester extends \Codeception\Actor
         $user = TestDummy::create('App\User', $overrides);
         return $user;
     }
+
+    public function createShelf(FunctionalTester $I, $name)
+    {
+        $I->click("CREATE");
+        $I->fillField('name', $name);
+        $I->click('Create');
+    }
 }
