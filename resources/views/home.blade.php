@@ -27,7 +27,7 @@
                                         </a>
                                         <div class="media-body shelf-creator">
                                             <a href="{{ route('profile_path', ['username' => $shelf['user']['username']]) }}">
-                                                <strong>{{ $shelf['user']['name'] }}</strong>
+                                                <strong>by {{ $shelf['user']['name'] }}</strong>
                                                 <small>{{ "@" . $shelf['user']['username'] }}</small>
                                             </a>
                                         </div>
