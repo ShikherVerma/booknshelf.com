@@ -11,6 +11,22 @@ class Shelf extends Model
 
     public static $perEnvironment = true;
 
+    public function autoIndex()
+    {
+        if (env('APP_ENV') === 'testing') {
+            return false;
+        }
+        return true;
+    }
+
+    public function autoDelete()
+    {
+        if (env('APP_ENV') === 'testing') {
+            return false;
+        }
+        return true;
+    }
+
     protected $table = 'shelves';
 
     /**
@@ -65,6 +81,6 @@ class Shelf extends Model
          */
         $this->user;
 
-       return $this->toArray();
+        return $this->toArray();
     }
 }

@@ -31,10 +31,10 @@ class HomeController extends Controller
     public function index()
     {
         $shelves = $this->shelves->ourPicks();
-        $books = $this->books->getMostSaved();
+        // $books = $this->books->getMostSaved();
         return view('home', [
             'shelves' => $shelves->toArray(),
-            'mostSavedBooks' => $books,
+            // 'mostSavedBooks' => $books,
         ]);
     }
 
