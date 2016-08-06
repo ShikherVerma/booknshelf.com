@@ -12,7 +12,7 @@ Vue.component('app-shelf-search-bar', {
     ready: function() {
         this.client = algoliasearch('T0H494PKEG', 'dcdaf55ad36be23423eb00e8faa8089d');
         var shelves = this.client.initIndex('shelves_production');
-        var users = this.client.initIndex('users_local');
+        var users = this.client.initIndex('users_production');
 
         var templateDropdown = Hogan.compile(
             '<div class="left-container">' +
