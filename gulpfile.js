@@ -42,6 +42,7 @@ elixir(function(mix) {
 	    // 'vendor/hydrogen/jquery.waypoints.min.js',
 	    // 'vendor/hydrogen/salvattore.min.js',
 	    // 'vendor/hydrogen/main.js',
+	    'vendor/hogan-3.0.1.js',
 	], 'public/js/booknshelf.js');
 
 	mix.version(['public/css/booknshelf.css','public/js/booknshelf.js']);

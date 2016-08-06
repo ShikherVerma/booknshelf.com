@@ -54,7 +54,6 @@ Vue.component('app-shelf-search-bar', {
                     name: 'shelf',
                 }
             ]).on('autocomplete:selected', function(event, suggestion, dataset) {
-                console.log(suggestion, dataset);
                 switch (dataset) {
                     case 'user':
                         window.location = '/@' + suggestion.username;

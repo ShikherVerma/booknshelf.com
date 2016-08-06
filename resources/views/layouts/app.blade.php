@@ -68,7 +68,6 @@
         <!-- JavaScript -->
         <script src="//code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
         <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-        <script src="https://twitter.github.com/hogan.js/builds/3.0.1/hogan-3.0.1.js"></script>
         <script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
         <script src="{{ elixir('js/booknshelf.js') }}"></script>
         <script src="/js/app.js"></script>
