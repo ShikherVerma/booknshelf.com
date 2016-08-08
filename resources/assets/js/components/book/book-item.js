@@ -37,7 +37,13 @@ Vue.component('app-book-item', {
         },
 
         showSaveModal() {
-            this.$broadcast('showSaveModal')
+            // if user is authenticated then show the save modal, otherwise login modal
+            console.log(App.userId);
+            if (App.userId) {
+                this.$broadcast('showSaveModal')
+            } else {
+                this.$broadcast('showPleaseLoginModal');
+            }
         }
 
     },

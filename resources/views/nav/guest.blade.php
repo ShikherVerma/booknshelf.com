@@ -20,7 +20,7 @@
             <ul class="nav navbar-nav">
                 <li>
                     <a>
-                        @include('search.shelf-search-bar')
+                        @include('search.book-search-bar')
                     </a>
                 </li>
             </ul>

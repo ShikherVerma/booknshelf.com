@@ -16,7 +16,7 @@
 <template id="books">
     <ul class="list-group media-list media-list-stream">
         <app-book-item v-for="book in books" :book="book" ></app-book-item>
-        <span v-if="books.length < 1">We couldn't find any book with the given name.</span>
+        <span v-if="books.length < 1">We couldn't find any books with the given name.</span>
     </ul>
 </template>
 
@@ -57,7 +57,11 @@
                         <i class="fa fa-external-link" aria-hidden="true"></i>
                     </a>
                 </small>
-                @include('modals.book-item-save-modal')
+                @if(Auth::check())
+                    @include('modals.book-item-save-modal')
+                @else
+                    @include('modals.please-login-modal')
+                @endif
             </div>
         </div>
     </li>

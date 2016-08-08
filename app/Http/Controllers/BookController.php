@@ -18,6 +18,9 @@ class BookController extends Controller
     public function __construct(UserRepository $users, BookRepository $books)
     {
         $this->middleware('auth');
+        $this->middleware('auth', ['except' => [
+            'search'
+        ]]);
 
         $client = new \Google_Client();
         $client->setApplicationName(env('GOOGLE_APPLICATION_NAME'));
