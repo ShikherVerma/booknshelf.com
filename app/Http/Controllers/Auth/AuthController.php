@@ -91,8 +91,6 @@ class AuthController extends Controller
 
         Auth::guard($this->getGuard())->login($user);
 
-        Event::fire(new UserRegistered($user));
-
         return redirect('/welcome');
     }
 
