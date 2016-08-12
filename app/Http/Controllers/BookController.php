@@ -17,7 +17,6 @@ class BookController extends Controller
 
     public function __construct(UserRepository $users, BookRepository $books)
     {
-        $this->middleware('auth');
         $this->middleware('auth', ['except' => [
             'search'
         ]]);
@@ -29,12 +28,6 @@ class BookController extends Controller
         $this->users = $users;
         $this->books = $books;
     }
-
-    public function index()
-    {
-        return view('search');
-    }
-
 
     public function search(Request $request)
     {

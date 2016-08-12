@@ -15,7 +15,7 @@
         </div>
 
         <!-- All Shelves -->
-        <div class="row m-t" v-show="shelves.length > 0">
+        <div class="row m-t" v-if="shelves.length > 0">
             <div class="col-md-3" v-for="shelf in shelves">
                <!--  Profile Shelf Item -->
                 <app-profile-shelf-item :shelf="shelf" :user="user" inline-template>

@@ -23,9 +23,6 @@ Route::get('login_twitter', 'Auth\AuthController@loginTwitter');
 // register auth routes
 Route::get('register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
 Route::post('register', ['as' => 'register', 'uses' => 'Auth\AuthController@postRegister']);
-
-$router->get('/crafted-by-us', 'PageController@craftedByus');
-
 // onboarding welcome page
 Route::get('/welcome', 'HomeController@welcome');
 // Settings
@@ -33,7 +30,6 @@ $router->get('/settings', 'SettingsController@show');
 // Profile Contact Information...
 $router->put('/settings/profile', 'SettingsController@updateProfile');
 $router->post('/settings/photo', 'SettingsController@updatePhoto');
-
 // User
 $router->get('/@{username}',  ['as' => 'profile_path', 'uses' => 'UserController@profile']);
 $router->get('/users/{user_id}/shelves', 'UserController@allShelves');
@@ -42,12 +38,10 @@ $router->get('/@{username}/shelves/{shelf_slug}', ['as' => 'shelf_path', 'uses' 
 $router->post('/user/welcome', 'UserController@welcome');
 $router->get('/user/current', 'UserController@current');
 $router->get('/user/shelves', 'UserController@shelves');
-
-// Book Search
+// Search
 $router->get('/books/search', 'BookController@search');
-
-// Shelves
 $router->get('/shelves/search', 'ShelfController@search');
+// Shelves
 $router->post('/shelves', 'ShelfController@store');
 $router->get('/shelves/{shelf_id}', 'ShelfController@show');
 $router->put('/shelves/{shelf_id}', 'ShelfController@update');
