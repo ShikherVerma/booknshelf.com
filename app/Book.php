@@ -68,5 +68,4 @@ class Book extends Model
     {
         return $this->belongsToMany('App\Shelf')->withTimestamps();
     }
-
 }

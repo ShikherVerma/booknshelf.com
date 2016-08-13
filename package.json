@@ -5,7 +5,8 @@
     "dev": "gulp watch"
   },
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "vueify": "^8.7.0"
   },
   "dependencies": {
     "bootstrap": "^3.0.0",

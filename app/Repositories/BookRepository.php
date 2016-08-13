@@ -60,7 +60,7 @@ class BookRepository
         ];
         // To avoid "this content should also be served over HTTPS" warning in chrome and firefox
         $image = $item['volumeInfo']['imageLinks']['thumbnail'] ?? null;
-        if(!is_null($image)) {
+        if (!is_null($image)) {
             $image = preg_replace("/^http:/i", "https:", $image);
         }
         $result['image'] = $image;
