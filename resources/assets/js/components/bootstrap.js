@@ -32,10 +32,8 @@ require('./update-profile-information');
 /**
  * User's Profile Components
  */
-require('./profile/profile-index');
 require('./profile/profile-header');
 require('./profile/profile-all-shelves');
-require('./profile/profile-liked-shelves');
 require('./profile/profile-shelf-item');
 
 
@@ -43,7 +41,7 @@ require('./home');
 require('./activity');
 
 require('./search/book-search-bar');
-require('./create-shelf');
+require('./new-shelf-modal');
 
 // Books
 require('./book/books');

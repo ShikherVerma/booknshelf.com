@@ -1,5 +1,5 @@
-<!-- Create Shelf Modal -->
-<app-create-shelf :user="user" style="display: none;" inline-template>
+<!-- New Shelf Modal -->
+<app-new-shelf-modal :user="user" style="display: none;" inline-template>
     <div class="modal modal-mask" @click="close" v-show="show" id="modal-create-shelf" transition="modal">
         <div class="modal-wrapper">
             <div class="modal-container" @click.stop>
@@ -53,4 +53,4 @@
 
         </div>
     </div>
-</app-create-shelf>
+</app-new-shelf-modal>

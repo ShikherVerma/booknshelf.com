@@ -1,45 +1,47 @@
-<app-profile-all-shelves :shelves="shelves" :user="user" inline-template>
+<app-profile-all-shelves :user="user" inline-template>
 
     <div class="container max-width-1000 p-a">
-
         <!-- No Shelf -->
-        <div class="row" v-if="shelves.length == 0">
-            <div class="col-md-12">
-                <div class="alert alert-warning hidden-xs" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h5 class="text-center">
-                        Looks like you don't have any shelves yet. Create one!
-                    </h5>
+        <template v-if="shelvesLoaded && shelves.length == 0">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            Looks like you don't have any shelves yet. Create one!
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </template>
 
         <!-- All Shelves -->
-        <div class="row m-t" v-if="shelves.length > 0">
-            <div class="col-md-3" v-for="shelf in shelves">
-               <!--  Profile Shelf Item -->
-                <app-profile-shelf-item :shelf="shelf" :user="user" inline-template>
-                    <div class="panel shelf-card-item pos-r">
-                        <div class="shelf-caption w-full pos-a">
-                            <a v-bind:href="url">
-                                @{{ shelf.name }}
-                            </a>
+        <template v-if="shelves.length > 0">
+            <div class="row m-t">
+                <div class="col-md-3" v-for="shelf in shelves">
+                   <!--  Profile Shelf Item -->
+                    <app-profile-shelf-item :shelf="shelf" :user="user" inline-template>
+                        <div class="panel shelf-card-item pos-r">
+                            <div class="shelf-caption w-full pos-a">
+                                <a v-bind:href="url">
+                                    @{{ shelf.name }}
+                                </a>
+                            </div>
+                            <div v-if="canEditOrDelete()"  class="shelf-card-actions-bar w-full pos-a">
+                                <button class="btn btn-sm btn-default-outline" @click="showEditShelfModal()">
+                                    <i class="fa fa-pencil"></i>
+                                </button>
+                                <button class="btn btn-sm btn-danger-outline" @click="showDeleteShelfModal()">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                             </div>
+                             <div>
+                                 <img class="media-object shelf-card-item-cover" :src="shelf.cover">
+                             </div>
                         </div>
-                        <div v-if="canEditOrDelete()"  class="shelf-card-actions-bar w-full pos-a">
-                            <button class="btn btn-sm btn-default-outline" @click="showEditShelfModal()">
-                                <i class="fa fa-pencil"></i>
-                            </button>
-                            <button class="btn btn-sm btn-danger-outline" @click="showDeleteShelfModal()">
-                                <i class="fa fa-times"></i>
-                            </button>
-                         </div>
-                         <div>
-                             <img class="media-object shelf-card-item-cover" :src="shelf.cover">
-                         </div>
-                    </div>
-                </app-profile-shelf-item>
+                    </app-profile-shelf-item>
+                </div>
             </div>
-        </div>
+        </template>
 
         <!-- Update Shelf Modal -->
         <div id="modal-update-shelf" class="modal fade" tabindex="-1" role="dialog">

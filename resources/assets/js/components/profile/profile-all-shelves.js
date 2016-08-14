@@ -1,11 +1,14 @@
 Vue.component('app-profile-all-shelves', {
-    props: ['shelves', 'user'],
+    props: ['user'],
 
     /**
      * The component's data.
      */
     data() {
         return {
+            shelves: [],
+            shelvesLoaded: false,
+
             updatingShelf: null,
             deletingShelf: null,
             updateShelfForm: new AppForm({
@@ -16,6 +19,9 @@ Vue.component('app-profile-all-shelves', {
         }
     },
 
+    created() {
+        this.getUserShelves();
+    },
 
     methods: {
 
@@ -26,6 +32,8 @@ Vue.component('app-profile-all-shelves', {
             this.$http.get(`/users/${this.user.id}/shelves`)
                 .then(function(response) {
                     this.shelves = response.data;
+
+                    this.shelvesLoaded = true;
                 });
         },
 
@@ -82,11 +90,11 @@ Vue.component('app-profile-all-shelves', {
         /**
          * Handle this component becoming the active tab.
          */
-        appHashChanged(hash) {
-            if (hash == 'bookshelves' && this.shelves.length === 0) {
-                this.getUserShelves();
-            }
-        },
+        // appHashChanged(hash) {
+        //     if (hash == 'bookshelves' && this.shelves.length === 0) {
+        //         this.getUserShelves();
+        //     }
+        // },
 
         reloadUserShelves() {
             this.getUserShelves();

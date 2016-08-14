@@ -1,4 +1,4 @@
-Vue.component('app-create-shelf', {
+Vue.component('app-new-shelf-modal', {
     props: ['user'],
 
     data() {

@@ -6,7 +6,8 @@
   },
   "devDependencies": {
     "gulp": "^3.9.1",
-    "vueify": "^8.7.0"
+    "vueify": "^8.7.0",
+    "webpack": "^1.13.1"
   },
   "dependencies": {
     "bootstrap": "^3.0.0",
