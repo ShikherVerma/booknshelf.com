@@ -6,9 +6,6 @@ Vue.component('app-profile-all-shelves', {
      */
     data() {
         return {
-            shelves: [],
-            shelvesLoaded: false,
-
             updatingShelf: null,
             deletingShelf: null,
             updateShelfForm: new AppForm({
@@ -17,10 +14,6 @@ Vue.component('app-profile-all-shelves', {
             }),
             deleteShelfForm: new AppForm({}),
         }
-    },
-
-    created() {
-        this.getUserShelves();
     },
 
     methods: {

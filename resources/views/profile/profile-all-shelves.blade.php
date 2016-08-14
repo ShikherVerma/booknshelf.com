@@ -2,7 +2,7 @@
 
     <div class="container max-width-1000 p-a">
         <!-- No Shelf -->
-        <template v-if="shelvesLoaded && shelves.length == 0">
+        <template v-if="shelves.length == 0">
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
