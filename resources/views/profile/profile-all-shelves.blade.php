@@ -1,4 +1,4 @@
-<app-profile-all-shelves :user="user" inline-template>
+<app-profile-all-shelves :user="{{ $user }}" :shelves="{{ $shelves }}" inline-template>
 
     <div class="container max-width-1000 p-a">
         <!-- No Shelf -->

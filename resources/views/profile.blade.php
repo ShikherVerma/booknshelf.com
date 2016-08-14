@@ -6,7 +6,7 @@
 @section('content')
 
 <!-- Profile Header -->
-<app-profile-header :user="user" inline-template>
+<app-profile-header :user="{{ $user }}" inline-template>
     <div class="profile-header p-t-lg">
 
         <template v-if="user">
