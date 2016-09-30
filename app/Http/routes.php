@@ -11,7 +11,7 @@
 |
 */
 
-$router->get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 
 Route::auth();
 // Socialite auth for facebook
@@ -26,29 +26,29 @@ Route::post('register', ['as' => 'register', 'uses' => 'Auth\AuthController@post
 // onboarding welcome page
 Route::get('/welcome', 'HomeController@welcome');
 // Settings
-$router->get('/settings', 'SettingsController@show');
+Route::get('/settings', 'SettingsController@show');
 // Profile Contact Information...
-$router->put('/settings/profile', 'SettingsController@updateProfile');
-$router->post('/settings/photo', 'SettingsController@updatePhoto');
+Route::put('/settings/profile', 'SettingsController@updateProfile');
+Route::post('/settings/photo', 'SettingsController@updatePhoto');
 // User
-$router->get('/@{username}',  ['as' => 'profile_path', 'uses' => 'UserController@profile']);
-$router->get('/users/{user_id}/shelves', 'UserController@allShelves');
-$router->get('/@{username}/bookshelves', ['as' => 'bookshelves_path', 'uses' => 'UserController@profile']);
-$router->get('/@{username}/shelves/{shelf_slug}', ['as' => 'shelf_path', 'uses' => 'UserController@shelf']);
-$router->post('/user/welcome', 'UserController@welcome');
-$router->get('/user/current', 'UserController@current');
-$router->get('/user/shelves', 'UserController@shelves');
+Route::get('/@{username}', ['as' => 'profile_path', 'uses' => 'UserController@profile']);
+Route::get('/users/{user_id}/shelves', 'UserController@allShelves');
+Route::get('/@{username}/bookshelves', ['as' => 'bookshelves_path', 'uses' => 'UserController@profile']);
+Route::get('/@{username}/shelves/{shelf_slug}', ['as' => 'shelf_path', 'uses' => 'UserController@shelf']);
+Route::post('/user/welcome', 'UserController@welcome');
+Route::get('/user/current', 'UserController@current');
+Route::get('/user/shelves', 'UserController@shelves');
 // Search
-$router->get('/books/search', 'BookController@search');
-$router->get('/shelves/search', 'ShelfController@search');
+Route::get('/books/search', 'BookController@search');
+Route::get('/shelves/search', 'ShelfController@search');
 // Shelves
-$router->post('/shelves', 'ShelfController@store');
-$router->get('/shelves/{shelf_id}', 'ShelfController@show');
-$router->put('/shelves/{shelf_id}', 'ShelfController@update');
-$router->delete('/shelves/{shelf_id}', 'ShelfController@destroy');
-$router->get('/shelves/{shelf_id}/books', 'ShelfController@getBooks');
-$router->post('/shelves/{shelf_id}/books', 'ShelfController@storeBook');
-$router->delete('/shelves/{shelf_id}/books', 'ShelfController@removeBook');
+Route::post('/shelves', 'ShelfController@store');
+Route::get('/shelves/{shelf_id}', 'ShelfController@show');
+Route::put('/shelves/{shelf_id}', 'ShelfController@update');
+Route::delete('/shelves/{shelf_id}', 'ShelfController@destroy');
+Route::get('/shelves/{shelf_id}/books', 'ShelfController@getBooks');
+Route::post('/shelves/{shelf_id}/books', 'ShelfController@storeBook');
+Route::delete('/shelves/{shelf_id}/books', 'ShelfController@removeBook');
 
 // Customer Support...
-//$router->post('/support/email', 'SupportController@sendEmail');
+//Route::post('/support/email', 'SupportController@sendEmail');

@@ -13,7 +13,7 @@ class User extends Authenticatable
 
     public function autoIndex()
     {
-        if (env('APP_ENV') === 'testing') {
+        if (env('APP_ENV') === 'testing' || env('APP_ENV') === 'local') {
             return false;
         }
         return true;

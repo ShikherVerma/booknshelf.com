@@ -44,6 +44,7 @@ class BookController extends Controller
         $volumes = $this->service->volumes->listVolumes($query, $optParams);
 
         $books = [];
+        // TODO: We could use Collecton map here and extract the books from volumes
         foreach ($volumes as $volume) {
             $bookData = $this->books->extractGoogleVolumeData($volume);
             $book = $this->books->findByVolumeIdOrCreate($bookData);
