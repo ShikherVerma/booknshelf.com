@@ -3,10 +3,12 @@
 namespace App\Jobs;
 
 use App\Book;
+use App\Repositories\BookRepository;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Intervention\Image\ImageManager;
+use App\Services\GoogleBooks;
 use Log;
 use Storage;
 
@@ -30,24 +32,36 @@ class SetBookCover extends Job implements ShouldQueue
      *
      * @return void
      */
-    public function handle(ImageManager $imageManager)
+    public function handle(GoogleBooks $service, ImageManager $imageManager)
     {
         // If book does not have an image on Google then ignore.
         if (is_null($this->book->image)) {
             return $this->delete();
         }
         $s3 = Storage::disk('s3');
+        // Query Google for the large image
+        $volume = $service->getVolume($this->book->google_volume_id);
+        $largeImage = $volume['volumeInfo']['imageLinks']['large'];
+        $largeImage = preg_replace("/^http:/i", "https:", $largeImage);
         // create a new image directly from an url
-        $img = $imageManager->make((string)$this->book->image);
-        // TODO: Instead of saving the image, first try to query to google and get the
-        // large cover pic of this image.
+        $thumbnail = $imageManager->make((string)$this->book->image);
+        echo $thumbnail;
+        $coverImage = $imageManager->make((string)$largeImage);
 
+        // thumbnail
         $path = 'book-covers/' . $this->book->google_volume_id . '.png';
         Log::info('Going to save the book image here at this path: '. $path);
+        $s3->put($path, (string)$thumbnail->encode());
 
-        $s3->put($path, (string)$img->encode());
+        // large cover image
+        $coverImagePath = 'book-large-covers/' . $this->book->google_volume_id . '.png';
+        Log::info('Going to save the book cover image here at this path: '. $coverImagePath);
+        $s3->put($coverImagePath, (string)$coverImage->encode());
+
+
         $this->book->forceFill([
             'image' => $s3->url($path),
+            'cover_image' => $s3->url($coverImagePath),
         ])->save();
 
         $this->delete();

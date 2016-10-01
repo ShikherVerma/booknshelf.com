@@ -23,19 +23,13 @@ class ShelfRepository {
     public function ourPicks()
     {
         $popularUsername = env('POPULAR_USERNAME') ?? 'booknshelf';
+        $user = User::where('username', $popularUsername)->first();
+        if (is_null($user)) {
+            return collect([]);
+        };
+        $shelves = $user->shelves()->get();
+        $shelves->load('user');
 
-        try {
-            $shelves = User::where('username', $popularUsername)
-                ->firstOrFail()
-                ->shelves()
-                ->whereNotNull('cover')
-                ->get();
-            $shelves->load('user');
-        } catch (Exception $e) {
-            Log::error("Could not find any shelves with username booknshelf");
-            // empty collection for now
-            $shelves = collect([]);
-        }
         return $shelves;
     }
 
