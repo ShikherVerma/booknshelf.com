@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Repositories\BookRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
-
-require_once base_path('vendor/google/apiclient/src/Google/Client.php');
-require_once base_path('vendor/google/apiclient/src/Google/Service/Books.php');
+use App\Services\GoogleBooks;
 
 class BookController extends Controller
 {
@@ -20,31 +18,20 @@ class BookController extends Controller
         $this->middleware('auth', ['except' => [
             'search'
         ]]);
-
-        $client = new \Google_Client();
-        $client->setApplicationName(env('GOOGLE_APPLICATION_NAME'));
-        $client->setDeveloperKey(env('GOOGLE_DEV_KEY'));
-        $this->service = new \Google_Service_Books($client);
         $this->users = $users;
         $this->books = $books;
     }
 
-    public function search(Request $request)
+    public function search(Request $request, GoogleBooks $service)
     {
         $this->validate($request, [
             'q' => 'required',
         ], ['required' => 'The book title can not be empty.']);
 
         $query = $request->q;
-        $optParams = array(
-            'maxResults' => '10',
-            'printType' => 'books',
-            'orderBy' => 'relevance',
-        );
-        $volumes = $this->service->volumes->listVolumes($query, $optParams);
+        $volumes = $service->listVolumes($query);
 
         $books = [];
-        // TODO: We could use Collecton map here and extract the books from volumes
         foreach ($volumes as $volume) {
             $bookData = $this->books->extractGoogleVolumeData($volume);
             $book = $this->books->findByVolumeIdOrCreate($bookData);
@@ -58,6 +45,5 @@ class BookController extends Controller
             'mostSavedBooks' => $mostSavedBooks,
             'q' => $query
         ]);
-
     }
 }

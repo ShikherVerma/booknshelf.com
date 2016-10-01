@@ -70,6 +70,5 @@ class UpdateShelfCover extends Job implements ShouldQueue
 
         // delete the job
         $this->delete();
-
     }
 }

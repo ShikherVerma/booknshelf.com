@@ -33,12 +33,15 @@ class SetBookCover extends Job implements ShouldQueue
     public function handle(ImageManager $imageManager)
     {
         // If book does not have an image on Google then ignore.
-        if(is_null($this->book->image)) {
+        if (is_null($this->book->image)) {
             return $this->delete();
         }
         $s3 = Storage::disk('s3');
         // create a new image directly from an url
         $img = $imageManager->make((string)$this->book->image);
+        // TODO: Instead of saving the image, first try to query to google and get the
+        // large cover pic of this image.
+
         $path = 'book-covers/' . $this->book->google_volume_id . '.png';
         Log::info('Going to save the book image here at this path: '. $path);
 
