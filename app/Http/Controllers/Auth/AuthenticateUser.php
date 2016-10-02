@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use Illuminate\Contracts\Auth\Guard as Authenticator;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
-use App\Http\Requests;
 use Socialite;
 
 class AuthenticateUser extends Controller

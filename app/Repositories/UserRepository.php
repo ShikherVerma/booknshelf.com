@@ -36,7 +36,7 @@ class UserRepository
         $user->email = $userData->email;
         $avatar = $userData->avatar_original;
         $user->avatar = $avatar;
-        if(!is_null($avatar)) {
+        if (!is_null($avatar)) {
             $user->avatar = preg_replace("/^http:/i", "https:", $avatar);
         }
         $user->facebook_user_id = $userData->id;
@@ -66,7 +66,7 @@ class UserRepository
         $user->email = $userData->email;
         $avatar = $userData->avatar_original;
         $user->avatar = $avatar;
-        if(!is_null($avatar)) {
+        if (!is_null($avatar)) {
             $user->avatar = preg_replace("/^http:/i", "https:", $avatar);
         }
         $user->twitter_user_id = $userData->id;

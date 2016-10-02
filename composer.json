@@ -6,7 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.2.*",
+        "laravel/framework": "5.3.*",
         "laravel/socialite": "^2.0",
         "barryvdh/laravel-debugbar": "^2.2",
         "barryvdh/laravel-ide-helper": "^2.1",
@@ -23,7 +23,8 @@
         "codeception/codeception": "^2.2",
         "fzaninotto/faker": "^1.6",
         "mixpanel/mixpanel-php": "^2.6",
-        "laracasts/testdummy": "^2.3"
+        "laracasts/testdummy": "^2.3",
+        "pusher/pusher-php-server": "^2.6"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",
