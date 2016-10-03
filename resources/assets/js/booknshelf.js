@@ -74,7 +74,6 @@ module.exports = {
         },
 
         reloadUserShelves() {
-            console.log("broadcasting reloadUserShelves .. ");
             this.$broadcast('reloadUserShelves');
         }
     },

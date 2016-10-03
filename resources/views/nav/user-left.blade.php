@@ -10,7 +10,7 @@
     </a>
 </li>
 <li>
-    <a href="{{ route('bookshelves_path', ['username' => Auth::user()->username]) }}">
+    <a name="my-bookshelves" href="{{ route('bookshelves_path', ['username' => Auth::user()->username]) }}">
         MY BOOKSHELVES
     </a>
 </li>

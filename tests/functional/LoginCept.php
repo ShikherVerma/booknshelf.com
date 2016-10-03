@@ -1,16 +1,11 @@
 <?php
 
 $I = new FunctionalTester($scenario);
+$I->am('a Booknshelf member');
+$I->wantTo('login to my Booknshelf account');
 
-$I->wantTo('not be able to login without password');
+$I->signIn();
 
-$I->amOnPage("/");
-
-$I->click('LOGIN');
-$I->fillField('username', 'milesaaa');
-$I->fillField('password', '');
-
-$I->click('login');
-
-$I->seeCurrentUrlEquals('/login');
+$I->seeInCurrentUrl('/');
+//$I->see('MY BOOKSHELVES');
 

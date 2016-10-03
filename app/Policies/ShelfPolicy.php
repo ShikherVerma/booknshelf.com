@@ -7,7 +7,8 @@ use App\Shelf;
 use App\User;
 use Log;
 
-class ShelfPolicy {
+class ShelfPolicy
+{
 
     use HandlesAuthorization;
 

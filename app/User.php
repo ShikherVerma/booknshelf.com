@@ -3,31 +3,11 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use AlgoliaSearch\Laravel\AlgoliaEloquentTrait;
+use Laravel\Scout\Searchable;
 
 class User extends Authenticatable
 {
-    use AlgoliaEloquentTrait;
-
-    public static $perEnvironment = true;
-
-    public function autoIndex()
-    {
-        if (env('APP_ENV') === 'testing' || env('APP_ENV') === 'local') {
-            return false;
-        }
-        return true;
-    }
-
-    public function autoDelete()
-    {
-        if (env('APP_ENV') === 'testing') {
-            return false;
-        }
-        return true;
-    }
-
-
+    use Searchable;
     /**
      * The attributes that are mass assignable.
      *

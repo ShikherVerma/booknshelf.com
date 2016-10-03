@@ -54,7 +54,7 @@ class UserRepository
         }
         $user->save();
 
-        $this->dispatch(new SetUserAvatar($user));
+        dispatch(new SetUserAvatar($user));
 
         return $user;
     }
@@ -84,7 +84,7 @@ class UserRepository
         }
         $user->save();
 
-        $this->dispatch(new SetUserAvatar($user));
+        dispatch(new SetUserAvatar($user));
 
         return $user;
     }

@@ -13,18 +13,19 @@
         "phpspec/phpspec": "^2.0",
         "intervention/imagecache": "^2.3",
         "google/apiclient": "1.0.*@beta",
-        "algolia/algoliasearch-laravel": "^1.1",
         "guzzlehttp/guzzle": "~6.1.0",
         "crewlabs/unsplash": "^2.0",
         "league/flysystem-aws-s3-v3": "~1.0",
-        "bugsnag/bugsnag-laravel": "1.*",
         "predis/predis": "~1.0",
         "graham-campbell/exceptions": "^8.7",
         "codeception/codeception": "^2.2",
         "fzaninotto/faker": "^1.6",
         "mixpanel/mixpanel-php": "^2.6",
         "laracasts/testdummy": "^2.3",
-        "pusher/pusher-php-server": "^2.6"
+        "pusher/pusher-php-server": "^2.6",
+        "bugsnag/bugsnag-laravel": "^2.0",
+        "laravel/scout": "^1.1",
+        "algolia/algoliasearch-client-php": "^1.10"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

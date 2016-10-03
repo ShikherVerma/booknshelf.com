@@ -3,15 +3,16 @@
 namespace App\Jobs;
 
 use App\User;
+use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Intervention\Image\ImageManager;
 use Storage;
 
-class SetUserAvatar extends Job implements ShouldQueue
+class SetUserAvatar implements ShouldQueue
 {
-    use InteractsWithQueue, SerializesModels;
+    use InteractsWithQueue, Queueable, SerializesModels;
 
     protected $user;
     /**

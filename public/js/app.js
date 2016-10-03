@@ -33658,7 +33658,6 @@ module.exports = {
             this.$broadcast('showCreateNewShelfModal');
         },
         reloadUserShelves: function reloadUserShelves() {
-            console.log("broadcasting reloadUserShelves .. ");
             this.$broadcast('reloadUserShelves');
         }
     },
