@@ -49,18 +49,19 @@ class SetBookCover implements ShouldQueue
         $images['image'] = $s3->url($path);
 
         // large image
-        $volume = $service->getVolume($this->book->google_volume_id);
-        $largeImage = $volume['volumeInfo']['imageLinks']['large'];
-        if (!empty($largeImage)) {
-            $largeImage = preg_replace("/^http:/i", "https:", $largeImage);
-            // create a new image directly from an url
-            $coverImage = $imageManager->make((string)$largeImage);
-            // TODO: What if no large image, try medium and extra large
-            $coverImagePath = 'book-large-covers/' . $this->book->google_volume_id . '.png';
-            Log::info('Going to save the book cover image here at this path: '. $coverImagePath);
-            $s3->put($coverImagePath, (string)$coverImage->encode());
-            $images['cover_image'] = $s3->url($coverImagePath);
-        }
+        // TODO: Uncomment this when we have higher quota from Google
+//        $volume = $service->getVolume($this->book->google_volume_id);
+//        $largeImage = $volume['volumeInfo']['imageLinks']['large'];
+//        if (!empty($largeImage)) {
+//            $largeImage = preg_replace("/^http:/i", "https:", $largeImage);
+//            // create a new image directly from an url
+//            $coverImage = $imageManager->make((string)$largeImage);
+//            // TODO: What if no large image, try medium and extra large
+//            $coverImagePath = 'book-large-covers/' . $this->book->google_volume_id . '.png';
+//            Log::info('Going to save the book cover image here at this path: '. $coverImagePath);
+//            $s3->put($coverImagePath, (string)$coverImage->encode());
+//            $images['cover_image'] = $s3->url($coverImagePath);
+//        }
 
         $this->book->forceFill($images)->save();
 
