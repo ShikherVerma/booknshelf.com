@@ -101,7 +101,7 @@ class ShelfController extends Controller
         $shelf->books()->attach($bookId);
 
         // Send a job so the cover of the shelf will be updated.
-        $this->dispatch(new UpdateShelfCover($shelf));
+        dispatch(new UpdateShelfCover($shelf));
     }
 
     public function removeBook(Request $request, $shelfId)
@@ -113,7 +113,7 @@ class ShelfController extends Controller
         $shelf = $request->user()->shelves()->where('id', $shelfId)->firstOrFail();
         $shelf->books()->detach($bookId);
 
-        $this->dispatch(new UpdateShelfCover($shelf));
+        dispatch(new UpdateShelfCover($shelf));
     }
 
     public function getBooks(Request $request, $shelfId)

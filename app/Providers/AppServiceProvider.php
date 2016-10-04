@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Queue::after(function (JobProcessed $event) {
-            Log::info($event->data);
+            Log::info($event->job->payload());
         });
     }
 
@@ -27,9 +27,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if ($this->app->environment() == 'local') {
-//            $this->app->register('Laracasts\Generators\GeneratorsServiceProvider');
-//            $this->app->register(new Whoops\Provider\Silex\WhoopsServiceProvider);
+        if ($this->app->environment() == 'production') {
+            $this->app->alias('bugsnag.logger', \Illuminate\Contracts\Logging\Log::class);
+            $this->app->alias('bugsnag.logger', \Psr\Log\LoggerInterface::class);
         }
     }
 }

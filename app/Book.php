@@ -3,29 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use AlgoliaSearch\Laravel\AlgoliaEloquentTrait;
+use Laravel\Scout\Searchable;
 
 class Book extends Model
 {
-    use AlgoliaEloquentTrait;
-
-    public static $perEnvironment = true;
-
-    public function autoIndex()
-    {
-        if (env('APP_ENV') === 'testing') {
-            return false;
-        }
-        return true;
-    }
-
-    public function autoDelete()
-    {
-        if (env('APP_ENV') === 'testing') {
-            return false;
-        }
-        return true;
-    }
+    use Searchable;
     /**
      * The attributes that are mass assignable.
      *

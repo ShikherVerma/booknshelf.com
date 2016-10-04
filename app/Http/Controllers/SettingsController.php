@@ -19,9 +19,7 @@ class SettingsController extends Controller
 
     public function show(Request $request)
     {
-        return view('settings',[
-            'user' => $request->user(),
-        ]);
+        return view('settings', ['user' => $request->user()]);
     }
 
     public function updateProfile(UpdateUserRequest $request)
@@ -53,9 +51,7 @@ class SettingsController extends Controller
         $path = $file->hashName('profiles');
         $s3 = Storage::disk('s3');
 
-        $s3->put(
-            $path, $this->formatImage($file)
-        );
+        $s3->put($path, $this->formatImage($file));
 
         $user->forceFill([
             'avatar' => $s3->url($path),

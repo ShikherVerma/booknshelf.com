@@ -19,7 +19,6 @@ class BookRepository
         $book = Book::where('google_volume_id', $bookData['google_volume_id'])->first();
         if (empty($book)) {
             $book = Book::create($bookData);
-            // TODO: store the book cover in S3?
             foreach ($bookData['authors'] as $name) {
                 $author = Author::firstOrCreate(['name' => $name]);
                 $book->authors()->attach($author->id);
@@ -28,7 +27,8 @@ class BookRepository
                 $category = Category::firstOrCreate(['name' => $name]);
                 $book->categories()->attach($category->id);
             }
-            $this->dispatch(new SetBookCover($book));
+
+            dispatch(new SetBookCover($book));
         }
 
         // update ratings and ratings count to keep it up to date

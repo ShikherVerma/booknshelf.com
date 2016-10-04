@@ -7,7 +7,8 @@ use App\Shelf;
 use App\User;
 use Log;
 
-class ShelfPolicy {
+class ShelfPolicy
+{
 
     use HandlesAuthorization;
 
@@ -27,6 +28,8 @@ class ShelfPolicy {
      * @param  shelf $shelf
      * @return bool
      */
+    // TODO: The signature is changed in 5.3 destroy(User $user)
+    // maybe should simply use $this instead of shelf then?
     public function destroy(User $user, Shelf $shelf)
     {
         Log::info("Trying to destroy a shelf for user: " . $user->email);

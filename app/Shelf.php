@@ -3,29 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use AlgoliaSearch\Laravel\AlgoliaEloquentTrait;
+use Laravel\Scout\Searchable;
 
 class Shelf extends Model
 {
-    use AlgoliaEloquentTrait;
-
-    public static $perEnvironment = true;
-
-    public function autoIndex()
-    {
-        if (env('APP_ENV') === 'testing') {
-            return false;
-        }
-        return true;
-    }
-
-    public function autoDelete()
-    {
-        if (env('APP_ENV') === 'testing') {
-            return false;
-        }
-        return true;
-    }
+    use Searchable;
 
     protected $table = 'shelves';
 
@@ -71,16 +53,5 @@ class Shelf extends Model
     public function getShelfUrl()
     {
         return '/@' . $this->user()->username . '/shelves/' . $this->slug;
-    }
-
-    public function getAlgoliaRecord()
-    {
-        /**
-         * Load the user relation so that it's available
-         *  in the laravel toArray method
-         */
-        $this->user;
-
-        return $this->toArray();
     }
 }

@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Shelf;
 use Hash;
+use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
@@ -11,9 +12,9 @@ use Intervention\Image\ImageManager;
 use Log;
 use Storage;
 
-class UpdateShelfCover extends Job implements ShouldQueue
+class UpdateShelfCover implements ShouldQueue
 {
-    use InteractsWithQueue, SerializesModels;
+    use InteractsWithQueue, Queueable, SerializesModels;
 
     protected $shelf;
     /**
@@ -70,6 +71,5 @@ class UpdateShelfCover extends Job implements ShouldQueue
 
         // delete the job
         $this->delete();
-
     }
 }
