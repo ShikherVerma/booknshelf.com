@@ -15,7 +15,6 @@ class SettingsTest extends TestCase
         $this->user2 = factory(App\User::class)->create([
             'username' => 'testusername'
         ]);
-
     }
 
     public function test_users_can_update_their_settings()
