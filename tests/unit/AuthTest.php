@@ -2,6 +2,8 @@
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\User;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+
 
 class AuthTest extends TestCase
 {

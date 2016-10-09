@@ -34,11 +34,13 @@ class UserRepository
         $user = User::firstOrNew(['facebook_user_id' => $userData->id]);
         $user->name = $userData->name;
         $user->email = $userData->email;
+        $user->fb_token = $userData->token;
+
         $avatar = $userData->avatar_original;
-        $user->avatar = $avatar;
-        if (!is_null($avatar)) {
-            $user->avatar = preg_replace("/^http:/i", "https:", $avatar);
+        if (!$user->avatar && !is_null($avatar)) {
+            $user->avatar = $avatar;
         }
+
         $user->facebook_user_id = $userData->id;
         // if user already has a username do nothing.
         if (!$user->username) {
@@ -64,11 +66,12 @@ class UserRepository
         $user = User::firstOrNew(['twitter_user_id' => $userData->id]);
         $user->name = $userData->name;
         $user->email = $userData->email;
+
         $avatar = $userData->avatar_original;
-        $user->avatar = $avatar;
-        if (!is_null($avatar)) {
-            $user->avatar = preg_replace("/^http:/i", "https:", $avatar);
+        if (!$user->avatar && !is_null($avatar)) {
+            $user->avatar = $avatar;
         }
+
         $user->twitter_user_id = $userData->id;
         // if user already has a username do nothing.
         if (!$user->username) {
@@ -87,6 +90,17 @@ class UserRepository
         dispatch(new SetUserAvatar($user));
 
         return $user;
+    }
+
+    public function connectUserToFacebook($fbUser, $authUser)
+    {
+        // connect the user with facebook by setting
+        // fb_token and facebook_user_id for this user
+        $authUser->fb_token = $fbUser->token;
+        $authUser->facebook_user_id = $fbUser->id;
+        // try to set the avatar if it's not set yet.
+        $authUser->avatar = is_null($authUser->avatar) ? $fbUser->avatar : $authUser->avatar;
+        $authUser->save();
     }
 
     public function current()

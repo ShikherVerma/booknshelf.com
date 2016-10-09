@@ -31,8 +31,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'facebook_user_id',
-        'twitter_user_id',
+        'fb_token',
         'is_onboarded',
         'created_at',
         'updated_at'
@@ -54,6 +53,11 @@ class User extends Authenticatable
     public function getRouteKeyName()
     {
         return 'username';
+    }
+
+    public function isFacebookConnected()
+    {
+        return $this->facebook_user_id && $this->fb_token;
     }
 
     /**

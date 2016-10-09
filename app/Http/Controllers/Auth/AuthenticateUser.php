@@ -25,6 +25,14 @@ class AuthenticateUser extends Controller
         if (!$hasCode) {
             return $this->getAuthorizationFirst();
         }
+
+        // If user is authenticated at this point it means
+        // we are connecting the profile in friends page.
+        if ($this->auth->check()) {
+            $this->users->connectUserToFacebook($this->getFacebookUser(), $this->auth->user());
+            return redirect('/friends');
+        }
+
         // either create a new user object or fetch existing one
         $user = $this->users->findByFacebookUserIdOrCreate($this->getFacebookUser());
         // log in the user
@@ -48,7 +56,9 @@ class AuthenticateUser extends Controller
 
     private function getAuthorizationFirst()
     {
-        return Socialite::driver('facebook')->redirect();
+        // TODO: Add 'user_actions.books' to scopes array when ready.
+        return Socialite::driver('facebook')
+            ->scopes(['email', 'user_friends'])->redirect();
     }
 
     private function getFacebookUser()

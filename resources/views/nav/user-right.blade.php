@@ -1,3 +1,11 @@
+<!-- Create a new bookshelf -->
+<li>
+    <a @click="showCreateShelfModal">
+        <div class="navbar-icon">
+            <i class="fa fa-lg fa-plus"></i>
+        </div>
+    </a>
+</li>
 <!-- Notifications -->
 <li>
     <a @click="showNotifications" class="has-activity-indicator">

@@ -12,7 +12,9 @@ class ShelfTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->user = factory(App\User::class)->create();
+        User::withoutSyncingToSearch(function () {
+            $this->user = factory(App\User::class)->create();
+        });
     }
 
     public function test_auth_users_can_create_shelves()

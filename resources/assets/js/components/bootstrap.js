@@ -26,8 +26,9 @@ require('./settings');
  * Profile Settings Components...
  */
 require('./profile');
-require('./update-profile-photo');
-require('./update-profile-information');
+require('./settings/update-profile-photo');
+require('./settings/update-profile-information');
+require('./settings/update-social');
 
 /**
  * User's Profile Components

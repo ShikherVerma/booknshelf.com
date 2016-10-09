@@ -11,7 +11,6 @@ class BookController extends Controller
 {
     private $users;
     private $books;
-    protected $service;
 
     public function __construct(UserRepository $users, BookRepository $books)
     {

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Event;
-
 use App\Events\UserRegistered;
 use App\Http\Requests\UpdateUserRequest;
-use App\Repositories\UserRepository;
 use App\Repositories\ShelfRepository;
+use App\Repositories\UserRepository;
+use Event;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -82,5 +82,15 @@ class UserController extends Controller
         Event::fire(new UserRegistered($user));
 
         return redirect('/');
+    }
+
+    public function disconnectFacebook(Request $request)
+    {
+        $user = $request->user();
+        $user->facebook_user_id = null;
+        $user->fb_token = null;
+        $user->save();
+
+        return back();
     }
 }

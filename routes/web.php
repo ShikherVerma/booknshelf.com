@@ -42,6 +42,7 @@ Route::get('/@{username}/shelves/{shelf_slug}', ['as' => 'shelf_path', 'uses' =>
 Route::post('/user/welcome', 'UserController@welcome');
 Route::get('/user/current', 'UserController@current');
 Route::get('/user/shelves', 'UserController@shelves');
+Route::get('/disconnect/facebook', 'UserController@disconnectFacebook');
 
 // Search
 Route::get('/books/search', 'BookController@search');
@@ -55,3 +56,6 @@ Route::delete('/shelves/{shelf_id}', 'ShelfController@destroy');
 Route::get('/shelves/{shelf_id}/books', 'ShelfController@getBooks');
 Route::post('/shelves/{shelf_id}/books', 'ShelfController@storeBook');
 Route::delete('/shelves/{shelf_id}/books', 'ShelfController@removeBook');
+
+// Friends
+Route::get('/friends', 'FriendsController@index');

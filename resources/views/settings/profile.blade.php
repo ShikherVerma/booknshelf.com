@@ -5,5 +5,8 @@
 
         <!-- Update Profile Information -->
         @include('settings.profile.update-profile-information')
+
+        <!-- Social Accounts -->
+        @include('settings.profile.update-social')
     </div>
 </app-profile>
