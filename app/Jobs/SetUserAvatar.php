@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -38,7 +39,7 @@ class SetUserAvatar implements ShouldQueue
 
         $s3 = Storage::disk('s3');
         $img = (string) $imageManager->make($this->user->avatar)->fit(300)->encode();
-        $path = 'profiles/' . $this->user->username . '.png';
+        $path = 'profiles/' . Carbon::now()->timestamp . '-' . $this->user->username . '.png';
 
         $s3->put($path, $img);
         $this->user->forceFill([
