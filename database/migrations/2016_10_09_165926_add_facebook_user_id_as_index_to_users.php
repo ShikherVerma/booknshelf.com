@@ -26,7 +26,7 @@ class AddFacebookUserIdAsIndexToUsers extends Migration
     public function down()
     {
         Schema::table('users', function ($table) {
-            $table->dropIndex('facebook_user_id');
+            $table->dropIndex('users_facebook_user_id_index');
         });
     }
 }
