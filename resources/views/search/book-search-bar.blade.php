@@ -5,7 +5,8 @@
             placeholder="Search for great books ..." name="q">
           <span class="input-group-btn">
             <button class="btn btn-default btn-search" type="submit">
-                <i class="fa fa-search" aria-hidden="true"></i>
+                <i class="fa fa-search" aria-hidden="true"></i> Search
+                <img src="/img/google-powered-by.png" height="20px" >
             </button>
           </span>
         </div>
