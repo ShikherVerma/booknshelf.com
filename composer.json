@@ -26,7 +26,9 @@
         "bugsnag/bugsnag-laravel": "^2.0",
         "laravel/scout": "^1.1",
         "algolia/algoliasearch-client-php": "^1.10",
-        "facebook/graph-sdk" : "~5.0"
+        "facebook/graph-sdk" : "~5.0",
+        "pda/pheanstalk": "~3.0",
+        "aws/aws-sdk-php": "~3.0"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

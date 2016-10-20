@@ -47,7 +47,7 @@ class SetCoverImage extends Command
         Log::info("The total count of books.", ['count' => $books->count()]);
         $books->each(function ($book) {
             Log::info('Creating a new job for the book with a title '. $book['title']);
-            dispatch(new SetBookCover($book));
+            dispatch((new SetBookCover($book))->onQueue('books_cover_image'));
         });
     }
 }

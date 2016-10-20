@@ -56,7 +56,7 @@ class UserRepository
         }
         $user->save();
 
-        dispatch(new SetUserAvatar($user));
+        dispatch((new SetUserAvatar($user))->onQueue('users_avatar'));
 
         return $user;
     }
@@ -87,7 +87,7 @@ class UserRepository
         }
         $user->save();
 
-        dispatch(new SetUserAvatar($user));
+        dispatch((new SetUserAvatar($user))->onQueue('users_avatar'));
 
         return $user;
     }

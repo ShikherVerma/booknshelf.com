@@ -27,8 +27,7 @@ class BookRepository
                 $category = Category::firstOrCreate(['name' => $name]);
                 $book->categories()->attach($category->id);
             }
-
-            dispatch(new SetBookCover($book));
+            dispatch((new SetBookCover($book))->onQueue('books_cover_image'));
         }
 
         // update ratings and ratings count to keep it up to date

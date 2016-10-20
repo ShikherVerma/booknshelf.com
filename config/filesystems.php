@@ -56,8 +56,8 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => 'AKIAIUDUK46ZDVCEZJRA',
-            'secret' => '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',
+            'key' => env('AWS_ACCESS_KEY'),
+            'secret' => env('AWS_SECRET'),
             'region' => 'us-west-2',
             'bucket' => 'booknshelf',
         ],
