@@ -49,8 +49,18 @@ class SetBookCover implements ShouldQueue
         $images['image'] = $s3->url($path);
 
         // large image
-        // TODO: Uncomment this when we have higher quota from Google
-        $volume = $service->getVolume($this->book->google_volume_id);
+        try {
+            Log::info('Querying Google Books API for a volume.', ['volume_id' => $this->book->google_volume_id]);
+            $volume = $service->getVolume($this->book->google_volume_id);
+        } catch (\Google_Service_Exception $e) {
+            Log::notice(
+                "Could not find any book in Google Books API.",
+                ['volume_id' => $this->book->google_volume_id]
+            );
+            $this->book->forceFill($images)->save();
+            return $this->delete();
+        }
+
         $largeImage = $volume['volumeInfo']['imageLinks']['large']
             ?? $volume['volumeInfo']['imageLinks']['medium']
             ?? $volume['volumeInfo']['imageLinks']['extraLarge'];
@@ -64,6 +74,7 @@ class SetBookCover implements ShouldQueue
             $s3->put($coverImagePath, (string)$coverImage->encode());
             $images['cover_image'] = $s3->url($coverImagePath);
         }
+
 
         $this->book->forceFill($images)->save();
 
