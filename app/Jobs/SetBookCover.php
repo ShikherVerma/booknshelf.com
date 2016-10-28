@@ -66,9 +66,11 @@ class SetBookCover implements ShouldQueue
             ?? $volume['volumeInfo']['imageLinks']['extraLarge'];
 
         if (!empty($largeImage)) {
+            // save the original image url just in case we need it in the future
+            $images['original_image'] = $largeImage;
             $largeImage = preg_replace("/^http:/i", "https:", $largeImage);
-            // create a new image directly from an url
-            $coverImage = $imageManager->make((string)$largeImage);
+            // create a new image directly from an url and resize it by height
+            $coverImage = $imageManager->make((string)$largeImage)->heighten(450);
             $coverImagePath = 'book-large-covers/' . $this->book->google_volume_id . '.png';
             Log::info('Going to save the book cover image here at this path: '. $coverImagePath);
             $s3->put($coverImagePath, (string)$coverImage->encode());

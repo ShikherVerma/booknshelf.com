@@ -28,7 +28,8 @@
         "algolia/algoliasearch-client-php": "^1.10",
         "facebook/graph-sdk" : "~5.0",
         "pda/pheanstalk": "~3.0",
-        "aws/aws-sdk-php": "~3.0"
+        "aws/aws-sdk-php": "~3.0",
+        "elasticsearch/elasticsearch": "^5.0"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

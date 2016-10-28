@@ -106,20 +106,21 @@
   color: @brand-danger;
 }
 
-.shelf-book-item {
-    .media-left {
-      //padding-right: 15px;
-    }
-    .shelf-book-item-title {
-      font-size: 15px;
-      font-weight: bold;
-      color: @brand-primary;
-    }
-}
-
 .profile-header-shelf {
   background-color: whitesmoke;
 }
-.shelf-books-container {
-  //background-color: white;
+
+.book-card {
+  position: relative;
+  height: 400px;
+}
+
+#book-card-actions {
+  display:none;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+.book-card:hover #book-card-actions {
+    display:block;
 }

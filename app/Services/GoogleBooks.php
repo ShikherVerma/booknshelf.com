@@ -27,6 +27,7 @@ class GoogleBooks
             'maxResults' => '10',
             'printType' => 'books',
             'orderBy' => 'relevance',
+            'projection' => 'lite'
         );
         return $this->service->volumes->listVolumes($title, $optParams);
     }

@@ -33,6 +33,10 @@ Vue.component('app-shelf-book-item', {
             } else {
                 this.$dispatch('showPleaseLoginModal');
             }
+        },
+
+        alert(id) {
+            console.log(id);
         }
     }
 
