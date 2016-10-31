@@ -31,12 +31,4 @@
             </div>
         </div>
     </nav>
-    <section>
-        <ul>
-            <li>
-                Tigran jan
-            </li>
-        </ul>
-    </section>
-
 </app-navbar>
