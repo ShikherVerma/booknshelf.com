@@ -1,7 +1,7 @@
 <div class="panel panel-default m-b-md hidden-xs">
     <div class="panel-body">
         <h5>
-            Most Saved Books
+            Most Searched Books
         </h5>
         <ul class="media-list media-list-users list-group">
             @foreach ($mostSavedBooks as $book)

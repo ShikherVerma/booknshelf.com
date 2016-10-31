@@ -15,6 +15,7 @@ class Book extends Model
      */
     protected $fillable = [
         'google_volume_id',
+        'asin',
         'title',
         'isbn_10',
         'isbn_13',
@@ -29,6 +30,7 @@ class Book extends Model
         'cover_image',
         'language',
         'google_info_link',
+        'detail_page_url'
     ];
 
     /**

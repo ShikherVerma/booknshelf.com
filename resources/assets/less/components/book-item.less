@@ -112,7 +112,8 @@
 
 .book-card {
   position: relative;
-  height: 400px;
+  height: 450px;
+  max-width: 300px;
 }
 
 #book-card-actions {
@@ -123,4 +124,16 @@
 }
 .book-card:hover #book-card-actions {
     display:block;
+}
+
+// To support hover affect on elements
+.parent {
+  position: relative;
+}
+.hover-content {
+  display:none;
+  position: absolute;
+}
+.parent:hover .hover-content {
+  display: block;
 }

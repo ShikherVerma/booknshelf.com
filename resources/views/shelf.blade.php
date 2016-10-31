@@ -48,7 +48,7 @@
                   </button>
                 </div>
                 <div data-grid="images">
-                    <img class="media-object"  height="350px;" width="250px;" :src="book.cover_image || book.image">
+                    <img class="media-object" height="350px;" width="250px;" :src="book.cover_image || book.image">
                 </div>
                 <p>
                     <strong>@{{ book.title }}</strong>
@@ -56,6 +56,9 @@
                         @{{ author.name }}<span v-if="index !== book.authors.length - 1">, </span>
                     </span>
                 </p>
+                <a v-if="book.detail_page_url"  class="btn btn-default btn-sm btn-action" href="@{{ book.detail_page_url }}"
+                   target="_blank" type="button"> <i class="fa fa-amazon" aria-hidden="true"></i> See on Amazon
+                </a>
             </div>
         </div>
         @include('modals.book-item-save-modal')
