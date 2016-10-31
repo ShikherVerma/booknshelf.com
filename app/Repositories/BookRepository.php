@@ -6,6 +6,7 @@ use App\Author;
 use App\Book;
 use App\Category;
 use App\Jobs\SetBookCover;
+use App\Jobs\SetBookCoverFromAmazon;
 use DB;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Image;
@@ -38,6 +39,25 @@ class BookRepository
         return $book;
     }
 
+    public function findByAsinOrCreate($bookData)
+    {
+        $book = Book::where('asin', $bookData['asin'])->first();
+        if (empty($book)) {
+            $book = Book::create($bookData);
+            if (is_array($bookData['authors'])) {
+                foreach ($bookData['authors'] as $name) {
+                    $author = Author::firstOrCreate(['name' => $name]);
+                    $book->authors()->attach($author->id);
+                }
+            } else {
+                $author = Author::firstOrCreate(['name' => $bookData['authors']]);
+                $book->authors()->attach($author->id);
+            }
+            dispatch((new SetBookCoverFromAmazon($book))->onQueue('books_cover_image_amazon'));
+        }
+        return $book;
+    }
+
     public function extractGoogleVolumeData($item)
     {
         $result = [
@@ -64,6 +84,22 @@ class BookRepository
         }
         $result['image'] = $image;
 
+        return $result;
+    }
+
+    public function extractAmazonBookData($item)
+    {
+        $result = [
+            'asin' => $item['ASIN'],
+            'detail_page_url' => $item['DetailPageURL'] ?? null,
+            'title' => $item['ItemAttributes']['Title'],
+            'isbn_10' => $item['ItemAttributes']['ISBN'] ?? null,
+            'publisher' => $item['ItemAttributes']['Publisher'] ?? null,
+            'published_date' => $item['ItemAttributes']['PublicationDate'] ?? null,
+            'page_count' => $item['ItemAttributes']['NumberOfPages'] ?? null,
+            'authors' => $item['ItemAttributes']['Author'] ?? [],
+            'cover_image' => $item['LargeImage']['URL'] ?? $item['MediumImage']['URL'] ?? null,
+        ];
         return $result;
     }
 

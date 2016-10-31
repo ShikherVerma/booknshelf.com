@@ -6,9 +6,8 @@
         <div class="col-md-8 col-md-offset-1">
             <app-books books="{{ $books }}"></app-books>
         </div>
-
         <div class="col-md-3">
-            @include('books.popular', ['mostSavedBooks' => $mostSavedBooks])
+            {{--@include('books.popular', ['mostSavedBooks' => $mostSavedBooks])--}}
         </div>
     </div>
 </div>
@@ -20,19 +19,15 @@
     </ul>
 </template>
 
-<!-- Book Item Template -->
 <template id="book-item" :book="book">
-    <li class="media list-group-item p-a book-search-item" @mouseover="mouseOver">
+    <li class="media list-group-item p-a book-search-item parent">
         <a class="media-left" href="#">
-            <img class="media-object img-circle img-circle-book-cover" style="width: 150px;" :src="book.image">
+            <img class="media-object img-circle img-circle-book-cover"
+                 style="width: 150px;" :src="book.cover_image || book.image">
         </a>
         <div class="media-body">
             <div class="media-body-text">
                 <div class="media-heading">
-                    <small class="pull-right text-muted">
-                        <!-- Recommend a book here -->
-                        {{--<i class="fa fa-ellipsis-v" aria-hidden="true"></i>--}}
-                    </small>
                     <h5>@{{ book.title }}</h5>
                 </div>
                 <p>
@@ -41,9 +36,9 @@
                     </span>
                 </p>
             </div>
-            <div class="media-footer book-search-item-footer" v-show="active">
+            <div class="media-footer hover-content">
                 <small v-show="!saved">
-                    <button class="btn btn-default btn-sm btn-action" @click="showSaveModal()" type="button">
+                    <button class="btn btn-danger btn-sm btn-action" @click="showSaveModal()" type="button">
                         <span class="icon icon-add-to-list"></span> Save
                     </button>
                 </small>
@@ -53,8 +48,8 @@
                     </button>
                 </small>
                 <small>
-                    <a class="btn btn-default btn-sm btn-action" href="@{{ book.google_info_link }}" target="_blank" type="button">
-                        <i class="fa fa-external-link" aria-hidden="true"></i>
+                    <a class="btn btn-default btn-sm btn-action" href="@{{ book.detail_page_url }}" target="_blank" type="button">
+                        <i class="fa fa-amazon" aria-hidden="true"></i>
                     </a>
                 </small>
                 @if(Auth::check())
@@ -66,5 +61,5 @@
         </div>
     </li>
 </template>
-
+<!-- Book Item Template -->
 @endsection

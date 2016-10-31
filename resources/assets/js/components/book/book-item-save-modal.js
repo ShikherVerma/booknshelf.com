@@ -11,7 +11,6 @@ Vue.component('app-book-item-save-modal', {
             success: false,
             form: new AppForm({
                 id: '',
-                name: '',
             }),
         }
     },
@@ -41,7 +40,7 @@ Vue.component('app-book-item-save-modal', {
                     var shelfId = response.id;
                     this.form.name = '';
                     // add the book to the new shelf
-                    this.storeBookToShelf(shelfId)
+                    this.storeBookToShelf(shelfId);
                     this.success = true;
                 });
         },
@@ -70,5 +69,4 @@ Vue.component('app-book-item-save-modal', {
             }
         });
     }
-
-})
+});

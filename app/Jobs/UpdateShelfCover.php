@@ -34,12 +34,14 @@ class UpdateShelfCover implements ShouldQueue
      */
     public function handle(ImageManager $imageManager)
     {
-        $books = $this->shelf->books()->whereNotNull('image')
+        $books = $this->shelf->books()
+            ->whereNotNull('image')
+            ->orWhereNotNull('cover_image')
             ->orderBy('created_at', 'desc')->take(2)->get()->toArray();
 
         $covers = [];
         foreach ($books as $book) {
-            $covers[] = $book['image'];
+            $covers[] = $book['image'] ?? $book['cover_image'];
         }
 
         $canvas = $imageManager->canvas(300, 300);

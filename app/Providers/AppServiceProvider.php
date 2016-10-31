@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Queue;
 use Illuminate\Queue\Events\JobProcessed;
 use Log;
+use Illuminate\Support\Facades\App;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -27,7 +29,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->alias('bugsnag.multi', \Illuminate\Contracts\Logging\Log::class);
-        $this->app->alias('bugsnag.multi', \Psr\Log\LoggerInterface::class);
+
+        if (App::environment('production')) {
+            $this->app->alias('bugsnag.multi', \Illuminate\Contracts\Logging\Log::class);
+            $this->app->alias('bugsnag.multi', \Psr\Log\LoggerInterface::class);
+        }
     }
 }

@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Repositories\BookRepository;
 use App\Repositories\UserRepository;
+use App\Services\AmazonProduct;
 use Illuminate\Http\Request;
-use App\Services\GoogleBooks;
 
 class BookController extends Controller
 {
@@ -21,27 +21,28 @@ class BookController extends Controller
         $this->books = $books;
     }
 
-    public function search(Request $request, GoogleBooks $service)
+    public function search(Request $request, AmazonProduct $amazonService)
     {
         $this->validate($request, [
             'q' => 'required',
         ], ['required' => 'The book title can not be empty.']);
 
         $query = $request->q;
-        $volumes = $service->listVolumes($query);
 
+        $amazonBooks = $amazonService->searchBooks($query);
         $books = [];
-        foreach ($volumes as $volume) {
-            $bookData = $this->books->extractGoogleVolumeData($volume);
-            $book = $this->books->findByVolumeIdOrCreate($bookData);
-            $book->load('categories', 'authors');
-            $books[] = $book->toArray();
+        foreach ($amazonBooks as $book) {
+            $extractedBook = $this->books->extractAmazonBookData($book);
+            $newBook = $this->books->findByAsinOrCreate($extractedBook);
+            $newBook->load('authors');
+            $books[] = $newBook->toArray();
         }
+//        $mostSavedBooks = $this->books->getMostSaved();
 
-        $mostSavedBooks = $this->books->getMostSaved();
         return view('books', [
             'books' => json_encode($books),
-            'mostSavedBooks' => $mostSavedBooks,
+            // TODO: Most saved or most seached?
+//            'mostSavedBooks' => $mostSavedBooks,
             'q' => $query
         ]);
     }
