@@ -37,12 +37,9 @@ class BookController extends Controller
             $newBook->load('authors');
             $books[] = $newBook->toArray();
         }
-//        $mostSavedBooks = $this->books->getMostSaved();
 
         return view('books', [
             'books' => json_encode($books),
-            // TODO: Most saved or most seached?
-//            'mostSavedBooks' => $mostSavedBooks,
             'q' => $query
         ]);
     }
