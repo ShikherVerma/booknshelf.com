@@ -90,9 +90,9 @@ class BookRepository
     public function extractAmazonBookData($item)
     {
         $result = [
-            'asin' => $item['ASIN'],
+            'asin' => $item['ASIN'] ?? null,
             'detail_page_url' => $item['DetailPageURL'] ?? null,
-            'title' => $item['ItemAttributes']['Title'],
+            'title' => $item['ItemAttributes']['Title'] ?? null,
             'isbn_10' => $item['ItemAttributes']['ISBN'] ?? null,
             'publisher' => $item['ItemAttributes']['Publisher'] ?? null,
             'published_date' => $item['ItemAttributes']['PublicationDate'] ?? null,
