@@ -35,13 +35,13 @@ class UpdateShelfCover implements ShouldQueue
     public function handle(ImageManager $imageManager)
     {
         $books = $this->shelf->books()
-            ->whereNotNull('image')
-            ->orWhereNotNull('cover_image')
+            ->whereNotNull('cover_image')
             ->orderBy('created_at', 'desc')->take(2)->get()->toArray();
 
+        Log::info($books);
         $covers = [];
         foreach ($books as $book) {
-            $covers[] = $book['image'] ?? $book['cover_image'];
+            $covers[] = $book['cover_image'];
         }
 
         $canvas = $imageManager->canvas(300, 300);
@@ -61,7 +61,7 @@ class UpdateShelfCover implements ShouldQueue
         }
 
         $s3 = Storage::disk('s3');
-        $path = 'shelf-covers/' . $this->shelf->id . '.png';
+        $path = 'shelf-covers/' . $this->shelf->id . '-' . strtotime("now") . '.png';
         Log::info('Showing the path of the file: '. $path);
 
         $s3->put($path, (string)$canvas->encode());
