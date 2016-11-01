@@ -44,21 +44,19 @@
                         <span class="icon icon-add-to-list"></span> Save
                     </button>
                   <button v-show="onOwnProfile()"class="btn btn-default btn-sm" @click="removeBookFromShelf()">
-                      <span class="icon icon-cross"></span> Delete
+                      <span class="icon icon-cross"></span>
                   </button>
                 </div>
                 <div data-grid="images">
-                    <img class="media-object" height="350px;" width="250px;" :src="book.cover_image || book.image">
-                </div>
-                <p>
-                    <strong>@{{ book.title }}</strong>
-                    <span v-for="(index, author) in book.authors" class="text-muted">
-                        @{{ author.name }}<span v-if="index !== book.authors.length - 1">, </span>
+                    <span v-if="book.detail_page_url">
+                        <a target="_blank" href="@{{ book.detail_page_url }}">
+                            <img class="media-object" height="350px;" width="250px;" :src="book.cover_image || book.image">
+                        </a>
                     </span>
-                </p>
-                <a v-if="book.detail_page_url"  class="btn btn-default btn-sm btn-action" href="@{{ book.detail_page_url }}"
-                   target="_blank" type="button"> <i class="fa fa-amazon" aria-hidden="true"></i> See on Amazon
-                </a>
+                    <span v-else>
+                        <img class="media-object" height="350px;" width="250px;" :src="book.cover_image || book.image">
+                    </span>
+                </div>
             </div>
         </div>
         @include('modals.book-item-save-modal')
