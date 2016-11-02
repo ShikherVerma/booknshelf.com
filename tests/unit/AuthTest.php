@@ -32,8 +32,20 @@ class AuthTest extends TestCase
                 'username' => 'john.snow',
                 'password' => 'password',
         ]);
-        // $this->assertEquals(409, $response->status());
         $this->dontSeeInDatabase('users', ['name' => 'JohnSnow']);
+    }
+
+    public function testUserCantUseUsernameThatAlreadyExists()
+    {
+        factory(App\User::class)->create([
+            'username' => 'some_tester_username'
+        ]);
+        $this->call('POST', '/register', [
+                'name' => 'JohnSnow143',
+                'username' => 'some_tester_username',
+                'password' => 'password143',
+        ]);
+        $this->dontSeeInDatabase('users', ['name' => 'JohnSnow143']);
     }
 
     protected function login($user = null)
