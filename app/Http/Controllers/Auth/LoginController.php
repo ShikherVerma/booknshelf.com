@@ -37,6 +37,11 @@ class LoginController extends Controller
         $this->middleware('guest', ['except' => ['logout', 'loginFacebook']]);
     }
 
+    public function username()
+    {
+        return 'username';
+    }
+
     public function loginFacebook(AuthenticateUser $authenticateUser, Request $request)
     {
         return $authenticateUser->executeFacebook($request->has('code'), $this);
