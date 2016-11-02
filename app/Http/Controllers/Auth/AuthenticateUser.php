@@ -63,7 +63,7 @@ class AuthenticateUser extends Controller
 
     private function getFacebookUser()
     {
-        return Socialite::driver('facebook')->user();
+        return Socialite::driver('facebook')->stateless()->user();
     }
 
     private function getTwitterAuthorizationFirst()
