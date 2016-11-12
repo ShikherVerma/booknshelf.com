@@ -52,11 +52,11 @@
                         <i class="fa fa-amazon" aria-hidden="true"></i>
                     </a>
                 </small>
-                {{--@if(Auth::check())--}}
-                    {{--@include('modals.book-item-save-modal')--}}
-                {{--@else--}}
-                    {{--@include('modals.please-login-modal')--}}
-                {{--@endif--}}
+                @if(Auth::check())
+                    @include('modals.book-item-save-modal')
+                @else
+                    @include('modals.please-login-modal')
+                @endif
             </div>
         </div>
     </li>

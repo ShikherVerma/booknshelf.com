@@ -19,7 +19,7 @@ $I->see('Choose your username', 'label');
 
 $I->click('continue');
 
-$I->click('MY BOOKSHELVES');
+$I->click('My Bookshelves');
 
 $I->seeCurrentUrlEquals('/@milesaaa/bookshelves');
 

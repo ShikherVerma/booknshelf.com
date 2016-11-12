@@ -30,6 +30,16 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('bookshelves_path', ['username' => Auth::user()->username]) }}">
+                My Bookshelves
+            </a>
+        </li>
+        <li>
+            <a href="/friends">
+                My Friends
+            </a>
+        </li>
+        <li>
             <a href="/settings">
                 Settings
             </a>
