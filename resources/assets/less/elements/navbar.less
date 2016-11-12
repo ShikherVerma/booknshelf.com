@@ -27,24 +27,23 @@
 }
 
 .navbar-icon {
-    padding-top: 3px;
-    position: relative;
+  padding-top: 3px;
+  position: relative;
+  color: @brand-yellow;
 
-
-    .activity-indicator {
-        width: 13px;
-        height: 13px;
-        border-radius: 10px;
-        background: @brand-danger;
-        border: 2px solid #fff;
-        border-radius: 10px;
-        position: absolute;
-        right: -1px;
-        transition: all .15s;
-        transform: scale(.85);
-    }
-
-    .icon { font-size: 21px; }
+  .activity-indicator {
+    width: 13px;
+    height: 13px;
+    border-radius: 10px;
+    background: @brand-danger;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    position: absolute;
+    right: -1px;
+    transition: all .15s;
+    transform: scale(.85);
+  }
+  .icon { font-size: 21px; }
 }
 
 .has-activity-indicator:hover .activity-indicator {
@@ -74,8 +73,13 @@
     padding-top: 30px;
 }
 
+.nav-pills > li > a {
+    color: @brand-yellow;
+}
+
 #book-search {
-   width: 300px;
+  width: 500px;
+  height: 35px;
 }
 
 // Shelf Autocomplete

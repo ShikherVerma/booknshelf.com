@@ -1,7 +1,6 @@
 @import "https://fonts.googleapis.com/css?family=Open+Sans:300,400,600";
-
 // Body
-@body-bg: #e8edeb;
+@body-bg: #F7F7F9;
 
 // Font size
 @font-size-base: 14px;
@@ -16,9 +15,9 @@
 @panel-inner-border: @app-border-color;
 
 // Brands
-@brand-blue: #178E96;
-@brand-yellow: #FDE3C8;
-@brand-primary: @brand-blue;
+@brand-blue: #4EC1C4;
+@brand-yellow: #ffbf32;
+@brand-primary: #072b54;
 @brand-info: #028090;
 @brand-success: #02C39A;
 @brand-warning: #cbb956;
@@ -27,8 +26,8 @@
 // Typography
 @font-family-sans-serif: "Open Sans", Helvetica, Arial, sans-serif;
 @line-height-base: 1.6;
-@text-color: #636b6f;
-@navbar-text-color: #98E2D5;
+@text-color: black;
+@navbar-text-color: @brand-yellow;
 
 // Buttons
 @btn-default-color: @text-color;
@@ -63,7 +62,7 @@
 @dropdown-divider-bg: lighten(@app-border-color, 5%);
 @dropdown-header-color: darken(@text-color, 10%);
 @dropdown-link-color: @text-color;
-@dropdown-link-hover-bg: #fff;
+@dropdown-link-hover-bg: darken(#fff, 20%);
 @dropdown-padding: 10px 0;
 
 // Btns

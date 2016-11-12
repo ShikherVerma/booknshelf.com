@@ -54,12 +54,26 @@
 .shelf-card-actions-bar > button {
     margin: 4px;
 }
-.profile-header {
-    //height: 300px;
-}
 
 .shelf-header {
-    height: 300px;
+  position: relative;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  background-color: white;
+  //background: none 50%/cover #505d6c;
+
+  a {
+    color: #636b6f !important;
+  }
+
+  h3 {
+    margin-top: 0px;
+  }
+}
+
+#shelf-book-item {
 }
 
 .shelf-header-name {
@@ -83,8 +97,8 @@
 }
 
 .small-profile-photo {
-    height: 40px !important;
-    width: 40px !important;
+    height: 20px !important;
+    width: 20px !important;
     border: none !important;
 }
 
@@ -104,7 +118,7 @@
 }
 
 .btn-search {
-    //background-color: #98E2D5;
+  height: 35px;
 }
 
 .dropdown-menu {
@@ -147,12 +161,12 @@
 .algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
   font-weight: bold;
   font-style: normal;
-  color: #84dccd;
+  //color: #84dccd;
 }
 .algolia-autocomplete .category {
   text-align: left;
   background: @brand-primary;
-  color: #84dccd;
+  //color: #84dccd;
   padding: 10px 5px;
   font-weight: bold;
 }
@@ -265,4 +279,39 @@
 .resp-sharing-button--twitter:active {
   background-color: #2795e9;
   border-color: #2795e9;
+}
+
+.top-search-bar {
+  align-items: center;
+  display: flex;
+  height: 50px;
+  border-bottom: 1px solid #dadae3;
+  background-color: @brand-blue;
+  //border-top: 1px solid #ececec;
+}
+
+.top-container {
+  min-width: 350px;
+  //background-color: white;
+}
+
+.custom-navbar {
+  display: flex;
+  border: none;
+  background-color: @brand-blue;
+}
+
+.shelf-table {
+  padding-left: 0;
+}
+
+.social-container {
+  display: flex;
+}
+.social-container-item {
+  margin: 4px;
+}
+
+.fb-share-button {
+  margin-bottom: 6px !important;
 }
