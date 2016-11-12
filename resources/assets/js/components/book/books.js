@@ -3,6 +3,12 @@ Vue.component('app-books', {
 
     props: ['books'],
 
+    data: function() {
+        return {
+            books: [],
+        }
+    },
+
     created() {
         this.books = JSON.parse(this.books);
     }

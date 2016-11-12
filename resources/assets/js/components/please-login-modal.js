@@ -26,12 +26,15 @@ Vue.component('app-please-login-modal', {
         }
     },
 
-    ready: function () {
-        document.addEventListener("keydown", (e) => {
-            if (this.show && e.keyCode == 27) {
-                this.close();
-            }
-        });
+    mounted: function () {
+        this.$nextTick(function () {
+            // code that assumes this.$el is in-document
+            document.addEventListener("keydown", (e) => {
+                if (this.show && e.keyCode == 27) {
+                    this.close();
+                }
+            });
+        })
     }
 
 })

@@ -1,15 +1,13 @@
 /*
  * Load Vue & Vue-Resource.
  *
- * Vue is the JavaScript framework used by Spark.
  */
 if (window.Vue === undefined) {
-    window.Vue = require('vue');
+    window.Vue = require('vue/dist/vue.js');
 }
 
 require('vue-resource');
 
-Vue.config.debug = true;
 
 /**
  * Load Vue HTTP Interceptors.

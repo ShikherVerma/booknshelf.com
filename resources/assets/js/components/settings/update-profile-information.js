@@ -20,11 +20,13 @@ Vue.component('app-update-profile-information', {
     /**
      * Bootstrap the component.
      */
-    ready() {
-        this.form.name = this.user.name;
-        this.form.email = this.user.email;
-        this.form.username = this.user.username;
-        this.form.about = this.user.about;
+    mounted() {
+        this.$nextTick(function () {
+            this.form.name = this.user.name;
+            this.form.email = this.user.email;
+            this.form.username = this.user.username;
+            this.form.about = this.user.about;
+        })
     },
 
 

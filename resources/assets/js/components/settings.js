@@ -13,7 +13,9 @@ Vue.component('app-settings', {
     /**
      * Prepare the component.
      */
-    ready() {
-        this.usePushStateForTabs('.app-settings-tabs');
+    mounted() {
+        this.$nextTick(function () {
+            this.usePushStateForTabs('.app-settings-tabs');
+        })
     },
 });

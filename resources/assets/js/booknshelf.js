@@ -1,8 +1,9 @@
 /**
  * Export the root App application.
  */
+
 module.exports = {
-    el: 'body',
+    el: '#app',
 
     /**
      * The application's data.
@@ -32,9 +33,12 @@ module.exports = {
     /**
      * Prepare the application.
      */
-    ready() {
-        console.log('Application Ready.');
-        this.whenReady();
+    mounted() {
+        this.$nextTick(function () {
+            // code that assumes this.$el is in-document
+            console.log('Application Ready.');
+            this.whenReady();
+        })
     },
 
 

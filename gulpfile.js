@@ -1,5 +1,7 @@
 var elixir = require('laravel-elixir');
 
+require('laravel-elixir-vue');
+
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -28,12 +30,12 @@ elixir(function(mix) {
 	], 'public/css/booknshelf.css', 'public/css');
 
 	// scripts
-	mix.browserify('app.js');
+    // var c = require('./webpack.config.js');
+	mix.webpack('app.js');
 	mix.scripts([
 	    'vendor/sweetalert-dev.js',
-        'vendor/toolkit.js',
-	    'vendor/bootstrap',
-	    'vendor/hogan-3.0.1.js',
+        // 'vendor/toolkit.js',
+	    // 'vendor/bootstrap',
 	], 'public/js/booknshelf.js');
 
 	mix.version(['public/css/booknshelf.css','public/js/booknshelf.js']);

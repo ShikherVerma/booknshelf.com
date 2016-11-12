@@ -8,6 +8,8 @@ Vue.component('app-shelf-book-item', {
             form: new AppForm({
                 id: '',
             }),
+            books: [],
+            isInThisShelf: true
         }
     },
 
@@ -34,10 +36,6 @@ Vue.component('app-shelf-book-item', {
                 this.$dispatch('showPleaseLoginModal');
             }
         },
-
-        alert(id) {
-            console.log(id);
-        }
-    }
+    },
 
 });
