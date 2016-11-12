@@ -3,9 +3,16 @@ Vue.component('app-shelf', {
 
     props: ['shelf', 'books'],
 
+    // data: function() {
+    //     return {
+    //         books: []
+    //     }
+    // },
+
     created() {
-        this.books = JSON.parse(this.books);
-        this.shelf = JSON.parse(this.shelf);
+        console.log(this.books);
+        // this.books = JSON.parse(this.books);
+        // this.shelf = JSON.parse(this.shelf);
     },
 
     methods: {

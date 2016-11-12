@@ -39,7 +39,6 @@ require('./profile/profile-shelf-item');
 
 
 require('./home');
-require('./activity');
 
 require('./search/book-search-bar');
 require('./new-shelf-modal');
@@ -54,6 +53,5 @@ require('./book/book-item-save-modal');
 // Shelf
 require('./shelf/shelf.js');
 require('./shelf/shelf-book-item.js');
-require('./shelf/shelf-search-bar.js');
 
 require('./please-login-modal.js');

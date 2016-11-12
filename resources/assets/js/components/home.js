@@ -1,46 +1,32 @@
-Vue.component('home', {
-    props: ['user'],
+import Vue from 'vue/dist/vue.min.js'
+import App from './app.vue'
 
 
-    data() {
-        return {
-            tasks: [],
+// new Vue({
+//   el: '#apptest',
+//   components: { App }
+// })
 
-            form: new AppForm({
-                name: ''
-            })
-        };
-    },
+new Vue({
+  el: '#apptest',
+  render: h => h(App)
+})
 
-
-    created() {
-        this.getTasks();
-    },
-
-
-    methods: {
-        getTasks() {
-            this.$http.get('/api/tasks')
-                .then(response => {
-                    this.tasks = response.data;
-                });
-        },
-
-
-        create() {
-            App.post('/api/task', this.form)
-                .then(task => {
-                    this.tasks.push(task);
-
-                    this.form.name = '';
-                });
-        },
-
-
-        delete(task) {
-            this.$http.delete('/api/task/' + task.id);
-
-            this.tasks = _.reject(this.tasks, t => t.id == task.id);
-        }
-    }
-});
+// Vue.component('app-home', {
+//
+//     // template: '<div>A custom component!</div>',
+//
+//     // props: ['shelves', 'books'],
+//
+//     data: function() {
+//         return {
+//             counter: 0
+//         }
+//     },
+//
+//     // created() {
+//     //     this.books = JSON.parse(this.books);
+//     //     this.shelves = JSON.parse(this.shelves);
+//     // },
+//
+// });

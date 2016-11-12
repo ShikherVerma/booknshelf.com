@@ -1,4 +1,9 @@
 {
+<<<<<<< Updated upstream
   "css/booknshelf.css": "css/booknshelf-b010aa0914.css",
   "js/booknshelf.js": "js/booknshelf-26d51dbf79.js"
+=======
+  "css/booknshelf.css": "css/booknshelf-8b13a7bac8.css",
+  "js/booknshelf.js": "js/booknshelf-b04d33722d.js"
+>>>>>>> Stashed changes
 }

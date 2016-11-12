@@ -40,7 +40,7 @@ Vue.component('app-update-profile-photo', {
          */
         gatherFormData() {
             const data = new FormData();
-            data.append('photo', this.$els.photo.files[0]);
+            data.append('photo', this.$refs.photo.files[0]);
             return data;
         }
     },

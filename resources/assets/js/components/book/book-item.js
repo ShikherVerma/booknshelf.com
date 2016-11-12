@@ -3,9 +3,6 @@ Vue.component('app-book-item', {
 
     props: ['book'],
 
-    ready() {
-    },
-
     data() {
         return {
             shelves: [],

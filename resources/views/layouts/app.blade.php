@@ -14,7 +14,7 @@
     <link rel="icon" href="/img/favicon.ico" />
 
     <!-- Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css'>
+    {{--<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css'>--}}
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
 
     <!-- CSS -->
@@ -48,21 +48,20 @@
 
         <!-- Application Level Modals -->
         @if (Auth::check())
-            @include('modals.notifications')
+            {{--@include('modals.notifications')--}}
             @include('modals.new-shelf-modal')
             @include('modals.session-expired')
         @endif
 
-        <!-- JavaScript -->
-        <script src="//code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
-        <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-        <script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
-        <script src="{{ elixir('js/booknshelf.js') }}"></script>
-        <script src="/js/app.js"></script>
-
         @include('shared.flash')
         @include('shared.errors')
     </div>
+
+    <!-- JavaScript -->
+    {{--<script src="//code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>--}}
+    <script src="{{ elixir('js/booknshelf.js') }}"></script>
+    <script src="/js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.js"></script>
 
 </body>
 </html>
