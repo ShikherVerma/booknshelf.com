@@ -1,6 +1,51 @@
 @extends('layouts.app')
 
 @section('content')
+<section class="jumbotron text-xs-center">
+  <div class="container">
+    <div id="apptest"></div>
+    <h3 class="jumbotron-heading">Welcome to Booknshelf 👋</h3>
+    <p class="lead text-muted">Easily create and share bookshelves with everyone and everywhere on the web.</p>
+    <p>
+      <a href="#" class="btn btn-primary">Try it now for free 🚀</a>
+    </p>
+  </div>
+</section>
+
+
+<section class="jumbotron text-xs-left">
+  <div class="container max-width-1000">
+    <h3 class="jumbotron-heading text-xs-center">How this works?</h3>
+      <div class="card text-xs-center">
+        <div class="card-header">
+          Step 1
+        </div>
+        <div class="card-block">
+          <h4 class="card-title">Special title treatment</h4>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        </div>
+      </div>
+      <div class="card text-xs-center">
+        <div class="card-header">
+          Step 2
+        </div>
+        <div class="card-block">
+          <h4 class="card-title">Special title treatment</h4>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        </div>
+      </div>
+      <div class="card text-xs-center">
+        <div class="card-header">
+          Step 3
+        </div>
+        <div class="card-block">
+          <h4 class="card-title">Special title treatment</h4>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        </div>
+      </div>
+  </div>
+</section>
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
