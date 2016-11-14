@@ -1,21 +1,3 @@
-<!-- Create a new bookshelf -->
-<li>
-    <a @click="showCreateShelfModal">
-        <div class="navbar-icon">
-            <i class="fa fa-lg fa-plus"></i>
-        </div>
-    </a>
-</li>
-<!-- Notifications -->
-<li>
-    <a @click="showNotifications" class="has-activity-indicator">
-        <div class="navbar-icon">
-            <i class="activity-indicator" style="display: none;" v-if="hasUnreadNotifications"></i>
-            <i class="fa fa-lg fa-bell"></i>
-        </div>
-    </a>
-</li>
-
 <li class="dropdown">
     <!-- User Photo / Name -->
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

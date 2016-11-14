@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+                <div class="panel-heading">Login to start creating awesome bookshelves.</div>
                 <div class="panel-body">
                     <a class="btn btn-block btn-social btn-facebook" href="{{ url('/auth/facebook') }}">
                       <span class="fa fa-facebook"></span> Log in with Facebook

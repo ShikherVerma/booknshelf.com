@@ -1,44 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
-
-@include('landing.welcome-message')
-
-<!-- Books Template -->
-<div class="container max-width-1000 p-a">
+<div class="container">
     <div class="row">
-        @foreach ($shelves as $shelf)
-            <div class="col-md-3">
-               <!--  Home Page Shelf Item -->
-                <div class="panel shelf-card-item pos-r">
-                    <a href="{{ route('shelf_path', ['username' => $shelf['user']['username'], 'shelf_slig' =>$shelf['slug']]) }}">
-                        <div class="shelf-caption w-full pos-a">
-                             {{ $shelf['name'] }}
-                        </div>
-                    </a>
-                    <div class="shelf-card-actions-bar w-full pos-a">
-                        <li class="list-group-item">
-                            <div class="media">
-                                <a class="media-left" href="#">
-                                    <img class="app-nav-profile-photo small-profile-photo" src="{{ $shelf['user']['avatar'] }}">
-                                </a>
-                                <div class="media-body shelf-creator">
-                                    <a href="{{ route('profile_path', ['username' => $shelf['user']['username']]) }}">
-                                        <strong>by {{ $shelf['user']['name'] }}</strong>
-                                        <small>{{ "@" . $shelf['user']['username'] }}</small>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                    </div>
-                    <a href="{{ route('shelf_path', ['username' => $shelf['user']['username'], 'shelf_slig' =>$shelf['slug']]) }}">
-                        <div>
-                            <img class="media-object shelf-card-item-cover" width="300" height="300" src="{{ $shelf['cover'] or '' }}">
-                        </div>
-                    </a>
-                </div>
+        <div class="col-md-12">
+            <div class="jumbotron">
+              <h1>Jumbotron heading</h1>
+              <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+              <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button">Go!</button>
+                </span>
+              </div><!-- /input-group -->
             </div>
-        @endforeach
+        </div>
     </div>
 </div>
+<!-- Portfolio Grid Section -->
+<section id="portfolio" class="bg-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Portfolio</h2>
+                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            </div>
+        </div>
+        <div class="row">
+            <topic-card></topic-card>
+            <!-- esentially topic-card-modal can live inside topic-card component -->
+            <topic-card-modal></topic-card-modal>
+        </div>
+    </div>
+</section>
 @endsection

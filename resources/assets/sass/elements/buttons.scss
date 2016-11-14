@@ -1,0 +1,23 @@
+// Basic Buttons
+.btn {
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: background-color 0.2s;
+}
+
+// File Upload Button
+.btn-upload {
+  overflow: hidden;
+  position: relative;
+
+  input[type="file"] {
+    cursor: pointer;
+    margin: 0;
+    opacity: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
