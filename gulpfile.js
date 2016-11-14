@@ -1,6 +1,6 @@
 var elixir = require('laravel-elixir');
 
-require('laravel-elixir-vue');
+require('laravel-elixir-vue-2');
 
 /*
  |--------------------------------------------------------------------------
@@ -16,30 +16,22 @@ require('laravel-elixir-vue');
 elixir(function(mix) {
 	// stylings
 	mix.styles([
-		'sweetalert.css',
 		'bootstrap-social.css',
 	], 'public/css/helpers.css');
 
-	mix.less('app.less');
-
+	mix.sass('app.scss');
 	mix.styles([
-		// all.css has all css coming from mix.styles() combined
-		'helpers.css',
 		// app.css has all .less files merged into one single file
 	    'app.css',
+        'helpers.css',
 	], 'public/css/booknshelf.css', 'public/css');
 
 	// scripts
-	mix.webpack('app.js');
-	// mix.scripts([
-	//     // 'vendor/sweetalert-dev.js',
-     //    // 'vendor/toolkit.js',
-	//     // 'vendor/bootstrap',
-	// ], 'public/js/booknshelf.js');
+    mix.webpack('app.js');
+
 
 	mix.version([
 	    'public/css/booknshelf.css',
-        // 'public/js/booknshelf.js',
         'public/js/app.js'
     ]);
 	// copy the fonts to public/build/ directory

@@ -19,7 +19,7 @@ class FriendsController extends Controller
         $user = Auth::user();
 
         if (!$user->isFacebookConnected()) {
-            return view('friends.index', [
+            return view('friends', [
                 'isFacebookConnected' => false,
                 'user' => $user,
                 'friends' => [],
@@ -33,11 +33,10 @@ class FriendsController extends Controller
             return User::where('facebook_user_id', $friend->id)->withCount('shelves')->get();
         })->collapse();
 
-        return view('friends.index', [
+        return view('friends', [
             'isFacebookConnected' => true,
             'friends' => $userFriends,
             'user' => $user
         ]);
     }
-
 }

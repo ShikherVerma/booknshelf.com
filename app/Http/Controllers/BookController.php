@@ -38,7 +38,7 @@ class BookController extends Controller
             $books[] = $newBook->toArray();
         }
 
-        return view('books', [
+        return view('search', [
             'books' => json_encode($books),
             'q' => $query
         ]);
