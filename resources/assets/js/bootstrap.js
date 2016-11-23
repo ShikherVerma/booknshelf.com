@@ -37,6 +37,20 @@ Vue.http.interceptors.push((request, next) => {
 
 require('./forms/bootstrap');
 
+require('./material/material.min');
+require('./material/nouislider.min');
+require('./material/material-kit');
+
+require('./material/jquery.flexisel');
+require('./material/jasny-bootstrap.min');
+require('./material/jquery.tagsinput');
+require('./material/jquery.dropdown');
+
+// template custom utilities
+// require('./custom/image-grid');
+// require('./custom/zoom');
+// require('./custom/application');
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
