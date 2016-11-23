@@ -14,9 +14,7 @@ class BookController extends Controller
 
     public function __construct(UserRepository $users, BookRepository $books)
     {
-        $this->middleware('auth', ['except' => [
-            'search'
-        ]]);
+        $this->middleware('auth');
         $this->users = $users;
         $this->books = $books;
     }

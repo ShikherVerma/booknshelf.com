@@ -18,6 +18,10 @@
     <title>{{ config('app.name', 'Booknshelf') }}</title>
     <link rel="icon" href="/img/favicon.ico" />
 
+    <!--     Fonts and icons     -->
+   	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
     <!-- Styles -->
     <link rel="stylesheet" href="{{ elixir('css/booknshelf.css') }}">
 
@@ -32,57 +36,120 @@
         ]); ?>
     </script>
 </head>
-<body>
+<body class="landing-page">
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-primary navbar-transparent navbar-absolute">
             <div class="container">
                 <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-main">
+                        <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="/img/logo.png" height="20" width="20" alt="brand">
+                        <img src="/img/small-logo-white.png" height="35" width="35" alt="brand">
                     </a>
                 </div>
+                <div class="navbar-collapse collapse" id="navbar-collapse-main">
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <form class="navbar-form"  role="form" method="GET" action="{{ url('/books/search') }}">
-                            <div class="input-group">
-                              <input id="book-search" type="text" value="{{ $q or '' }}" class="form-control"
-                                placeholder="Search for great books ..." name="q">
-                              <span class="input-group-btn">
-                                <button class="btn btn-default btn-search" type="submit">
-                                    <i class="fa fa-search" aria-hidden="true"></i> Search
-                                </button>
-                              </span>
-                            </div>
-                        </form>
+                        @if (Auth::check())
+                            <li><a href="profile/index.html">About</a></li>
+                            <li><a href="notifications/index.html">Blog</a></li>
+                            <form class="navbar-form navbar-right app-search" method="GET"
+                                  action="{{ url('/books/search') }}" role="search">
+                                <div class="form-group">
+                                    <input id="book-search" type="text" value="{{ $q or '' }}" class="form-control"
+                                           data-action="grow" placeholder="Search for great books ...">
+                                </div>
+                            </form>
+                        @else
+                            <li><a href="https://www.indiehackers.com/about">About</a></li>
+                            <li><a href="https://www.indiehackers.com/blog">Blog</a></li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right m-r-0 hidden-xs">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
+                            <li><a href="{{ url('/login') }}">Sign In</a></li>
+                            <li><a href="{{ url('/register') }}" type="button" class="btn btn-info btn-round navbar-btn">Sign Up</a></li>
                         @else
-                            @includeIf('nav.user-right')
+                            <li>
+                              <button class="btn btn-default navbar-btn navbar-btn-avitar" data-toggle="popover">
+                                <img class="img-circle" src="{{ Auth::user()->avatar }}">
+                              </button>
+                            </li>
                         @endif
                     </ul>
+
+                    @if(Auth::user())
+                        @includeIf('nav.user-right')
+                    @endif
                 </div>
             </div>
         </nav>
 
         @yield('content')
+
+        <footer class="footer">
+       		<div class="container">
+       			<a class="footer-brand" href="#pablo">Material Kit PRO</a>
+
+
+       			<ul class="pull-center">
+       				<li>
+       					<a href="#pablo">
+       					   Blog
+       					</a>
+       				</li>
+       				<li>
+       					<a href="#pablo">
+       						Presentation
+       					</a>
+       				</li>
+       				<li>
+       					<a href="#pablo">
+       					   Discover
+       					</a>
+       				</li>
+       				<li>
+       					<a href="#pablo">
+       						Payment
+       					</a>
+       				</li>
+       				<li>
+       					<a href="#pablo">
+       						Contact Us
+       					</a>
+       				</li>
+       			</ul>
+
+       			<ul class="social-buttons pull-right">
+       				<li>
+       					<a href="https://twitter.com/CreativeTim" target="_blank" class="btn btn-just-icon btn-twitter btn-simple">
+       						<i class="fa fa-twitter"></i>
+       					</a>
+       				</li>
+       				<li>
+       					<a href="https://www.facebook.com/CreativeTim" target="_blank" class="btn btn-just-icon btn-facebook btn-simple">
+       						<i class="fa fa-facebook-square"></i>
+       					</a>
+       				</li>
+       				<li>
+       					<a href="https://www.instagram.com/CreativeTimOfficial" target="_blank" class="btn btn-just-icon btn-google btn-simple">
+       						<i class="fa fa-google"></i>
+       					</a>
+       				</li>
+       			</ul>
+
+       		</div>
+       	</footer>
+
     </div>
 
     <!-- Scripts -->

@@ -1,19 +1,8 @@
 .navbar {
-    height: 50px;
+    border: none !important;
 }
 
-.navbar .dropdown-menu > li > a {
-    font-weight: 300;
-
-    i {
-        color: lighten($text-color, 25%);
-    }
-
-    i.text-success {
-        color: $brand-success;
-    }
+.navbar-default .navbar-nav > li > a {
+    color: $brand-secondary !important;
 }
 
-.navbar-nav > li > a {
-    padding-top: none !important;
-}
