@@ -23,9 +23,17 @@ Vue.component('settings-profile-social', require('./components/settings/Settings
 
 // Profile
 Vue.component('profile', require('./components/Profile.vue'));
+Vue.component('profile-shelf', require('./components/profile/ProfileShelf.vue'));
 
 // Search
 Vue.component('search', require('./components/Search.vue'));
+
+// Shelf
+Vue.component('shelf', require('./components/Shelf.vue'));
+Vue.component('shelf-book', require('./components/shelf/ShelfBook.vue'));
+
+// Modals
+Vue.component('new-shelf-modal', require('./components/modals/NewShelfModal.vue'));
 
 const app = new Vue({
     el: '#app',

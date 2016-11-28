@@ -41,6 +41,7 @@ class SettingsController extends Controller
 
     public function updatePhoto(Request $request)
     {
+
         $this->validate($request, [
             'photo' => 'required|image|max:4000',
         ]);

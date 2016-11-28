@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <profile :user="user"></profile>
+    <div class="profile-page">
+        {{--<div class="page-header header-filter" data-parallax="active"></div>--}}
+        <profile :user="{{ $user }}" :shelves="{{ $shelves }}"></profile>
+    </div>
 @endsection

@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Profile Photo</div>
+                    <h2 class="title">Profile Photo</h2>
                     <div class="panel-body">
                         <div class="alert alert-danger" style="display: none;" v-if="form.errors.has('photo')">
                             @{{ form.errors.get('photo') }}

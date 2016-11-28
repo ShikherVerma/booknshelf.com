@@ -67,6 +67,11 @@
 
 @import 'material-kit/responsive';
 
+// my custom variables
+@import "_variables";
+@import "_custom";
+
+
 // Vue Cloak
 [v-cloak] {
     display: none;

@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 text-center">
-                    <h1 class="title">A New Way of Discovering Great Books and Bookshelves</h1>
+                    <h1 class="title">Discover great books and bookshelves</h1>
                     <h4 class="title">Easily create and share bookshelves with your friends</h4>
                     <a href="#pablo" class="btn btn-warning btn-round btn-lg">
                         <i class="material-icons">add</i> Get Started

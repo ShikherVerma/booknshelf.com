@@ -1,38 +1,41 @@
 <template>
-  <div class="profile-header text-center">
-    <div class="container">
-        <div class="container-inner">
-            <div class="photo-container-inner">
-                <img class="img-circle media-object profile-photo" :src="user.avatar">
-            </div>
-                <h3 class="profile-header-user">{{ user.name }}</h3>
-                <p class="profile-header-bio">
-                    {{ user.about }}
-                </p>
+    <div class="main login-container">
+        <div class="profile-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-6 col-xs-offset-3">
+                        <div class="profile">
+                            <div class="avatar">
+                                <img :src="user.avatar" alt="Circle Image" class="img-circle img-responsive img-raised">
+                            </div>
+                            <div class="name">
+                                <h3 class="title">{{ user.name }}</h3>
+                                <h6>{{ user.about }}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane active bookshelves" id="bookshelves">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 class="title">{{ shelves.length }} Bookshelves</h4>
+                                <div class="row collections">
+                                    <profile-shelf v-for="shelf in shelves" :shelf="shelf" :user="user">
+                                    </profile-shelf>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <table class="table table-striped">
-            <tr>
-                <td>Bookshelves</td>
-            </tr>
-        </table>
-
-<!--         <nav class="profile-header-nav">
-            <ul class="nav nav-tabs">
-                <li class="active">
-                    <a href="#bookshelves" aria-controls="bookshelves" role="tab" data-toggle="tab">
-                        BOOKSHELVES
-                    </a>
-                </li>
-            </ul>
-        </nav> -->
-  </div>
+    </div>
 </template>
 
 <script>
     export default {
-        props: ['user'],
+        props: ['user', 'shelves'],
 
         mounted() {
             console.log('Component ready.')
@@ -41,14 +44,4 @@
 </script>
 
 <style lang="sass">
-    .photo-container-inner {
-        display: flex;
-    }
-    .profile-photo {
-        margin: auto;
-    }
-    .profile-header-nav .nav {
-        display: inline-block;
-        border-bottom: 0;
-    }
 </style>
