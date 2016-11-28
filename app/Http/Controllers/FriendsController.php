@@ -36,7 +36,7 @@ class FriendsController extends Controller
         return view('friends', [
             'isFacebookConnected' => true,
             'friends' => $userFriends,
-            'user' => $user
+            'user' => $user,
         ]);
     }
 }

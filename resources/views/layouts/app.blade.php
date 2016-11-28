@@ -21,6 +21,7 @@
     <!--     Fonts and icons     -->
    	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ elixir('css/booknshelf.css') }}">
@@ -36,9 +37,13 @@
         ]); ?>
     </script>
 </head>
-<body class="landing-page">
+<body>
     <div id="app">
+    @if (Auth::guest())
         <nav class="navbar navbar-primary navbar-transparent navbar-absolute">
+    @else
+        <nav class="navbar navbar-info">
+    @endif
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-main">
@@ -53,41 +58,31 @@
                     </a>
                 </div>
                 <div class="navbar-collapse collapse" id="navbar-collapse-main">
-
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         @if (Auth::check())
                             <li><a href="profile/index.html">About</a></li>
-                            <li><a href="notifications/index.html">Blog</a></li>
-                            <form class="navbar-form navbar-right app-search" method="GET"
-                                  action="{{ url('/books/search') }}" role="search">
-                                <div class="form-group">
-                                    <input id="book-search" type="text" value="{{ $q or '' }}" class="form-control"
-                                           data-action="grow" placeholder="Search for great books ...">
-                                </div>
-                            </form>
+                            {{--<form action="{{ url('/books/search') }}" class="navbar-form navbar-right" role="search" method="GET">--}}
+                                {{--<div class="form-group form-white is-empty">--}}
+                                    {{--<input type="text" class="form-control" placeholder="Search for great books">--}}
+                                    {{--<span class="material-input"></span>--}}
+                                {{--</div>--}}
+                                {{--<button type="submit" class="btn btn-white btn-raised btn-fab btn-fab-mini">--}}
+                                    {{--<i class="material-icons">search</i>--}}
+                                {{--</button>--}}
+                            {{--</form>--}}
                         @else
                             <li><a href="https://www.indiehackers.com/about">About</a></li>
-                            <li><a href="https://www.indiehackers.com/blog">Blog</a></li>
                         @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right m-r-0 hidden-xs">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Sign In</a></li>
-                            <li><a href="{{ url('/register') }}" type="button" class="btn btn-info btn-round navbar-btn">Sign Up</a></li>
-                        @else
-                            <li>
-                              <button class="btn btn-default navbar-btn navbar-btn-avitar" data-toggle="popover">
-                                <img class="img-circle" src="{{ Auth::user()->avatar }}">
-                              </button>
-                            </li>
-                        @endif
-                    </ul>
-
-                    @if(Auth::user())
+                    @if (Auth::guest())
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="{{ url('/login') }}">Login</a></li>
+                            <li><a href="{{ url('/register') }}" type="button" class="btn btn-info btn-round navbar-btn">Join</a></li>
+                        </ul>
+                    @else
                         @includeIf('nav.user-right')
                     @endif
                 </div>
@@ -95,60 +90,8 @@
         </nav>
 
         @yield('content')
-
-        <footer class="footer">
-       		<div class="container">
-       			<a class="footer-brand" href="#pablo">Material Kit PRO</a>
-
-
-       			<ul class="pull-center">
-       				<li>
-       					<a href="#pablo">
-       					   Blog
-       					</a>
-       				</li>
-       				<li>
-       					<a href="#pablo">
-       						Presentation
-       					</a>
-       				</li>
-       				<li>
-       					<a href="#pablo">
-       					   Discover
-       					</a>
-       				</li>
-       				<li>
-       					<a href="#pablo">
-       						Payment
-       					</a>
-       				</li>
-       				<li>
-       					<a href="#pablo">
-       						Contact Us
-       					</a>
-       				</li>
-       			</ul>
-
-       			<ul class="social-buttons pull-right">
-       				<li>
-       					<a href="https://twitter.com/CreativeTim" target="_blank" class="btn btn-just-icon btn-twitter btn-simple">
-       						<i class="fa fa-twitter"></i>
-       					</a>
-       				</li>
-       				<li>
-       					<a href="https://www.facebook.com/CreativeTim" target="_blank" class="btn btn-just-icon btn-facebook btn-simple">
-       						<i class="fa fa-facebook-square"></i>
-       					</a>
-       				</li>
-       				<li>
-       					<a href="https://www.instagram.com/CreativeTimOfficial" target="_blank" class="btn btn-just-icon btn-google btn-simple">
-       						<i class="fa fa-google"></i>
-       					</a>
-       				</li>
-       			</ul>
-
-       		</div>
-       	</footer>
+        {{--Create new shelf modal --}}
+        <new-shelf-modal></new-shelf-modal>
 
     </div>
 

@@ -5779,7 +5779,7 @@ button.close {
 /* SHADOWS */
 /* Shadows (from mdl http://www.getmdl.io/) */
 body {
-  background-color: #E5E5E5;
+  background-color: white;
   color: #3C4858; }
   body.inverse {
     background: #333333; }
@@ -8044,10 +8044,7 @@ select.form-control {
   padding: 20px 0 50px 0px; }
 
 .navbar {
-  border: 0;
-  border-radius: 4px;
-  box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.42), 0 3px 20px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
-  padding: 10px 0; }
+  border: 0; }
   .navbar .navbar-brand {
     position: relative;
     height: 50px;
@@ -9061,6 +9058,10 @@ h2.title {
   .card-blog .card-image + .category {
     margin-top: 20px; }
 
+.card-book .card-image {
+  height: 278px !important;
+  width: 182px !important; }
+
 .card-pricing {
   text-align: center; }
   .card-pricing .card-title {
@@ -9332,8 +9333,7 @@ hr.on-light {
 
 .info {
   max-width: 360px;
-  margin: 0 auto;
-  padding: 70px 0 30px; }
+  margin: 0 auto; }
   .info .icon {
     color: #999999; }
     .info .icon > i {
@@ -11581,6 +11581,25 @@ footer {
     display: inline-block; }
   .subscribe-line .btn {
     margin-top: 15px; } }
+
+.login-container {
+  padding-top: 150px; }
+
+.top-container {
+  padding-top: 100px; }
+
+.navbar {
+  margin-bottom: 0px !important; }
+
+.parent {
+  position: relative; }
+
+.hover-content {
+  display: none;
+  position: absolute; }
+
+.parent:hover .hover-content {
+  display: block; }
 
 [v-cloak] {
   display: none; }
