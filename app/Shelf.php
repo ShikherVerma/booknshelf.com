@@ -7,7 +7,7 @@ use Laravel\Scout\Searchable;
 
 class Shelf extends Model
 {
-    use Searchable;
+    // use Searchable;
 
     protected $table = 'shelves';
 
