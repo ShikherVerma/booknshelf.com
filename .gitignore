@@ -9,3 +9,4 @@ _ide_helper.php
 public/build/css/booknshelf-da67fc482a.css
 
 tests/_output/*
+/.vagrant
