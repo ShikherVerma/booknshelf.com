@@ -44,54 +44,56 @@
     @else
         <nav class="navbar navbar-info">
     @endif
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-main">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="/img/small-logo-white.png" height="35" width="35" alt="brand">
-                    </a>
-                </div>
-                <div class="navbar-collapse collapse" id="navbar-collapse-main">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        @if (Auth::check())
-                            <li><a href="profile/index.html">About</a></li>
-                            {{--<form action="{{ url('/books/search') }}" class="navbar-form navbar-right" role="search" method="GET">--}}
-                                {{--<div class="form-group form-white is-empty">--}}
-                                    {{--<input type="text" class="form-control" placeholder="Search for great books">--}}
-                                    {{--<span class="material-input"></span>--}}
-                                {{--</div>--}}
-                                {{--<button type="submit" class="btn btn-white btn-raised btn-fab btn-fab-mini">--}}
-                                    {{--<i class="material-icons">search</i>--}}
-                                {{--</button>--}}
-                            {{--</form>--}}
-                        @else
-                            <li><a href="https://www.indiehackers.com/about">About</a></li>
-                        @endif
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    @if (Auth::guest())
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}" type="button" class="btn btn-info btn-round navbar-btn">Join</a></li>
-                        </ul>
-                    @else
-                        @includeIf('nav.user-right')
-                    @endif
-                </div>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-main">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- Branding Image -->
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    <img src="/img/small-logo-white.png" height="35" width="35" alt="brand">
+                </a>
             </div>
+            <div class="navbar-collapse collapse" id="navbar-collapse-main">
+                <!-- Left Side Of Navbar -->
+                <ul class="nav navbar-nav">
+                    @if (Auth::check())
+                        <li><a href="profile/index.html">About</a></li>
+                        {{--<form action="{{ url('/books/search') }}" class="navbar-form navbar-right" role="search" method="GET">--}}
+                            {{--<div class="form-group form-white is-empty">--}}
+                                {{--<input type="text" class="form-control" placeholder="Search for great books">--}}
+                                {{--<span class="material-input"></span>--}}
+                            {{--</div>--}}
+                            {{--<button type="submit" class="btn btn-white btn-raised btn-fab btn-fab-mini">--}}
+                                {{--<i class="material-icons">search</i>--}}
+                            {{--</button>--}}
+                        {{--</form>--}}
+                    @else
+                        <li><a href="https://www.indiehackers.com/about">About</a></li>
+                    @endif
+                </ul>
+
+                <!-- Right Side Of Navbar -->
+                @if (Auth::guest())
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ url('/login') }}">Login</a></li>
+                        <li><a href="{{ url('/register') }}" type="button" class="btn btn-info btn-round navbar-btn">Join</a></li>
+                    </ul>
+                @else
+                    @includeIf('nav.user-right')
+                @endif
+            </div>
+        </div>
         </nav>
 
         @yield('content')
-        {{--Create new shelf modal --}}
-        <new-shelf-modal></new-shelf-modal>
+        @if (Auth::check())
+            {{--Create new shelf modal --}}
+            <new-shelf-modal></new-shelf-modal>
+        @endif
 
     </div>
 
