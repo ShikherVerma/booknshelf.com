@@ -7,7 +7,7 @@ use Laravel\Scout\Searchable;
 
 class Book extends Model
 {
-    use Searchable;
+     use Searchable;
     /**
      * The attributes that are mass assignable.
      *
