@@ -43,6 +43,7 @@ class ShelfRepository {
     {
         return $user->shelves()
                     ->orderBy('created_at', 'asc')
+                    ->withCount('books')
                     ->get();
     }
 

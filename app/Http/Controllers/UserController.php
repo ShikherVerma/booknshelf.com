@@ -29,9 +29,10 @@ class UserController extends Controller
     public function profile($username)
     {
         $user = $this->users->findByUsername($username);
+        $shelves = $this->shelves->forUser($user);
         return view('profile', [
             'user' => $user,
-            'shelves' => $this->shelves->forUser($user),
+            'shelves' => $shelves
         ]);
     }
 

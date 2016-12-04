@@ -1,49 +1,50 @@
 <template>
     <div class="modal fade" id="newShelfModal" tabindex="-1" role="dialog" aria-labelledby="newShelfModal" aria-hidden="true">
         <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button @click="close()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
+                    <h4 class="modal-title">Creat a new bookshelf</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <form class="form-horizontal" v-on:submit.prevent role="form">
+                                <div class="form-group" :class="{'has-error': form.errors.has('name')}">
+                                    <div class="col-md-12">
+                                        <input id="name" name="name" type="text" class="form-control" v-model="form.name" placeholder="Name ...">
+                                        <span class="help-block" v-show="form.errors.has('name')">
+                                            {{ form.errors.get('name') }}
+                                        </span>
+                                    </div>
+                                </div>
 
-            <form class="form-horizontal" v-on:submit.prevent role="form">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                            <i class="material-icons">clear</i>
-                        </button>
-                        <h4 class="modal-title text-center">Create a new bookshelf</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group label-floating" :class="{'has-error': form.errors.has('name')}">
-                            <div class="col-md-6">
-                                <input id="name" name="name" type="text" class="form-control" v-model="form.name">
-                                <div v-if="form.errors.has('name')">
-                                    <label v-if="form.errors.has('name')" class="control-label">{{ form.errors.get('name') }}</label>
-                                    <span class="material-icons form-control-feedback">clear</span>
+                                <div class="form-group" :class="{'has-error': form.errors.has('description')}">
+                                    <div class="col-md-12">
+                                        <input id="description" type="text" class="form-control" v-model="form.description" placeholder="Tell a little bit about this bookshelf ...">
+
+                                        <span class="help-block" v-show="form.errors.has('description')">
+                                            {{ form.errors.get('description') }}
+                                        </span>
+                                    </div>
                                 </div>
-                                <div v-else>
-                                    <label for="i5" class="control-label">How do you want to call your bookshelf?</label>
+
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <button type="submit" class="btn btn-primary"
+                                                @click.prevent="create"
+                                                :disabled="form.busy">
+                                            Create
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
-                        <div class="form-group label-floating" :class="{'has-error': form.errors.has('description')}">
-                            <div class="col-md-6">
-                                <input id="description" type="text" class="form-control" v-model="form.description">
-                                <div v-if="form.errors.has('description')">
-                                    <label v-if="form.errors.has('description')" class="control-label">{{ form.errors.get('description') }}</label>
-                                    <span class="material-icons form-control-feedback">clear</span>
-                                </div>
-                                <div v-else>
-                                    <label for="i5" class="control-label">Tell a little bit about this bookshelf...</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button"
-                            @click.prevent="create"
-                            class="btn btn-success">Create</button>
-                        <button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </template>
@@ -74,6 +75,7 @@
                 App.post('/shelves', this.form)
                     .then(() => {
                         $('#newShelfModal').modal('hide');
+                        this.showCreateSuccessMessage();
 
                         this.form.name = '';
                         this.form.description = '';
@@ -81,20 +83,26 @@
                     });
             },
 
-        },
+            showCreateSuccessMessage() {
+                swal({
+                    title: 'Success!',
+                    text: 'Your bookshelf has successfully created.',
+                    type: "success",
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            },
 
-        // mounted: function () {
-        //     this.$nextTick(function () {
-        //         document.addEventListener("keydown", (e) => {
-        //             if (this.show && e.keyCode == 27) {
-        //                 this.close();
-        //             }
-        //         });
-        //     })
-        // }
+            // mounted: function () {
+            //     this.$nextTick(function () {
+            //         document.addEventListener("keydown", (e) => {
+            //             if (this.show && e.keyCode == 27) {
+            //                 this.close();
+            //             }
+            //         });
+            //     })
+            // }
 
-        mounted() {
-            console.log('Component new-shelf modal is ready.')
         }
     }
 </script>

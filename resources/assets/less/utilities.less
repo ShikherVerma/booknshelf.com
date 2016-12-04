@@ -1,12 +1,323 @@
-#app {
-  overflow: auto;
-  padding-bottom: 70px; /* this needs to be bigger than footer height*/
+#book-search {
+    width: 300px;
 }
 
-.footer {
+// Most of the stuff below is not actually needed.
+// TODO: Refactor this file.
+.border-none {
+    border: 0;
+}
+
+.shelf-card-item {
+    border: 1px solid #c7cccb;
+    min-height: 240px;
+}
+
+.shelf-card-item-cover {
+    width: 100% !important;
+}
+
+.shelf-caption {
+    background-color: white;
+    //opacity: 0.90;
+    font-weight: bold;
+    color: @brand-primary;
+    padding: 7px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.shelf-creator {
+    vertical-align: middle;
+    text-align: left;
+}
+
+.shelf-creator a:hover {
+    text-decoration: none;
+    color: lighten(@brand-primary, 10%);
+    cursor: pointer;
+}
+
+.shelf-card-body {
+    position: relative;
+    padding: 15px;
+    height: 100%;
+}
+.shelf-card-title {
+    font-size: 17px;
+}
+.shelf-card-desc {
+    font-size: 14px;
+}
+.shelf-card-actions-bar {
+    position: absolute;
+    bottom: 0;
+    background-color: white;
+    color: @brand-primary;
+    text-align: center;
+    //opacity: 0.90;
+}
+.shelf-card-actions-bar > button {
+    margin: 4px;
+}
+
+.shelf-header {
   position: relative;
-  margin-top: -50px; /* negative value of footer height */
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  background-color: white;
+  //background: none 50%/cover #505d6c;
+
+  a {
+    color: #636b6f !important;
+  }
+
+  h3 {
+    margin-top: 0px;
+  }
+}
+
+#shelf-book-item {
+}
+
+.shelf-header-name {
+    margin-top: 24px;
+    color: @brand-primary;
+}
+.shelf-header-desc {
+    font-size: 17px;
+    color: @brand-primary;
+}
+.shelf-header-owner {
+    font-size: 15px;
+    color: @brand-primary;
+    font-weight: bold;
+}
+
+.book-card-body {
+    position: relative;
+    padding: 15px;
+    height: 100%;
+}
+
+.small-profile-photo {
+    height: 20px !important;
+    width: 20px !important;
+    border: none !important;
+}
+
+.max-width-1000 {
+    max-width: 1100px !important;
+}
+.home-container-content {
+    padding: 35px 0 0 0;
+}
+
+.btn-facebook:hover {
+    color: white;
+}
+
+.btn-twitter:hover {
+    color: white;
+}
+
+.btn-search {
+  height: 35px;
+}
+
+.dropdown-menu {
+    color: @brand-primary;
+}
+
+.please-login-message {
+    color: @brand-primary;
+}
+
+// Algolia Search
+#algolia-search {
+  width: 300px;
+  background-color: white !important;
+}
+.algolia-autocomplete {
+  width: 100%;
+}
+.algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
+  width: 100%;
+  min-height: 30px;
+}
+.algolia-autocomplete .aa-hint {
+  color: #999;
+}
+.algolia-autocomplete .aa-dropdown-menu {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #999;
+  border-top: none;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+  cursor: pointer;
+  padding: 5px 4px;
+  color: @brand-primary;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
+  background: #f8f8f8;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
+  font-weight: bold;
+  font-style: normal;
+  //color: #84dccd;
+}
+.algolia-autocomplete .category {
+  text-align: left;
+  background: @brand-primary;
+  //color: #84dccd;
+  padding: 10px 5px;
+  font-weight: bold;
+}
+
+.left-container{
+  vertical-align:top;
+  width: 60%;
+  display: inline-block;
+}
+.right-container{
+  vertical-align:top;
+  width: 40%;
+  display: inline-block;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+  cursor: pointer;
+  border-bottom: 1px solid #EEE;
+  padding: 10px;
+  min-height: 80px;
+}
+.team-logo{
+  float: left;
+  height: 60px;
+  display: inline-block;
+  border: 1px solid #EEE;
+  margin-right: 10px;
+}
+.algolia-logo {
+  padding: 10px;
+  color: #DEE2E3;
+  float: right;
+}
+
+.resp-sharing-button__link,
+.resp-sharing-button__icon {
+  display: inline-block
+}
+
+.resp-sharing-button__link {
+  text-decoration: none;
+  color: #fff;
+  margin: 0.5em
+}
+
+.resp-sharing-button {
+  border-radius: 5px;
+  transition: 25ms ease-out;
+  padding: 0.5em 0.75em;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif
+}
+
+.resp-sharing-button__icon svg {
+  width: 1em;
+  height: 1em
+}
+
+.resp-sharing-button span {
+  padding-left: 0.4em
+}
+
+/* Non solid icons get a stroke */
+.resp-sharing-button__icon {
+  stroke: #fff;
+  fill: none
+}
+
+/* Solid icons get a fill */
+.resp-sharing-button__icon--solid,
+.resp-sharing-button__icon--solidcircle {
+  fill: #fff;
+  stroke: none
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee
+}
+
+.resp-sharing-button--twitter:hover {
+  background-color: #2795e9
+}
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998
+}
+
+.resp-sharing-button--facebook:hover {
+  background-color: #2d4373
+}
+
+
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.resp-sharing-button--facebook:hover,
+.resp-sharing-button--facebook:active {
+  background-color: #2d4373;
+  border-color: #2d4373;
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee;
+  border-color: #55acee;
+}
+
+.resp-sharing-button--twitter:hover,
+.resp-sharing-button--twitter:active {
+  background-color: #2795e9;
+  border-color: #2795e9;
+}
+
+.top-search-bar {
+  align-items: center;
+  display: flex;
   height: 50px;
-  clear: both;
-  padding-top: 10px;
+  border-bottom: 1px solid #dadae3;
+  background-color: @brand-blue;
+  //border-top: 1px solid #ececec;
+}
+
+.top-container {
+  min-width: 350px;
+  //background-color: white;
+}
+
+.custom-navbar {
+  display: flex;
+  border: none;
+  background-color: @brand-blue;
+}
+
+.shelf-table {
+  padding-left: 0;
+}
+
+.social-container {
+  display: flex;
+}
+.social-container-item {
+  margin: 4px;
+}
+
+.fb-share-button {
+  margin-bottom: 6px !important;
 }
