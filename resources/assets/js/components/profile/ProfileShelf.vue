@@ -1,12 +1,12 @@
 <template>
-    <div class="col-md-3">
+    <div class="col-md-4">
         <a :href="url">
-            <div class="card card-background">
-    			<div class="content">
-                    <h2 class="card-title">{{ shelf.name }}</h2>
-                    <label class="label label-primary">10 Books</label>
-    			</div>
-    		</div>
+            <div class="card card-raised card-background" style="background-image: url('/img/backgrounds/0ppkxwtyh0g-clem-onojeghuo.jpg')">
+                <div class="content">
+                    <h3 class="card-title">{{ shelf.name }}</h3>
+                    <p class="card-description">{{ shelf.books_count }} books</p>
+                </div>
+            </div>
         </a>
     </div>
 </template>

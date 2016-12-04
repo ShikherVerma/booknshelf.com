@@ -9,7 +9,7 @@
     <meta name="description" content="Booknshelf is a place to discover great books, bookshelves and share them with your friends."/>
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="Booknshelf" />
-    <meta property="og:description"   content="Discover great books on specific topics" />
+    <meta property="og:description"   content="Discover great books anf bookshelves" />
     <meta property="og:image"         content="https://booknshelf.com/img/logo.png" />
 
     <!-- CSRF Token -->
@@ -18,80 +18,38 @@
     <title>{{ config('app.name', 'Booknshelf') }}</title>
     <link rel="icon" href="/img/favicon.ico" />
 
-    <!--     Fonts and icons     -->
-   	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-
     <!-- Styles -->
     <link rel="stylesheet" href="{{ elixir('css/booknshelf.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 
     <!-- Scripts -->
     <script>
         window.App = <?php echo json_encode([
             'csrfToken' => csrf_token(),
             'userId' => Auth::id(),
+            'env' => config('app.env'),
             'state' => [
                 'user' => Auth::user()
             ]
         ]); ?>
     </script>
+    @include('shared.analytics')
 </head>
-<body>
+<body class="with-navbar">
+    <div class="growl" id="app-growl"></div>
     <div id="app">
-    @if (Auth::guest())
-        <nav class="navbar navbar-primary navbar-transparent navbar-absolute">
-    @else
-        <nav class="navbar navbar-info">
-    @endif
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-main">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="/img/small-logo-white.png" height="35" width="35" alt="brand">
-                </a>
-            </div>
-            <div class="navbar-collapse collapse" id="navbar-collapse-main">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    @if (Auth::check())
-                        <li><a href="profile/index.html">About</a></li>
-                        {{--<form action="{{ url('/books/search') }}" class="navbar-form navbar-right" role="search" method="GET">--}}
-                            {{--<div class="form-group form-white is-empty">--}}
-                                {{--<input type="text" class="form-control" placeholder="Search for great books">--}}
-                                {{--<span class="material-input"></span>--}}
-                            {{--</div>--}}
-                            {{--<button type="submit" class="btn btn-white btn-raised btn-fab btn-fab-mini">--}}
-                                {{--<i class="material-icons">search</i>--}}
-                            {{--</button>--}}
-                        {{--</form>--}}
-                    @else
-                        <li><a href="https://www.indiehackers.com/about">About</a></li>
-                    @endif
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                @if (Auth::guest())
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}" type="button" class="btn btn-info btn-round navbar-btn">Join</a></li>
-                    </ul>
-                @else
-                    @includeIf('nav.user-right')
-                @endif
-            </div>
-        </div>
-        </nav>
-
-        @yield('content')
+        <!-- Navigation -->
         @if (Auth::check())
-            {{--Create new shelf modal --}}
+            @include('nav.user')
+        @else
+            @include('nav.guest')
+        @endif
+
+        <!-- Main Content -->
+        @yield('content')
+
+        <!-- Application Level Modals -->
+        @if (Auth::check())
             <new-shelf-modal></new-shelf-modal>
         @endif
 

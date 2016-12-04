@@ -31,25 +31,22 @@ Vue.http.interceptors.push((request, next) => {
     next();
 });
 
+// Use Vuex for state management
+import Vuex from 'vuex/dist/vuex';
+window.Vuex = Vuex;
+Vue.use(Vuex)
+
 /**
  * Load Form utilities (window.AppForm)
  */
 
 require('./forms/bootstrap');
 
-require('./material/material.min');
-require('./material/nouislider.min');
-require('./material/material-kit');
-
-require('./material/jquery.flexisel');
-require('./material/jasny-bootstrap.min');
-require('./material/jquery.tagsinput');
-require('./material/jquery.dropdown');
-
 // template custom utilities
-// require('./custom/image-grid');
-// require('./custom/zoom');
-// require('./custom/application');
+require('./custom/image-grid');
+require('./custom/zoom');
+require('./custom/application');
+require('./custom/sweetalert.min.js');
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

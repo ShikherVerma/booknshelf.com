@@ -1,8 +1,10 @@
 @import "./bootstrap/variables.less";
 
+@import "https://fonts.googleapis.com/css?family=Open+Sans:300,400,600";
+
 // icons
-//@icon-font-path: "../fonts/";
-//@icon-font-name: "toolkit-entypo";
+@icon-font-path: "../fonts/";
+@icon-font-name: "toolkit-entypo";
 
 // Body
 @body-bg: #f5f8fa;
@@ -25,8 +27,9 @@
 @gray-lighter:  #d4dbe0;
 @gray-lightest: #f5f8fa;
 
-
 // Brand Scale
+@brand-blue: #4EC1C4;
+@brand-yellow: #ffbf32;
 @brand-primary: #072B54;
 @brand-secondary: #98e2d5;
 @brand-success: #4eb76e;
@@ -34,13 +37,12 @@
 @brand-danger:  #bf5329;
 @brand-info:    #8eb4cb;
 
-
 // alerts
 @alert-warning-border: #E6D0A1;
 
-
 // Text Color
-@font-family-sans-serif:  'Source Sans Pro', sans-serif;
+// @font-family-sans-serif:  'Source Sans Pro', sans-serif;
+@font-family-sans-serif: "Open Sans", Helvetica, Arial, sans-serif;
 @text-color:             @gray-dark;
 @letter-spacing-base:    0;
 @line-height-base:       1.6;
@@ -59,14 +61,13 @@
 @headings-font-weight: 600;
 @headings-line-height: 1.2;
 
-
 // Btns
 @btn-font-size:      @font-size-base;
 @btn-text-transform: default;
 @btn-letter-spacing: none;
 @btn-default-color:  @brand-primary;
-@btn-default-bg:     @brand-secondary;
-@btn-default-border: @brand-secondary;
+// @btn-default-bg:     @brand-secondary;//
+// @btn-default-border: @brand-secondary;
 @btn-toolbar-divider-bg: @gray-lighter;
 
 
@@ -93,6 +94,7 @@
 
 
 // navbar
+// @navbar-height:                             30px;
 @navbar-default-bg:                         #fff;
 @navbar-default-link-active-color:          #333;
 @navbar-default-link-active-bg:             transparent;

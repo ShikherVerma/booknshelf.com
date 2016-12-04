@@ -16,16 +16,16 @@ require('laravel-elixir-vue-2');
 elixir(function(mix) {
 	// stylings
 	// mix.styles([
-	// 	'bootstrap-social.css',
-	// 	'hover-min.css'
+	// 	'sweetalert.css',
+	// // 	'hover-min.css'
 	// ], 'public/css/helpers.css');
 
 	// mix.sass('app.scss');
-	// mix.less('app.less');
-	mix.sass('material-kit.scss');
+	mix.less('app.less');
+	// mix.sass('material-kit.scss');
 	mix.styles([
 		// app.css has all .less files merged into one single file
-	    'material-kit.css',
+        'app.css',
         // 'helpers.css',
 	], 'public/css/booknshelf.css', 'public/css');
 
