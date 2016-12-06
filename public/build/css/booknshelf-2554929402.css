@@ -9731,6 +9731,9 @@ fieldset[disabled] .btn-danger-outline.active {
 .fa-btn {
   margin-right: 5px;
 }
+.btn:focus {
+  outline: none !important;
+}
 .app-screen form h2 {
   background-color: #f5f5f5;
   border-radius: 4px;
@@ -9987,6 +9990,36 @@ fieldset[disabled] .btn-danger-outline.active {
   text-align: center;
   color: #98e2d5;
 }
+.card .small-profile-photo {
+  height: 32px !important;
+  width: 32px !important;
+  border: none !important;
+}
+.card .profile {
+  color: #fff;
+}
+.card-plain {
+  background: transparent;
+  box-shadow: none;
+}
+.card-plain .card-image {
+  margin: 0;
+  border-radius: 3px;
+}
+.card .card-image {
+  height: 60%;
+  position: relative;
+  overflow: hidden;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: -30px;
+  border-radius: 6px;
+  box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+.card-plain .content {
+  padding-left: 5px;
+  padding-right: 5px;
+}
 .p-t-lg {
   padding-top: 20px;
 }
@@ -10113,84 +10146,6 @@ fieldset[disabled] .btn-danger-outline.active {
 .border-none {
   border: 0;
 }
-.shelf-card-item {
-  border: 1px solid #c7cccb;
-  min-height: 240px;
-}
-.shelf-card-item-cover {
-  width: 100% !important;
-}
-.shelf-caption {
-  background-color: white;
-  font-weight: bold;
-  color: #072B54;
-  padding: 7px;
-  text-align: center;
-  font-size: 16px;
-}
-.shelf-creator {
-  vertical-align: middle;
-  text-align: left;
-}
-.shelf-creator a:hover {
-  text-decoration: none;
-  color: #0b4383;
-  cursor: pointer;
-}
-.shelf-card-body {
-  position: relative;
-  padding: 15px;
-  height: 100%;
-}
-.shelf-card-title {
-  font-size: 17px;
-}
-.shelf-card-desc {
-  font-size: 14px;
-}
-.shelf-card-actions-bar {
-  position: absolute;
-  bottom: 0;
-  background-color: white;
-  color: #072B54;
-  text-align: center;
-}
-.shelf-card-actions-bar > button {
-  margin: 4px;
-}
-.shelf-header {
-  position: relative;
-  padding: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  display: -webkit-box;
-  display: flex;
-  background-color: white;
-}
-.shelf-header a {
-  color: #636b6f !important;
-}
-.shelf-header h3 {
-  margin-top: 0px;
-}
-.shelf-header-name {
-  margin-top: 24px;
-  color: #072B54;
-}
-.shelf-header-desc {
-  font-size: 17px;
-  color: #072B54;
-}
-.shelf-header-owner {
-  font-size: 15px;
-  color: #072B54;
-  font-weight: bold;
-}
-.book-card-body {
-  position: relative;
-  padding: 15px;
-  height: 100%;
-}
 .small-profile-photo {
   height: 20px !important;
   width: 20px !important;
@@ -10198,9 +10153,6 @@ fieldset[disabled] .btn-danger-outline.active {
 }
 .max-width-1000 {
   max-width: 1100px !important;
-}
-.home-container-content {
-  padding: 35px 0 0 0;
 }
 .btn-facebook:hover {
   color: white;
@@ -10378,6 +10330,23 @@ fieldset[disabled] .btn-danger-outline.active {
 }
 .fb-share-button {
   margin-bottom: 6px !important;
+}
+a:focus {
+  outline: none !important;
+}
+.shelf-page-header {
+  color: #FFF;
+}
+.shelf-page-header:after {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  left: 0;
+  top: 0;
+  content: "";
+  background-color: rgba(0, 0, 0, 0.27);
 }
 /*
  * Social Buttons for Bootstrap

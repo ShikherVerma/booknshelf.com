@@ -31,6 +31,7 @@ Vue.component('search', require('./components/Search.vue'));
 
 // Shelf
 Vue.component('shelf', require('./components/Shelf.vue'));
+Vue.component('shelf-books', require('./components/shelf/ShelfBooks.vue'));
 Vue.component('shelf-book', require('./components/shelf/ShelfBook.vue'));
 
 // Modals
