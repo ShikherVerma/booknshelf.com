@@ -16,7 +16,7 @@
         props: ['user', 'shelf'],
         mounted() {},
         computed: {
-            url: function() {
+            url: function () {
                 return '/@' + this.user.username + '/shelves/' + this.shelf.slug
             }
         }

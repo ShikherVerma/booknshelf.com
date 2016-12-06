@@ -1,41 +1,25 @@
 <template>
     <div class="col-md-3 parent">
-        <div class="card card-product card-book">
-            <div class="card-image">
-                <div class="hover-content">
-                    <small style="margin-left: 3px;">
-                        <a class="btn btn-default btn-sm" :href="book.detail_page_url" target="_blank" type="button">
+        <div class="card card-shelf-book card-background card-raised" :style="bookCoverImage">
+            <div class="content">
+                <h6 class="category text-info"></h6>
+                <h4 class="card-title hover-content">
+                    <small>
+                        <button class="btn btn-danger btn-sm btn-action" @click="showSaveModal()" type="button">
+                            <span class="icon icon-add-to-list"></span> Save
+                        </button>
+                    </small>
+                    <small>
+                        <button class="btn btn-success btn-sm btn-action" @click="showSaveModal()" type="button">
+                            <span class="icon icon-check"></span> Saved
+                        </button>
+                    </small>
+                    <small>
+                        <a class="btn btn-default btn-sm btn-action" :href="book.detail_page_url" target="_blank" type="button">
                             <i class="fa fa-amazon" aria-hidden="true"></i>
                         </a>
-                        <a href="#pablo" class="btn btn-success btn-sm">
-                            <i class="material-icons">playlist_add</i>
-                            <div class="ripple-container"></div>
-                        </a>
                     </small>
-                </div>
-                <a href="#pablo">
-                    <img class="img img-raised" :src="book.cover_image || book.image" />
-                </a>
-            </div>
-            <div class="content">
-                <p class="card-title text-small">
-                    {{ book.title }}
-                </p>
-                <p class="card-description">
-                    <small v-for="(author, index) in book.authors">
-                        {{ author.name }}<span v-if="index !== book.authors.length - 1">, </span>
-                    </small>
-                </p>
-                <div class="footer">
-                    <div class="stats">
-                        <button type="button" rel="tooltip" title="Save" class="btn btn-just-icon btn-simple btn-success">
-                            <i class="material-icons">playlist_add</i>
-                        </button>
-                        <button type="button" rel="tooltip" title="Like" class="btn btn-just-icon btn-simple btn-default">
-                            <i class="material-icons">favorite</i>
-                        </button>
-                    </div>
-                </div>
+                </h4>
             </div>
         </div>
     </div>
@@ -44,9 +28,31 @@
 <script>
     export default {
         props: ['user', 'book'],
-
-        mounted() {
-            console.log('Component book-shelf is ready.')
+        computed: {
+            bookCoverImage: function () {
+                return `background-image: url(${this.book.cover_image || this.book.image})`;
+            }
         }
     }
 </script>
+
+<style type="text/css">
+    .card-shelf-book {
+        text-align: center;
+        height: 350px;
+        width: 250px;
+    }
+    .card-shelf-book:after {
+        background-color: rgba(0, 0, 0, 0);
+    }
+    .parent {
+      position: relative;
+    }
+    .hover-content {
+      display:none;
+      position: absolute;
+    }
+    .parent:hover .hover-content {
+      display: block;
+    }
+</style>

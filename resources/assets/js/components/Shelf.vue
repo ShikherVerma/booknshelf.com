@@ -1,42 +1,36 @@
 <template>
-    <div class="blogs-2" id="blogs-2">
-
+    <div class="profile-header shelf-page-header text-center" style="background-image: url('/img/backgrounds/shelf-page-background.jpg');">
         <div class="container">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1 text-center">
-                    <h3 v-if="shelf.description">{{ shelf.description}}</h3>
-                    <p>
-                        by {{ user.name }}
-                        <!--<div class="profile-photo-small">-->
-                        <!--<a href="" class="profile-photo">-->
-                        <!--<img :src="user.avatar" alt="avatar" class="img-circle img-responsive">-->
-                        <!--by {{ user.name }}-->
-                        <!--</a>-->
-                        <!--</div>-->
-                    </p>
-
-                    <div class="row">
-                        <shelf-book :user="user" v-for="book in books" :book="book"></shelf-book>
-                    </div>
-
-                </div>
-
+            <div class="container-inner">
+                <h2 class="profile-header-user">{{ shelf.name }}</h2>
+                <p v-if="shelf.description" class="profile-header-bio">
+                    {{ shelf.description}}
+                </p>
+                <h6 class="profile text-muted" :href="profileUrl">
+                    <img class="img-circle small-profile-photo" :src="user.avatar">
+                    {{ user.name }}
+                </h6>
             </div>
-
-
-
         </div>
-    </div>
 
+        <nav class="profile-header-nav">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#">{{ books.length }} Books</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </template>
 
 <script>
     export default {
         props: ['user', 'shelf', 'books'],
 
-        mounted() {
-            console.log(this.books);
-            console.log('Component ready.')
+        computed: {
+            profileUrl: function () {
+                return '/@' + this.user.username;
+            }
         }
     }
 </script>
