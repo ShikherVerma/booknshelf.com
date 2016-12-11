@@ -9030,12 +9030,13 @@ img.zoom-img {
   position: relative;
   display: table;
   width: 100%;
-  height: 300px;
+  height: 300px !important;
   padding-bottom: 48px;
   margin-bottom: 0;
   text-align: center;
   background-size: cover;
   border: 0;
+  margin-top: 60px;
 }
 .profile-header .container,
 .profile-header .container-fluid {
@@ -10333,20 +10334,6 @@ fieldset[disabled] .btn-danger-outline.active {
 }
 a:focus {
   outline: none !important;
-}
-.shelf-page-header {
-  color: #FFF;
-}
-.shelf-page-header:after {
-  position: absolute;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  display: block;
-  left: 0;
-  top: 0;
-  content: "";
-  background-color: rgba(0, 0, 0, 0.27);
 }
 /*
  * Social Buttons for Bootstrap
