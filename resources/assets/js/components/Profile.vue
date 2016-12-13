@@ -1,5 +1,5 @@
 <template>
-    <div class="profile-header text-center" style="background-image: url('/img/backgrounds/tpv9dh822va-stefan-stefancik.jpg');">
+    <div class="profile-header text-center">
         <div class="container">
             <div class="container-inner">
                 <img class="img-circle media-object" :src="user.avatar">
@@ -13,7 +13,7 @@
         <nav class="profile-header-nav">
             <ul class="nav nav-tabs">
                 <li class="active">
-                    <a href="#">{{ shelves.length }} Bookshelves</a>
+                    <a class="shelf-count">{{ shelves.length }} Bookshelves</a>
                 </li>
             </ul>
         </nav>
@@ -31,4 +31,11 @@
 </script>
 
 <style lang="sass">
+    .profile-header-user {
+        color: #072B54;
+    };
+
+    .shelf-count {
+        color: black !important;
+    }
 </style>

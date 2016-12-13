@@ -1,7 +1,7 @@
 <template>
     <div class="col-md-4">
         <a :href="url">
-            <div class="card card-raised card-background" style="background-image: url('/img/backgrounds/0ppkxwtyh0g-clem-onojeghuo.jpg')">
+            <div class="card card-raised card-background" :style="style">
                 <div class="content">
                     <h3 class="card-title">{{ shelf.name }}</h3>
                     <p class="card-description">{{ shelf.books_count }} books</p>
@@ -18,6 +18,9 @@
         computed: {
             url: function () {
                 return '/@' + this.user.username + '/shelves/' + this.shelf.slug
+            },
+            style: function() {
+                return `background-image: url('${this.shelf.cover}')`;
             }
         }
     }
