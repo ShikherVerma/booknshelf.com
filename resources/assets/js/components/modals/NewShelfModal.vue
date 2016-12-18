@@ -93,16 +93,6 @@
                 });
             },
 
-            // mounted: function () {
-            //     this.$nextTick(function () {
-            //         document.addEventListener("keydown", (e) => {
-            //             if (this.show && e.keyCode == 27) {
-            //                 this.close();
-            //             }
-            //         });
-            //     })
-            // }
-
         }
     }
 </script>

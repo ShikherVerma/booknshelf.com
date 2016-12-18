@@ -6,16 +6,16 @@ $I->am('A guest');
 $I->wantTo('Sign up for a Booknshelf account');
 
 $I->amOnPage('/');
-$I->click('REGISTER');
+$I->click('JOIN');
 $I->seeCurrentUrlEquals('/register');
 
 $I->fillField('name', 'JohnDoe');
 $I->fillField('username', 'JohnDoe123');
 $I->fillField('password', 'demo123');
-$I->click('Sign up');
+$I->click('Join');
 
 $I->seeCurrentUrlEquals('/welcome');
-$I->see('Choose your username');
+$I->see('Choose your username', 'label');
 
 $I->seeRecord('users', [
     'username' => 'JohnDoe123',

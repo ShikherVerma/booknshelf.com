@@ -36,10 +36,13 @@ Vue.component('shelf-book', require('./components/shelf/ShelfBook.vue'));
 
 // Modals
 Vue.component('new-shelf-modal', require('./components/modals/NewShelfModal.vue'));
+Vue.component('book-save-modal', require('./components/modals/BookSaveModal.vue'));
 
 // Navbar
 Vue.component('user-navbar', require('./components/UserNavbar.vue'));
 
+// Shared
+Vue.component('spinner', require('./components/shared/Spinner.vue'));
 
 // make sure to call Vue.use(Vuex) if using a module system
 // import Vuex from 'vuex/dist/vuex';
@@ -72,27 +75,41 @@ const app = new Vue({
 
     data: {
         user: App.state.user,
+        bookSaveModal: false,
+        bookSaveModalBook: null,
     },
 
     methods: {
         updateUser() {
-            console.log("Listned to the event");
             this.$http.get('/user/current')
                 .then(response => {
                     this.user = response.data;
             });
         },
+        closeBookSaveModal: function() {
+            this.bookSaveModal = false;
+        },
+
+        showBookSaveModal: function(book) {
+            this.bookSaveModalBook = book;
+            this.$eventHub.$emit('loadUserShelves');
+            this.bookSaveModal = true;
+        },
     },
 
     created: function () {
-      this.$eventHub.$on('updateUser', this.updateUser)
+      this.$eventHub.$on('updateUser', this.updateUser);
+      this.$eventHub.$on('showBookSaveModal', this.showBookSaveModal);
+      this.$eventHub.$on('closeBookSaveModal', this.closeBookSaveModal);
     },
 
     // It's good to clean up event listeners before
     // a component is destroyed.
-    // beforeDestroy: function () {
-    //   this.$eventHub.$off('updateUser', this.addTodo)
-    // },
+    beforeDestroy: function () {
+      this.$eventHub.$off('updateUser', this.updateUser);
+      this.$eventHub.$off('showBookSaveModal', this.showBookSaveModal);
+      this.$eventHub.$off('closeBookSaveModal', this.closeBookSaveModal);
+    },
 
     computed: {
         app() {
