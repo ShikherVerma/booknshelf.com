@@ -105,7 +105,6 @@
             update() {
                 App.put('/settings/profile', this.form)
                     .then(() => {
-                        // TODO: Need to update the user here.
                         this.$eventHub.$emit('updateUser');
                     });
             }

@@ -6,7 +6,7 @@ $I->wantTo('sign up for booknshelf');
 
 $I->amOnPage("/");
 
-$I->click('REGISTER');
+$I->click('JOIN');
 $I->fillField('name', 'Miles');
 $I->fillField('username', 'milesaaa');
 $I->fillField('password', 'password');
