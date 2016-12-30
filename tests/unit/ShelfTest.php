@@ -212,9 +212,7 @@ class ShelfTest extends TestCase
             'book_id' => $book->id
         ]);
         $this->actingAs($this->user)
-            ->call('DELETE', '/shelves/'.$shelf->id.'/books', [
-            'id' => $book->id,
-        ]);
+            ->call('DELETE', '/shelves/'.$shelf->id.'/books/'.$book->id);
         $this->dontSeeInDatabase('book_shelf', [
             'shelf_id' => $shelf->id,
             'book_id' => $book->id

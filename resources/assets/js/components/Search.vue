@@ -21,12 +21,12 @@
                             </div>
                             <div class="media-footer hover-content">
                                 <small v-show="!saved">
-                                    <button class="btn btn-danger btn-sm btn-action" @click="showSaveModal()" type="button">
+                                    <button class="btn btn-success btn-sm btn-action" @click="showBookSaveModal(book)" type="button">
                                         <span class="icon icon-add-to-list"></span> Save
                                     </button>
                                 </small>
                                 <small v-show="saved">
-                                    <button class="btn btn-success btn-sm btn-action" @click="showSaveModal()" type="button">
+                                    <button class="btn btn-success btn-sm btn-action" @click="showBookSaveModal(book)" type="button">
                                         <span class="icon icon-check"></span> Saved
                                     </button>
                                 </small>
@@ -50,7 +50,7 @@
 <script>
     export default {
 
-        props: ['books'],
+        props: ['books', 'mostSavedBooks'],
 
         data() {
             return {
@@ -70,12 +70,12 @@
                 this.loading = false;
             },
 
-            showSaveModal() {
+            showBookSaveModal(book) {
                 // if user is authenticated then show the save modal, otherwise login modal
                 if (App.userId) {
-                    this.$broadcast('showSaveModal')
+                    this.$eventHub.$emit('showBookSaveModal', book);
                 } else {
-                    this.$broadcast('showPleaseLoginModal');
+                    this.$eventHub.$emit('showPleaseLoginModal');
                 }
             }
 

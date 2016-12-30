@@ -55,7 +55,7 @@ Route::put('/shelves/{shelf_id}', 'ShelfController@update');
 Route::delete('/shelves/{shelf_id}', 'ShelfController@destroy');
 Route::get('/shelves/{shelf_id}/books', 'ShelfController@getBooks');
 Route::post('/shelves/{shelf_id}/books', 'ShelfController@storeBook');
-Route::delete('/shelves/{shelf_id}/books', 'ShelfController@removeBook');
+Route::delete('/shelves/{shelf_id}/books/{book_id}', 'ShelfController@removeBook');
 
 // Friends
 Route::get('/friends', 'FriendsController@index');

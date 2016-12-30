@@ -12,7 +12,8 @@
                         <button v-show="onOwnProfile"class="btn btn-danger btn-sm" @click="removeBookFromShelf()">
                             <span class="icon icon-cross"></span>
                         </button>
-                        <a class="btn btn-default btn-sm btn-action" :href="book.detail_page_url" target="_blank" type="button">
+                        <a v-if="book.detail_page_url" class="btn btn-default btn-sm btn-action"
+                            :href="book.detail_page_url" target="_blank" type="button">
                             <i class="fa fa-amazon" aria-hidden="true"></i>
                         </a>
                     </small>
@@ -39,12 +40,10 @@
             // remove the book from the bookshelf
             removeBookFromShelf() {
                 this.form.id = this.book.id;
-                var shelfId = this.shelf.id;
-                console.log(this.form.id);
-                App.delete(`/shelves/${this.shelf.id}/books`, this.form)
+                let form = new AppForm({ id: this.book.id });
+                App.delete(`/shelves/${this.shelf.id}/books/${this.book.id}`, form)
                     .then(() =>{
-                        // this.$dispatch('updateShelf');
-                        console.log("deleted");
+                        this.$eventHub.$emit('bookRemoved');
                     }).catch(function(reason) {})
             },
             showBookSaveModal() {
@@ -52,7 +51,7 @@
                 if (App.userId) {
                     this.$eventHub.$emit('showBookSaveModal', this.book);
                 } else {
-                    console.log("nope!");
+                    this.$eventHub.$emit('showPleaseLoginModal');
                 }
             }
         },

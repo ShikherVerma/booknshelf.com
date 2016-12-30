@@ -33,12 +33,6 @@
                             </div>
                         </div>
 
-                        {{--<div class="form-group">--}}
-                            {{--<div class="col-md-6 col-md-offset-4">--}}
-                                {{--<span>Continue if you agree with our <a>terms</a></span>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" name="continue" class="btn btn-primary">
