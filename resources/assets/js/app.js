@@ -37,7 +37,7 @@ Vue.component('shelf-book', require('./components/shelf/ShelfBook.vue'));
 // Modals
 Vue.component('new-shelf-modal', require('./components/modals/NewShelfModal.vue'));
 Vue.component('book-save-modal', require('./components/modals/BookSaveModal.vue'));
-
+Vue.component('please-login-modal', require('./components/modals/PleaseLoginModal.vue'));
 // Navbar
 Vue.component('user-navbar', require('./components/UserNavbar.vue'));
 
@@ -77,6 +77,7 @@ const app = new Vue({
         user: App.state.user,
         bookSaveModal: false,
         bookSaveModalBook: null,
+        plaseLoginModal: false,
     },
 
     methods: {
@@ -95,12 +96,21 @@ const app = new Vue({
             this.$eventHub.$emit('loadUserShelves');
             this.bookSaveModal = true;
         },
+
+        showPleaseLoginModal: function(book) {
+            this.plaseLoginModal = true;
+        },
+        closePleaseLoginModal: function(book) {
+            this.plaseLoginModal = false;
+        },
     },
 
     created: function () {
       this.$eventHub.$on('updateUser', this.updateUser);
       this.$eventHub.$on('showBookSaveModal', this.showBookSaveModal);
       this.$eventHub.$on('closeBookSaveModal', this.closeBookSaveModal);
+      this.$eventHub.$on('showPleaseLoginModal', this.showPleaseLoginModal);
+      this.$eventHub.$on('closePleaseLoginModal', this.closePleaseLoginModal);
     },
 
     // It's good to clean up event listeners before
@@ -109,6 +119,8 @@ const app = new Vue({
       this.$eventHub.$off('updateUser', this.updateUser);
       this.$eventHub.$off('showBookSaveModal', this.showBookSaveModal);
       this.$eventHub.$off('closeBookSaveModal', this.closeBookSaveModal);
+      this.$eventHub.$off('showPleaseLoginModal', this.showPleaseLoginModal);
+      this.$eventHub.$off('closePleaseLoginModal', this.closePleaseLoginModal);
     },
 
     computed: {

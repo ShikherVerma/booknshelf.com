@@ -25,6 +25,7 @@ elixir(function(mix) {
 	// mix.sass('material-kit.scss');
 	mix.styles([
 		// app.css has all .less files merged into one single file
+        // 'app.css',
         'app.css',
         // 'helpers.css',
 	], 'public/css/booknshelf.css', 'public/css');

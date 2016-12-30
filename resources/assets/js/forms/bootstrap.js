@@ -1,4 +1,11 @@
 /**
+ * Initialize the App form extension points.
+ */
+App.forms = {
+    updateContactInformation: {},
+};
+
+/**
  * Load the AppForm helper class.
  */
 require('./form');

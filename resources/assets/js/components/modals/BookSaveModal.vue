@@ -8,7 +8,7 @@
                             <span class="icon icon-cross"></span>
                         </button>
                         <h4 name="header" class="text-center">
-                            Add to bookshelf
+                            Add to bookshelf 📚
                         </h4>
                     </div>
                     <div class="modal-body p-a-0">

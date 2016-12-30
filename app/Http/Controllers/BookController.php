@@ -14,7 +14,7 @@ class BookController extends Controller
 
     public function __construct(UserRepository $users, BookRepository $books)
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['search']]);
         $this->users = $users;
         $this->books = $books;
     }
@@ -35,6 +35,7 @@ class BookController extends Controller
             $newBook->load('authors');
             $books[] = $newBook->toArray();
         }
+        // $mostSavedBooks = $this->books->getMostSaved();
 
         return view('search', [
             'books' => json_encode($books),
