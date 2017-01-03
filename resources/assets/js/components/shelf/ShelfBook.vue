@@ -68,6 +68,7 @@
 </script>
 
 <style type="text/css">
+
     .card-background:after {
         content:none !important;
     }

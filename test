@@ -1,0 +1,38 @@
+---
+ip: "192.168.10.10"
+memory: 2048
+cpus: 1
+hostname: booknshelf
+name: booknshelf
+provider: virtualbox
+mariadb: true
+
+authorize: ~/.ssh/id_rsa.pub
+
+keys:
+    - ~/.ssh/id_rsa
+
+folders:
+    - map: "/Users/tigran/Code/booknshelf"
+      to: "/home/vagrant/booknshelf"
+
+sites:
+    - map: homestead.app
+      to: "/home/vagrant/booknshelf/public"
+      # hhvm: true
+
+databases:
+    - homestead
+
+# blackfire:
+#     - id: foo
+#       token: bar
+#       client-id: foo
+#       client-token: bar
+
+# ports:
+#     - send: 50000
+#       to: 5000
+#     - send: 7777
+#       to: 777
+#       protocol: udp
