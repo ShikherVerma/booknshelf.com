@@ -1,1 +1,0 @@
-{"virtualbox":{"/home/vagrant/booknshelf":{"type":null,"mount_options":[],"guestpath":"/home/vagrant/booknshelf","hostpath":"/Users/tigran/Code/booknshelf","disabled":false},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/tigran/Code/booknshelf","disabled":false}}}

@@ -13,11 +13,11 @@ class AddMoreFieldsToBooks extends Migration
      */
     public function up()
     {
-        Schema::table('books', function ($table) {
-            $table->string('asin')->nullable();
-            $table->string('detail_page_url')->nullable();
-            $table->index('asin');
-        });
+         Schema::table('books', function ($table) {
+             $table->string('asin')->nullable();
+             $table->string('detail_page_url')->nullable();
+             $table->index('asin');
+         });
     }
 
     /**
@@ -27,9 +27,8 @@ class AddMoreFieldsToBooks extends Migration
      */
     public function down()
     {
-        Schema::table('books', function ($table) {
-            $table->dropColumn(['asin', 'detail_page_url']);
-            $table->dropIndex('books_asin_index');
-        });
+         Schema::table('books', function ($table) {
+             $table->dropColumn(['asin', 'detail_page_url']);
+         });
     }
 }
