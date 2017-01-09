@@ -1,0 +1,53 @@
+
+
+.home-container {
+    /*Change to clearfix*/
+    lost-utility: clearfix;
+    height: 100%;
+    lost-center: 1100px;
+}
+
+.home-hero {
+    /*text-align: center;*/
+    /*font-size: 30px;*/
+    /*width: 500px !important;*/
+    /*height: 200px !important;*/
+    color: white;
+    lost-align: center;
+    height: 100px;
+    /*text-align: center;*/
+}
+
+.home-hero > h2 {
+    margin-top: 0px;
+    text-align: center;
+}
+
+.home-navs{
+    color: white;
+    lost-align: center;
+    height: 50px;
+    /*text-align: center;*/
+}
+
+
+.inner-container {
+    /*Change to clearfix*/
+    lost-row: 1/2;
+    lost-utility: clearfix;
+    lost-center: 1100px;
+}
+
+.shelf-card {
+    lost-waffle: 1/3;
+    lost-align: center;
+    height: 200px;
+    margin-bottom: 1em;
+    cursor: pointer;
+    background-color: #6FC4C9;
+    color: white;
+}
+
+.shelf-card > h3 {
+    margin-top: 0px;
+}

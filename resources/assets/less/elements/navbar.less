@@ -19,11 +19,27 @@
 .navbar-nav > li > a,
 .navbar-brand,
 .hamburger {
-    height: 60px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: #B6DBDB;
+  padding: 10px;
+}
+
+.navbar-brand {
+  font-size: 15px;
+}
+.navbar-brand:hover {
+  color: darken(#B6DBDB, 10%);
+}
+
+// hover effect for nav links
+.nav > li > a:hover {
+  text-decoration: none;
+  background-color: transparent;
 }
 
 .navbar-icon {
@@ -44,6 +60,10 @@
     transform: scale(.85);
   }
   .icon { font-size: 21px; }
+}
+
+.navbar-toggle .icon-bar {
+  background-color: white;
 }
 
 .has-activity-indicator:hover .activity-indicator {
@@ -74,7 +94,12 @@
 }
 
 .nav-pills > li > a {
+    color: white;
+}
+
+.nav-pills > li.active > a {
     color: @brand-secondary;
+    background-color: darken(#6FC4C9, 10%);
 }
 
 #book-search {
@@ -85,29 +110,4 @@
 // Shelf Autocomplete
 #shelf-search {
     width: 300px;
-}
-
-.media-shelf {
-  position: absolute;
-  max-height: 400px;
-  overflow-y: auto;
-  top: 100%;
-  left: 0;
-  z-index: 1000;
-  float: left;
-  min-width: 300px;
-  padding: 4px 0;
-  margin: 2px 0 0 0;
-  list-style: none;
-  background-color: #ffffff;
-  border-color: rgba(0, 0, 0, 0.2);
-    li > h5 {
-      color: @brand-primary;
-    }
-    li:hover {
-      background-color: lighten(#98E2D5, 20%);
-    }
-    em {
-        background: #98E2D5;
-    }
 }

@@ -1,17 +1,7 @@
 // Basic Buttons
-.btn {
-  // font-size: 13px;
-  font-weight: 600;
-  text-transform: uppercase;
-  transition: background-color 0.2s;
-}
 
 .btn-primary, .btn-info, .btn-success, .btn-warning, .btn-danger {
   border: 0;
-}
-
-.btn-default:hover {
-  background-color: white;
 }
 
 .btn-danger:hover {
@@ -103,4 +93,13 @@
 
 .btn:focus {
   outline: none !important;
+}
+
+.btn-pretty {
+  background: linear-gradient(to right, #19AAD1, #1FDE91);
+  color: @brand-primary;
+}
+.btn-pretty:hover {
+  color: @brand-secondary;
+  background: linear-gradient(to right, #864BFF, #00FFCB);
 }
