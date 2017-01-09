@@ -38,48 +38,6 @@
     color: @brand-primary;
 }
 
-// Algolia Search
-#algolia-search {
-  width: 300px;
-  background-color: white !important;
-}
-.algolia-autocomplete {
-  width: 100%;
-}
-.algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
-  width: 100%;
-  min-height: 30px;
-}
-.algolia-autocomplete .aa-hint {
-  color: #999;
-}
-.algolia-autocomplete .aa-dropdown-menu {
-  width: 100%;
-  background-color: #fff;
-  border: 1px solid #999;
-  border-top: none;
-}
-.algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
-  cursor: pointer;
-  padding: 5px 4px;
-  color: @brand-primary;
-}
-.algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
-  background: #f8f8f8;
-}
-.algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
-  font-weight: bold;
-  font-style: normal;
-  //color: #84dccd;
-}
-.algolia-autocomplete .category {
-  text-align: left;
-  background: @brand-primary;
-  //color: #84dccd;
-  padding: 10px 5px;
-  font-weight: bold;
-}
-
 .left-container{
   vertical-align:top;
   width: 60%;
@@ -195,19 +153,10 @@
   display: flex;
   height: 50px;
   border-bottom: 1px solid #dadae3;
-  background-color: @brand-blue;
-  //border-top: 1px solid #ececec;
 }
 
 .top-container {
   min-width: 350px;
-  //background-color: white;
-}
-
-.custom-navbar {
-  display: flex;
-  border: none;
-  background-color: @brand-blue;
 }
 
 .shelf-table {
@@ -227,4 +176,13 @@
 
 a:focus {
   outline: none !important;
+}
+
+// footer
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
 }

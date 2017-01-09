@@ -1,5 +1,6 @@
 // Bootstrap
 @import "node_modules/bootstrap-less/bootstrap/index";
+@import "https://fonts.googleapis.com/css?family=Source+Sans+Pro";
 
 // @import "./bootstrap/mixins.less";
 
@@ -102,4 +103,33 @@
 // Vue Cloak
 [v-cloak] {
     display: none;
+}
+
+html {
+    background: #055A5B no-repeat center center fixed; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#055A5B, #178E96) no-repeat center center fixed; /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#055A5B, #178E96) no-repeat center center fixed; /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#055A5B, #178E96) no-repeat center center fixed; /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#055A5B, #178E96) no-repeat center center fixed; /* Standard syntax */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    font-family: 'Source Sans Pro', Helvetica, sans-serif !important;
+    background: #055A5B no-repeat center center fixed; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#055A5B, #178E96) no-repeat center center fixed; /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#055A5B, #178E96) no-repeat center center fixed; /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#055A5B, #178E96) no-repeat center center fixed; /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#055A5B, #178E96) no-repeat center center fixed; /* Standard syntax */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }

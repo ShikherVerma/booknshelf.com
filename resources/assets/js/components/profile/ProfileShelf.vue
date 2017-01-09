@@ -1,5 +1,5 @@
 <template>
-    <div class="col-md-4">
+    <div class="col-md-4" style="width: 300px;">
         <a :href="url">
             <div class="card card-raised card-background" :style="style">
                 <div class="content">

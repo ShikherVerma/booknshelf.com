@@ -6,22 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="oRlwQCWDSEBrMAdKd3t3_3pCA9sFayLgZdgLer2TKfM" />
     <link rel="canonical" href="https://www.booknshelf.com/" />
-    <meta name="description" content="Booknshelf is a place to discover great books, bookshelves and share them with your friends."/>
+    <meta name="description" content="Discover great books, bookshelves on specific topics and share them with your friends."/>
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="Booknshelf" />
-    <meta property="og:description"   content="Discover great books anf bookshelves" />
-    <meta property="og:image"         content="https://booknshelf.com/img/logo.png" />
+    <meta property="og:description"   content="Discover great books and bookshelves on specific topics." />
+    <meta property="og:image"         content="https://booknshelf.com/img/logos/black_big_logo.png" />
+    <meta property="og:url" content="https://www.booknshelf.com">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Booknshelf') }}</title>
-    <link rel="icon" href="/img/favicon.ico" />
+    <link rel="icon" type="image/png" href="/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/img/favicons/favicon-96x96.png" sizes="96x96">
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ elixir('css/booknshelf.css') }}">
+    {{--<link rel="stylesheet" href="{{ elixir('css/grid.css') }}">--}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.0/css/hover-min.css">
 
     <!-- Scripts -->
     <script>
@@ -36,8 +41,7 @@
     </script>
     @include('shared.analytics')
 </head>
-<body class="with-navbar">
-    <div class="growl" id="app-growl"></div>
+<body>
     <div id="app">
         <!-- Navigation -->
         @if (Auth::check())
@@ -48,6 +52,13 @@
 
         <!-- Main Content -->
         @yield('content')
+
+
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted">Place sticky footer content here.</p>
+            </div>
+        </footer>
 
         <!-- Application Level Modals -->
         @if (Auth::check())

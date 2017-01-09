@@ -5,7 +5,10 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
-                <div class="panel-heading">Join and be a part of Booknshelf 📚</div>
+                <div class="panel-heading">
+                    Sign up to easily create books and bookshelves and share them
+                    with your friends.
+                </div>
 
                 <div class="panel-body">
                     <a class="btn btn-block btn-social btn-facebook" href="{{ url('/auth/facebook') }}">
