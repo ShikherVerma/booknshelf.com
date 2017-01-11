@@ -14,20 +14,27 @@
     /*height: 200px !important;*/
     color: white;
     lost-align: center;
-    height: 100px;
+    height: 50px;
     /*text-align: center;*/
+}
+
+.subscribe-hero-text {
+    color: #6BD4D6;
+    margin-top: 20px;
+}
+
+.subscribe-hero-text > h5 {
+    font-size: 16px;
 }
 
 .home-hero > h2 {
     margin-top: 0px;
     text-align: center;
+    font-size: 40px;
 }
 
-.home-navs{
-    color: white;
-    lost-align: center;
-    height: 50px;
-    /*text-align: center;*/
+.home-hero .form-control {
+    width: 250px !important;
 }
 
 
@@ -36,6 +43,11 @@
     lost-row: 1/2;
     lost-utility: clearfix;
     lost-center: 1100px;
+    margin-top: 60px;
+}
+
+.topics-container {
+    margin-top: 100px;
 }
 
 .shelf-card {
@@ -44,10 +56,21 @@
     height: 200px;
     margin-bottom: 1em;
     cursor: pointer;
-    background-color: #6FC4C9;
+    background-color: #105152;
     color: white;
 }
 
 .shelf-card > h3 {
     margin-top: 0px;
 }
+
+.content {
+    lost-utility: clearfix;
+    lost-center: 1100px;
+}
+
+.content-inner {
+    height: 45px;
+    lost-waffle: 1/2;
+}
+
