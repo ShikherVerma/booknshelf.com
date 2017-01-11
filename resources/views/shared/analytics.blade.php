@@ -1,3 +1,5 @@
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 <!-- Load Facebook SDK for JavaScript -->
 <div id="fb-root"></div>
 <script>(function(d, s, id) {

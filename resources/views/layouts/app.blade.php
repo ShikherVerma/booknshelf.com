@@ -16,16 +16,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Booknshelf') }}</title>
+    <title>{{ config('app.name', 'Booknshelf: Discover great books and bookshelves on different topics') }}</title>
     <link rel="icon" type="image/png" href="/img/favicons/favicon-16x16.png" sizes="16x16">
     <link rel="icon" type="image/png" href="/img/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/img/favicons/favicon-96x96.png" sizes="96x96">
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ elixir('css/booknshelf.css') }}">
-    {{--<link rel="stylesheet" href="{{ elixir('css/grid.css') }}">--}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.0/css/hover-min.css">
 
     <!-- Scripts -->
@@ -54,9 +52,16 @@
         @yield('content')
 
 
-        <footer class="footer">
-            <div class="container">
-                <p class="text-muted">Place sticky footer content here.</p>
+        <footer class="footer container">
+            <div class="content">
+                <div class="content-inner">
+                    <a href="https://twitter.com/booknshelf" class="twitter-follow-button" data-show-count="false">
+                        Follow @Booknshelf
+                    </a>
+                </div>
+                <div class="content-inner">
+                    <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fusebooknshelf&width=51&layout=button&action=like&size=small&show_faces=false&share=false&height=65&appId=1899203000306326" width="51" height="65" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                </div>
             </div>
         </footer>
 
@@ -69,6 +74,6 @@
 
     <!-- Scripts -->
     <script src="{{ elixir('js/app.js') }}"></script>
-    {{--<script src="//use.fontawesome.com/d28dd28e24.js"></script>--}}
+    <script src="//use.fontawesome.com/d28dd28e24.js"></script>
 </body>
 </html>

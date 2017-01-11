@@ -9728,14 +9728,22 @@ fieldset[disabled] .btn-danger-outline.active {
   outline: none !important;
 }
 .btn-pretty {
-  background: -webkit-linear-gradient(left, #19AAD1, #1FDE91);
-  background: linear-gradient(to right, #19AAD1, #1FDE91);
+  background: -webkit-linear-gradient(left, #62BFAD, #B7E3E4);
+  background: linear-gradient(to right, #62BFAD, #B7E3E4);
   color: #055A5B;
 }
 .btn-pretty:hover {
   color: #E6E6E6;
   background: -webkit-linear-gradient(left, #864BFF, #00FFCB);
   background: linear-gradient(to right, #864BFF, #00FFCB);
+}
+.btn-bright {
+  background: -webkit-linear-gradient(left, #EED974, #FDF06F);
+  background: linear-gradient(to right, #EED974, #FDF06F);
+  color: black;
+}
+.btn-bright:hover {
+  color: #055A5B;
 }
 .app-screen form h2 {
   background-color: #f5f5f5;
@@ -9768,6 +9776,15 @@ fieldset[disabled] .btn-danger-outline.active {
   width: 40px;
   height: 75px;
   width: 75px;
+}
+.app-profile-photo-xlg {
+  border: 2px solid #055A5B;
+  border-radius: 50%;
+  height: 40px;
+  padding: 2px;
+  width: 40px;
+  height: 125px;
+  width: 125px;
 }
 .app-profile-photo-xl {
   border: 2px solid #055A5B;
@@ -9916,6 +9933,9 @@ fieldset[disabled] .btn-danger-outline.active {
   color: #E6E6E6;
   background-color: #4ab5bb;
 }
+.home-link {
+  color: white !important;
+}
 #book-search {
   width: 500px;
   height: 35px;
@@ -10018,6 +10038,19 @@ fieldset[disabled] .btn-danger-outline.active {
 .card-plain .content {
   padding-left: 5px;
   padding-right: 5px;
+}
+.suggest-topic-card {
+  background-color: #077b7d !important;
+}
+.donation-card {
+  background-color: #078082 !important;
+}
+.donation-card p {
+  margin: 0;
+}
+.donate-content {
+  width: 80%;
+  text-align: center;
 }
 .p-t-lg {
   padding-top: 20px;
@@ -10288,11 +10321,25 @@ a:focus {
   outline: none !important;
 }
 .footer {
+  margin-top: 20px;
   position: absolute;
+  border-top: 1px #0C9196 solid;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 60px;
+}
+.footer > .container {
+  margin-top: 40px;
+}
+.suggest-topic-card p {
+  font-size: 19px;
+}
+.donation-card p {
+  font-size: 19px;
+}
+.donation-card span {
+  color: #6FC4C9;
 }
 /*
  * Social Buttons for Bootstrap
@@ -11388,6 +11435,7 @@ body {
   background: linear-gradient(#055A5B, #178E96) no-repeat center center fixed;
   /* Standard syntax */
   background-size: cover;
+  padding-bottom: 30px;
 }
 
 /*# sourceMappingURL=app.css.map */
