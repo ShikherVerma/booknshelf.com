@@ -6,6 +6,7 @@ use App;
 use App\Repositories\BookRepository;
 use App\Repositories\ShelfRepository;
 use App\Repositories\UserRepository;
+use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -30,9 +31,17 @@ class HomeController extends Controller
 
     public function index()
     {
-        $shelves = $this->shelves->ourPicks();
+
+        $user = User::where('username', 'topic')->firstOrFail();
+
+        if (is_null($user)) {
+            $topics = [];
+        } else {
+            $topics = $this->shelves->forUser($user)->toArray();
+        }
+
         return view('home', [
-            'shelves' => $shelves->toArray(),
+            'topics' => $topics,
         ]);
     }
 
