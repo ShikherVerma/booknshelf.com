@@ -180,20 +180,42 @@ a:focus {
 
 // footer
 .footer {
-  margin-top: 20px;
-  position: absolute;
-  border-top: 1px #0C9196 solid;
+  margin-top: 60px;
+  //position: absolute;
   bottom: 0;
-  width: 100%;
+  max-width: 1100px;
   /* Set the fixed height of the footer here */
-  height: 60px;
+  height: 30px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.footer > .container {
-  margin-top: 40px;
-  //padding-top: 10px;
-  //padding-bottom: 10px;
+.flex-container {
+  border-top: 1px #0C9196 solid;
+  display: flex; /* or inline-flex */
+  flex-direction: row; // default value anyway
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 20px;
 }
+
+.flex-container > .item {
+  align-self: flex-start;
+  flex-basis: 15%;
+}
+
+.footer-brand > a {
+  font-weight: bold;
+  color: #B6DBDB;
+}
+
+.footer-brand > a:hover {
+  text-decoration: none;
+  color: @brand-secondary;
+}
+
+// end of footer css
 
 .suggest-topic-card p {
   font-size: 19px;

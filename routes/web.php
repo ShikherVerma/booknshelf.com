@@ -57,5 +57,9 @@ Route::get('/shelves/{shelf_id}/books', 'ShelfController@getBooks');
 Route::post('/shelves/{shelf_id}/books', 'ShelfController@storeBook');
 Route::delete('/shelves/{shelf_id}/books/{book_id}', 'ShelfController@removeBook');
 
+// Topics
+Route::get('/topics', 'TopicController@all');
+Route::get('/topics/{topic_id}', 'TopicController@show');
+
 // Friends
 Route::get('/friends', 'FriendsController@index');

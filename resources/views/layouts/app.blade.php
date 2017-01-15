@@ -53,13 +53,18 @@
 
 
         <footer class="footer container">
-            <div class="content">
-                <div class="content-inner">
+            <div class="flex-container">
+                <div class="item footer-brand">
+                    <a href="/">
+                      <img src="/img/logos/little_logo_white.png" height="25px" width="25px" alt="brand"> &nbsp; BOOKNSHELF
+                    </a>
+                </div>
+                <div class="item">
                     <a href="https://twitter.com/booknshelf" class="twitter-follow-button" data-show-count="false">
                         Follow @Booknshelf
                     </a>
                 </div>
-                <div class="content-inner">
+                <div class="item">
                     <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fusebooknshelf&width=51&layout=button&action=like&size=small&show_faces=false&share=false&height=65&appId=1899203000306326" width="51" height="65" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
                 </div>
             </div>
