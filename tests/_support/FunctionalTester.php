@@ -22,7 +22,7 @@ class FunctionalTester extends \Codeception\Actor
         $this->amOnPage('/login');
         $this->fillField('username', $username);
         $this->fillField('password', 'password');
-        $this->click('LOGIN');
+        $this->click('login');
     }
 
     /**
