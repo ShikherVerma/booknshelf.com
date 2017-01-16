@@ -37,3 +37,12 @@ $factory->define(App\Book::class, function (Faker\Generator $faker) {
         'google_volume_id' => $faker->uuid,
     ];
 });
+
+$factory->define(App\Like::class, function (Faker\Generator $faker) {
+    $comment = $faker->text(20);
+    return [
+        'book_id' => $faker->randomNumber(2),
+        'user_id' => $faker->randomNumber(3),
+        'comment' => $comment,
+    ];
+});

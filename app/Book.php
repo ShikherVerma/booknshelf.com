@@ -47,6 +47,14 @@ class Book extends Model
     }
 
     /**
+     * Get the likes for the book.
+     */
+    public function likes()
+    {
+        return $this->hasMany('App\Like');
+    }
+
+    /**
      * Get all the shelves that this book belongs to.
      */
     public function shelves()
