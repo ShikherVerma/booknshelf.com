@@ -1,35 +1,39 @@
 <template>
-<div class="card card-background card-raised grid-item-book" :style="bookCoverImage">
-    <div>
-        <!--<button class="btn btn-default btn-sm btn-action" @click="recommendBook()" type="button">-->
-            <!--<i class="fa fa-heart" aria-hidden="true"></i> Recommend-->
-        <!--</button>-->
-        <a class="btn btn-default btn-sm" @click="recommendBook()">
-          <i class="fa fa-heart text-danger" ></i> Recommend</a>
+<div class="card card-background card-raised grid-item-book parent" :style="bookCoverImage">
+    <div class="hover-content">
+        <div class="buttons-div">
+            <small>
+                <button class="btn btn-default" @click="recommendBook()" type="button">
+                      <span class="icon icon-heart" :class="{ 'text-danger': isLiked}"></span>
+                </button>
+            </small>
+            <small>
+                <button class="btn btn-info" @click="showBookSaveModal()" type="button">
+                    <span class="icon icon-add-to-list"></span> Save
+                </button>
+            </small>
+            <small>
+                <a v-if="book.detail_page_url" class="btn btn-default"
+                    :href="book.detail_page_url" target="_blank" type="button">
+                    <i class="fa fa-amazon" aria-hidden="true"></i>
+                </a>
+                <button v-show="onOwnProfile"class="btn btn-danger" @click="removeBookFromShelf()" type="button">
+                    <span class="icon icon-cross"></span>
+                </button>
+            </small>
+        </div>
+
+        <div class="book-title">
+           {{ book.title }}
+            <p>
+                <span class="book-author" v-for="(author, index) in book.authors">
+                    {{ author.name }}<span v-if="index !== book.authors.length - 1">, </span>
+                </span>
+            </p>
+        </div>
     </div>
+
 </div>
-<!--<div class="col-md-3 parent">-->
-    <!--<div class="card card-shelf-book card-background card-raised" :style="bookCoverImage">-->
-        <!--<div class="content2">-->
-            <!--<span class="hover-content">-->
-                <!--<small>-->
-                    <!--<button class="btn btn-success btn-sm btn-action" @click="showBookSaveModal()" type="button">-->
-                        <!--<span class="icon icon-add-to-list"></span> Save-->
-                    <!--</button>-->
-                <!--</small>-->
-                <!--<small>-->
-                    <!--<button v-show="onOwnProfile"class="btn btn-danger btn-sm" @click="removeBookFromShelf()">-->
-                        <!--<span class="icon icon-cross"></span>-->
-                    <!--</button>-->
-                    <!--<a v-if="book.detail_page_url" class="btn btn-default btn-sm btn-action"-->
-                        <!--:href="book.detail_page_url" target="_blank" type="button">-->
-                        <!--<i class="fa fa-amazon" aria-hidden="true"></i>-->
-                    <!--</a>-->
-                <!--</small>-->
-            <!--</span>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
 </template>
 
 <script>
@@ -40,7 +44,8 @@
             return {
                 form: new AppForm({
                     id: '',
-                })
+                }),
+                isLiked: false
             }
         },
 
@@ -55,6 +60,7 @@
                         this.$eventHub.$emit('bookRemoved');
                     }).catch(function(reason) {})
             },
+
             showBookSaveModal() {
                 // if user is authenticated then show the save modal, otherwise login modal
                 if (App.userId) {
@@ -63,8 +69,21 @@
                     this.$eventHub.$emit('showPleaseLoginModal');
                 }
             },
+
             recommendBook() {
-                console.log(this.book.id);
+                // if user is authenticated then show the save modal, otherwise login modal
+                if (App.userId) {
+                    let likeForm = new AppForm({});
+                    App.post(`/likes/books/${this.book.id}/toggle`, likeForm)
+                        .then(() => {
+                            console.log("Liked!");
+                        }).catch(function(reason) {
+                            console.log(reason);
+                        })
+                    this.isLiked = !this.isLiked;
+                } else {
+                    this.$eventHub.$emit('showPleaseLoginModal');
+                }
             }
         },
 
@@ -81,25 +100,41 @@
 
 <style type="text/css">
 
-    .card-shelf-book {
-        height: 350px;
-        width: 250px;
-        text-align: left;
-        padding-left: 10px;
-        padding-top: 10px;
-        position: static !important;
-    }
-    .card-shelf-book:after {
-        background-color: rgba(0, 0, 0, 0);
-    }
     .parent {
-      position: relative;
+        position: relative;
     }
     .hover-content {
       display:none;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(25, 27, 27, 0.65);
       position: absolute;
     }
     .parent:hover .hover-content {
       display: block;
+    }
+
+    .buttons-div {
+        margin-top: 5px;
+        padding-left: 5px;
+        text-align: left;
+    }
+
+    .book-title {
+        margin-top: 35%;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .book-title > p {
+        margin-top: 7px;
+    }
+
+    .book-author {
+        font-size: 13px;
+    }
+
+    .btn-default {
+        border: none;
     }
 </style>

@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Scout\Searchable;
+use Illuminate\Support\Facades\DB;
+use App\Like;
 
 class User extends Authenticatable
 {
@@ -58,6 +60,19 @@ class User extends Authenticatable
     public function isFacebookConnected()
     {
         return $this->facebook_user_id && $this->fb_token;
+    }
+
+
+    /**
+     * Get all the likes of the model
+     *
+     * @return array of likes
+     */
+    public function likes()
+    {
+        return Like::with('book')->where([
+            'user_id' => $this->id
+        ])->get();
     }
 
     /**

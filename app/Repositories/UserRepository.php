@@ -5,8 +5,9 @@ namespace App\Repositories;
 use App\Jobs\SetUserAvatar;
 use App\User;
 use Auth;
-use Illuminate\Foundation\Bus\DispatchesJobs;
 use Faker;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Support\Facades\DB;
 
 class UserRepository
 {
@@ -27,6 +28,13 @@ class UserRepository
     {
         // for now do random
         return User::orderByRaw("RAND()")->take(5)->get();
+    }
+
+    public function likes($username)
+    {
+        $user = User::where('username', $username)->firstOrFail();
+        $likes = $user->likes();
+        return $likes;
     }
 
     public function findByFacebookUserIdOrCreate($userData)
