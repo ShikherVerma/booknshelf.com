@@ -6,8 +6,7 @@
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Sign up to easily create books and bookshelves and share them
-                    with your friends.
+                    Sign up to like books, easily create bookshelves and a lot more!.
                 </div>
 
                 <div class="panel-body">
@@ -70,8 +69,8 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" name="register" class="btn btn-default">
-                                    <i class="fa fa-btn"></i>Join
+                                <button type="submit" name="register" class="btn btn-primary">
+                                    Join 🚀
                                 </button>
                             </div>
                         </div>

@@ -4,6 +4,29 @@
         <div class="navbar-icon">
             <i class="fa fa-lg fa-plus"></i>
         </div>
+
+    </a>
+</li>
+<li>
+    <a href="{{ route('bookshelves_path', ['username' => Auth::user()->username]) }}">
+        My Bookshelves
+    </a>
+</li>
+<li>
+    <a href="/friends">
+        My Friends
+    </a>
+</li>
+<li>
+    <a href="/topics">
+        {{--Show all the topics where people can follow--}}
+        Topics
+    </a>
+</li>
+<li class="text-muted">
+    {{--Here we will show the books page with a search--}}
+    <a href="{{ route('bookshelves_path', ['username' => Auth::user()->username]) }}">
+        Search
     </a>
 </li>
 
@@ -19,16 +42,6 @@
         <li>
             <a href="{{ route('profile_path', ['username' => Auth::user()->username]) }}">
                 My Profile
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('bookshelves_path', ['username' => Auth::user()->username]) }}">
-                My Bookshelves
-            </a>
-        </li>
-        <li>
-            <a href="/friends">
-                My Friends
             </a>
         </li>
         <li>

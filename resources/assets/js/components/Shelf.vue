@@ -1,20 +1,7 @@
 <template>
-    <div class="profile-header shelf-page-header text-center">
+    <div class="profile-header text-center">
         <div class="container">
             <div class="col-md-2">
-                <a class="twitter-share-button"
-                  href="https://twitter.com/share"
-                  text="Awesome collection"
-                  data-size="large"
-                  data-url="https://dev.twitter.com/web/tweet-button"
-                  data-hashtags="books,reading"
-                  data-via="booknshelf"
-                  target="_blank">
-                Tweet
-                </a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://booknshelf.com" target="_blank">
-                  Share
-                </a>
             </div>
             <div class="col-md-8">
                 <h2 class="profile-header-user shelf-header-user">{{ shelf.name }}</h2>
@@ -37,7 +24,7 @@
 
         <nav class="profile-header-nav">
             <ul class="nav nav-tabs">
-                <li class="active">
+                <li>
                     <a href="#" class="books-count">{{ books.length }} Books</a>
                 </li>
             </ul>
@@ -176,22 +163,19 @@
     }
 </script>
 
-<style lang="sass">
-    .shelf-page-header {
-        background-color: #F5F5F5
-    }
-
+<style lang="css">
     .shelf-header-user {
         margin-top: 0px;
-        color: #072B54;
+        color: #FFFFFF;
     }
 
     .profile-header-bio {
-        color: lighten(#072B54, 5%);
+        color: #FFFFFF;
     }
 
-    .profile-name {
+    .profile-name, .profile-name:hover {
         font-size: 14px;
+        color: #FFFFFF;
     }
 
     .small-profile-photo {
@@ -200,85 +184,8 @@
     }
 
     .books-count {
-        color: black !important;
+        color: #FFFFFF !important;
     }
 
-    .resp-sharing-button__link,
-    .resp-sharing-button__icon {
-      display: inline-block
-    }
-
-    .resp-sharing-button__link {
-      text-decoration: none;
-      color: #fff;
-      margin: 0.5em
-    }
-
-    .resp-sharing-button {
-      border-radius: 5px;
-      transition: 25ms ease-out;
-      padding: 0.5em 0.75em;
-      font-family: Helvetica Neue,Helvetica,Arial,sans-serif
-    }
-
-    .resp-sharing-button__icon svg {
-      width: 1em;
-      height: 1em
-    }
-
-    .resp-sharing-button span {
-      padding-left: 0.4em
-    }
-
-    /* Non solid icons get a stroke */
-    .resp-sharing-button__icon {
-      stroke: #fff;
-      fill: none
-    }
-
-    /* Solid icons get a fill */
-    .resp-sharing-button__icon--solid,
-    .resp-sharing-button__icon--solidcircle {
-      fill: #fff;
-      stroke: none
-    }
-
-    .resp-sharing-button--twitter {
-      background-color: #55acee
-    }
-
-    .resp-sharing-button--twitter:hover {
-      background-color: #2795e9
-    }
-
-    .resp-sharing-button--facebook {
-      background-color: #3b5998
-    }
-
-    .resp-sharing-button--facebook:hover {
-      background-color: #2d4373
-    }
-
-    .resp-sharing-button--facebook {
-      background-color: #3b5998;
-      border-color: #3b5998;
-    }
-
-    .resp-sharing-button--facebook:hover,
-    .resp-sharing-button--facebook:active {
-      background-color: #2d4373;
-      border-color: #2d4373;
-    }
-
-    .resp-sharing-button--twitter {
-      background-color: #55acee;
-      border-color: #55acee;
-    }
-
-    .resp-sharing-button--twitter:hover,
-    .resp-sharing-button--twitter:active {
-      background-color: #2795e9;
-      border-color: #2795e9;
-    }
 
 </style>

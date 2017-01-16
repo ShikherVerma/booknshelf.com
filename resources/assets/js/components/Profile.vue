@@ -12,7 +12,7 @@
 
         <nav class="profile-header-nav">
             <ul class="nav nav-tabs">
-                <li class="active">
+                <li>
                     <a class="shelf-count">{{ shelves.length }} Bookshelves</a>
                 </li>
             </ul>
@@ -30,12 +30,12 @@
     }
 </script>
 
-<style lang="sass">
-    .profile-header-user {
-        color: #072B54;
+<style lang="css">
+    .profile-header-user, .profile-header-bio {
+        color: #FFFFFF;
     };
 
     .shelf-count {
-        color: black !important;
+        color: #FFFFFF !important;
     }
 </style>

@@ -74,3 +74,26 @@
     lost-waffle: 1/2;
 }
 
+.grid-parent {
+    lost-utility: clearfix;
+}
+
+.grid-row {
+    lost-row: 1/2;
+    lost-utility: clearfix;
+    /*lost-center: 1100px;*/
+    /*margin-top: 60px;*/
+}
+
+.grid-item-book {
+    lost-waffle: 1/4;
+    lost-align: top-left;
+    /*lost-align: center;*/
+
+    height: 350px;
+    margin-bottom: 1em;
+    cursor: pointer;
+    /*background-color: #105152;*/
+    color: white;
+}
+
