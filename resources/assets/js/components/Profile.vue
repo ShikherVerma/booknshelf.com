@@ -15,6 +15,9 @@
                 <li>
                     <a class="shelf-count">{{ shelves.length }} Bookshelves</a>
                 </li>
+                <li>
+                    <a class="shelf-count">{{ likes.length }} Likes</a>
+                </li>
             </ul>
         </nav>
     </div>
@@ -22,7 +25,7 @@
 
 <script>
     export default {
-        props: ['user', 'shelves'],
+        props: ['user', 'shelves', 'likes'],
 
         mounted() {
             console.log('Component ready.')

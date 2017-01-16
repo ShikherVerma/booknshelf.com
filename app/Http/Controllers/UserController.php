@@ -30,9 +30,12 @@ class UserController extends Controller
     {
         $user = $this->users->findByUsername($username);
         $shelves = $this->shelves->forUser($user);
+        $likes = $this->users->likes($username);
+
         return view('profile', [
             'user' => $user,
-            'shelves' => $shelves
+            'shelves' => $shelves,
+            'likes' => $likes
         ]);
     }
 

@@ -1,8 +1,6 @@
 <template>
-    <div class="container" data-grid="images">
-        <div class="row">
-            <profile-shelf v-for="shelf in shelves" :shelf="shelf" :user="user"></profile-shelf>
-        </div>
+    <div class="home-container m-t-xs">
+        <profile-shelf v-for="shelf in shelves" :shelf="shelf" :user="user"></profile-shelf>
     </div>
 </template>
 
@@ -12,5 +10,8 @@
     }
 </script>
 
-<style>
+<style lang="css">
+    .shelves-container {
+        background-color: #00AA88;
+    }
 </style>

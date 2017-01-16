@@ -1,10 +1,5 @@
 <template>
     <div class="home-container">
-        <!--<div class="card card-background grid-item-book">-->
-            <!--<div>-->
-                  <!--<i class="fa fa-plus" ></i> Create a new bookshelf-->
-            <!--</div>-->
-        <!--</div>-->
         <shelf-book v-for="book in allBooks" :book="book" :user="user" :shelf="shelf"></shelf-book>
     </div>
 </template>
