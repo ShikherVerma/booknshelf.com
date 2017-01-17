@@ -1,64 +1,78 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container home-container m-t-lg">
-        <div class="inner-container">
-            <div class="home-hero">
-                <h2>Find the best books on different topics. The ones you'll read.</h2>
-            </div>
-            <div class="home-hero subscribe-hero-text">
-                <h5>Get the most popular books and bookshelves in your inbox every week!</h5>
-            </div>
-            <div class="home-hero">
-                <form class="form-inline" method="POST"
-                      action="//booknshelf.us3.list-manage.com/subscribe/post?u=a18b6a0108993df0bc58f69ca&id=7e4f46c598"
-                      target="_blank">
-                    <div class="form-group">
-                        <input type="email" name="EMAIL" class="form-control" placeholder="Enter your email address">
-                        <button type="submit" class="btn btn-bright">SUBSCRIBE</button>
-                    </div>
-                </form>
-            </div>
+    <section class="section">
+      <div class="container">
+        <div class="heading">
+          <h1 class="title">Welcome to Booknshelf</h1>
+          <h2 class="subtitle">
+           Find the best books on different topics. <strong>The ones you'll read!</strong>
+          </h2>
         </div>
-        <div class="inner-container topics-container">
-            @foreach ($topics as $topic)
-                @if ($loop->iteration % 3 === 0)
-                    <div class="shelf-card suggest-topic-card">
-                        <h3>
-                            <p class="text-center">Help me by suggesting a topic you would like to see in here.</p>
-                            <a href="https://goo.gl/forms/CcCU1KSpmqFJeHzB3" type="button" target="_blank"
-                               class="btn btn-bright">SUGGEST YOUR TOPIC</a>
-                        </h3>
-                    </div>
-                @elseif ($loop->iteration % 5 === 0)
-                    <div class="shelf-card donation-card">
-                        <div class="donate-content">
-                            <p class="text-center">Like Booknshelf? 😊😍</p>
-                            <span class="text-muted">Make a small donation to help me to keep the site running!</span>
-                            <p>
-                                <a href="https://paypal.me/tiggreen" target="_blank"
-                                   type="button" class="btn btn-bright">MAKE A DONATION!</a>
-                            </p>
-                        </div>
-                    </div>
-                @else
-                    <div class="shelf-card hvr-grow">
-                        <h3>{{ $topic['name'] }}</h3>
-                    </div>
-                @endif
-            @endforeach
+      </div>
+    </section>
 
-            <div class="shelf-card donation-card">
-                <div class="donate-content">
-                    <p class="text-center">Like Booknshelf? 😊😍</p>
-                    <span class="text-muted">Make a small donation to help me to keep the site running!</span>
-                    <p>
-                        <a href="https://paypal.me/tiggreen" target="_blank"
-                           type="button" class="btn btn-bright">MAKE A DONATION!</a>
-                    </p>
+    <section class="hero is-primary is-bold">
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <h1 class="title">
+              Test ...
+          </h1>
+          <h2 class="subtitle">
+            Primary subtitle
+          </h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-primary is-fullheight is-bold">
+        <div class="container">
+            <div class="tile is-ancestor">
+              <div class="tile is-vertical is-8">
+                <div class="tile">
+                  <div class="tile is-parent is-vertical">
+                    <article class="tile is-child notification is-primary">
+                      <p class="title">Vertical...</p>
+                      <p class="subtitle">Top tile</p>
+                    </article>
+                    <article class="tile is-child notification is-warning">
+                      <p class="title">...tiles</p>
+                      <p class="subtitle">Bottom tile</p>
+                    </article>
+                  </div>
+                  <div class="tile is-parent">
+                    <article class="tile is-child notification is-info">
+                      <p class="title">Middle tile</p>
+                      <p class="subtitle">With an image</p>
+                      <figure class="image is-4by3">
+                        <img src="http://bulma.io/images/placeholders/640x480.png">
+                      </figure>
+                    </article>
+                  </div>
                 </div>
+                <div class="tile is-parent">
+                  <article class="tile is-child notification is-danger">
+                    <p class="title">Wide tile</p>
+                    <p class="subtitle">Aligned with the right tile</p>
+                    <div class="content">
+                      <!-- Content -->
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <div class="tile is-parent">
+                <article class="tile is-child notification is-success">
+                  <div class="content">
+                    <p class="title">Tall tile</p>
+                    <p class="subtitle">With even more content</p>
+                    <div class="content">
+                      <!-- Content -->
+                    </div>
+                  </div>
+                </article>
+              </div>
             </div>
-
         </div>
-    </div>
+    </section>
+
 @endsection

@@ -1,42 +1,59 @@
 <!-- NavBar For Guest Users -->
-<nav class="navbar">
-    <div class="container max-width-1000">
-        <div class="navbar-header">
-            <!-- Collapsed Hamburger -->
-            <div class="hamburger">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
+<nav class="nav">
+  <div class="nav-left">
+    <a class="nav-item">
+        <img src="/img/logos/little_logo_black.png" alt="Booknshelf logo">
+    </a>
+  </div>
 
-            <!-- Branding Image -->
-            @include('nav.brand')
-        </div>
+  <div class="nav-center">
+    <a class="nav-item">
+      <span class="icon">
+        <i class="fa fa-github"></i>
+      </span>
+    </a>
+    <a class="nav-item">
+      <span class="icon">
+        <i class="fa fa-twitter"></i>
+      </span>
+    </a>
+  </div>
 
-        <div class="collapse navbar-collapse" id="app-navbar-collapse">
-            <!-- Left Side Of Navbar -->
-            <!-- Right Side Of Navbar -->
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/login" class="navbar-link home-link">Home</a></li>
-                <li>
-                    <a href="/topics">
-                        {{--Show all the topics where people can follow--}}
-                        Topics
-                    </a>
-                </li>
-                <li><a href="/books" class="navbar-link">Books</a></li>
-                <li><a href="/bookshelves" class="navbar-link">Bookshelves</a></li>
-                <li><a href="/register" class="navbar-link">About</a></li>
-                <li><a href="/login" class="navbar-link">Login</a></li>
-                <li>
-                    <a href="/register">
-                        <button type="button" class="btn btn-info navbar-btn btn-bright">JOIN</button>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
+  <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
+  <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
+  <span class="nav-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </span>
+
+  <!-- This "nav-menu" is hidden on mobile -->
+  <!-- Add the modifier "is-active" to display it on mobile -->
+  <div class="nav-right nav-menu">
+    <a class="nav-item is-active">
+      Home
+    </a>
+    <a class="nav-item">
+      Documentation
+    </a>
+    <a class="nav-item">
+      Blog
+    </a>
+
+    <span class="nav-item">
+      <a class="button" >
+        <span class="icon">
+          <i class="fa fa-twitter"></i>
+        </span>
+        <span>Tweet</span>
+      </a>
+      <a class="button is-primary">
+        <span class="icon">
+          <i class="fa fa-download"></i>
+        </span>
+        <span>Download</span>
+      </a>
+    </span>
+  </div>
 </nav>
+
