@@ -22,9 +22,9 @@
     <link rel="icon" type="image/png" href="/img/favicons/favicon-96x96.png" sizes="96x96">
 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.css">
     <link rel="stylesheet" href="{{ elixir('css/booknshelf.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.0/css/hover-min.css">
 
 
     <!-- Scripts -->
@@ -53,33 +53,29 @@
         @yield('content')
 
 
-        <footer class="footer container">
-            <div class="flex-container">
-                <div class="item footer-brand">
-                    <a href="/">
-                      <img src="/img/logos/little_logo_white.png" height="25px" width="25px" alt="brand"> &nbsp; BOOKNSHELF
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="https://twitter.com/booknshelf" class="twitter-follow-button" data-show-count="false">
-                        Follow @Booknshelf
-                    </a>
-                </div>
-                <div class="item">
-                    <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fusebooknshelf&width=51&layout=button&action=like&size=small&show_faces=false&share=false&height=65&appId=1899203000306326" width="51" height="65" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-                </div>
-            </div>
-        </footer>
-
         <!-- Application Level Modals -->
         @if (Auth::check())
             <new-shelf-modal></new-shelf-modal>
         @endif
 
+        <footer class="footer">
+          <div class="container">
+            <div class="content has-text-centered">
+              <p>
+                <strong>Booknshelf</strong> by <a href="https:/tigran.nyc">Tigran Hakobyan</a>
+              </p>
+              <p>
+                <a class="icon" href="https://twitter.com/booknshelf">
+                  <i class="fa fa-twitter"></i>
+                </a>
+              </p>
+            </div>
+          </div>
+        </footer>
+
     </div>
 
     <!-- Scripts -->
     <script src="{{ elixir('js/app.js') }}"></script>
-    <script src="//use.fontawesome.com/d28dd28e24.js"></script>
 </body>
 </html>

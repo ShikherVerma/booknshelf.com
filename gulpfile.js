@@ -1,7 +1,6 @@
 var elixir = require('laravel-elixir');
 
 require('laravel-elixir-vue-2');
-require('laravel-elixir-postcss');
 
 /*
  |--------------------------------------------------------------------------
@@ -14,35 +13,13 @@ require('laravel-elixir-postcss');
  |
  */
 
-// elixir.config.sourcemaps = false;
 
 elixir(function(mix) {
-	// stylings
-	// mix.styles([
-	// 	'sweetalert.css',
-	// // 	'hover-min.css'
-	// ], 'public/css/helpers.css');
 
-	// mix.sass('app.scss');
-    mix.postcss('grid.css', {
-        plugins: [
-            require('lost')
-        ],
-        srcPath  : 'resources/assets/css',
-        // output: 'public/css/grid.css'
-    });
-
-	mix.less('app.less');
-
-        // .browserSync();
-	// mix.sass('material-kit.scss');
+	mix.sass('app.sass');
 
 	mix.styles([
-		// app.css has all .less files merged into one single file
-        // 'app.css',
         'app.css',
-        'grid.css',
-        // 'helpers.css',
 	], 'public/css/booknshelf.css', 'public/css');
 
 	// scripts
@@ -51,9 +28,9 @@ elixir(function(mix) {
 
 	mix.version([
 	    'public/css/booknshelf.css',
-        // 'public/css/grid.css',
         'public/js/app.js'
     ]);
+
 	// copy the fonts to public/build/ directory
 	mix.copy('resources/assets/fonts', 'public/build/fonts');
 	// copy the img to public/ directory
