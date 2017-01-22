@@ -1,25 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="section">
-      <div class="container">
-        <div class="heading">
-          <h1 class="title">Welcome to Booknshelf</h1>
-          <h2 class="subtitle">
-           Find the best books on different topics. <strong>The ones you'll read!</strong>
-          </h2>
-        </div>
-      </div>
-    </section>
-
-    <section class="hero is-primary is-bold">
+    <section class="hero is-medium is-primary is-bold">
       <div class="hero-body">
         <div class="container has-text-centered">
-          <h1 class="title">
-              Test ...
+          <h1 class="title is-2">
+              <strong> Welcome to Booknshelf </strong>
           </h1>
           <h2 class="subtitle">
-            Primary subtitle
+              Find the best books on different topics. The ones you'll read!
           </h2>
         </div>
       </div>
@@ -45,7 +34,7 @@
                       <p class="title">Middle tile</p>
                       <p class="subtitle">With an image</p>
                       <figure class="image is-4by3">
-                        <img src="http://bulma.io/images/placeholders/640x480.png">
+                        <img src="https://source.unsplash.com/category/people/640x480">
                       </figure>
                     </article>
                   </div>

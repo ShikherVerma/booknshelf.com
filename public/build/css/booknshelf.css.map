@@ -1,1 +1,1 @@
-{"version":3,"sources":["app.css"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA","file":"booknshelf.css","sourcesContent":["[v-cloak] {\n  display: none; }\n\n/*# sourceMappingURL=app.css.map */\n"]}
+{"version":3,"sources":["app.css"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA","file":"booknshelf.css","sourcesContent":[".friend-card-image {\n  background-position: center center;\n  background-size: cover; }\n\n[v-cloak] {\n  display: none; }\n\n/*# sourceMappingURL=app.css.map */\n"]}

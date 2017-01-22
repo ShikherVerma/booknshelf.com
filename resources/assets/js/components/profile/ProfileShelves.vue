@@ -1,7 +1,11 @@
 <template>
-    <div class="home-container m-t-xs">
-        <profile-shelf v-for="shelf in shelves" :shelf="shelf" :user="user"></profile-shelf>
-    </div>
+    <section class="section">
+        <div class="container">
+            <div class="columns is-multiline">
+                <profile-shelf v-for="shelf in shelves" :shelf="shelf" :user="user"></profile-shelf>
+            </div>
+        </div>
+    </section>
 </template>
 
 <script>
@@ -9,9 +13,3 @@
         props: ['user', 'shelves'],
     }
 </script>
-
-<style lang="css">
-    .shelves-container {
-        background-color: #00AA88;
-    }
-</style>

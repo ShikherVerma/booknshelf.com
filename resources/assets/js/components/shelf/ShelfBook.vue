@@ -1,39 +1,37 @@
 <template>
-<div class="card card-background card-raised grid-item-book parent" :style="bookCoverImage">
-    <div class="hover-content">
-        <div class="buttons-div">
-            <small>
-                <button class="btn btn-default" @click="recommendBook()" type="button">
-                      <span class="icon icon-heart" :class="{ 'text-danger': isLiked}"></span>
-                </button>
-            </small>
-            <small>
-                <button class="btn btn-info" @click="showBookSaveModal()" type="button">
-                    <span class="icon icon-add-to-list"></span> Save
-                </button>
-            </small>
-            <small>
-                <a v-if="book.detail_page_url" class="btn btn-default"
-                    :href="book.detail_page_url" target="_blank" type="button">
-                    <i class="fa fa-amazon" aria-hidden="true"></i>
-                </a>
-                <button v-show="onOwnProfile"class="btn btn-danger" @click="removeBookFromShelf()" type="button">
-                    <span class="icon icon-cross"></span>
-                </button>
-            </small>
+    <div class="column is-2">
+        <div class="box book hvr-grow" :style="bookCoverImage">
         </div>
-
-        <div class="book-title">
-           {{ book.title }}
-            <p>
-                <span class="book-author" v-for="(author, index) in book.authors">
-                    {{ author.name }}<span v-if="index !== book.authors.length - 1">, </span>
+        <p class="subtitle">
+            <span class="icon" @click="recommendBook()">
+                <i class="fa fa-heart" :class="{ 'like-heart': isLiked}"></i>
+            </span>
+            <span class="icon" @click="showBookSaveModal()">
+              <i class="fa fa-bookmark" :class="{ 'like-save': isSaved}"></i>
+            </span>
+            <a v-if="book.detail_page_url" class="button is-small is-light"
+                :href="book.detail_page_url" target="_blank">
+                <span class="icon">
+                    <i class="fa fa-amazon"></i>
                 </span>
-            </p>
-        </div>
+            </a>
+            <a v-show="onOwnProfile" class="button is-danger is-outlined is-small" @click="removeBookFromShelf()">
+                <span>Delete</span>
+                <span class="icon is-small">
+                    <i class="fa fa-times"></i>
+                </span>
+            </a>
+        </p>
+        <a :href="url">
+            <h4 class="title book-title">{{ book.title }}</h4>
+        </a>
+        <p class="subtitle">
+            <span v-for="(author, index) in book.authors">
+                {{ author.name }}<span v-if="index !== book.authors.length - 1">, </span>
+            </span>
+        </p>
     </div>
 
-</div>
 </template>
 
 <script>
@@ -45,7 +43,8 @@
                 form: new AppForm({
                     id: '',
                 }),
-                isLiked: false
+                isLiked: false,
+                isSaved: false
             }
         },
 
@@ -81,6 +80,7 @@
                             console.log(reason);
                         })
                     this.isLiked = !this.isLiked;
+                    console.log(this.isLiked);
                 } else {
                     this.$eventHub.$emit('showPleaseLoginModal');
                 }
@@ -99,42 +99,30 @@
 </script>
 
 <style type="text/css">
-
+    .book {
+        height: 250px;
+        background-position: center center;
+        background-size: cover;
+    }
     .parent {
         position: relative;
     }
-    .hover-content {
-      display:none;
-      height: 100%;
-      width: 100%;
-      background-color: rgba(25, 27, 27, 0.65);
-      position: absolute;
+    .fa-heart, .fa-bookmark {
+        color: #a2a2a2;
+        cursor: pointer;
     }
-    .parent:hover .hover-content {
-      display: block;
+    .fa-heart:hover {
+        color: #bf4646;
     }
 
-    .buttons-div {
-        margin-top: 5px;
-        padding-left: 5px;
-        text-align: left;
+    .fa-bookmark:hover {
+        color: #00d1b2;
     }
 
+    .like-heart {
+        color: #bf4646 !important;
+     }
     .book-title {
-        margin-top: 35%;
-        font-size: 16px;
-        font-weight: bold;
-    }
-
-    .book-title > p {
-        margin-top: 7px;
-    }
-
-    .book-author {
-        font-size: 13px;
-    }
-
-    .btn-default {
-        border: none;
+        font-size: 1.5rem;
     }
 </style>
