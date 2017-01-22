@@ -21,7 +21,7 @@
             @if ($isFacebookConnected)
                 <div class="container">
                     <h1 class="title">
-                        {{ count($friends) }} friends use Booknshelf
+                        {{ count($friends) }} friends on Booknshelf
                     </h1>
                 </div>
             @endif

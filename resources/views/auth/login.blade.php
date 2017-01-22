@@ -2,55 +2,96 @@
 
 @section('content')
     <section class="section">
-        <div class="container">
+        <div class="container is-light">
             <div class="columns">
-                <div class="column is-half is-offset-one-quarter">
-                    <label class="label">Sign to easily create ...</label>
+                <div class="column is-4">
+                    <p class="title is-4">Use Facebook or Twitter to Login.</p>
                     <p class="control">
-                        <a class="button is-primary" href="{{ url('/auth/facebook') }}">
+                        <a class="button is-large fb-button" href="{{ url('/auth/facebook') }}">
                          <span class="icon">
                            <i class="fa fa-facebook"></i>
                          </span>
-                            <span>Continue with Facebook</span>
+                            <span><strong>Login with Facebook</strong></span>
                         </a>
                     </p>
                     <p class="control">
-                        <a class="button is-info" href="{{ url('/auth/twitter') }}">
+                        <a class="button is-large twt-button" href="{{ url('/auth/twitter') }}">
                              <span class="icon">
                                <i class="fa fa-twitter"></i>
                              </span>
-                            <span>Continue with Twitter</span>
+                            <span><strong>Login with Twitter</strong></span>
                         </a>
                     </p>
-                    <label class="label">Name</label>
-                    <p class="control">
-                        <input class="input" type="text" placeholder="Text input">
-                    </p>
-                    <label class="label">Username</label>
-                    <p class="control has-icon has-icon-right">
-                        <input class="input is-success" type="text" placeholder="Text input" value="bulma">
-                        <span class="icon is-small">
-                          <i class="fa fa-check"></i>
-                        </span>
-                        <span class="help is-success">This username is available</span>
-                    </p>
-                    <label class="label">Email</label>
-                    <p class="control has-icon has-icon-right">
-                        <input class="input is-danger" type="text" placeholder="Email input" value="hello@">
-                        <span class="icon is-small">
-                          <i class="fa fa-warning"></i>
-                        </span>
-                        <span class="help is-danger">This email is invalid</span>
-                    </p>
-                    <div class="control is-grouped">
-                        <p class="control">
-                            <button class="button is-primary">Submit</button>
-                        </p>
-                        <p class="control">
-                            <button class="button is-link">Cancel</button>
-                        </p>
-                    </div>
+                </div>
+                <div class="column is-4">
 
+                    <form role="form" method="POST" action="{{ url('/login') }}">
+                        {!! csrf_field() !!}
+
+
+                        <label class="label bigger-font-label">Username</label>
+                        <p class="control">
+                            <input class="input is-large {{ $errors->has('username') ? ' is-danger' : '' }}" type="text"
+                                   name="username"
+                                   value="{{ old('username') }}" placeholder="What's your username?">
+                            @if ($errors->has('username'))
+                                <span class="help is-danger">
+                                    {{ $errors->first('username') }}
+                                </span>
+                            @endif
+                        </p>
+
+                        <label class="label bigger-font-label">Pasword</label>
+                        <p class="control">
+                            <input class="input is-large {{ $errors->has('password') ? ' is-danger' : '' }}" type="password"
+                                   name="password"
+                                   placeholder="at least 6 characters">
+                            @if ($errors->has('password'))
+                                <span class="help is-danger">
+                                    {{ $errors->first('password') }}
+                                </span>
+                            @endif
+                        </p>
+                        <div class="control">
+                            <p class="control">
+                                <a type="button" name="register" class="button is-link"
+                                    href="{{ url('/password/reset') }}">
+                                    Forgot your password?
+                                </a>
+                            </p>
+                        </div>
+
+                        <div class="control">
+                            <p class="control">
+                                <button type="submit" name="register" class="button is-large is-primary is-outlined full-width-button">
+                                    <strong>LOGIN</strong>
+                                </button>
+                            </p>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="column is-4">
+                    <p class="title is-4">I love quotes so I've decided to fill this empty space with some of my favorites.</p>
+                    <p class="title is-5">
+                          <span class="icon">
+                              <i class="fa fa-quote-right"></i>
+                          </span>
+                        The roots of education are bitter, but the fruit is sweet. - Aristotle
+                    </p>
+                    <p class="title is-5">
+                        <span class="icon">
+                            <i class="fa fa-quote-right"></i>
+                        </span>
+                        Most of my inspiration, if that's the word, came from books themselves. - Shelby Foote
+                    </p>
+                    <p class="title is-5">
+                        <span class="icon">
+                            <i class="fa fa-quote-right"></i>
+                        </span>
+                        Have the courage to follow your heart and intuition. They somehow know what you truly want to become.
+                        - Steve Jobs
+                    </p>
                 </div>
             </div>
 

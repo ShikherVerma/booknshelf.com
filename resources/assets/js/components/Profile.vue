@@ -20,30 +20,22 @@
                         </span>
                         <span>Settings</span>
                     </a>
-                    <a class="button is-link" v-if="canEditOrDelete"
+                    <a class="button is-white is-outlined" v-if="canEditOrDelete"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        Logout
+                        <span class="icon">
+                            <i class="fa fa-sign-out"></i>
+                        </span>
+                        <span>Logout</span>
                     </a>
                 </p>
             </div>
-        </div>
-        <!-- Hero footer: will stick at the bottom -->
-        <div class="hero-foot">
-            <nav class="tabs">
-                <div class="container">
-                    <ul>
-                        <li class="is-active"><a>{{ shelves.length }} Bookshelves</a></li>
-                        <li><a>{{ likes.length }} Likes</a></li>
-                    </ul>
-                </div>
-            </nav>
         </div>
     </section>
 </template>
 
 <script>
     export default {
-        props: ['user', 'shelves', 'likes'],
+        props: ['user'],
 
         mounted() {
             console.log('Component ready.')

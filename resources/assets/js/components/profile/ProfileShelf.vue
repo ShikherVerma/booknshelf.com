@@ -1,7 +1,8 @@
 <template>
     <div class="column is-3">
-        <div class="box shelf-item" :style="style">
-        </div>
+        <a :href="url">
+            <div class="box shelf-item hvr-float" :style="style"></div>
+        </a>
         <a :href="url">
             <h2 class="title">{{ shelf.name }}</h2>
         </a>
@@ -12,13 +13,24 @@
 <script>
     export default {
         props: ['user', 'shelf'],
+
+
         mounted() {},
+
         computed: {
             url: function () {
                 return '/@' + this.user.username + '/shelves/' + this.shelf.slug
             },
             style: function() {
-                return `background-image: url('${this.shelf.cover}')`;
+                return `background-image: url('${this.shelfCover}')`;
+            },
+
+            shelfCover: function() {
+                if (this.shelf.cover) {
+                    return this.shelf.cover
+                } else {
+                    return '';
+                }
             }
         }
     }
@@ -39,7 +51,7 @@
         left: 0;
         top: 0;
         content: "";
-        background-color: rgba(60, 140, 120, 0.36);
+        background-color: rgba(4, 4, 4, 0.36);
         border-radius: 6px;
         color: black;
         font-weight: bold;

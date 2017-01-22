@@ -1,11 +1,9 @@
 <template>
-    <section class="section">
-        <div class="container">
-            <div class="columns is-multiline">
-                <profile-shelf v-for="shelf in shelves" :shelf="shelf" :user="user"></profile-shelf>
-            </div>
+    <div class="container">
+        <div class="columns is-multiline">
+            <profile-shelf v-for="shelf in shelves" :shelf="shelf" :user="user"></profile-shelf>
         </div>
-    </section>
+    </div>
 </template>
 
 <script>

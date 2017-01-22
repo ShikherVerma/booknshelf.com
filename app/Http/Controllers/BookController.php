@@ -39,6 +39,7 @@ class BookController extends Controller
 
         return view('search', [
             'books' => json_encode($books),
+            'user' => $request->user(),
             'q' => $query
         ]);
     }

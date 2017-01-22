@@ -2,55 +2,97 @@
 
 @section('content')
     <section class="section">
-        <div class="container">
+        <div class="container is-light">
             <div class="columns">
-                <div class="column is-half is-offset-one-quarter">
-                    <label class="label">Sign to easily create ...</label>
+                <div class="column is-4">
+                    <p class="title is-4">Use Facebook or Twitter to join!</p>
                     <p class="control">
-                        <a class="button is-primary" href="{{ url('/auth/facebook') }}">
+                        <a class="button is-large fb-button" href="{{ url('/auth/facebook') }}">
                          <span class="icon">
                            <i class="fa fa-facebook"></i>
                          </span>
-                            <span>Continue with Facebook</span>
+                            <span><strong>Continue with Facebook</strong></span>
                         </a>
                     </p>
                     <p class="control">
-                        <a class="button is-info" href="{{ url('/auth/twitter') }}">
+                        <a class="button is-large twt-button" href="{{ url('/auth/twitter') }}">
                              <span class="icon">
                                <i class="fa fa-twitter"></i>
                              </span>
-                            <span>Continue with Twitter</span>
+                            <span><strong>Continue with Twitter</strong></span>
                         </a>
                     </p>
-                    <label class="label">Name</label>
-                    <p class="control">
-                        <input class="input" type="text" placeholder="Text input">
+                </div>
+                <div class="column is-4">
+
+                    <form role="form" method="POST" action="{{ url('/register') }}">
+                        {!! csrf_field() !!}
+
+                        <label class="label bigger-font-label">What's your name?</label>
+                        <p class="control">
+                            <input class="input is-large {{ $errors->has('name') ? ' is-danger' : '' }}" type="text" name="name"
+                                   value="{{ old('name') }}" placeholder="e.g. Jon Snow">
+                            @if ($errors->has('name'))
+                                <span class="help is-danger">
+                                    {{ $errors->first('name') }}
+                                </span>
+                            @endif
+                        </p>
+
+                        <label class="label bigger-font-label">Choose an easy remembered username</label>
+                        <p class="control">
+                            <input class="input is-large {{ $errors->has('username') ? ' is-danger' : '' }}" type="text"
+                                   name="username"
+                                   value="{{ old('username') }}" placeholder="e.g. I chose 'tigran' which is my name">
+                            @if ($errors->has('username'))
+                                <span class="help is-danger">
+                                    {{ $errors->first('username') }}
+                                </span>
+                            @endif
+                        </p>
+
+                        <label class="label bigger-font-label">Choose a strong password</label>
+                        <p class="control">
+                            <input class="input is-large {{ $errors->has('password') ? ' is-danger' : '' }}" type="password"
+                                   name="password"
+                                   placeholder="at least 6 characters">
+                            @if ($errors->has('password'))
+                                <span class="help is-danger">
+                                    {{ $errors->first('password') }}
+                                </span>
+                            @endif
+                        </p>
+
+                        <div class="control">
+                            <p class="control">
+                                <button type="submit" name="register" class="button is-large is-primary is-outlined full-width-button">
+                                    <strong>JOIN</strong>
+                                </button>
+                            </p>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="column is-4">
+                    <p class="title is-3">Why join Booknshelf?</p>
+                    <p class="title is-4">
+                          <span class="icon">
+                            <i class="fa fa-check"></i>
+                          </span>
+                        Create bookshelves to save your favorite books. Stay organized!
                     </p>
-                    <label class="label">Username</label>
-                    <p class="control has-icon has-icon-right">
-                        <input class="input is-success" type="text" placeholder="Text input" value="bulma">
-                        <span class="icon is-small">
+                    <p class="title is-4">
+                        <span class="icon">
                           <i class="fa fa-check"></i>
                         </span>
-                        <span class="help is-success">This username is available</span>
+                        Recommend books to your friends and community. It's fun!
                     </p>
-                    <label class="label">Email</label>
-                    <p class="control has-icon has-icon-right">
-                        <input class="input is-danger" type="text" placeholder="Email input" value="hello@">
-                        <span class="icon is-small">
-                          <i class="fa fa-warning"></i>
+                    <p class="title is-4">
+                        <span class="icon">
+                          <i class="fa fa-check"></i>
                         </span>
-                        <span class="help is-danger">This email is invalid</span>
+                        Connect with your friends and see what they read!
                     </p>
-                    <div class="control is-grouped">
-                        <p class="control">
-                            <button class="button is-primary">Submit</button>
-                        </p>
-                        <p class="control">
-                            <button class="button is-link">Cancel</button>
-                        </p>
-                    </div>
-
                 </div>
             </div>
 
