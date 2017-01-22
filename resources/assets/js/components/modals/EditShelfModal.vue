@@ -3,7 +3,7 @@
       <div class="modal-background" @click="$emit('close')"></div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title">Creat a new bookshelf</p>
+          <p class="modal-card-title">Edit Bookshelf</p>
           <button class="delete" @click="$emit('close')"></button>
         </header>
         <section class="modal-card-body">
@@ -29,12 +29,16 @@
             </div>
         </section>
         <footer class="modal-card-foot">
-            <button type="submit" class="button is-primary"
-                    @click.prevent="create"
-                    :disabled="form.busy">
-                Create
+            <button type="submit" class="button is-danger"
+                    @click.prevent="deleteShelf">
+                Delete bookshelf
             </button>
-          <a class="button" @click="$emit('close')">Cancel</a>
+            <button type="submit" class="button is-primary"
+                    @click.prevent="updateShelf"
+                    :disabled="form.busy">
+                Save
+            </button>
+            <button class="button is-light" @click="$emit('close')">Cancel</button>
         </footer>
       </div>
     </div>
@@ -42,18 +46,19 @@
 
 <script>
     export default {
-        props: ['user'],
+        props: ['shelf', 'user'],
 
         data() {
             return {
-                showNewShelfModal: false,
+                showEditShelfModal: false,
                 form: new AppForm({
-                    name: '',
-                    description: '',
-                    cover: '',
-                })
+                    name: this.shelf.name,
+                    description: this.shelf.description
+                }),
+                deleteShelfForm: new AppForm({}),
             };
         },
+
 
         methods: {
 
@@ -63,25 +68,37 @@
                 this.form.description = '';
             },
 
-            create() {
-                App.post('/shelves', this.form)
+            /**
+             * Initialize the edit form with the given shelf.
+             */
+            initializeUpdateFormWith(shelf) {
+                this.form.name = shelf.name;
+                this.form.description = shelf.description;
+            },
+
+
+            /**
+             * Update the shelf being edited.
+             */
+            updateShelf() {
+                App.put(`/shelves/${this.shelf.id}`, this.form)
                     .then(() => {
+                        this.shelf.name = this.form.name;
+                        this.shelf.description = this.form.description;
                         this.$emit('close');
-                        this.showCreateSuccessMessage();
-                        this.close();
+                    })
+            },
+
+            /**
+             * Delete the specified shelf.
+             */
+            deleteShelf() {
+                App.delete(`/shelves/${this.shelf.id}`, this.deleteShelfForm)
+                    .then(() => {
+                        window.location.replace(`/@${this.user.username}`);
                     });
             },
+        },
 
-            showCreateSuccessMessage() {
-                swal({
-                    title: 'Success!',
-                    text: 'Your bookshelf was successfully created!',
-                    type: "success",
-                    showConfirmButton: false,
-                    timer: 2000
-                });
-            },
-
-        }
     }
 </script>

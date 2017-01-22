@@ -1,49 +1,53 @@
 <!-- Navbar For Authenticated Users -->
-<nav class="navbar">
-    <div class="container max-width-1000" v-if="user">
-        <div class="navbar-header">
-            <!-- Collapsed Hamburger -->
-            <div class="hamburger">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-
-            <!-- Branding Image -->
-            @includeIf('nav.brand')
-        </div>
-
-        <div class="collapse navbar-collapse" id="app-navbar-collapse">
-            <!-- Left Side Of Navbar -->
-            {{--<ul class="nav navbar-nav">--}}
-                {{--<li>--}}
-                    {{--<a>--}}
-                        {{--<form class="navbar-form"  role="form" method="GET" action="{{ url('/books/search') }}">--}}
-                            {{--<div class="input-group">--}}
-                                {{--<input id="book-search" type="text" value="{{ $q or '' }}" class="form-control"--}}
-                                    {{--placeholder="Search for great books ..." name="q">--}}
-                                {{--<span class="input-group-btn">--}}
-                                    {{--<button class="btn btn-default btn-search" type="submit">--}}
-                                        {{--<i class="fa fa-search" aria-hidden="true"></i> Search--}}
-                                    {{--</button>--}}
-                                {{--</span>--}}
-                            {{--</div>--}}
-                        {{--</form>--}}
-                    {{--</a>--}}
-                {{--</li>--}}
-                {{--<li>--}}
-                    {{--<a name="my-bookshelves" href="{{ route('bookshelves_path', ['username' => Auth::user()->username]) }}">--}}
-                        {{--MY BOOKSHELVES--}}
-                    {{--</a>--}}
-                {{--</li>--}}
-            {{--</ul>--}}
-            <!-- Right Side Of Navbar -->
-            <ul class="nav navbar-nav navbar-right">
-                @includeIf('nav.user-right')
-            </ul>
-        </div>
+<nav class="nav" v-if="user">
+    <div class="nav-left">
+        <a class="nav-item" href="/">
+            {{--<img src="/img/logos/little_logo_black.png" alt="Booknshelf logo">--}}
+            Booknshelf
+        </a>
+        <a class="nav-item is-tab" href="/books">
+            Books
+        </a>
+        <a class="nav-item is-tab" href="/bookshelves">
+            Bookshelves
+        </a>
+        <a class="nav-item is-tab" href="/topics">
+            Topics
+        </a>
+        <a class="nav-item is-tab" href="{{ route('bookshelves_path', ['username' => Auth::user()->username]) }}">
+            Search
+        </a>
     </div>
-</nav
+
+    <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
+    <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
+    <span class="nav-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </span>
+
+    <!-- This "nav-menu" is hidden on mobile -->
+    <!-- Add the modifier "is-active" to display it on mobile -->
+    <div class="nav-right nav-menu">
+        <a class="nav-item" @click="showNewShelfModal = true">
+            <span class="icon">
+                <i class="fa fa-plus"></i>
+            </span>
+        </a>
+        <a class="nav-item" href="{{ route('bookshelves_path', ['username' => Auth::user()->username]) }}">
+            My Bookshelves
+        </a>
+        <a class="nav-item" href="/friends">
+            Friends
+        </a>
+        <a class="nav-item" href="{{ route('profile_path', ['username' => Auth::user()->username]) }}">
+            <figure class="image is-24x24" style="margin-right: 8px;">
+                <img src="{{ Auth::user()->avatar }}">
+            </figure>
+            Profile
+        </a>
+
+        </span>
+    </div>
+</nav>

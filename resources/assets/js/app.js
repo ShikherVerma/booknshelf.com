@@ -13,6 +13,9 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+// Modal component
+Vue.component('modal', require('./components/Modal.vue'));
+
 Vue.component('topic-card', require('./components/TopicCard.vue'));
 Vue.component('topic-card-modal', require('./components/TopicCardModal.vue'));
 
@@ -35,9 +38,11 @@ Vue.component('shelf-books', require('./components/shelf/ShelfBooks.vue'));
 Vue.component('shelf-book', require('./components/shelf/ShelfBook.vue'));
 
 // Modals
+Vue.component('edit-shelf-modal', require('./components/modals/EditShelfModal.vue'));
 Vue.component('new-shelf-modal', require('./components/modals/NewShelfModal.vue'));
 Vue.component('book-save-modal', require('./components/modals/BookSaveModal.vue'));
 Vue.component('please-login-modal', require('./components/modals/PleaseLoginModal.vue'));
+
 // Navbar
 Vue.component('user-navbar', require('./components/UserNavbar.vue'));
 
@@ -78,6 +83,7 @@ const app = new Vue({
         bookSaveModal: false,
         bookSaveModalBook: null,
         plaseLoginModal: false,
+        showNewShelfModal: false
     },
 
     methods: {

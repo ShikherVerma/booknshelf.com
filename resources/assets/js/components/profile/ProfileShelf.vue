@@ -1,12 +1,11 @@
 <template>
-
-    <div class="card card-background2 card-raised grid-item-shelf" :style="style">
-        <div class="content-shelf">
-            <a :href="url">
-                <h3 class="card-title">{{ shelf.name }}</h3>
-                <p class="card-description">{{ shelf.books_count }} books</p>
-            </a>
+    <div class="column is-3">
+        <div class="box shelf-item" :style="style">
         </div>
+        <a :href="url">
+            <h2 class="title">{{ shelf.name }}</h2>
+        </a>
+        <p class="subtitle">{{ shelf.books_count }} books</p>
     </div>
 </template>
 
@@ -25,41 +24,25 @@
     }
 </script>
 
-<style>
-
-.card-background2 {
-    background-position: center center;
-    background-size: cover;
-    text-align: center;
-}
-
-
-.card-background2:after {
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    display: block;
-    left: 0;
-    top: 0;
-    content: "";
-    background-color: rgba(32,96,101, 0.82);
-    border-radius: 6px;
-    color: black;
-    font-weight: bold;
-}
-
-.card-title, .card-description {
-    color: white;
-}
-
-.grid-item-shelf .content-shelf {
-    height: 70%;
-    width: 70%;
-}
-
-.content-shelf > a:hover {
-    text-decoration: none;
-    color: grey;
-}
-
+<style lang="css">
+    .box {
+        padding: 0px;
+    }
+    .shelf-item {
+        height: 250px;
+    }
+    .shelf-item:after {
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        display: block;
+        left: 0;
+        top: 0;
+        content: "";
+        background-color: rgba(60, 140, 120, 0.36);
+        border-radius: 6px;
+        color: black;
+        font-weight: bold;
+    }
 </style>
+

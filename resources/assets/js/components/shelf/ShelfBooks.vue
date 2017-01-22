@@ -1,7 +1,11 @@
 <template>
-    <div class="home-container">
-        <shelf-book v-for="book in allBooks" :book="book" :user="user" :shelf="shelf"></shelf-book>
-    </div>
+    <section class="section">
+        <div class="container">
+            <div class="columns is-multiline">
+                <shelf-book v-for="book in allBooks" :book="book" :user="user" :shelf="shelf"></shelf-book>
+            </div>
+        </div>
+    </section>
 </template>
 
 <script>
