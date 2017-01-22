@@ -22,7 +22,9 @@ class HomeController extends Controller
     public function __construct(ShelfRepository $shelves, UserRepository $users, BookRepository $books)
     {
         $this->middleware('auth', ['except' => [
-            'index'
+            'index',
+            'about',
+            'search'
         ]]);
         $this->shelves = $shelves;
         $this->users = $users;
@@ -43,6 +45,11 @@ class HomeController extends Controller
         return view('home', [
             'topics' => $topics,
         ]);
+    }
+
+    public function about()
+    {
+        return view('static.about');
     }
 
     public function welcome(Request $request)

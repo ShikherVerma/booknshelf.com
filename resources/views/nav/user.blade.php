@@ -1,21 +1,14 @@
 <!-- Navbar For Authenticated Users -->
 <nav class="nav" v-if="user">
     <div class="nav-left">
-        <a class="nav-item" href="/">
-            {{--<img src="/img/logos/little_logo_black.png" alt="Booknshelf logo">--}}
-            Booknshelf
+        <a class="nav-item is-active" href="/">
+          Home
         </a>
-        <a class="nav-item is-tab" href="/books">
-            Books
+        <a class="nav-item" href="/about">
+          About
         </a>
         <a class="nav-item is-tab" href="/bookshelves">
             Bookshelves
-        </a>
-        <a class="nav-item is-tab" href="/topics">
-            Topics
-        </a>
-        <a class="nav-item is-tab" href="{{ route('bookshelves_path', ['username' => Auth::user()->username]) }}">
-            Search
         </a>
     </div>
 

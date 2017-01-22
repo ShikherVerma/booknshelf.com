@@ -31,6 +31,7 @@ Vue.component('profile-shelf', require('./components/profile/ProfileShelf.vue'))
 
 // Search
 Vue.component('search', require('./components/Search.vue'));
+Vue.component('search-book', require('./components/search/SearchBook.vue'));
 
 // Shelf
 Vue.component('shelf', require('./components/Shelf.vue'));
@@ -48,6 +49,8 @@ Vue.component('user-navbar', require('./components/UserNavbar.vue'));
 
 // Shared
 Vue.component('spinner', require('./components/shared/Spinner.vue'));
+Vue.component('tabs', require('./components/shared/Tabs.vue'));
+Vue.component('tab', require('./components/shared/Tab.vue'));
 
 // make sure to call Vue.use(Vuex) if using a module system
 // import Vuex from 'vuex/dist/vuex';

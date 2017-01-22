@@ -3,13 +3,12 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Laravel\Scout\Searchable;
-use Illuminate\Support\Facades\DB;
-use App\Like;
 
 class User extends Authenticatable
 {
-     use Searchable;
+    use Searchable, Notifiable;
     /**
      * The attributes that are mass assignable.
      *
@@ -22,7 +21,7 @@ class User extends Authenticatable
         'password',
         'avatar',
         'about',
-        'is_onboarded'
+        'is_onboarded',
     ];
 
     /**
@@ -36,7 +35,7 @@ class User extends Authenticatable
         'fb_token',
         'is_onboarded',
         'created_at',
-        'updated_at'
+        'updated_at',
     ];
 
     /**
@@ -71,7 +70,7 @@ class User extends Authenticatable
     public function likes()
     {
         return Like::with('book')->where([
-            'user_id' => $this->id
+            'user_id' => $this->id,
         ])->get();
     }
 
