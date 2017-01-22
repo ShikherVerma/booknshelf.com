@@ -1,38 +1,65 @@
 <template>
-    <div class="panel panel-default" v-if="user">
-        <div class="panel-heading">Profile Photo</div>
+    <div v-if="user" class="container is-light">
+        <div class="columns">
+            <div class="column is-4">
+                <form role="form">
+                    <div class="notification is-danger" v-if="form.errors.has('photo')">
+                        <button class="delete"></button>
+                        {{ form.errors.get('photo') }}
+                    </div>
 
-        <div class="panel-body">
-            <form class="form-horizontal" role="form">
-                <div class="alert alert-danger" style="display: none;" v-if="form.errors.has('photo')">
-                    {{ form.errors.get('photo') }}
-                </div>
-                <!-- Photo Preview-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label">&nbsp;</label>
-
-                    <div class="col-md-6">
-                        <span role="img" class="profile-photo-preview"
+                    <p class="control">
+                        <span role="img" class="image is-128x128"
                             :style="previewStyle">
                         </span>
-                    </div>
-                </div>
-
-                <!-- Update Button -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label">&nbsp;</label>
-
-                    <div class="col-md-6">
-                        <label type="button" class="btn btn-primary btn-upload" :disabled="form.busy">
-                            <span>Select New Photo</span>
-
-                            <input ref="photo" type="file" class="form-control" name="photo" @change="update">
-                        </label>
-                    </div>
-                </div>
-            </form>
+                        <input class="button is-primary" ref="photo" type="file" :disabled="form.busy" name="photo" @change="update">
+                    </p>
+                    <p class="control">
+                        <a class="button is-primary">
+                          <span class="icon">
+                            <i class="fa fa-twitter"></i>
+                          </span>
+                          <span>Twitter</span>
+                        </a>
+                    </p>
+                </form>
+            </div>
         </div>
     </div>
+    <!--<div class="panel panel-default" v-if="user">-->
+        <!--<div class="panel-heading">Profile Photo</div>-->
+
+        <!--<div class="panel-body">-->
+            <!--<form class="form-horizontal" role="form">-->
+                <!--<div class="alert alert-danger" style="display: none;" v-if="form.errors.has('photo')">-->
+                    <!--{{ form.errors.get('photo') }}-->
+                <!--</div>-->
+                <!--&lt;!&ndash; Photo Preview&ndash;&gt;-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-md-4 control-label">&nbsp;</label>-->
+
+                    <!--<div class="col-md-6">-->
+                        <!--<span role="img" class="profile-photo-preview"-->
+                            <!--:style="previewStyle">-->
+                        <!--</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--&lt;!&ndash; Update Button &ndash;&gt;-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-md-4 control-label">&nbsp;</label>-->
+
+                    <!--<div class="col-md-6">-->
+                        <!--<label type="button" class="btn btn-primary btn-upload" :disabled="form.busy">-->
+                            <!--<span>Select New Photo</span>-->
+
+                            <!--<input ref="photo" type="file" class="form-control" name="photo" @change="update">-->
+                        <!--</label>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</form>-->
+        <!--</div>-->
+    <!--</div>-->
 </template>
 
 <script>
@@ -78,7 +105,7 @@
 
         computed: {
             previewStyle() {
-                return `background-image: url(${this.user.avatar})`;
+                return `background-image: url(${this.user.avatar});background-position: center center; background-size: cover;`;
             }
         }
     }

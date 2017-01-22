@@ -46,20 +46,22 @@
 <body>
 <div id="app">
     <!-- Navigation -->
-@if (Auth::check())
-    @include('nav.user')
-@else
-    @include('nav.guest')
-@endif
+    @if (Auth::check())
+        @include('nav.user')
+    @else
+        @include('nav.guest')
+    @endif
 
-<!-- Main Content -->
-@yield('content')
-
-
-<!-- Application Level Modals -->
+    <!-- Application Level Modals -->
     @if (Auth::check())
         <new-shelf-modal v-if="showNewShelfModal" @close="showNewShelfModal = false"></new-shelf-modal>
+    @else
+        <please-login-modal :show="plaseLoginModal"></please-login-modal>
     @endif
+
+    <!-- Main Content -->
+    @yield('content')
+
 
     @include('shared.newsletter')
     @include('shared.footer')

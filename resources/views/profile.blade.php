@@ -2,6 +2,9 @@
 
 @section('content')
     <profile :user="{{ $user }}"></profile>
+    @if (Auth::check())
+        <book-save-modal :user="user" :book="bookSaveModalBook" :show="bookSaveModal"></book-save-modal>
+    @endif
 
     <section class="section profile-shelves-section">
         <div class="container">
@@ -10,6 +13,7 @@
                     <profile-shelves :user="{{ $user }}" :shelves="{{ $shelves }}"></profile-shelves>
                 </tab>
                 <tab name="{{ count($likes) }} Likes">
+                    <profile-likes :user="{{ $user }}" :likes="{{ $likes }}"></profile-likes>
                 </tab>
             </tabs>
         </div>
