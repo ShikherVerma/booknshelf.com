@@ -59,12 +59,10 @@
                     let likeForm = new AppForm({});
                     App.post(`/likes/books/${this.book.id}/toggle`, likeForm)
                         .then(() => {
-                            console.log("Liked!");
                         }).catch(function(reason) {
                             console.log(reason);
                         })
                     this.isLiked = !this.isLiked;
-                    console.log(this.isLiked);
                 } else {
                     this.$eventHub.$emit('showPleaseLoginModal');
                 }
@@ -73,7 +71,11 @@
 
         computed: {
             bookCoverImage: function () {
-                return `background-image: url(${this.book.cover_image || this.book.image})`;
+                if (this.book.cover_image || this.book.image) {
+                    return `background-image: url(${this.book.cover_image || this.book.image})`;
+                } else {
+                    return '';
+                }
             }
         }
     }

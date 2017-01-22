@@ -3,8 +3,6 @@
 @section('content')
     @if (Auth::check())
         <book-save-modal :user="user" :book="bookSaveModalBook" :show="bookSaveModal"></book-save-modal>
-    @else
-        <please-login-modal :show="plaseLoginModal"></please-login-modal>
     @endif
     <section class="hero is-small is-primary is-bold">
         <div class="hero-body">
