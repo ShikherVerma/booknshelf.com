@@ -1,26 +1,39 @@
 <template>
-    <div class="panel panel-default" v-if="isFacebookConnected">
-        <div class="panel-heading">Social Profiles</div>
-
-        <div class="panel-body">
-            <form class="form-horizontal" role="form">
-                <!-- Update Button -->
-                <div class="form-group">
-
-                    <div class="col-md-6">
-                        <a class="btn btn-block btn-social btn-facebook" :href="facebook_disconnect_url">
-                          <span class="fa fa-facebook"></span> Disconnect from Facebook
+    <div>
+        <div v-if="isFacebookConnected" class="container is-light">
+            <div class="columns">
+                <div class="column is-4">
+                    <p class="control">
+                        <a class="button is-large fb-button" :href="facebook_disconnect_url">
+                            <span class="icon">
+                              <i class="fa fa-facebook"></i>
+                            </span>
+                            <span>Disconnect from Facebook</span>
                         </a>
-                    </div>
+                    </p>
                 </div>
-            </form>
+            </div>
+        </div>
+        <div v-if="!isFacebookConnected" class="container is-light">
+            <div class="columns">
+                <div class="column is-4">
+                    <p class="control">
+                        <a class="button is-large is-info fb-button" :href="facebook_connect_url">
+                            <span class="icon">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                            <span>Connect to Facebook</span>
+                        </a>
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        props: ['user', 'facebook_disconnect_url'],
+        props: ['user', 'facebook_disconnect_url', 'facebook_connect_url'],
 
         computed: {
             isFacebookConnected() {

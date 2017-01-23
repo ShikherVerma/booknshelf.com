@@ -1,80 +1,70 @@
 <template>
-    <div class="panel panel-default">
-        <div class="panel-heading">Profile Information</div>
-
-        <div class="panel-body">
-            <!-- Success Message -->
-            <div class="alert alert-success" style="display: none;" v-show="form.successful">
-                Your profile has been updated!
-            </div>
-
-            <form class="form-horizontal" role="form">
-                <!-- Name -->
-                <div class="form-group"  :class="{'has-error': form.errors.has('name')}">
-                    <label class="col-md-4 control-label">Name</label>
-
-                    <div class="col-md-6">
-                        <input type="text" class="form-control" name="name" v-model="form.name">
-
-                        <span class="help-block" style="display: none;" v-show="form.errors.has('name')">
+    <div class="container is-light">
+        <div class="columns">
+            <div class="column is-4">
+                <!-- Success Message -->
+                <div class="notification is-success" v-show="form.successful">
+                    <button class="delete"></button>
+                    Your profile has been updated!
+                </div>
+                <form role="form">
+                    <!--Name-->
+                    <label class="label bigger-font-label">Name</label>
+                    <p class="control">
+                        <input class="input" name="name" type="text" v-model="form.name"
+                               :class="{'is-danger': form.errors.has('name')}" placeholder="Your name ...">
+                        <span class="help is-danger" v-if="form.errors.has('name')">
                             {{ form.errors.get('name') }}
                         </span>
-                    </div>
-                </div>
-
-                <!-- E-Mail Address -->
-                <div class="form-group" :class="{'has-error': form.errors.has('email')}">
-                    <label class="col-md-4 control-label">E-Mail Address</label>
-
-                    <div class="col-md-6">
-                        <input type="email" class="form-control" name="email" v-model="form.email">
-
-                        <span class="help-block" style="display: none;" v-show="form.errors.has('email')">
+                    </p>
+                    <!--Email address-->
+                    <label class="label bigger-font-label">E-mail address</label>
+                    <p class="control">
+                        <input class="input" name="name" type="email" v-model="form.email"
+                               :class="{'is-danger': form.errors.has('email')}" placeholder="Your email address ...">
+                        <span class="help is-danger" v-if="form.errors.has('email')">
                             {{ form.errors.get('email') }}
                         </span>
-                    </div>
-                </div>
-
-                <!-- Username  -->
-                <div class="form-group" :class="{'has-error': form.errors.has('username')}">
-                    <label class="col-md-4 control-label">Username</label>
-
-                    <div class="col-md-6">
-                        <input type="text" class="form-control" name="username" v-model="form.username">
-
-                        <span class="help-block" style="display: none;" v-show="form.errors.has('username')">
+                    </p>
+                    <!--Username-->
+                    <label class="label bigger-font-label">Username</label>
+                    <p class="control">
+                        <input class="input" name="username" type="text" v-model="form.username"
+                               :class="{'is-danger': form.errors.has('username')}" placeholder="Your username">
+                        <span class="help is-danger" v-if="form.errors.has('username')">
                             {{ form.errors.get('username') }}
                         </span>
-                    </div>
-                </div>
-
-                <!-- About -->
-                <div class="form-group" :class="{'has-error': form.errors.has('about')}">
-                    <label class="col-md-4 control-label">About</label>
-
-                    <div class="col-md-6">
-                        <textarea class="form-control" name="about" v-model="form.about">
+                    </p>
+                    <!--About-->
+                    <label class="label bigger-font-label">About</label>
+                    <p class="control">
+                        <textarea class="textarea" name="about" v-model="form.about"
+                                  :class="{'is-danger': form.errors.has('username')}"
+                                  placeholder="A little about you ...">
                         </textarea>
-
-                        <span class="help-block"  style="display: none;" v-show="form.errors.has('about')">
+                        <span class="help is-danger" v-if="form.errors.has('about')">
                             {{ form.errors.get('about') }}
                         </span>
-                    </div>
-                </div>
+                    </p>
 
-                <!-- Update Button -->
-                <div class="form-group">
-                    <div class="col-md-offset-4 col-md-6">
-                        <button type="submit" class="btn btn-primary"
-                                @click.prevent="update"
-                                :disabled="form.busy">
-                            Update
-                        </button>
+                    <div class="control">
+                        <p class="control">
+                            <button type="submit" class="button is-large is-primary is-outlined full-width-button"
+                                    @click.prevent="update"
+                                    :disabled="form.busy">
+                                <strong>Update</strong>
+                            </button>
+                        </p>
                     </div>
-                </div>
-            </form>
+
+                </form>
+
+            </div>
+
         </div>
+
     </div>
+
 </template>
 
 <script>
@@ -111,4 +101,5 @@
         },
 
     }
+
 </script>

@@ -1,31 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="hero is-info">
-        <div class="hero-body">
-            @if (!$isFacebookConnected)
-                <div class="container">
-                    <h1 class="title">
-                        Connect your Facebook profile to see what your friends are reading!
-                    </h1>
-                    <h2 class="subtitle">
-                        <a class="button is-info" href="{{ url('/auth/facebook')  }}">
-                            <span class="icon">
-                                <i class="fa fa-facebook"></i>
-                            </span>
-                            <span>Connect with Facebook</span>
-                        </a>
-                    </h2>
+    <section class="section">
+        @if (!$isFacebookConnected)
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-5">
+                        <h1 class="title">
+                            Connect your Facebook profile to see what your friends are reading!
+                        </h1>
+                        <p class="control">
+                            <a class="button is-large fb-button" href="{{ url('/auth/facebook')  }}">
+                                <span class="icon">
+                                    <i class="fa fa-facebook"></i>
+                                </span>
+                                <span>Connect with Facebook</span>
+                            </a>
+                        </p>
+                    </div>
                 </div>
-            @endif
-            @if ($isFacebookConnected)
-                <div class="container">
-                    <h1 class="title">
-                        {{ count($friends) }} friends on Booknshelf
-                    </h1>
+            </div>
+        @endif
+        @if ($isFacebookConnected)
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-5">
+                        <h1 class="title">
+                            {{ count($friends) }} friends on Booknshelf
+                        </h1>
+                    </div>
                 </div>
-            @endif
-        </div>
+            </div>
+        @endif
     </section>
     <section class="section is-primary is-fullheight is-bold">
         <div class="container">
@@ -60,5 +66,5 @@
                 @endforeach
             </div>
         </div>
-    </section>>
+    </section>
 @endsection

@@ -12,7 +12,10 @@
                 </tab>
                 <tab name="Social">
                     <settings-profile-social
-                        :user="user" facebook_disconnect_url="{{ url('/disconnect/facebook') }}">
+                        :user="user"
+                        facebook_disconnect_url="{{ url('/disconnect/facebook') }}"
+                        facebook_connect_url="{{ url('/auth/facebook') }}"
+                    >
                     </settings-profile-social>
                 </tab>
             </tabs>
