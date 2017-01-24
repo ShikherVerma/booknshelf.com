@@ -8,7 +8,6 @@ window._ = require('lodash');
  */
 
 window.$ = window.jQuery = require('jquery');
-require('bootstrap-sass');
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
@@ -42,9 +41,7 @@ Vue.use(Vuex)
 
 require('./forms/bootstrap');
 
-// template custom utilities
-require('./custom/image-grid');
-require('./custom/zoom');
+// custom utilities
 require('./custom/application');
 require('./custom/sweetalert.min.js');
 

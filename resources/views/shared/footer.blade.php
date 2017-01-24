@@ -12,7 +12,7 @@
                         data-screen-name="tiggreen"></iframe>
                 <iframe
                     src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fusebooknshelf%2F&width=61&layout=button_count&action=like&size=small&show_faces=false&share=false&height=21&appId=1899203000306326"
-                    width="61" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                    width="70" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
                     allowTransparency="true"></iframe>
                 <iframe id="twitter-widget-1" scrolling="no" frameborder="0" allowtransparency="true"
                         class="twitter-share-button twitter-share-button-rendered twitter-tweet-button"

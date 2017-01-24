@@ -11,3 +11,5 @@ public/build/css/booknshelf-da67fc482a.css
 tests/_output/*
 /.vagrant
 !/resources/assets/js/components/settings/SettingsProfileInfo.vue
+public/build/js/app-81aaca56a0.js
+tests/_output/
