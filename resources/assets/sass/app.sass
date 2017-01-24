@@ -6,14 +6,19 @@
 //$pink: #ffb3b3 // Add pink
 $family-serif: "Georgia", serif // Add a serif family
 
-//@import "bulma"
+$turquoise: hsla(171, 100%, 36%, 1)
+$blue: hsla(217, 71%, 38%, 1)
+
 
 // Override generated variables here
 // For example, by default, the $danger color is $red and the font is sans-serif
 // You can change these values:
 
-@import "helpers"
+// Import the magic, bulma css which is my favorite css framework yet.
+@import "node_modules/bulma/bulma"
 
+// my own custom css changes
+@import "helpers"
 
 // Vue Cloak
 [v-cloak]

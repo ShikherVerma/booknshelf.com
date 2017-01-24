@@ -2,7 +2,10 @@
 <nav class="nav" v-if="user">
     <div class="nav-left">
         <a class="nav-item is-active" href="/">
-          Home
+            <span class="icon">
+              <i class="fa fa-home"></i>
+            </span>
+            <span style="margin-left: 4px;">Home</span>
         </a>
         <a class="nav-item" href="/about">
           About

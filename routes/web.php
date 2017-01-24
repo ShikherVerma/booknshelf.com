@@ -60,7 +60,7 @@ Route::delete('/shelves/{shelf_id}/books/{book_id}', 'ShelfController@removeBook
 
 // Topics
 Route::get('/topics', 'TopicController@all');
-Route::get('/topics/{topic_id}', 'TopicController@show');
+Route::get('/topics/{topic_slug}', 'TopicController@show');
 
 // Likes
 Route::post('/likes/books/{book_id}/toggle', 'LikeController@toggle');
