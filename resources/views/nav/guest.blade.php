@@ -1,6 +1,6 @@
 <!-- NavBar For Guest Users -->
 <nav class="nav">
-    <div class="nav-left">
+    <div class="nav-left" style="padding-left: 30px;">
         <a class="nav-item is-active" href="/">
             <span class="icon">
               <i class="fa fa-home"></i>
@@ -25,7 +25,7 @@
 
     <!-- This "nav-menu" is hidden on mobile -->
     <!-- Add the modifier "is-active" to display it on mobile -->
-    <div class="nav-right nav-menu">
+    <div class="nav-right nav-menu" style="padding-right: 30px;">
     <span class="nav-item">
         <a class="button" href="/login">
                 Login

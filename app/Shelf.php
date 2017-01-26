@@ -3,11 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
 
 class Shelf extends Model
 {
-     use Searchable;
 
     protected $table = 'shelves';
 
@@ -20,7 +18,7 @@ class Shelf extends Model
         'name',
         'description',
         'slug',
-        'cover'
+        'cover',
     ];
 
     /**

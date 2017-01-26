@@ -5,7 +5,27 @@
         <div class="container is-light">
             <div class="columns">
                 <div class="column is-4">
-                    <p class="title is-4">Use Facebook or Twitter to join!</p>
+                    <p class="title is-3">Why join Booknshelf?</p>
+                    <p class="title is-4">
+                          <span class="icon">
+                            <i class="fa fa-check"></i>
+                          </span>
+                        Create bookshelves to save your favorite books. Stay organized!
+                    </p>
+                    <p class="title is-4">
+                        <span class="icon">
+                          <i class="fa fa-check"></i>
+                        </span>
+                        Recommend books to your friends and community. It's fun!
+                    </p>
+                    <p class="title is-4">
+                        <span class="icon">
+                          <i class="fa fa-check"></i>
+                        </span>
+                        Connect with your friends and see what they read!
+                    </p>
+                </div>
+                <div class="column is-4">
                     <p class="control">
                         <a class="button is-large fb-button" href="{{ url('/auth/facebook') }}">
                          <span class="icon">
@@ -22,8 +42,6 @@
                             <span><strong>Continue with Twitter</strong></span>
                         </a>
                     </p>
-                </div>
-                <div class="column is-4">
 
                     <form role="form" method="POST" action="{{ url('/register') }}">
                         {!! csrf_field() !!}
@@ -73,26 +91,7 @@
                     </form>
 
                 </div>
-                <div class="column is-4">
-                    <p class="title is-3">Why join Booknshelf?</p>
-                    <p class="title is-4">
-                          <span class="icon">
-                            <i class="fa fa-check"></i>
-                          </span>
-                        Create bookshelves to save your favorite books. Stay organized!
-                    </p>
-                    <p class="title is-4">
-                        <span class="icon">
-                          <i class="fa fa-check"></i>
-                        </span>
-                        Recommend books to your friends and community. It's fun!
-                    </p>
-                    <p class="title is-4">
-                        <span class="icon">
-                          <i class="fa fa-check"></i>
-                        </span>
-                        Connect with your friends and see what they read!
-                    </p>
+                <div class="column is-3">
                 </div>
             </div>
 
