@@ -4351,10 +4351,6 @@ label.panel-block {
   background-color: whitesmoke;
   padding: 3rem 1.5rem 6rem; }
 
-.friend-card-image {
-  background-position: center center;
-  background-size: cover; }
-
 .fb-button {
   background-color: #2D4373;
   color: white;
@@ -4417,6 +4413,10 @@ article {
 .t-is-2 {
   background-color: #7DE0E6;
   color: #1c51a6; }
+
+.friend-card-image {
+  margin-left: auto;
+  margin-right: auto; }
 
 [v-cloak] {
   display: none; }

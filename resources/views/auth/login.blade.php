@@ -5,7 +5,29 @@
         <div class="container is-light">
             <div class="columns">
                 <div class="column is-4">
-                    <p class="title is-4">Use Facebook or Twitter to Login.</p>
+                    <p class="title is-4">I love quotes so I've decided to fill this empty space with some of my favorites.</p>
+                    <p class="title is-5">
+                          <span class="icon">
+                              <i class="fa fa-quote-right"></i>
+                          </span>
+                        The roots of education are bitter, but the fruit is sweet. - Aristotle
+                    </p>
+                    <p class="title is-5">
+                        <span class="icon">
+                            <i class="fa fa-quote-right"></i>
+                        </span>
+                        Most of my inspiration, if that's the word, came from books themselves. - Shelby Foote
+                    </p>
+                    <p class="title is-5">
+                        <span class="icon">
+                            <i class="fa fa-quote-right"></i>
+                        </span>
+                        Have the courage to follow your heart and intuition. They somehow know what you truly want to become.
+                        - Steve Jobs
+                    </p>
+                </div>
+                <div class="column is-4">
+
                     <p class="control">
                         <a class="button is-large fb-button" href="{{ url('/auth/facebook') }}">
                          <span class="icon">
@@ -22,9 +44,6 @@
                             <span><strong>Login with Twitter</strong></span>
                         </a>
                     </p>
-                </div>
-                <div class="column is-4">
-
                     <form role="form" method="POST" action="{{ url('/login') }}">
                         {!! csrf_field() !!}
 
@@ -70,28 +89,6 @@
                         </div>
                     </form>
 
-                </div>
-                <div class="column is-4">
-                    <p class="title is-4">I love quotes so I've decided to fill this empty space with some of my favorites.</p>
-                    <p class="title is-5">
-                          <span class="icon">
-                              <i class="fa fa-quote-right"></i>
-                          </span>
-                        The roots of education are bitter, but the fruit is sweet. - Aristotle
-                    </p>
-                    <p class="title is-5">
-                        <span class="icon">
-                            <i class="fa fa-quote-right"></i>
-                        </span>
-                        Most of my inspiration, if that's the word, came from books themselves. - Shelby Foote
-                    </p>
-                    <p class="title is-5">
-                        <span class="icon">
-                            <i class="fa fa-quote-right"></i>
-                        </span>
-                        Have the courage to follow your heart and intuition. They somehow know what you truly want to become.
-                        - Steve Jobs
-                    </p>
                 </div>
             </div>
 

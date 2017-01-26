@@ -15,7 +15,7 @@
                         <form role="form" method="GET" action="{{ url('/books/search') }}">
                             <p class="control has-icon">
                                 <input class="input is-large" type="text" value="{{ $q or '' }}" name="q"
-                                       placeholder="Search for great books ...">
+                                       placeholder="Search for anything ...">
                                 <span class="icon">
                                     <i class="fa fa-search"></i>
                                 </span>
@@ -210,7 +210,7 @@
                 </div>
                 <div class="tile is-parent">
                     <article onclick="window.location ='https://goo.gl/forms/CcCU1KSpmqFJeHzB3'"
-                        class="hvr-float-shadow tile is-child notification has-text-centered">
+                        class="hvr-glow tile is-child notification has-text-centered">
                         <h1 class="title is-2">Suggest a topic</h1>
                         <span class="icon is-large">
                           <i class="fa fa-plus"></i>

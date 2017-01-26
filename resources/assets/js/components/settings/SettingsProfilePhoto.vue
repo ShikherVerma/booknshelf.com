@@ -7,20 +7,15 @@
                         <button class="delete"></button>
                         {{ form.errors.get('photo') }}
                     </div>
+                    <p class="title">Update your profile photo</p>
                     <p class="control">
                         <span role="img" class="image is-128x128"
                               :style="previewStyle">
                         </span>
-                        <input class="button is-primary inputfile" ref="photo" type="file" :disabled="form.busy" name="photo"
-                               @change="update">
                     </p>
                     <p class="control">
-                        <a class="button is-primary">
-                          <span class="icon">
-                            <i class="fa fa-twitter"></i>
-                          </span>
-                            <span>Twitter</span>
-                        </a>
+                        <input class="button" ref="photo" type="file" :disabled="form.busy" name="photo"
+                               @change="update">
                     </p>
                 </form>
             </div>
@@ -76,6 +71,8 @@
         }
     }
 
+
+
 </script>
 
 <style class="css">
@@ -87,4 +84,6 @@
     	position: absolute;
     	z-index: -1;
     }
+
+
 </style>

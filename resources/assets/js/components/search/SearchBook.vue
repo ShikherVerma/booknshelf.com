@@ -7,7 +7,7 @@
                 <i class="fa fa-heart" :class="{ 'like-heart': isLiked}"></i>
             </span>
             <span class="icon" @click="showBookSaveModal()">
-              <i class="fa fa-bookmark" :class="{ 'like-save': isSaved}"></i>
+              <i class="fa fa-bookmark"></i>
             </span>
             <a v-if="book.detail_page_url" class="button is-small is-light"
                 :href="book.detail_page_url" target="_blank">
@@ -30,15 +30,14 @@
 
 <script>
     export default {
-        props: ['user', 'book'],
+        props: ['user', 'book', 'likeUserId'],
 
         data() {
             return {
                 form: new AppForm({
                     id: '',
                 }),
-                isLiked: false,
-                isSaved: false
+                isLiked: false
             }
         },
 

@@ -7,7 +7,7 @@
                 <i class="fa fa-heart" :class="{ 'like-heart': isLiked}"></i>
             </span>
             <span class="icon" @click="showBookSaveModal()">
-              <i class="fa fa-bookmark" :class="{ 'like-save': isSaved}"></i>
+                <i class="fa fa-bookmark" :class="{ 'like-save': isSaved}"></i>
             </span>
             <a v-if="book.detail_page_url" class="button is-small is-light"
                 :href="book.detail_page_url" target="_blank">
@@ -15,9 +15,8 @@
                     <i class="fa fa-amazon"></i>
                 </span>
             </a>
-            <a v-show="onOwnProfile" class="button is-danger is-outlined is-small" @click="removeBookFromShelf()">
-                <span>Delete</span>
-                <span class="icon is-small">
+            <a v-show="onOwnProfile" class="button is-small is-light" @click="removeBookFromShelf()">
+                <span class="icon">
                     <i class="fa fa-times"></i>
                 </span>
             </a>
@@ -75,12 +74,10 @@
                     let likeForm = new AppForm({});
                     App.post(`/likes/books/${this.book.id}/toggle`, likeForm)
                         .then(() => {
-                            console.log("Liked!");
                         }).catch(function(reason) {
                             console.log(reason);
                         })
                     this.isLiked = !this.isLiked;
-                    console.log(this.isLiked);
                 } else {
                     this.$eventHub.$emit('showPleaseLoginModal');
                 }
@@ -122,6 +119,11 @@
     .like-heart {
         color: #bf4646 !important;
      }
+
+     .like-save {
+        color: #00AB91 !important;
+     }
+
     .book-title {
         font-size: 1.5rem;
     }
