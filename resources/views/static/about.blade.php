@@ -1,9 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
+    <section class="hero is-primary is-bold">
+      <div class="hero-body has-text-centered">
+        <div class="container">
+          <h1 class="title is-3">
+            Hi! I'm Tigran Hakobyan, the guy behind Booknshelf.
+          </h1>
+          <h2 class="subtitle">
+              <figure class="image is-128x128">
+                <img src="http://bulma.io/images/placeholders/128x128.png">
+              </figure>
+          </h2>
+        </div>
+      </div>
+    </section>
+
     <div class="section">
         <div class="container">
             <div class="content">
+                <div class="columns">
+                    <div class="column is-4"></div>
+                    <div class="column is-4">
+                        <h3> Q: What is Booknshelf? </h3>
+                        <h2> Q: What are the goals of the site? </h2>
+                        <h2> Q: How does booknshelf make money? </h2>
+                        <h2> Q: Where did you get your inspiration? </h2>
+                        <p class="subtitle">
+                            Talk about nomad list, indie hackers, etc
+                        </p>
+                        <h2> Q: How do I contact you?</h2>
+                    </div>
+                </div>
                 <h1>Hello, I'm Tigran Hakobyan. I'm the guy behind Booknshelf.</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend
                     gravida,

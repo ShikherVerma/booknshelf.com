@@ -16,7 +16,7 @@ class RegistrationTest extends TestCase
              ->type('Tigran', 'name')
              ->type('tigranjan', 'username')
              ->type('password', 'password')
-             ->press('Join')
+             ->press('JOIN')
              ->seePageIs('/welcome');
     }
 }
