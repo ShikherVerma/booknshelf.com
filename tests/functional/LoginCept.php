@@ -7,5 +7,4 @@ $I->wantTo('login to my Booknshelf account');
 $I->signIn();
 
 $I->seeInCurrentUrl('/');
-//$I->see('MY BOOKSHELVES');
 

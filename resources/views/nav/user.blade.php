@@ -1,7 +1,7 @@
 <!-- Navbar For Authenticated Users -->
 <nav class="nav" v-if="user">
     <div class="nav-left" style="padding-left: 30px;">
-        <a class="nav-item is-active" href="/">
+        <a class="nav-item is-active" style="font-weight: normal;" href="/">
             <span class="icon">
               <i class="fa fa-home"></i>
             </span>
@@ -9,6 +9,9 @@
         </a>
         <a class="nav-item" href="/about">
           About
+        </a>
+        <a class="nav-item" href="/topics">
+          Topics
         </a>
         <a class="nav-item is-tab" href="/bookshelves">
             Bookshelves

@@ -4418,6 +4418,9 @@ article {
   margin-left: auto;
   margin-right: auto; }
 
+.nav-item a, a.nav-item {
+  font-weight: bold; }
+
 [v-cloak] {
   display: none; }
 
