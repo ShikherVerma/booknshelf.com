@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * include Vue and Vue Resource. This gives a great starting point for
@@ -29,6 +28,7 @@ Vue.component('profile', require('./components/Profile.vue'));
 Vue.component('profile-shelves', require('./components/profile/ProfileShelves.vue'));
 Vue.component('profile-shelf', require('./components/profile/ProfileShelf.vue'));
 Vue.component('profile-likes', require('./components/profile/ProfileLikes.vue'));
+Vue.component('profile-like-book', require('./components/profile/ProfileLikeBook.vue'));
 
 // Search
 Vue.component('search', require('./components/Search.vue'));
@@ -53,37 +53,12 @@ Vue.component('spinner', require('./components/shared/Spinner.vue'));
 Vue.component('tabs', require('./components/shared/Tabs.vue'));
 Vue.component('tab', require('./components/shared/Tab.vue'));
 
-// make sure to call Vue.use(Vuex) if using a module system
-// import Vuex from 'vuex/dist/vuex';
-// Vue.use(Vuex)
-
-// const store = new Vuex.Store({
-//     state: {
-//         user: null
-//     },
-
-//     mutations: {
-//         updateUser (state) {
-//             console.log("okey will update the state");
-//             // mutate state
-//             state.user = user;
-//             console.log(state.user);
-//         }
-//     }
-// })
-
-// This is the event hub we'll use in every
-// component to communicate between them.
-const eventHub = new Vue();
-Vue.prototype.$eventHub = eventHub;
-
 const app = new Vue({
     el: '#app',
 
-    // store,
-
     data: {
         user: App.state.user,
+        userLikedBooks: [],
         bookSaveModal: false,
         bookSaveModalBook: null,
         plaseLoginModal: false,
@@ -95,42 +70,61 @@ const app = new Vue({
             this.$http.get('/user/current')
                 .then(response => {
                     this.user = response.data;
-            });
+                });
         },
-        closeBookSaveModal: function() {
+        loadUserLikedBooks() {
+            this.$http.get('/user/current/likes/books')
+                .then(response => {
+                    this.userLikedBooks = response.data;
+                });
+        },
+        closeBookSaveModal: function () {
             this.bookSaveModal = false;
         },
 
-        showBookSaveModal: function(book) {
+        showBookSaveModal: function (book) {
             this.bookSaveModalBook = book;
-            this.$eventHub.$emit('loadUserShelves');
+            Bus.$emit('loadUserShelves');
             this.bookSaveModal = true;
         },
 
-        showPleaseLoginModal: function(book) {
+        showPleaseLoginModal: function (book) {
             this.plaseLoginModal = true;
         },
-        closePleaseLoginModal: function(book) {
+        closePleaseLoginModal: function (book) {
             this.plaseLoginModal = false;
         },
+        updateUserData: function() {
+            this.loadUserLikedBooks();
+        }
     },
 
+    /**
+     * The component has been created by Vue.
+     */
     created: function () {
-      this.$eventHub.$on('updateUser', this.updateUser);
-      this.$eventHub.$on('showBookSaveModal', this.showBookSaveModal);
-      this.$eventHub.$on('closeBookSaveModal', this.closeBookSaveModal);
-      this.$eventHub.$on('showPleaseLoginModal', this.showPleaseLoginModal);
-      this.$eventHub.$on('closePleaseLoginModal', this.closePleaseLoginModal);
+        // var self = this;
+        if (App.userId) {
+            this.loadUserLikedBooks();
+        }
+
+        Bus.$on('updateUser', this.updateUser);
+        Bus.$on('updateUserData', this.updateUserData);
+        Bus.$on('showBookSaveModal', this.showBookSaveModal);
+        Bus.$on('closeBookSaveModal', this.closeBookSaveModal);
+        Bus.$on('showPleaseLoginModal', this.showPleaseLoginModal);
+        Bus.$on('closePleaseLoginModal', this.closePleaseLoginModal);
     },
 
     // It's good to clean up event listeners before
     // a component is destroyed.
     beforeDestroy: function () {
-      this.$eventHub.$off('updateUser', this.updateUser);
-      this.$eventHub.$off('showBookSaveModal', this.showBookSaveModal);
-      this.$eventHub.$off('closeBookSaveModal', this.closeBookSaveModal);
-      this.$eventHub.$off('showPleaseLoginModal', this.showPleaseLoginModal);
-      this.$eventHub.$off('closePleaseLoginModal', this.closePleaseLoginModal);
+        Bus.$off('updateUser', this.updateUser);
+        Bus.$off('updateUserData', this.updateUserData);
+        Bus.$off('showBookSaveModal', this.showBookSaveModal);
+        Bus.$off('closeBookSaveModal', this.closeBookSaveModal);
+        Bus.$off('showPleaseLoginModal', this.showPleaseLoginModal);
+        Bus.$off('closePleaseLoginModal', this.closePleaseLoginModal);
     },
 
     computed: {

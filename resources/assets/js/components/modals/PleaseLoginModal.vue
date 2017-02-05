@@ -28,7 +28,7 @@
         methods: {
 
             close: function () {
-                this.$eventHub.$emit('closePleaseLoginModal');
+                Bus.$emit('closePleaseLoginModal');
             },
         }
     }

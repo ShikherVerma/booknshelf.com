@@ -95,7 +95,7 @@
             update() {
                 App.put('/settings/profile', this.form)
                     .then(() => {
-                        this.$eventHub.$emit('updateUser');
+                        Bus.$emit('updateUser');
                     });
             }
         },

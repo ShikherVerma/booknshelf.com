@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
 use App\Repositories\BookRepository;
 use App\Repositories\UserRepository;
 use App\Services\AmazonProduct;
@@ -35,12 +36,22 @@ class BookController extends Controller
             $newBook->load('authors');
             $books[] = $newBook->toArray();
         }
+
         // $mostSavedBooks = $this->books->getMostSaved();
 
         return view('search', [
             'books' => json_encode($books),
             'user' => $request->user(),
-            'q' => $query
+            'q' => $query,
         ]);
+    }
+
+    public function likes(Request $request, $bookId)
+    {
+
+        $book = Book::findOrFail($bookId);
+        $likes = $book->likes()->get();
+
+        return response()->json($likes);
     }
 }

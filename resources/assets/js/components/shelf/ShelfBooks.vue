@@ -29,7 +29,7 @@
         },
 
         created: function () {
-            this.$eventHub.$on('bookRemoved', this.getBooks);
+            Bus.$on('bookRemoved', this.getBooks);
         },
     }
 </script>

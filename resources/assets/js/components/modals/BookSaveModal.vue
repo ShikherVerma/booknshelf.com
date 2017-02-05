@@ -96,12 +96,12 @@
                 this.success = false;
                 this.showNewShelfForm = false;
                 this.form.errors.forget();
-                this.$eventHub.$emit('closeBookSaveModal');
+                Bus.$emit('closeBookSaveModal');
             },
         },
 
         created() {
-            this.$eventHub.$on('loadUserShelves', this.getUserBookshelves);
+            Bus.$on('loadUserShelves', this.getUserBookshelves);
         },
 
         mounted: function () {

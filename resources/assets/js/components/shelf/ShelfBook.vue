@@ -55,16 +55,16 @@
                 let form = new AppForm({ id: this.book.id });
                 App.delete(`/shelves/${this.shelf.id}/books/${this.book.id}`, form)
                     .then(() =>{
-                        this.$eventHub.$emit('bookRemoved');
+                        Bus.$emit('bookRemoved');
                     }).catch(function(reason) {})
             },
 
             showBookSaveModal() {
                 // if user is authenticated then show the save modal, otherwise login modal
                 if (App.userId) {
-                    this.$eventHub.$emit('showBookSaveModal', this.book);
+                    Bus.$emit('showBookSaveModal', this.book);
                 } else {
-                    this.$eventHub.$emit('showPleaseLoginModal');
+                    Bus.$emit('showPleaseLoginModal');
                 }
             },
 
@@ -79,7 +79,7 @@
                         })
                     this.isLiked = !this.isLiked;
                 } else {
-                    this.$eventHub.$emit('showPleaseLoginModal');
+                    Bus.$emit('showPleaseLoginModal');
                 }
             }
         },

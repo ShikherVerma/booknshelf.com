@@ -34,7 +34,16 @@ class UserRepository
     {
         $user = User::where('username', $username)->firstOrFail();
         $likes = $user->likes();
+
         return $likes;
+    }
+
+    public function getAllLikedBooks($username)
+    {
+        $user = User::where('username', $username)->firstOrFail();
+        $likedBooks = $user->allLikedBooks();
+
+        return $likedBooks;
     }
 
     public function findByFacebookUserIdOrCreate($userData)

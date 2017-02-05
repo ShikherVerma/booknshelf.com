@@ -15,7 +15,7 @@
                         <form role="form" method="GET" action="{{ url('/books/search') }}">
                             <p class="control has-icon">
                                 <input class="input is-large" type="text" value="{{ $q or '' }}" name="q"
-                                       placeholder="Search for books ...">
+                                       placeholder="Search for great books ...">
                                 <span class="icon">
                                     <i class="fa fa-search"></i>
                                 </span>
