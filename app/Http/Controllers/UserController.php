@@ -74,7 +74,18 @@ class UserController extends Controller
         $user = User::find(Auth::id());
         $allLikedBooks = $user->allLikedBooks();
         $books = $allLikedBooks->map(function ($book) {
-                return $book->id;
+            return $book->id;
+        });
+
+        return $books;
+    }
+
+    public function savedBooks()
+    {
+        $user = User::find(Auth::id());
+        $allSavedBooks = $user->allSavedBooks();
+        $books = $allSavedBooks->map(function ($book) {
+            return $book->id;
         });
 
         return $books;

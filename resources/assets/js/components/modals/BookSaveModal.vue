@@ -74,6 +74,8 @@
                 App.post(`/shelves/${shelfId}/books`, this.form)
                     .then(() => {
                         this.success = true;
+                        // reload the user data
+                        Bus.$emit('updateUserData');
                     }).catch(function(reason) {
                         console.log(reason);
                     });
@@ -86,7 +88,6 @@
                         this.form.name = '';
                         // add the book to the new shelf
                         this.storeBookToShelf(shelfId);
-                        this.success = true;
                     }).catch(function(reason) {
                         console.log(reason);
                     });

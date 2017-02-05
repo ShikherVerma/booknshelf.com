@@ -28,16 +28,13 @@ Vue.component('profile', require('./components/Profile.vue'));
 Vue.component('profile-shelves', require('./components/profile/ProfileShelves.vue'));
 Vue.component('profile-shelf', require('./components/profile/ProfileShelf.vue'));
 Vue.component('profile-likes', require('./components/profile/ProfileLikes.vue'));
-Vue.component('profile-like-book', require('./components/profile/ProfileLikeBook.vue'));
 
 // Search
 Vue.component('search', require('./components/Search.vue'));
-Vue.component('search-book', require('./components/search/SearchBook.vue'));
 
 // Shelf
 Vue.component('shelf', require('./components/Shelf.vue'));
 Vue.component('shelf-books', require('./components/shelf/ShelfBooks.vue'));
-Vue.component('shelf-book', require('./components/shelf/ShelfBook.vue'));
 
 // Modals
 Vue.component('edit-shelf-modal', require('./components/modals/EditShelfModal.vue'));
@@ -53,12 +50,16 @@ Vue.component('spinner', require('./components/shared/Spinner.vue'));
 Vue.component('tabs', require('./components/shared/Tabs.vue'));
 Vue.component('tab', require('./components/shared/Tab.vue'));
 
+// The booknshelf book component
+Vue.component('book', require('./components/Book.vue'));
+
 const app = new Vue({
     el: '#app',
 
     data: {
         user: App.state.user,
         userLikedBooks: [],
+        userSavedBooks: [],
         bookSaveModal: false,
         bookSaveModalBook: null,
         plaseLoginModal: false,
@@ -76,6 +77,12 @@ const app = new Vue({
             this.$http.get('/user/current/likes/books')
                 .then(response => {
                     this.userLikedBooks = response.data;
+                });
+        },
+        loadUserSavedBooks() {
+            this.$http.get('/user/current/saves/books')
+                .then(response => {
+                    this.userSavedBooks = response.data;
                 });
         },
         closeBookSaveModal: function () {
@@ -96,6 +103,7 @@ const app = new Vue({
         },
         updateUserData: function() {
             this.loadUserLikedBooks();
+            this.loadUserSavedBooks();
         }
     },
 
@@ -106,6 +114,7 @@ const app = new Vue({
         // var self = this;
         if (App.userId) {
             this.loadUserLikedBooks();
+            this.loadUserSavedBooks();
         }
 
         Bus.$on('updateUser', this.updateUser);
