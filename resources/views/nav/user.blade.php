@@ -7,7 +7,7 @@
             </span>
             <span style="margin-left: 4px;">Home</span>
         </a>
-        <a class="nav-item" href="/about">
+        <a class="nav-item" style="font-weight: normal" href="/about">
           About
         </a>
         <a class="nav-item" href="/topics">

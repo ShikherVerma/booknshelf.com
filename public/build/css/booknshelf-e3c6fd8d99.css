@@ -4421,6 +4421,38 @@ article {
 .nav-item a, a.nav-item {
   font-weight: bold; }
 
+.about-booknshelf-tag {
+  background-color: #ffdd57;
+  display: inline-block;
+  font-weight: 700 !important;
+  margin-left: 14px;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  color: #00b89c; }
+
+.about-title {
+  font-weight: 500; }
+
+.about-bio-figure {
+  left: calc(50% - 70px);
+  padding: 8px;
+  background-color: #00938c;
+  border-radius: 9999px; }
+
+.about-bio-figure > img {
+  border-radius: 9999px; }
+
+.about-link {
+  border-bottom: 3px solid #ffdd57;
+  font-weight: 600;
+  position: relative;
+  -webkit-transition: background-color 120ms;
+  transition: background-color 120ms; }
+
+.about-link:hover {
+  background-color: #ffdd57;
+  color: #00b89c; }
+
 [v-cloak] {
   display: none; }
 

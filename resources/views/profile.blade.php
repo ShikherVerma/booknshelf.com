@@ -12,8 +12,8 @@
                 <tab name="{{ count($shelves) }} Bookshelves" :selected="true">
                     <profile-shelves :user="{{ $user }}" :shelves="{{ $shelves }}"></profile-shelves>
                 </tab>
-                <tab name="{{ count($likes) }} Likes">
-                    <profile-likes :user="{{ $user }}" :likes="{{ $likes }}"></profile-likes>
+                <tab name="{{ count($likedBooks) }} Likes">
+                    <profile-likes :user="{{ $user }}" :books="{{ $likedBooks }}" :likes="userLikedBooks"></profile-likes>
                 </tab>
             </tabs>
         </div>

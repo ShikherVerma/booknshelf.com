@@ -75,6 +75,23 @@ class User extends Authenticatable
     }
 
     /**
+     * Get all liked books of the user.
+     *
+     * @return collection of books
+     */
+    public function allLikedBooks()
+    {
+        $likes = Like::with('book', 'book.likes', 'book.authors')->where([
+            'user_id' => $this->id,
+        ])->get();
+        $books = $likes->map(function ($item) {
+            return $item->book;
+        });
+
+        return $books;
+    }
+    
+    /**
      * The attributes that should be casted to native types.
      *
      * @var array

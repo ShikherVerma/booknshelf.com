@@ -42,6 +42,7 @@ Route::get('/@{username}/bookshelves', ['as' => 'bookshelves_path', 'uses' => 'U
 Route::get('/@{username}/shelves/{shelf_slug}', ['as' => 'shelf_path', 'uses' => 'UserController@shelf']);
 Route::post('/user/welcome', 'UserController@welcome');
 Route::get('/user/current', 'UserController@current');
+Route::get('/user/current/likes/books', 'UserController@likedBooks');
 Route::get('/user/shelves', 'UserController@shelves');
 Route::get('/disconnect/facebook', 'UserController@disconnectFacebook');
 
@@ -67,3 +68,6 @@ Route::post('/likes/books/{book_id}/toggle', 'LikeController@toggle');
 
 // Friends
 Route::get('/friends', 'FriendsController@index');
+
+//Books
+Route::get('/books/{book_id}/likes', 'BookController@likes');

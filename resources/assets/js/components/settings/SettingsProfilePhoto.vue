@@ -45,8 +45,7 @@
                 // uploads of the profile photos. We will update the user after this action.
                 this.$http.post('/settings/photo', this.gatherFormData())
                     .then(function(response) {
-                        // this.$dispatch('updateUser');
-                        this.$eventHub.$emit('updateUser');
+                        Bus.$emit('updateUser');
                         this.form.finishProcessing();
                     })
                     .catch(function(response) {

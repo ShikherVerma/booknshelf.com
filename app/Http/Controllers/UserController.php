@@ -7,7 +7,9 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\ShelfRepository;
 use App\Repositories\UserRepository;
 use Event;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -16,11 +18,13 @@ class UserController extends Controller
 
     public function __construct(UserRepository $users, ShelfRepository $shelves)
     {
-        $this->middleware('auth', ['except' => [
-            'profile',
-            'allShelves',
-            'shelf'
-        ]]);
+        $this->middleware('auth', [
+            'except' => [
+                'profile',
+                'allShelves',
+                'shelf',
+            ],
+        ]);
 
         $this->users = $users;
         $this->shelves = $shelves;
@@ -30,18 +34,19 @@ class UserController extends Controller
     {
         $user = $this->users->findByUsername($username);
         $shelves = $this->shelves->forUser($user);
-        $likes = $this->users->likes($username);
+        $likedBooks = $this->users->getAllLikedBooks($username);
 
         return view('profile', [
             'user' => $user,
             'shelves' => $shelves,
-            'likes' => $likes
+            'likedBooks' => $likedBooks,
         ]);
     }
 
     public function allShelves($userId)
     {
         $user = $this->users->findById($userId);
+
         return response()->json($this->shelves->forUser($user)->toArray());
     }
 
@@ -64,9 +69,21 @@ class UserController extends Controller
         return $this->users->current();
     }
 
+    public function likedBooks()
+    {
+        $user = User::find(Auth::id());
+        $allLikedBooks = $user->allLikedBooks();
+        $books = $allLikedBooks->map(function ($book) {
+                return $book->id;
+        });
+
+        return $books;
+    }
+
     public function shelves()
     {
         $user = $this->users->current();
+
         return response()->json($this->shelves->forUser($user)->toArray());
     }
 

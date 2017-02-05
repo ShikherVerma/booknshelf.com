@@ -15,7 +15,16 @@ window.$ = window.jQuery = require('jquery');
  * and simple, leaving you to focus on building your next great project.
  */
 
-window.Vue = require('vue');
+if (window.Vue === undefined) {
+    window.Vue = require('vue');
+
+    // This is the event hub we'll use in every
+    // component to communicate between them.
+    window.Bus = new Vue();
+}
+
+
+
 require('vue-resource');
 
 /**
@@ -30,10 +39,6 @@ Vue.http.interceptors.push((request, next) => {
     next();
 });
 
-// Use Vuex for state management
-import Vuex from 'vuex/dist/vuex';
-window.Vuex = Vuex;
-Vue.use(Vuex)
 
 /**
  * Load Form utilities (window.AppForm)
@@ -42,7 +47,6 @@ Vue.use(Vuex)
 require('./forms/bootstrap');
 
 // custom utilities
-require('./custom/application');
 require('./custom/sweetalert.min.js');
 
 /**

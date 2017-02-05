@@ -36,7 +36,7 @@
             'userId' => Auth::id(),
             'env' => config('app.env'),
             'state' => [
-                'user' => Auth::user()
+                'user' => Auth::user(),
             ]
         ]); ?>
     </script>

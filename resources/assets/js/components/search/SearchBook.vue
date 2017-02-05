@@ -46,9 +46,9 @@
             showBookSaveModal() {
                 // if user is authenticated then show the save modal, otherwise login modal
                 if (App.userId) {
-                    this.$eventHub.$emit('showBookSaveModal', this.book);
+                    Bus.$emit('showBookSaveModal', this.book);
                 } else {
-                    this.$eventHub.$emit('showPleaseLoginModal');
+                    Bus.$emit('showPleaseLoginModal');
                 }
             },
 
@@ -63,7 +63,7 @@
                         })
                     this.isLiked = !this.isLiked;
                 } else {
-                    this.$eventHub.$emit('showPleaseLoginModal');
+                    Bus.$emit('showPleaseLoginModal');
                 }
             }
         },
