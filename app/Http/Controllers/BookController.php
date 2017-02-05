@@ -33,11 +33,11 @@ class BookController extends Controller
         foreach ($amazonBooks as $book) {
             $extractedBook = $this->books->extractAmazonBookData($book);
             $newBook = $this->books->findByAsinOrCreate($extractedBook);
-            $newBook->load('authors');
+            $newBook->load('authors', 'likes');
             $books[] = $newBook->toArray();
         }
 
-        // $mostSavedBooks = $this->books->getMostSaved();
+        // we need to append likes to the books
 
         return view('search', [
             'books' => json_encode($books),

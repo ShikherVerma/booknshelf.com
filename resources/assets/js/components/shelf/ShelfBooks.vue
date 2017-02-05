@@ -2,7 +2,7 @@
     <section class="section">
         <div class="container">
             <div class="columns is-multiline">
-                <shelf-book v-for="book in allBooks" :book="book" :user="user" :shelf="shelf"></shelf-book>
+                <book v-for="book in allBooks" :book="book" :user="user" :shelf="shelf" :likes="likes" :saves="saves"></book>
             </div>
         </div>
     </section>
@@ -10,7 +10,7 @@
 
 <script>
     export default {
-        props: ['user', 'books', 'shelf'],
+        props: ['user', 'books', 'shelf', 'likes', 'saves'],
 
         data() {
             return {

@@ -2,9 +2,9 @@
     <div class="column is-2 profile-like-book">
         <div class="box book hvr-grow" :style="bookCoverImage"></div>
         <p class="subtitle">
-            <a class="button is-outlined" :class="{ 'saved-button': isSaved}" @click="showBookSaveModal()">
+            <a class="button is-outlined" :class="{ 'saved-button': isSavedByAuthUser}" @click="showBookSaveModal()">
                 <span class="icon">
-                    <i class="fa fa-plus" :class="{ 'saved-icon': isSaved}"></i>
+                    <i class="fa fa-plus" :class="{ 'saved-icon': isSavedByAuthUser}"></i>
                 </span>
             </a>
             <a class="button is-outlined" :class="{ 'liked-button': isLikedByAuthUser}" @click="recommendBook()">
@@ -12,6 +12,17 @@
                     <i class="fa fa-heart" :class="{ 'liked-icon': isLikedByAuthUser}"></i>
                 </span>
                 <span class="small-span">{{ likesCount }}</span>
+            </a>
+            <a v-if="book.detail_page_url" class="button is-light"
+               :href="book.detail_page_url" target="_blank">
+                <span class="icon">
+                    <i class="fa fa-amazon"></i>
+                </span>
+            </a>
+            <a v-show="onOwnProfile" class="button is-light" @click="removeBookFromShelf()">
+                <span class="icon">
+                    <i class="fa fa-times"></i>
+                </span>
             </a>
         </p>
         <a :href="url">
@@ -28,7 +39,7 @@
 
 <script>
     export default {
-        props: ['user', 'book', 'likes'],
+        props: ['user', 'book', 'shelf', 'likes', 'saves'],
 
         data() {
             return {
@@ -36,8 +47,6 @@
                     id: '',
                 }),
                 likesCount: this.book.likes.length,
-                isLiked: true,
-                isSaved: true,
             }
         },
 
@@ -74,8 +83,18 @@
                     .then(response => {
                         this.likesCount = response.data.length;
                     });
-                }
             },
+
+            // remove the book from the bookshelf
+            removeBookFromShelf() {
+                this.form.id = this.book.id;
+                let form = new AppForm({ id: this.book.id });
+                App.delete(`/shelves/${this.shelf.id}/books/${this.book.id}`, form)
+                    .then(() =>{
+                        Bus.$emit('bookRemoved');
+                    }).catch(function(reason) {})
+            },
+        },
 
         computed: {
             bookCoverImage: function () {
@@ -87,9 +106,16 @@
             },
             isLikedByAuthUser: function () {
                 return (this.likes.indexOf(this.book.id) != -1)
-            }
+            },
+            isSavedByAuthUser: function () {
+                return (this.saves.indexOf(this.book.id) != -1)
+            },
+            onOwnProfile() {
+                return (this.shelf && App.userId === this.user.id);
+            },
         }
     }
+
 
 
 </script>
@@ -142,8 +168,5 @@
     .saved-icon {
         color: #FFFFFF !important;
     }
-
-
-
 
 </style>

@@ -4,7 +4,9 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Collection;
 use Laravel\Scout\Searchable;
+
 
 class User extends Authenticatable
 {
@@ -69,7 +71,7 @@ class User extends Authenticatable
      */
     public function likes()
     {
-        return Like::with('book')->where([
+        return Like::with('book', 'book.likes', 'book.authors')->where([
             'user_id' => $this->id,
         ])->get();
     }
@@ -77,20 +79,35 @@ class User extends Authenticatable
     /**
      * Get all liked books of the user.
      *
-     * @return collection of books
+     * @return Collection of books
      */
     public function allLikedBooks()
     {
-        $likes = Like::with('book', 'book.likes', 'book.authors')->where([
-            'user_id' => $this->id,
-        ])->get();
+        $likes = $this->likes();
         $books = $likes->map(function ($item) {
             return $item->book;
         });
 
         return $books;
     }
-    
+
+    /**
+     * Get all saved books of the user.
+     *
+     * @return Collection of books
+     */
+    public function allSavedBooks()
+    {
+        $allUserShelves = Shelf::with('books')->where([
+            'user_id' => $this->id,
+        ])->get();
+        $savedBooks = $allUserShelves->map(function ($shelf) {
+            return $shelf->books;
+        });
+
+        return $savedBooks->flatten();
+    }
+
     /**
      * The attributes that should be casted to native types.
      *

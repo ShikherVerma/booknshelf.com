@@ -43,6 +43,7 @@ Route::get('/@{username}/shelves/{shelf_slug}', ['as' => 'shelf_path', 'uses' =>
 Route::post('/user/welcome', 'UserController@welcome');
 Route::get('/user/current', 'UserController@current');
 Route::get('/user/current/likes/books', 'UserController@likedBooks');
+Route::get('/user/current/saves/books', 'UserController@savedBooks');
 Route::get('/user/shelves', 'UserController@shelves');
 Route::get('/disconnect/facebook', 'UserController@disconnectFacebook');
 

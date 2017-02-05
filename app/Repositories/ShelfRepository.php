@@ -72,7 +72,7 @@ class ShelfRepository {
     public function books($shelf)
     {
         $books = $shelf->books()->orderBy('created_at', 'desc')->get();
-        $books->load('categories', 'authors');
-        return $books->toArray();
+        $books->load('categories', 'authors', 'likes');
+        return $books;
     }
 }

@@ -3,7 +3,8 @@
         <div class="container">
             <div class="columns is-multiline">
                 <!--<profile-shelf v-for="shelf in shelves" :shelf="shelf" :user="user"></profile-shelf>-->
-                <search-book v-for="book in books" :book="book" :user="user"></search-book>
+                <!--<search-book v-for="book in books" :book="book" :user="user"></search-book>-->
+                <book v-for="book in books" :book="book" :user="user" :likes="likes" :saves="saves"></book>
             </div>
         </div>
     </section>
@@ -12,7 +13,7 @@
 <script>
     export default {
 
-        props: ['books', 'user', 'mostSavedBooks'],
+        props: ['books', 'user', 'mostSavedBooks', 'likes', 'saves'],
 
         data() {
             return {
