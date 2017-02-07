@@ -3,9 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Topic;
+use Illuminate\Http\Request;
 
 class TopicController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => [
+                'show',
+                'all',
+            ],
+        ]);
+    }
+
+    public function all()
+    {
+        $topics = Topic::all();
+
+        return view('topics', [
+            'topics' => json_encode($topics),
+        ]);
+    }
 
     public function show($slug)
     {
@@ -20,12 +40,19 @@ class TopicController extends Controller
         ]);
     }
 
-    public function all()
+    public function follow(Request $request)
     {
-        $topics = Topic::all();
-
-        return view('topics', [
-            'topics' => json_encode($topics),
+        $this->validate($request, [
+            'id' => 'required|exists:topics,id'
         ]);
+        return $request->user()->topics()->attach($request->id);
+    }
+
+    public function unfollow(Request $request)
+    {
+        $this->validate($request, [
+            'id' => 'required|exists:topic_user,topic_id'
+        ]);
+        return $request->user()->topics()->detach($request->id);
     }
 }

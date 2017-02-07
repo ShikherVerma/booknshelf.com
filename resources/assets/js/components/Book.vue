@@ -62,7 +62,7 @@
             },
 
             recommendBook() {
-                // if user is authenticated then show the save modal, otherwise login modal
+                // if user is authenticated then recommend the book, otherwise login modal
                 if (App.userId) {
                     let likeForm = new AppForm({});
                     App.post(`/likes/books/${this.book.id}/toggle`, likeForm)
@@ -117,7 +117,7 @@
     }
 </script>
 
-<style>
+<style lang="css">
     .book {
         height: 250px;
         background-position: center center;

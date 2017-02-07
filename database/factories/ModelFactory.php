@@ -46,3 +46,13 @@ $factory->define(App\Like::class, function (Faker\Generator $faker) {
         'comment' => $comment,
     ];
 });
+
+$factory->define(App\Topic::class, function (Faker\Generator $faker) {
+    $name = $faker->name;
+    return [
+        'name' => $name,
+        'description' => $faker->sentence(20),
+        'slug' => str_slug($name),
+        'cover_photo' => 'http://books.google.com/books?id=gt7EQgH8-b4C&dq=thin+air&hl=&as_pt=BOOKS&source=gbs_api',
+    ];
+});
