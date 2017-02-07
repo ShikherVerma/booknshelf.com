@@ -15,8 +15,6 @@ require('./bootstrap');
 // Modal component
 Vue.component('modal', require('./components/Modal.vue'));
 
-Vue.component('topic-card', require('./components/TopicCard.vue'));
-Vue.component('topic-card-modal', require('./components/TopicCardModal.vue'));
 
 // Settings Components
 Vue.component('settings-profile-photo', require('./components/settings/SettingsProfilePhoto.vue'));
@@ -49,6 +47,10 @@ Vue.component('user-navbar', require('./components/UserNavbar.vue'));
 Vue.component('spinner', require('./components/shared/Spinner.vue'));
 Vue.component('tabs', require('./components/shared/Tabs.vue'));
 Vue.component('tab', require('./components/shared/Tab.vue'));
+
+// Topics
+Vue.component('topics', require('./components/topics/Topics.vue'));
+Vue.component('topic', require('./components/topics/Topic.vue'));
 
 // The booknshelf book component
 Vue.component('book', require('./components/Book.vue'));

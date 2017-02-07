@@ -28,6 +28,9 @@
                 </div>
                 <div class="column is-4">
 
+                    <p class="subtitle">
+                        We'll never post to Twitter or Facebook without your permission.
+                    </p>
                     <p class="control">
                         <a class="button is-large fb-button" href="{{ url('/auth/facebook') }}">
                          <span class="icon">

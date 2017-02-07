@@ -9,10 +9,10 @@
     <section class="section profile-shelves-section">
         <div class="container">
             <tabs>
-                <tab name="{{ count($shelves) }} Bookshelves" :selected="true">
+                <tab name="{{ count($shelves) }} Created Bookshelves" :selected="true">
                     <profile-shelves :user="{{ $user }}" :shelves="{{ $shelves }}"></profile-shelves>
                 </tab>
-                <tab name="{{ count($likedBooks) }} Likes">
+                <tab name="{{ count($likedBooks) }} Liked Books">
                     <profile-likes :user="{{ $user }}" :books="{{ $likedBooks }}" :likes="userLikedBooks"
                                    :saves="userSavedBooks"></profile-likes>
                 </tab>

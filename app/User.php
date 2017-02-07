@@ -49,6 +49,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Get all the topics that this user follows to.
+     */
+    public function topics()
+    {
+        return $this->belongsToMany('App\Topic')->orderBy('created_at', 'desc');
+    }
+
+    /**
      * Get the route key for the model.
      *
      * @return string

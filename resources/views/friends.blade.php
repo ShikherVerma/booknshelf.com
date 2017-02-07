@@ -6,7 +6,7 @@
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title">
-                        Great! We've found {{ count($friends) }} of your friends on Facebook that use Booknshelf.
+                        We've found {{ count($friends) }} of your friends on Facebook that use Booknshelf.
                     </h1>
                     <h2 class="subtitle">
                         It would mean a lot to me if you could spread the word with your friends on Facebook or Twitter.
