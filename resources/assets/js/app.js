@@ -62,6 +62,7 @@ const app = new Vue({
         user: App.state.user,
         userLikedBooks: [],
         userSavedBooks: [],
+        userTopics: [],
         bookSaveModal: false,
         bookSaveModalBook: null,
         plaseLoginModal: false,
@@ -85,6 +86,12 @@ const app = new Vue({
             this.$http.get('/user/current/saves/books')
                 .then(response => {
                     this.userSavedBooks = response.data;
+                });
+        },
+        loadUserTopics() {
+            this.$http.get('/user/current/topics')
+                .then(response => {
+                    this.userTopics = response.data;
                 });
         },
         closeBookSaveModal: function () {
@@ -117,10 +124,12 @@ const app = new Vue({
         if (App.userId) {
             this.loadUserLikedBooks();
             this.loadUserSavedBooks();
+            this.loadUserTopics();
         }
 
         Bus.$on('updateUser', this.updateUser);
         Bus.$on('updateUserData', this.updateUserData);
+        Bus.$on('loadUserTopics', this.loadUserTopics);
         Bus.$on('showBookSaveModal', this.showBookSaveModal);
         Bus.$on('closeBookSaveModal', this.closeBookSaveModal);
         Bus.$on('showPleaseLoginModal', this.showPleaseLoginModal);

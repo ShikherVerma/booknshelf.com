@@ -2,7 +2,7 @@
     <section class="section">
         <div class="container">
             <div class="columns is-multiline">
-                <topic v-for="topic in topics" :topic="topic" :user="user"></topic>
+                <topic v-for="topic in topics" :topic="topic" :user="user" :user-topics="userTopics"></topic>
             </div>
         </div>
     </section>
@@ -10,7 +10,7 @@
 
 <script>
     export default {
-        props: ['topics', 'user'],
+        props: ['topics', 'user', 'userTopics'],
     }
 
 </script>

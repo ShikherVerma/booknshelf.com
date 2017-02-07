@@ -91,6 +91,18 @@ class UserController extends Controller
         return $books;
     }
 
+    public function followedTopics()
+    {
+        $user = User::find(Auth::id());
+        $topics = $user->topics()->get();
+        $result = $topics->map(function ($book) {
+            return $book->id;
+        });
+
+        return $result;
+    }
+
+
     public function shelves()
     {
         $user = $this->users->current();

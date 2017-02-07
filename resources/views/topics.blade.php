@@ -10,5 +10,5 @@
             </div>
         </div>
     </section>
-    <topics :topics="{{ $topics }}" :user="user"><topics>
+    <topics :topics="{{ $topics }}" :user="user" :user-topics="userTopics"><topics>
 @endsection
