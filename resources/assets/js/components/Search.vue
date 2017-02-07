@@ -2,8 +2,6 @@
     <section class="section">
         <div class="container">
             <div class="columns is-multiline">
-                <!--<profile-shelf v-for="shelf in shelves" :shelf="shelf" :user="user"></profile-shelf>-->
-                <!--<search-book v-for="book in books" :book="book" :user="user"></search-book>-->
                 <book v-for="book in books" :book="book" :user="user" :likes="likes" :saves="saves"></book>
             </div>
         </div>
@@ -17,7 +15,6 @@
 
         data() {
             return {
-                saved: false,
                 form: new AppForm({
                     id: '',
                     name: '',
@@ -42,12 +39,6 @@
                 }
             }
 
-        },
-
-        events: {
-            bookSaved() {
-                this.saved = true;
-            }
         }
     }
 

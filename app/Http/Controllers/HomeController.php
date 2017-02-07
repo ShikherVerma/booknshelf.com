@@ -34,14 +34,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $user = User::where('username', 'topic')->firstOrFail();
-
-        if (is_null($user)) {
-            $topics = [];
-        } else {
-            $topics = $this->shelves->forUser($user)->toArray();
-        }
-
+        $topics = [];
         return view('home', [
             'topics' => $topics,
         ]);
