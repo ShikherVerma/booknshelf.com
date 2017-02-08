@@ -7,7 +7,7 @@
                 <h1 class="title is-2">
                     <strong> Welcome to Booknshelf </strong>
                 </h1>
-                <h2 class="subtitle">
+                <h2 class="subtitle is-4">
                     Find the best books on different topics. The ones you'll read!
                 </h2>
                 <div class="columns">
@@ -30,6 +30,10 @@
 
     <section class="section is-primary is-fullheight is-bold">
         <div class="container">
+            <div class="title is-4">
+                Explore Our Favorite Topics
+                <a href="/topics">See all ></a>
+            </div>
             <div class="tile is-ancestor">
                 <div class="tile is-vertical is-8">
                     <div class="tile">

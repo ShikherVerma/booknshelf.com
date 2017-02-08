@@ -14,7 +14,7 @@
                     <div class="level-left">
                         <p class="level-item">
                             <a class="button is-medium" :class="{ 'followed-button': isFollowedByAuthUser}"
-                               @click="follow()">
+                               @click="toggle()">
                                 <span v-if="!isFollowedByAuthUser">Follow</span>
                                 <span v-else>Following</span>
                             </a>
@@ -41,11 +41,19 @@
                 form: new AppForm({
                     id: '',
                 }),
-                followersCount: 100,
+                followersCount: this.topic.followers_count
             }
         },
 
         methods: {
+
+            toggle() {
+                if(this.isFollowedByAuthUser) {
+                    this.unfollow()
+                } else {
+                    this.follow()
+                }
+            },
 
             follow() {
                 // if user is authenticated then show the login modal, otherwise login modal
@@ -91,6 +99,9 @@
             isFollowedByAuthUser: function () {
                 return (this.userTopics.indexOf(this.topic.id) != -1)
             },
+            topicFollowText: function() {
+                 return isFollowedByAuthUser ? "Following" : "Follow";
+            }
         },
 
         /**
@@ -104,12 +115,16 @@
 
 
 
+
 </script>
 
 <style lang="css">
     .followed-button {
-        background-color: #f15151;
-        color: white;
-        font-weight: bold;
+        background-color: #E95352;
+        color: #ffffff;
     }
+    .followed-button:hover {
+        color: #ffffff;
+    }
+
 </style>
