@@ -20,7 +20,7 @@ class TopicController extends Controller
 
     public function all()
     {
-        $topics = Topic::all();
+        $topics = Topic::withCount('followers')->get();
 
         return view('topics', [
             'topics' => json_encode($topics),
