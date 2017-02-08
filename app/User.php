@@ -53,7 +53,7 @@ class User extends Authenticatable
      */
     public function topics()
     {
-        return $this->belongsToMany('App\Topic')->orderBy('created_at', 'desc');
+        return $this->belongsToMany('App\Topic')->withTimestamps()->orderBy('created_at', 'desc');
     }
 
     /**

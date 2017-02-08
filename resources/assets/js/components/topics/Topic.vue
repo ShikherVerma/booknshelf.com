@@ -1,6 +1,6 @@
 <template>
     <div class="column is-half">
-        <article class="media">
+        <article class="media hvr-glow" style="padding: 10px;" @click.stop.prevent="topicPage()">
             <figure class="media-left">
                 <p class="image is-128x128">
                     <img :src="topicCoverPhoto">
@@ -8,13 +8,15 @@
             </figure>
             <div class="media-content">
                 <div class="content">
-                    <h1 class="subtitle is-4">{{ topic.name }}</h1>
+                    <a :href="topicUrl">
+                        <h1 class="subtitle is-4 topic-name">{{ topic.name }}</h1>
+                    </a>
                 </div>
                 <nav class="level">
                     <div class="level-left">
                         <p class="level-item">
-                            <a class="button is-medium" :class="{ 'followed-button': isFollowedByAuthUser}"
-                               @click="toggle()">
+                            <a class="button is-medium" :disabled="form.busy" :class="{ 'followed-button': isFollowedByAuthUser}"
+                               @click.stop.prevent="toggle()">
                                 <span v-if="!isFollowedByAuthUser">Follow</span>
                                 <span v-else>Following</span>
                             </a>
@@ -48,11 +50,14 @@
         methods: {
 
             toggle() {
+                this.form.startProcessing();
+
                 if(this.isFollowedByAuthUser) {
                     this.unfollow()
                 } else {
                     this.follow()
                 }
+
             },
 
             follow() {
@@ -86,6 +91,10 @@
                 }
             },
 
+            topicPage() {
+                window.location.href = '/topics/' + this.topic.slug;
+            }
+
         },
 
         computed: {
@@ -101,6 +110,9 @@
             },
             topicFollowText: function() {
                  return isFollowedByAuthUser ? "Following" : "Follow";
+            },
+            topicUrl: function() {
+                return '/topics/' + this.topic.slug;
             }
         },
 
