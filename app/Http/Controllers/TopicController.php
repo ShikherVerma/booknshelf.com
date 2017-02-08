@@ -27,16 +27,17 @@ class TopicController extends Controller
         ]);
     }
 
-    public function show($slug)
+    public function show(Request $request, $slug)
     {
         $topic = Topic::where('slug', $slug)->firstOrFail();
 
-        $books = $topic->books();
-
-        dd($books);
+//        $books = $topic->books();
+//
+//        dd($books);
 
         return view('topic', [
-            'books' => json_encode($books),
+            'books' => json_encode($topic),
+            'user' => $request->user(),
         ]);
     }
 
