@@ -35,11 +35,13 @@ class UserController extends Controller
         $user = $this->users->findByUsername($username);
         $shelves = $this->shelves->forUser($user);
         $likedBooks = $this->users->getAllLikedBooks($username);
+        $topics = $this->users->getAllTopics($username);
 
         return view('profile', [
             'user' => $user,
             'shelves' => $shelves,
             'likedBooks' => $likedBooks,
+            'topics' => $topics,
         ]);
     }
 

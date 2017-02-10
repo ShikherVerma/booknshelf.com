@@ -26,6 +26,7 @@ Vue.component('profile', require('./components/Profile.vue'));
 Vue.component('profile-shelves', require('./components/profile/ProfileShelves.vue'));
 Vue.component('profile-shelf', require('./components/profile/ProfileShelf.vue'));
 Vue.component('profile-likes', require('./components/profile/ProfileLikes.vue'));
+Vue.component('profile-topics', require('./components/profile/ProfileTopics.vue'));
 
 // Search
 Vue.component('search', require('./components/Search.vue'));

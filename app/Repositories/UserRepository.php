@@ -3,11 +3,11 @@
 namespace App\Repositories;
 
 use App\Jobs\SetUserAvatar;
+use App\Topic;
 use App\User;
 use Auth;
 use Faker;
 use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Support\Facades\DB;
 
 class UserRepository
 {
@@ -44,6 +44,16 @@ class UserRepository
         $likedBooks = $user->allLikedBooks();
 
         return $likedBooks;
+    }
+
+    public function getAllTopics($username)
+    {
+        $user = User::where('username', $username)->firstOrFail();
+
+        $topics = $user->topics()->withCount('followers')->get();
+        $topics->load('followers');
+
+        return $topics;
     }
 
     public function findByFacebookUserIdOrCreate($userData)

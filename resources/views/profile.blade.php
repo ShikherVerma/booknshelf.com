@@ -16,6 +16,9 @@
                     <profile-likes :user="{{ $user }}" :books="{{ $likedBooks }}" :likes="userLikedBooks"
                                    :saves="userSavedBooks"></profile-likes>
                 </tab>
+                <tab name="{{ count($topics) }} Topics">
+                    <profile-topics :user="{{ $user }}" :topics="{{ $topics }}" :user-topics="userTopics"></profile-topics>
+                </tab>
             </tabs>
         </div>
     </section>
