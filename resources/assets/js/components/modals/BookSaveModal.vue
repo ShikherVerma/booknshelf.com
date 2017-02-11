@@ -20,7 +20,7 @@
                     <p class="control is-expanded has-addons">
                         <input class="input is-medium" name="name" type="text" v-model="form.name"
                                :class="{'is-danger': form.errors.has('name')}" placeholder="e.g. My favorite books ...">
-                        <button class="button is-primary is-medium" type="submit" :disabled="form.busy">Create</button>
+                        <button class="button is-warning is-medium" type="submit" :disabled="form.busy">Create</button>
                     </p>
                 </form>
                 <div class="notification is-danger" v-if="form.errors.has('name')">
