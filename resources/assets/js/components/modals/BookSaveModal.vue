@@ -8,23 +8,24 @@
             </header>
             <section class="modal-card-body">
                 <p class="control">
-                    <a class="button is-primary" @click="showNewShelfForm=!showNewShelfForm">
+                    <a class="button is-warning is-medium is-warning" @click="showNewShelfForm=!showNewShelfForm">
                         <span class="icon">
                             <i class="fa fa-plus"></i>
                         </span>
                         <span>Create new bookshelf</span>
                     </a>
                 </p>
-                <form v-on:submit.prevent="storeBookToNewBookshelf">
-                    <p class="control has-addons" v-if="showNewShelfForm">
-                        <input class="input" name="name" type="text" v-model="form.name"
-                               :class="{'is-danger': form.errors.has('name')}" placeholder="The bookshelf name ...">
-                        <button class="button is-primary" type="submit" :disabled="form.busy">Create</button>
+                <form v-on:submit.prevent="storeBookToNewBookshelf"  v-if="showNewShelfForm">
+                    <label class="label">The name your new bookshelf</label>
+                    <p class="control is-expanded has-addons">
+                        <input class="input is-medium" name="name" type="text" v-model="form.name"
+                               :class="{'is-danger': form.errors.has('name')}" placeholder="e.g. My favorite books ...">
+                        <button class="button is-primary is-medium" type="submit" :disabled="form.busy">Create</button>
                     </p>
                 </form>
-                <span class="help is-danger" v-if="form.errors.has('name')">
+                <div class="notification is-danger" v-if="form.errors.has('name')">
                     {{ form.errors.get('name') }}
-                </span>
+                </div>
 
                 <div v-show="success" class="notification is-success">
                     The book has been added to your bookshelf.
@@ -32,8 +33,8 @@
                 <spinner v-show="loading"></spinner>
                 <p class="control" v-show="!loading">
                     <div v-for="shelf in shelves"
-                         class="notification shelf-list-item" @click="storeBookToShelf(shelf.id)">
-                        <strong>{{ shelf.name }}</strong>
+                         class="notification is-primary shelf-list-item" @click="storeBookToShelf(shelf.id)">
+                        <p class="title">{{ shelf.name }}</p>
                     </div>
                 </p>
             </section>
