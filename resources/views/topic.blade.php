@@ -1,12 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-    {{--<shelf :user="{{ $user }}" :books="{{ $books }}" :shelf="{{ $shelf }}"></shelf>--}}
-    {{--<shelf-books :user="{{ $user }}" :books="{{ $books }}" :shelf="{{ $shelf }}" :likes="userLikedBooks"--}}
-                 {{--:saves="userSavedBooks"></shelf-books>--}}
+    <topic-page
+        :books="{{ $books }}"
+        :topic="{{ $topic }}"
+        :user="user"
+        :likes="userLikedBooks"
+        :saves="userSavedBooks"
+        :user-topics="userTopics">
+    </topic-page>
+
     @if (Auth::check())
         <book-save-modal :user="{{ $user }}" :book="bookSaveModalBook" :show="bookSaveModal"></book-save-modal>
-    @else
-        <please-login-modal :show="plaseLoginModal"></please-login-modal>
     @endif
 @endsection

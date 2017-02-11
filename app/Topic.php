@@ -28,6 +28,14 @@ class Topic extends Model
         return $this->belongsToMany('App\User')->withTimestamps();
     }
 
+    /**
+     * Return the books that belong to this topic.
+     */
+    public function books()
+    {
+        return $this->belongsToMany('App\Book')->withTimestamps();
+    }
+
     public function setSlugAttribute($value)
     {
         $this->attributes['slug'] = str_slug($value);
