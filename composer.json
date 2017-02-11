@@ -9,7 +9,6 @@
         "laravel/framework": "5.3.*",
         "laravel/socialite": "^2.0",
         "barryvdh/laravel-debugbar": "^2.2",
-        "barryvdh/laravel-ide-helper": "^2.1",
         "phpspec/phpspec": "^2.0",
         "intervention/imagecache": "^2.3",
         "google/apiclient": "1.0.*@beta",
@@ -40,7 +39,8 @@
         "symfony/dom-crawler": "2.8.*|3.0.*",
         "laravel/homestead": "^4.0",
         "laracasts/generators": "^1.1",
-        "filp/whoops": "^2.1"
+        "filp/whoops": "^2.1",
+        "barryvdh/laravel-ide-helper": "^2.2"
     },
     "autoload": {
         "classmap": [

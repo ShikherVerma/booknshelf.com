@@ -33,7 +33,7 @@
                 <p class="control" v-show="!loading">
                     <div v-for="shelf in shelves"
                          class="notification shelf-list-item" @click="storeBookToShelf(shelf.id)">
-                        {{ shelf.name }}
+                        <strong>{{ shelf.name }}</strong>
                     </div>
                 </p>
             </section>

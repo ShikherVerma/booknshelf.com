@@ -52,6 +52,7 @@ Vue.component('tab', require('./components/shared/Tab.vue'));
 // Topics
 Vue.component('topics', require('./components/topics/Topics.vue'));
 Vue.component('topic', require('./components/topics/Topic.vue'));
+Vue.component('topic-page', require('./components/topics/TopicPage.vue'));
 
 // The booknshelf book component
 Vue.component('book', require('./components/Book.vue'));

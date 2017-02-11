@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\ShelfRepository;
+use App\Shelf;
 use App\Topic;
+use App\User;
 use Illuminate\Http\Request;
 
 class TopicController extends Controller
@@ -27,16 +30,22 @@ class TopicController extends Controller
         ]);
     }
 
-    public function show(Request $request, $slug)
+    public function show(Request $request, ShelfRepository $shelfRepository, $slug)
     {
-        $topic = Topic::where('slug', $slug)->firstOrFail();
+        $user = User::where(['username' => 'topic'])->firstOrFail();
 
-//        $books = $topic->books();
-//
-//        dd($books);
+        // find a shelf that represents this topic
+        $shelf = Shelf::where([
+            'slug' => $slug,
+            'user_id' => $user->getAttribute('id'),
+        ])->firstOrFail();
+        $books = $shelfRepository->books($shelf);
+        // get the topic by slug
+        $topic = Topic::withCount('followers')->where(['slug' => $slug])->firstOrFail();
 
         return view('topic', [
-            'books' => json_encode($topic),
+            'topic' => $topic,
+            'books' => json_encode($books),
             'user' => $request->user(),
         ]);
     }
@@ -44,16 +53,54 @@ class TopicController extends Controller
     public function follow(Request $request)
     {
         $this->validate($request, [
-            'id' => 'required|exists:topics,id'
+            'id' => 'required|exists:topics,id',
         ]);
+
         return $request->user()->topics()->attach($request->id);
     }
 
     public function unfollow(Request $request)
     {
         $this->validate($request, [
-            'id' => 'required|exists:topic_user,topic_id'
+            'id' => 'required|exists:topic_user,topic_id',
         ]);
+
         return $request->user()->topics()->detach($request->id);
     }
+
+//    public function storeBook(Request $request, $topicId)
+//    {
+//        $this->validate($request, [
+//            'id' => 'required',
+//        ]);
+//        $bookId = $request->id;
+//        $count = DB::table('book_topic')->where([
+//            'topic_id' => $topicId,
+//            'book_id' => $bookId,
+//        ])->count();
+//
+//        if ($count > 0) {
+//            $error = ['name' => ['This book is already in this topic.']];
+//
+//            return response()->json($error, 403);
+//        }
+//
+//        $topic = Topic::firstOrFail($topicId);
+//
+//        $topic->books()->attach($bookId);
+//    }
+//
+//    public function removeBook($topicId, $bookId)
+//    {
+//        $topic = Topic::firstOrFail($topicId);
+//        $topic->books()->detach($bookId);
+//    }
+//
+//    public function getBooks($topicId)
+//    {
+//        $topic = Topic::firstOrFail($topicId);
+//        $books = $topic->books();
+//
+//        return response()->json($books);
+//    }
 }

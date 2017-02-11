@@ -57,6 +57,7 @@
                 } else {
                     this.follow()
                 }
+                this.form.finishProcessing();
 
             },
 
@@ -123,11 +124,6 @@
             this.form.id = this.topic.id;
         },
     }
-
-
-
-
-
 </script>
 
 <style lang="css">
