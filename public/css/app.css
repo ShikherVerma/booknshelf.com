@@ -4352,7 +4352,7 @@ label.panel-block {
   padding: 3rem 1.5rem 6rem; }
 
 .fb-button {
-  background-color: #2D4373;
+  background-color: #3b5998;
   color: white;
   width: 100%;
   -webkit-box-pack: start;
@@ -4455,6 +4455,46 @@ article {
 
 .topic-title {
   color: #00b89c !important; }
+
+.facebook-span {
+  background-color: #3b5998;
+  color: white;
+  display: inline-block;
+  font-weight: 700 !important;
+  margin-left: 4px;
+  padding: 10px 15px;
+  text-transform: uppercase; }
+
+.primary-span {
+  color: white;
+  display: inline-block;
+  font-weight: 700 !important;
+  margin-left: 4px;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  background-color: #ffdd57;
+  color: #00b89c; }
+
+.is-blue {
+  background-color: #1c51a6;
+  color: #fff; }
+
+.is-blue .title, .is-blue .subtitle {
+  color: #ffffff; }
+
+.twitter-tweet-button {
+  background-color: #2795E9;
+  color: white;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  border: none; }
+
+.facebook-share-button {
+  background-color: #3b5998;
+  color: white;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  border: none; }
 
 [v-cloak] {
   display: none; }

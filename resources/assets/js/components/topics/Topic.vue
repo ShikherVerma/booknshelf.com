@@ -1,6 +1,6 @@
 <template>
     <div class="column is-half">
-        <article class="media hvr-glow" style="padding: 10px;" @click.stop.prevent="topicPage()">
+        <article class="media hvr-glow" style="padding: 20px;" @click.stop.prevent="topicPage()">
             <figure class="media-left">
                 <p class="image is-128x128">
                     <img :src="topicCoverPhoto">

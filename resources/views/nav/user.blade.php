@@ -13,9 +13,6 @@
         <a class="nav-item" href="/topics">
           Topics
         </a>
-        <a class="nav-item is-tab" href="/bookshelves">
-            Bookshelves
-        </a>
     </div>
 
     <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
@@ -28,7 +25,7 @@
 
     <!-- This "nav-menu" is hidden on mobile -->
     <!-- Add the modifier "is-active" to display it on mobile -->
-    <div class="nav-right nav-menu" style="padding-right: 30px;">
+    <div id="right-navbar" class="nav-right nav-menu" style="padding-right: 30px;">
         <a class="nav-item" @click="showNewShelfModal = true">
             <span class="icon">
                 <i class="fa fa-plus"></i>

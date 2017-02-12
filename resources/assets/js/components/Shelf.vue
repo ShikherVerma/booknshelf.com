@@ -23,6 +23,23 @@
                             </p>
                         </div>
                         <div class="level-right">
+                            <div class="level-item">
+                                <a class="button twitter-tweet-button"
+                                   :href="twitterShareUrl" target="_blank">
+                                  <span class="icon">
+                                    <i class="fa fa-twitter"></i>
+                                  </span>
+                                </a>
+                            </div>
+                            <div class="level-item">
+                                <a class="button facebook-share-button"
+                                   :href="facebookShareUrl"
+                                   target="_blank">
+                                  <span class="icon">
+                                    <i class="fa fa-facebook"></i>
+                                  </span>
+                                </a>
+                            </div>
                             <div v-if="canEditOrDelete" class="level-item">
                                 <a class="button is-primary is-inverted is-outlined" @click="showEditShelfModal = true">
                                     <span class="icon">
@@ -62,6 +79,15 @@
 
             canEditOrDelete() {
                 return App.userId === this.user.id;
+            },
+            twitterShareUrl: function() {
+                return "http://twitter.com/intent/tweet?status=" +
+                this.shelf.name + ": " + this.shelf.description + " by @" + this.user.username
+                + " " + window.location.href;
+            },
+            facebookShareUrl: function() {
+                return "http://www.facebook.com/sharer/sharer.php?u=" + window.location.href + "&title=" +
+                 this.shelf.name + " by " + this.user.name;
             }
         },
     }
