@@ -28,7 +28,7 @@ class ShelfRepository {
             return collect([]);
         };
         $shelves = $user->shelves()->get();
-        $shelves->load('user');
+        $shelves->load('user', 'books');
 
         return $shelves;
     }

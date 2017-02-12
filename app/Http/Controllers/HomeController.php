@@ -35,8 +35,10 @@ class HomeController extends Controller
     {
 
         $topics = [];
+        $shelves = $this->shelves->ourPicks();
         return view('home', [
-            'topics' => $topics,
+            'shelves' => $shelves->toArray(),
+            'topics' => $topics
         ]);
     }
 

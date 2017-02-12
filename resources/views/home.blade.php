@@ -231,21 +231,18 @@
     <section class="section is-primary is-bold">
         <div class="container">
             <div class="title is-4">
-                Explore Our Favorite Books
-                <a href="/search">Serch For More ></a>
-            </div>
-            <div class="container">
-                <div class="columns is-multiline">
-                    <book v-for="book in books" :book="book" :user="user" :likes="likes" :saves="saves"></book>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section is-primary is-bold">
-        <div class="container">
-            <div class="title is-4">
                 Explore Our Favorite Bookshelves
+            </div>
+            <div class="columns is-multiline">
+                @foreach ($shelves as $shelf)
+                    <div class="column is-3">
+                        <a href="{{ route('shelf_path', ['username' => $shelf['user']['username'], 'shelf_slig' =>$shelf['slug']]) }}">
+                            <div class="box shelf-item hvr-float" style="background-image: url({{ $shelf['cover'] or '' }})"></div>
+                        </a>
+                        <h2 class="title">{{ $shelf['name'] }}</h2>
+                        <p class="subtitle">{{ count($shelf['books']) }} books</p>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>

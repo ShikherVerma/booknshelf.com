@@ -47,14 +47,22 @@ class UpdateShelfCover implements ShouldQueue
         $canvas = $imageManager->canvas(300, 300);
 
         if (count($covers) === 0) {
-            Log::info("The shelf does not have any covers ...");
-            return $this->delete();
-        } elseif (count($covers) === 1) {
-            $cover = $imageManager->make($covers[0])->fit(200, 300);
+            Log::info("The shelf does not have any covers so we will set the default one.");
+            $url = asset('/img/backgrounds/default-shelf-cover.jpg');
+            $cover = $imageManager
+                ->make($url)
+                ->fit(300, 300);
             $canvas->insert($cover, 'center');
+        } elseif (count($covers) === 1) {
+            $url = asset('/img/backgrounds/default-shelf-cover.jpg');
+            $left = $imageManager->make($url)->fit(145, 300);
+            $right = $imageManager->make($covers[0])->fit(145, 300);
+            // create canvas and insert parts
+            $canvas->insert($left, 'top-left');
+            $canvas->insert($right, 'top-right');
         } elseif (count($covers) === 2) {
-            $left = $imageManager->make($covers[0])->fit(150, 300);
-            $right = $imageManager->make($covers[1])->fit(150, 300);
+            $left = $imageManager->make($covers[0])->fit(145, 300);
+            $right = $imageManager->make($covers[1])->fit(145, 300);
             // create canvas and insert parts
             $canvas->insert($left, 'top-left');
             $canvas->insert($right, 'top-right');
