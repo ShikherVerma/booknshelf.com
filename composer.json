@@ -30,7 +30,8 @@
         "aws/aws-sdk-php": "~3.0",
         "elasticsearch/elasticsearch": "^5.0",
         "exeu/apai-io": "~2.0",
-        "doctrine/dbal": "^2.5"
+        "doctrine/dbal": "^2.5",
+        "league/csv": "^8.2"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

@@ -18,6 +18,7 @@ class Kernel extends ConsoleKernel
         Commands\SetCoverImage::class,
         Commands\CreateTopics::class,
         Commands\UpdateOurShelfCovers::class,
+        Commands\ExportUsersWithEmails::class,
     ];
 
     /**

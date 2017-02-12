@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    @if (Auth::check())
+        <book-save-modal :user="user" :book="bookSaveModalBook" :show="bookSaveModal"></book-save-modal>
+    @endif
     <section class="hero is-medium is-primary is-bold">
         <div class="hero-body">
             <div class="container has-text-centered">
@@ -28,12 +31,15 @@
         </div>
     </section>
 
-    <section class="section is-primary is-fullheight is-bold">
+    <section class="section is-primary is-fullheight is-bold" style="padding-bottom: 7px;">
         <div class="container">
-            <div class="title is-4">
-                Explore Our Favorite Topics
-                <a href="/topics">See all ></a>
+            <div class="notification">
+                <div class="title is-4">
+                    Explore Our Favorite Topics
+                    <a href="/topics">See all ></a>
+                </div>
             </div>
+
             <div class="tile is-ancestor">
                 <div class="tile is-vertical is-8">
                     <div class="tile">
@@ -199,7 +205,6 @@
                 </div>
             </div>
 
-
             <div class="tile is-ancestor">
                 <div class="tile is-parent is-6">
                     <article class="tile is-child notification">
@@ -214,7 +219,7 @@
                 </div>
                 <div class="tile is-parent">
                     <article onclick="window.location ='https://goo.gl/forms/CcCU1KSpmqFJeHzB3'"
-                        class="hvr-glow tile is-child notification has-text-centered">
+                             class="hvr-glow tile is-child notification has-text-centered">
                         <h1 class="title is-2">Suggest a topic</h1>
                         <span class="icon is-large">
                           <i class="fa fa-plus"></i>
@@ -224,20 +229,24 @@
             </div>
 
         </div>
-
-        </div>
     </section>
+
+    <home-books-section :books="{{ $books }}" :user="user" :likes="userLikedBooks"
+                        :saves="userSavedBooks"></home-books-section>
 
     <section class="section is-primary is-bold">
         <div class="container">
-            <div class="title is-4">
-                Explore Our Favorite Bookshelves
+            <div class="notification">
+                <div class="title is-4">
+                    Explore Our Favorite Bookshelves
+                </div>
             </div>
             <div class="columns is-multiline">
                 @foreach ($shelves as $shelf)
                     <div class="column is-3">
                         <a href="{{ route('shelf_path', ['username' => $shelf['user']['username'], 'shelf_slig' =>$shelf['slug']]) }}">
-                            <div class="box shelf-item hvr-float" style="background-image: url({{ $shelf['cover'] or '' }})"></div>
+                            <div class="box shelf-item hvr-float"
+                                 style="background-image: url({{ $shelf['cover'] or '' }})"></div>
                         </a>
                         <h2 class="title">{{ $shelf['name'] }}</h2>
                         <p class="subtitle">{{ count($shelf['books']) }} books</p>
@@ -246,5 +255,6 @@
             </div>
         </div>
     </section>
+
 
 @endsection

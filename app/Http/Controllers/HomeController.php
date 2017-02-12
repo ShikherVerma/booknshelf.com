@@ -36,9 +36,24 @@ class HomeController extends Controller
 
         $topics = [];
         $shelves = $this->shelves->ourPicks();
+        $books = App\Book::whereIn('asin', [
+            '1501135910',
+            '0143109677',
+            '0060555661',
+            '0066620996',
+            '0062273205',
+            '1599869772',
+            '0393061329',
+            '0743297334',
+            '0345391802',
+            '0553380168'
+
+        ])->get();
+        $books->load('authors', 'likes');
         return view('home', [
             'shelves' => $shelves->toArray(),
-            'topics' => $topics
+            'topics' => $topics,
+            'books' => json_encode($books)
         ]);
     }
 

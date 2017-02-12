@@ -15,6 +15,8 @@ require('./bootstrap');
 // Modal component
 Vue.component('modal', require('./components/Modal.vue'));
 
+// Home Books Section Component
+Vue.component('home-books-section', require('./components/HomeBooksSection.vue'));
 
 // Settings Components
 Vue.component('settings-profile-photo', require('./components/settings/SettingsProfilePhoto.vue'));

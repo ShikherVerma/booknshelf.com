@@ -50,7 +50,6 @@ Route::get('/disconnect/facebook', 'UserController@disconnectFacebook');
 
 // Search
 Route::get('/books/search', 'BookController@search');
-Route::get('/shelves/search', 'ShelfController@search');
 
 // Shelves
 Route::post('/shelves', 'ShelfController@store');
