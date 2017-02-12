@@ -27,5 +27,5 @@
             </div>
         </div>
     </section>
-    <search :books="{{ $books }}" :user="user" :likes="userLikedBooks" :saves="userSavedBooks"><search>
+    <search :books="{{ $books }}" :user="user" :likes="userLikedBooks" :saves="userSavedBooks"></search>
 @endsection

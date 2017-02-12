@@ -11,7 +11,7 @@
 <script>
     export default {
 
-        props: ['books', 'user', 'mostSavedBooks', 'likes', 'saves'],
+        props: ['books', 'user', 'likes', 'saves'],
 
         data() {
             return {
