@@ -16,7 +16,8 @@ class Kernel extends ConsoleKernel
         // Commands\Inspire::class,
         Commands\ConvertBookCoversHttps::class,
         Commands\SetCoverImage::class,
-        Commands\CreateTopics::class
+        Commands\CreateTopics::class,
+        Commands\UpdateOurShelfCovers::class,
     ];
 
     /**
