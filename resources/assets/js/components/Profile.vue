@@ -4,15 +4,47 @@
         <!-- Hero content: will be in the middle -->
         <div class="hero-body">
             <div class="container">
-                <figure class="image is-128x128 is-clearfix">
-                    <img :src="user.avatar">
-                </figure>
-                <h1 class="title">
-                    {{ user.name }}
-                </h1>
-                <h2 class="subtitle">
-                    {{ user.about }}
-                </h2>
+                <div class="columns">
+                    <div class="column is-2 profile-avatar-column">
+                        <figure class="image is-128x128 is-clearfix">
+                            <img :src="user.avatar">
+                        </figure>
+                    </div>
+                    <div class="column is-half">
+                        <h1 class="title">
+                            {{ user.name }}
+                        </h1>
+                        <h2 class="subtitle">
+                            {{ user.about }}
+                        </h2>
+                    </div>
+                    <div class="column">
+                        <div class="level-item">
+                            <div class="level-left">
+                                <div class="level-item">
+                                    <p class="subtitle">Share your profile</p>
+                                </div>
+                                <div class="level-item">
+                                    <a class="button is-medium twitter-tweet-button"
+                                        :href="twitterShareUrl" target="_blank">
+                                      <span class="icon">
+                                         <i class="fa fa-twitter"></i>
+                                      </span>
+                                     </a>
+                                </div>
+                                <div class="level-item">
+                                    <a class="button is-medium facebook-share-button"
+                                       :href="facebookShareUrl"
+                                       target="_blank">
+                                      <span class="icon">
+                                        <i class="fa fa-facebook"></i>
+                                      </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <h2>
                     <div class="level">
                         <div class="level-left">
@@ -32,31 +64,6 @@
                                 </a>
                             </p>
                         </div>
-                        <div class="level-right">
-                            <div class="level-item">
-                                <p>
-                                    Share your profile
-                                </p>
-                            </div>
-                            <div class="level-item">
-                                <div id="#social">
-
-                                    <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fbooknshelf.com&layout=button&size=small&mobile_iframe=true&appId=1899203000306326&width=59&height=20"
-                                            width="59" height="20" style="border:none;overflow:hidden" scrolling="no"
-                                            frameborder="0" allowTransparency="true"></iframe>
-
-                                    <iframe id="twitter-widget-1" scrolling="no" frameborder="0"
-                                            allowtransparency="true"
-                                            class="twitter-share-button twitter-share-button-rendered twitter-tweet-button"
-                                            title="Twitter Tweet Button"
-                                            src="http://platform.twitter.com/widgets/tweet_button.c4fd2bd4aa9a68a5c8431a3d60ef56ae.en.html#dnt=false&amp;id=twitter-widget-1&amp;lang=en&amp;original_referer=https://booknshelf.com&amp;related=tiggreen%3ACreator%20of%20Booknshelf&amp;size=m&amp;text=Find the best books on different topics. The ones you'll read!&amp;time=1485106087144&amp;type=share&amp;url=https%3A%2F%2Fbooknshelf.com&amp;via=booknshelf"
-                                            style="position: static; visibility: visible; width: 61px; height: 20px;"
-                                            data-url="https://booknshelf.com"
-                                            data-size="large"></iframe>
-
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </h2>
             </div>
@@ -75,16 +82,21 @@
          computed: {
             canEditOrDelete() {
                 return App.userId === this.user.id;
+            },
+            twitterShareUrl: function() {
+                return "http://twitter.com/intent/tweet?status=" +
+                "Check out my profile on @booknshelf. " + window.location.href;
+            },
+            facebookShareUrl: function() {
+                return "http://www.facebook.com/sharer/sharer.php?u=" + window.location.href + "&title=" +
+                 this.user.name + "'s profile on Booknshelf.";
             }
         },
     }
-
-
-
-
-
-
 </script>
 
 <style lang="css">
+    .profile-avatar-column {
+        width: 140px !important;
+    }
 </style>

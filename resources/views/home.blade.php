@@ -228,4 +228,26 @@
         </div>
     </section>
 
+    <section class="section is-primary is-bold">
+        <div class="container">
+            <div class="title is-4">
+                Explore Our Favorite Books
+                <a href="/search">Serch For More ></a>
+            </div>
+            <div class="container">
+                <div class="columns is-multiline">
+                    <book v-for="book in books" :book="book" :user="user" :likes="likes" :saves="saves"></book>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section is-primary is-bold">
+        <div class="container">
+            <div class="title is-4">
+                Explore Our Favorite Bookshelves
+            </div>
+        </div>
+    </section>
+
 @endsection

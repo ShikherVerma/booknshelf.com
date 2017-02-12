@@ -6,7 +6,14 @@
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title">
-                        We've found {{ count($friends) }} of your friends on Facebook that use Booknshelf.
+                        We've found
+                        {{ count($friends) }}
+                        of your friends on
+                        <span class="facebook-span">
+                            Facebook
+                        </span> that use
+
+                        <span class="primary-span">Booknshelf.</span>
                     </h1>
                 </div>
             </div>

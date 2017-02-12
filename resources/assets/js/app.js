@@ -155,3 +155,7 @@ const app = new Vue({
         }
     },
 });
+
+$(".nav-toggle").on('click', function(){
+    $('#right-navbar').toggleClass('is-active');
+});

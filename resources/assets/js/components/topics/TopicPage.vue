@@ -35,18 +35,19 @@
                         <div class="column"></div>
                         <div class="column">
                             <div id="#social">
-                                <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fbooknshelf.com&layout=button&size=small&mobile_iframe=true&appId=1899203000306326&width=59&height=20"
-                                        width="59" height="20" style="border:none;overflow:hidden"
-                                        scrolling="no"
-                                        frameborder="0" allowTransparency="true"></iframe>
-                                <iframe id="twitter-widget-1" scrolling="no" frameborder="0"
-                                        allowtransparency="true"
-                                        class="twitter-share-button twitter-share-button-rendered twitter-tweet-button"
-                                        title="Twitter Tweet Button"
-                                        src="http://platform.twitter.com/widgets/tweet_button.c4fd2bd4aa9a68a5c8431a3d60ef56ae.en.html#dnt=false&amp;id=twitter-widget-1&amp;lang=en&amp;original_referer=https://booknshelf.com&amp;related=tiggreen%3ACreator%20of%20Booknshelf&amp;size=m&amp;text=Find the best books on different topics. The ones you'll read!&amp;time=1485106087144&amp;type=share&amp;url=https%3A%2F%2Fbooknshelf.com&amp;via=booknshelf"
-                                        style="position: static; visibility: visible; width: 61px; height: 20px;"
-                                        data-url="https://booknshelf.com"
-                                        data-size="large"></iframe>
+                                <a class="button is-medium twitter-tweet-button"
+                                   :href="twitterShareUrl" target="_blank">
+                                  <span class="icon">
+                                    <i class="fa fa-twitter"></i>
+                                  </span>
+                                </a>
+                                <a class="button is-medium facebook-share-button"
+                                   :href="facebookShareUrl"
+                                   target="_blank">
+                                  <span class="icon">
+                                    <i class="fa fa-facebook"></i>
+                                  </span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -134,6 +135,16 @@
             topicFollowText: function() {
                  return isFollowedByAuthUser ? "Following" : "Follow";
             },
+            twitterShareUrl: function() {
+                return "http://twitter.com/intent/tweet?status=" +
+                "Check out the best books on " + this.topic.name + " @booknshelf. "
+                + window.location.href;
+            },
+            facebookShareUrl: function() {
+                return "http://www.facebook.com/sharer/sharer.php?u=" + window.location.href + "&title=" +
+                 "The best books on " +
+                 this.topic.name + " at Booknshelf."
+            }
         },
 
         /**
@@ -143,10 +154,6 @@
             this.form.id = this.topic.id;
         },
     }
-
-
-
-
 </script>
 
 <style lang="css">
@@ -157,6 +164,7 @@
     .followed-button {
         background-color: hsla(171, 100%, 36%, 1);
         color: #ffffff;
+        border: none;
     }
 
     .followed-button:hover {

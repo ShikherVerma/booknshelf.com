@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="hero is-small is-bold">
+    <section class="hero is-blue is-small is-bold">
         <div class="hero-body">
             <div class="container">
                 <h3 class="title is-3 topic-title">
-                    <strong>Topics</strong>
+                    <span class="primary-span">
+                        Topics
+                    </span>
                 </h3>
                 <p class="subtitle is-4 topic-text">
 
