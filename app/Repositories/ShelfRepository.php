@@ -28,7 +28,7 @@ class ShelfRepository {
             return collect([]);
         };
         $shelves = $user->shelves()->get();
-        $shelves->load('user');
+        $shelves->load('user', 'books');
 
         return $shelves;
     }
@@ -43,6 +43,7 @@ class ShelfRepository {
     {
         return $user->shelves()
                     ->orderBy('created_at', 'asc')
+                    ->withCount('books')
                     ->get();
     }
 
@@ -71,7 +72,7 @@ class ShelfRepository {
     public function books($shelf)
     {
         $books = $shelf->books()->orderBy('created_at', 'desc')->get();
-        $books->load('categories', 'authors');
-        return $books->toArray();
+        $books->load('categories', 'authors', 'likes');
+        return $books;
     }
 }

@@ -30,6 +30,7 @@ class SettingsController extends Controller
             'about' => 'max:255',
         ]);
 
+        
         $request->user()->update([
             'name' => $request->name,
             'email' => $request->email,
@@ -41,6 +42,7 @@ class SettingsController extends Controller
 
     public function updatePhoto(Request $request)
     {
+
         $this->validate($request, [
             'photo' => 'required|image|max:4000',
         ]);

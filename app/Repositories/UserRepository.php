@@ -3,10 +3,11 @@
 namespace App\Repositories;
 
 use App\Jobs\SetUserAvatar;
+use App\Topic;
 use App\User;
 use Auth;
-use Illuminate\Foundation\Bus\DispatchesJobs;
 use Faker;
+use Illuminate\Foundation\Bus\DispatchesJobs;
 
 class UserRepository
 {
@@ -27,6 +28,32 @@ class UserRepository
     {
         // for now do random
         return User::orderByRaw("RAND()")->take(5)->get();
+    }
+
+    public function likes($username)
+    {
+        $user = User::where('username', $username)->firstOrFail();
+        $likes = $user->likes();
+
+        return $likes;
+    }
+
+    public function getAllLikedBooks($username)
+    {
+        $user = User::where('username', $username)->firstOrFail();
+        $likedBooks = $user->allLikedBooks();
+
+        return $likedBooks;
+    }
+
+    public function getAllTopics($username)
+    {
+        $user = User::where('username', $username)->firstOrFail();
+
+        $topics = $user->topics()->withCount('followers')->get();
+        $topics->load('followers');
+
+        return $topics;
     }
 
     public function findByFacebookUserIdOrCreate($userData)

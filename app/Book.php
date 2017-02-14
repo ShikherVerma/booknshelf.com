@@ -3,11 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
 
 class Book extends Model
 {
-     use Searchable;
     /**
      * The attributes that are mass assignable.
      *
@@ -47,10 +45,26 @@ class Book extends Model
     }
 
     /**
+     * Get the likes for the book.
+     */
+    public function likes()
+    {
+        return $this->hasMany('App\Like');
+    }
+
+    /**
      * Get all the shelves that this book belongs to.
      */
     public function shelves()
     {
         return $this->belongsToMany('App\Shelf')->withTimestamps();
+    }
+
+    /**
+     * Get all the topics that this book belongs to.
+     */
+    public function topics()
+    {
+        return $this->belongsToMany('App\Topic')->withTimestamps();
     }
 }

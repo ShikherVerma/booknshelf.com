@@ -1,82 +1,103 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container m-t-lg">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-default">
-                <div class="panel-heading">Sign up</div>
-
-                <div class="panel-body">
-                    <a class="btn btn-block btn-social btn-facebook" href="{{ url('/auth/facebook') }}">
-                      <span class="fa fa-facebook"></span> Continue with Facebook
-                    </a>
+    <section class="section">
+        <div class="container is-light">
+            <div class="columns">
+                <div class="column is-4">
+                    <p class="title is-3">Why join Booknshelf?</p>
+                    <p class="title is-4">
+                          <span class="icon">
+                            <i class="fa fa-check"></i>
+                          </span>
+                        Create bookshelves to save your favorite books. Stay organized!
+                    </p>
+                    <p class="title is-4">
+                        <span class="icon">
+                          <i class="fa fa-check"></i>
+                        </span>
+                        Like books and follow different topics! Keep all your topics and liked books in one place!
+                    </p>
+                    <p class="title is-4">
+                        <span class="icon">
+                          <i class="fa fa-check"></i>
+                        </span>
+                        Connect with your Facebook friends and see their books and bookshelves!
+                    </p>
                 </div>
-                <div class="panel-body">
-                    <a class="btn btn-block btn-social btn-twitter" href="{{ url('/auth/twitter') }}">
-                      <span class="fa fa-twitter"></span> Continue with Twitter
-                    </a>
-                </div>
+                <div class="column is-4">
+                    <p class="subtitle">
+                        We'll never post to Twitter or Facebook without your permission.
+                    </p>
+                    <p class="control">
+                        <a class="button is-large fb-button" href="{{ url('/auth/facebook') }}">
+                         <span class="icon">
+                           <i class="fa fa-facebook"></i>
+                         </span>
+                            <span><strong>Continue with Facebook</strong></span>
+                        </a>
+                    </p>
+                    <p class="control">
+                        <a class="button is-large twt-button" href="{{ url('/auth/twitter') }}">
+                             <span class="icon">
+                               <i class="fa fa-twitter"></i>
+                             </span>
+                            <span><strong>Continue with Twitter</strong></span>
+                        </a>
+                    </p>
 
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                    <form role="form" method="POST" action="{{ url('/register') }}">
                         {!! csrf_field() !!}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Name</label>
+                        <label class="label bigger-font-label">What's your name?</label>
+                        <p class="control">
+                            <input class="input is-large {{ $errors->has('name') ? ' is-danger' : '' }}" type="text" name="name"
+                                   value="{{ old('name') }}" placeholder="e.g. Jon Snow">
+                            @if ($errors->has('name'))
+                                <span class="help is-danger">
+                                    {{ $errors->first('name') }}
+                                </span>
+                            @endif
+                        </p>
 
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                        <label class="label bigger-font-label">Choose an easy remembered username</label>
+                        <p class="control">
+                            <input class="input is-large {{ $errors->has('username') ? ' is-danger' : '' }}" type="text"
+                                   name="username"
+                                   value="{{ old('username') }}" placeholder="e.g. I chose 'tigran' which is my name">
+                            @if ($errors->has('username'))
+                                <span class="help is-danger">
+                                    {{ $errors->first('username') }}
+                                </span>
+                            @endif
+                        </p>
 
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                        <label class="label bigger-font-label">Choose a strong password</label>
+                        <p class="control">
+                            <input class="input is-large {{ $errors->has('password') ? ' is-danger' : '' }}" type="password"
+                                   name="password"
+                                   placeholder="at least 6 characters">
+                            @if ($errors->has('password'))
+                                <span class="help is-danger">
+                                    {{ $errors->first('password') }}
+                                </span>
+                            @endif
+                        </p>
 
-                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Username</label>
-
-                            <div class="col-md-6">
-                                <input type="username" class="form-control" name="username" value="{{ old('username') }}">
-
-                                @if ($errors->has('username'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input type="password" class="form-control" name="password">
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" name="register" class="btn btn-primary">
-                                    <i class="fa fa-btn"></i>Sign up
+                        <div class="control">
+                            <p class="control">
+                                <button type="submit" name="register" class="button is-large is-primary is-outlined full-width-button">
+                                    <strong>JOIN</strong>
                                 </button>
-                            </div>
+                            </p>
                         </div>
                     </form>
-                </div>
 
+                </div>
+                <div class="column is-3">
+                </div>
             </div>
+
         </div>
-    </div>
-</div>
+    </section>
 @endsection
