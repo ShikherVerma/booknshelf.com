@@ -7,7 +7,7 @@
             <div id="social">
                 <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true"
                         class="twitter-follow-button twitter-follow-button-rendered" title="Twitter Follow Button"
-                        src="http://platform.twitter.com/widgets/follow_button.c4fd2bd4aa9a68a5c8431a3d60ef56ae.en.html#dnt=false&amp;id=twitter-widget-0&amp;lang=en&amp;screen_name=tiggreen&amp;show_count=true&amp;show_screen_name=true&amp;size=m&amp;time=1485106087141"
+                        src="//platform.twitter.com/widgets/follow_button.c4fd2bd4aa9a68a5c8431a3d60ef56ae.en.html#dnt=false&amp;id=twitter-widget-0&amp;lang=en&amp;screen_name=tiggreen&amp;show_count=true&amp;show_screen_name=true&amp;size=m&amp;time=1485106087141"
                         style="position: static; visibility: visible; width: 203px; height: 20px;"
                         data-screen-name="tiggreen"></iframe>
                 <iframe
@@ -17,7 +17,7 @@
                 <iframe id="twitter-widget-1" scrolling="no" frameborder="0" allowtransparency="true"
                         class="twitter-share-button twitter-share-button-rendered twitter-tweet-button"
                         title="Twitter Tweet Button"
-                        src="http://platform.twitter.com/widgets/tweet_button.c4fd2bd4aa9a68a5c8431a3d60ef56ae.en.html#dnt=false&amp;id=twitter-widget-1&amp;lang=en&amp;original_referer=https://booknshelf.com&amp;related=tiggreen%3ACreator%20of%20Booknshelf&amp;size=m&amp;text=Find the best books on different topics. The ones you'll read!&amp;time=1485106087144&amp;type=share&amp;url=https%3A%2F%2Fbooknshelf.com&amp;via=booknshelf"
+                        src="//platform.twitter.com/widgets/tweet_button.c4fd2bd4aa9a68a5c8431a3d60ef56ae.en.html#dnt=false&amp;id=twitter-widget-1&amp;lang=en&amp;original_referer=https://booknshelf.com&amp;related=tiggreen%3ACreator%20of%20Booknshelf&amp;size=m&amp;text=Discover great books and bookshelves and share them with your friends!&amp;time=1485106087144&amp;type=share&amp;url=https%3A%2F%2Fbooknshelf.com&amp;via=booknshelf"
                         style="position: static; visibility: visible; width: 61px; height: 20px;"
                         data-url="https://booknshelf.com"></iframe>
             </div>
