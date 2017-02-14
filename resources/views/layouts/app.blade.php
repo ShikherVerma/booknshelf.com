@@ -11,7 +11,7 @@
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="Booknshelf"/>
     <meta property="og:description" content="Discover great books and bookshelves on specific topics."/>
-    <meta property="og:image" content="https://booknshelf.com/img/logos/black_big_logo.png"/>
+    <meta property="og:image" content="https://booknshelf.com/img/logos/main_logo.png"/>
     <meta property="og:url" content="https://www.booknshelf.com">
 
     <!-- CSRF Token -->

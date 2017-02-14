@@ -11,7 +11,7 @@
                     <strong> Welcome to Booknshelf </strong>
                 </h1>
                 <h2 class="subtitle is-4">
-                    Find the best books on different topics. The ones you'll read!
+                    Discover great books and bookshelves and share them with your friends.
                 </h2>
                 <div class="columns">
                     <div class="column is-offset-one-quarter is-half">

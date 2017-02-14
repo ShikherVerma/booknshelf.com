@@ -16,13 +16,13 @@
                         <span class="icon">
                           <i class="fa fa-check"></i>
                         </span>
-                        Recommend books to your friends and community. It's fun!
+                        Like books and follow different topics! Keep all your topics and liked books in one place!
                     </p>
                     <p class="title is-4">
                         <span class="icon">
                           <i class="fa fa-check"></i>
                         </span>
-                        Connect with your friends and see what they read!
+                        Connect with your Facebook friends and see their books and bookshelves!
                     </p>
                 </div>
                 <div class="column is-4">
