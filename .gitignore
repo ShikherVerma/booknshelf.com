@@ -6,7 +6,13 @@ Homestead.json
 .env
 .idea
 _ide_helper.php
+.phpstorm.meta.php
+_ide_helper_models.php
 public/build/css/booknshelf-da67fc482a.css
 
-tests/_output/*
 /.vagrant
+!/resources/assets/js/components/settings/SettingsProfileInfo.vue
+public/build/js/app-81aaca56a0.js
+tests/_output/
+database/migrations/2017_02_11_135310_create_book_topic_table.php
+public/build/js/app-f6c0701ea1.js

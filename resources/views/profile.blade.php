@@ -1,45 +1,30 @@
 @extends('layouts.app')
 
-@section('title')
-@endsection
-
 @section('content')
+    <profile :user="{{ $user }}"></profile>
+    @if (Auth::check())
+        <book-save-modal :user="user" :book="bookSaveModalBook" :show="bookSaveModal"></book-save-modal>
+    @endif
 
-<!-- Profile Header -->
-<app-profile-header :user="{{ $user }}" inline-template>
-    <div class="profile-header p-t-lg">
+    <section class="section profile-shelves-section">
+        <div class="container">
+            <tabs>
+                <tab name="{{ count($shelves) }} Created Bookshelves" :selected="true">
+                    <profile-shelves :user="{{ $user }}" :shelves="{{ $shelves }}"></profile-shelves>
+                </tab>
+                <tab name="{{ count($likedBooks) }} Liked Books">
+                    <profile-likes :user="{{ $user }}" :books="{{ $likedBooks }}" :likes="userLikedBooks"
+                                   :saves="userSavedBooks"></profile-likes>
+                </tab>
+                <tab name="{{ count($topics) }} Topics">
+                    <profile-topics :user="{{ $user }}" :topics="{{ $topics }}" :user-topics="userTopics"></profile-topics>
+                </tab>
+            </tabs>
+        </div>
+    </section>
 
-        <template v-if="user">
-            <div class="container max-width-1000">
-                <div class="container-inner ">
-                    <img class="media-object" :src="user.avatar">
-                    <h3 class="profile-header-user">@{{ user.name }}</h3>
-                    <p class="profile-header-bio">
-                        @{{ user.about }}
-                    </p>
-                </div>
-            </div>
-        </template>
-
-        <nav class="profile-header-nav profile-index-tabs">
-            <ul class="nav nav-tabs" role="tablist">
-
-                <li class="active" role="presentation">
-                    <a href="#bookshelves" aria-controls="bookshelves" role="tab" data-toggle="tab">
-                        BOOKSHELVES
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</app-profile-header>
-
-
-<div class="tab-content profile-tabs">
-    <!-- All Shelves -->
-    <div role="tabpanel" class="tab-pane active" id="bookshelves">
-        @include('profile.profile-all-shelves')
-    </div>
-</div>
-
+    {{--Logout form--}}
+    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+        {{ csrf_field() }}
+    </form>
 @endsection

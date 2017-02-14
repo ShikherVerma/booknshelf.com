@@ -7,7 +7,9 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\ShelfRepository;
 use App\Repositories\UserRepository;
 use Event;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -16,11 +18,13 @@ class UserController extends Controller
 
     public function __construct(UserRepository $users, ShelfRepository $shelves)
     {
-        $this->middleware('auth', ['except' => [
-            'profile',
-            'allShelves',
-            'shelf'
-        ]]);
+        $this->middleware('auth', [
+            'except' => [
+                'profile',
+                'allShelves',
+                'shelf',
+            ],
+        ]);
 
         $this->users = $users;
         $this->shelves = $shelves;
@@ -29,15 +33,22 @@ class UserController extends Controller
     public function profile($username)
     {
         $user = $this->users->findByUsername($username);
+        $shelves = $this->shelves->forUser($user);
+        $likedBooks = $this->users->getAllLikedBooks($username);
+        $topics = $this->users->getAllTopics($username);
+
         return view('profile', [
             'user' => $user,
-            'shelves' => $this->shelves->forUser($user),
+            'shelves' => $shelves,
+            'likedBooks' => $likedBooks,
+            'topics' => $topics,
         ]);
     }
 
     public function allShelves($userId)
     {
         $user = $this->users->findById($userId);
+
         return response()->json($this->shelves->forUser($user)->toArray());
     }
 
@@ -60,9 +71,44 @@ class UserController extends Controller
         return $this->users->current();
     }
 
+    public function likedBooks()
+    {
+        $user = User::find(Auth::id());
+        $allLikedBooks = $user->allLikedBooks();
+        $books = $allLikedBooks->map(function ($book) {
+            return $book->id;
+        });
+
+        return $books;
+    }
+
+    public function savedBooks()
+    {
+        $user = User::find(Auth::id());
+        $allSavedBooks = $user->allSavedBooks();
+        $books = $allSavedBooks->map(function ($book) {
+            return $book->id;
+        });
+
+        return $books;
+    }
+
+    public function followedTopics()
+    {
+        $user = User::find(Auth::id());
+        $topics = $user->topics()->get();
+        $result = $topics->map(function ($book) {
+            return $book->id;
+        });
+
+        return $result;
+    }
+
+
     public function shelves()
     {
         $user = $this->users->current();
+
         return response()->json($this->shelves->forUser($user)->toArray());
     }
 

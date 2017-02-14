@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
 use App\Repositories\BookRepository;
 use App\Repositories\UserRepository;
 use App\Services\AmazonProduct;
@@ -14,9 +15,7 @@ class BookController extends Controller
 
     public function __construct(UserRepository $users, BookRepository $books)
     {
-        $this->middleware('auth', ['except' => [
-            'search'
-        ]]);
+        $this->middleware('auth', ['except' => ['search']]);
         $this->users = $users;
         $this->books = $books;
     }
@@ -34,13 +33,25 @@ class BookController extends Controller
         foreach ($amazonBooks as $book) {
             $extractedBook = $this->books->extractAmazonBookData($book);
             $newBook = $this->books->findByAsinOrCreate($extractedBook);
-            $newBook->load('authors');
+            $newBook->load('authors', 'likes');
             $books[] = $newBook->toArray();
         }
 
-        return view('books', [
+        // we need to append likes to the books
+
+        return view('search', [
             'books' => json_encode($books),
-            'q' => $query
+            'user' => $request->user(),
+            'q' => $query,
         ]);
+    }
+
+    public function likes(Request $request, $bookId)
+    {
+
+        $book = Book::findOrFail($bookId);
+        $likes = $book->likes()->get();
+
+        return response()->json($likes);
     }
 }

@@ -1,20 +1,35 @@
 <!-- Create a new bookshelf -->
 <li>
-    <a @click="showCreateShelfModal">
+    <a href="#newShelfModal" data-toggle="modal" >
         <div class="navbar-icon">
             <i class="fa fa-lg fa-plus"></i>
         </div>
+
     </a>
 </li>
-<!-- Notifications -->
 <li>
-    <a @click="showNotifications" class="has-activity-indicator">
-        <div class="navbar-icon">
-            <i class="activity-indicator" style="display: none;" v-if="hasUnreadNotifications"></i>
-            <i class="fa fa-lg fa-bell"></i>
-        </div>
+    <a href="{{ route('bookshelves_path', ['username' => Auth::user()->username]) }}">
+        My Bookshelves
     </a>
 </li>
+<li>
+    <a href="/friends">
+        My Friends
+    </a>
+</li>
+<li>
+    <a href="/topics">
+        {{--Show all the topics where people can follow--}}
+        Topics
+    </a>
+</li>
+<li class="text-muted">
+    {{--Here we will show the books page with a search--}}
+    <a href="{{ route('bookshelves_path', ['username' => Auth::user()->username]) }}">
+        Search
+    </a>
+</li>
+
 
 <li class="dropdown">
     <!-- User Photo / Name -->

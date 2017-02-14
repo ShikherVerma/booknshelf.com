@@ -1,56 +1,43 @@
 @extends('layouts.app')
 
 @section('content')
-
-@include('landing.welcome-message')
-
-<div class="container max-width-1000">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-
-
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/user/welcome') }}">
-                        {!! csrf_field() !!}
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Choose your username</label>
-
-                            <div class="col-md-6">
-                                <input type="username" class="form-control" name="username" value="{{ $user->username }}">
+    <section class="hero is-light">
+        <div class="hero-body">
+            <div class="container">
+                <h3 class="subtitle is-3">
+                    Welcome to Booknshelf!
+                </h3>
+                <div class="columns">
+                    <div class="column is-half">
+                        <form role="form" method="POST" action="{{ url('/user/welcome') }}">
+                            {!! csrf_field() !!}
+                            <label class="label is-4">Choose your username</label>
+                            <p class="control">
+                                <input class="input is-large {{ $errors->has('username') ? ' is-danger' : '' }}"
+                                       type="text" name="username"  value="{{ $user->username }}" placeholder="Choose your username">
                                 @if ($errors->has('username'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('username') }}</strong>
+                                    <span class="help is-danger">
+                                        {{ $errors->first('username') }}
                                     </span>
                                 @endif
-                            </div>
-                        </div>
+                            </p>
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Tell us a bit about yourself</label>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="about">
-                            </div>
-                        </div>
+                            <label class="label is-4">Tell us a bit about yourself</label>
+                            <p class="control">
+                                <input class="input is-large" type="text" name="about"
+                                       placeholder="e.g. I'm an avid reader.">
+                            </p>
 
-                        {{--<div class="form-group">--}}
-                            {{--<div class="col-md-6 col-md-offset-4">--}}
-                                {{--<span>Continue if you agree with our <a>terms</a></span>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" name="continue" class="btn btn-primary">
-                                    <i class="fa fa-btn"></i>Continue
+                            <p class="control">
+                                <button type="submit" name="register" class="button is-large is-primary">
+                                    Continue
                                 </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                            </p>
 
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 @endsection

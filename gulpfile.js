@@ -1,5 +1,7 @@
 var elixir = require('laravel-elixir');
 
+require('laravel-elixir-vue-2');
+
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -11,35 +13,29 @@ var elixir = require('laravel-elixir');
  |
  */
 
+
 elixir(function(mix) {
-	// stylings
-	mix.styles([
-		'sweetalert.css',
-		'bootstrap-social.css',
-	], 'public/css/helpers.css');
 
-	mix.less('app.less');
+	mix.sass('app.sass');
 
 	mix.styles([
-		// all.css has all css coming from mix.styles() combined
-		'helpers.css',
-		// app.css has all .less files merged into one single file
-	    'app.css',
+        'app.css',
 	], 'public/css/booknshelf.css', 'public/css');
 
 	// scripts
-	mix.browserify('app.js');
-	mix.scripts([
-	    'vendor/sweetalert-dev.js',
-        'vendor/toolkit.js',
-	    'vendor/bootstrap',
-	    'vendor/hogan-3.0.1.js',
-	], 'public/js/booknshelf.js');
+    mix.webpack('app.js');
 
-	mix.version(['public/css/booknshelf.css','public/js/booknshelf.js']);
+
+	mix.version([
+	    'public/css/booknshelf.css',
+        'public/js/app.js'
+    ]);
+
 	// copy the fonts to public/build/ directory
 	mix.copy('resources/assets/fonts', 'public/build/fonts');
 	// copy the img to public/ directory
 	mix.copy('resources/assets/img', 'public/img');
+
+    mix.browserSync();
 
 });

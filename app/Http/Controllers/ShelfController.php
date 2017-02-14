@@ -44,7 +44,10 @@ class ShelfController extends Controller
             return response()->json($error, 403);
         }
 
-        return $request->user()->shelves()->save($shelf);
+        $request->user()->shelves()->save($shelf);
+
+        // Send a job so the cover of the shelf will be updated.
+        dispatch((new UpdateShelfCover($shelf))->onQueue('shelves_cover'));
     }
 
     public function show(Request $request, $shelfId)
@@ -104,12 +107,8 @@ class ShelfController extends Controller
         dispatch((new UpdateShelfCover($shelf))->onQueue('shelves_cover'));
     }
 
-    public function removeBook(Request $request, $shelfId)
+    public function removeBook(Request $request, $shelfId, $bookId)
     {
-        $this->validate($request, [
-            'id' => 'required'
-        ]);
-        $bookId = $request->id;
         $shelf = $request->user()->shelves()->where('id', $shelfId)->firstOrFail();
         $shelf->books()->detach($bookId);
 

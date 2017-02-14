@@ -9,7 +9,6 @@
         "laravel/framework": "5.3.*",
         "laravel/socialite": "^2.0",
         "barryvdh/laravel-debugbar": "^2.2",
-        "barryvdh/laravel-ide-helper": "^2.1",
         "phpspec/phpspec": "^2.0",
         "intervention/imagecache": "^2.3",
         "google/apiclient": "1.0.*@beta",
@@ -31,16 +30,18 @@
         "aws/aws-sdk-php": "~3.0",
         "elasticsearch/elasticsearch": "^5.0",
         "exeu/apai-io": "~2.0",
-        "doctrine/dbal": "^2.5"
+        "doctrine/dbal": "^2.5",
+        "league/csv": "^8.2"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
         "symfony/css-selector": "2.8.*|3.0.*",
         "symfony/dom-crawler": "2.8.*|3.0.*",
-        "laravel/homestead": "^3.0",
+        "laravel/homestead": "^4.0",
         "laracasts/generators": "^1.1",
-        "filp/whoops": "^2.1"
+        "filp/whoops": "^2.1",
+        "barryvdh/laravel-ide-helper": "^2.2"
     },
     "autoload": {
         "classmap": [
