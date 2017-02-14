@@ -1,5 +1,5 @@
 <template>
-    <section class="section" style="padding-bottom: 7px;">
+    <section class="section">
         <div class="container">
             <div class="notification">
                 <div class="title is-4">

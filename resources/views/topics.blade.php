@@ -12,7 +12,7 @@
                 <p class="subtitle is-4 topic-text">
 
                     Each topic is curated by us with the help of our community. They are always up-to-date. We're
-                    starting with 20 topics and will expend
+                    starting with few topics and will expend
                     soon as you suggest more. Follow your favorite topics here and explore great books on different
                     topics.
                 </p>
