@@ -3,7 +3,6 @@
 namespace App\Jobs;
 
 use App\Shelf;
-use Hash;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;

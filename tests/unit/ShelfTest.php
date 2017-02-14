@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\Shelf;
 use App\User;
+use App\Jobs\UpdateShelfCover;
 
 class ShelfTest extends TestCase
 {
@@ -19,6 +20,8 @@ class ShelfTest extends TestCase
 
     public function test_auth_users_can_create_shelves()
     {
+        $this->expectsJobs(UpdateShelfCover::class);
+
         $response = $this->actingAs($this->user)
                 ->call('POST', '/shelves', [
                 'name' => 'Bookshelf Name Test',
@@ -43,12 +46,18 @@ class ShelfTest extends TestCase
 
     public function test_shelf_has_correct_slug()
     {
+        $this->expectsJobs(UpdateShelfCover::class);
+
         $this->actingAs($this->user);
         $this->json('POST', '/shelves', [
                 'name' => 'Bookshelf Name Test With Slug'
-            ])->seeJson([
-                'slug' => 'bookshelf-name-test-with-slug'
-            ]);
+        ]);
+
+        $this->assertResponseOk();
+        $this->seeInDatabase('shelves', [
+            'slug' => 'bookshelf-name-test-with-slug',
+            'user_id' => $this->user->id
+        ]);
     }
 
     public function test_user_can_successfully_update_a_shelf()
