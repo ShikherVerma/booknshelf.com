@@ -49,11 +49,24 @@ class HomeController extends Controller
             '0553380168'
 
         ])->get();
+        // todo: change this so it reads the books from a specifc
+        // bookshelf so I can update it daily
+        $featuredBooks = App\Book::whereIn('asin', [
+            '0525954589',
+            '0143109677',
+            '0307949486',
+            '0062363603',
+            '0393061329',
+            'B004V134Q6',
+
+        ])->get();
         $books->load('authors', 'likes');
+        $featuredBooks->load('authors', 'likes');
         return view('home', [
             'shelves' => $shelves->toArray(),
             'topics' => $topics,
-            'books' => json_encode($books)
+            'books' => json_encode($books),
+            'featuredBooks' => json_encode($featuredBooks)
         ]);
     }
 

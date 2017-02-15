@@ -3,7 +3,7 @@
         <div class="container">
             <div class="notification">
                 <div class="title is-4">
-                    Explore Some of Our Favorite Books
+                    {{ title }}
                     <a href="/books/search?q=how to win friends">Search More ></a>
                 </div>
             </div>
@@ -16,7 +16,7 @@
 
 <script>
     export default {
-        props: ['books', 'user', 'likes', 'saves'],
+        props: ['books', 'user', 'likes', 'saves', 'title'],
     }
 </script>
 

@@ -31,6 +31,9 @@
         </div>
     </section>
 
+    <home-books-section :books="{{ $featuredBooks }}" :user="user" :likes="userLikedBooks"
+                        :saves="userSavedBooks" title="Today's featured Books"></home-books-section>
+
     <section class="section is-primary is-fullheight is-bold" style="padding-bottom: 7px;">
         <div class="container">
             <div class="notification">
@@ -113,7 +116,7 @@
     </section>
 
     <home-books-section :books="{{ $books }}" :user="user" :likes="userLikedBooks"
-                        :saves="userSavedBooks"></home-books-section>
+                        :saves="userSavedBooks" title="Explore Some of Our Favorite Books"></home-books-section>
 
     <div class="tile is-ancestor">
         <div class="tile is-parent">
