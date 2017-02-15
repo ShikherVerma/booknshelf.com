@@ -14,8 +14,8 @@
     <meta property="og:title" content="Discover great books and bookshelves on different topics." />
     <meta property="og:description"
           content="People come to Booknshelf to find the best books on specific topics and also to see what their friends are reading." />
-    <meta property="og:image" content="https://booknshelf.com/img/social/homepage-screenshot-facebook.png" />
-    <meta property="og:image:height" content="636" />
+    <meta property="og:image" content="https://booknshelf.com/img/social/homepage-screenshot-facebook1.png" />
+    <meta property="og:image:height" content="717" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:site_name" content="Booknshelf" />
     <meta property="og:type" content="website" />
