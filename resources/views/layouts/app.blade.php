@@ -10,17 +10,16 @@
           content="People come to Booknshelf to find the best books on specific topics and also to see what their friends are reading."/>
 
     {{--Facebook meta tags--}}
-    <meta property="fb:app_id" content="1899203000306326">
-    <meta property="og:type" content="website"/>
-    <meta property="og:title" content="Discover great books and bookshelves on different topics."/>
+    <meta property="fb:app_id" content="1899203000306326" />
+    <meta property="og:title" content="Discover great books and bookshelves on different topics." />
     <meta property="og:description"
-          content="People come to Booknshelf to find the best books on specific topics and also to see what their friends are reading."/>
-    <meta property="og:image" content="https://booknshelf.com/img/social/homepage-screenshot-facebook.png"/>
-    <meta property="og:image:height" content="636">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:site_name" content="Booknshelf">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.booknshelf.com">
+          content="People come to Booknshelf to find the best books on specific topics and also to see what their friends are reading." />
+    <meta property="og:image" content="https://booknshelf.com/img/social/homepage-screenshot-facebook.png" />
+    <meta property="og:image:height" content="636" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:site_name" content="Booknshelf" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.booknshelf.com" />
 
     {{--Twitter meta tags--}}
     <meta name="twitter:card" content="summary">
