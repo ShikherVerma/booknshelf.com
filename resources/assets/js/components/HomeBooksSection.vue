@@ -1,9 +1,9 @@
 <template>
-    <section class="section">
+    <section class="section" style="padding-bottom: 0px;">
         <div class="container">
-            <div class="notification">
+            <div class="notification is-warning">
                 <div class="title is-4">
-                    {{ title }}
+                    <strong>{{ title }}</strong>
                     <a href="/books/search?q=how to win friends">Search More ></a>
                 </div>
             </div>

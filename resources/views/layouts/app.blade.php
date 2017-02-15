@@ -7,12 +7,30 @@
     <meta name="google-site-verification" content="oRlwQCWDSEBrMAdKd3t3_3pCA9sFayLgZdgLer2TKfM"/>
     <link rel="canonical" href="https://www.booknshelf.com/"/>
     <meta name="description"
-          content="Discover great books, bookshelves on specific topics and share them with your friends."/>
+          content="People come to Booknshelf to find the best books on specific topics and also to see what their friends are reading."/>
+
+    {{--Facebook meta tags--}}
+    <meta property="fb:app_id" content="1899203000306326">
     <meta property="og:type" content="website"/>
-    <meta property="og:title" content="Booknshelf"/>
-    <meta property="og:description" content="Discover great books and bookshelves on specific topics."/>
-    <meta property="og:image" content="https://booknshelf.com/img/logos/main_logo.png"/>
+    <meta property="og:title" content="Discover great books and bookshelves on different topics."/>
+    <meta property="og:description"
+          content="People come to Booknshelf to find the best books on specific topics and also to see what their friends are reading."/>
+    <meta property="og:image" content="https://booknshelf.com/img/social/homepage-screenshot-facebook.png"/>
+    <meta property="og:image:height" content="636">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:site_name" content="Booknshelf">
+    <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.booknshelf.com">
+
+    {{--Twitter meta tags--}}
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:description"
+          content="People come to Booknshelf to find the best books on specific topics and also to see what their friends are reading">
+    <meta name="twitter:image"
+          content="https://booknshelf.com/img/social/homepage-screenshot-facebook.png">
+    <meta name="twitter:site" content="@booknshelf">
+    <meta name="twitter:title"
+          content="Booknshelf: Discover great books and bookshelves on different topics.">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -45,20 +63,20 @@
 <body>
 <div id="app">
     <!-- Navigation -->
-    @if (Auth::check())
-        @include('nav.user')
-    @else
-        @include('nav.guest')
-    @endif
+@if (Auth::check())
+    @include('nav.user')
+@else
+    @include('nav.guest')
+@endif
 
-    <!-- Application Level Modals -->
+<!-- Application Level Modals -->
     @if (Auth::check())
         <new-shelf-modal v-if="showNewShelfModal" @close="showNewShelfModal = false"></new-shelf-modal>
     @else
         <please-login-modal :show="plaseLoginModal"></please-login-modal>
     @endif
 
-    <!-- Main Content -->
+<!-- Main Content -->
     @yield('content')
 
 

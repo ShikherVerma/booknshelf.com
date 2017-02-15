@@ -7,6 +7,7 @@ use App\Book;
 use App\Category;
 use App\Jobs\SetBookCover;
 use App\Jobs\SetBookCoverFromAmazon;
+use App\User;
 use DB;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Image;
@@ -34,8 +35,9 @@ class BookRepository
         // update ratings and ratings count to keep it up to date
         $book->update([
             'google_average_rating' => $bookData['google_average_rating'],
-            'google_ratings_count' => $bookData['google_ratings_count']
+            'google_ratings_count' => $bookData['google_ratings_count'],
         ]);
+
         return $book;
     }
 
@@ -55,6 +57,7 @@ class BookRepository
             }
             dispatch((new SetBookCoverFromAmazon($book))->onQueue('books_cover_image_amazon'));
         }
+
         return $book;
     }
 
@@ -100,6 +103,7 @@ class BookRepository
             'authors' => $item['ItemAttributes']['Author'] ?? [],
             'cover_image' => $item['LargeImage']['URL'] ?? $item['MediumImage']['URL'] ?? null,
         ];
+
         return $result;
     }
 
@@ -107,12 +111,22 @@ class BookRepository
     {
         // TODO: Can we improve this query here?
         return DB::table('book_shelf')
-                    ->join('books', 'book_shelf.book_id', '=', 'books.id')
-                    ->selectRaw('books.*, count(*) as `aggregate`')
-                    ->groupBy('book_shelf.book_id')
-                    ->orderBy('aggregate', 'desc')
-                    ->distinct('title')
-                    ->take(5)
-                    ->get();
+            ->join('books', 'book_shelf.book_id', '=', 'books.id')
+            ->selectRaw('books.*, count(*) as `aggregate`')
+            ->groupBy('book_shelf.book_id')
+            ->orderBy('aggregate', 'desc')
+            ->distinct('title')
+            ->take(5)
+            ->get();
+    }
+
+    public function getFeatured()
+    {
+        $me = User::where('username', 'tigran')->firstOrFail();
+        $shelf = $me->shelves()->where('slug', 'featured')->firstOrFail();
+        $books = $shelf->books()->get();
+        $books->load('authors', 'likes');
+
+        return $books;
     }
 }
