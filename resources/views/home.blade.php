@@ -32,14 +32,14 @@
     </section>
 
     <home-books-section :books="{{ $featuredBooks }}" :user="user" :likes="userLikedBooks"
-                        :saves="userSavedBooks" title="Today's featured Books"></home-books-section>
+                        :saves="userSavedBooks" title="Today's Featured Books"></home-books-section>
 
-    <section class="section is-primary is-fullheight is-bold" style="padding-bottom: 7px;">
+    <section class="section is-primary is-fullheight is-bold" style="padding-bottom: 7px;" v-cloak>
         <div class="container">
-            <div class="notification">
+            <div class="notification is-blue">
                 <div class="title is-4">
-                    Explore Our Favorite Topics
-                    <a href="/topics">See all ></a>
+                    <strong>Explore Our Favorite Topics</strong>
+                    <a href="/topics" style="color: yellow;">See all ></a>
                 </div>
             </div>
 
@@ -118,7 +118,7 @@
     <home-books-section :books="{{ $books }}" :user="user" :likes="userLikedBooks"
                         :saves="userSavedBooks" title="Explore Some of Our Favorite Books"></home-books-section>
 
-    <div class="tile is-ancestor">
+    <div class="tile is-ancestor" style="display: none;">
         <div class="tile is-parent">
             <article class="tile is-child notification">
                 <p class="title has-text-centered">Like Booknshelf? 😊</p>
@@ -137,11 +137,11 @@
         </div>
     </div>
 
-    <section class="section is-primary is-bold">
+    <section class="section is-primary is-bold" v-cloak>
         <div class="container">
-            <div class="notification">
+            <div class="notification" style="background-color: hsla(171, 100%, 36%, 1); color: white;">
                 <div class="title is-4">
-                    Explore Our Favorite Bookshelves
+                    <strong>Explore Our Favorite Bookshelves</strong>
                 </div>
             </div>
             <div class="columns is-multiline">
