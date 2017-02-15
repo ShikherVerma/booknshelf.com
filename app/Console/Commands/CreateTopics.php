@@ -69,6 +69,11 @@ class CreateTopics extends Command
                 'Everyone loves travel. Read the books that will inspire you!',
                 asset('/img/topics/vgoiy1gzzyg-atlas-green.jpg'),
             ],
+            [
+                'Cooking',
+                'Learn how to cook a delicious food. Yummy yummy!',
+                asset('/img/topics/tuh95zfdzn4-mike-petrucci.jpg'),
+            ],
         ]);
 
 
