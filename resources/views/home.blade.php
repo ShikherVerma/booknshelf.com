@@ -110,6 +110,13 @@
                         </p>
                     </article>
                 </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child notification" onclick="window.location ='/topics/cooking'"
+                             style="background-color: hsl(271, 100%, 71%); color: white;">
+                        <p class="title">Cooking</p>
+                        <p class="subtitle">Learn how to cook a delicious food. Yummy yummy!</p>
+                    </article>
+                </div>
             </div>
 
         </div>
