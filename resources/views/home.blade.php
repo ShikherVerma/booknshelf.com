@@ -64,7 +64,8 @@
                             <article onclick="window.location ='/topics/personal-finance'"
                                      class="hvr-glow tile is-child notification is-info">
                                 <p class="title">Personal Finance</p>
-                                <p class="subtitle"></p>
+                                <p class="subtitle">I have $X, what should I do with it? How should I handle my
+                                    finances? Read these books!</p>
                             </article>
                         </div>
                     </div>
@@ -83,8 +84,8 @@
                              class="hvr-glow tile is-child notification t-is-1">
                         <div class="content">
                             <p class="title">Travel</p>
-                            <div class="content">
-                                <!-- Content -->
+                            <div class="subtitle">
+                                Who doesn't like travel? No one! Read these books that will inspire you to travel more!
                             </div>
                         </div>
                     </article>
@@ -111,7 +112,7 @@
                     </article>
                 </div>
                 <div class="tile is-parent">
-                    <article class="tile is-child notification" onclick="window.location ='/topics/cooking'"
+                    <article class="tile is-child notification  hvr-glow" onclick="window.location ='/topics/cooking'"
                              style="background-color: hsl(271, 100%, 71%); color: white;">
                         <p class="title">Cooking</p>
                         <p class="subtitle">Learn how to cook a delicious food. Yummy yummy!</p>

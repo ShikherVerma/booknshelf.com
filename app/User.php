@@ -7,7 +7,6 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
 use Laravel\Scout\Searchable;
 
-
 class User extends Authenticatable
 {
     use Searchable, Notifiable;

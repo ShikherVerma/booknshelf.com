@@ -27,50 +27,58 @@
                     <div class="column is-3"></div>
                     <div class="column is-8">
                         <h2><span class="primary-span">Q: What is Booknshelf?</span></h2>
-                        <p class="subtitle">
-                            Booknshelf is a place to discover great books and bookshelves. Find out what
-                            your friends are reading and sharing your reading journey with them.
+                        <p class="subtitle"
+                           style="font-family: 'Source Sans Pro', sans-serif; line-height: 150%; font-size: 19px;">
+                            Booknshelf is a place to discover great books and bookshelves and share them with your
+                            friends. People come to Booknshelf to find their next read, see what their friends are
+                            reading and build their reading journey along the way. It's also a place where you can keep
+                            track of your books and stay organized.
                         </p>
                         <h2><span class="primary-span">Q: What are the goals of the site? </span></h2>
-                        <p class="subtitle" style="font-family: 'Source Sans Pro', sans-serif; line-height: 150%; font-size: 19px;">
-                            The goal of Booknshelf to eventually become a learning hub for people. I know it's a long
-                            term goal but I'm working very hard to get to that point. I want it to be a hub when people
-                            can
-                            find the best resources to learn about a spedicifc topic. For instance, if you want to learn
-                            about
-                            Web Design then Booknshelf would be the place to find the resources to get started. At this
-                            point only books.
-                            And yes, I want to make it as personalized as possible.
+                        <p class="subtitle"
+                           style="font-family: 'Source Sans Pro', sans-serif; line-height: 150%; font-size: 19px;">
+                            To be honest, I don't exactly know what's the long term goal of Booknshelf. However, I'm
+                            sure I want it to be a community hub of book enthusiasts, learners, and readers. Some
+                            people may come to Booknshelf to find their next read and some find great resources to
+                            learn about different topics. I'm working super hard to take Booknshelf to that point!
                         </p>
                         <h2><span class="primary-span">Q: How does Booknshelf make money? </span></h2>
-                        <p class="subtitle">
-                            Booknshelf does not make money at this point. Financially I want to work full time on Booknshelf.
-                            However, this is something I'm exploring a
-                            lot. I've applied to Amazon Affilicate Program when I first launched Booknshelf but got
-                            rejected. I'm thinking
-                            I'll apply again soon. I may add affiliate links to the books. My goal is to make Booknshelf
-                            fully sustainable side to cover all the expenses it burns. I'm very inspired what Courtland has done with
-                            Indie Hackers.
-                        </p>
-                        <h2><span class="primary-span">Q: Where did you get your inspiration?</span></h2>
-                        <p class="subtitle">
-                            My main inspiration is the future. How it will shape the education. I talk more about future
-                            in my this <a
-                                href="https://tigran.nyc/what-i-think-about-the-future-5f4cfb2ddccc#.agikduydk"
-                                target="_blank">blog post</a>.
+                        <p class="subtitle"
+                           style="font-family: 'Source Sans Pro', sans-serif; line-height: 150%; font-size: 19px;">
+                            Booknshelf does not make money at this point. My eventual goal is to work on Booknshelf
+                            full-time. Yes, full-time 👌. However, this is still something I'm exploring. I'll probably
+                            start with <a class="about-link" target="_blank"
+                                          href="https://affiliate-program.amazon.com/">Amazon
+                                Affiliate
+                                Program</a> and then go from there. My first financial goal is
+                            to make Booknshelf a self-sustainable side-project and I'm very inspired by <a
+                                class="about-link" target="_blank"
+                                href="https://twitter.com/csallen">Courtland Allen</a> who
+                            runs <a href="https://www.indiehackers.com" target="_blank" class="about-link">Indie Hackers</a>.
                         </p>
                         <h2><span class="primary-span">Q: How did I build Booknshelf?</span></h2>
-                        <p class="subtitle">
-                            My main inspiration is the future. How it will shape the education. I talk more about future
-                            in my this <a
-                                href="https://tigran.nyc/what-i-think-about-the-future-5f4cfb2ddccc#.agikduydk"
-                                target="_blank">blog post</a>. Other than that
+                        <p class="subtitle"
+                           style="font-family: 'Source Sans Pro', sans-serif; line-height: 150%; font-size: 19px;">
+                            I'm a big <a
+                                class="about-link" target="_blank"
+                                href="https://laravel.com">Laravel</a>
+                            fan so all the backend is built on Laravel. Laravel is a PHP framework. I
+                            also love <a
+                                class="about-link" target="_blank"
+                                href="http://vuejs.org/">Vue.js</a>
+                            and its amazing community so the entire front-end is powered by Vue.js. The
+                            data is stored in a <a
+                                class="about-link" target="_blank"
+                                href="https://mariadb.org/about/">MariaDB</a>
+                            relational database which is a drop-in replacement for MySQL. If
+                            you want to talk more about the tech stuff you can always contact me.
                         </p>
                         <h2><span class="primary-span">Q: What's the best way to contact you?</span></h2>
-                        <p class="subtitle">
-                            The best way to contact me is to email <a href="mailto:tigran@booknshelf.com"
+                        <p class="subtitle"
+                           style="font-family: 'Source Sans Pro', sans-serif; line-height: 150%; font-size: 19px;">
+                            The best way to contact me is to email <a href="mailto:tigran@booknshelf.com" target="_blank"
                                                                       class="about-link">tigran@booknshelf.com</a>.
-                            Or you can always tweet me at <a class="about-link"
+                            Or you can always tweet me at <a class="about-link" target="_blank"
                                                              href="https://twitter.com/@tiggreen">@tiggreen</a>.
                         </p>
                     </div>
