@@ -74,6 +74,11 @@ class CreateTopics extends Command
                 'Learn how to cook a delicious food. Yummy yummy!',
                 asset('/img/topics/tuh95zfdzn4-mike-petrucci.jpg'),
             ],
+            [
+                'Audiobooks',
+                'Discover great audiobooks in this topic.',
+                asset('/img/topics/66jmudijdtw-alphacolor-13.jpg'),
+            ],
         ]);
 
 
