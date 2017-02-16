@@ -7,11 +7,11 @@
             </span>
             <span style="margin-left: 4px;">Home</span>
         </a>
-        {{--<a class="nav-item" style="font-weight: normal" href="/about">--}}
-            {{--About--}}
-        {{--</a>--}}
+        <a class="nav-item" style="font-weight: normal" href="/faq">
+            FAQ
+        </a>
         <a class="nav-item" href="/topics">
-          Topics
+            Topics
         </a>
     </div>
 
@@ -27,7 +27,7 @@
     <!-- Add the modifier "is-active" to display it on mobile -->
     <div id="right-navbar" class="nav-right nav-menu" style="padding-right: 30px;">
         <a class="nav-item" @click="showNewShelfModal = true">
-            <span class="icon">
+        <span class="icon">
                 <i class="fa fa-plus"></i>
             </span>
         </a>

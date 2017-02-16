@@ -26,7 +26,7 @@ Route::get('login_twitter', 'Auth\LoginController@loginTwitter');
 
 // onboarding welcome page and static pages
 Route::get('/welcome', 'HomeController@welcome');
-Route::get('/about', 'HomeController@about');
+Route::get('/faq', 'HomeController@faq');
 
 // Settings
 Route::get('/settings', 'SettingsController@show');
