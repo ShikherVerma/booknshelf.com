@@ -42,11 +42,18 @@ class TopicController extends Controller
         $books = $shelfRepository->books($shelf);
         // get the topic by slug
         $topic = Topic::withCount('followers')->where(['slug' => $slug])->firstOrFail();
+        // get other topic suggestions
+        $otherTopics = Topic::withCount('followers')
+            ->whereNotIn('id', [$topic->id])
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
 
         return view('topic', [
             'topic' => $topic,
             'books' => json_encode($books),
             'user' => $request->user(),
+            'otherTopics' => json_encode($otherTopics),
         ]);
     }
 
