@@ -13,6 +13,20 @@
         <a class="nav-item" href="/topics">
             Topics
         </a>
+        @if (url()->current() !== env('APP_URL') && url()->current() !== env('APP_URL') . '/books/search')
+            <a class="nav-item is-hidden-mobile">
+                <form role="form" method="GET" action="{{ url('/books/search') }}">
+                    <p class="control has-icon" style="margin-bottom: 0px; width: 350px;">
+                        <input class="input is-expanded" type="text" value="{{ $q or '' }}" name="q"
+                               placeholder="Search books to add them to your shelves ...">
+                        <span class="icon">
+                            <i class="fa fa-search"></i>
+                        </span>
+                    </p>
+                    <input type="submit" style="display: none;">
+                </form>
+            </a>
+        @endif
     </div>
 
     <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
