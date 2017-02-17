@@ -49,12 +49,15 @@
                         <div class="tile is-parent is-vertical">
                             <article onclick="window.location ='/topics/leadership'"
                                      class="hvr-glow tile is-child notification is-primary">
-                                <p class="title">Leadership</p>
+                                <p class="title"><strong>Leadership</strong></p>
+                                <p class="subtitle">Learn how to be a better leader. Improve your leadership skills.</p>
                             </article>
                             <article onclick="window.location ='/topics/software-engineering'"
                                      class="hvr-glow tile is-child notification is-warning">
-                                <p class="title">Software Engineering</p>
-                                <p class="subtitle"></p>
+                                <p class="title"><strong>Software Engineering</strong></p>
+                                <p class="subtitle">
+                                    Whether you're a beginner or an expert these books are must read.
+                                </p>
                                 <div class="content">
                                     <!-- Content -->
                                 </div>
@@ -63,7 +66,7 @@
                         <div class="tile is-parent">
                             <article onclick="window.location ='/topics/personal-finance'"
                                      class="hvr-glow tile is-child notification is-info">
-                                <p class="title">Personal Finance</p>
+                                <p class="title"><strong>Personal Finance</strong></p>
                                 <p class="subtitle">I have $X, what should I do with it? How should I handle my
                                     finances? Read these books!</p>
                             </article>
@@ -72,10 +75,10 @@
                     <div class="tile is-parent">
                         <article onclick="window.location ='/topics/startups'"
                                  class="hvr-glow tile is-child notification">
-                            <p class="title">Startups</p>
-                            <div class="content">
-                                <!-- Content -->
-                            </div>
+                            <p class="title"><strong>Startups</strong></p>
+                            <p class="subtitle">
+                                Read these books to learn about startups and how to start your own.
+                            </p>
                         </article>
                     </div>
                 </div>
@@ -83,7 +86,7 @@
                     <article onclick="window.location ='/topics/travel'"
                              class="hvr-glow tile is-child notification t-is-1">
                         <div class="content">
-                            <p class="title">Travel</p>
+                            <p class="title"><strong>Travel</strong></p>
                             <div class="subtitle">
                                 Who doesn't like travel? No one! Read these books that will inspire you to travel more!
                             </div>
@@ -106,7 +109,7 @@
                                 <span class="icon">
                                   <i class="fa fa-smile-o"></i>
                                 </span>
-                                <span>Suggest your topic</span>
+                                <span><strong>Suggest your topic</strong></span>
                             </a>
                         </p>
                     </article>
@@ -114,7 +117,7 @@
                 <div class="tile is-parent">
                     <article class="tile is-child notification  hvr-glow" onclick="window.location ='/topics/cooking'"
                              style="background-color: hsl(271, 100%, 71%); color: white;">
-                        <p class="title">Cooking</p>
+                        <p class="title"><strong>Cooking</strong></p>
                         <p class="subtitle">Learn how to cook a delicious food. Yummy yummy!</p>
                     </article>
                 </div>
