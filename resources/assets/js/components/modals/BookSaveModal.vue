@@ -28,7 +28,7 @@
                 <div class="notification is-danger" v-if="form.errors.has('name')">
                     {{ form.errors.get('name') }}
                 </div>
-            
+
                 <div v-show="success" class="notification is-success">
                     The book has been added to your bookshelf.
                 </div>

@@ -1,5 +1,4 @@
 @extends('layouts.app')
-<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 
 @section('content')
     <section class="hero is-primary is-bold">
