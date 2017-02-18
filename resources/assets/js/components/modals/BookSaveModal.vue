@@ -15,18 +15,20 @@
                         <span>Create new bookshelf</span>
                     </a>
                 </p>
-                <form v-on:submit.prevent="storeBookToNewBookshelf"  v-if="showNewShelfForm">
-                    <label class="label">The name your new bookshelf</label>
-                    <p class="control is-expanded has-addons">
-                        <input class="input is-medium" name="name" type="text" v-model="form.name"
-                               :class="{'is-danger': form.errors.has('name')}" placeholder="e.g. My favorite books ...">
-                        <button class="button is-warning is-medium" type="submit" :disabled="form.busy">Create</button>
-                    </p>
-                </form>
+                <p class="control">
+                    <form v-on:submit.prevent="storeBookToNewBookshelf"  v-if="showNewShelfForm">
+                        <label class="label">The name your new bookshelf</label>
+                        <p class="control is-expanded has-addons">
+                            <input class="input is-medium" name="name" type="text" v-model="form.name"
+                                   :class="{'is-danger': form.errors.has('name')}" placeholder="e.g. My favorite books ...">
+                            <button class="button is-warning is-medium" type="submit" :disabled="form.busy">Create</button>
+                        </p>
+                    </form>
+                </p>
                 <div class="notification is-danger" v-if="form.errors.has('name')">
                     {{ form.errors.get('name') }}
                 </div>
-
+            
                 <div v-show="success" class="notification is-success">
                     The book has been added to your bookshelf.
                 </div>
@@ -86,6 +88,7 @@
                 App.post('/shelves', this.form)
                     .then((response) => {
                         var shelfId = response.id;
+                        console.log(shelfId);
                         this.form.name = '';
                         // add the book to the new shelf
                         this.storeBookToShelf(shelfId);
