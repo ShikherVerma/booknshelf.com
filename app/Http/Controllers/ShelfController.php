@@ -44,10 +44,11 @@ class ShelfController extends Controller
             return response()->json($error, 403);
         }
 
-        $request->user()->shelves()->save($shelf);
-
+        $shelf = $request->user()->shelves()->save($shelf);
         // Send a job so the cover of the shelf will be updated.
         dispatch((new UpdateShelfCover($shelf))->onQueue('shelves_cover'));
+
+        return $shelf;
     }
 
     public function show(Request $request, $shelfId)
