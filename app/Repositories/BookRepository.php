@@ -129,4 +129,14 @@ class BookRepository
 
         return $books;
     }
+
+    public function getFavorites()
+    {
+        $me = User::where('username', 'tigran')->firstOrFail();
+        $shelf = $me->shelves()->where('slug', 'favorites')->firstOrFail();
+        $books = $shelf->books()->get();
+        $books->load('authors', 'likes');
+
+        return $books;
+    }
 }
