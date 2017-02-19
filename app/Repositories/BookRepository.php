@@ -123,7 +123,10 @@ class BookRepository
     public function getFeatured()
     {
         $me = User::where('username', 'tigran')->firstOrFail();
-        $shelf = $me->shelves()->where('slug', 'featured')->firstOrFail();
+        $shelf = $me->shelves()->where('slug', 'featured')->first();
+        if (empty($shelf)) {
+            return [];
+        }
         $books = $shelf->books()->get();
         $books->load('authors', 'likes');
 
@@ -133,7 +136,10 @@ class BookRepository
     public function getFavorites()
     {
         $me = User::where('username', 'tigran')->firstOrFail();
-        $shelf = $me->shelves()->where('slug', 'favorites')->firstOrFail();
+        $shelf = $me->shelves()->where('slug', 'favorites')->first();
+        if (empty($shelf)) {
+            return [];
+        }
         $books = $shelf->books()->get();
         $books->load('authors', 'likes');
 
