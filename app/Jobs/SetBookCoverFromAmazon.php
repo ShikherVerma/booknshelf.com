@@ -39,9 +39,14 @@ class SetBookCoverFromAmazon implements ShouldQueue
 
         $images = [];
         $s3 = Storage::disk('s3');
-        // let's store the original image for future use
-        $images['original_image'] = $this->book->cover_image;
 
+        // let's store the original image for future use
+        $originalImage = $imageManager->make((string)$this->book->cover_image);
+        $path = 'book-original-covers/' . $this->book->asin . '-' . strtotime('now') . '.png';
+        $s3->put($path, (string)$originalImage->encode());
+        $images['original_image'] = $s3->url($path);
+
+        // Now let's store the small image
         $coverImage = $imageManager->make((string)$this->book->cover_image)->heighten(450);
         $path = 'book-covers/' . $this->book->asin . '-' . strtotime('now') . '.png';
         Log::info('Going to save the book image here at this path: '. $path);

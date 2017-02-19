@@ -7,6 +7,7 @@ use App\Repositories\BookRepository;
 use App\Repositories\UserRepository;
 use App\Services\AmazonProduct;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 
 class BookController extends Controller
 {
@@ -16,6 +17,7 @@ class BookController extends Controller
     public function __construct(UserRepository $users, BookRepository $books)
     {
         $this->middleware('auth', ['except' => ['search']]);
+        $this->guzzleClient = new Client();
         $this->users = $users;
         $this->books = $books;
     }
@@ -29,6 +31,7 @@ class BookController extends Controller
         $query = $request->q;
 
         $amazonBooks = $amazonService->searchBooks($query);
+//        dd($amazonBooks);
         $books = [];
         foreach ($amazonBooks as $book) {
             $extractedBook = $this->books->extractAmazonBookData($book);
@@ -53,5 +56,22 @@ class BookController extends Controller
         $likes = $book->likes()->get();
 
         return response()->json($likes);
+    }
+
+    public function reviews($bookId)
+    {
+        $bookIsbn = Book::findOrFail($bookId)->getAttribute('isbn_10');
+        if (empty($bookIsbn)) {
+            return;
+        }
+
+        $res = $this->guzzleClient->request(
+            'GET',
+            'https://www.goodreads.com/book/review_counts.json?isbns=' . $bookIsbn . '&key=' . getenv('GOODREADS_KEY'));
+        $body = json_decode((string)$res->getBody());
+
+        $fullBody = $body->books[0];
+
+        return response()->json($fullBody);
     }
 }

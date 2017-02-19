@@ -42,6 +42,7 @@ Vue.component('edit-shelf-modal', require('./components/modals/EditShelfModal.vu
 Vue.component('new-shelf-modal', require('./components/modals/NewShelfModal.vue'));
 Vue.component('book-save-modal', require('./components/modals/BookSaveModal.vue'));
 Vue.component('please-login-modal', require('./components/modals/PleaseLoginModal.vue'));
+Vue.component('book-info-modal', require('./components/modals/BookInfoModal.vue'));
 
 // Navbar
 Vue.component('user-navbar', require('./components/UserNavbar.vue'));
