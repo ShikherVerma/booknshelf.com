@@ -20,7 +20,7 @@
                                         {{ author.name }}<span v-if="index !== book.authors.length - 1">, </span>
                                     </span>
                                 </p>
-                                
+
                                 <p class="subtile" style="margin-top: 20px;">
                                     <a v-if="book.detail_page_url"  target="_blank" style="background-color: #efefef;"
                                        class="button is-medium" :href="book.detail_page_url">
