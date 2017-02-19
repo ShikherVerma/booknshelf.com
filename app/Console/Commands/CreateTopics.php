@@ -79,6 +79,11 @@ class CreateTopics extends Command
                 'Discover great audiobooks in this topic.',
                 asset('/img/topics/66jmudijdtw-alphacolor-13.jpg'),
             ],
+            [
+                'Photography',
+                'Find the most essential photography books.',
+                asset('/img/topics/alex-holyoake-157978.jpg'),
+            ],
         ]);
 
 

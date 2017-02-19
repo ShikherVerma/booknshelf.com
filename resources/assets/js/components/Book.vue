@@ -1,6 +1,6 @@
 <template>
     <div class="column is-2 profile-like-book">
-        <div class="box book hvr-grow" :style="bookCoverImage"></div>
+        <div class="box book hvr-grow-shadow" :style="bookCoverImage" @click="showBookInfoModal = true"></div>
         <p class="subtitle">
             <a class="button is-outlined" :class="{ 'saved-button': isSavedByAuthUser}" @click="showBookSaveModal()">
                 <span class="icon">
@@ -33,6 +33,12 @@
                 {{ author.name }}<span v-if="index !== book.authors.length - 1">, </span>
             </span>
         </p>
+        <book-info-modal v-if="showBookInfoModal"
+                         :book="book"
+                         :likes="likesCount"
+                         @close="showBookInfoModal = false"
+        >
+        </book-info-modal>
     </div>
 
 </template>
@@ -43,6 +49,7 @@
 
         data() {
             return {
+                showBookInfoModal: false,
                 form: new AppForm({
                     id: '',
                 }),
@@ -122,6 +129,7 @@
         height: 250px;
         background-position: center center;
         background-size: cover;
+        cursor: pointer;
     }
     .parent {
         position: relative;

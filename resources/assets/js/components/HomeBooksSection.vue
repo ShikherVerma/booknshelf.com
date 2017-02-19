@@ -3,7 +3,7 @@
         <div class="container">
             <div class="notification is-warning">
                 <div class="title is-4">
-                    <strong>{{ title }}</strong>
+                    <strong style="color: #0e8472;">{{ title }}</strong>
                     <a href="/books/search?q=how to win friends">Search More ></a>
                 </div>
             </div>
