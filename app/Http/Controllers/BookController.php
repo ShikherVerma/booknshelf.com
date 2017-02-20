@@ -16,7 +16,7 @@ class BookController extends Controller
 
     public function __construct(UserRepository $users, BookRepository $books)
     {
-        $this->middleware('auth', ['except' => ['search']]);
+        $this->middleware('auth', ['except' => ['search', 'reviews']]);
         $this->guzzleClient = new Client();
         $this->users = $users;
         $this->books = $books;
@@ -31,7 +31,7 @@ class BookController extends Controller
         $query = $request->q;
 
         $amazonBooks = $amazonService->searchBooks($query);
-//        dd($amazonBooks);
+
         $books = [];
         foreach ($amazonBooks as $book) {
             $extractedBook = $this->books->extractAmazonBookData($book);

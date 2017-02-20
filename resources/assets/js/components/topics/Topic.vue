@@ -1,37 +1,26 @@
 <template>
-    <div class="column is-half">
-        <article class="media hvr-glow" style="padding: 20px;" @click.stop.prevent="topicPage()">
-            <figure class="media-left">
-                <p class="image is-128x128">
-                    <img :src="topicCoverPhoto">
-                </p>
-            </figure>
-            <div class="media-content">
-                <div class="content">
-                    <a :href="topicUrl">
-                        <h1 class="subtitle is-4 topic-name">{{ topic.name }}</h1>
-                    </a>
-                </div>
+    <div class="column is-one-third hvr-float" @click.stop.prevent="topicPage()">
+        <div class="topic-card" :style="topicCoverImage" style="position: relative; padding: 0px; !important">
+            <div class="topic-container article" style="position: absolute;">
+                <p class="title"><strong style="color: #FFF;">{{ topic.name }}</strong></p>
                 <nav class="level">
                     <div class="level-left">
                         <p class="level-item">
-                            <a class="button is-medium" :disabled="form.busy" :class="{ 'followed-button': isFollowedByAuthUser}"
+                            <a class="button is-medium" :disabled="form.busy"
+                               :class="{ 'followed-button': isFollowedByAuthUser}"
                                @click.stop.prevent="toggle()">
                                 <span v-if="!isFollowedByAuthUser">Follow</span>
                                 <span v-else>Following</span>
                             </a>
                         </p>
-                        <span class="level-item">
+                        <span class="level-item" style="color: #FFF;">
                             {{ followersCount }} followers
                         </span>
                     </div>
                 </nav>
             </div>
-            <div class="media-right">
-            </div>
-        </article>
+        </div>
     </div>
-
 </template>
 
 <script>
@@ -114,6 +103,9 @@
             },
             topicUrl: function() {
                 return '/topics/' + this.topic.slug;
+            },
+            topicCoverImage: function() {
+                return `background-image: url(${this.topic.cover_photo})`;
             }
         },
 
@@ -124,6 +116,8 @@
             this.form.id = this.topic.id;
         },
     }
+
+
 </script>
 
 <style lang="css">
@@ -131,8 +125,34 @@
         background-color: #E95352;
         color: #ffffff;
     }
+
     .followed-button:hover {
         color: #ffffff;
+    }
+
+    .topic-card {
+        height: 250px;
+        background-position: center center;
+        background-size: cover;
+        cursor: pointer;
+    }
+
+    .topic-card:after {
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        display: block;
+        left: 0;
+        top: 0;
+        content: "";
+        background-color: rgba(4, 4, 4, 0.36);
+        border-radius: 6px;
+        color: black;
+        font-weight: bold;
+    }
+
+    .topic-container {
+        padding: 20px;
     }
 
 </style>

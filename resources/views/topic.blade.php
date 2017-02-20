@@ -19,7 +19,7 @@
 
     <topics :topics="{{ $otherTopics }}" :user="user" :user-topics="userTopics"></topics>
 
-            @if (Auth::check())
-                <book-save-modal :user="{{ $user }}" :book="bookSaveModalBook" :show="bookSaveModal"></book-save-modal>
+    @if (Auth::check())
+        <book-save-modal :user="{{ $user }}" :book="bookSaveModalBook" :show="bookSaveModal"></book-save-modal>
     @endif
 @endsection

@@ -1,20 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="hero is-blue is-small is-bold">
+    <section class="hero is-primary is-small is-bold">
         <div class="hero-body">
             <div class="container">
                 <h3 class="title is-3 topic-title">
                     <span class="primary-span">
-                        Topics
+                        Find the best books on different topics
                     </span>
                 </h3>
                 <p class="subtitle is-4 topic-text">
-
-                    Each topic is curated by us with the help of our community. They are always up-to-date. We're
-                    starting with few topics and will expend
-                    soon as you suggest more. Follow your favorite topics here and explore great books on different
-                    topics.
+                    Each topic is curated by us. They are always up-to-date.
+                    Follow your favorite topics!
                 </p>
             </div>
         </div>
