@@ -10,8 +10,9 @@
         <a class="nav-item" style="font-weight: normal;" href="/faq">
             FAQ
         </a>
-        <a class="nav-item" href="/topics">
+        <a class="nav-item has-activity-indicator" href="/topics">
             Topics
+            <i class="activity-indicator"></i>
         </a>
         @if (url()->current() !== env('APP_URL') && url()->current() !== env('APP_URL') . '/books/search')
             <a class="nav-item is-hidden-mobile">
@@ -27,6 +28,19 @@
                 </form>
             </a>
         @endif
+    </div>
+
+    <div class="nav-center">
+        {{--<a class="nav-item has-activity-indicator" href="/topics">--}}
+            {{--People--}}
+            {{--<span class="tag is-primary" style="margin-left: 3px; height: 2em;">--}}
+              {{--NEW--}}
+            {{--</span>--}}
+        {{--</a>--}}
+        {{--<a class="nav-item has-activity-indicator" href="/topics">--}}
+            {{--Topics--}}
+            {{--<i class="activity-indicator"></i>--}}
+        {{--</a>--}}
     </div>
 
     <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
