@@ -71,7 +71,7 @@ const app = new Vue({
         bookSaveModal: false,
         bookSaveModalBook: null,
         plaseLoginModal: false,
-        showNewShelfModal: false
+        showNewShelfModal: false,
     },
 
     methods: {

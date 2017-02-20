@@ -30,7 +30,7 @@
         @endif
     </div>
 
-    <div class="nav-center">
+    {{--<div class="nav-center">--}}
         {{--<a class="nav-item has-activity-indicator" href="/topics">--}}
             {{--People--}}
             {{--<span class="tag is-primary" style="margin-left: 3px; height: 2em;">--}}
@@ -41,7 +41,7 @@
             {{--Topics--}}
             {{--<i class="activity-indicator"></i>--}}
         {{--</a>--}}
-    </div>
+    {{--</div>--}}
 
     <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
     <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->

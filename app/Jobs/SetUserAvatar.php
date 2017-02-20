@@ -16,6 +16,8 @@ class SetUserAvatar implements ShouldQueue
     use InteractsWithQueue, Queueable, SerializesModels;
 
     protected $user;
+    protected $color;
+
     /**
      * Create a new job instance.
      *
@@ -24,6 +26,7 @@ class SetUserAvatar implements ShouldQueue
     public function __construct(User $user)
     {
         $this->user = $user;
+        $this->color = collect(['#00A888', '#FFDD57', '#1C51A6', '#B86BFF', '#E44A66', '#33D6C6'])->random();
     }
 
     /**
@@ -33,13 +36,29 @@ class SetUserAvatar implements ShouldQueue
      */
     public function handle(ImageManager $imageManager)
     {
-        if(is_null($this->user->avatar)) {
-            return $this->delete();
+        // Setup the defaul avatar
+        if (is_null($this->user->avatar)) {
+            // create empty canvas with background color
+            $image = $imageManager->canvas(300, 200, '#FFFFFF');
+            // draw an empty circle with 5px border
+            $image->circle(150, 150, 100, function ($draw) {
+                $draw->background($this->color);
+            });
+//            // write text at position
+//            $image->text('TH', 150, 100, function ($font) {
+//                // asset('/fonts/Montserrat-Regular.ttf')
+//                $font->file(3);
+//                $font->size(50);
+//                $font->color('#FFFFFF');
+//            });
+            $img = (string)$image->fit(300)->encode();
+        } else {
+            $img = (string)$imageManager->make($this->user->avatar)->fit(300)->encode();
         }
 
         $s3 = Storage::disk('s3');
-        $img = (string) $imageManager->make($this->user->avatar)->fit(300)->encode();
         $path = 'profiles/' . Carbon::now()->timestamp . '-' . $this->user->username . '.png';
+
 
         $s3->put($path, $img);
         $this->user->forceFill([

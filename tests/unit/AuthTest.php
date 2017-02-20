@@ -3,6 +3,8 @@
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\User;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
+use App\Jobs\SetUserAvatar;
+use App\Events\UserRegistered;
 
 
 class AuthTest extends TestCase
@@ -12,6 +14,8 @@ class AuthTest extends TestCase
 
     public function test_a_user_may_register_and_login()
     {
+        $this->expectsJobs(SetUserAvatar::class);
+        $this->expectsEvents(UserRegistered::class);
         $response = $this->call('POST', '/register', [
                 'name' => 'JohnSnow',
                 'username' => 'john_snow',
@@ -27,7 +31,9 @@ class AuthTest extends TestCase
     // letters, numbers and underscores only
     public function test_a_user_can_use_only_valid_username()
     {
-        $response = $this->call('POST', '/register', [
+        $this->doesntExpectJobs(SetUserAvatar::class);
+        $this->doesntExpectEvents(UserRegistered::class);
+        $this->call('POST', '/register', [
                 'name' => 'JohnSnow',
                 'username' => 'john.snow',
                 'password' => 'password',
@@ -37,6 +43,8 @@ class AuthTest extends TestCase
 
     public function testUserCantUseUsernameThatAlreadyExists()
     {
+        $this->doesntExpectJobs(SetUserAvatar::class);
+        $this->doesntExpectEvents(UserRegistered::class);
         factory(App\User::class)->create([
             'username' => 'some_tester_username'
         ]);
