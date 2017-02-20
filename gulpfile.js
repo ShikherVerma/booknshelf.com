@@ -31,8 +31,8 @@ elixir(function(mix) {
         'public/js/app.js'
     ]);
 
-	// copy the fonts to public/build/ directory
-	mix.copy('resources/assets/fonts', 'public/build/fonts');
+	// copy the fonts to public/ directory
+	mix.copy('resources/assets/fonts', 'public/fonts');
 	// copy the img to public/ directory
 	mix.copy('resources/assets/img', 'public/img');
 

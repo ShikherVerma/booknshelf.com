@@ -72,7 +72,7 @@
     @if (Auth::check())
         <new-shelf-modal v-if="showNewShelfModal" @close="showNewShelfModal = false"></new-shelf-modal>
     @else
-        <please-login-modal :show="plaseLoginModal"></please-login-modal>
+        <please-login-modal v-if="plaseLoginModal" @close="plaseLoginModal = false"></please-login-modal>
     @endif
 
 <!-- Main Content -->

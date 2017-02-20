@@ -166,3 +166,41 @@ article
     transition: all .15s
     transform: scale(.85)
     margin-bottom: 8px
+
+
+// avatars
+$black: #4f4f4f
+$red:   #d9566f
+$bl:  #56bcd9
+$green: #7fbb15
+
+/* Relevant Code */
+.person
+	display: table
+	margin: 24px auto
+	> *
+		display: table-cell
+		vertical-align: middle
+
+.person-avatarPlaceholder
+	width: 48px
+	height: 48px
+	border-radius: 50%
+	border: 2px solid
+	&.color-0
+		color: $red
+		background: rgba($red, 0.15)
+
+	&.color-1
+		color: $bl
+		background: rgba($bl, 0.15)
+
+	&.color-2
+		color: $green
+		background: rgba($green, 0.15)
+
+	line-height: 46px
+	text-align: center
+
+.person-name
+	padding-left: 12px

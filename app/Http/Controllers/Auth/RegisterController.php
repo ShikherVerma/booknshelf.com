@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\UserRegistered;
 use App\Http\Controllers\Controller;
+use App\Jobs\SetUserAvatar;
 use App\User;
-use Auth;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Validator;
 
@@ -44,13 +45,13 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
         $messages = [
-            'regex'    => 'Only use letters, numbers and underscores for username.',
+            'regex' => 'Only use letters, numbers and underscores for username.',
         ];
 
         return Validator::make($data, [
@@ -63,16 +64,22 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return User
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'username' => $data['username'],
             'password' => bcrypt($data['password']),
         ]);
+
+        dispatch((new SetUserAvatar($user))->onQueue('users_avatar'));
+
+        event(new UserRegistered($user));
+
+        return $user;
     }
 
 }
