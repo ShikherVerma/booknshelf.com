@@ -84,21 +84,21 @@ class CreateTopics extends Command
                 'Find the most essential photography books.',
                 asset('/img/topics/alex-holyoake-157978.jpg'),
             ],
-//            [
-//                'Science & Technology',
-//                'Find the most essential photography books.',
-//                asset('/img/topics/alex-holyoake-157978.jpg'),
-//            ],
-//            [
-//                'Computer Science',
-//                'Find the most essential photography books.',
-//                asset('/img/topics/alex-holyoake-157978.jpg'),
-//            ],
-//            [
-//                'Physics',
-//                'Find the most essential photography books.',
-//                asset('/img/topics/alex-holyoake-157978.jpg'),
-//            ],
+            [
+                'Science & Technology',
+                'Find the bestseller books in Science & Technology.',
+                asset('/img/topics/nasa-63029.jpg'),
+            ],
+            [
+                'Computer Science',
+                'What are some of the best books on computer science?',
+                asset('/img/topics/sabri-tuzcu-182689.jpg'),
+            ],
+            [
+                'Physics',
+                'Discover the most popular books on Physics.',
+                asset('/img/topics/3411957501_0930090028_z.jpg'),
+            ],
         ]);
 
 
