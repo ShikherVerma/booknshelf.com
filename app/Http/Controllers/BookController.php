@@ -31,7 +31,6 @@ class BookController extends Controller
         $query = $request->q;
 
         $amazonBooks = $amazonService->searchBooks($query);
-        dd($amazonBooks);
 
         $books = [];
         foreach ($amazonBooks as $book) {
