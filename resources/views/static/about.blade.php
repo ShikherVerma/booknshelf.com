@@ -65,8 +65,11 @@
                             also love <a
                                 class="about-link" target="_blank"
                                 href="http://vuejs.org/">Vue.js</a>
-                            and its amazing community so the entire front-end is powered by Vue.js. The
-                            data is stored in a <a
+                            and its amazing community so the entire front-end is powered by Vue.js. I also can't say enough
+                            good words about <a
+                                class="about-link" target="_blank"
+                                href="http://bulma.io">Bulma</a>, the CSS framework I've used for Booknshelf! It made my life
+                                so much easier! The data is stored in a <a
                                 class="about-link" target="_blank"
                                 href="https://mariadb.org/about/">MariaDB</a>
                             relational database which is a drop-in replacement for MySQL. If
