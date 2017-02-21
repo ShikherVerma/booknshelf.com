@@ -23,7 +23,9 @@ class TopicController extends Controller
 
     public function all()
     {
-        $topics = Topic::withCount('followers')->get();
+        $topics = Topic::withCount(['followers'])
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         return view('topics', [
             'topics' => json_encode($topics),
@@ -75,39 +77,4 @@ class TopicController extends Controller
         return $request->user()->topics()->detach($request->id);
     }
 
-//    public function storeBook(Request $request, $topicId)
-//    {
-//        $this->validate($request, [
-//            'id' => 'required',
-//        ]);
-//        $bookId = $request->id;
-//        $count = DB::table('book_topic')->where([
-//            'topic_id' => $topicId,
-//            'book_id' => $bookId,
-//        ])->count();
-//
-//        if ($count > 0) {
-//            $error = ['name' => ['This book is already in this topic.']];
-//
-//            return response()->json($error, 403);
-//        }
-//
-//        $topic = Topic::firstOrFail($topicId);
-//
-//        $topic->books()->attach($bookId);
-//    }
-//
-//    public function removeBook($topicId, $bookId)
-//    {
-//        $topic = Topic::firstOrFail($topicId);
-//        $topic->books()->detach($bookId);
-//    }
-//
-//    public function getBooks($topicId)
-//    {
-//        $topic = Topic::firstOrFail($topicId);
-//        $books = $topic->books();
-//
-//        return response()->json($books);
-//    }
 }

@@ -34,97 +34,19 @@
     <home-books-section :books="{{ $featuredBooks }}" :user="user" :likes="userLikedBooks"
                         :saves="userSavedBooks" title="Today's Featured Books"></home-books-section>
 
-    <section class="section is-primary is-fullheight is-bold" style="padding-bottom: 7px;" v-cloak>
+
+    <section class="section is-primary is-fullheight is-bold" style="padding-bottom: 0px;" v-cloak>
         <div class="container">
-            <div class="notification is-blue">
+            <div class="notification is-primary">
                 <div class="title is-4">
                     <strong>Explore Our Favorite Topics</strong>
                     <a href="/topics" style="color: yellow;">See all ></a>
                 </div>
             </div>
-
-            <div class="tile is-ancestor">
-                <div class="tile is-vertical is-8">
-                    <div class="tile">
-                        <div class="tile is-parent is-vertical">
-                            <article onclick="window.location ='/topics/leadership'"
-                                     class="hvr-glow tile is-child notification is-primary">
-                                <p class="title"><strong>Leadership</strong></p>
-                                <p class="subtitle">Learn how to be a better leader. Improve your leadership skills.</p>
-                            </article>
-                            <article onclick="window.location ='/topics/software-engineering'"
-                                     class="hvr-glow tile is-child notification is-warning">
-                                <p class="title"><strong>Software Engineering</strong></p>
-                                <p class="subtitle">
-                                    Whether you're a beginner or an expert these books are must read.
-                                </p>
-                                <div class="content">
-                                    <!-- Content -->
-                                </div>
-                            </article>
-                        </div>
-                        <div class="tile is-parent">
-                            <article onclick="window.location ='/topics/personal-finance'"
-                                     class="hvr-glow tile is-child notification is-info">
-                                <p class="title"><strong>Personal Finance</strong></p>
-                                <p class="subtitle">I have $X, what should I do with it? How should I handle my
-                                    finances? Read these books!</p>
-                            </article>
-                        </div>
-                    </div>
-                    <div class="tile is-parent">
-                        <article onclick="window.location ='/topics/startups'"
-                                 class="hvr-glow tile is-child notification">
-                            <p class="title"><strong>Startups</strong></p>
-                            <p class="subtitle">
-                                Read these books to learn about startups and how to start your own.
-                            </p>
-                        </article>
-                    </div>
-                </div>
-                <div class="tile is-parent">
-                    <article onclick="window.location ='/topics/travel'"
-                             class="hvr-glow tile is-child notification t-is-1">
-                        <div class="content">
-                            <p class="title"><strong>Travel</strong></p>
-                            <div class="subtitle">
-                                Who doesn't like travel? No one! Read these books that will inspire you to travel more!
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-
-            <div class="tile is-ancestor">
-                <div class="tile is-parent is-3">
-                    <article class="tile is-child notification t-is-2 hvr-grow">
-                        <p class="subtitle has-text-centered">
-                            <strong>Help me by suggesting a topic you would like to see in
-                                here.
-                            </strong>
-                        </p>
-                        <p class="has-text-centered">
-                            <a href="https://goo.gl/forms/CcCU1KSpmqFJeHzB3" type="button" target="_blank"
-                               class="button hvr-glow is-primary" style="background-color: #1c51a6; color: white;">
-                                <span class="icon">
-                                  <i class="fa fa-smile-o"></i>
-                                </span>
-                                <span><strong>Suggest your topic</strong></span>
-                            </a>
-                        </p>
-                    </article>
-                </div>
-                <div class="tile is-parent">
-                    <article class="tile is-child notification  hvr-glow" onclick="window.location ='/topics/cooking'"
-                             style="background-color: hsl(271, 100%, 71%); color: white;">
-                        <p class="title"><strong>Cooking</strong></p>
-                        <p class="subtitle">Learn how to cook a delicious food. Yummy yummy!</p>
-                    </article>
-                </div>
-            </div>
-
         </div>
     </section>
+
+    <topics :topics="{{ $topics }}" :user="user" :user-topics="userTopics"></topics>
 
     <home-books-section :books="{{ $books }}" :user="user" :likes="userLikedBooks"
                         :saves="userSavedBooks" title="Explore Some of Our Favorite Books"></home-books-section>

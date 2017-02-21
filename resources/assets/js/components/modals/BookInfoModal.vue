@@ -1,7 +1,7 @@
 <template>
     <div class="modal is-active">
         <div class="modal-background" @click="$emit('close')"></div>
-        <div class="modal-card">
+        <div class="modal-card modal-card-book-info">
             <section class="modal-card-body">
                 <div class="content">
                     <div class="container">
@@ -93,7 +93,7 @@
 </script>
 
 <style class="css">
-    .modal-card {
+    .modal-card-book-info {
         min-width: 70%;
     }
 
