@@ -6,7 +6,7 @@ use App;
 use App\Repositories\BookRepository;
 use App\Repositories\ShelfRepository;
 use App\Repositories\UserRepository;
-use App\User;
+use App\Topic;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -34,13 +34,16 @@ class HomeController extends Controller
     public function index()
     {
 
-        $topics = [];
+        $topics = Topic::withCount(['followers'])
+                    ->orderBy('followers_count', 'desc')
+                    ->get()
+                    ->take(8);
         $shelves = $this->shelves->ourPicks();
         $favoriteBooks = $this->books->getFavorites();
         $featuredBooks = $this->books->getFeatured();
         return view('home', [
             'shelves' => $shelves->toArray(),
-            'topics' => $topics,
+            'topics' => json_encode($topics),
             'books' => json_encode($favoriteBooks),
             'featuredBooks' => json_encode($featuredBooks)
         ]);

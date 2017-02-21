@@ -6,8 +6,8 @@
 
                 <div class="column is-one-third">
                     <div class="content">
-                        <p class="subtitle has-text-centered">
-                            <strong>
+                        <p class="subtitle has-text-centered" style="margin-top:15%;">
+                            <strong class="primary-span-inverse" style="color: white;">
                                 Help me by suggesting a topic you would like to see in here.
                             </strong>
                         </p>
