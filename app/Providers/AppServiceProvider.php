@@ -2,11 +2,13 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Queue;
+use App\Events\UserRegistered;
+use App\User;
 use Illuminate\Queue\Events\JobProcessed;
-use Log;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\ServiceProvider;
+use Log;
+use Queue;
 
 class AppServiceProvider extends ServiceProvider
 {
