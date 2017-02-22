@@ -75,6 +75,7 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
 
+        // TODO: Can I do this not in queue?
         dispatch((new SetUserAvatar($user))->onQueue('users_avatar'));
 
         event(new UserRegistered($user));
