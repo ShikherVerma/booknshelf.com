@@ -99,6 +99,21 @@ class CreateTopics extends Command
                 'Discover the most popular books on Physics.',
                 asset('/img/topics/3411957501_0930090028_z.jpg'),
             ],
+//            [
+//                'Machine Learning & Data Science',
+//                'Discover the most popular books on Physics.',
+//                asset('/img/topics/3411957501_0930090028_z.jpg'),
+//            ],
+//            [
+//                'History',
+//                '',
+//                asset('/img/topics/3411957501_0930090028_z.jpg'),
+//            ],
+//            [
+//                'Philosophy',
+//                '',
+//                asset('/img/topics/3411957501_0930090028_z.jpg'),
+//            ],
         ]);
 
 

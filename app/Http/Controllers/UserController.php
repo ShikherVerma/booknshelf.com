@@ -125,8 +125,6 @@ class UserController extends Controller
             'is_onboarded' => true,
         ]);
 
-//        Event::fire(new UserRegistered($user));
-
         return redirect('/');
     }
 

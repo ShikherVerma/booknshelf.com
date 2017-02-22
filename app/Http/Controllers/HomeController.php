@@ -39,6 +39,7 @@ class HomeController extends Controller
                     ->get()
                     ->take(8);
         $shelves = $this->shelves->ourPicks();
+
         $favoriteBooks = $this->books->getFavorites();
         $featuredBooks = $this->books->getFeatured();
         return view('home', [
