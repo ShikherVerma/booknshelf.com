@@ -47,7 +47,7 @@ class CreateTopics extends Command
             [
                 'Leadership',
                 'Learn to become a better leader. Imrpove your leadership skills.',
-                asset('/img/topics/gwe0dlvd9e0-benjamin-child.jpg')
+                asset('/img/topics/gwe0dlvd9e0-benjamin-child.jpg'),
             ],
             [
                 'Software Engineering',
@@ -99,21 +99,21 @@ class CreateTopics extends Command
                 'Discover the most popular books on Physics.',
                 asset('/img/topics/3411957501_0930090028_z.jpg'),
             ],
-//            [
-//                'Machine Learning & Data Science',
-//                'Discover the most popular books on Physics.',
-//                asset('/img/topics/3411957501_0930090028_z.jpg'),
-//            ],
-//            [
-//                'History',
-//                '',
-//                asset('/img/topics/3411957501_0930090028_z.jpg'),
-//            ],
-//            [
-//                'Philosophy',
-//                '',
-//                asset('/img/topics/3411957501_0930090028_z.jpg'),
-//            ],
+            [
+                'Machine Learning & Data Science',
+                'Read how Artificial Intelligence (AI) provides computers the ability to learn!',
+                asset('/img/topics/AI.jpg'),
+            ],
+            [
+                'History',
+                'Read and learn the study of the past!',
+                asset('/img/topics/les-anderson-167377.jpg'),
+            ],
+            [
+                'Philosophy',
+                'The study of general and fundamental problems concerning existence, knowledge and values.',
+                asset('/img/topics/david-marcu-114194.jpg'),
+            ],
         ]);
 
 
