@@ -24,7 +24,7 @@ class TopicController extends Controller
     public function all()
     {
         $topics = Topic::withCount(['followers'])
-            ->orderBy('created_at', 'desc')
+            ->orderBy('followers_counts', 'desc')
             ->get();
 
         return view('topics', [
