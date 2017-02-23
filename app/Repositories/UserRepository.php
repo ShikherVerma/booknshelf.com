@@ -8,6 +8,7 @@ use App\User;
 use Auth;
 use Faker;
 use Illuminate\Foundation\Bus\DispatchesJobs;
+use App\Events\UserRegistered;
 
 class UserRepository
 {
@@ -85,6 +86,8 @@ class UserRepository
 
         dispatch((new SetUserAvatar($user))->onQueue('users_avatar'));
 
+        event(new UserRegistered($user));
+
         return $user;
     }
 
@@ -115,6 +118,8 @@ class UserRepository
         $user->save();
 
         dispatch((new SetUserAvatar($user))->onQueue('users_avatar'));
+
+        event(new UserRegistered($user));
 
         return $user;
     }

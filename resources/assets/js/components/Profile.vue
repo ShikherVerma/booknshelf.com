@@ -14,6 +14,9 @@
                         <h1 class="title">
                             {{ user.name }}
                         </h1>
+                        <h2 class="subtitle is-4">
+                            {{ '@' +  user.username }}
+                        </h2>
                         <h2 class="subtitle">
                             {{ user.about }}
                         </h2>
