@@ -53,7 +53,8 @@
                             to make Booknshelf a self-sustainable side-project and I'm very inspired by <a
                                 class="about-link" target="_blank"
                                 href="https://twitter.com/csallen">Courtland Allen</a> who
-                            runs <a href="https://www.indiehackers.com" target="_blank" class="about-link">Indie Hackers</a>.
+                            runs <a href="https://www.indiehackers.com" target="_blank" class="about-link">Indie
+                                Hackers</a>.
                         </p>
                         <h2><span class="primary-span">Q: How did I build Booknshelf?</span></h2>
                         <p class="subtitle"
@@ -65,20 +66,31 @@
                             also love <a
                                 class="about-link" target="_blank"
                                 href="http://vuejs.org/">Vue.js</a>
-                            and its amazing community so the entire front-end is powered by Vue.js. I also can't say enough
+                            and its amazing community so the entire front-end is powered by Vue.js. I also can't say
+                            enough
                             good words about <a
                                 class="about-link" target="_blank"
-                                href="http://bulma.io">Bulma</a>, the CSS framework I've used for Booknshelf! It made my life
-                                so much easier! The data is stored in a <a
+                                href="http://bulma.io">Bulma</a>, the CSS framework I've used for Booknshelf! It made my
+                            life
+                            so much easier! The data is stored in a <a
                                 class="about-link" target="_blank"
                                 href="https://mariadb.org/about/">MariaDB</a>
                             relational database which is a drop-in replacement for MySQL. If
                             you want to talk more about the tech stuff you can always contact me.
                         </p>
+                        <h2><span class="primary-span">Q: Is there anyone you'd like to give credits to? 🤔</span></h2>
+                        <p class="subtitle"
+                           style="font-family: 'Source Sans Pro', sans-serif; line-height: 150%; font-size: 19px;">
+                            Yes 😍! I'm incredibly grateful to the Open Source community for building the tools I've
+                            been using for Booknshelf. Thank you. I'd also like to give credits to
+                            <a class="about-link" target="_blank" href="https://unsplash.com/">Unplash</a> for letting
+                            me use their amazing photos! They are so beautiful.
+                        </p>
                         <h2><span class="primary-span">Q: What's the best way to contact you?</span></h2>
                         <p class="subtitle"
                            style="font-family: 'Source Sans Pro', sans-serif; line-height: 150%; font-size: 19px;">
-                            The best way to contact me is to email <a href="mailto:tigran@booknshelf.com" target="_blank"
+                            The best way to contact me is to email <a href="mailto:tigran@booknshelf.com"
+                                                                      target="_blank"
                                                                       class="about-link">tigran@booknshelf.com</a>.
                             Or you can always tweet me at <a class="about-link" target="_blank"
                                                              href="https://twitter.com/@tiggreen">@tiggreen</a>.

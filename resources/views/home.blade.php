@@ -4,15 +4,12 @@
     @if (Auth::check())
         <book-save-modal :user="user" :book="bookSaveModalBook" :show="bookSaveModal"></book-save-modal>
     @endif
-    <section class="hero is-medium is-primary is-bold">
-        <div class="hero-body">
+    <section class="hero is-medium home-search-bg" style="background-image: url('/img/giulia-bertelli-104575-resized.jpg')">
+        <div class="hero-body home-search-body">
             <div class="container has-text-centered">
-                <h1 class="title is-2">
-                    <strong> Welcome to Booknshelf </strong>
-                </h1>
-                <h2 class="subtitle is-4">
-                    Discover great books and bookshelves on different topics.
-                </h2>
+                <h3 class="title is-3 primary-span-home">
+                    Discover great books and bookshelves on different topics
+                </h3>
                 <div class="columns">
                     <div class="column is-offset-one-quarter is-half">
                         <form role="form" method="GET" action="{{ url('/books/search') }}">
