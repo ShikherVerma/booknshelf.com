@@ -1,7 +1,7 @@
 <template>
     <section class="section" style="padding-bottom: 0px;">
         <div class="container">
-            <div class="notification is-warning">
+            <div class="notification">
                 <div class="title is-4">
                     <strong style="color: #4e4e4e;">{{ title }}</strong>
                     <a href="/books/search?q=how to win friends">Search More ></a>

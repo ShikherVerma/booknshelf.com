@@ -7,7 +7,7 @@
             </span>
             <span style="margin-left: 4px;">Home</span>
         </a>
-        <a class="nav-item" style="font-weight: normal;" href="/faq">
+        <a class="nav-item" href="/faq">
             FAQ
         </a>
         <a class="nav-item has-activity-indicator" href="/topics">

@@ -7,7 +7,7 @@
             </span>
             <span style="margin-left: 4px;">Home</span>
         </a>
-        <a class="nav-item" style="font-weight: normal" href="/faq">
+        <a class="nav-item" href="/faq">
             FAQ
         </a>
         @if (url()->current() !== env('APP_URL') && url()->current() !== env('APP_URL') . '/books/search')
@@ -37,6 +37,9 @@
             Topics
             <i class="activity-indicator"></i>
         </a>
+        <a class="nav-item" href="/friends">
+            Friends
+        </a>
     </div>
 
     <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
@@ -54,12 +57,6 @@
         <span class="icon">
                 <i class="fa fa-plus"></i>
             </span>
-        </a>
-        <a class="nav-item" href="{{ route('bookshelves_path', ['username' => Auth::user()->username]) }}">
-            My Bookshelves
-        </a>
-        <a class="nav-item" href="/friends">
-            Friends
         </a>
         <a class="nav-item" href="{{ route('profile_path', ['username' => Auth::user()->username]) }}">
             <figure class="image is-24x24" style="margin-right: 8px;">
