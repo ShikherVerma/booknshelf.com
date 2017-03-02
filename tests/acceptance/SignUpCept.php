@@ -19,8 +19,8 @@ $I->see('Choose your username', 'label');
 
 $I->click('Continue');
 
-$I->click('My Bookshelves');
+$I->click('Profile');
 
-$I->seeCurrentUrlEquals('/@milesaaa/bookshelves');
+$I->seeCurrentUrlEquals('/@milesaaa');
 
 //$I->see('Books I have read');

@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class LikeTest extends TestCase
@@ -12,7 +10,7 @@ class LikeTest extends TestCase
     {
         parent::setUp();
         $this->user = factory(App\User::class)->create([
-            'username' => 'tigran_tester'
+            'username' => 'tigran_tester',
         ]);
         $this->book = factory(App\Book::class)->create();
     }
@@ -38,7 +36,7 @@ class LikeTest extends TestCase
         // if the user already like this book then we should dislike it
         $this->like = factory(App\Like::class)->create([
             'user_id' => $this->user->id,
-            'book_id' => $this->book->id
+            'book_id' => $this->book->id,
         ]);
 
         $this->json('POST', '/likes/books/' . $this->book->id . '/toggle');
@@ -49,7 +47,5 @@ class LikeTest extends TestCase
             'user_id' => $this->user->id,
             'book_id' => $this->book->id,
         ]);
-
     }
-
 }

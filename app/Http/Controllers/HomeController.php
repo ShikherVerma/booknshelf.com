@@ -24,6 +24,7 @@ class HomeController extends Controller
         $this->middleware('auth', ['except' => [
             'index',
             'faq',
+            'story',
             'search'
         ]]);
         $this->shelves = $shelves;
@@ -53,6 +54,11 @@ class HomeController extends Controller
     public function faq()
     {
         return view('static.about');
+    }
+
+    public function story()
+    {
+        return view('static.story');
     }
 
     public function welcome(Request $request)
