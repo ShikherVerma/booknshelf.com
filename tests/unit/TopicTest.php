@@ -16,13 +16,13 @@ class TopicTest extends TestCase
         });
     }
 
-    public function test_auth_users_can_follow_topics()
+    public function testAuthUsersCanFollowTopics()
     {
         // create the topic first
         $topic = factory(App\Topic::class)->create([
-            'name' => 'Startups',
-            'slug' => 'startups',
-            'description' => 'The best books about startups.',
+            'name' => 'TestName',
+            'slug' => 'testname',
+            'description' => 'The best books about test',
         ]);
 
         $this->actingAs($this->user)
@@ -36,13 +36,13 @@ class TopicTest extends TestCase
         ]);
     }
 
-    public function test_auth_users_can_unfollow_topics()
+    public function testAuthUsersCanUnfollowTopics()
     {
         // create the topic first
         $topic = factory(App\Topic::class)->create([
-            'name' => 'Startups',
-            'slug' => 'startups',
-            'description' => 'The best books about startups.',
+            'name' => 'TestName2',
+            'slug' => 'testname2',
+            'description' => 'The best books about test2',
         ]);
         DB::insert('insert into topic_user (topic_id, user_id) values (?, ?)', [$topic->id, $this->user->id]);
 
@@ -57,7 +57,7 @@ class TopicTest extends TestCase
         ]);
     }
 
-    public function test_auth_users_cant_follow_non_existing_topic()
+    public function testAuthUsersCantFollowNonExistingTopic()
     {
         $this->actingAs($this->user)
             ->json('POST', '/topics/follow', [

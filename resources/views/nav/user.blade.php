@@ -1,14 +1,17 @@
 <!-- Navbar For Authenticated Users -->
 <nav class="nav" v-if="user">
     <div class="nav-left" style="padding-left: 30px;">
+        <a class="menu nav-item is-active">
+            <span class="icon">
+              <i class="fa fa-ellipsis-v"></i>
+            </span>
+        </a>
+
         <a class="nav-item is-active" style="font-weight: normal;" href="/">
             <span class="icon">
               <i class="fa fa-home"></i>
             </span>
             <span style="margin-left: 4px;">Home</span>
-        </a>
-        <a class="nav-item" href="/faq">
-            FAQ
         </a>
         @if (url()->current() !== env('APP_URL') && url()->current() !== env('APP_URL') . '/books/search')
             <a class="nav-item is-hidden-mobile">
@@ -26,13 +29,27 @@
         @endif
     </div>
 
+    <div class="bubble" style="display: none;">
+        <aside class="menu">
+            <p class="menu-label">
+                General
+            </p>
+            <ul class="menu-list">
+                <li><a href="/story">Story</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a target="_blank" href="https://paypal.me/tiggreen">Donate</a></li>
+            </ul>
+            <p class="menu-label">
+                Social
+            </p>
+            <ul class="menu-list">
+                <li><a target="_blank" href="https://twitter.com/booknshelf">Twitter</a></li>
+                <li><a target="_blank" href="https://facebook.com/usebooknshelf">Facebook</a></li>
+            </ul>
+        </aside>
+    </div>
+
     <div class="nav-center">
-        {{--<a class="nav-item has-activity-indicator" href="/topics">--}}
-            {{--People--}}
-            {{--<span class="tag is-primary" style="margin-left: 3px; height: 2em;">--}}
-              {{--NEW--}}
-            {{--</span>--}}
-        {{--</a>--}}
         <a class="nav-item has-activity-indicator" href="/topics">
             Topics
             <i class="activity-indicator"></i>
