@@ -28,7 +28,7 @@ class Book extends Model
         'cover_image',
         'language',
         'google_info_link',
-        'detail_page_url'
+        'detail_page_url',
     ];
 
     /**
