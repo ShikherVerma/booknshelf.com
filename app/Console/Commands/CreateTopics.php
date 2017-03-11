@@ -114,6 +114,11 @@ class CreateTopics extends Command
                 'The study of general and fundamental problems concerning existence, knowledge and values.',
                 asset('/img/topics/david-marcu-114194.jpg'),
             ],
+            [
+                'Self-help',
+                'Books that can help you to live a happier and more successful life.',
+                asset('/img/topics/jenn-richardson-113007.jpg'),
+            ],
         ]);
 
 
