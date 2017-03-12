@@ -65,10 +65,8 @@
         mounted() {
             this.$http.get(`/books/${this.book.id}/reviews`)
                     .then(response => {
-                        console.log(response.body);
                         this.averageRating = response.body.average_rating;
                         this.ratingsCount = response.body.ratings_count;
-                        console.log(this.averageRating);
             });
         },
 
