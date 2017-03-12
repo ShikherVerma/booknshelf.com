@@ -89,5 +89,7 @@
 
 <!-- Scripts -->
 <script src="{{ elixir('js/app.js') }}"></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script async src="{{ elixir('js/autotrack.js') }}"></script>
 </body>
 </html>
