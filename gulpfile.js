@@ -24,11 +24,14 @@ elixir(function(mix) {
 
 	// scripts
     mix.webpack('app.js');
+    mix.scripts('autotrack.js');
 
 
 	mix.version([
 	    'public/css/booknshelf.css',
-        'public/js/app.js'
+        'public/js/app.js',
+        'public/js/autotrack.js',
+
     ]);
 
 	// copy the fonts to public/ directory
