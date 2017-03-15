@@ -38,7 +38,7 @@ class HomeController extends Controller
         $topics = Topic::withCount(['followers'])
                     ->orderBy('updated_at', 'desc')
                     ->get()
-                    ->take(8);
+                    ->take(11);
         $shelves = $this->shelves->ourPicks();
 
         $favoriteBooks = $this->books->getFavorites();
