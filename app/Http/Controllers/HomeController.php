@@ -36,7 +36,7 @@ class HomeController extends Controller
     {
 
         $topics = Topic::withCount(['followers'])
-                    ->orderBy('followers_count', 'desc')
+                    ->orderBy('updated_at', 'desc')
                     ->get()
                     ->take(8);
         $shelves = $this->shelves->ourPicks();
