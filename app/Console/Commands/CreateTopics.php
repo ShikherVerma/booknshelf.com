@@ -119,6 +119,15 @@ class CreateTopics extends Command
                 'Books that can help you to live a happier and more successful life.',
                 asset('/img/topics/jenn-richardson-113007.jpg'),
             ],
+            [
+                'Science Fiction',
+                'Best science fiction books to read.',
+                asset('/img/topics/joel-filipe-193766.jpg'),
+            ],            [
+                'Romance',
+                '',
+                asset('/img/topics/everton-vila-140207.jpg'),
+            ],
         ]);
 
 
