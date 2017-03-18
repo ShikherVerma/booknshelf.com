@@ -112,6 +112,16 @@ class UserController extends Controller
         return $result;
     }
 
+    public function followedUsers()
+    {
+        $user = User::find(Auth::id());
+        $users = $user->followedUsers()->get();
+        $result = $users->map(function ($user) {
+            return $user->id;
+        });
+
+        return $result;
+    }
 
     public function shelves()
     {

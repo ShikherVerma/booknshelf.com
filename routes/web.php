@@ -46,6 +46,8 @@ Route::get('/user/current', 'UserController@current');
 Route::get('/user/current/likes/books', 'UserController@likedBooks');
 Route::get('/user/current/saves/books', 'UserController@savedBooks');
 Route::get('/user/current/topics', 'UserController@followedTopics');
+Route::get('/user/current/followedUsers', 'UserController@followedUsers');
+
 Route::get('/user/shelves', 'UserController@shelves');
 Route::get('/disconnect/facebook', 'UserController@disconnectFacebook');
 

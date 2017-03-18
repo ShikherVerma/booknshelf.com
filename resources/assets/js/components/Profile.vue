@@ -15,7 +15,7 @@
                             {{ user.name }}
                         </h1>
                         <h2 class="subtitle is-4">
-                            {{ '@' +  user.username }}
+                            {{ '@' + user.username }}
                         </h2>
                         <h2 class="subtitle">
                             {{ user.about }}
@@ -24,19 +24,24 @@
                     <div class="column">
                         <div class="level-item">
                             <div class="level-left">
+                                <p class="level-item" v-if="!canEditOrDelete">
+                                    <a class="button is-info" :disabled="form.busy"
+                                       :class="{ 'user-followed-button': isFollowedByAuthUser}"
+                                       @click.stop.prevent="toggle()">
+                                        <span v-if="!isFollowedByAuthUser"><strong>Follow</strong></span>
+                                        <span v-else><strong>Following</strong></span>
+                                    </a>
+                                </p>
                                 <div class="level-item">
-                                    <p class="subtitle">Share your profile</p>
-                                </div>
-                                <div class="level-item">
-                                    <a class="button is-medium twitter-tweet-button"
-                                        :href="twitterShareUrl" target="_blank">
+                                    <a class="button twitter-tweet-button"
+                                       :href="twitterShareUrl" target="_blank">
                                       <span class="icon">
                                          <i class="fa fa-twitter"></i>
                                       </span>
-                                     </a>
+                                    </a>
                                 </div>
                                 <div class="level-item">
-                                    <a class="button is-medium facebook-share-button"
+                                    <a class="button facebook-share-button"
                                        :href="facebookShareUrl"
                                        target="_blank">
                                       <span class="icon">
@@ -76,29 +81,88 @@
 
 <script>
     export default {
-        props: ['user'],
+        props: ['user', 'userFollowing'],
 
-        mounted() {
-            console.log('Component ready.')
+        data() {
+            return {
+                form: new AppForm({
+                    id: '',
+                }),
+            }
         },
 
-         computed: {
+        methods: {
+            toggle() {
+
+                if (!App.userId) {
+                    Bus.$emit('showPleaseLoginModal');
+                    return;
+                }
+
+                this.form.startProcessing();
+
+                if (this.isFollowedByAuthUser) {
+                    this.unfollow()
+                } else {
+                    this.follow()
+                }
+                this.form.finishProcessing();
+
+            },
+
+            follow() {
+                App.post(`/follows`, this.form)
+                    .then(() => {
+                        Bus.$emit('loadUserFollowing');
+                    }).catch(function (reason) {
+                    console.log(reason);
+                })
+            },
+
+            unfollow()
+            {
+                App.delete(`/follows/${this.user.id}`, this.form)
+                    .then(() => {
+                        Bus.$emit('loadUserFollowing');
+                    }).catch(function (reason) {
+                    console.log(reason);
+                })
+            }
+        },
+
+        mounted() {
+            this.form.id = this.user.id;
+        },
+
+        computed: {
             canEditOrDelete() {
                 return App.userId === this.user.id;
             },
-            twitterShareUrl: function() {
-                return "http://twitter.com/intent/tweet?status=" +
-                "Check out my profile on @booknshelf. " + window.location.href;
+            isFollowedByAuthUser: function () {
+                return (this.userFollowing.indexOf(this.user.id) != -1)
             },
-            facebookShareUrl: function() {
+            twitterShareUrl: function () {
+                return "http://twitter.com/intent/tweet?status=" +
+                    "Check out my profile on @booknshelf. " + window.location.href;
+            },
+            facebookShareUrl: function () {
                 return "http://www.facebook.com/sharer/sharer.php?u=" + window.location.href + "&title=" +
-                 this.user.name + "'s profile on Booknshelf.";
+                    this.user.name + "'s profile on Booknshelf.";
             }
         },
     }
 </script>
 
 <style lang="css">
+    .user-followed-button {
+        background-color: #FFDB4A !important;
+        color: #675f5f !important;
+    }
+
+    .user-followed-button:hover {
+        color: #675f5f !important;
+    }
+
     .profile-avatar-column {
         width: 140px !important;
     }

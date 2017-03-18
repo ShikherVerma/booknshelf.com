@@ -68,6 +68,7 @@ const app = new Vue({
         userLikedBooks: [],
         userSavedBooks: [],
         userTopics: [],
+        userFollowedUsers: [],
         bookSaveModal: false,
         bookSaveModalBook: null,
         plaseLoginModal: false,
@@ -97,6 +98,12 @@ const app = new Vue({
             this.$http.get('/user/current/topics')
                 .then(response => {
                     this.userTopics = response.data;
+                });
+        },
+        loadUserFollowedUsers() {
+            this.$http.get('/user/current/followedUsers')
+                .then(response => {
+                    this.userFollowedUsers = response.data;
                 });
         },
         closeBookSaveModal: function () {
@@ -130,11 +137,13 @@ const app = new Vue({
             this.loadUserLikedBooks();
             this.loadUserSavedBooks();
             this.loadUserTopics();
+            this.loadUserFollowedUsers();
         }
 
         Bus.$on('updateUser', this.updateUser);
         Bus.$on('updateUserData', this.updateUserData);
         Bus.$on('loadUserTopics', this.loadUserTopics);
+        Bus.$on('loadUserFollowing', this.loadUserFollowedUsers);
         Bus.$on('showBookSaveModal', this.showBookSaveModal);
         Bus.$on('closeBookSaveModal', this.closeBookSaveModal);
         Bus.$on('showPleaseLoginModal', this.showPleaseLoginModal);
@@ -146,6 +155,8 @@ const app = new Vue({
     beforeDestroy: function () {
         Bus.$off('updateUser', this.updateUser);
         Bus.$off('updateUserData', this.updateUserData);
+        Bus.$off('loadUserTopics', this.loadUserTopics);
+        Bus.$off('loadUserFollowing', this.loadUserFollowedUsers);
         Bus.$off('showBookSaveModal', this.showBookSaveModal);
         Bus.$off('closeBookSaveModal', this.closeBookSaveModal);
         Bus.$off('showPleaseLoginModal', this.showPleaseLoginModal);

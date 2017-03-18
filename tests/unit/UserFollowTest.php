@@ -52,4 +52,26 @@ class UserFollowTest extends TestCase
             'followed_id' => $this->userTwo->id,
         ]);
     }
+
+    public function testAuthUserCantFollowSameUserAgain()
+    {
+        // let's create follow relationship between users
+        DB::insert(
+            'insert into follows (follower_id, followed_id) values (?, ?)',
+            [$this->userOne->id, $this->userTwo->id]
+        );
+
+        $this->seeInDatabase('follows', [
+            'follower_id' => $this->userOne->id,
+            'followed_id' => $this->userTwo->id,
+        ]);
+
+        // trying to follow this user again should fail
+        $this->actingAs($this->userOne)
+            ->json('POST', '/follows', [
+                'id' => $this->userTwo->id,
+            ]);
+
+        $this->assertResponseStatus(400);
+    }
 }
