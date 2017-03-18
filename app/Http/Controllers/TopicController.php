@@ -60,7 +60,8 @@ class TopicController extends Controller
             'otherTopics' => json_encode($otherTopics),
             // page properties
             'title' => $shelf->name,
-            'description' => $shelf->description
+            'description' => $shelf->description,
+            'ogImage' => $topic->cover_photo
         ]);
     }
 
