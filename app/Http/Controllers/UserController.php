@@ -44,7 +44,8 @@ class UserController extends Controller
             'topics' => $topics,
             // page properties
             'title' => $user->name . "'s profile on Booknshelf",
-            'description' => "See all the books that " . $user->name . " has read and liked."
+            'description' => "See all the books that " . $user->name . " has read and liked.",
+            'ogImage' => $user->avatar
         ]);
     }
 
@@ -68,7 +69,8 @@ class UserController extends Controller
             'books' => json_encode($books),
             // page properties
             'title' => $shelf->name,
-            'description' => $shelf->description
+            'description' => $shelf->description,
+            'ogImage' => $shelf->cover
         ]);
     }
 

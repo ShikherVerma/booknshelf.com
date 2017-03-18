@@ -59,7 +59,7 @@ class TopicController extends Controller
             'user' => $request->user(),
             'otherTopics' => json_encode($otherTopics),
             // page properties
-            'title' => $shelf->name,
+            'title' => $shelf->name . ' topic on Booknshelf',
             'description' => $shelf->description,
             'ogImage' => $topic->cover_photo
         ]);
