@@ -39,6 +39,6 @@ elixir(function(mix) {
 	// copy the img to public/ directory
 	mix.copy('resources/assets/img', 'public/img');
 
-    mix.browserSync();
+    // mix.browserSync();
 
 });
