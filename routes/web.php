@@ -73,6 +73,17 @@ Route::post('/likes/books/{book_id}/toggle', 'LikeController@toggle');
 // Friends
 Route::get('/friends', 'FriendsController@index');
 
-//Books
+// Books
 Route::get('/books/{book_id}/likes', 'BookController@likes');
 Route::get('/books/{book_id}/reviews', 'BookController@reviews');
+
+// User Follows
+Route::post('follows', [
+    'as' => 'follows_path',
+    'uses' => 'FollowsController@store'
+]);
+
+Route::delete('follows/{id}', [
+    'as' => 'unfollows_path',
+    'uses' => 'FollowsController@destroy'
+]);
