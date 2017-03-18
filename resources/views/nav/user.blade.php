@@ -52,7 +52,6 @@
     <div class="nav-center">
         <a class="nav-item has-activity-indicator" href="/topics">
             Topics
-            <i class="activity-indicator"></i>
         </a>
         <a class="nav-item" href="/friends">
             Friends

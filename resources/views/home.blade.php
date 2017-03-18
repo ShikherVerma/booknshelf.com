@@ -45,7 +45,7 @@
 
     <topics :topics="{{ $topics }}" :user="user" :user-topics="userTopics"></topics>
 
-    <home-books-section :books="{{ $books }}" :user="user" :likes="userLikedBooks"
+    <home-books-section id="favorite-books" :books="{{ $books }}" :user="user" :likes="userLikedBooks"
                         :saves="userSavedBooks" title="Explore Some of Our Favorite Books"></home-books-section>
 
     <div class="tile is-ancestor" style="display: none;">
@@ -67,7 +67,7 @@
         </div>
     </div>
 
-    <section class="section is-primary is-bold" v-cloak>
+    <section id="favorite-shelves" class="section is-primary is-bold" v-cloak>
         <div class="container">
             <div class="notification" style="background-color: hsla(171, 100%, 36%, 1); color: white;">
                 <div class="title is-4">
