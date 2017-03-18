@@ -14,7 +14,7 @@
     <meta property="og:title" content="{{ $title or 'Discover great books and bookshelves on different topics.' }}"/>
     <meta property="og:description"
           content="{{ $description or 'People come to Booknshelf to find the best books on specific topics and also to see what their friends are reading.' }}"/>
-    <meta property="og:image" content="{{ $ogImage or 'https://booknshelf.com/img/social/homepage-screenshot-social-main.png' }}"/>
+    <meta property="og:image" content="{{ $ogImage or 'https://booknshelf.com/img/social/homepage-screenshot-facebook1.png' }}"/>
     <meta property="og:image:height" content="717"/>
     <meta property="og:image:width" content="1200"/>
     <meta property="og:site_name" content="Booknshelf"/>
@@ -26,7 +26,7 @@
     <meta name="twitter:description"
           content="{{ $description or 'People come to Booknshelf to find the best books on specific topics and also to see what their friends are reading.' }}">
     <meta name="twitter:image"
-          content="{{ $ogImage or 'https://booknshelf.com/img/social/homepage-screenshot-social-main.png' }}">
+          content="{{ $ogImage or 'https://booknshelf.com/img/social/homepage-screenshot-facebook.png' }}">
     <meta name="twitter:site" content="@booknshelf">
     <meta name="twitter:title"
           content="{{ $title or 'Discover great books and bookshelves on different topics.' }}">
