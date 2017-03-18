@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div v-if="likes.length < 1" class="columns">
+        <div v-if="books.length < 1" class="columns">
             <div class="column is-half">
                 <div class="message is-primary">
                   <div class="message-body">
