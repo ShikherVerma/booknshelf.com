@@ -15,7 +15,6 @@
         </a>
         <a class="nav-item has-activity-indicator" href="/topics">
             Topics
-            <i class="activity-indicator"></i>
         </a>
         @if (url()->current() !== env('APP_URL') && url()->current() !== env('APP_URL') . '/books/search')
             <a class="nav-item is-hidden-mobile">
