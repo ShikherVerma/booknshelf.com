@@ -5,36 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="oRlwQCWDSEBrMAdKd3t3_3pCA9sFayLgZdgLer2TKfM"/>
-    <link rel="canonical" href="https://www.booknshelf.com/"/>
+    <link rel="canonical" href="{{ url()->current() }}"/>
     <meta name="description"
           content="People come to Booknshelf to find the best books on specific topics and also to see what their friends are reading."/>
 
     {{--Facebook meta tags--}}
-    <meta property="fb:app_id" content="1899203000306326" />
-    <meta property="og:title" content="Discover great books and bookshelves on different topics." />
+    <meta property="fb:app_id" content="1899203000306326"/>
+    <meta property="og:title" content="{{ $title or 'Discover great books and bookshelves on different topics.' }}"/>
     <meta property="og:description"
-          content="People come to Booknshelf to find the best books on specific topics and also to see what their friends are reading." />
-    <meta property="og:image" content="https://booknshelf.com/img/social/homepage-screenshot-facebook1.png" />
-    <meta property="og:image:height" content="717" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:site_name" content="Booknshelf" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.booknshelf.com" />
+          content="{{ $description or 'People come to Booknshelf to find the best books on specific topics and also to see what their friends are reading.' }}"/>
+    <meta property="og:image" content="https://booknshelf.com/img/social/homepage-screenshot-facebook1.png"/>
+    <meta property="og:image:height" content="717"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:site_name" content="Booknshelf"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="{{ url()->current() }}"/>
 
     {{--Twitter meta tags--}}
     <meta name="twitter:card" content="summary">
     <meta name="twitter:description"
-          content="People come to Booknshelf to find the best books on specific topics and also to see what their friends are reading">
+          content="{{ $description or 'People come to Booknshelf to find the best books on specific topics and also to see what their friends are reading.' }}">
     <meta name="twitter:image"
           content="https://booknshelf.com/img/social/homepage-screenshot-facebook.png">
     <meta name="twitter:site" content="@booknshelf">
     <meta name="twitter:title"
-          content="Booknshelf: Discover great books and bookshelves on different topics.">
+          content="{{ $title or 'Discover great books and bookshelves on different topics.' }}">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Booknshelf: Discover great books and bookshelves on different topics') }}</title>
+    <title>{{ $title or 'Booknshelf: Discover great books and bookshelves on different topics' }}</title>
     <link rel="icon" type="image/png" href="/img/favicons/favicon-16x16.png" sizes="16x16">
     <link rel="icon" type="image/png" href="/img/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/img/favicons/favicon-96x96.png" sizes="96x96">
