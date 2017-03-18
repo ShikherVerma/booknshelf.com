@@ -29,6 +29,8 @@ class TopicController extends Controller
 
         return view('topics', [
             'topics' => json_encode($topics),
+            'title' => 'Find our favorite topics here',
+            'description' => 'All topics are curated by us and always up-to-date. Follow the topics that interest you.'
         ]);
     }
 
@@ -56,6 +58,9 @@ class TopicController extends Controller
             'books' => json_encode($books),
             'user' => $request->user(),
             'otherTopics' => json_encode($otherTopics),
+            // page properties
+            'title' => $shelf->name,
+            'description' => $shelf->description
         ]);
     }
 

@@ -42,6 +42,9 @@ class UserController extends Controller
             'shelves' => $shelves,
             'likedBooks' => $likedBooks,
             'topics' => $topics,
+            // page properties
+            'title' => $user->name . "'s profile on Booknshelf",
+            'description' => "See all the books that " . $user->name . " has read and liked."
         ]);
     }
 
@@ -63,6 +66,9 @@ class UserController extends Controller
             'user' => $user,
             'shelf' => $shelf,
             'books' => json_encode($books),
+            // page properties
+            'title' => $shelf->name,
+            'description' => $shelf->description
         ]);
     }
 
