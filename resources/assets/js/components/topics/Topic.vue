@@ -67,7 +67,7 @@
             },
 
             unfollow() {
-                // if user is authenticated then show the login modal, otherwise login modal
+                // if user is not authenticated then show the login modal, otherwise login modal
                 if (App.userId) {
                     App.post(`/topics/unfollow`, this.form)
                         .then(() => {
