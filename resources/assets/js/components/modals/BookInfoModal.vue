@@ -90,7 +90,7 @@
 
 </script>
 
-<style class="css">
+<style type="text/css">
     .modal-card-book-info {
         min-width: 70%;
     }

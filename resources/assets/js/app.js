@@ -43,6 +43,8 @@ Vue.component('new-shelf-modal', require('./components/modals/NewShelfModal.vue'
 Vue.component('book-save-modal', require('./components/modals/BookSaveModal.vue'));
 Vue.component('please-login-modal', require('./components/modals/PleaseLoginModal.vue'));
 Vue.component('book-info-modal', require('./components/modals/BookInfoModal.vue'));
+Vue.component('user-followers-modal', require('./components/modals/UserFollowersModal.vue'));
+Vue.component('user-followed-users-modal', require('./components/modals/UserFollowedUsersModal.vue'));
 
 // Navbar
 Vue.component('user-navbar', require('./components/UserNavbar.vue'));
@@ -69,6 +71,7 @@ const app = new Vue({
         userSavedBooks: [],
         userTopics: [],
         userFollowedUsers: [],
+        userFollowerUsers: [],
         bookSaveModal: false,
         bookSaveModalBook: null,
         plaseLoginModal: false,
@@ -100,22 +103,28 @@ const app = new Vue({
                     this.userTopics = response.data;
                 });
         },
+
         loadUserFollowedUsers() {
             this.$http.get('/user/current/followedUsers')
                 .then(response => {
                     this.userFollowedUsers = response.data;
                 });
         },
+        loadUserFollowerUsers() {
+            this.$http.get('/user/current/followerUsers')
+                .then(response => {
+                    this.userFollowerUsers = response.data;
+                });
+        },
+
         closeBookSaveModal: function () {
             this.bookSaveModal = false;
         },
-
         showBookSaveModal: function (book) {
             this.bookSaveModalBook = book;
             Bus.$emit('loadUserShelves');
             this.bookSaveModal = true;
         },
-
         showPleaseLoginModal: function (book) {
             this.plaseLoginModal = true;
         },
@@ -138,12 +147,14 @@ const app = new Vue({
             this.loadUserSavedBooks();
             this.loadUserTopics();
             this.loadUserFollowedUsers();
+            this.loadUserFollowerUsers();
         }
 
         Bus.$on('updateUser', this.updateUser);
         Bus.$on('updateUserData', this.updateUserData);
         Bus.$on('loadUserTopics', this.loadUserTopics);
         Bus.$on('loadUserFollowing', this.loadUserFollowedUsers);
+        Bus.$on('loadUserFollowers', this.loadUserFollowerUsers);
         Bus.$on('showBookSaveModal', this.showBookSaveModal);
         Bus.$on('closeBookSaveModal', this.closeBookSaveModal);
         Bus.$on('showPleaseLoginModal', this.showPleaseLoginModal);
@@ -157,6 +168,7 @@ const app = new Vue({
         Bus.$off('updateUserData', this.updateUserData);
         Bus.$off('loadUserTopics', this.loadUserTopics);
         Bus.$off('loadUserFollowing', this.loadUserFollowedUsers);
+        Bus.$off('loadUserFollowers', this.loadUserFollowerUsers);
         Bus.$off('showBookSaveModal', this.showBookSaveModal);
         Bus.$off('closeBookSaveModal', this.closeBookSaveModal);
         Bus.$off('showPleaseLoginModal', this.showPleaseLoginModal);
