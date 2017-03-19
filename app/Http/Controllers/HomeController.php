@@ -58,7 +58,12 @@ class HomeController extends Controller
 
     public function story()
     {
-        return view('static.story');
+        return view('static.story', [
+                'title' => 'Follow my story of growing Booknshelf into a profitable online business.',
+                'description' => "I'm sharing all my steps, revenue numbers, users count
+                    and more. Make sure to get updates by subscribing to my mailing list",
+                'ogImage' => 'https://booknshelf.com/img/backgrounds/hector-arguello-canals-142468.jpg'
+            ]);
     }
 
     public function welcome(Request $request)
