@@ -21,7 +21,7 @@
                               </h3>
                               <p class="subtitle has-text-centered" style="color: dimgray;">
                                 People will start following you if you have a better looking profile with shelves and books.
-                                Start adding more books to your shelves and letting people to discover them!
+                                Start adding more books to your shelves so people can discover them!
                               </p>
                           </div>
                         </div>
