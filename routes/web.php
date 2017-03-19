@@ -47,8 +47,13 @@ Route::get('/user/current/likes/books', 'UserController@likedBooks');
 Route::get('/user/current/saves/books', 'UserController@savedBooks');
 Route::get('/user/current/topics', 'UserController@followedTopics');
 Route::get('/user/current/followedUsers', 'UserController@followedUsers');
+Route::get('/user/current/followerUsers', 'UserController@followerUsers');
+
 
 Route::get('/user/shelves', 'UserController@shelves');
+Route::get('/users/{user_id}/followers', 'UserController@allFollowers');
+Route::get('/users/{user_id}/followed', 'UserController@allFollowed');
+
 Route::get('/disconnect/facebook', 'UserController@disconnectFacebook');
 
 // Search

@@ -22,6 +22,7 @@ class UserController extends Controller
             'except' => [
                 'profile',
                 'allShelves',
+                'allFollowers',
                 'shelf',
             ],
         ]);
@@ -36,12 +37,16 @@ class UserController extends Controller
         $shelves = $this->shelves->forUser($user);
         $likedBooks = $this->users->getAllLikedBooks($username);
         $topics = $this->users->getAllTopics($username);
+        $followersCount = $user->followers()->get()->count();
+        $followingCount = $user->followedUsers()->get()->count();
 
         return view('profile', [
             'user' => $user,
             'shelves' => $shelves,
             'likedBooks' => $likedBooks,
             'topics' => $topics,
+            'followersCount' => $followersCount,
+            'followingCount' => $followingCount,
             // page properties
             'title' => $user->name . "'s profile on Booknshelf",
             'description' => "See all the books that " . $user->name . " has read and liked.",
@@ -54,6 +59,20 @@ class UserController extends Controller
         $user = $this->users->findById($userId);
 
         return response()->json($this->shelves->forUser($user)->toArray());
+    }
+
+    public function allFollowers($userId)
+    {
+        $user = $this->users->findById($userId);
+
+        return response()->json($user->followers()->withCount('followers')->get()->toArray());
+    }
+
+    public function allFollowed($userId)
+    {
+        $user = $this->users->findById($userId);
+
+        return response()->json($user->followedUsers()->withCount('followers')->get()->toArray());
     }
 
     public function shelf($username, $slug)
@@ -123,7 +142,25 @@ class UserController extends Controller
         return $result;
     }
 
+    public function followerUsers()
+    {
+        $user = User::find(Auth::id());
+        $users = $user->followers()->get();
+        $result = $users->map(function ($user) {
+            return $user->id;
+        });
+
+        return $result;
+    }
+
     public function shelves()
+    {
+        $user = $this->users->current();
+
+        return response()->json($this->shelves->forUser($user)->toArray());
+    }
+
+    public function followers()
     {
         $user = $this->users->current();
 
