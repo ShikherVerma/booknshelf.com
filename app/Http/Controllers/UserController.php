@@ -23,6 +23,7 @@ class UserController extends Controller
                 'profile',
                 'allShelves',
                 'allFollowers',
+                'allFollowed',
                 'shelf',
             ],
         ]);
