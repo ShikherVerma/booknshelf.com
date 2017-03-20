@@ -153,9 +153,6 @@
         background-color: #00D1B2 !important;
         color: white !important;
     }
-    .user-followers-modal-content {
-        max-width: 40%;
-    }
     .user-title:hover {
         color: #00D1B2;
     }

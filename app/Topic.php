@@ -25,7 +25,7 @@ class Topic extends Model
      */
     public function followers()
     {
-        return $this->belongsToMany('App\User')->withTimestamps();
+        return $this->belongsToMany('App\User')->withTimestamps()->orderBy('created_at', 'desc');
     }
 
     /**

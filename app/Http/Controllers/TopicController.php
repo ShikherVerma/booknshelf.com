@@ -23,9 +23,9 @@ class TopicController extends Controller
 
     public function all()
     {
-        $topics = Topic::withCount(['followers'])
-            ->orderBy('followers_count', 'desc')
-            ->get();
+        $topics = Topic::with('followers')
+                    ->orderBy('updated_at', 'desc')
+                    ->get();
 
         return view('topics', [
             'topics' => json_encode($topics),
@@ -45,9 +45,9 @@ class TopicController extends Controller
         ])->firstOrFail();
         $books = $shelfRepository->books($shelf);
         // get the topic by slug
-        $topic = Topic::withCount('followers')->where(['slug' => $slug])->firstOrFail();
+        $topic = Topic::with('followers')->where(['slug' => $slug])->firstOrFail();
         // get other topic suggestions
-        $otherTopics = Topic::withCount('followers')
+        $otherTopics = Topic::with('followers')
             ->whereNotIn('id', [$topic->id])
             ->inRandomOrder()
             ->take(3)

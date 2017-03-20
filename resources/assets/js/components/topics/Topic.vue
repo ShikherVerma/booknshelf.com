@@ -1,25 +1,51 @@
 <template>
-    <div class="column is-one-third hvr-float" @click.stop.prevent="topicPage()">
-        <div class="topic-card" :style="topicCoverImage" style="position: relative; padding: 0px; !important">
-            <div class="topic-container article" style="position: absolute;">
-                <p class="title"><strong style="color: #FFF;">{{ topic.name }}</strong></p>
-                <nav class="level">
-                    <div class="level-left">
-                        <p class="level-item">
-                            <a class="button is-medium" :disabled="form.busy"
-                               :class="{ 'followed-button': isFollowedByAuthUser}"
-                               @click.stop.prevent="toggle()">
-                                <span v-if="!isFollowedByAuthUser">Follow</span>
-                                <span v-else>Following</span>
-                            </a>
-                        </p>
-                        <span class="level-item" style="color: #FFF;">
-                            {{ followersCount }} followers
-                        </span>
-                    </div>
-                </nav>
+    <div class="column is-one-third">
+        <a :href="topicUrl">
+            <div class="topic-card"
+                :style="topicCoverImage">
+                <div class="topic-container article">
+                    <p class="title"><strong style="color: #FFF;">{{ topic.name }}</strong></p>
+                    <nav class="level" style="justify-content:flex-start;">
+                        <div class="level-left">
+                            <p class="level-item">
+                                <a class="button is-medium" :disabled="form.busy"
+                                   :class="{ 'followed-button': isFollowedByAuthUser}"
+                                   @click.stop.prevent="toggle()">
+                                    <span v-if="!isFollowedByAuthUser">Follow</span>
+                                    <span v-else>Following</span>
+                                </a>
+                            </p>
+                            <span class="level-item" style="color: #FFF;">
+                                {{ followersCount }} followers
+                            </span>
+                        </div>
+                        <div @click.stop.prevent="showTopicFollowersModal = true" class="level-right has-text-left user-images-div">
+                            <span v-if="topic.followers[0]" class="level-item">
+                                <figure class="image is-32x32">
+                                  <img class="img-circle" :src="topic.followers[0].avatar">
+                                </figure>
+                            </span>
+                            <span v-if="topic.followers[1]" class="level-item user-image">
+                                <figure class="image is-32x32">
+                                  <img class="img-circle" :src="topic.followers[1].avatar">
+                                </figure>
+                            </span>
+                            <span v-if="topic.followers[2]" class="level-item user-image">
+                                <figure class="image is-32x32">
+                                  <img class="img-circle" :src="topic.followers[2].avatar">
+                                </figure>
+                            </span>
+                        </div>
+                    </nav>
+                </div>
             </div>
-        </div>
+        </a>
+        <topic-followers-modal
+            :user="user"
+            v-if="showTopicFollowersModal"
+            @close="showTopicFollowersModal = false"
+            :followers="topic.followers">
+        </topic-followers-modal>
     </div>
 </template>
 
@@ -32,7 +58,8 @@
                 form: new AppForm({
                     id: '',
                 }),
-                followersCount: this.topic.followers_count
+                showTopicFollowersModal: false,
+                followersCount: this.topic.followers.length
             }
         },
 
@@ -83,7 +110,7 @@
 
             topicPage() {
                 window.location.href = '/topics/' + this.topic.slug;
-            }
+            },
 
         },
 
@@ -120,7 +147,7 @@
 
 </script>
 
-<style lang="css">
+<style type="text/css">
     .followed-button {
         background-color: #E95352;
         color: #ffffff;
@@ -128,6 +155,7 @@
 
     .followed-button:hover {
         color: #ffffff;
+        background-color: #1a9992;
     }
 
     .topic-card {
@@ -135,6 +163,7 @@
         background-position: center center;
         background-size: cover;
         cursor: pointer;
+        position:relative;
     }
 
     .topic-card:after {
@@ -153,6 +182,23 @@
 
     .topic-container {
         padding: 20px;
+        position: absolute;
+    }
+
+    .user-image {
+        margin-left: -22px;
+    }
+
+    .img-circle {
+        border-radius: 50%;
+    }
+
+    .user-images-div {
+        margin-left: 10px;
+    }
+
+    .user-images-div:hover {
+        opacity: 0.5;
     }
 
 </style>

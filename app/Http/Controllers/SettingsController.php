@@ -30,7 +30,6 @@ class SettingsController extends Controller
             'about' => 'max:255',
         ]);
 
-        
         $request->user()->update([
             'name' => $request->name,
             'email' => $request->email,
