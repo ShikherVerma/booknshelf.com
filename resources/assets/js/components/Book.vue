@@ -25,9 +25,7 @@
                 </span>
             </a>
         </p>
-        <a :href="url">
-            <h4 class="title book-title">{{ book.title }}</h4>
-        </a>
+        <h4 class="title book-title">{{ book.title }}</h4>
         <p class="subtitle">
             <span v-for="(author, index) in book.authors">
                 {{ author.name }}<span v-if="index !== book.authors.length - 1">, </span>

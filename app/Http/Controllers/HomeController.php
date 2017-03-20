@@ -35,10 +35,14 @@ class HomeController extends Controller
     public function index()
     {
 
-        $topics = Topic::withCount(['followers'])
+        $topics = Topic::with('followers')
                     ->orderBy('updated_at', 'desc')
                     ->get()
                     ->take(11);
+                    // ->orderBy('updated_at', 'desc')
+                    // ->get()
+                    // ->take(11);
+        // dd($topics);
         $shelves = $this->shelves->ourPicks();
 
         $favoriteBooks = $this->books->getFavorites();

@@ -16,7 +16,7 @@
                             <h2 class="subtitle" v-if="topic.description">
                                 {{ topic.description}}
                             </h2>
-                            <div class="level topic-follow-section">
+                            <div class="level topic-follow-section" style="justify-content:flex-start;">
                                 <div class="level-left">
                                     <p class="level-item">
                                         <a class="button is-medium" :disabled="form.busy"
@@ -29,6 +29,23 @@
                                     <span class="level-item">
                                          {{ followersCount }} followers
                                      </span>
+                                </div>
+                                <div @click.stop.prevent="showTopicFollowersModal = true" class="level-right has-text-left user-images-div">
+                                    <span v-if="topic.followers[0]" class="level-item">
+                                        <figure class="image is-32x32">
+                                          <img class="img-circle" :src="topic.followers[0].avatar">
+                                        </figure>
+                                    </span>
+                                    <span v-if="topic.followers[1]" class="level-item user-image">
+                                        <figure class="image is-32x32">
+                                          <img class="img-circle" :src="topic.followers[1].avatar">
+                                        </figure>
+                                    </span>
+                                    <span v-if="topic.followers[2]" class="level-item user-image">
+                                        <figure class="image is-32x32">
+                                          <img class="img-circle" :src="topic.followers[2].avatar">
+                                        </figure>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -61,6 +78,12 @@
                 </div>
             </div>
         </section>
+        <topic-followers-modal
+            :user="user"
+            v-if="showTopicFollowersModal"
+            @close="showTopicFollowersModal = false"
+            :followers="topic.followers">
+        </topic-followers-modal>
     </div>
 </template>
 
@@ -73,7 +96,8 @@
                 form: new AppForm({
                     id: '',
                 }),
-                followersCount: this.topic.followers_count
+                showTopicFollowersModal: false,
+                followersCount: this.topic.followers.length
             }
         },
 
@@ -173,5 +197,11 @@
 
     .follow-button {
         color: #404042 !important;
+    }
+    .user-images-div {
+        cursor: pointer;
+    }
+    .user-images-div:hover {
+        opacity: 0.5;
     }
 </style>

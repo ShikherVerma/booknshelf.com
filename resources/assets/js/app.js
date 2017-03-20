@@ -45,6 +45,7 @@ Vue.component('please-login-modal', require('./components/modals/PleaseLoginModa
 Vue.component('book-info-modal', require('./components/modals/BookInfoModal.vue'));
 Vue.component('user-followers-modal', require('./components/modals/UserFollowersModal.vue'));
 Vue.component('user-followed-users-modal', require('./components/modals/UserFollowedUsersModal.vue'));
+Vue.component('topic-followers-modal', require('./components/modals/TopicFollowersModal.vue'));
 
 // Navbar
 Vue.component('user-navbar', require('./components/UserNavbar.vue'));
