@@ -123,10 +123,17 @@ class CreateTopics extends Command
                 'Science Fiction',
                 'Best science fiction books to read.',
                 asset('/img/topics/joel-filipe-193766.jpg'),
-            ],            [
+            ],
+            [
                 'Romance',
                 '',
                 asset('/img/topics/everton-vila-140207.jpg'),
+            ],
+            [
+                'Biographies and Memoirs',
+                'Looking for good biographies and memoirs? We have created a list of
+                    the best biographies and memoirs of all-time.',
+                asset('/img/topics/jc-bonassin-198103.jpg'),
             ],
         ]);
 
