@@ -5,7 +5,7 @@
                 :style="topicCoverImage">
                 <div class="topic-container article">
                     <p class="title"><strong style="color: #FFF;">{{ topic.name }}</strong></p>
-                    <nav class="level" style="justify-content:flex-start;">
+                    <nav class="level is-mobile" style="justify-content:flex-start;">
                         <div class="level-left">
                             <p class="level-item">
                                 <a class="button is-medium" :disabled="form.busy"
@@ -19,7 +19,7 @@
                                 {{ followersCount }} followers
                             </span>
                         </div>
-                        <div @click.stop.prevent="showTopicFollowersModal = true" class="level-right has-text-left user-images-div">
+                        <div @click.stop.prevent="showTopicFollowersModal = true" class="level-right is-mobile has-text-left user-images-div">
                             <span v-if="topic.followers[0]" class="level-item">
                                 <figure class="image is-32x32">
                                   <img class="img-circle" :src="topic.followers[0].avatar">
