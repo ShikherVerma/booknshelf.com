@@ -129,6 +129,13 @@
         background-size: cover;
         cursor: pointer;
     }
+
+    @media only screen and (max-width: 768px) {
+        .book {
+            height: 600px !important;
+            width: 370px !important
+        }
+    }
     .parent {
         position: relative;
     }

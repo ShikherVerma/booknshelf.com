@@ -23,7 +23,13 @@
                                 <span class="icon">
                                   <i class="fa fa-check"></i>
                                 </span>
-                                Follow different topics and like books.
+                                Follow other readers and be part of their reading journey!
+                            </p>
+                            <p class="title is-4 primary-span-inverse">
+                                <span class="icon">
+                                  <i class="fa fa-check"></i>
+                                </span>
+                                Follow different topics, see who follows what topic and more.
                             </p>
                             <p class="subtitle" style="margin-top:10px;">
                                 Already have an account? <a href="/login">Login 🚀</a>
