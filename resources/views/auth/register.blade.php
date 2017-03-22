@@ -19,6 +19,12 @@
                         Like books and follow different topics! Keep all your topics and liked books in one place!
                     </p>
                     <p class="title is-4">
+                          <span class="icon">
+                            <i class="fa fa-check"></i>
+                          </span>
+                        Follow other readers and be part of their reading journey!
+                    </p>
+                    <p class="title is-4">
                         <span class="icon">
                           <i class="fa fa-check"></i>
                         </span>
