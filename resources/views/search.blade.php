@@ -7,9 +7,10 @@
     <section class="hero is-small is-primary is-bold">
         <div class="hero-body">
             <div class="container has-text-centered">
-                <h3 class="subtitle is-3">
-                    Search for great books to save them in your shelves. Create your online reading presence!
+                <h3 class="subtitle is-3" style="margin-bottom: 5px;">
+                    Search for great books to save them in your shelves.
                 </h3>
+                <h4 class="subtitle is-4">Create your online reading presence 📚😍!</h4>
                 <div class="columns">
                     <div class="column is-offset-one-quarter is-half">
                         <form role="form" method="GET" action="{{ url('/books/search') }}">
