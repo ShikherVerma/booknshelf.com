@@ -8,7 +8,7 @@
         <div class="hero-body">
             <div class="container has-text-centered">
                 <h3 class="subtitle is-3">
-                    Search for great books. You can like or save a book in your bookshelves.
+                    Search for great books to save them in your shelves. Create your online reading presence!
                 </h3>
                 <div class="columns">
                     <div class="column is-offset-one-quarter is-half">
