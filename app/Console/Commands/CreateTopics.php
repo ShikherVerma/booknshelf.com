@@ -135,29 +135,36 @@ class CreateTopics extends Command
                     the best biographies and memoirs of all-time.',
                 asset('/img/topics/jc-bonassin-198103.jpg'),
             ],
+            [
+                'Mystery',
+                '',
+                asset('/img/topics/dustin-scarpitti-967.jpg'),
+            ],
         ]);
 
 
         $this->user = User::where('username', 'topic')->firstOrFail();
         $allTopicNames->each(function ($tuple) {
-            Topic::updateOrCreate([
-                'name' => $tuple[0],
-                'description' => $tuple[1],
-                'cover_photo' => $tuple[2],
-            ]);
+            $topic = Topic::where('name', $tuple[0])->first();
+            if (empty($topic)) {
+                Topic::create([
+                    'name' => $tuple[0],
+                    'description' => $tuple[1],
+                    'cover_photo' => $tuple[2],
+                ]);
+                $shelf = new Shelf;
+                $shelf->forceFill([
+                    'name' => $tuple[0],
+                    'description' => $tuple[1],
+                    'slug' => str_slug($tuple[0]),
+                    'cover' => $tuple[2],
+                ]);
+                $exists = $this->user->shelves()->where('slug', $shelf->slug)->exists();
 
-            $shelf = new Shelf;
-            $shelf->forceFill([
-                'name' => $tuple[0],
-                'description' => $tuple[1],
-                'slug' => str_slug($tuple[0]),
-                'cover' => $tuple[2],
-            ]);
-            $exists = $this->user->shelves()->where('slug', $shelf->slug)->exists();
-
-            if (!$exists) {
-                $this->user->shelves()->save($shelf);
-                echo "Created {$tuple[0]} topic \n";
+                if (!$exists) {
+                    $this->user->shelves()->save($shelf);
+                    echo "Created {$tuple[0]} topic \n";
+                }
             }
         });
         echo "Done \n";
