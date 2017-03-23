@@ -10,12 +10,16 @@
         :user-topics="userTopics">
     </topic-page>
 
-    <div class="notification"  style="background-color: #0BBCD6; color: hsl(48, 100%, 67%);" v-cloak>
-        <div class="title is-4">
-            <strong>Explore Other Topics</strong>
-            <a href="/topics" style="color: white;">See all ></a>
+    <section class="section" style="padding-top: 5px; padding-bottom: 5px;">
+        <div class="container">
+            <div class="notification is-primary" v-cloak>
+                <div class="title is-4">
+                    Explore Other Topics
+                    <a href="/topics" style="color: white;"><strong>See all ></strong></a>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
     <topics :topics="{{ $otherTopics }}" :user="user" :user-topics="userTopics"></topics>
 
