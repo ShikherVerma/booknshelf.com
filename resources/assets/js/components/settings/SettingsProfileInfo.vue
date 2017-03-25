@@ -1,10 +1,9 @@
 <template>
     <div class="container is-light">
         <div class="columns">
-            <div class="column is-4">
+            <div class="column is-6">
                 <!-- Success Message -->
                 <div class="notification is-success" v-show="form.successful">
-                    <button class="delete"></button>
                     Your profile has been updated!
                 </div>
                 <form role="form">
@@ -18,7 +17,7 @@
                         </span>
                     </p>
                     <!--Email address-->
-                    <label class="label bigger-font-label">E-mail address</label>
+                    <label class="label bigger-font-label">Email address</label>
                     <p class="control">
                         <input class="input" name="name" type="email" v-model="form.email"
                                :class="{'is-danger': form.errors.has('email')}" placeholder="Your email address ...">
@@ -75,7 +74,7 @@
             return {
                 form: $.extend(true, new AppForm({
                     name: '',
-                    email: '',
+                    // email: '',
                     username: '',
                     about: ''
                 }), [])
@@ -83,12 +82,10 @@
         },
 
         mounted() {
-            this.$nextTick(function () {
-                this.form.name = this.user.name;
-                this.form.email = this.user.email;
-                this.form.username = this.user.username;
-                this.form.about = this.user.about;
-            })
+            this.form.name = this.user.name;
+            this.form.email = this.user.email;
+            this.form.username = this.user.username;
+            this.form.about = this.user.about;
         },
 
         methods: {

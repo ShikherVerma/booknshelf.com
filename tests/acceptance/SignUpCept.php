@@ -19,7 +19,9 @@ $I->see('Choose your username', 'label');
 
 $I->click('Continue');
 
-$I->click('Profile');
+$I->click('.menu');
+
+$I->click('My profile');
 
 $I->seeCurrentUrlEquals('/@milesaaa');
 

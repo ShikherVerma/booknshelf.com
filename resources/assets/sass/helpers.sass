@@ -1,3 +1,10 @@
+// navbar cutom helpers
+.nav
+    min-height: 3.875rem !important
+
+.nav-item img
+    max-height: 2.40rem !important
+
 .home-search-bg
     //height: 250px;
     background-position: center center
@@ -187,15 +194,20 @@ article
     margin-bottom: 8px
 
 // Popover jquery styling
-.bubble
+.navbar-profile-menu
     position: absolute
     width: 200px
-    //height: 200px
     padding: 5px
     background: white
-    margin-left: 30px
-    margin-top: 3.5rem
+    top: 3.5rem
+    right: 0px
+    opacity: 1
+    display: block;
+    animation-fill-mode: forwards
+    animation-name: show-dropdown-from-top-DRKNW
 
+.menu-list a
+    padding: 0.7em 0.75em
 // avatars
 $black: #4f4f4f
 $red: #d9566f
