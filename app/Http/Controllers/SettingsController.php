@@ -26,7 +26,7 @@ class SettingsController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
-            'email' => 'email|max:255|unique:users,email,'.$request->user()->id,
+            'email' => 'sometimes|email|max:255|unique:users,email,'.$request->user()->id,
             'about' => 'max:255',
         ]);
 

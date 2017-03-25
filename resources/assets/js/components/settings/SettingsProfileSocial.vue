@@ -2,7 +2,7 @@
     <div>
         <div v-if="isFacebookConnected" class="container is-light">
             <div class="columns">
-                <div class="column is-4">
+                <div class="column is-6">
                     <p class="control">
                         <a class="button is-large fb-button" :href="facebook_disconnect_url">
                             <span class="icon">
@@ -16,7 +16,7 @@
         </div>
         <div v-if="!isFacebookConnected" class="container is-light">
             <div class="columns">
-                <div class="column is-4">
+                <div class="column is-6">
                     <p class="control">
                         <a class="button is-large is-info fb-button" :href="facebook_connect_url">
                             <span class="icon">

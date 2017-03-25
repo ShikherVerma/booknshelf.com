@@ -48,7 +48,6 @@ Vue.component('user-followed-users-modal', require('./components/modals/UserFoll
 Vue.component('topic-followers-modal', require('./components/modals/TopicFollowersModal.vue'));
 
 // Navbar
-Vue.component('user-navbar', require('./components/UserNavbar.vue'));
 
 // Shared
 Vue.component('spinner', require('./components/shared/Spinner.vue'));
@@ -187,9 +186,19 @@ $(".nav-toggle").on('click', function(){
     $('#right-navbar').toggleClass('is-active');
 });
 
-$(".menu").on('click', function(){
-    $('.bubble').fadeToggle(200);
+$(".menu").on('click', function(event){
+    event.stopPropagation();
+    $('.navbar-profile-menu').fadeToggle(200);
 });
+
+
+$(document).on("click", function () {
+    $(".navbar-profile-menu").hide();
+});
+/*
+    By Osvaldas Valutis, www.osvaldas.info
+    Available for use under the MIT License
+*/
 
 
 

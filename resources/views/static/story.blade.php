@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="hero is-medium home-search-bg"
-             style="background-image: url('/img/backgrounds/hector-arguello-canals-142468.jpg')">
+    <section class="hero home-search-bg is-primary"
+             >
         <!-- Hero content: will be in the middle -->
         <div class="hero-body">
             <div class="container has-text-centered">
@@ -12,7 +12,7 @@
                 <p class="subtitle" style="color: whitesmoke;">
                     I'm sharing all my steps, revenue numbers, users count and more. <br>
                     Make sure to get updates by subscribing to my mailing list! I'll never spam. -
-                    <a href="https://tigran.nyc" target="_blank" style="color: grey; text-decoration: underline;">Tigran</a>
+                    <a href="https://tigran.nyc" target="_blank" style="color: white; text-decoration: underline;">Tigran</a>
                 </p>
                 <div id="mc_embed_signup" class="columns is-vcentered">
                     <div class="column is-3">
