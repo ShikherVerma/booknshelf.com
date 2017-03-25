@@ -56,6 +56,7 @@
                 <div class="columns">
                     <div class="column is-3"></div>
                     <div class="column is-8">
+
                     </div>
                 </div>
             </div>
