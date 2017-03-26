@@ -79,9 +79,7 @@
     @yield('content')
 
 
-    @if (url()->current() !== env('APP_URL') . '/story')
-        @include('shared.newsletter')
-    @endif
+    @include('shared.newsletter')
 
     @include('shared.footer')
 

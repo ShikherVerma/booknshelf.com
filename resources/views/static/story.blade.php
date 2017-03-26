@@ -50,16 +50,51 @@
             </div>
         </div>
     </section>
-    <section class="section">
+    <section class="section" style="background-color: #f1f1f1;">
         <div class="container is-light">
             <div class="content">
                 <div class="columns">
-                    <div class="column is-3"></div>
-                    <div class="column is-8">
+                    <div class="column is-1"></div>
+                    <div class="column is-10">
+                        <div class="content">
+                          <h1>
+                            <span class="primary-span-inverse">February, 2017 in Review</span>
+                          </h1>
+                          <p class="subtitle" style="font-size: 21px; font-family: sans-serif; color: black;">
+                                February is the first month I'm starting to give updates because only in February I've set a goal
+                                of making Booknshelf a profitable side-business. I'm still figuring out the long-term business model so I can grow my income and become financially independent.
+                            </p>
 
+                                <h3><span class="primary-span-inverse-lighter">I've summarized the February numbers in this tweet.</strong></span></h3>
+                                <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Booknshelf February Update:<br><br>- $55 revenue 💰<br>- 6724 sessions 📈<br>- 5576 active users 👨👳‍♀️<br>- 460 signed ups 🚀<br>- 259 Newletter receipents 💌</p>&mdash; Tigran Hakobyan (@tiggreen) <a href="https://twitter.com/tiggreen/status/844001302371880960">March 21, 2017</a>
+                                </blockquote>
+
+                                <p class="subtitle" style="margin-top: 25px; margin-bottom: 25px; font-size: 21px; font-family: sans-serif; color: black;">
+                                I've hit high sessions and active users because Booknshelf was on
+                                    <a class="about-link" href="https://news.ycombinator.com/item?id=13692533" target="_blank">the top of Show HN</a>
+                                    for two days in February. That gave me new sign ups as well as new subscribers to my newsletter.
+
+                                    <figure class="image is-16by9">
+                                      <img src="/img/screenshots/february-analytics-overview.png">
+                                    </figure>
+                                </p>
+
+                                <p class="subtitle" style="margin-top: 25px; margin-bottom: 25px; font-size: 21px; font-family: sans-serif; color: black;">
+                                    The above traffic from Hacker News also explains my revenue from Amazon Affiliate Program. Sadly, Amazon rejected my affiliate application
+                                    after for not having unique content on the site. On the bright side, this pushed me forward to think
+                                    about other revenue sources for Booknshelf. <br> <br>
+
+                                    I think my numbers in March would be lower than February but I'm still excited to grow Booknshelf making it the #1 Book Discovery platform. I've not found the exact niche of Booknshelf yet but I'm continuing to explore my ideas and will make sure to keep you updated.
+                                </p>
+
+
+
+                          </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 @endsection
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
