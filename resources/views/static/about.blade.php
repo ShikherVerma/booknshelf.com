@@ -6,14 +6,12 @@
         <div class="hero-body">
             <div class="container has-text-centered">
                 <h1 class="title is-2 about-title">
-                    Hi! I'm Tigran Hakobyan, </br> the guy behind
-                    <span class="about-booknshelf-tag hvr-bounce-out">
-                        Booknshelf
-                    </span>.
+                    Hi I'm Tigran Hakobyan <br>and I'm building
+                        Booknshelf.
                 </h1>
                 <h2>
                     <figure class="hvr-bounce-in image is-128x128 about-bio-figure">
-                        <img src="/img/tigran.jpg">
+                         <img src="/img/tigran.jpg">
                     </figure>
                 </h2>
             </div>

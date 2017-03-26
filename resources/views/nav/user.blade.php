@@ -2,7 +2,9 @@
 <nav class="nav" v-if="user">
     <div class="nav-left" style="padding-left: 15px;">
         <a class="nav-item" href="/">
-          <img src="/img/logos/main_logo.png" alt="Booknshelf logo">
+            <span class="icon">
+                <i class="fa fa-home"></i>
+            </span>
         </a>
         <a class="nav-item" href="/faq">
             <span>FAQ</span>
