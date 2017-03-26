@@ -4,7 +4,6 @@
             <div class="notification">
                 <div class="title is-4">
                     <strong style="color: #4e4e4e;">{{ title }}</strong>
-                    <a href="/books/search?q=how to win friends">Search More ></a>
                 </div>
             </div>
             <div class="columns is-multiline">
