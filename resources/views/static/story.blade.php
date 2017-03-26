@@ -66,7 +66,7 @@
                             </p>
 
                                 <h3><span class="primary-span-inverse-lighter">I've summarized the February numbers in this tweet.</strong></span></h3>
-                                <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Booknshelf February Update:<br><br>- $55 revenue 💰<br>- 6724 sessions 📈<br>- 5576 active users 👨👳‍♀️<br>- 460 signed ups 🚀<br>- 259 Newletter receipents 💌</p>&mdash; Tigran Hakobyan (@tiggreen) <a href="https://twitter.com/tiggreen/status/844001302371880960">March 21, 2017</a>
+                                <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Booknshelf February Update:<br><br>- $55 revenue 💰<br>- 6724 sessions 📈<br>- 5576 active users 👨👳‍♀️<br>- 460 signed ups 🚀<br>- 259 Newletter receipents 💌</p>&mdash; Tigran Hakobyan (@tiggreen) <a href="https://twitter.com/tiggreen/status/844001302371880960">March 21, 2017</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
                                 </blockquote>
 
                                 <p class="subtitle" style="margin-top: 25px; margin-bottom: 25px; font-size: 21px; font-family: sans-serif; color: black;">
@@ -97,4 +97,3 @@
     </section>
 @endsection
 
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
