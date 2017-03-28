@@ -140,6 +140,11 @@ class CreateTopics extends Command
                 '',
                 asset('/img/topics/dustin-scarpitti-967.jpg'),
             ],
+            [
+                'Psychology',
+                'Read to study the scientific study of the human mind and its functions.',
+                asset('/img/topics/clem-onojeghuo-111360.jpg'),
+            ],
         ]);
 
 
