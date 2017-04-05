@@ -145,6 +145,11 @@ class CreateTopics extends Command
                 'Read to study the scientific study of the human mind and its functions.',
                 asset('/img/topics/clem-onojeghuo-111360.jpg'),
             ],
+            [
+                'Investing',
+                'The best books on investing for begginer and more advanced investors.',
+                asset('/img/topics/rick-tap-110126.jpg'),
+            ],
         ]);
 
 
