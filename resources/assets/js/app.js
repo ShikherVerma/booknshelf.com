@@ -124,9 +124,11 @@ const app = new Vue({
             this.bookSaveModalBook = book;
             Bus.$emit('loadUserShelves');
             this.bookSaveModal = true;
+            mixpanel.track("Saw Modal", {"modal": "Book Save"});
         },
         showPleaseLoginModal: function (book) {
             this.plaseLoginModal = true;
+            mixpanel.track("Saw Modal", {"modal": "Please Login"});
         },
         closePleaseLoginModal: function (book) {
             this.plaseLoginModal = false;
@@ -148,6 +150,14 @@ const app = new Vue({
             this.loadUserTopics();
             this.loadUserFollowedUsers();
             this.loadUserFollowerUsers();
+
+            // mixpanel tracking
+            mixpanel.register({
+                "name": this.user.name,
+                "email": this.user.email,
+                "username": this.user.username,
+                "id": this.user.id
+            });
         }
 
         Bus.$on('updateUser', this.updateUser);
@@ -195,10 +205,9 @@ $(".menu").on('click', function(event){
 $(document).on("click", function () {
     $(".navbar-profile-menu").hide();
 });
-/*
-    By Osvaldas Valutis, www.osvaldas.info
-    Available for use under the MIT License
-*/
 
+// mixpanel.track("Visited Page", {
+//     "page": window.location.href
+// });
 
 

@@ -21,3 +21,9 @@ ga('require', 'maxScrollTracker');
 
 ga('send', 'pageview');
 </script>
+
+@if (env('APP_ENV') == 'production')
+    @include('javascripts.mixpanel_production')
+@else
+    @include('javascripts.mixpanel_development')
+@endif
