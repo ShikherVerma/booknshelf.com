@@ -206,8 +206,8 @@ $(document).on("click", function () {
     $(".navbar-profile-menu").hide();
 });
 
-// mixpanel.track("Visited Page", {
-//     "page": window.location.href
-// });
+mixpanel.track("Visited Page", {
+    "page": window.location.href
+});
 
 
