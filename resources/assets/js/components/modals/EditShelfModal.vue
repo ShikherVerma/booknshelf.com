@@ -98,6 +98,10 @@
                         window.location.replace(`/@${this.user.username}`);
                     });
             },
+
+            created() {
+                mixpanel.track("Saw Modal", {"modal": "Edit Shelf"});
+            }
         },
 
     }

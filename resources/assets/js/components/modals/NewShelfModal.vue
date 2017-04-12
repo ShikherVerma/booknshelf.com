@@ -82,6 +82,10 @@
                 });
             },
 
+            mounted() {
+                mixpanel.track("Saw Modal", {"modal": "Create Shelf"});
+            }
+
         }
     }
 </script>

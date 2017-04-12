@@ -42,6 +42,10 @@
                 showTopicFollowersModal: false,
             }
         },
+
+        mounted() {
+            mixpanel.track("Saw Modal", {"modal": "Topic Followers"});
+        },
     }
 </script>
 
