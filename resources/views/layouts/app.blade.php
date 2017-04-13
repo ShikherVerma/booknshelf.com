@@ -8,6 +8,7 @@
     <link rel="canonical" href="{{ url()->current() }}"/>
     <meta name="description"
           content="People come to Booknshelf to find the best books on specific topics and also to see what their friends are reading."/>
+    <meta name="google-site-verification" content="oRlwQCWDSEBrMAdKd3t3_3pCA9sFayLgZdgLer2TKfM" />
 
     {{--Facebook meta tags--}}
     <meta property="fb:app_id" content="1899203000306326"/>
