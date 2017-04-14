@@ -150,6 +150,11 @@ class CreateTopics extends Command
                 'The best books on investing for begginer and more advanced investors.',
                 asset('/img/topics/rick-tap-110126.jpg'),
             ],
+            [
+                'Mythology',
+                'Read and learn about the myths that people tell about to explain nature, history and customs.',
+                asset('/img/topics/acropolis-2092534_1920.jpg'),
+            ],
         ]);
 
 
