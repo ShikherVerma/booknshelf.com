@@ -35,7 +35,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $title or 'Booknshelf: Discover great books and bookshelves on different topics' }}</title>
+    <title>{{ $title or 'Booknshelf' }}</title>
     <link rel="icon" type="image/png" href="/img/favicons/favicon-16x16.png" sizes="16x16">
     <link rel="icon" type="image/png" href="/img/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/img/favicons/favicon-96x96.png" sizes="96x96">

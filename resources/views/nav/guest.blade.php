@@ -15,6 +15,9 @@
         <a class="nav-item" href="/topics">
             Topics
         </a>
+        <a class="nav-item" href="/bookshelves">
+            Bookshelves
+        </a>
         @if (url()->current() !== env('APP_URL') && url()->current() !== env('APP_URL') . '/books/search')
             <a class="nav-item is-hidden-mobile">
                 <form role="form" method="GET" action="{{ url('/books/search') }}">
@@ -45,13 +48,10 @@
     <div id="right-navbar" class="nav-right nav-menu" style="padding-right: 15px;">
     <span class="nav-item">
         <a class="button" href="/login">
-                Login
+                LOG IN
         </a>
         <a class="button is-primary" href="/register">
-            <span class="icon">
-                <i class="fa fa-flash"></i>
-            </span>
-            <span><strong>Join</strong></span>
+            <span><strong>SIGN UP</strong></span>
         </a>
     </span>
     </div>
