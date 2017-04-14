@@ -28,6 +28,7 @@ Route::get('login_twitter', 'Auth\LoginController@loginTwitter');
 Route::get('/welcome', 'HomeController@welcome');
 Route::get('/faq', 'HomeController@faq');
 Route::get('/story', 'HomeController@story');
+Route::get('/bookshelves', 'HomeController@bookshelves');
 
 // Settings
 Route::get('/settings', 'SettingsController@show');

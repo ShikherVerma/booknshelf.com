@@ -25,7 +25,8 @@ class HomeController extends Controller
             'index',
             'faq',
             'story',
-            'search'
+            'search',
+            'bookshelves'
         ]]);
         $this->shelves = $shelves;
         $this->users = $users;
@@ -39,10 +40,6 @@ class HomeController extends Controller
                     ->orderBy('updated_at', 'desc')
                     ->get()
                     ->take(11);
-                    // ->orderBy('updated_at', 'desc')
-                    // ->get()
-                    // ->take(11);
-        // dd($topics);
         $shelves = $this->shelves->ourPicks();
 
         $favoriteBooks = $this->books->getFavorites();
@@ -78,5 +75,13 @@ class HomeController extends Controller
     public function landing()
     {
         return view('landing');
+    }
+
+    public function bookshelves()
+    {
+        $shelves = $this->shelves->ourPicks();
+        return view('bookshelves', [
+            'shelves' => $shelves,
+        ]);
     }
 }
