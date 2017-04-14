@@ -50,10 +50,10 @@
                     </div>
                     <div class="media-right">
                         <!-- You can't follow yourself -->
-                        <a v-if="!isFollowerYou(user.followed_id)" class="button is-primary is-outlined" :disabled="form.busy"
-                            :class="{ 'user-followed-button-green': isFollowedByAuthUser(user.followed_id)}"
-                            @click.stop.prevent="toggle(user.followed_id)">
-                            <span v-if="!isFollowedByAuthUser(user.followed_id)">Follow</span>
+                        <a v-if="!isFollowerYou(user.pivot.followed_id)" class="button is-primary is-outlined" :disabled="form.busy"
+                            :class="{ 'user-followed-button-green': isFollowedByAuthUser(user.pivot.followed_id)}"
+                            @click.stop.prevent="toggle(user.pivot.followed_id)">
+                            <span v-if="!isFollowedByAuthUser(user.pivot.followed_id)">Follow</span>
                             <span v-else>Following</span>
                         </a>
                     </div>
