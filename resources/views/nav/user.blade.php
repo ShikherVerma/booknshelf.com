@@ -15,6 +15,9 @@
         <a class="nav-item has-activity-indicator" href="/topics">
             Topics
         </a>
+        <a class="nav-item" href="/bookshelves">
+            Bookshelves
+        </a>
         <a class="nav-item" href="/friends">
             My friends
         </a>
