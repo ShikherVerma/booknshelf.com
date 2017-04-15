@@ -6,12 +6,11 @@
             <div class="container">
                 <h3 class="title is-3 topic-title">
                     <span class="primary-span">
-                        Find the best books on different topics
+                        Explore and follow the topics that interest you.
                     </span>
                 </h3>
                 <p class="subtitle is-4 topic-text">
-                    Each topic is curated by us. They are always up-to-date.
-                    Follow your favorite topics!
+                    Each topic is curated by us and they're always up-to-date.
                 </p>
             </div>
         </div>

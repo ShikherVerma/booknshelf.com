@@ -6,7 +6,7 @@ $I->am('A guest');
 $I->wantTo('Sign up for a Booknshelf account');
 
 $I->amOnPage('/');
-$I->click('Join');
+$I->click('SIGN UP');
 $I->seeCurrentUrlEquals('/register');
 
 $I->fillField('name', 'JohnDoe');
