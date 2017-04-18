@@ -17,7 +17,7 @@
                 <iframe id="twitter-widget-1" scrolling="no" frameborder="0" allowtransparency="true"
                         class="twitter-share-button twitter-share-button-rendered twitter-tweet-button"
                         title="Twitter Tweet Button"
-                        src="//platform.twitter.com/widgets/tweet_button.c4fd2bd4aa9a68a5c8431a3d60ef56ae.en.html#dnt=false&amp;id=twitter-widget-1&amp;lang=en&amp;original_referer=https://booknshelf.com&amp;related=tiggreen%3ACreator%20of%20Booknshelf&amp;size=m&amp;text=Discover great books and bookshelves and share them with your friends!&amp;time=1485106087144&amp;type=share&amp;url=https%3A%2F%2Fbooknshelf.com&amp;via=booknshelf"
+                        src="//platform.twitter.com/widgets/tweet_button.c4fd2bd4aa9a68a5c8431a3d60ef56ae.en.html#dnt=false&amp;id=twitter-widget-1&amp;lang=en&amp;original_referer=https://booknshelf.com&amp;related=tiggreen%3ACreator%20of%20Booknshelf&amp;size=m&amp;text=Your online bookshelf!&amp;time=1485106087144&amp;type=share&amp;url=https%3A%2F%2Fbooknshelf.com&amp;via=booknshelf"
                         style="position: static; visibility: visible; width: 61px; height: 20px;"
                         data-url="https://booknshelf.com"></iframe>
             </div>
