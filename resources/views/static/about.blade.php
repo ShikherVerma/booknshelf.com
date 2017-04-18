@@ -26,10 +26,7 @@
                         <h2><span class="primary-span">Q: What is Booknshelf?</span></h2>
                         <p class="subtitle"
                            style="font-family: 'Source Sans Pro', sans-serif; line-height: 150%; font-size: 19px;">
-                            Booknshelf is a place to discover great books and bookshelves and share them with your
-                            friends. People come to Booknshelf to find their next read, see what their friends are
-                            reading and build their reading journey along the way. It's also a place where you can keep
-                            track of your books and stay organized.
+                            Booknshelf is your online bookshelf. It's a place where can easily organize your books in different shelves and share them with your friends. People also come to Booknshelf to keep track of their reading journey, discover new books and see what their friends are reading.
                         </p>
                         <h2><span class="primary-span">Q: What are the goals of the site? </span></h2>
                         <p class="subtitle"
