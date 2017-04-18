@@ -7,8 +7,8 @@
     <section class="hero is-medium home-search-bg" style="background-image: url('/img/giulia-bertelli-104575-resized.jpg')">
         <div class="hero-body home-search-body">
             <div class="container has-text-centered">
-                <h3 class="title is-3 primary-span-home">
-                    Discover great books and bookshelves on different topics
+                <h3 class="title is-3 primary-span-home" style="font-weight: 900;">
+                    Your online bookshelf
                 </h3>
                 <div class="columns">
                     <div class="column is-offset-one-quarter is-half">
@@ -43,7 +43,7 @@
                 </svg>
 
                 <p class="title has-text-centered" style="margin-top: 6px;">
-                    Find your next read from our curated topics
+                    Search for books or discover from our curated topics
                 </p>
                 <p class="subtitle has-text-centered" style="margin-top: -0.5rem;">
                     We've handpicked the topics that are most likely
