@@ -1,45 +1,48 @@
 <template>
     <div class="modal is-active" @click="close" v-show="show">
-        <div class="modal-background" @click="close"></div>
-        <div class="modal-card" @click.stop>
-            <header class="modal-card-head">
-                <p class="modal-card-title">Add to Bookshelf</p>
-                <button @click="close" class="delete"></button>
-            </header>
-            <section class="modal-card-body">
-                <p class="control">
-                    <a class="button is-warning is-medium is-warning" @click="showNewShelfForm=!showNewShelfForm">
-                        <span class="icon">
-                            <i class="fa fa-plus"></i>
-                        </span>
-                        <span>Create new bookshelf</span>
-                    </a>
-                </p>
-                <p class="control">
-                    <form v-on:submit.prevent="storeBookToNewBookshelf"  v-if="showNewShelfForm">
-                        <label class="label">The name your new bookshelf</label>
-                        <p class="control is-expanded has-addons">
-                            <input class="input is-medium" name="name" type="text" v-model="form.name"
-                                   :class="{'is-danger': form.errors.has('name')}" placeholder="e.g. My favorite books ...">
-                            <button class="button is-warning is-medium" type="submit" :disabled="form.busy">Create</button>
-                        </p>
-                    </form>
-                </p>
-                <div class="notification is-danger" v-if="form.errors.has('name')">
-                    {{ form.errors.get('name') }}
-                </div>
-
-                <div v-show="success" class="notification is-success">
-                    The book has been added to your bookshelf.
-                </div>
-                <spinner v-show="loading"></spinner>
-                <p class="control" v-show="!loading">
-                    <div v-for="shelf in shelves"
-                         class="notification is-primary shelf-list-item" @click="storeBookToShelf(shelf.id)">
-                        <p class="title">{{ shelf.name }}</p>
+        <div class="modal-background book-save-modal-background" @click="close"></div>
+        <button @click="close" class="modal-close-button delete"></button>
+        <a class="modal--close v-desktop" data-test="modal-close" href="#" title="Close"></a>
+        <div class="modal-content book-save-modal-content" @click.stop>
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-half modal-left">
+                        <div class="box book" :style="bookCoverImage"></div>
                     </div>
-                </p>
-            </section>
+                    <div class="column is-half modal-right">
+                        <p class="subtitle"><strong>CHOOSE BOOKSHELF</strong></p>
+                        <spinner v-show="loading"></spinner>
+                        <div class="shelves-list" v-show="!loading">
+                            <div v-for="shelf in shelves"
+                                 class="shelf-list-item" @click="storeBookToShelf(shelf.id, shelf.name)">
+                                <p class="subtitle" style="font-weight: 600;">
+                                    {{ shelf.name }}
+                                </p>
+                            </div>
+                        </div>
+                        <p class="control" style="margin-top: 5px;" v-if="!showNewShelfForm">
+                            <a class="button is-light" @click="showNewShelfForm=!showNewShelfForm">
+                                <span class="icon">
+                                    <i class="fa fa-plus"></i>
+                                </span>
+                                <span>ADD NEW</span>
+                            </a>
+                        </p>
+                        <p class="control" style="margin-top: 5px;">
+                            <form v-on:submit.prevent="storeBookToNewBookshelf()"  v-if="showNewShelfForm">
+                                <p class="control is-expanded has-addons">
+                                    <input class="input" name="name" type="text" v-model="form.name"
+                                           :class="{'is-danger': form.errors.has('name')}" placeholder="Bookshelf name">
+                                    <button class="button is-light" type="submit" :disabled="form.busy">Create</button>
+                                </p>
+                            </form>
+                        </p>
+                        <div class="notification is-danger" style="padding:5px;" v-if="form.errors.has('name')">
+                            {{ form.errors.get('name') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -72,13 +75,21 @@
                     });
             },
 
-            storeBookToShelf(shelfId) {
+            storeBookToShelf(shelfId, shelfName) {
                 this.form.id = this.book.id;
                 App.post(`/shelves/${shelfId}/books`, this.form)
                     .then(() => {
                         this.success = true;
                         // reload the user data
                         Bus.$emit('updateUserData');
+                        this.close();
+                        // send a notification
+                        Vue.toast('Added the book to "' + shelfName + '"', {
+                            className: ['notification', 'is-success', 'save-book-notification'],
+                            horizontalPosition: 'right',
+                            verticalPosition: 'bottom',
+                            duration: 5000,
+                        });
                     }).catch(function(reason) {
                         console.log(reason);
                     });
@@ -88,10 +99,9 @@
                 App.post('/shelves', this.form)
                     .then((response) => {
                         var shelfId = response.id;
-                        console.log(shelfId);
-                        this.form.name = '';
                         // add the book to the new shelf
-                        this.storeBookToShelf(shelfId);
+                        this.storeBookToShelf(shelfId, this.form.name);
+                        this.form.name = '';
                     }).catch(function(reason) {
                         console.log(reason);
                     });
@@ -117,16 +127,68 @@
                     }
                 });
             })
+        },
+        computed: {
+            bookCoverImage: function () {
+                if (this.book && (this.book.cover_image || this.book.image)) {
+                    return `background-image: url(${this.book.cover_image || this.book.image})`;
+                } else {
+                    return '';
+                }
+            }
         }
     }
 
 
 </script>
 <style lang="css">
+    .book-save-modal-background {
+        background-color: rgba(255,255,255,0.96);
+    }
+    .modal-close-button {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        z-index: 200;
+        background: #bbbbbb;
+        border-radius: 50%;
+        padding: 14px 14px 13px 14px;
+        width: 34px;
+        height: 34px;
+    }
+    .book-save-modal-content {
+        border: 1px solid #e8e8e8;
+        background-color: #fff;
+        border-radius: 3px;
+        height: 350px;
+        /*hide horizontal scrolling*/
+        overflow: hidden;
+    }
+    .modal-left {
+        padding: 60px;
+        border-right: 1px solid #e8e8e8;
+        align-items: center;
+    }
+    .modal-right {
+        padding: 20px 20px 10px;
+    }
+
+    .shelves-list {
+        max-height: 220px;
+        overflow-y: auto;
+    }
+
     .shelf-list-item {
         cursor: pointer;
+        padding: 7px;
     }
     .shelf-list-item:hover {
-        background-color: #00d1b2;
+        background-color: #dbdbdb;
     }
+    .save-book-notification {
+        margin-right: 50px;
+        margin-bottom: 50px;
+        font-weight: bold;
+    }
+
 </style>

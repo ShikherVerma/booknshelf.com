@@ -73,12 +73,12 @@
             },
 
             showCreateSuccessMessage() {
-                swal({
-                    title: 'Success!',
-                    text: 'Your bookshelf was successfully created!',
-                    type: "success",
-                    showConfirmButton: false,
-                    timer: 2000
+                // send a notification
+                Vue.toast('Your bookshelf was successfully created!', {
+                    className: ['notification', 'is-success', 'save-book-notification'],
+                    horizontalPosition: 'right',
+                    verticalPosition: 'bottom',
+                    duration: 5000,
                 });
             },
 
