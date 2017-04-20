@@ -1,23 +1,18 @@
 <template>
     <div class="column is-2 profile-like-book">
-        <div class="box book hvr-grow-shadow" :style="bookCoverImage" @click="showBookInfoModal = true"></div>
+        <div class="box book hvr-glow" :style="bookCoverImage" @click="showBookInfoModal = true"></div>
         <p class="subtitle">
             <a class="button is-outlined" :class="{ 'saved-button': isSavedByAuthUser}" @click="showBookSaveModal()">
-                <span class="icon">
+                <span class="icon book-save-icon">
                     <i class="fa fa-plus" :class="{ 'saved-icon': isSavedByAuthUser}"></i>
                 </span>
+                <span class="small-span" :class="{ 'saved-button': isSavedByAuthUser}">SAVE</span>
             </a>
             <a class="button is-outlined" :class="{ 'liked-button': isLikedByAuthUser}" @click="recommendBook()">
-                <span class="icon">
+                <span class="icon book-save-icon">
                     <i class="fa fa-heart" :class="{ 'liked-icon': isLikedByAuthUser}"></i>
                 </span>
                 <span class="small-span">{{ likesCount }}</span>
-            </a>
-            <a v-if="book.detail_page_url" class="button is-light"
-               :href="book.detail_page_url" target="_blank">
-                <span class="icon">
-                    <i class="fa fa-amazon"></i>
-                </span>
             </a>
             <a v-show="onOwnProfile" class="button is-light" @click="removeBookFromShelf()">
                 <span class="icon">
@@ -25,7 +20,7 @@
                 </span>
             </a>
         </p>
-        <h4 class="title book-title">{{ book.title }}</h4>
+        <h4 class="title book-title" style="margin-top: -0.7rem;">{{ book.title }}</h4>
         <p class="subtitle">
             <span v-for="(author, index) in book.authors">
                 {{ author.name }}<span v-if="index !== book.authors.length - 1">, </span>
@@ -144,6 +139,9 @@
     }
     .profile-like-book .icon .fa {
         font-size: 15px;
+        color: #a2a2a2;
+    }
+    .profile-like-book {
     }
 
     .small-span {
@@ -152,9 +150,8 @@
         color: #a2a2a2;
     }
 
-
     .liked-button {
-        background-color: #f15151;
+        background-color: #E45C5F;
         color: white;
         font-weight: bold;
     }
@@ -176,7 +173,10 @@
         font-weight: bold;
     }
     .saved-icon {
-        color: #FFFFFF !important;
+        color: white !important;
+    }
+    .book-save-icon {
+        margin-right: 0 !important;
     }
 
 </style>
