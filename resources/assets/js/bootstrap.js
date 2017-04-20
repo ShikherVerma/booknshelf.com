@@ -40,14 +40,14 @@ Vue.http.interceptors.push((request, next) => {
 });
 
 
+import Toast from 'vue-easy-toast'
+Vue.use(Toast)
+
 /**
  * Load Form utilities (window.AppForm)
  */
 
 require('./forms/bootstrap');
-
-// custom utilities
-require('./custom/sweetalert.min.js');
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
