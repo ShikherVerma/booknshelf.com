@@ -7,8 +7,8 @@
     <section class="hero is-medium home-search-bg" style="background-image: url('/img/giulia-bertelli-104575-resized.jpg')">
         <div class="hero-body home-search-body">
             <div class="container has-text-centered">
-                <h3 class="title is-3 primary-span-home" style="font-weight: 900;">
-                    Your online bookshelf
+                <h3 class="title is-3 primary-span-home">
+                    Stay organized with your books & read more
                 </h3>
                 <div class="columns">
                     <div class="column is-offset-one-quarter is-half">
@@ -110,10 +110,6 @@
       </div>
     </section>
 
-    <home-books-section :books="{{ $featuredBooks }}" :user="user" :likes="userLikedBooks"
-                        :saves="userSavedBooks" title="Our Weekly Featured Books"></home-books-section>
-
-
     <section class="section is-primary is-fullheight is-bold" style="padding-bottom: 0px;" v-cloak>
         <div class="container">
             <div class="notification">
@@ -126,6 +122,7 @@
     </section>
 
     <topics :topics="{{ $topics }}" :user="user" :user-topics="userTopics"></topics>
+
 
     <home-books-section id="favorite-books" :books="{{ $books }}" :user="user" :likes="userLikedBooks"
                         :saves="userSavedBooks" title="Explore Some of Our Favorite Books"></home-books-section>
@@ -148,28 +145,5 @@
             </article>
         </div>
     </div>
-
-    <section id="favorite-shelves" class="section is-primary is-bold" v-cloak>
-        <div class="container">
-            <div class="notification" style="background-color: hsla(171, 100%, 36%, 1); color: white;">
-                <div class="title is-4">
-                    <strong>Explore Our Favorite Bookshelves</strong>
-                </div>
-            </div>
-            <div class="columns is-multiline">
-                @foreach ($shelves as $shelf)
-                    <div class="column is-3">
-                        <a href="{{ route('shelf_path', ['username' => $shelf['user']['username'], 'shelf_slig' =>$shelf['slug']]) }}">
-                            <div class="box shelf-item hvr-float"
-                                 style="background-image: url({{ $shelf['cover'] or '' }})"></div>
-                        </a>
-                        <h2 class="title">{{ $shelf['name'] }}</h2>
-                        <p class="subtitle">{{ count($shelf['books']) }} books</p>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-
 
 @endsection
