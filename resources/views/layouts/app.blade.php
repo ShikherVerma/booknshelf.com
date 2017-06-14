@@ -12,7 +12,7 @@
 
     {{--Facebook meta tags--}}
     <meta property="fb:app_id" content="1899203000306326"/>
-    <meta property="og:title" content="{{ $title or 'Your online bookshelf' }}"/>
+    <meta property="og:title" content="{{ $title or 'Stay organized with your books & read more' }}"/>
     <meta property="og:description"
           content="{{ $description or 'People come to Booknshelf to create their online reading journey by organizing their books in shelves.' }}"/>
     <meta property="og:image" content="{{ $ogImage or 'https://booknshelf.com/img/social/homepage-screenshot-social-main-new.png' }}"/>
@@ -30,7 +30,7 @@
           content="{{ $ogImage or 'https://booknshelf.com/img/social/homepage-screenshot-social-main-new.png' }}">
     <meta name="twitter:site" content="@booknshelf">
     <meta name="twitter:title"
-          content="{{ $title or 'Your online bookshelf' }}">
+          content="{{ $title or 'Stay organized with your books & read more' }}">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
