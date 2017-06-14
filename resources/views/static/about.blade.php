@@ -6,7 +6,7 @@
         <div class="hero-body">
             <div class="container has-text-centered">
                 <h1 class="title is-2 about-title">
-                    Hi I'm Tigran Hakobyan <br>and I'm building
+                    Hi, I'm Tigran <br>and I'm building
                         Booknshelf.
                 </h1>
                 <h2>
@@ -26,7 +26,7 @@
                         <h2><span class="primary-span">Q: What is Booknshelf?</span></h2>
                         <p class="subtitle"
                            style="font-family: 'Source Sans Pro', sans-serif; line-height: 150%; font-size: 19px;">
-                            Booknshelf is your online bookshelf. It's a place where can easily organize your books in different shelves and share them with your friends. People also come to Booknshelf to keep track of their reading journey, discover new books and see what their friends are reading.
+                            Booknshelf is a place to help you stay organized with your books and read more. It's a place where you can easily organize your books in different shelves and share them with your friends. You can also discover new books from our curated topics and see what your friends are reading.
                         </p>
                         <h2><span class="primary-span">Q: What are the goals of the site? </span></h2>
                         <p class="subtitle"
@@ -45,11 +45,8 @@
                                           href="https://affiliate-program.amazon.com/">Amazon
                                 Affiliate
                                 Program</a> and then go from there. My first financial goal is
-                            to make Booknshelf a self-sustainable side-project and I'm very inspired by <a
-                                class="about-link" target="_blank"
-                                href="https://twitter.com/csallen">Courtland Allen</a> who
-                            runs <a href="https://www.indiehackers.com" target="_blank" class="about-link">Indie
-                                Hackers</a>.
+                            to make Booknshelf a self-sustainable side-project.
+                            People say setting goals are very important. Here we go, I have it now 😁.
                         </p>
                         <h2><span class="primary-span">Q: How did I build Booknshelf?</span></h2>
                         <p class="subtitle"
@@ -76,10 +73,10 @@
                         <h2><span class="primary-span">Q: Is there anyone you'd like to give credits to? 🤔</span></h2>
                         <p class="subtitle"
                            style="font-family: 'Source Sans Pro', sans-serif; line-height: 150%; font-size: 19px;">
-                            Yes 😍! I'm incredibly grateful to the Open Source community for building the tools I've
-                            been using for Booknshelf. Thank you. I'd also like to give credits to
+                            Yes 😍! I'm very grateful to the Open Source community for building the tools I've
+                            been using for Booknshelf. I'd also like to give credits to
                             <a class="about-link" target="_blank" href="https://unsplash.com/">Unplash</a> for letting
-                            me use their amazing photos! They are so beautiful.
+                            me use their amazing photos!
                         </p>
                         <h2><span class="primary-span">Q: What's the best way to contact you?</span></h2>
                         <p class="subtitle"
