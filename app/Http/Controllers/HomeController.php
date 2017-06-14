@@ -43,12 +43,11 @@ class HomeController extends Controller
         $shelves = $this->shelves->ourPicks();
 
         $favoriteBooks = $this->books->getFavorites();
-        $featuredBooks = $this->books->getFeatured();
+
         return view('home', [
             'shelves' => $shelves->toArray(),
             'topics' => json_encode($topics),
             'books' => json_encode($favoriteBooks),
-            'featuredBooks' => json_encode($featuredBooks)
         ]);
     }
 
