@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="section">
+    <section class="section" style="background-color: #f2f2f2;">
         <div class="container">
             <div class="columns">
                 <div class="column is-3">
