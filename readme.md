@@ -11,7 +11,7 @@ More specifically you can use Booknshelf to:
 - easily organize your current and past books in online shelves
 - connect with friends and other readers to see what they are reading
 
-However, this is just the beginning! Read more about the long term goal here [my post](https://medium/@tik).
+However, this is just the beginning! Read more about the long term goals here in [my post](https://medium/@tik).
 
 Get started using booknshelf on the [booknshelf.com website](https://booknshelf.com).
 
@@ -21,9 +21,7 @@ There are couple ways to contribute to Booknshelf, and some of them don't requir
 
 Use our [ways to contribute][ways-to-contribute] guide find the right steps to start.
 
-### Setting up your local development environment
-
-If you want to work on the Booknshelf website, check out the installation instructions in the [Contributing Guide](https://github.com/booknshelf/booknshelf.com/blob/master/CONTRIBUTING.md) in this repository.
+If you want to work on the Booknshelf website, check out the installation instructions in the [Contributing Guide](https://github.com/booknshelf/booknshelf.com/blob/master/CONTRIBUTING.md) in this repository. You'll will find the instractions on how to setup your local development environment.
 
 ## Did you find a bug?
 
