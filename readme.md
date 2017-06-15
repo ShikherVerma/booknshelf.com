@@ -11,7 +11,7 @@ More specifically you can use Booknshelf to:
 - easily organize your current and past books in online shelves
 - connect with friends and other readers to see what they are reading
 
-However, this is just the beginning! If you want to learn more about the long term goal of Booknshelf then please read [my post](https://medium/@tik).
+However, this is just the beginning! Read more about the long term goal here [my post](https://medium/@tik).
 
 Get started using booknshelf on the [booknshelf.com website](https://booknshelf.com).
 
