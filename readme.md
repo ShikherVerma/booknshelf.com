@@ -35,6 +35,9 @@ We have a [Code of Conduct](https://github.com/exercism/exercism.io/blob/master/
 
 If you need to report something, please email [@tiggreen](https://github.com/tiggreen).
 
+## What's Going On at Booknshelf?
+
+We send out a weekly update on features that people are working on, and other booknshelf-related topics. You can [sign up for the newsletter here](https://tinyletter.com/tiggreen).
 
 
 ## Thank you
