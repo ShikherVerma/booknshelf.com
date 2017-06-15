@@ -1,32 +1,16 @@
 # Booknshelf
 [![Build Status](https://travis-ci.com/tiggreen/booknshelf.svg?token=5yTUaMZbo4c2WU4m6zsD&branch=master)](https://travis-ci.com/tiggreen/booknshelf)
 
-Programming is hard. With practice it gets easier.
+We are getting busier which means that reading or finishing books are getting harder. Sometimes we get books but we abandon them in couple days, don't we?
 
-Exercism gives you hundreds of practice problems in over 30 programming languages,
-and a place where you can get feedback on your solutions.
+Booknshelf helps you read more books by helping you to keep track of your reading journey.
+More specifically it helps you:
 
-Exercism is especially well-suited for three types of practice:
+- search for books or discover new ones from curated topics
+- easily organize books in online shelves
+- connect with friends and other readers to see what they are reading
 
-- gaining fluency in your first programming language
-- ramping up in a new programming language
-- developing the skills to be a great lead developer: code review, refactoring, and mentoring
-
-## Using Booknshelf
-
-The process happens in two places.
-
-0. Solve exercises in your local development environment.
-0. Discuss solutions on the [Exercism website](http://exercism.io).
-
-Once you submit the solution to an exercise you can:
-
-- **learn by listening**: receive feedback on your code.
-- **learn by reading code**: browse all the other solutions to exercises you submitted solutions to.
-- **learn by sharing your experience**: provide feedback on other people's code.
-
-Even in the most trivial exercise, there are many important things to discuss. Simplicity, naming,
-readability, idioms, good use of existing libraries, performance, and much, much more.
+However, this is just the beginning! If you want to learn more about the long term goal of Booknshelf then please read [my post](https://medium/@tik).
 
 Get started using booknshelf on the [booknshelf.com website](https://booknshelf.com).
 
@@ -52,7 +36,5 @@ If you want to work on the Booknshelf website, check out the installation instru
 
 
 ## Thank you
-
-Exercism.io is free and open source, and many, many people have contributed to the project. This is a project that started by accident and could never have gotten off the ground by the efforts of any single person.
 
 **Thank you!** :heart:
