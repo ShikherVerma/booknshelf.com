@@ -40,8 +40,6 @@ class BookController extends Controller
             $books[] = $newBook->toArray();
         }
 
-        // we need to append likes to the books
-
         return view('search', [
             'books' => json_encode($books),
             'user' => $request->user(),
@@ -51,13 +49,15 @@ class BookController extends Controller
 
     public function likes(Request $request, $bookId)
     {
-
         $book = Book::findOrFail($bookId);
         $likes = $book->likes()->get();
 
         return response()->json($likes);
     }
 
+    /*
+    * Get the reviews from Goodreads for the given book
+    */
     public function reviews($bookId)
     {
         $bookIsbn = Book::findOrFail($bookId)->getAttribute('isbn_10');

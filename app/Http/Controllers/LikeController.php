@@ -16,7 +16,6 @@ class LikeController extends Controller
             'book_id' => $bookId,
         ])->count();
 
-
         // if user already liked this book then dislike it
         if ($count > 0) {
             return DB::table('likes')->where([

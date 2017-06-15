@@ -24,7 +24,7 @@ class AmazonProduct
         $conf->setCountry('com')
             ->setAccessKey(env('AWS_ACCESS_KEY'))
             ->setSecretKey(env('AWS_SECRET'))
-            ->setAssociateTag('booknshelf08-20')
+            ->setAssociateTag('ASSOCIATE_TAG')
             ->setRequest($request);
 
         $this->searchClient = new Search();

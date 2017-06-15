@@ -14,6 +14,7 @@ class HomeController extends Controller
     protected $shelves;
     protected $users;
     protected $books;
+
     /**
      * Create a new controller instance.
      *

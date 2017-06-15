@@ -8,14 +8,14 @@
         <div class="hero-body home-search-body">
             <div class="container has-text-centered">
                 <h3 class="title is-3 primary-span-home">
-                    Stay organized with your books & read more
+                    Keep track of your reading journey
                 </h3>
                 <div class="columns">
                     <div class="column is-offset-one-quarter is-half">
                         <form role="form" method="GET" action="{{ url('/books/search') }}">
                             <p class="control has-icon">
                                 <input class="input is-large" type="text" value="{{ $q or '' }}" name="q"
-                                       placeholder="Search books here to add them to your shelves ...">
+                                       placeholder="Search for great books here ...">
                                 <span class="icon">
                                     <i class="fa fa-search"></i>
                                 </span>

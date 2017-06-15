@@ -44,13 +44,6 @@ class SetUserAvatar implements ShouldQueue
             $image->circle(150, 150, 100, function ($draw) {
                 $draw->background($this->color);
             });
-//            // write text at position
-//            $image->text('TH', 150, 100, function ($font) {
-//                // asset('/fonts/Montserrat-Regular.ttf')
-//                $font->file(3);
-//                $font->size(50);
-//                $font->color('#FFFFFF');
-//            });
             $img = (string)$image->fit(300)->encode();
         } else {
             $img = (string)$imageManager->make($this->user->avatar)->fit(300)->encode();
