@@ -29,15 +29,15 @@ If you want to work on the Booknshelf website, check out the installation instru
 
 I know, no one likes bugs. If you found a bug then please go ahead and [open a GitHub issue](https://github.com/booknshelf/booknshelf.com/issues), and we'll try figure out what's going on.
 
+## What's Going On at Booknshelf?
+
+We send out a weekly update on features that people are working on, and other booknshelf-related topics. You can [sign up for the newsletter here](https://tinyletter.com/tiggreen).
+
 ## Is someone being unpleasant?
 
 We have a [Code of Conduct](https://github.com/exercism/exercism.io/blob/master/CODE_OF_CONDUCT.md).
 
 If you need to report something, please email [@tiggreen](https://github.com/tiggreen).
-
-## What's Going On at Booknshelf?
-
-We send out a weekly update on features that people are working on, and other booknshelf-related topics. You can [sign up for the newsletter here](https://tinyletter.com/tiggreen).
 
 
 ## Thank you
