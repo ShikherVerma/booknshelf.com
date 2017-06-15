@@ -56,7 +56,6 @@ class AuthenticateUser extends Controller
 
     private function getAuthorizationFirst()
     {
-        // TODO: Add 'user_actions.books' to scopes array when ready.
         return Socialite::driver('facebook')
             ->scopes(['email', 'user_friends'])->redirect();
     }
