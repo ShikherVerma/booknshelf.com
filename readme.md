@@ -3,9 +3,9 @@
 
 We are getting busier which means that reading or finishing books is getting harder.
 
-Booknshelf helps you to read more books by making sure you're on top of your books.
+Booknshelf helps you to read more books by making you more organized in your reading journey.
 
-More specifically it helps you:
+More specifically you can use Booknshelf to:
 
 - search for books or discover new ones from curated topics
 - easily organize your current and past books in online shelves
