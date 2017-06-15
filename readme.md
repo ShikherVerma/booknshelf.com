@@ -1,13 +1,14 @@
 # Booknshelf
 [![Build Status](https://travis-ci.com/tiggreen/booknshelf.svg?token=5yTUaMZbo4c2WU4m6zsD&branch=master)](https://travis-ci.com/tiggreen/booknshelf)
 
-We are getting busier which means that reading or finishing books are getting harder. Sometimes we get books but we abandon them in couple days, don't we?
+We are getting busier which means that reading or finishing books is getting harder.
 
-Booknshelf helps you read more books by helping you to keep track of your reading journey.
+Booknshelf helps you to read more books by making sure you're on top of your books.
+
 More specifically it helps you:
 
 - search for books or discover new ones from curated topics
-- easily organize books in online shelves
+- easily organize your current and past books in online shelves
 - connect with friends and other readers to see what they are reading
 
 However, this is just the beginning! If you want to learn more about the long term goal of Booknshelf then please read [my post](https://medium/@tik).
