@@ -78,7 +78,10 @@
     <!-- Main Content -->
     @yield('content')
 
+    @include('shared.newsletter')
+
     @include('shared.footer')
+
 
 </div>
 
