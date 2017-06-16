@@ -9,6 +9,9 @@
         <a class="nav-item" href="/faq">
             <span>FAQ</span>
         </a>
+        <a class="nav-item" href="https://medium.com/booknshelf" target="_blank">
+            <span>Blog</span>
+        </a>
         <a class="nav-item" href="/topics">
             Topics
         </a>

@@ -9,14 +9,14 @@
         <a class="nav-item" href="/faq">
             <span>FAQ</span>
         </a>
+        <a class="nav-item" href="https://medium.com/booknshelf" target="_blank">
+            <span>Blog</span>
+        </a>
         <a class="nav-item has-activity-indicator" href="/topics">
             Topics
         </a>
         <a class="nav-item" href="/bookshelves">
             Bookshelves
-        </a>
-        <a class="nav-item" href="/friends">
-            My friends
         </a>
     </div>
 
@@ -62,6 +62,9 @@
             <aside class="menu">
                 <ul class="menu-list" style="border-bottom: 1px solid #eaeaea;">
                     <li><a href="{{ route('profile_path', ['username' => Auth::user()->username]) }}" style="font-weight: bold;">My profile</a></li>
+                </ul>
+                <ul class="menu-list" style="border-bottom: 1px solid #eaeaea;">
+                    <li><a href="/friends" style="font-weight: bold;">My friends</a></li>
                 </ul>
                 <ul class="menu-list" style="border-bottom: 1px solid #eaeaea;">
                     <li><a href="/settings">Settings</a></li>
