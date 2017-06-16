@@ -1,11 +1,11 @@
-<section id="newsletter" class="hero is-primary">
+<section id="newsletter" class="hero is-primary" style="margin-top: 10px;">
     <div class="hero-body">
         <div class="container">
             <!-- Begin MailChimp Signup Form -->
             <div id="mc_embed_signup" class="columns is-vcentered">
                 <div class="column is-one-third is-left">
-                    <p class="title">Boooknshelf <strong>Newsletter</strong></p>
-                    <p class="subtitle">Get notified when I add new features to Booknshelf. I'll never spam.</p>
+                    <p class="title"><strong>Boooknshelf Newsletter</strong></p>
+                    <p class="subtitle">I send emails with great book recommendations, summaries and more. If you love books then you will enjoy my newsletter. I'll never spam, promise.</p>
                 </div>
 
                 <div class="column">
