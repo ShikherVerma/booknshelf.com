@@ -45,7 +45,7 @@
             <div class="container">
                 <div class="columns is-multiline">
                     @foreach ($friends as $friend)
-                        <div class="column is-3">
+                        <div class="column is-2">
                             <div class="card friend-card">
                                 <div class="card-image">
                                     <figure class="image is-128x128 friend-card-image">
@@ -55,20 +55,18 @@
                                 <div class="card-content">
                                     <div class="media">
                                         <div class="media-content">
-                                            <p class="title is-3">
+                                            <p class="title is-4">
                                                 <a href="{{ route('profile_path', ['username' => $friend->username]) }}">
                                                     {{ $friend->name }}
                                                 </a>
                                             </p>
-                                            <p class="subtitle is-4">{{ '@'. $friend->username }}</p>
+                                            <p class="subtitle is-6">{{ '@'. $friend->username }}</p>
                                         </div>
                                     </div>
                                     <div class="content">
-                                        <p class="subtitle is-4">
-                                            <a href="{{ route('bookshelves_path', ['username' => $friend->username]) }}">
-                                                {{ $friend->shelves_count }} Bookshelves
-                                            </a>
-                                        </p>
+                                        <a href="{{ route('bookshelves_path', ['username' => $friend->username]) }}">
+                                            {{ $friend->shelves_count }} Bookshelves
+                                        </a>
                                     </div>
                                 </div>
                             </div>
