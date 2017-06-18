@@ -7,7 +7,7 @@
             <div class="container">
                 <div class="columns">
                     <div class="column is-half modal-left">
-                        <div class="box book" :style="bookCoverImage"></div>
+                        <div class="box save-modal-book" :style="bookCoverImage"></div>
                     </div>
                     <div class="column is-half modal-right">
                         <p class="subtitle"><strong>CHOOSE BOOKSHELF</strong></p>
@@ -142,6 +142,11 @@
 
 </script>
 <style lang="css">
+    .save-modal-book {
+        height: 300px;
+        background-position: center center;
+        background-size: cover;
+    }
     .book-save-modal-background {
         background-color: rgba(255,255,255,0.96);
     }
@@ -157,10 +162,11 @@
         height: 34px;
     }
     .book-save-modal-content {
-        border: 1px solid #e8e8e8;
+        /*border: 1px solid #e8e8e8;*/
         background-color: #fff;
         border-radius: 3px;
-        height: 350px;
+        height: 650px;
+        flex-direction: column;
         /*hide horizontal scrolling*/
         overflow: hidden;
     }
@@ -174,7 +180,7 @@
     }
 
     .shelves-list {
-        max-height: 220px;
+        max-height: 400px;
         overflow-y: auto;
     }
 

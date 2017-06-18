@@ -22,6 +22,16 @@ class BookController extends Controller
         $this->books = $books;
     }
 
+    public function show(Request $request, $bookId)
+    {
+        $book = $this->books->findById($bookId);
+
+        return view('book', [
+            'book' => $book,
+            'user' => $request->user(),
+        ]);
+    }
+
     public function search(Request $request, AmazonProduct $amazonService)
     {
         $this->validate($request, [
