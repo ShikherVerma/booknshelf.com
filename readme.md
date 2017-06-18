@@ -17,7 +17,7 @@ Get started using booknshelf on the [booknshelf.com website](https://booknshelf.
 ## Contributing to Booknshelf
 
 If you want to work on the Booknshelf website, check out the installation instructions in the [Contributing Guide](https://github.com/booknshelf/booknshelf.com/blob/master/CONTRIBUTING.md) in this repository. 
-You'll will find the instractions on how to setup your local development environment.
+**You'll will find the instractions on how to setup your local development environment there.**
 
 There are many ways to contribute and some of them don't really require coding.
 
