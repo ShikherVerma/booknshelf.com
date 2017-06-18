@@ -36,7 +36,6 @@ class HomeController extends Controller
 
     public function index()
     {
-
         $topics = Topic::with('followers')
                     ->orderBy('updated_at', 'desc')
                     ->get()

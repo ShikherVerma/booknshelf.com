@@ -20,3 +20,4 @@ tests/_output/
 database/migrations/2017_02_11_135310_create_book_topic_table.php
 public/build/js/app-f6c0701ea1.js
 public/img/untitled folder/
+resources/assets/js/custom/
