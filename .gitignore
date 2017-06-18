@@ -1,0 +1,22 @@
+/vendor
+/node_modules
+/public/storage
+Homestead.yaml
+Homestead.json
+.env
+.env.testing
+
+.idea
+_ide_helper.php
+.phpstorm.meta.php
+_ide_helper_models.php
+.DS_Store
+public/build/css/booknshelf-da67fc482a.css
+
+/.vagrant
+!/resources/assets/js/components/settings/SettingsProfileInfo.vue
+public/build/js/app-81aaca56a0.js
+tests/_output/
+database/migrations/2017_02_11_135310_create_book_topic_table.php
+public/build/js/app-f6c0701ea1.js
+public/img/untitled folder/
