@@ -23,10 +23,10 @@ There are many ways to contribute and some of them don't really require coding.
 
 Examples:
 
-- suggesting news feature for Booknshelf by opening an issue
-- creating new topics or bookshelves on Booknshelf
-- making design changes and tweaks to the interface
-- more ...
+- suggesting new features for Booknshelf by opening an issue
+- creating new topics or bookshelves on the website
+- making design changes and tweaks to the interface and submitting a PR
+- bug fixes, UI changes, refactoring and more
 
 ## Did you find a bug?
 
@@ -34,7 +34,7 @@ I know, no one likes bugs. If you found a bug then please go ahead and [open a G
 
 ## Is someone being unpleasant?
 
-We have a [Code of Conduct](https://github.com/exercism/exercism.io/blob/master/CODE_OF_CONDUCT.md).
+We have a [Code of Conduct](https://github.com/booknshelf/booknshelf.com/blob/master/CODE_OF_CONDUCT.md).
 
 If you need to report something, please email [@tiggreen](https://github.com/tiggreen) or [tweet me](https://twitter.com/tiggreen).
 
