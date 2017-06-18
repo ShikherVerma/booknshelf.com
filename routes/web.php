@@ -82,6 +82,7 @@ Route::post('/likes/books/{book_id}/toggle', 'LikeController@toggle');
 Route::get('/friends', 'FriendsController@index');
 
 // Books
+Route::get('/books/{book_id}', 'BookController@show');
 Route::get('/books/{book_id}/likes', 'BookController@likes');
 Route::get('/books/{book_id}/reviews', 'BookController@reviews');
 

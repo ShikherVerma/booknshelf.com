@@ -216,6 +216,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Bugsnag' => Bugsnag\BugsnagLaravel\Facades\Bugsnag::class,
         'Notification' => Illuminate\Support\Facades\Notification::class,
+        'Moloquent'       => Jenssegers\Mongodb\Eloquent\Model::class,
     ],
 
 ];

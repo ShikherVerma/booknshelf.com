@@ -16,6 +16,11 @@ class BookRepository
 {
     use DispatchesJobs;
 
+    public function findById($id)
+    {
+        return Book::find($id);
+    }
+
     public function findByVolumeIdOrCreate($bookData)
     {
         $book = Book::where('google_volume_id', $bookData['google_volume_id'])->first();
@@ -92,6 +97,7 @@ class BookRepository
 
     public function extractAmazonBookData($item)
     {
+        dd($item);
         $result = [
             'asin' => $item['ASIN'] ?? null,
             'detail_page_url' => $item['DetailPageURL'] ?? null,

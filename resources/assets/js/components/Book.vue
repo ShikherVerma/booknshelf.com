@@ -1,6 +1,8 @@
 <template>
     <div class="column is-2 profile-like-book">
-        <div class="box book hvr-glow" :style="bookCoverImage" @click="showBookInfoModal = true"></div>
+        <a :href="bookUrl">
+            <div class="box book" :style="bookCoverImage"></div>
+        </a>
         <p class="subtitle">
             <a class="button is-outlined" :class="{ 'saved-button': isSavedByAuthUser}" @click="showBookSaveModal()">
                 <span class="icon book-save-icon">
@@ -104,6 +106,9 @@
                     return '';
                 }
             },
+            bookUrl: function () {
+                return `/books/${this.book.id}`;
+            },
             isLikedByAuthUser: function () {
                 return (this.likes.indexOf(this.book.id) != -1)
             },
@@ -123,6 +128,7 @@
         background-position: center center;
         background-size: cover;
         cursor: pointer;
+        margin-bottom: 10px;
     }
 
     @media only screen and (max-width: 768px) {
@@ -131,9 +137,7 @@
             width: 370px !important
         }
     }
-    .parent {
-        position: relative;
-    }
+
     .book-title {
         font-size: 1.5rem;
     }
@@ -142,6 +146,11 @@
         color: #a2a2a2;
     }
     .profile-like-book {
+        border: solid 1px rgba(144, 144, 144, 0.21);
+    }
+
+    .profile-like-book:hover {
+        background-color: #f7f7f7;
     }
 
     .small-span {
@@ -151,7 +160,7 @@
     }
 
     .liked-button {
-        background-color: #E45C5F;
+        background-color: #E54B4B;
         color: white;
         font-weight: bold;
     }

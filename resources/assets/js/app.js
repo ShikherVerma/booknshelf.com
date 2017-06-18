@@ -62,6 +62,11 @@ Vue.component('topic-page', require('./components/topics/TopicPage.vue'));
 // The booknshelf book component
 Vue.component('book', require('./components/Book.vue'));
 
+// Book page components
+Vue.component('book-view-left', require('./components/book-view/BookViewLeft.vue'));
+Vue.component('book-view-center', require('./components/book-view/BookViewCenter.vue'));
+Vue.component('book-view-right', require('./components/book-view/BookViewRight.vue'));
+
 const app = new Vue({
     el: '#app',
 
