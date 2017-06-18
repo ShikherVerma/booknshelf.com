@@ -16,8 +16,7 @@ Get started using booknshelf on the [booknshelf.com website](https://booknshelf.
 
 ## Contributing to Booknshelf
 
-If you want to work on the Booknshelf website, check out the installation instructions in the [Contributing Guide](https://github.com/booknshelf/booknshelf.com/blob/master/CONTRIBUTING.md) in this repository. 
-**You'll will find the instractions on how to setup your local development environment there.**
+If you want to work on the Booknshelf website, check out the [Contributing Guide](https://github.com/booknshelf/booknshelf.com/blob/master/CONTRIBUTING.md) in this repository. 
 
 There are many ways to contribute and some of them don't really require coding.
 
@@ -27,6 +26,9 @@ Examples:
 - creating new topics or bookshelves on the website
 - making design changes and tweaks to the interface and submitting a PR
 - bug fixes, UI changes, refactoring and more
+
+## Setting up Local Development environment
+You need these instructions to run Booknshelf locally.
 
 ## Did you find a bug?
 
