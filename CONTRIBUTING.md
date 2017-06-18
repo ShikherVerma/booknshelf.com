@@ -10,7 +10,6 @@ This contributing guide is specifically for contributing to the booknshelf.com w
     - [Git Workflow](#git-workflow)
     - [Issues](#issues)
     - [Style (PHP)](#style-php)
-    - [Style (JavaScript/CSS)](#style-js-css)
 * [Roadmap](#roadmap)
 
 ## Submitting Code Changes
