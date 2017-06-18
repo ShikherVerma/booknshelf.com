@@ -31,7 +31,10 @@ Examples:
 You need these instructions to run Booknshelf locally.
 
 Booknshelf is a [Laravel](https://laravel.com) application powered by [Vue.js](http://vuejs.org/) framework in the frontend.
-The easiest way to run Booknshelf locally is to use [Laravel Valet](https://laravel.com/docs/5.3/valet) or [Laravel Homestead](https://laravel.com/docs/5.3/homestead).
+The easiest way to run Booknshelf locally is to use [Laravel Valet](https://laravel.com/docs/5.3/valet) or [Laravel Homestead](https://laravel.com/docs/5.3/homestead) to
+setup the local environment. After setting it up you will need to run `php artisan migrate` to migrate the database and generate the schema.
+
+At this point you should be all set. Ask me anything if you experience any issues along the way.
 
 To fully function website locally you will need to obtain some keys as mentioned in `.env.example` file.
 
