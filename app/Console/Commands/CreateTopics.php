@@ -155,6 +155,11 @@ class CreateTopics extends Command
                 'Read and learn about the myths that people tell about to explain nature, history and customs.',
                 asset('/img/topics/acropolis-2092534_1920.jpg'),
             ],
+            [
+                'Business',
+                'Business books that every entrepreneur should read.',
+                'https://s3-us-west-2.amazonaws.com/booknshelf/topics/olu-eletu-38647.jpg',
+            ],
         ]);
 
 
