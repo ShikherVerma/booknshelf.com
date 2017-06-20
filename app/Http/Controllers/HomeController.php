@@ -91,7 +91,7 @@ class HomeController extends Controller
         return view('newsletter', [
                 'title' => "Join Booknshelf's Weekly Newsletter",
                 'description' => "I'm sending book recommendations and summaries. Free books and all sorts of book deals.
-            I also love sharing my learnings from fiction books I read.",
+            I also love sharing my learnings from non-fiction books I read.",
                 'ogImage' => 'https://booknshelf.com/img/backgrounds/aga-putra-125108.jpg'
             ]);
     }
