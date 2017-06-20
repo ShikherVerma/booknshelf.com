@@ -20,7 +20,7 @@
         </h1>
         <h1 class="title">
             I'm sending book recommendations and summaries. Free books and all sorts of book deals.
-            I also love sharing my learnings from fiction books I read.
+            I also love sharing my learnings from non-fiction books I read.
         </h1>
       </div>
     </section>
