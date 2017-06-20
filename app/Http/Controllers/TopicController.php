@@ -7,7 +7,6 @@ use App\Shelf;
 use App\Topic;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class TopicController extends Controller
 {
@@ -38,7 +37,6 @@ class TopicController extends Controller
     public function show(Request $request, ShelfRepository $shelfRepository, $slug)
     {
         $user = User::where(['username' => 'topic'])->firstOrFail();
-
         // find a shelf that represents this topic
         $shelf = Shelf::where([
             'slug' => $slug,

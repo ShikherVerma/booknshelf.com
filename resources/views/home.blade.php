@@ -8,7 +8,7 @@
         <div class="hero-body home-search-body">
             <div class="container has-text-centered">
                 <h3 class="title is-3 primary-span-home">
-                    Stay organized with your books & read more
+                    Keep track of all your books
                 </h3>
                 <div class="columns">
                     <div class="column is-offset-one-quarter is-half">

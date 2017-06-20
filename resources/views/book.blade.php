@@ -1,18 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="section">
+    <section class="section" style="background-color: #fafafa;">
         <div class="container">
             <div class="columns">
-                <book-view-left :book="{{ $book }}" :user="{{ $user }}"></book-view-left>
-
-
-                {{--<book-view-center>--}}
-
-                {{--</book-view-center>--}}
-                {{--<book-view-right>--}}
-
-                {{--</book-view-right>--}}
+                <book-view-left :book="{{ $book }}" :user="{{ $user }}" :likes="userLikedBooks" :saves="userSavedBooks"></book-view-left>
+                <book-view-right :book="{{ $book }}"></book-view-right>
+                <book-view-center :book="{{ $book }}" :user="{{ $user }}"></book-view-center>
             </div>
         </div>
     </section>

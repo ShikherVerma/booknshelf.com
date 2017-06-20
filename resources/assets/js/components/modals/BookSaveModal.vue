@@ -150,17 +150,6 @@
     .book-save-modal-background {
         background-color: rgba(255,255,255,0.96);
     }
-    .modal-close-button {
-        position: absolute;
-        top: 40px;
-        left: 40px;
-        z-index: 200;
-        background: #bbbbbb;
-        border-radius: 50%;
-        padding: 14px 14px 13px 14px;
-        width: 34px;
-        height: 34px;
-    }
     .book-save-modal-content {
         /*border: 1px solid #e8e8e8;*/
         background-color: #fff;
@@ -168,7 +157,8 @@
         height: 650px;
         flex-direction: column;
         /*hide horizontal scrolling*/
-        overflow: hidden;
+        /*overflow: hidden;*/
+        overflow: scroll;
     }
     .modal-left {
         padding: 60px;
