@@ -144,7 +144,7 @@
         color: #a2a2a2;
     }
     .profile-like-book {
-        border-bottom: solid 1px rgba(144, 144, 144, 0.21);
+        /*border-bottom: solid 1px rgba(144, 144, 144, 0.21);*/
     }
 
     .small-span {
