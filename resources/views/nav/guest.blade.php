@@ -18,6 +18,12 @@
         <a class="nav-item" href="/bookshelves">
             Bookshelves
         </a>
+        <a class="nav-item" href="/newsletter">
+            <span class="icon" style="margin-right: 5px;">
+                <i class="fa fa-envelope-o"></i>
+            </span>
+            <span>Newsletter</span>
+        </a>
     </div>
 
 

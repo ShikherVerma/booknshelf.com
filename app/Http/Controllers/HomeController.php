@@ -27,7 +27,8 @@ class HomeController extends Controller
             'faq',
             'story',
             'search',
-            'bookshelves'
+            'bookshelves',
+            'newsletter'
         ]]);
         $this->shelves = $shelves;
         $this->users = $users;
@@ -83,5 +84,10 @@ class HomeController extends Controller
         return view('bookshelves', [
             'shelves' => $shelves,
         ]);
+    }
+
+    public function newsletter()
+    {
+        return view('newsletter');
     }
 }

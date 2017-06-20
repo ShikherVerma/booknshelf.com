@@ -29,6 +29,7 @@ Route::get('/welcome', 'HomeController@welcome');
 Route::get('/faq', 'HomeController@faq');
 Route::get('/story', 'HomeController@story');
 Route::get('/bookshelves', 'HomeController@bookshelves');
+Route::get('/newsletter', 'HomeController@newsletter');
 
 // Settings
 Route::get('/settings', 'SettingsController@show');
@@ -96,3 +97,4 @@ Route::delete('follows/{id}', [
     'as' => 'unfollows_path',
     'uses' => 'FollowsController@destroy'
 ]);
+
