@@ -163,7 +163,7 @@ return [
          * Other Service Providers...
          */
         Laravel\Socialite\SocialiteServiceProvider::class,
-        // Barryvdh\Debugbar\ServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
         GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
@@ -216,7 +216,6 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Bugsnag' => Bugsnag\BugsnagLaravel\Facades\Bugsnag::class,
         'Notification' => Illuminate\Support\Facades\Notification::class,
-        'Moloquent'       => Jenssegers\Mongodb\Eloquent\Model::class,
     ],
 
 ];

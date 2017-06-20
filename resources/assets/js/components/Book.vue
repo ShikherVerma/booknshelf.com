@@ -1,8 +1,6 @@
 <template>
     <div class="column is-2 profile-like-book">
-        <a :href="bookUrl">
-            <div class="box book" :style="bookCoverImage"></div>
-        </a>
+        <div class="box book hvr-glow" :style="bookCoverImage" @click="showBookInfoModal = true"></div>
         <p class="subtitle">
             <a class="button is-outlined" :class="{ 'saved-button': isSavedByAuthUser}" @click="showBookSaveModal()">
                 <span class="icon book-save-icon">
@@ -146,11 +144,7 @@
         color: #a2a2a2;
     }
     .profile-like-book {
-        border: solid 1px rgba(144, 144, 144, 0.21);
-    }
-
-    .profile-like-book:hover {
-        background-color: #f7f7f7;
+        border-bottom: solid 1px rgba(144, 144, 144, 0.21);
     }
 
     .small-span {

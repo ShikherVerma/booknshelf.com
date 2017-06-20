@@ -49,6 +49,7 @@ class BookRepository
     public function findByAsinOrCreate($bookData)
     {
         $book = Book::where('asin', $bookData['asin'])->first();
+        // if we haven't created the book yet
         if (empty($book)) {
             $book = Book::create($bookData);
             if (is_array($bookData['authors'])) {
@@ -60,8 +61,13 @@ class BookRepository
                 $author = Author::firstOrCreate(['name' => $bookData['authors']]);
                 $book->authors()->attach($author->id);
             }
-            dispatch((new SetBookCoverFromAmazon($book))->onQueue('books_cover_image_amazon'));
+        } else {
+            // if we have already stored the book then update couple fields
+            $book->description = $bookData['description'] ?? null;
+            $book->cover_image = $bookData['cover_image'] ?? null;
+            $book->save();
         }
+        dispatch((new SetBookCoverFromAmazon($book))->onQueue('books_cover_image_amazon'));
 
         return $book;
     }
@@ -97,7 +103,6 @@ class BookRepository
 
     public function extractAmazonBookData($item)
     {
-        dd($item);
         $result = [
             'asin' => $item['ASIN'] ?? null,
             'detail_page_url' => $item['DetailPageURL'] ?? null,
@@ -109,6 +114,9 @@ class BookRepository
             'authors' => $item['ItemAttributes']['Author'] ?? [],
             'cover_image' => $item['LargeImage']['URL'] ?? $item['MediumImage']['URL'] ?? null,
         ];
+
+        $description = $this->createDescriptionFromAmazonBookData($item);
+        $result['description'] = $description;
 
         return $result;
     }
@@ -158,5 +166,26 @@ class BookRepository
         $books->load('authors', 'likes');
 
         return $books;
+    }
+
+    private function createDescriptionFromAmazonBookData($item)
+    {
+
+        if (isset($item['EditorialReviews']['EditorialReview']["Source"])) {
+            $description = $item['EditorialReviews']['EditorialReview']["Content"];
+            return $description;
+        }
+
+        if (!empty($item['EditorialReviews']['EditorialReview'])) {
+            $reviews = $item['EditorialReviews']['EditorialReview'];
+            foreach ($reviews as $review) {
+                if (!empty($review['Source'])
+                    && in_array($review['Source'], ["Product Description", "Amazon.com Review"])) {
+                    $description = $review['Content'];
+                    return $description;
+                }
+            }
+        }
+        return null;
     }
 }

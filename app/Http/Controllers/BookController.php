@@ -8,6 +8,7 @@ use App\Repositories\UserRepository;
 use App\Services\AmazonProduct;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use Carbon\Carbon;
 
 class BookController extends Controller
 {
@@ -25,6 +26,7 @@ class BookController extends Controller
     public function show(Request $request, $bookId)
     {
         $book = $this->books->findById($bookId);
+        $book->load('authors', 'likes');
 
         return view('book', [
             'book' => $book,

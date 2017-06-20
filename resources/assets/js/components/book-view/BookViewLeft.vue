@@ -1,38 +1,16 @@
 <template>
-    <div class="column is-one-third">
-        <p class="notification is-info">
-            <code class="html">is-one-third</code>
-        </p>
-    </div>
+    <book :book="book" :user="user" :likes="likes" :saves="saves"></book>
 </template>
 
 <script>
     export default {
-        props: ['book', 'user'],
-
-        data() {
-            return {
-                form: new AppForm({
-                    id: '',
-                }),
-            }
-        },
-
-        methods: {
-        },
-
-        computed: {
-        },
-
-        /**
-        * Bootstrap the component.
-        */
-        mounted() {
-            this.form.id = this.book.id;
-        },
+        props: ['book', 'user', 'likes', 'saves'],
     }
 </script>
 
 <style lang="css">
+    .book-view-left {
+        /*border-right: solid 1px rgba(144, 144, 144, 0.21);*/
+    }
 
 </style>
