@@ -87,6 +87,7 @@
 <script src="{{ elixir('js/app.js') }}"></script>
 @if (env('APP_ENV') == 'production')
     <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <script async src="{{ elixir('js/autotrack.js') }}"></script>
 @endif
 
 
