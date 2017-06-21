@@ -84,7 +84,7 @@
                         Bus.$emit('updateUserData');
                         this.close();
                         // send a notification
-                        Vue.toast('Added the book to "' + shelfName + '"', {
+                        Vue.toast('Added "' + this.book.title + '" to "' + shelfName + '" shelf', {
                             className: ['notification', 'is-success', 'save-book-notification'],
                             horizontalPosition: 'right',
                             verticalPosition: 'bottom',
