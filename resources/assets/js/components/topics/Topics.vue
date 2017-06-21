@@ -1,5 +1,5 @@
 <template>
-    <section class="section">
+    <section class="section topics-section">
         <div class="container">
             <div class="columns is-multiline">
                 <topic v-for="topic in topics" :topic="topic" :user="user" :user-topics="userTopics"></topic>
@@ -35,4 +35,7 @@
 </script>
 
 <style lang="css">
+    .topics-section {
+        padding: 0px;
+    }
 </style>
