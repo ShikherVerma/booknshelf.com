@@ -10,15 +10,13 @@
                         <h2><span class="primary-span">Q: What is Booknshelf?</span></h2>
                         <p class="subtitle"
                            style="font-family: 'Source Sans Pro', sans-serif; line-height: 150%; font-size: 19px;">
-                            Booknshelf is a place to help you stay organized with your books and read more. It's a place where you can easily organize your books in different shelves and share them with your friends. You can also discover new books from our curated topics and see what your friends are reading.
+                            Booknshelf is a website where you can keep track of all your books online. You can easily organize your books in different shelves and never forget about any book you have read or want to read. You can also use  booknshelf to discover new books from our curated topics and see what your friends are reading.
                         </p>
                         <h2><span class="primary-span">Q: What are the goals of the site? </span></h2>
                         <p class="subtitle"
                            style="font-family: 'Source Sans Pro', sans-serif; line-height: 150%; font-size: 19px;">
-                            To be honest, I don't exactly know what's the long term goal of Booknshelf. However, I'm
-                            sure I want it to be a community hub of book enthusiasts, learners, and readers. Some
-                            people may come to Booknshelf to find their next read and some find great resources to
-                            learn about different topics. I'm working super hard to take Booknshelf to that point!
+                            I have only one and simple goal, to make Booknshelf the best place to keep track of all your books online.
+                            I love staying organized with my books and I'm sure there are people like me who love that too.
                         </p>
                         <h2><span class="primary-span">Q: How does Booknshelf make money? </span></h2>
                         <p class="subtitle"
@@ -32,7 +30,7 @@
                             to make Booknshelf a self-sustainable side-project.
                             People say setting goals are very important. Here we go, I have it now 😁.
                         </p>
-                        <h2><span class="primary-span">Q: How did I build Booknshelf?</span></h2>
+                        <h2><span class="primary-span">Q: How did I build Booknshelf (for tech people)?</span></h2>
                         <p class="subtitle"
                            style="font-family: 'Source Sans Pro', sans-serif; line-height: 150%; font-size: 19px;">
                             I'm a big <a
@@ -54,10 +52,15 @@
                             relational database which is a drop-in replacement for MySQL. If
                             you want to talk more about the tech stuff you can always contact me.
                         </p>
+                        <h2><span class="primary-span">Q: Can I help you to build Booknshelf?</span></h2>
+                        <p class="subtitle" style="font-family: 'Source Sans Pro', sans-serif; line-height: 150%; font-size: 19px;">
+                        Yes. I've <a
+                                class="about-link" target="_blank"
+                                href="https://github.com/booknshelf/booknshelf.com"> open-sourced </a>the entire codebase of Booknshelf and looking for engineers/designers who have the same passion towards books and want to contribute. You can also help me by suggesting ideas around Booknshelf. Thank you!
                         <h2><span class="primary-span">Q: Is there anyone you'd like to give credits to? 🤔</span></h2>
                         <p class="subtitle"
                            style="font-family: 'Source Sans Pro', sans-serif; line-height: 150%; font-size: 19px;">
-                            Yes 😍! I'm very grateful to the Open Source community for building the tools I've
+                            Yes! I'm very grateful to the Open Source community for building the tools I've
                             been using for Booknshelf. I'd also like to give credits to
                             <a class="about-link" target="_blank" href="https://unsplash.com/">Unplash</a> for letting
                             me use their amazing photos!
