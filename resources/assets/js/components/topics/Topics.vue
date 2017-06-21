@@ -36,6 +36,6 @@
 
 <style lang="css">
     .topics-section {
-        padding: 0px;
+        padding-top: 0px;
     }
 </style>
