@@ -2,18 +2,16 @@
 
 @section('content')
 
-<section class="hero is-primary is-small is-bold">
+<section class="hero is-small">
     <div class="hero-body">
         <div class="container">
-            <h3 class="title is-4 topic-title">
-                <span class="primary-span" style="background-color: #144e45;">
-                Explore some of our favorite bookshelves!
-                </span>
+            <h3 class="title is-3">
+                Explore some of our bookshelves that we've created for you!
             </h3>
         </div>
     </div>
 </section>
-<section id="favorite-shelves" class="section is-primary is-bold" v-cloak>
+<section id="favorite-shelves"  style="padding-top: 0px;" class="section is-primary is-bold" v-cloak>
     <div class="container">
         <div class="columns is-multiline">
             <div class="column is-3">
