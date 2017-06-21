@@ -2,7 +2,9 @@
     <div class="container">
         <div class="content has-text-centered">
             <p>
-                <strong>Booknshelf</strong> by <a href="https://tigran.nyc" target="_blank">Tigran Hakobyan</a>
+                <strong>Booknshelf</strong> by <a  style="text-decoration: underline;"
+                href="https://tigran.nyc" target="_blank">Tigran</a> & <a href="https://github.com/booknshelf/booknshelf.com"
+                style="text-decoration: underline;" target="_blank">Open Source Communnity</a>
             </p>
             <div id="social">
                 <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true"

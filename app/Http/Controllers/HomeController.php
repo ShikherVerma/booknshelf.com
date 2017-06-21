@@ -25,7 +25,7 @@ class HomeController extends Controller
         $this->middleware('auth', ['except' => [
             'index',
             'faq',
-            'story',
+            'blog',
             'search',
             'bookshelves',
             'newsletter'
@@ -58,7 +58,7 @@ class HomeController extends Controller
         return view('static.about');
     }
 
-    public function story()
+    public function blog()
     {
         return view('static.story', [
                 'title' => 'Follow my story of growing Booknshelf into a profitable online business.',
