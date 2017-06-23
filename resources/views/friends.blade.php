@@ -49,7 +49,7 @@
                             <div class="card friend-card">
                                 <div class="card-image">
                                     <figure class="image is-128x128 friend-card-image">
-                                        <img src="https://booknshelf.imgix.net/profiles/{{ $friend->avatar }}?w=128&h=128&fit=crop"
+                                        <img src="https://booknshelf.imgix.net/profiles/{{ $friend->avatar }}?auto=format&auto=compress"
                                         alt="{{ $friend->name }}'s facebook profile picture">
                                     </figure>
                                 </div>
