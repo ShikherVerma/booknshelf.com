@@ -8,6 +8,7 @@ use App\Repositories\ShelfRepository;
 use App\Repositories\UserRepository;
 use App\Topic;
 use Illuminate\Http\Request;
+use Storage;
 
 class HomeController extends Controller
 {
@@ -37,11 +38,10 @@ class HomeController extends Controller
 
     public function index()
     {
-
         $topics = Topic::with('followers')
                     ->orderBy('updated_at', 'desc')
                     ->get()
-                    ->take(11);
+                    ->take(12);
         $shelves = $this->shelves->ourPicks();
 
         $favoriteBooks = $this->books->getFavorites();

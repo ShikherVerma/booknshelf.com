@@ -163,7 +163,7 @@ return [
          * Other Service Providers...
          */
         Laravel\Socialite\SocialiteServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
+        // Barryvdh\Debugbar\ServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
         GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,

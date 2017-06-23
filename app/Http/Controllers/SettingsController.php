@@ -6,6 +6,7 @@ use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
 use Storage;
+use Carbon\Carbon;
 
 class SettingsController extends Controller
 {
@@ -49,13 +50,17 @@ class SettingsController extends Controller
         $user = $request->user();
 
         $file = $data['photo'];
-        $path = $file->hashName('profiles');
+        // $path = $file->hashName('profiles');
+
         $s3 = Storage::disk('s3');
+
+        $imageName = Carbon::now()->timestamp . '-' . $request->user()->username . '.png';
+        $path = 'profiles/' . $imageName;
 
         $s3->put($path, $this->formatImage($file));
 
         $user->forceFill([
-            'avatar' => $s3->url($path),
+            'avatar' => $imageName,
         ])->save();
 
         return response()->json($request->user()->toArray());

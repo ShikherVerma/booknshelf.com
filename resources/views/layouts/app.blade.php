@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="oRlwQCWDSEBrMAdKd3t3_3pCA9sFayLgZdgLer2TKfM"/>
     <link rel="canonical" href="{{ url()->current() }}"/>
+    <meta name="keywords" content="booknshelf, catalog your books, online free library, catalogue your books, book cataloging, free book catalog, catalogue, library books online">
+
     <meta name="description"
           content="Easily organize all your books in different shelves."/>
     <meta name="google-site-verification" content="oRlwQCWDSEBrMAdKd3t3_3pCA9sFayLgZdgLer2TKfM" />

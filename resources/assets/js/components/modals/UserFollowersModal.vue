@@ -31,7 +31,7 @@
                     <figure class="media-left">
                         <p class="image is-48x48">
                             <a :href="'/@' + follower.username">
-                                <img :src="follower.avatar">
+                                <img :src="getUserAvatarUrl(follower.avatar)">
                             </a>
                         </p>
                     </figure>
@@ -130,7 +130,11 @@
                 } else {
                     return false;
                 }
-            }
+            },
+            getUserAvatarUrl(avatar) {
+                return "https://booknshelf.imgix.net/profiles/" +
+                    avatar + "?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=128&h=128&fit=crop";
+            },
         },
 
         mounted() {

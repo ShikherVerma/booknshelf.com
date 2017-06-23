@@ -26,6 +26,7 @@ class Book extends Model
         'google_ratings_count',
         'image',
         'cover_image',
+        'original_image',
         'language',
         'google_info_link',
         'detail_page_url',

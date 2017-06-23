@@ -46,16 +46,17 @@ class SetUserAvatar implements ShouldQueue
             });
             $img = (string)$image->fit(300)->encode();
         } else {
-            $img = (string)$imageManager->make($this->user->avatar)->fit(300)->encode();
+            $img = (string)$imageManager->make($this->user->avatar)->encode();
         }
 
         $s3 = Storage::disk('s3');
-        $path = 'profiles/' . Carbon::now()->timestamp . '-' . $this->user->username . '.png';
+        $imageName = Carbon::now()->timestamp . '-' . $this->user->username . '.png';
+        $path = 'profiles/' . $imageName;
 
 
         $s3->put($path, $img);
         $this->user->forceFill([
-            'avatar' => $s3->url($path),
+            'avatar' => $imageName,
         ])->save();
 
         $this->delete();
