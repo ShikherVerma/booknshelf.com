@@ -13,7 +13,7 @@
                         <div class="level-left">
                             <p class="level-item">
                                 <figure class="image is-48x48">
-                                    <img :src="user.avatar">
+                                    <img :src="avatarUrl">
                                 </figure>
                             </p>
                             <p>
@@ -75,6 +75,10 @@
         computed: {
             profileUrl: function () {
                 return '/@' + this.user.username;
+            },
+
+            avatarUrl() {
+                return "https://booknshelf.imgix.net/profiles/" + this.user.avatar + "?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=48&h=48&fit=crop";
             },
 
             canEditOrDelete() {

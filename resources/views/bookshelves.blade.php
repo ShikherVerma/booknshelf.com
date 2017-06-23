@@ -33,7 +33,7 @@
                 <div class="column is-3">
                     <a href="{{ route('shelf_path', ['username' => $shelf['user']['username'], 'shelf_slig' =>$shelf['slug']]) }}">
                         <div class="box shelf-item hvr-float"
-                             style="background-image: url({{ $shelf['cover'] or '' }})"></div>
+                             style='background-image: url("https://booknshelf.imgix.net/shelf-covers/{{ $shelf['cover'] }}?h=250&fit=crop&q=30")'></div>
                     </a>
                     <h2 class="title">{{ $shelf['name'] }}</h2>
                     <p class="subtitle">{{ count($shelf['books']) }} books</p>

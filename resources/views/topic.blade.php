@@ -10,7 +10,7 @@
         :user-topics="userTopics">
     </topic-page>
 
-    <section class="section" style="padding-top: 5px; padding-bottom: 5px;">
+    <section class="section">
         <div class="container">
             <div class="notification is-primary" v-cloak>
                 <div class="title is-4">

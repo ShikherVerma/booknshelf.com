@@ -166,6 +166,11 @@ class CreateTopics extends Command
         $this->user = User::where('username', 'topic')->firstOrFail();
         $allTopicNames->each(function ($tuple) {
             $topic = Topic::where('name', $tuple[0])->first();
+            $shelf->forceFill([
+                'name' => $tuple[0],
+                'description' => $tuple[1],
+                'cover_photo' => $tuple[2],
+            ]);
             if (empty($topic)) {
                 Topic::create([
                     'name' => $tuple[0],

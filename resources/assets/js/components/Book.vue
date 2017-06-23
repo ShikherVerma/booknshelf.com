@@ -30,6 +30,7 @@
                          :book="book"
                          :likes="likesCount"
                          @close="showBookInfoModal = false"
+                         :is-search="isSearch"
         >
         </book-info-modal>
     </div>
@@ -38,7 +39,7 @@
 
 <script>
     export default {
-        props: ['user', 'book', 'shelf', 'likes', 'saves'],
+        props: ['user', 'book', 'shelf', 'likes', 'saves', 'isSearch'],
 
         data() {
             return {
@@ -98,9 +99,18 @@
 
         computed: {
             bookCoverImage: function () {
-                if (this.book.cover_image || this.book.image) {
-                    return `background-image: url(${this.book.cover_image || this.book.image})`;
-                } else {
+                // search is exception
+                if (this.isSearch) {
+                    return `background-image: url(${this.book.cover_image})`;
+                }
+                if (this.book.cover_image) {
+                    var coverImageUrl = "https://booknshelf.imgix.net/book-covers/" + this.book.cover_image + "?auto=format&fit=crop&h=250";
+                    return `background-image: url(${coverImageUrl})`;
+                } else if(this.book.original_image) {
+                    var coverImageUrl = "https://booknshelf.imgix.net/book-original-covers/" + this.book.image + "?auto=format&fit=crop&h=250";
+                    return `background-image: url(${coverImageUrl})`;
+                }
+                else {
                     return '';
                 }
             },

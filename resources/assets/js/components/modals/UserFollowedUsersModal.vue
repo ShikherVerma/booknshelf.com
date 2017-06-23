@@ -34,7 +34,7 @@
                     <figure class="media-left">
                         <p class="image is-48x48">
                             <a :href="'/@' + user.username">
-                                <img :src="user.avatar">
+                                <img :src="getUserAvatarUrl(user.avatar)">
                             </a>
                         </p>
                     </figure>
@@ -133,7 +133,12 @@
                 } else {
                     return false;
                 }
-            }
+            },
+
+            getUserAvatarUrl(avatar) {
+                return "https://booknshelf.imgix.net/profiles/" +
+                    avatar + "?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=128&h=128&fit=crop";
+            },
         },
 
         mounted() {

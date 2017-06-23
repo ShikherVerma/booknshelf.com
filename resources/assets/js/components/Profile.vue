@@ -1,13 +1,13 @@
 <template>
     <div>
-        <section class="hero is-primary is-bold">
+        <section class="hero is-primary">
             <!-- Hero content: will be in the middle -->
             <div class="hero-body">
                 <div class="container">
                     <div class="columns">
-                        <div class="column is-2 profile-avatar-column">
+                        <div class="column is-2">
                             <figure class="image is-128x128 is-clearfix">
-                                <img :src="user.avatar">
+                                <img class="circle-avatar" :src="avatarUrl">
                             </figure>
                         </div>
                         <div class="column is-4">
@@ -21,13 +21,13 @@
                                 {{ user.about }}
                             </h2>
                         </div>
-                        <div class="column is-1">
-                            <h3 class="subtitle" style="font-size:1.15rem; font-weight:500;">
+                        <div class="column is-2">
+                            <h3 class="subtitle">
                                 <a @click="showUserFollowersModal = true"> {{ followersCount }} </br> Followers</a>
                             </h3>
                         </div>
-                        <div class="column is-1">
-                            <h3 class="subtitle" style="font-size:1.15rem; font-weight:500;">
+                        <div class="column is-2">
+                            <h3 class="subtitle">
                                 <a @click="showUserFollowedUsersModal = true">{{ followingCount }} </br> Following</a>
                             </h3>
                         </div>
@@ -42,23 +42,6 @@
                                             <span v-else><strong>Following</strong></span>
                                         </a>
                                     </p>
-                                    <div class="level-item">
-                                        <a class="button twitter-tweet-button"
-                                           :href="twitterShareUrl" target="_blank">
-                                          <span class="icon">
-                                             <i class="fa fa-twitter"></i>
-                                          </span>
-                                        </a>
-                                    </div>
-                                    <div class="level-item">
-                                        <a class="button facebook-share-button"
-                                           :href="facebookShareUrl"
-                                           target="_blank">
-                                          <span class="icon">
-                                            <i class="fa fa-facebook"></i>
-                                          </span>
-                                        </a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -136,19 +119,14 @@
         },
 
         computed: {
+            avatarUrl() {
+                return "https://booknshelf.imgix.net/profiles/" + this.user.avatar + "?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=128&h=128&fit=crop";
+            },
             canEditOrDelete() {
                 return App.userId === this.user.id;
             },
             isFollowedByAuthUser: function () {
                 return (this.userFollowing.indexOf(this.user.id) != -1)
-            },
-            twitterShareUrl: function () {
-                return "http://twitter.com/intent/tweet?status=" +
-                    "Check out my profile on @booknshelf. " + window.location.href;
-            },
-            facebookShareUrl: function () {
-                return "http://www.facebook.com/sharer/sharer.php?u=" + window.location.href + "&title=" +
-                    this.user.name + "'s profile on Booknshelf.";
             }
         },
     }
@@ -164,7 +142,11 @@
         color: #675f5f !important;
     }
 
+    .circle-avatar {
+        border-radius: 50%;
+    }
+
     .profile-avatar-column {
-        width: 140px !important;
+/*        width: 140px !important;*/
     }
 </style>

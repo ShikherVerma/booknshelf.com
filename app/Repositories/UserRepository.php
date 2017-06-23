@@ -64,10 +64,10 @@ class UserRepository
         $user->email = $userData->email;
         $user->fb_token = $userData->token;
 
-        $avatar = $userData->avatar_original;
-        if (!$user->avatar && !is_null($avatar)) {
-            $user->avatar = $avatar;
-        }
+        $user->avatar = $userData->avatar_original;
+        // if (!$user->avatar && !is_null($avatar)) {
+        //     $user->avatar = $avatar;
+        // }
 
         $user->facebook_user_id = $userData->id;
         // if user already has a username do nothing.
@@ -97,10 +97,12 @@ class UserRepository
         $user->name = $userData->name;
         $user->email = $userData->email;
 
-        $avatar = $userData->avatar_original;
-        if (!$user->avatar && !is_null($avatar)) {
-            $user->avatar = $avatar;
-        }
+        $user->avatar = $userData->avatar_original;
+
+        // $avatar = $userData->avatar_original;
+        // if (!$user->avatar && !is_null($avatar)) {
+        //     $user->avatar = $avatar;
+        // }
 
         $user->twitter_user_id = $userData->id;
         // if user already has a username do nothing.

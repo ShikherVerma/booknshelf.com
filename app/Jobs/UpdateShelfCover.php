@@ -44,38 +44,32 @@ class UpdateShelfCover implements ShouldQueue
         }
 
         $canvas = $imageManager->canvas(300, 300);
+        $s3 = Storage::disk('s3');
 
-        if (count($covers) === 0) {
-            Log::info("The shelf does not have any covers so we will set the default one.");
-            $url = asset('/img/backgrounds/default-shelf-cover.jpg');
-            $cover = $imageManager
-                ->make($url)
-                ->fit(300, 300);
-            $canvas->insert($cover, 'center');
-        } elseif (count($covers) === 1) {
+        if (count($covers) === 1) {
             $url = asset('/img/backgrounds/default-shelf-cover.jpg');
             $left = $imageManager->make($url)->fit(145, 300);
-            $right = $imageManager->make($covers[0])->fit(145, 300);
+            $right = $imageManager->make($s3->url('book-covers/' . $covers[0]))->fit(145, 300);
             // create canvas and insert parts
             $canvas->insert($left, 'top-left');
             $canvas->insert($right, 'top-right');
         } elseif (count($covers) === 2) {
-            $left = $imageManager->make($covers[0])->fit(145, 300);
-            $right = $imageManager->make($covers[1])->fit(145, 300);
+            $left = $imageManager->make($s3->url('book-covers/' . $covers[0]))->fit(145, 300);
+            $right = $imageManager->make($s3->url('book-covers/' . $covers[1]))->fit(145, 300);
             // create canvas and insert parts
             $canvas->insert($left, 'top-left');
             $canvas->insert($right, 'top-right');
         }
 
-        $s3 = Storage::disk('s3');
-        $path = 'shelf-covers/' . $this->shelf->id . '-' . strtotime("now") . '.png';
+        $shelfCoverName = $this->shelf->id . '-' . strtotime("now") . '.png';
+        $path = 'shelf-covers/' . $shelfCoverName;
         Log::info('Showing the path of the file: '. $path);
 
         $s3->put($path, (string)$canvas->encode());
 
         // save the cover url in db
         $this->shelf->forceFill([
-            'cover' => $s3->url($path),
+            'cover' => $shelfCoverName,
         ])->save();
 
         // delete the job

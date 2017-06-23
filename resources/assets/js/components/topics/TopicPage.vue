@@ -27,25 +27,8 @@
                                         </a>
                                     </p>
                                     <span class="level-item">
-                                         {{ followersCount }} followers
+                                         <a @click.stop.prevent="showTopicFollowersModal = true">{{ followersCount }} followers</a>
                                      </span>
-                                </div>
-                                <div @click.stop.prevent="showTopicFollowersModal = true" class="level-right has-text-left user-images-div">
-                                    <span v-if="topic.followers[0]" class="level-item">
-                                        <figure class="image is-32x32">
-                                          <img class="img-circle" :src="topic.followers[0].avatar">
-                                        </figure>
-                                    </span>
-                                    <span v-if="topic.followers[1]" class="level-item user-image">
-                                        <figure class="image is-32x32">
-                                          <img class="img-circle" :src="topic.followers[1].avatar">
-                                        </figure>
-                                    </span>
-                                    <span v-if="topic.followers[2]" class="level-item user-image">
-                                        <figure class="image is-32x32">
-                                          <img class="img-circle" :src="topic.followers[2].avatar">
-                                        </figure>
-                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -148,7 +131,7 @@
         computed: {
             topicCoverPhoto: function () {
                 if (this.topic.cover_photo) {
-                    return this.topic.cover_photo;
+                    return "https://booknshelf.imgix.net/topics/" + this.topic.cover_photo + "?auto=format&fit=crop&w=128&h=80";
                 } else {
                     return '';
                 }
@@ -160,12 +143,12 @@
                  return isFollowedByAuthUser ? "Following" : "Follow";
             },
             twitterShareUrl: function() {
-                return "http://twitter.com/intent/tweet?status=" +
+                return "https://twitter.com/intent/tweet?status=" +
                 "Check out the best books on " + this.topic.name + " @booknshelf. "
                 + window.location.href;
             },
             facebookShareUrl: function() {
-                return "http://www.facebook.com/sharer/sharer.php?u=" + window.location.href + "&title=" +
+                return "https://www.facebook.com/sharer/sharer.php?u=" + window.location.href + "&title=" +
                  "The best books on " +
                  this.topic.name + " at Booknshelf."
             }

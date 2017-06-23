@@ -4,7 +4,7 @@
             <div class="topic-card"
                 :style="topicCoverImage">
                 <div class="topic-container article">
-                    <p class="title"><strong style="color: #FFF;">{{ topic.name }}</strong></p>
+                    <h2 class="title topic-card-title"><strong>{{ topic.name }}</strong></h2>
                     <nav class="level is-mobile" style="justify-content:flex-start;">
                         <div class="level-left">
                             <p class="level-item">
@@ -15,25 +15,9 @@
                                     <span v-else>Following</span>
                                 </a>
                             </p>
-                            <span class="level-item" style="color: #FFF;">
-                                {{ followersCount }} followers
-                            </span>
-                        </div>
-                        <div @click.stop.prevent="showTopicFollowersModal = true" class="level-right is-mobile has-text-left user-images-div">
-                            <span v-if="topic.followers[0]" class="level-item">
-                                <figure class="image is-32x32">
-                                  <img class="img-circle" :src="topic.followers[0].avatar">
-                                </figure>
-                            </span>
-                            <span v-if="topic.followers[1]" class="level-item user-image">
-                                <figure class="image is-32x32">
-                                  <img class="img-circle" :src="topic.followers[1].avatar">
-                                </figure>
-                            </span>
-                            <span v-if="topic.followers[2]" class="level-item user-image">
-                                <figure class="image is-32x32">
-                                  <img class="img-circle" :src="topic.followers[2].avatar">
-                                </figure>
+                            <span class="level-item">
+                                <a class="followers-count"
+                                    @click.stop.prevent="showTopicFollowersModal = true">{{ followersCount }} followers</a>
                             </span>
                         </div>
                     </nav>
@@ -132,7 +116,8 @@
                 return '/topics/' + this.topic.slug;
             },
             topicCoverImage: function() {
-                return `background-image: url(${this.topic.cover_photo})`;
+                var coverImageUrl = "https://booknshelf.imgix.net/topics/" + this.topic.cover_photo + "?auto=format&fit=crop&w=300&h=250";
+                return `background-image: url(${coverImageUrl})`;
             }
         },
 
@@ -148,6 +133,9 @@
 </script>
 
 <style type="text/css">
+    .topic-card-title {
+        color: #FFF;
+    }
     .followed-button {
         background-color: #E95352;
         color: #ffffff;
@@ -199,6 +187,12 @@
 
     .user-images-div:hover {
         opacity: 0.5;
+    }
+    .followers-count {
+        color: white;
+    }
+    .followers-count:hover {
+        color: white;
     }
 
 </style>

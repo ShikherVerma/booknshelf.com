@@ -9,6 +9,9 @@
         <a class="nav-item" href="/faq">
             <span>FAQ</span>
         </a>
+        <a class="nav-item" href="/newsletter">
+            <span>Newsletter</span>
+        </a>
         <a class="nav-item" href="/blog">
             <span>Blog</span>
         </a>
@@ -17,12 +20,6 @@
         </a>
         <a class="nav-item" href="/bookshelves">
             Bookshelves
-        </a>
-        <a class="nav-item" href="/newsletter">
-            <span class="icon" style="margin-right: 5px;">
-                <i class="fa fa-envelope-o"></i>
-            </span>
-            <span>Newsletter</span>
         </a>
     </div>
 
@@ -65,7 +62,7 @@
             </span>
         </a> -->
         <a class="menu nav-item">
-            <img src="{{ Auth::user()->avatar }}" style="border-radius: 50%;">
+            <img src="https://booknshelf.imgix.net/profiles/{{ Auth::user()->avatar }}?codec=mozjpeg&cs=strip&w=32&h=32&fit=crop&dpr=2" style="border-radius: 50%;">
         </a>
         <div class="navbar-profile-menu" style="display: none;">
             <aside class="menu">
