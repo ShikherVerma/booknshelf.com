@@ -5,37 +5,13 @@
             <section class="modal-card-body">
                 <div class="container is-light">
                     <div class="columns">
-                        <div class="column is-6">
-                            <p class="title is-3 primary-span">Why join Booknshelf? 🚀</p>
-                            <p class="title is-4 primary-span-inverse">
-                                  <span class="icon">
-                                    <i class="fa fa-check"></i>
-                                  </span>
-                                Easily create shelves for all your books. Keep it neat and organized!
-                            </p>
-                            <p class="title is-4 primary-span-inverse">
-                                <span class="icon">
-                                  <i class="fa fa-check"></i>
-                                </span>
-                                See what your friends are reading. Say hi to them!
-                            </p>
-                            <p class="title is-4 primary-span-inverse">
-                                <span class="icon">
-                                  <i class="fa fa-check"></i>
-                                </span>
-                                Follow other readers and be part of their reading journey!
-                            </p>
-                            <p class="title is-4 primary-span-inverse">
-                                <span class="icon">
-                                  <i class="fa fa-check"></i>
-                                </span>
-                                Follow different topics, see who follows what topic and more.
-                            </p>
-                            <p class="subtitle" style="margin-top:10px;">
-                                Already have an account? <a href="/login">Login 🚀</a>
-                            </p>
-                        </div>
                         <div class="column">
+                            <p class="control">
+                                <div class="notification is-light">
+                                    <h1 class="title">Welcome to Booknshelf 👋</h1>
+                                    <h2 class="subtitle">Log in to save books and create bookshelves.</h2>
+                                </div>
+                            </p>
                             <p class="control">
                                 <a class="button is-large fb-button" :href="facebookAuth">
                                  <span class="icon">
@@ -111,9 +87,6 @@
 </template>
 
 <style lang="css">
-    .login-modal-content {
-        min-width: 70%;
-    }
 </style>
 
 <script>

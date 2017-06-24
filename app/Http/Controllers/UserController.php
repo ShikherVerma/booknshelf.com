@@ -38,16 +38,12 @@ class UserController extends Controller
         $shelves = $this->shelves->forUser($user);
         $likedBooks = $this->users->getAllLikedBooks($username);
         $topics = $this->users->getAllTopics($username);
-        $followersCount = $user->followers()->get()->count();
-        $followingCount = $user->followedUsers()->get()->count();
 
         return view('profile', [
             'user' => $user,
             'shelves' => $shelves,
             'likedBooks' => $likedBooks,
             'topics' => $topics,
-            'followersCount' => $followersCount,
-            'followingCount' => $followingCount,
             // page properties
             'title' => $user->name . "'s profile on Booknshelf",
             'description' => "See all the books that " . $user->name . " has read and liked.",
