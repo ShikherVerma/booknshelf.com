@@ -1,13 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <profile :user="{{ $user }}"
-        :user-following="userFollowedUsers"
-        :user-followers="userFollowerUsers"
-        :followers-count=" {{ $followersCount}}"
-        :following-count=" {{ $followingCount}}"
-    >
-    </profile>
+    <profile :user="{{ $user }}"></profile>
     @if (Auth::check())
         <book-save-modal :user="user" :book="bookSaveModalBook" :show="bookSaveModal"></book-save-modal>
     @endif
