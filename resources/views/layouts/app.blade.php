@@ -9,14 +9,14 @@
     <meta name="keywords" content="booknshelf, catalog your books, online free library, catalogue your books, book cataloging, free book catalog, catalogue, library books online">
 
     <meta name="description"
-          content="Easily organize all your books in different shelves."/>
+          content="Your reading journey in a single place."/>
     <meta name="google-site-verification" content="oRlwQCWDSEBrMAdKd3t3_3pCA9sFayLgZdgLer2TKfM" />
 
     {{--Facebook meta tags--}}
     <meta property="fb:app_id" content="1899203000306326"/>
     <meta property="og:title" content="{{ $title or 'Keep track of all your books online' }}"/>
     <meta property="og:description"
-          content="{{ $description or 'Easily organize all your books in different shelves.' }}"/>
+          content="{{ $description or 'Your reading journey in a single place.' }}"/>
     <meta property="og:image" content="{{ $ogImage or 'https://booknshelf.com/img/social/homepage-screenshot-social-main-new.png' }}"/>
     <meta property="og:image:height" content="717"/>
     <meta property="og:image:width" content="1200"/>
@@ -27,7 +27,7 @@
     {{--Twitter meta tags--}}
     <meta name="twitter:card" content="summary">
     <meta name="twitter:description"
-          content="{{ $description or 'Easily organize all your books in different shelves.' }}">
+          content="{{ $description or 'Your reading journey in a single place.' }}">
     <meta name="twitter:image"
           content="{{ $ogImage or 'https://booknshelf.com/img/social/homepage-screenshot-social-main-new.png' }}">
     <meta name="twitter:site" content="@booknshelf">
