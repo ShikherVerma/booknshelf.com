@@ -79,11 +79,11 @@ class ShelfRepository {
         return $books;
     }
 
-    public function getBooksFromGoodreadsShelves($shelves)
+    public function getBooksFromGoodreadsShelves($user, $shelves)
     {
-        $token = Auth()->user()->goodreads_oauth_token;
-        $tokenSecret = Auth()->user()->goodreads_oauth_token_secret;
-        $goodreadsUserId = Auth()->user()->goodreads_user_id;
+        $token = $user->goodreads_oauth_token;
+        $tokenSecret = $user->goodreads_oauth_token_secret;
+        $goodreadsUserId = $user->goodreads_user_id;
         $obj = new \GoodreadsApi(
             env('GOODREADS_KEY'),
             env('GOODREADS_SECRET'),

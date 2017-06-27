@@ -38,7 +38,7 @@ class CreateUserGoodreadsShelves implements ShouldQueue
     {
 
         // let's get the books of each shelf
-        $booksByShelves = $shelfRepo->getBooksFromGoodreadsShelves($this->goodreadsShelves);
+        $booksByShelves = $shelfRepo->getBooksFromGoodreadsShelves($this->user, $this->goodreadsShelves);
         foreach ($booksByShelves as $shelfName => $shelfBooks) {
             // create a new shelf now
             $shelf = $this->user->shelves()->create([
