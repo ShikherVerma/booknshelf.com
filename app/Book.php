@@ -17,6 +17,7 @@ class Book extends Model
         'title',
         'isbn_10',
         'isbn_13',
+        'goodreads_id',
         'subtitle',
         'description',
         'publisher',

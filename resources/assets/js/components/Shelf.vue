@@ -13,12 +13,12 @@
                         <div class="level-left">
                             <p class="level-item">
                                 <figure class="image is-48x48">
-                                    <img :src="avatarUrl">
+                                    <img :src="avatarUrl" class="shelf-profile-pic">
                                 </figure>
                             </p>
                             <p>
                                 <a :href="profileUrl">
-                                    <strong> &nbsp; {{ user.name }}</strong>
+                                    <strong>{{ user.name }}</strong>
                             </a>
                             </p>
                         </div>
@@ -98,4 +98,7 @@
 </script>
 
 <style lang="css">
+    .shelf-profile-pic {
+        border-radius: 50%;
+    }
 </style>

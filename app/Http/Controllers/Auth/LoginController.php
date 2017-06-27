@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use GuzzleHttp\Client;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+
+require_once base_path('app/Services/Goodreads/GoodreadsAPI.php');
+
 
 class LoginController extends Controller
 {
@@ -50,6 +54,11 @@ class LoginController extends Controller
     public function loginTwitter(AuthenticateUser $authenticateUser, Request $request)
     {
         return $authenticateUser->executeTwitter($request->has('oauth_verifier'), $this);
+    }
+
+    public function loginGoodreads(AuthenticateUser $authenticateUser, Request $request)
+    {
+        return $authenticateUser->executeGoodreads($request->has('oauth_token'), $this);
     }
 
     public function userHasLoggedIn($user)

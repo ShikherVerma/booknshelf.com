@@ -65,10 +65,6 @@ class UserRepository
         $user->fb_token = $userData->token;
 
         $user->avatar = $userData->avatar_original;
-        // if (!$user->avatar && !is_null($avatar)) {
-        //     $user->avatar = $avatar;
-        // }
-
         $user->facebook_user_id = $userData->id;
         // if user already has a username do nothing.
         if (!$user->username) {
@@ -99,11 +95,6 @@ class UserRepository
 
         $user->avatar = $userData->avatar_original;
 
-        // $avatar = $userData->avatar_original;
-        // if (!$user->avatar && !is_null($avatar)) {
-        //     $user->avatar = $avatar;
-        // }
-
         $user->twitter_user_id = $userData->id;
         // if user already has a username do nothing.
         if (!$user->username) {
@@ -122,6 +113,35 @@ class UserRepository
         dispatch((new SetUserAvatar($user))->onQueue('users_avatar'));
 
         event(new UserRegistered($user));
+
+        return $user;
+    }
+
+    public function findByGoodreeadsUserIdOrCreate($userData, $accessToken)
+    {
+        $userId = (int)$userData['user']['id'];
+        $user = User::firstOrNew(['goodreads_user_id' => $userId]);
+
+        $user->name = $userData['user']['name'];
+
+        $user->goodreads_user_id = $userId;
+        $user->goodreads_oauth_token = $accessToken['oauth_token'];
+        $user->goodreads_oauth_token_secret = $accessToken['oauth_token_secret'];
+
+        // if user already has a username do nothing.
+        if (!$user->username) {
+            $newUsername = snake_case($userData['user']['name']);
+            // make sure we do not have this username already in db
+            if (User::where('username', $newUsername)->count() > 0) {
+                // if we do then generate a random fake username
+                $faker = Faker\Factory::create();
+                $newUsername = str_replace('.', '_', $faker->unique()->userName);
+            }
+            $user->username = $newUsername;
+        }
+        $user->save();
+
+        dispatch((new SetUserAvatar($user))->onQueue('users_avatar'));
 
         return $user;
     }
