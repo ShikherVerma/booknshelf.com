@@ -7,7 +7,7 @@ class GoodreadsAPI
 
     private $requestTokenURL = 'http://www.goodreads.com/oauth/request_token';
     private $accessTokenURL = 'http://www.goodreads.com/oauth/access_token';
-    private $loginURL = 'http://www.goodreads.com/oauth/authorize';
+    private $loginURL = "http://www.goodreads.com/oauth/authorize";
     private $consumer,$token,$result;
     public $return_code;
 
@@ -90,7 +90,7 @@ class GoodreadsAPI
     function getLoginURL($token)
     {
         $token = $token['oauth_token'];
-        return $this->loginURL . "?oauth_token={$token}";
+        return $this->loginURL . "?oauth_token={$token}&oauth_callback=" . env('GOODREADS_CALLBACK_URL');
     }
 
     /**
