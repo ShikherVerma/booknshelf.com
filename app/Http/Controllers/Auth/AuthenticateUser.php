@@ -100,7 +100,7 @@ class AuthenticateUser extends Controller
         // get user's shelves from Goodreads
         $userGoodreadsShelves = $userJsonData['user']['user_shelves']['user_shelf'];
 
-        if (!empty($userGoodreadsShelves)) {
+        if (!empty($userGoodreadsShelves) && $user->shelves()->get()->count() == 0) {
             // import the goodreads shelves from Goodreads in the background
             dispatch((new CreateUserGoodreadsShelves($user, $userGoodreadsShelves))
                 ->onQueue('user_import_goodreads_shelves'));
