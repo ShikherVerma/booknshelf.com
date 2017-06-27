@@ -9,15 +9,13 @@ $I->amOnPage("/");
 $I->click('SIGN UP');
 $I->fillField('name', 'Miles');
 $I->fillField('username', 'milesaaa');
+$I->fillField('email', 'tik@test.com');
 $I->fillField('password', 'password');
 
 $I->click('register');
 
-$I->seeCurrentUrlEquals('/welcome');
+$I->seeCurrentUrlEquals('/');
 
-$I->see('Choose your username', 'label');
-
-$I->click('Continue');
 
 $I->click('.menu');
 

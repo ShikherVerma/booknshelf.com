@@ -18,6 +18,7 @@ class AuthTest extends TestCase
         $this->expectsEvents(UserRegistered::class);
         $response = $this->call('POST', '/register', [
                 'name' => 'JohnSnow',
+                'email' => 'test@dummy.com',
                 'username' => 'john_snow',
                 'password' => 'password',
         ]);
@@ -25,6 +26,7 @@ class AuthTest extends TestCase
         $this->seeInDatabase('users', [
             'name' => 'JohnSnow',
             'username' => 'john_snow',
+            'email' => 'test@dummy.com'
         ]);
     }
 
