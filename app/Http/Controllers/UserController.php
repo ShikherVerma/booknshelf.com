@@ -167,6 +167,7 @@ class UserController extends Controller
     public function welcome(UpdateUserRequest $request)
     {
         $this->validate($request, [
+//            'email' => 'required|unique:users,email',
             'about' => 'max:255',
         ]);
 
@@ -174,6 +175,7 @@ class UserController extends Controller
         $user->update([
             'username' => $request->username,
             'about' => $request->about,
+//            'email' => $request->email,
             'is_onboarded' => true,
         ]);
 

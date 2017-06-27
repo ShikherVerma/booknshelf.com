@@ -36,6 +36,7 @@ class SetUserAvatar implements ShouldQueue
      */
     public function handle(ImageManager $imageManager)
     {
+        $s3 = Storage::disk('s3');
         // Setup the defaul avatar
         if (is_null($this->user->avatar)) {
             // create empty canvas with background color
@@ -45,11 +46,14 @@ class SetUserAvatar implements ShouldQueue
                 $draw->background($this->color);
             });
             $img = (string)$image->fit(300)->encode();
-        } else {
+        } elseif (isset($this->user->twitter_user_id) || isset($this->user->facebook_user_id)) {
+            // $s3->url('profiles/' . $this->user->avatar)
             $img = (string)$imageManager->make($this->user->avatar)->encode();
+            // it's goodreads
+        } else {
+            $img = (string)$imageManager->make($s3->url('profiles/' . $this->user->avatar))->encode();
         }
 
-        $s3 = Storage::disk('s3');
         $imageName = Carbon::now()->timestamp . '-' . $this->user->username . '.png';
         $path = 'profiles/' . $imageName;
 

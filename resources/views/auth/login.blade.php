@@ -29,7 +29,16 @@
                 <div class="column is-4">
 
                     <p class="subtitle">
-                        We'll never post to Twitter or Facebook without your permission.
+                        We'll never post to any of the networks without your permission.
+                    </p>
+                    <p class="control">
+                        <a class="button is-large goodreads-button"
+                           href="{{ url('/auth/goodreads') }}">
+                            <span class="icon">
+                                <i class="icon-light"><span style="font-family:helvetica;">g</span></i>
+                            </span>
+                            <span><strong>Login with Goodreads</strong></span>
+                        </a>
                     </p>
                     <p class="control">
                         <a class="button is-large fb-button" href="{{ url('/auth/facebook') }}">

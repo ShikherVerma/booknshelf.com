@@ -6,6 +6,10 @@ use Illuminate\Contracts\Auth\Guard as Authenticator;
 use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
 use Socialite;
+use Illuminate\Http\Request;
+use App\Jobs\CreateUserGoodreadsShelves;
+
+require_once base_path('app/Services/Goodreads/GoodreadsAPI.php');
 
 class AuthenticateUser extends Controller
 {
@@ -48,8 +52,59 @@ class AuthenticateUser extends Controller
         }
         // either create a new user object or fetch existing one
         $user = $this->users->findByTwitterUserIdOrCreate($this->getTwitterUser());
-        // // log in the user
+        // log in the user
         $this->auth->login($user, true);
+
+        return $listener->userHasLoggedIn($user);
+    }
+
+    public function executeGoodreads($oauthToken, $listener)
+    {
+        if (!$oauthToken) {
+            return $this->getGoodreadsAuthorizationFirst();
+        }
+
+        session_start();
+        $obj = new \GoodreadsApi(
+            env('GOODREADS_KEY'),
+            env('GOODREADS_SECRET'),
+            $_SESSION['oauth_token'],
+            $_SESSION['oauth_token_secret']
+        );
+
+        $accessToken = $obj->getAccessToken($_REQUEST['authorize']);
+        $_SESSION['access_token'] = $accessToken;
+
+        unset($_SESSION['oauth_token'], $_SESSION['oauth_token_secret'] ,$obj);
+
+        $obj = new \GoodreadsApi(
+            env('GOODREADS_KEY'),
+            env('GOODREADS_SECRET'),
+            $accessToken['oauth_token'],
+            $accessToken['oauth_token_secret']
+        );
+
+        $content = $obj->doGet('http://www.goodreads.com/api/auth_user');
+        $userJsonData = $this->convertXmlToJson($content);
+
+        $userId = $userJsonData['user']['@attributes']['id'];
+        $content = $obj->doGet("https://www.goodreads.com/user/show/{$userId}.xml?id=$userId");
+        $userJsonData = $this->convertXmlToJson($content);
+
+        // either create a new user object or fetch existing one
+        $user = $this->users->findByGoodreeadsUserIdOrCreate($userJsonData, $accessToken);
+
+        // log in the user
+        $this->auth->login($user, true);
+
+        // get user's shelves from Goodreads
+        $userGoodreadsShelves = $userJsonData['user']['user_shelves']['user_shelf'];
+
+        if (!empty($userGoodreadsShelves)) {
+            // import the goodreads shelves from Goodreads in the background
+            dispatch((new CreateUserGoodreadsShelves($user, $userGoodreadsShelves))
+                ->onQueue('user_import_goodreads_shelves'));
+        }
 
         return $listener->userHasLoggedIn($user);
     }
@@ -58,6 +113,18 @@ class AuthenticateUser extends Controller
     {
         return Socialite::driver('facebook')
             ->scopes(['email', 'user_friends'])->redirect();
+    }
+
+    private function getGoodreadsAuthorizationFirst()
+    {
+        session_start();
+        $connection = new \GoodreadsAPI(env('GOODREADS_KEY'), env('GOODREADS_SECRET'));
+        $requestToken = $connection->getRequestToken(env('GOODREADS_CALLBACK_URL'));
+
+        $_SESSION['oauth_token']  = $requestToken['oauth_token'];
+        $_SESSION['oauth_token_secret'] = $requestToken['oauth_token_secret'];
+        $authorizeUrl = $connection->getLoginURL($requestToken);
+        return redirect($authorizeUrl);
     }
 
     private function getFacebookUser()
@@ -74,4 +141,12 @@ class AuthenticateUser extends Controller
     {
         return Socialite::driver('twitter')->user();
     }
+
+    private function convertXmlToJson($xmlString)
+    {
+        $xml = simplexml_load_string($xmlString);
+        $json = json_encode($xml);
+        return json_decode($json, true);
+    }
+
 }

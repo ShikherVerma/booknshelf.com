@@ -8,9 +8,11 @@ use App\Category;
 use App\Jobs\SetBookCover;
 use App\Jobs\SetBookCoverFromAmazon;
 use App\User;
+use Carbon\Carbon;
 use DB;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Image;
+use App\Jobs\SetBookCoverFromGoodreads;
 
 class BookRepository
 {
@@ -72,6 +74,31 @@ class BookRepository
         return $book;
     }
 
+    public function createBookFromGoodreadsData($bookData)
+    {
+
+        $book = Book::where('goodreads_id', $bookData['goodreads_id'])->first();
+        // if we haven't created the book yet
+        if (empty($book)) {
+            $book = Book::create($bookData);
+            if (is_array($bookData['authors'])) {
+                if (isset($bookData['authors']['name'])) {
+                    $author = Author::firstOrCreate(['name' => $bookData['authors']['name']]);
+                    $book->authors()->attach($author->id);
+                } else {
+                    foreach ($bookData['authors'] as $authorData) {
+                        $author = Author::firstOrCreate(['name' => $authorData['name']]);
+                        $book->authors()->attach($author->id);
+                    }
+                }
+            }
+            $book->save();
+            dispatch((new SetBookCoverFromGoodreads($book))->onQueue('books_cover_image_goodreads'));
+        }
+
+        return $book;
+    }
+
     public function extractGoogleVolumeData($item)
     {
         $result = [
@@ -117,6 +144,39 @@ class BookRepository
 
         $description = $this->createDescriptionFromAmazonBookData($item);
         $result['description'] = $description;
+
+        return $result;
+    }
+
+    public function extractGoodreadsBookData($item)
+    {
+        $result = [
+            'goodreads_id' => $item['id'],
+            'detail_page_url' => $item['link'] ?? null,
+            'title' => $item['title'] ?? null,
+            'description' => !empty($item['description']) ? $item['description'] : null,
+            'publisher' => !empty($item['publisher']) ? $item['publisher'] : null,
+            'page_count' => !empty($item['num_pages']) ? $item['num_pages'] : null,
+            'authors' => !empty($item['authors']['author']) ? $item['authors']['author'] : [],
+            'cover_image' => $item['image_url'] ?? $item['small_image_url'] ?? null,
+            'original_image' => $item['image_url'] ?? $item['small_image_url'] ?? null,
+        ];
+        if (isset($item['isbn']) && !is_array($item['isbn'])) {
+            $result['isbn_10'] = $item['isbn'];
+        }
+        if (isset($item['isbn13']) && !is_array($item['isbn13'])) {
+            $result['isbn_13'] = $item['isbn13'];
+        }
+
+        if (!empty($item['publisher_year']) && !empty($item['publisher_month']) && !empty($item['publisher_day'])) {
+            $result['published_date'] = Carbon::createFromDate(
+                $item['publisher_year'],
+                $item['publisher_month'],
+                $item['publisher_day']
+            )->toDateTimeString();
+        } elseif (!empty($item['published'])) {
+            $result['published_date'] = Carbon::createFromDate($item['published'])->toDateTimeString();
+        }
 
         return $result;
     }
