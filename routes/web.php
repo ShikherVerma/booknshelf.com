@@ -24,6 +24,10 @@ Route::get('login_facebook', 'Auth\LoginController@loginFacebook');
 Route::get('auth/twitter', 'Auth\LoginController@loginTwitter');
 Route::get('login_twitter', 'Auth\LoginController@loginTwitter');
 
+// Goodreads
+Route::get('auth/goodreads', 'Auth\LoginController@loginGoodreads');
+Route::get('login_goodreads', 'Auth\LoginController@loginGoodreads');
+
 // onboarding welcome page and static pages
 Route::get('/welcome', 'HomeController@welcome');
 Route::get('/faq', 'HomeController@faq');

@@ -34,6 +34,8 @@ class User extends Authenticatable
         'password',
         'remember_token',
         'fb_token',
+        'goodreads_oauth_token',
+        'goodreads_oauth_token_secret',
         'is_onboarded',
         'created_at',
         'updated_at',

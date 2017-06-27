@@ -49,13 +49,29 @@ class UpdateShelfCover implements ShouldQueue
         if (count($covers) === 1) {
             $url = asset('/img/backgrounds/default-shelf-cover.jpg');
             $left = $imageManager->make($url)->fit(145, 300);
-            $right = $imageManager->make($s3->url('book-covers/' . $covers[0]))->fit(145, 300);
+            // if it's a goodreads book then use a different url
+            if (stripos(strtolower($covers[0]), 'gr-assets.com') !== false) {
+                $right = $imageManager->make($covers[0])->fit(145, 300);
+            } else {
+                $right = $imageManager->make($s3->url('book-covers/' . $covers[0]))->fit(145, 300);
+            }
             // create canvas and insert parts
             $canvas->insert($left, 'top-left');
             $canvas->insert($right, 'top-right');
         } elseif (count($covers) === 2) {
-            $left = $imageManager->make($s3->url('book-covers/' . $covers[0]))->fit(145, 300);
-            $right = $imageManager->make($s3->url('book-covers/' . $covers[1]))->fit(145, 300);
+            // if it's a goodreads book then use a different url
+            if (stripos(strtolower($covers[0]), 'gr-assets.com') !== false) {
+                $left = $imageManager->make($covers[0])->fit(145, 300);
+            } else {
+                $left = $imageManager->make($s3->url('book-covers/' . $covers[0]))->fit(145, 300);
+            }
+
+            // if it's a goodreads book then use a different url
+            if (stripos(strtolower($covers[1]), 'gr-assets.com') !== false) {
+                $right = $imageManager->make($covers[1])->fit(145, 300);
+            } else {
+                $right = $imageManager->make($s3->url('book-covers/' . $covers[1]))->fit(145, 300);
+            }
             // create canvas and insert parts
             $canvas->insert($left, 'top-left');
             $canvas->insert($right, 'top-right');
