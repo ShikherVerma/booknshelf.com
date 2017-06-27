@@ -212,13 +212,13 @@ class BookRepository
 
     public function getFavorites()
     {
-        $me = User::where('username', 'tigran')->first();
+        $user = User::where('username', 'booknshelf')->first();
 
-        if (empty($me)) {
+        if (empty($user)) {
             return [];
         }
 
-        $shelf = $me->shelves()->where('slug', 'favorites')->first();
+        $shelf = $user->shelves()->where('slug', 'favorites')->first();
         if (empty($shelf)) {
             return [];
         }
