@@ -2,7 +2,7 @@
     <section class="section">
         <div class="container">
             <div class="columns is-multiline">
-                <book v-for="book in books" :is-search="true ":book="book" :user="user" :likes="likes" :saves="saves"></book>
+                <book v-for="book in books" :is-search="true" :book="book" :user="user" :likes="likes" :saves="saves"></book>
             </div>
         </div>
     </section>

@@ -37,14 +37,14 @@ class CreateDefaultShelves
                 'slug' => str_slug('currently reading'),
             ]);
             $shelf2 = $user->shelves()->create([
-                'name' => "Have Read",
-                'description' => "The books I've read",
-                'slug' => str_slug('have read'),
+                'name' => "Books I Have Read",
+                'description' => "The books I've read in the past",
+                'slug' => str_slug('Books I Have Read'),
             ]);
             $shelf3 = $user->shelves()->create([
-                'name' => 'Wishlist',
+                'name' => 'Books I Want to Read',
                 'description' => 'The books I want to read',
-                'slug' => str_slug('wishlist'),
+                'slug' => str_slug('Books I want to read'),
             ]);
 
             dispatch((new UpdateShelfCover($shelf1))->onQueue('shelves_cover'));
