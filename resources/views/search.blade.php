@@ -2,7 +2,7 @@
 
 @section('content')
     @if (Auth::check())
-        <book-save-modal :user="user" :book="bookSaveModalBook" :show="bookSaveModal"></book-save-modal>
+        <book-save-modal :user="user" :book="bookSaveModalBook" :show="bookSaveModal" :is-search="true"></book-save-modal>
     @endif
     <section class="hero is-small is-primary is-bold">
         <div class="hero-body">

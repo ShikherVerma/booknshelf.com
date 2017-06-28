@@ -49,7 +49,7 @@
 
 <script>
     export default {
-        props: ['user', 'book', 'show'],
+        props: ['user', 'book', 'show', 'isSearch'],
 
         data() {
             return {
