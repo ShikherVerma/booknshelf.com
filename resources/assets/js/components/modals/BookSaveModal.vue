@@ -10,7 +10,7 @@
                         <div class="box save-modal-book" :style="bookCoverImage"></div>
                     </div>
                     <div class="column is-half modal-right">
-                        <p class="subtitle"><strong>CHOOSE BOOKSHELF</strong></p>
+                        <p class="subtitle choose-bookshelf"><strong>CHOOSE BOOKSHELF</strong></p>
                         <spinner v-show="loading"></spinner>
                         <div class="shelves-list" v-show="!loading">
                             <div v-for="shelf in shelves"
@@ -20,8 +20,8 @@
                                 </p>
                             </div>
                         </div>
-                        <p class="control" style="margin-top: 5px;" v-if="!showNewShelfForm">
-                            <a class="button is-light" @click="showNewShelfForm=!showNewShelfForm">
+                        <p class="control" style="margin-top: 15px;" v-if="!showNewShelfForm">
+                            <a class="button" @click="showNewShelfForm=!showNewShelfForm">
                                 <span class="icon">
                                     <i class="fa fa-plus"></i>
                                 </span>
@@ -33,11 +33,11 @@
                                 <p class="control is-expanded has-addons">
                                     <input class="input" name="name" type="text" v-model="form.name"
                                            :class="{'is-danger': form.errors.has('name')}" placeholder="Bookshelf name">
-                                    <button class="button is-light" type="submit" :disabled="form.busy">Create</button>
+                                    <button class="button" type="submit" :disabled="form.busy">Create</button>
                                 </p>
                             </form>
                         </p>
-                        <div class="notification is-danger" style="padding:5px;" v-if="form.errors.has('name')">
+                        <div class="notification is-danger books-exists" v-if="form.errors.has('name')">
                             {{ form.errors.get('name') }}
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                         Bus.$emit('updateUserData');
                         this.close();
                         // send a notification
-                        Vue.toast('Added "' + this.book.title + '" to "' + shelfName + '" shelf', {
+                        Vue.toast('🎉 Saved "' + this.book.title + '" in "' + shelfName + '" shelf', {
                             className: ['notification', 'is-success', 'save-book-notification'],
                             horizontalPosition: 'right',
                             verticalPosition: 'bottom',
@@ -186,7 +186,7 @@
 
     .shelf-list-item {
         cursor: pointer;
-        padding: 7px;
+        padding: 10px;
     }
     .shelf-list-item:hover {
         background-color: #dbdbdb;
@@ -196,5 +196,12 @@
         margin-bottom: 50px;
         font-weight: bold;
     }
-
+    .choose-bookshelf {
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e0dede;
+    }
+    .books-exists {
+        padding: 20px;
+        margin-top: 10px;
+    }
 </style>
