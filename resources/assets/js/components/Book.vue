@@ -104,10 +104,10 @@
                     return `background-image: url(${this.book.cover_image})`;
                 }
                 if (this.book.cover_image) {
-                    var coverImageUrl = "https://booknshelf.imgix.net/book-covers/" + this.book.cover_image + "?auto=format&fit=crop&h=250";
+                    var coverImageUrl = "https://booknshelf.imgix.net/book-covers/" + this.book.cover_image;
                     return `background-image: url(${coverImageUrl})`;
                 } else if(this.book.original_image) {
-                    var coverImageUrl = "https://booknshelf.imgix.net/book-original-covers/" + this.book.image + "?auto=format&fit=crop&h=250";
+                    var coverImageUrl = "https://booknshelf.imgix.net/book-original-covers/" + this.book.image;
                     return `background-image: url(${coverImageUrl})`;
                 }
                 else {
