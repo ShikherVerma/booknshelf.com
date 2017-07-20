@@ -52,5 +52,4 @@ class AmazonProduct
         $json = json_encode($xml);
         return json_decode($json, true);
     }
-
 }
