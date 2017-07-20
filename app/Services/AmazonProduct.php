@@ -22,9 +22,9 @@ class AmazonProduct
         $request = new GuzzleRequest($client);
 
         $conf->setCountry('com')
-            ->setAccessKey(env('AWS_ACCESS_KEY'))
-            ->setSecretKey(env('AWS_SECRET'))
-            ->setAssociateTag(env('ASSOCIATE_TAG'))
+            ->setAccessKey('AKIAJ37KBMWRKAZ6EYSA')
+            ->setSecretKey('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')
+            ->setAssociateTag('booknshelf08-20')
             ->setRequest($request);
 
         $this->searchClient = new Search();
