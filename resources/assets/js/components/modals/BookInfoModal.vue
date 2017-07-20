@@ -1,6 +1,6 @@
 <template>
-    <div class="modal is-active" @click="$emit('close')">
-        <div class="modal-background book-info-modal-background" @click="$emit('close')"></div>
+    <div class="modal is-active">
+        <div class="modal-background book-info-modal-background"></div>
         <button @click="$emit('close')" class="modal-close-button delete"></button>
         <a class="modal--close v-desktop" data-test="modal-close" href="#" title="Close"></a>
         <div class="modal-card modal-card-book-info">
@@ -8,7 +8,7 @@
                 <div class="content">
                     <div class="container">
                         <div class="columns">
-                            <div class="column is-5">
+                            <div class="column is-3">
                                 <div class="box book-info-image" :style="bookImage"></div>
                             </div>
                             <div class="column">
@@ -21,9 +21,6 @@
                                         {{ author.name }}<span v-if="index !== book.authors.length - 1">, </span>
                                     </span>
                                 </p>
-                                <!-- Show the description of the book -->
-                                <p v-if="book.description" class="subtitle" v-html="book.description"></p>
-
                                 <p class="subtile" style="margin-top: 20px;">
                                     <a v-if="book.detail_page_url"  target="_blank" style="background-color: #efefef;"
                                        class="button is-medium" :href="book.detail_page_url">
@@ -31,7 +28,7 @@
                                             <i class="fa fa-amazon"></i>
                                         </span>
                                         <span>
-                                            Buy on Amazon
+                                            See on Amazon
                                         </span>
                                     </a>
                                     <a v-if="averageRating" target="_blank" :href="goodreadsUrl"
@@ -41,9 +38,42 @@
                                         </span>
                                         <span>
                                             <strong>{{this.averageRating}}<span class="outof-span">/5
-                                                 ({{ ratingsCount }})</span></strong> on Goodreads
+                                                 ({{ ratingsCount }})</span></strong> See on Goodreads
                                         </span>
                                     </a>
+                                </p>
+                                <article class="media note-media">
+                                  <figure class="media-left">
+                                    <p class="image is-48x48">
+                                      <img :src="avatarUrl" class="book-info-modal-profile-pic">
+                                    </p>
+                                  </figure>
+                                  <div class="media-content">
+                                    <div class="field">
+                                      <p class="control">
+                                        <textarea class="textarea" style="min-height: 80px;" placeholder="Add a note here ..."></textarea>
+                                      </p>
+                                    </div>
+                                    <nav class="level" style="margin-top: 7px;">
+                                      <div class="level-left">
+                                        <div class="level-item">
+                                          <a class="button is-primary note-save-button">SAVE</a>
+                                        </div>
+                                      </div>
+                                      <div class="level-right">
+                                        <div class="level-item">
+                                          <label class="checkbox">
+                                            <input type="checkbox"> Make this note private
+                                          </label>
+                                        </div>
+                                      </div>
+                                    </nav>
+                                  </div>
+                                </article>
+
+                                <!-- Show the description of the book -->
+<!--                                 <p v-if="book.description" class="subtitle" v-html="book.description"></p> -->
+
                                 </p>
                             </div>
                         </div>
@@ -74,18 +104,21 @@
         },
 
         computed: {
+            avatarUrl() {
+                return "https://booknshelf.imgix.net/profiles/" + this.user.avatar + "?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=48&h=48&fit=crop";
+            },
             bookImage: function () {
                 // search is exception
                 if (this.isSearch) {
                     return `background-image: url(${this.book.cover_image})`;
                 }
                 if (this.book.cover_image) {
-                    var coverImageUrl = "https://booknshelf.imgix.net/book-covers/" + this.book.cover_image + "?auto=format&fit=crop&h=450";
+                    var coverImageUrl = "https://booknshelf.imgix.net/book-covers/" + this.book.cover_image + "?auto=format&fit=crop&h=290&w=200";
                     return `background-image: url(${coverImageUrl})`;
                 }
 
                 if (this.book.original_image) {
-                    var coverImageUrl = "https://booknshelf.imgix.net/book-original-covers/" + this.book.image + "?auto=format&fit=crop&h=450";
+                    var coverImageUrl = "https://booknshelf.imgix.net/book-original-covers/" + this.book.image + "?auto=format&fit=crop&h=290&w=200";
                     return `background-image: url(${coverImageUrl})`;
                 } else {
                     return '';
@@ -120,8 +153,8 @@
     }
 
     .book-info-image {
-        height: 450px;
-        width: 295px;
+        height: 290px;
+        width: 200px;
         background-position: center center;
         background-size: cover;
         cursor: pointer;
@@ -141,6 +174,18 @@
         font-size: 15px;
     }
 
+    .book-info-modal-profile-pic {
+        border-radius: 50%;
+    }
+    .note-media {
+        background-color: rgba(220, 220, 220, 0.24);
+        padding: 12px;
+        border-radius: 5px;
+    }
 
+    .note-save-button {
+        background-color: #669890 !important;
+        font-weight: bold;
+    }
 
 </style>

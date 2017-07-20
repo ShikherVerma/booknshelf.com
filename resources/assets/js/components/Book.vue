@@ -31,6 +31,7 @@
                          :likes="likesCount"
                          @close="showBookInfoModal = false"
                          :is-search="isSearch"
+                         :user="user"
         >
         </book-info-modal>
     </div>
