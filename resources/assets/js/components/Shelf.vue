@@ -11,16 +11,16 @@
                 <h2>
                     <div class="level">
                         <div class="level-left">
-                            <p class="level-item">
+                            <div class="level-item">
                                 <figure class="image is-48x48">
                                     <img :src="avatarUrl" class="shelf-profile-pic">
                                 </figure>
-                            </p>
-                            <p>
+                            </div>
+                            <div class="level-item">
                                 <a :href="profileUrl">
                                     <strong>{{ user.name }}</strong>
-                            </a>
-                            </p>
+                                </a>
+                            </div>
                         </div>
                         <div class="level-right">
                             <div class="level-item">
