@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Note;
 use App\Book;
+use Gate;
 
 class NoteController extends Controller
 {
@@ -108,6 +109,10 @@ class NoteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $note = Note::find($id);
+        if (Gate::allows('delete-note', $note)) {
+            // The current user can update the post...
+            $note->delete();
+        }
     }
 }
