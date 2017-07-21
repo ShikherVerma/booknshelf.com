@@ -43,34 +43,33 @@
                                     </a>
                                 </p>
                                 <article class="media note-media">
-                                  <figure class="media-left">
-                                    <p class="image is-48x48">
-                                      <img :src="avatarUrl" class="book-info-modal-profile-pic">
-                                    </p>
-                                  </figure>
-                                  <div class="media-content">
-                                    <div class="field">
-                                      <p class="control">
-                                        <textarea class="textarea" style="min-height: 80px;" placeholder="Add a note here ..."></textarea>
-                                      </p>
+                                    <figure class="media-left">
+                                        <p class="image is-48x48">
+                                            <img :src="avatarUrl" class="book-info-modal-profile-pic">
+                                        </p>
+                                    </figure>
+                                    <div class="media-content">
+                                        <div class="field">
+                                            <p class="control">
+                                                <textarea class="textarea" style="min-height: 80px;" placeholder="Add a note here ..."></textarea>
+                                            </p>
+                                        </div>
+                                        <nav class="level" style="margin-top: 7px;">
+                                            <div class="level-left">
+                                                <div class="level-item">
+                                                    <a class="button is-primary note-save-button">SAVE</a>
+                                                </div>
+                                            </div>
+                                            <div class="level-right">
+                                                <div class="level-item">
+                                                    <label class="checkbox">
+                                                        <input type="checkbox"> Make this note private
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </nav>
                                     </div>
-                                    <nav class="level" style="margin-top: 7px;">
-                                      <div class="level-left">
-                                        <div class="level-item">
-                                          <a class="button is-primary note-save-button">SAVE</a>
-                                        </div>
-                                      </div>
-                                      <div class="level-right">
-                                        <div class="level-item">
-                                          <label class="checkbox">
-                                            <input type="checkbox"> Make this note private
-                                          </label>
-                                        </div>
-                                      </div>
-                                    </nav>
-                                  </div>
                                 </article>
-
                                 <!-- Show the description of the book -->
 <!--                                 <p v-if="book.description" class="subtitle" v-html="book.description"></p> -->
 
