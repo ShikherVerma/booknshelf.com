@@ -50,6 +50,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Get all the notes created by this uer.
+     */
+    public function notes()
+    {
+        return $this->hasMany(Note::class)->orderBy('created_at', 'desc');
+    }
+
+    /**
      * Get all the topics that this user follows to.
      */
     public function topics()
