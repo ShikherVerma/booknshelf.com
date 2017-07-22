@@ -86,4 +86,23 @@ class BookController extends Controller
 
         return response()->json($fullBody);
     }
+
+    // get the public notes of the book
+    public function notes(Request $request, $bookId)
+    {
+        $book = Book::findOrFail($bookId);
+        // get all the public notes
+        $notes = $book->notes()->with('user')->where([
+            ['is_private', '=', false],
+            ['user_id', '<>', $request->user()->id],
+        ])->orderBy('created_at', 'desk')->get();
+        // get user's private notes of this book if any
+        $userNotes = $book->notes()->with('user')->where([
+            'user_id' => $request->user()->id
+        ])->orderBy('created_at', 'desk')->get();
+        return response()->json([
+            'public_notes' => $notes,
+            'user_notes' => $userNotes,
+        ]);
+    }
 }
