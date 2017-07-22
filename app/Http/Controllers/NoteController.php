@@ -42,7 +42,7 @@ class NoteController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'text' => 'required|max:255',
+            'text' => 'required',
             'is_private' => 'required|boolean',
             'book_id' => 'required|exists:books,id'
         ]);
@@ -95,10 +95,24 @@ class NoteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        // $comment = Comment::find($this->route('comment'));
 
-        // return $comment && $this->user()->can('update', $comment);
+        $this->validate($request, [
+            'text' => 'required',
+            'is_private' => 'required|boolean',
+            'book_id' => 'required|exists:books,id'
+        ]);
+
+        $note = Note::find($id);
+        if (Gate::allows('update-note', $note)) {
+            // The current user can update the post...
+            $note->update([
+                'text' => $request->text,
+                'is_private' => $request->is_private
+            ]);
+        } else {
+            $error = ['name' => ['You can not update this note.']];
+            return response()->json($error, 422);
+        }
     }
 
     /**
@@ -111,8 +125,11 @@ class NoteController extends Controller
     {
         $note = Note::find($id);
         if (Gate::allows('delete-note', $note)) {
-            // The current user can update the post...
+            // The current user can delete the post...
             $note->delete();
+        } else {
+            $error = ['name' => ['You can not delete this note.']];
+            return response()->json($error, 422);
         }
     }
 }
