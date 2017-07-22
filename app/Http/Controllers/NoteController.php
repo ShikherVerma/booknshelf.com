@@ -61,7 +61,7 @@ class NoteController extends Controller
         // user should own the note
         $request->user()->notes()->save($note);
 
-        return $book;
+        return $note;
     }
 
     /**

@@ -60,6 +60,9 @@ Vue.component('topic-page', require('./components/topics/TopicPage.vue'));
 // The booknshelf book component
 Vue.component('book', require('./components/Book.vue'));
 
+// Note components
+Vue.component('note-write', require('./components/note/NoteWrite.vue'));
+
 // Book page components
 
 const app = new Vue({

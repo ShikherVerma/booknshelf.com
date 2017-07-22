@@ -19,6 +19,15 @@ class Note extends Model
     ];
 
     /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'is_private' => 'boolean',
+    ];
+
+    /**
      * Get the user that created this note.
      */
     public function user()

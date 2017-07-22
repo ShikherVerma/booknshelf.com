@@ -90,6 +90,10 @@ Route::get('/friends', 'FriendsController@index');
 Route::get('/books/{book_id}', 'BookController@show');
 Route::get('/books/{book_id}/likes', 'BookController@likes');
 Route::get('/books/{book_id}/reviews', 'BookController@reviews');
+Route::get('/books/{book_id}/notes', 'BookController@notes');
+
+// Notes
+Route::resource('api/notes', 'NoteController');
 
 // User Follows
 Route::post('follows', [

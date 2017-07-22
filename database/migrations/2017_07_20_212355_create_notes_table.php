@@ -17,7 +17,7 @@ class CreateNotesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
             $table->integer('book_id')->index();
-            $table->string('text');
+            $table->text('text');
             $table->boolean('is_private')->default(false);
             $table->timestamps();
         });
