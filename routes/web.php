@@ -91,6 +91,7 @@ Route::get('/books/{book_id}', 'BookController@show');
 Route::get('/books/{book_id}/likes', 'BookController@likes');
 Route::get('/books/{book_id}/reviews', 'BookController@reviews');
 Route::get('/books/{book_id}/notes', 'BookController@notes');
+Route::get('/books/{book_id}/notes/public', 'BookController@publicNotes');
 
 // Notes
 Route::resource('api/notes', 'NoteController');
