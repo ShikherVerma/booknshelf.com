@@ -13,6 +13,14 @@
                                 </div>
                             </p>
                             <p class="control">
+                                <a class="button is-large goodreads-button" :href="goodreadsAuth">
+                                    <span class="icon">
+                                        <i class="icon-light"><span style="font-family:helvetica;">g</span></i>
+                                    </span>
+                                    <span><strong>Login with Goodreads</strong></span>
+                                </a>
+                            </p>
+                            <p class="control">
                                 <a class="button is-large fb-button" :href="facebookAuth">
                                  <span class="icon">
                                    <i class="fa fa-facebook"></i>
@@ -127,6 +135,9 @@
             },
             twitterAuth: function() {
                 return '/auth/twitter'
+            },
+            goodreadsAuth: function() {
+                return '/auth/goodreads'
             }
         }
     }

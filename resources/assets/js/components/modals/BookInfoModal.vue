@@ -43,48 +43,47 @@
                                         {{ author.name }}<span v-if="index !== book.authors.length - 1">, </span>
                                     </span>
                                 </p>
-                                <div class="box" v-for="note in userNotes" style="background-color: #fcfffe">
-                                  <article class="media">
-                                    <div class="media-left">
-                                      <figure class="image is-48x48">
-                                        <img :src="getAvatarUrl(note.user.avatar)" class="book-info-modal-profile-pic" alt="Image">
-                                      </figure>
-                                    </div>
-                                    <div class="media-content">
-                                      <div class="content">
-                                        <p>
-                                          <strong>{{ note.user.name }}</strong><small> 31m</small>
-                                          <span class="tag is-warning" v-if="note.is_private">Only visible to you</span>
-                                          <br>
-                                          {{ note.text }}
-                                        </p>
-                                      </div>
-                                    </div>
-                                  </article>
-                                </div>
-                                <div class="box" v-for="note in publicNotes">
-                                  <article class="media">
-                                    <div class="media-left">
-                                      <figure class="image is-48x48">
-                                        <img :src="getAvatarUrl(note.user.avatar)" class="book-info-modal-profile-pic" alt="Image">
-                                      </figure>
-                                    </div>
-                                    <div class="media-content">
-                                      <div class="content">
-                                        <p>
-                                          <strong>{{ note.user.name }}</strong><small> 31m</small>
-                                          <br>
-                                          {{ note.text }}
-                                        </p>
-                                      </div>
-                                    </div>
-                                  </article>
-                                </div>
-                                <note-write :book="book" :user="authUser"></note-write>
                                 <!-- Show the description of the book -->
-<!--                                 <p v-if="book.description" class="subtitle" v-html="book.description"></p> -->
+                            <p v-if="book.description && !authUserId" class="subtitle" v-html="book.description"></p>
 
-                                </p>
+                                <div v-if="authUserId" class="box" v-for="note in userNotes" style="background-color: #fcfffe">
+                                    <article class="media">
+                                        <div class="media-left">
+                                            <figure class="image is-48x48">
+                                                <img :src="getAvatarUrl(note.user.avatar)" class="book-info-modal-profile-pic" alt="Image">
+                                            </figure>
+                                        </div>
+                                        <div class="media-content">
+                                            <div class="content">
+                                                <p>
+                                                    <strong>{{ note.user.name }}</strong><small> 31m</small>
+                                                    <span class="tag is-warning" v-if="note.is_private">Only visible to you</span>
+                                                    <br>
+                                                    {{ note.text }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                                <div v-if="authUserId" class="box" v-for="note in publicNotes">
+                                    <article class="media">
+                                        <div class="media-left">
+                                            <figure class="image is-48x48">
+                                                <img :src="getAvatarUrl(note.user.avatar)" class="book-info-modal-profile-pic" alt="Image">
+                                            </figure>
+                                        </div>
+                                        <div class="media-content">
+                                            <div class="content">
+                                                <p>
+                                                    <strong>{{ note.user.name }}</strong><small> 31m</small>
+                                                    <br>
+                                                    {{ note.text }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                                <note-write v-if="authUserId" :book="book" :user="authUser"></note-write>
                             </div>
                         </div>
                     </div>
@@ -100,6 +99,7 @@
 
         data() {
             return {
+                authUserId: App.userId,
                 showBookInfoModal: false,
                 averageRating: null,
                 ratingsCount: null,
@@ -113,7 +113,9 @@
                         this.averageRating = response.body.average_rating;
                         this.ratingsCount = response.body.ratings_count;
             });
-            this.getNotes();
+            if (this.authUserId) {
+                this.getNotes();
+            }
         },
 
         methods: {
@@ -158,7 +160,6 @@
                 return `https://www.goodreads.com/book/isbn/${this.book.isbn_10}`
             },
             authUser() {
-                console.log(App.state.user);
                 return  App.state.user;
             },
         }
