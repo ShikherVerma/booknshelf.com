@@ -59,6 +59,7 @@ Vue.component('topic-page', require('./components/topics/TopicPage.vue'));
 
 // The booknshelf book component
 Vue.component('book', require('./components/Book.vue'));
+Vue.component('book-info', require('./components/book/BookInfo.vue'));
 
 // Note components
 Vue.component('note-write', require('./components/note/NoteWrite.vue'));
@@ -171,6 +172,34 @@ const app = new Vue({
             return window.App;
         }
     },
+});
+
+const Dialog = Vue.extend({
+  template: `
+    <div v-if="show" class="delete-confirm-dialog">
+      Are you sure you would like to delete this?
+      <a @click="doYes(noteId)" class="button is-small is-danger">Yes, I'm sure</a>
+      <a @click="show = false" class="button is-small is-primary">Cancel</a>
+    </div>
+  `
+});
+
+Vue.directive('confirm', {
+    bind(el, binding, vnode) {
+    const yesMethod = binding.value;
+
+    el.handleClick = (e) => {
+        var targetElement = event.target || event.srcElement;
+        id = targetElement.id;
+        const data = { doYes: yesMethod, show: true, noteId: id };
+        let dialog = new Dialog({ data: data }).$mount();
+        document.getElementById('destroy' + id).appendChild(dialog.$el);
+    }
+    el.addEventListener('click', el.handleClick);
+  },
+  unbind(el) {
+    el.removeEventListener('click', el.handleClick);
+  }
 });
 
 $(".nav-toggle").on('click', function(){

@@ -4686,6 +4686,13 @@ article {
     -webkit-transform: translate(-0.5rem, 50%);
     transform: translate(-0.5rem, 50%); }
 
+.delete-confirm-dialog {
+  text-decoration: none;
+  color: #525252; }
+
+.delete-confirm-dialog:hover {
+  color: #525252 !important; }
+
 [v-cloak] {
   display: none; }
 

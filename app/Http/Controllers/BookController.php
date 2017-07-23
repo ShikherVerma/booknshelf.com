@@ -17,7 +17,7 @@ class BookController extends Controller
 
     public function __construct(UserRepository $users, BookRepository $books)
     {
-        $this->middleware('auth', ['except' => ['search', 'reviews']]);
+        $this->middleware('auth', ['except' => ['search', 'reviews', 'publicNotes']]);
         $this->guzzleClient = new Client();
         $this->users = $users;
         $this->books = $books;
@@ -103,6 +103,19 @@ class BookController extends Controller
         return response()->json([
             'public_notes' => $notes,
             'user_notes' => $userNotes,
+        ]);
+    }
+
+    // get the public notes of the book
+    public function publicNotes($bookId)
+    {
+        $book = Book::findOrFail($bookId);
+        // get all public notes of this book
+        $notes = $book->notes()->with('user')->where([
+            ['is_private', '=', false],
+        ])->orderBy('created_at', 'desk')->get();
+        return response()->json([
+            'public_notes' => $notes,
         ]);
     }
 }

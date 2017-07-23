@@ -44,7 +44,7 @@
                                     </span>
                                 </p>
                                 <!-- Show the description of the book -->
-                            <p v-if="book.description && !authUserId" class="subtitle" v-html="book.description"></p>
+                                <!-- <p v-if="book.description && !authUserId" class="subtitle" v-html="book.description"></p> -->
 
                                 <div v-if="authUserId" class="box" v-for="note in userNotes" style="background-color: #fcfffe">
                                     <article class="media">
@@ -62,10 +62,19 @@
                                                     {{ note.text }}
                                                 </p>
                                             </div>
+                                            <nav class="level is-mobile" v-if="note.user.id == authUserId">
+                                                <div class="level-right">
+                                                    <a class="level-item" :id="'destroy' + note.id" >
+                                                        <span class="icon is-small" v-confirm="destroy">
+                                                            <i class="fa fa-trash-o note-delete-icon" :id="note.id"></i>
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </nav>
                                         </div>
                                     </article>
                                 </div>
-                                <div v-if="authUserId" class="box" v-for="note in publicNotes">
+                                <div class="box" v-for="note in publicNotes">
                                     <article class="media">
                                         <div class="media-left">
                                             <figure class="image is-48x48">
@@ -113,25 +122,51 @@
                         this.averageRating = response.body.average_rating;
                         this.ratingsCount = response.body.ratings_count;
             });
-            if (this.authUserId) {
-                this.getNotes();
-            }
+            this.getNotes();
         },
 
         methods: {
             getNotes() {
-                this.$http.get(`/books/${this.book.id}/notes`)
-                    .then(function(response) {
-                        this.publicNotes = response.body.public_notes;
-                        this.userNotes = response.body.user_notes;
-                    }).catch(function(reason) {
-                        console.log(reason);
-                    });;;
+                if (this.authUserId) {
+                    this.$http.get(`/books/${this.book.id}/notes`)
+                        .then(function(response) {
+                            this.publicNotes = response.body.public_notes;
+                            this.userNotes = response.body.user_notes;
+                        }).catch(function(reason) {
+                            console.log(reason);
+                        });
+                } else {
+                    this.$http.get(`/books/${this.book.id}/notes/public`)
+                        .then(function(response) {
+                            this.publicNotes = response.body.public_notes;
+                            this.userNotes = [];
+                        }).catch(function(reason) {
+                            console.log(reason);
+                        });
+                }
+
             },
+
             getAvatarUrl(avatar) {
                 return "https://booknshelf.imgix.net/profiles/" + avatar +
                     "?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=48&h=48&fit=crop";
             },
+
+            // delete the note
+            destroy(noteId) {
+                let form = new AppForm({});
+                App.delete(`/api/notes/${noteId}`, form)
+                    .then(() => {
+                        this.getNotes();
+                        // send a notification
+                        Vue.toast('🙁 Your note has been deleted!', {
+                            className: ['notification', 'is-success', 'save-note-notification'],
+                            horizontalPosition: 'right',
+                            verticalPosition: 'bottom',
+                            duration: 5000,
+                        });
+                    }).catch(function(reason) {})
+            }
         },
 
         created: function () {
@@ -206,6 +241,10 @@
     .ratings-count {
         color: grey;
         font-size: 15px;
+    }
+    .note-delete-icon {
+        color: #ff8f8f !important;
+
     }
 
 </style>
