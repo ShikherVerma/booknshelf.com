@@ -9,9 +9,6 @@
         <a class="nav-item" href="/faq">
             <span>FAQ</span>
         </a>
-        <a class="nav-item" href="/newsletter">
-            <span>Newsletter</span>
-        </a>
         <a class="nav-item" href="/blog">
             <span>Blog</span>
         </a>
