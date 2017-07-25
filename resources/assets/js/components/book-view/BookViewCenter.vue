@@ -58,13 +58,13 @@
         min-width: 70%;
     }
 
-    .book-info-image {
+/*    .book-info-image {
         height: 450px;
         width: 295px;
         background-position: center center;
         background-size: cover;
         cursor: pointer;
-    }
+    }*/
 
     .star-icon {
         margin-right: 0px !important;

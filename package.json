@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "bootstrap-less": "^3.3.8",
+    "moment": "^2.18.1",
     "vue-easy-toast": "^0.2.6"
   }
 }
