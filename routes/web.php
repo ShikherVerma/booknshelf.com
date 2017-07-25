@@ -46,6 +46,7 @@ Route::post('/settings/photo', 'SettingsController@updatePhoto');
 Route::get('/@{username}', ['as' => 'profile_path', 'uses' => 'UserController@profile']);
 Route::get('/users/{user_id}/shelves', 'UserController@allShelves');
 Route::get('/@{username}/bookshelves', ['as' => 'bookshelves_path', 'uses' => 'UserController@profile']);
+Route::get('/@{username}/notes', ['as' => 'notes_path', 'uses' => 'UserController@notes']);
 Route::get('/@{username}/shelves/{shelf_slug}', ['as' => 'shelf_path', 'uses' => 'UserController@shelf']);
 Route::post('/user/welcome', 'UserController@welcome');
 Route::get('/user/current', 'UserController@current');

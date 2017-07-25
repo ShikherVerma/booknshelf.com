@@ -48,6 +48,9 @@
         <a class="nav-item" href="{{ route('bookshelves_path', ['username' => Auth::user()->username]) }}">
             My Bookshelves
         </a>
+        <a class="nav-item" href="{{ route('notes_path', ['username' => Auth::user()->username]) }}">
+            My Notes
+        </a>
         <a class="nav-item" @click="showNewShelfModal = true">
             <span class="icon">
                 <i class="fa fa-plus"></i>

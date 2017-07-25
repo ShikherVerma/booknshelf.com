@@ -46,7 +46,7 @@
                                 <!-- Show the description of the book -->
                                 <!-- <p v-if="book.description && !authUserId" class="subtitle" v-html="book.description"></p> -->
 
-                                <div v-if="authUserId" class="box" v-for="note in userNotes" style="background-color: #fcfffe">
+                                <div v-if="authUserId" class="box note-box" v-for="note in userNotes" style="background-color: #fcfffe">
                                     <article class="media">
                                         <div class="media-left">
                                             <figure class="image is-48x48">
@@ -56,13 +56,27 @@
                                         <div class="media-content">
                                             <div class="content">
                                                 <p>
-                                                    <strong>{{ note.user.name }}</strong><small> 31m</small>
+                                                    <strong>
+                                                        <a :href="'/@' + note.user.username" class="note-user-href">
+                                                            {{ note.user.name }}
+                                                        </a>
+                                                    </strong>
+                                                    <small>{{ formatDate(note.created_at) }}</small>
                                                     <span class="tag is-warning" v-if="note.is_private">Only visible to you</span>
                                                     <br>
                                                     {{ note.text }}
                                                 </p>
                                             </div>
-                                            <nav class="level is-mobile" v-if="note.user.id == authUserId">
+                                            <!-- Main container -->
+                                            <nav class="level" v-if="note.user.id == authUserId">
+                                                <!-- Left side -->
+                                                <div class="level-left" >
+                                                    <div class="level-item">
+                                                        <p class="subtitle is-5">
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <!-- Right side -->
                                                 <div class="level-right">
                                                     <a class="level-item" :id="'destroy' + note.id" >
                                                         <span class="icon is-small" v-confirm="destroy">
@@ -74,7 +88,7 @@
                                         </div>
                                     </article>
                                 </div>
-                                <div class="box" v-for="note in publicNotes">
+                                <div class="box note-box" v-for="note in publicNotes">
                                     <article class="media">
                                         <div class="media-left">
                                             <figure class="image is-48x48">
@@ -166,6 +180,11 @@
                             duration: 5000,
                         });
                     }).catch(function(reason) {})
+            },
+
+            formatDate(d) {
+                var date = moment(d).format("MMM Do YY");
+                return date;
             }
         },
 
@@ -245,6 +264,12 @@
     .note-delete-icon {
         color: #ff8f8f !important;
 
+    }
+    .note-user-href {
+        color:#5a5a5a;
+    }
+    .note-user-href:hover {
+        color:#252525;
     }
 
 </style>

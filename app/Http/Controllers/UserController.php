@@ -10,6 +10,7 @@ use Event;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 class UserController extends Controller
 {
@@ -21,6 +22,7 @@ class UserController extends Controller
         $this->middleware('auth', [
             'except' => [
                 'profile',
+                'notes',
                 'allShelves',
                 'allFollowers',
                 'allFollowed',
@@ -47,6 +49,31 @@ class UserController extends Controller
             // page properties
             'title' => $user->name . "'s profile on Booknshelf",
             'description' => "See all the books that " . $user->name . " has read and liked.",
+            'ogImage' => $user->avatar
+        ]);
+    }
+
+    public function notes($username)
+    {
+        $user = $this->users->findByUsername($username);
+        $notes = $user->notes()->with('book')->where('is_private', false)->get();
+
+        // if current auth user is the one requesting the notes
+        // then show all notes including private notes
+        if (Auth::check() && auth()->user()->id == $user->id) {
+            $notes = $user->notes()->with('book')->get();
+            // dd($notes);
+        } else {
+            // return only public notes
+            $notes = $user->notes()->with('book')->where('is_private', false)->get();
+        }
+
+        return view('notes', [
+            'user' => $user,
+            'notes' => $notes->toArray(),
+            // page properties
+            'title' => $user->name . "'s notes on Booknshelf",
+            'description' => "See all the book notes that " . $user->name . " has created.",
             'ogImage' => $user->avatar
         ]);
     }

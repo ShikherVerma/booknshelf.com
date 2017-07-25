@@ -10,7 +10,7 @@
                 <p class="control">
                     <textarea class="textarea" name="text" v-model="form.text"
                                :class="{'is-danger': form.errors.has('text')}"
-                        style="min-height: 80px;" placeholder="Add your note here ...">
+                        style="min-height: 80px;" placeholder="Add a note about this book here ...">
                     </textarea>
                     <span class="help is-danger" v-if="form.errors.has('text')">
                         {{ form.errors.get('text') }}
