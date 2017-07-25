@@ -56,3 +56,16 @@ $factory->define(App\Topic::class, function (Faker\Generator $faker) {
         'cover_photo' => 'http://books.google.com/books?id=gt7EQgH8-b4C&dq=thin+air&hl=&as_pt=BOOKS&source=gbs_api',
     ];
 });
+
+$factory->define(App\Note::class, function (Faker\Generator $faker) {
+    return [
+        'text' => $faker->realText(100),
+        'is_private' => true,
+        'user_id' => function () {
+            return factory(App\User::class)->create()->id;
+        },
+        'book_id' => function () {
+            return factory(App\Book::class)->create()->id;
+        }
+    ];
+});

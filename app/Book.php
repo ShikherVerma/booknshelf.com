@@ -55,6 +55,14 @@ class Book extends Model
     }
 
     /**
+     * Get the notes of this book
+     */
+    public function notes()
+    {
+        return $this->hasMany('App\Note');
+    }
+
+    /**
      * Get all the shelves that this book belongs to.
      */
     public function shelves()

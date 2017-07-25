@@ -9,9 +9,6 @@
         <a class="nav-item" href="/faq">
             <span>FAQ</span>
         </a>
-        <a class="nav-item" href="/newsletter">
-            <span>Newsletter</span>
-        </a>
         <a class="nav-item" href="/blog">
             <span>Blog</span>
         </a>
@@ -50,6 +47,9 @@
         @endif
         <a class="nav-item" href="{{ route('bookshelves_path', ['username' => Auth::user()->username]) }}">
             My Bookshelves
+        </a>
+        <a class="nav-item" href="{{ route('notes_path', ['username' => Auth::user()->username]) }}">
+            My Notes
         </a>
         <a class="nav-item" @click="showNewShelfModal = true">
             <span class="icon">

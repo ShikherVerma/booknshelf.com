@@ -1,6 +1,6 @@
 <template>
-    <div class="modal is-active" @click="$emit('close')">
-        <div class="modal-background book-info-modal-background" @click="$emit('close')"></div>
+    <div class="modal is-active">
+        <div class="modal-background book-info-modal-background"></div>
         <button @click="$emit('close')" class="modal-close-button delete"></button>
         <a class="modal--close v-desktop" data-test="modal-close" href="#" title="Close"></a>
         <div class="modal-card modal-card-book-info">
@@ -8,8 +8,30 @@
                 <div class="content">
                     <div class="container">
                         <div class="columns">
-                            <div class="column is-5">
+                            <div class="column is-3">
                                 <div class="box book-info-image" :style="bookImage"></div>
+                                <p class="subtile" style="margin-top: 20px;">
+                                    <a v-if="book.detail_page_url"  target="_blank" style="background-color: #efefef;"
+                                       class="button is-medium" :href="book.detail_page_url">
+                                        <span class="icon is-medium">
+                                            <i class="fa fa-amazon"></i>
+                                        </span>
+                                        <span>
+                                            See on Amazon
+                                        </span>
+                                    </a>
+                                    <a v-if="averageRating" target="_blank" :href="goodreadsUrl"
+                                       class="button is-medium" style="background-color: #F4F1EA; margin-top: 10px;">
+                                        <span class="icon is-medium star-icon">
+                                            <i class="fa fa-star"></i>
+                                        </span>
+                                        <span>
+                                            <strong>{{this.averageRating}}<span class="outof-span">/5
+                                                 ({{ ratingsCount }})</span>
+                                            </strong>
+                                        </span>
+                                    </a>
+                                </p>
                             </div>
                             <div class="column">
                                 <p class="title">
@@ -22,29 +44,69 @@
                                     </span>
                                 </p>
                                 <!-- Show the description of the book -->
-                                <p v-if="book.description" class="subtitle" v-html="book.description"></p>
+                                <!-- <p v-if="book.description && !authUserId" class="subtitle" v-html="book.description"></p> -->
 
-                                <p class="subtile" style="margin-top: 20px;">
-                                    <a v-if="book.detail_page_url"  target="_blank" style="background-color: #efefef;"
-                                       class="button is-medium" :href="book.detail_page_url">
-                                        <span class="icon is-medium">
-                                            <i class="fa fa-amazon"></i>
-                                        </span>
-                                        <span>
-                                            Buy on Amazon
-                                        </span>
-                                    </a>
-                                    <a v-if="averageRating" target="_blank" :href="goodreadsUrl"
-                                       class="button is-medium" style="background-color: #F4F1EA;">
-                                        <span class="icon is-medium star-icon">
-                                            <i class="fa fa-star"></i>
-                                        </span>
-                                        <span>
-                                            <strong>{{this.averageRating}}<span class="outof-span">/5
-                                                 ({{ ratingsCount }})</span></strong> on Goodreads
-                                        </span>
-                                    </a>
-                                </p>
+                                <div v-if="authUserId" class="box note-box" v-for="note in userNotes" style="background-color: #fcfffe">
+                                    <article class="media">
+                                        <div class="media-left">
+                                            <figure class="image is-48x48">
+                                                <img :src="getAvatarUrl(note.user.avatar)" class="book-info-modal-profile-pic" alt="Image">
+                                            </figure>
+                                        </div>
+                                        <div class="media-content">
+                                            <div class="content">
+                                                <p>
+                                                    <strong>
+                                                        <a :href="'/@' + note.user.username" class="note-user-href">
+                                                            {{ note.user.name }}
+                                                        </a>
+                                                    </strong>
+                                                    <small>{{ formatDate(note.created_at) }}</small>
+                                                    <span class="tag is-warning" v-if="note.is_private">Only visible to you</span>
+                                                    <br>
+                                                    {{ note.text }}
+                                                </p>
+                                            </div>
+                                            <!-- Main container -->
+                                            <nav class="level" v-if="note.user.id == authUserId">
+                                                <!-- Left side -->
+                                                <div class="level-left" >
+                                                    <div class="level-item">
+                                                        <p class="subtitle is-5">
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <!-- Right side -->
+                                                <div class="level-right">
+                                                    <a class="level-item" :id="'destroy' + note.id" >
+                                                        <span class="icon is-small" v-confirm="destroy">
+                                                            <i class="fa fa-trash-o note-delete-icon" :id="note.id"></i>
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </nav>
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="box note-box" v-for="note in publicNotes">
+                                    <article class="media">
+                                        <div class="media-left">
+                                            <figure class="image is-48x48">
+                                                <img :src="getAvatarUrl(note.user.avatar)" class="book-info-modal-profile-pic" alt="Image">
+                                            </figure>
+                                        </div>
+                                        <div class="media-content">
+                                            <div class="content">
+                                                <p>
+                                                    <strong>{{ note.user.name }}</strong><small> 31m</small>
+                                                    <br>
+                                                    {{ note.text }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                                <note-write v-if="authUserId" :book="book" :user="authUser"></note-write>
                             </div>
                         </div>
                     </div>
@@ -60,9 +122,12 @@
 
         data() {
             return {
+                authUserId: App.userId,
                 showBookInfoModal: false,
                 averageRating: null,
                 ratingsCount: null,
+                publicNotes: [],
+                userNotes: [],
             };
         },
         mounted() {
@@ -71,6 +136,60 @@
                         this.averageRating = response.body.average_rating;
                         this.ratingsCount = response.body.ratings_count;
             });
+            this.getNotes();
+        },
+
+        methods: {
+            getNotes() {
+                if (this.authUserId) {
+                    this.$http.get(`/books/${this.book.id}/notes`)
+                        .then(function(response) {
+                            this.publicNotes = response.body.public_notes;
+                            this.userNotes = response.body.user_notes;
+                        }).catch(function(reason) {
+                            console.log(reason);
+                        });
+                } else {
+                    this.$http.get(`/books/${this.book.id}/notes/public`)
+                        .then(function(response) {
+                            this.publicNotes = response.body.public_notes;
+                            this.userNotes = [];
+                        }).catch(function(reason) {
+                            console.log(reason);
+                        });
+                }
+
+            },
+
+            getAvatarUrl(avatar) {
+                return "https://booknshelf.imgix.net/profiles/" + avatar +
+                    "?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=48&h=48&fit=crop";
+            },
+
+            // delete the note
+            destroy(noteId) {
+                let form = new AppForm({});
+                App.delete(`/api/notes/${noteId}`, form)
+                    .then(() => {
+                        this.getNotes();
+                        // send a notification
+                        Vue.toast('🙁 Your note has been deleted!', {
+                            className: ['notification', 'is-success', 'save-note-notification'],
+                            horizontalPosition: 'right',
+                            verticalPosition: 'bottom',
+                            duration: 5000,
+                        });
+                    }).catch(function(reason) {})
+            },
+
+            formatDate(d) {
+                var date = moment(d).format("MMM Do YY");
+                return date;
+            }
+        },
+
+        created: function () {
+            Bus.$on('newNoteSaved', this.getNotes);
         },
 
         computed: {
@@ -80,12 +199,12 @@
                     return `background-image: url(${this.book.cover_image})`;
                 }
                 if (this.book.cover_image) {
-                    var coverImageUrl = "https://booknshelf.imgix.net/book-covers/" + this.book.cover_image + "?auto=format&fit=crop&h=450";
+                    var coverImageUrl = "https://booknshelf.imgix.net/book-covers/" + this.book.cover_image + "?auto=format&fit=crop&h=290&w=200";
                     return `background-image: url(${coverImageUrl})`;
                 }
 
                 if (this.book.original_image) {
-                    var coverImageUrl = "https://booknshelf.imgix.net/book-original-covers/" + this.book.image + "?auto=format&fit=crop&h=450";
+                    var coverImageUrl = "https://booknshelf.imgix.net/book-original-covers/" + this.book.image + "?auto=format&fit=crop&h=290&w=200";
                     return `background-image: url(${coverImageUrl})`;
                 } else {
                     return '';
@@ -93,14 +212,12 @@
             },
             goodreadsUrl: function () {
                 return `https://www.goodreads.com/book/isbn/${this.book.isbn_10}`
-            }
+            },
+            authUser() {
+                return  App.state.user;
+            },
         }
     }
-
-
-
-
-
 </script>
 
 <style type="text/css">
@@ -119,9 +236,13 @@
         min-width: 70%;
     }
 
+    .book-info-modal-profile-pic {
+        border-radius: 50%;
+    }
+
     .book-info-image {
-        height: 450px;
-        width: 295px;
+        height: 290px;
+        width: 200px;
         background-position: center center;
         background-size: cover;
         cursor: pointer;
@@ -140,7 +261,15 @@
         color: grey;
         font-size: 15px;
     }
+    .note-delete-icon {
+        color: #ff8f8f !important;
 
-
+    }
+    .note-user-href {
+        color:#5a5a5a;
+    }
+    .note-user-href:hover {
+        color:#252525;
+    }
 
 </style>
