@@ -21,7 +21,7 @@
                         </aside>
                     </div>
                     <div class="column is-8">
-                        <div class="notification">
+                        <div class="notification" style="font-size:17px;">
                             @if($note['is_private'])
                                 <nav class="level" style="margin-bottom: 10px;">
                                     <div class="level-left" >

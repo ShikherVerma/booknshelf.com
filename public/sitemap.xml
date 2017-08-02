@@ -22,11 +22,15 @@
   <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>https://booknshelf.com/story</loc>
+  <loc>https://booknshelf.com/blog</loc>
   <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://booknshelf.com/topics</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>https://booknshelf.com/bookshelves</loc>
   <changefreq>weekly</changefreq>
 </url>
 </urlset>
