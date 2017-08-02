@@ -80,7 +80,7 @@ class UserRepository
         }
         $user->save();
 
-        dispatch((new SetUserAvatar($user))->onQueue('users_avatar'));
+        dispatch(new SetUserAvatar($user));
 
         event(new UserRegistered($user));
 
@@ -110,7 +110,7 @@ class UserRepository
         }
         $user->save();
 
-        dispatch((new SetUserAvatar($user))->onQueue('users_avatar'));
+        dispatch(new SetUserAvatar($user));
 
         event(new UserRegistered($user));
 
@@ -141,7 +141,7 @@ class UserRepository
         }
         $user->save();
 
-        dispatch((new SetUserAvatar($user))->onQueue('users_avatar'));
+        dispatch(new SetUserAvatar($user));
 
         return $user;
     }

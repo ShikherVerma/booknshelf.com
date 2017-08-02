@@ -77,7 +77,7 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
 
-        dispatch((new SetUserAvatar($user))->onQueue('users_avatar'));
+        dispatch(new SetUserAvatar($user));
 
         event(new UserRegistered($user));
 
