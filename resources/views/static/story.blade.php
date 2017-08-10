@@ -58,6 +58,44 @@
                     <div class="column is-10">
                         <div class="content">
                           <h1>
+                            <span class="primary-span-inverse">March - August, 2017 in Review</span>
+                          </h1>
+                          <p class="subtitle" style="font-size: 21px; font-family: sans-serif; color: black;">
+                              The last couple months have been quite steady for Booknshelf. I've shipped couple new features including the ability to take notes on books.
+                              This is a feature some of Booknshelf users have been asking for some time so I spent one weekend and knocked it down.
+                          </p>
+                          <p class="subtitle" style="font-size: 21px; font-family: sans-serif; color: black;">
+                            However, I've been mostly focused on finding answers to some of the high-level questions I had regarding the future of Booknshelf.
+
+                            Now I'm very certain that I want it to be the best place for you to stay on top of your reading journey. For now, it will mean the following:
+                            <ul style="font-size: 21px; font-family: sans-serif; color: black;">
+
+                            <li>Easily adding books from anywhere on the web so you will never forget of any book again.</li>
+                            <li>Keeping track of books you have read or want to read.</li>
+                            <li>Writing personal reviews and notes for all your books you've read in the past.</li>
+                            <li>Getting rich insights on your books (fiction vs non-fiction, genres distribution, the number of pages read, etc).</li>
+                            </ul>
+                        </p>
+
+                        <p class="subtitle" style="font-size: 21px; font-family: sans-serif; color: black;">
+
+                            Please <a href="mailto:tigran@booknshelf.com"
+                          target="_blank"
+                          class="about-link">let me know</a> what you think or if you have any feedback or suggestions. When you reach out it motivates me so much ❤️
+                          </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section" style="background-color: #f1f1f1;">
+        <div class="container is-light">
+            <div class="content">
+                <div class="columns">
+                    <div class="column is-1"></div>
+                    <div class="column is-10">
+                        <div class="content">
+                          <h1>
                             <span class="primary-span-inverse">February, 2017 in Review</span>
                           </h1>
                           <p class="subtitle" style="font-size: 21px; font-family: sans-serif; color: black;">
