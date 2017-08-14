@@ -155,12 +155,22 @@ class CreateTopics extends Command
                 'Read and learn about the myths that people tell about to explain nature, history and customs.',
                 asset('/img/topics/acropolis-2092534_1920.jpg'),
             ],
+            [
+                'Business',
+                'Business books that every entrepreneur should read.',
+                'https://s3-us-west-2.amazonaws.com/booknshelf/topics/olu-eletu-38647.jpg',
+            ],
         ]);
 
 
         $this->user = User::where('username', 'topic')->firstOrFail();
         $allTopicNames->each(function ($tuple) {
             $topic = Topic::where('name', $tuple[0])->first();
+            $shelf->forceFill([
+                'name' => $tuple[0],
+                'description' => $tuple[1],
+                'cover_photo' => $tuple[2],
+            ]);
             if (empty($topic)) {
                 Topic::create([
                     'name' => $tuple[0],

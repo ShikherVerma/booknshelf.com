@@ -20,8 +20,9 @@ class RegistrationTest extends TestCase
         $this->visit('/register')
              ->type('Tigran', 'name')
              ->type('tigran143tester', 'username')
+            ->type('tigran@test.com', 'email')
              ->type('password', 'password')
              ->press('JOIN')
-             ->seePageIs('/welcome');
+             ->seePageIs('/');
     }
 }

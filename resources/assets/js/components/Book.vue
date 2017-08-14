@@ -30,6 +30,8 @@
                          :book="book"
                          :likes="likesCount"
                          @close="showBookInfoModal = false"
+                         :is-search="isSearch"
+                         :user="user"
         >
         </book-info-modal>
     </div>
@@ -38,7 +40,7 @@
 
 <script>
     export default {
-        props: ['user', 'book', 'shelf', 'likes', 'saves'],
+        props: ['user', 'book', 'shelf', 'likes', 'saves', 'isSearch'],
 
         data() {
             return {
@@ -98,11 +100,23 @@
 
         computed: {
             bookCoverImage: function () {
-                if (this.book.cover_image || this.book.image) {
-                    return `background-image: url(${this.book.cover_image || this.book.image})`;
-                } else {
+                // search is exception
+                if (this.isSearch) {
+                    return `background-image: url(${this.book.cover_image})`;
+                }
+                if (this.book.cover_image) {
+                    var coverImageUrl = "https://booknshelf.imgix.net/book-covers/" + this.book.cover_image;
+                    return `background-image: url(${coverImageUrl})`;
+                } else if(this.book.original_image) {
+                    var coverImageUrl = "https://booknshelf.imgix.net/book-original-covers/" + this.book.image;
+                    return `background-image: url(${coverImageUrl})`;
+                }
+                else {
                     return '';
                 }
+            },
+            bookUrl: function () {
+                return `/books/${this.book.id}`;
             },
             isLikedByAuthUser: function () {
                 return (this.likes.indexOf(this.book.id) != -1)
@@ -123,6 +137,7 @@
         background-position: center center;
         background-size: cover;
         cursor: pointer;
+        margin-bottom: 10px;
     }
 
     @media only screen and (max-width: 768px) {
@@ -131,9 +146,7 @@
             width: 370px !important
         }
     }
-    .parent {
-        position: relative;
-    }
+
     .book-title {
         font-size: 1.5rem;
     }
@@ -142,6 +155,7 @@
         color: #a2a2a2;
     }
     .profile-like-book {
+        /*border-bottom: solid 1px rgba(144, 144, 144, 0.21);*/
     }
 
     .small-span {
@@ -151,7 +165,7 @@
     }
 
     .liked-button {
-        background-color: #E45C5F;
+        background-color: #E54B4B;
         color: white;
         font-weight: bold;
     }

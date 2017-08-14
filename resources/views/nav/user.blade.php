@@ -9,7 +9,7 @@
         <a class="nav-item" href="/faq">
             <span>FAQ</span>
         </a>
-        <a class="nav-item" href="https://medium.com/booknshelf" target="_blank">
+        <a class="nav-item" href="/blog">
             <span>Blog</span>
         </a>
         <a class="nav-item has-activity-indicator" href="/topics">
@@ -45,6 +45,12 @@
                 </form>
             </a>
         @endif
+        <a class="nav-item" href="{{ route('bookshelves_path', ['username' => Auth::user()->username]) }}">
+            My Bookshelves
+        </a>
+        <a class="nav-item" href="{{ route('notes_path', ['username' => Auth::user()->username]) }}">
+            My Notes
+        </a>
         <a class="nav-item" @click="showNewShelfModal = true">
             <span class="icon">
                 <i class="fa fa-plus"></i>
@@ -56,7 +62,7 @@
             </span>
         </a> -->
         <a class="menu nav-item">
-            <img src="{{ Auth::user()->avatar }}" style="border-radius: 50%;">
+            <img src="https://booknshelf.imgix.net/profiles/{{ Auth::user()->avatar }}?codec=mozjpeg&cs=strip&w=32&h=32&fit=crop&dpr=2" style="border-radius: 50%;">
         </a>
         <div class="navbar-profile-menu" style="display: none;">
             <aside class="menu">

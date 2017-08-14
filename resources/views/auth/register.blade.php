@@ -5,35 +5,17 @@
         <div class="container is-light">
             <div class="columns">
                 <div class="column is-4">
-                    <p class="title is-3">Why join Booknshelf?</p>
-                    <p class="title is-4">
-                          <span class="icon">
-                            <i class="fa fa-check"></i>
-                          </span>
-                        Create bookshelves to save your favorite books. Stay organized!
-                    </p>
-                    <p class="title is-4">
-                        <span class="icon">
-                          <i class="fa fa-check"></i>
-                        </span>
-                        Like books and follow different topics! Keep all your topics and liked books in one place!
-                    </p>
-                    <p class="title is-4">
-                          <span class="icon">
-                            <i class="fa fa-check"></i>
-                          </span>
-                        Follow other readers and be part of their reading journey!
-                    </p>
-                    <p class="title is-4">
-                        <span class="icon">
-                          <i class="fa fa-check"></i>
-                        </span>
-                        Connect with your Facebook friends and see their books and bookshelves!
-                    </p>
-                </div>
-                <div class="column is-4">
                     <p class="subtitle">
-                        We'll never post to Twitter or Facebook without your permission.
+                        We'll never post to any of the networks without your permission.
+                    </p>
+                    <p class="control">
+                        <a class="button is-large goodreads-button"
+                           href="{{ url('/auth/goodreads') }}">
+                            <span class="icon">
+                                <i class="icon-light"><span style="font-family:helvetica;">g</span></i>
+                            </span>
+                            <span><strong>Continue with Goodreads</strong></span>
+                        </a>
                     </p>
                     <p class="control">
                         <a class="button is-large fb-button" href="{{ url('/auth/facebook') }}">
@@ -51,11 +33,15 @@
                             <span><strong>Continue with Twitter</strong></span>
                         </a>
                     </p>
-
+                </div>
+                <div class="column is-1">
+                    <p class="subtitle">OR</p>
+                </div>
+                <div class="column is-4">
                     <form role="form" method="POST" action="{{ url('/register') }}">
                         {!! csrf_field() !!}
 
-                        <label class="label bigger-font-label">What's your name?</label>
+                        <label class="label bigger-font-label">* What's your name?</label>
                         <p class="control">
                             <input class="input is-large {{ $errors->has('name') ? ' is-danger' : '' }}" type="text" name="name"
                                    value="{{ old('name') }}" placeholder="e.g. Jon Snow">
@@ -66,7 +52,7 @@
                             @endif
                         </p>
 
-                        <label class="label bigger-font-label">Choose an easy remembered username</label>
+                        <label class="label bigger-font-label">* Choose a username that you will remember</label>
                         <p class="control">
                             <input class="input is-large {{ $errors->has('username') ? ' is-danger' : '' }}" type="text"
                                    name="username"
@@ -78,7 +64,19 @@
                             @endif
                         </p>
 
-                        <label class="label bigger-font-label">Choose a strong password</label>
+                        <label class="label bigger-font-label">* What's your email address?</label>
+                        <p class="control">
+                            <input class="input is-large {{ $errors->has('email') ? ' is-danger' : '' }}" type="text"
+                                   name="email"
+                                   value="{{ old('email') }}" placeholder="e.g. avid-reader@gmail.com">
+                            @if ($errors->has('email'))
+                                <span class="help is-danger">
+                                    {{ $errors->first('email') }}
+                                </span>
+                            @endif
+                        </p>
+
+                        <label class="label bigger-font-label">* Choose a strong password</label>
                         <p class="control">
                             <input class="input is-large {{ $errors->has('password') ? ' is-danger' : '' }}" type="password"
                                    name="password"
@@ -98,9 +96,6 @@
                             </p>
                         </div>
                     </form>
-
-                </div>
-                <div class="column is-3">
                 </div>
             </div>
 

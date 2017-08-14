@@ -24,11 +24,16 @@ Route::get('login_facebook', 'Auth\LoginController@loginFacebook');
 Route::get('auth/twitter', 'Auth\LoginController@loginTwitter');
 Route::get('login_twitter', 'Auth\LoginController@loginTwitter');
 
+// Goodreads
+Route::get('auth/goodreads', 'Auth\LoginController@loginGoodreads');
+Route::get('login_goodreads', 'Auth\LoginController@loginGoodreads');
+
 // onboarding welcome page and static pages
 Route::get('/welcome', 'HomeController@welcome');
 Route::get('/faq', 'HomeController@faq');
-Route::get('/story', 'HomeController@story');
+Route::get('/blog', 'HomeController@blog');
 Route::get('/bookshelves', 'HomeController@bookshelves');
+Route::get('/newsletter', 'HomeController@newsletter');
 
 // Settings
 Route::get('/settings', 'SettingsController@show');
@@ -41,6 +46,7 @@ Route::post('/settings/photo', 'SettingsController@updatePhoto');
 Route::get('/@{username}', ['as' => 'profile_path', 'uses' => 'UserController@profile']);
 Route::get('/users/{user_id}/shelves', 'UserController@allShelves');
 Route::get('/@{username}/bookshelves', ['as' => 'bookshelves_path', 'uses' => 'UserController@profile']);
+Route::get('/@{username}/notes', ['as' => 'notes_path', 'uses' => 'UserController@notes']);
 Route::get('/@{username}/shelves/{shelf_slug}', ['as' => 'shelf_path', 'uses' => 'UserController@shelf']);
 Route::post('/user/welcome', 'UserController@welcome');
 Route::get('/user/current', 'UserController@current');
@@ -82,8 +88,14 @@ Route::post('/likes/books/{book_id}/toggle', 'LikeController@toggle');
 Route::get('/friends', 'FriendsController@index');
 
 // Books
+Route::get('/books/{book_id}', 'BookController@show');
 Route::get('/books/{book_id}/likes', 'BookController@likes');
 Route::get('/books/{book_id}/reviews', 'BookController@reviews');
+Route::get('/books/{book_id}/notes', 'BookController@notes');
+Route::get('/books/{book_id}/notes/public', 'BookController@publicNotes');
+
+// Notes
+Route::resource('api/notes', 'NoteController');
 
 // User Follows
 Route::post('follows', [
@@ -95,3 +107,4 @@ Route::delete('follows/{id}', [
     'as' => 'unfollows_path',
     'uses' => 'FollowsController@destroy'
 ]);
+

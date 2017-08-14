@@ -17,6 +17,8 @@ This contributing guide is specifically for contributing to the booknshelf.com w
 These instructions should get you closer to getting a commit into the
 repository.
 
+See the [Setting up Local Development guide][local-dev-env] for more information about how to run booknshelf.com locally.
+
 ### Git Workflow
 
 1. Fork and clone.

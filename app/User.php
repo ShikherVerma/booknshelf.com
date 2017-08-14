@@ -34,6 +34,8 @@ class User extends Authenticatable
         'password',
         'remember_token',
         'fb_token',
+        'goodreads_oauth_token',
+        'goodreads_oauth_token_secret',
         'is_onboarded',
         'created_at',
         'updated_at',
@@ -45,6 +47,14 @@ class User extends Authenticatable
     public function shelves()
     {
         return $this->hasMany(Shelf::class)->orderBy('created_at', 'desc');
+    }
+
+    /**
+     * Get all the notes created by this uer.
+     */
+    public function notes()
+    {
+        return $this->hasMany(Note::class)->orderBy('created_at', 'desc');
     }
 
     /**

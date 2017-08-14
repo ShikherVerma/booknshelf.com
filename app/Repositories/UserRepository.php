@@ -64,11 +64,7 @@ class UserRepository
         $user->email = $userData->email;
         $user->fb_token = $userData->token;
 
-        $avatar = $userData->avatar_original;
-        if (!$user->avatar && !is_null($avatar)) {
-            $user->avatar = $avatar;
-        }
-
+        $user->avatar = $userData->avatar_original;
         $user->facebook_user_id = $userData->id;
         // if user already has a username do nothing.
         if (!$user->username) {
@@ -84,7 +80,7 @@ class UserRepository
         }
         $user->save();
 
-        dispatch((new SetUserAvatar($user))->onQueue('users_avatar'));
+        dispatch(new SetUserAvatar($user));
 
         event(new UserRegistered($user));
 
@@ -97,10 +93,7 @@ class UserRepository
         $user->name = $userData->name;
         $user->email = $userData->email;
 
-        $avatar = $userData->avatar_original;
-        if (!$user->avatar && !is_null($avatar)) {
-            $user->avatar = $avatar;
-        }
+        $user->avatar = $userData->avatar_original;
 
         $user->twitter_user_id = $userData->id;
         // if user already has a username do nothing.
@@ -117,9 +110,38 @@ class UserRepository
         }
         $user->save();
 
-        dispatch((new SetUserAvatar($user))->onQueue('users_avatar'));
+        dispatch(new SetUserAvatar($user));
 
         event(new UserRegistered($user));
+
+        return $user;
+    }
+
+    public function findByGoodreeadsUserIdOrCreate($userData, $accessToken)
+    {
+        $userId = (int)$userData['user']['id'];
+        $user = User::firstOrNew(['goodreads_user_id' => $userId]);
+
+        $user->name = $userData['user']['name'];
+
+        $user->goodreads_user_id = $userId;
+        $user->goodreads_oauth_token = $accessToken['oauth_token'];
+        $user->goodreads_oauth_token_secret = $accessToken['oauth_token_secret'];
+
+        // if user already has a username do nothing.
+        if (!$user->username) {
+            $newUsername = snake_case($userData['user']['name']);
+            // make sure we do not have this username already in db
+            if (User::where('username', $newUsername)->count() > 0) {
+                // if we do then generate a random fake username
+                $faker = Faker\Factory::create();
+                $newUsername = str_replace('.', '_', $faker->unique()->userName);
+            }
+            $user->username = $newUsername;
+        }
+        $user->save();
+
+        dispatch(new SetUserAvatar($user));
 
         return $user;
     }

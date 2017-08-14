@@ -2,13 +2,13 @@
 
 @section('content')
     @if (Auth::check())
-        <book-save-modal :user="user" :book="bookSaveModalBook" :show="bookSaveModal"></book-save-modal>
+        <book-save-modal :user="user" :book="bookSaveModalBook" :show="bookSaveModal" :is-search="true"></book-save-modal>
     @endif
-    <section class="hero is-small is-primary is-bold">
+    <section class="hero is-small is-bold">
         <div class="hero-body">
             <div class="container has-text-centered">
-                <h3 class="subtitle is-3" style="margin-bottom: 5px;">
-                    Search for books to easily organize them in shelves
+                <h3 class="subtitle is-3">
+                    Search for books here and save them in your shelves
                 </h3>
                 <div class="columns">
                     <div class="column is-offset-one-quarter is-half">
