@@ -6,15 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="oRlwQCWDSEBrMAdKd3t3_3pCA9sFayLgZdgLer2TKfM"/>
     <link rel="canonical" href="{{ url()->current() }}"/>
+    <meta name="keywords" content="booknshelf, catalog your books, online free library, catalogue your books, book cataloging, free book catalog, catalogue, library books online">
+
     <meta name="description"
-          content="People come to Booknshelf to create their online reading journey by organizing their books in shelves."/>
+          content="Your reading journey in a single place."/>
     <meta name="google-site-verification" content="oRlwQCWDSEBrMAdKd3t3_3pCA9sFayLgZdgLer2TKfM" />
 
     {{--Facebook meta tags--}}
     <meta property="fb:app_id" content="1899203000306326"/>
-    <meta property="og:title" content="{{ $title or 'Stay organized with your books & read more' }}"/>
+    <meta property="og:title" content="{{ $title or 'Keep track of all your books online' }}"/>
     <meta property="og:description"
-          content="{{ $description or 'People come to Booknshelf to create their online reading journey by organizing their books in shelves.' }}"/>
+          content="{{ $description or 'Your reading journey in a single place.' }}"/>
     <meta property="og:image" content="{{ $ogImage or 'https://booknshelf.com/img/social/homepage-screenshot-social-main-new.png' }}"/>
     <meta property="og:image:height" content="717"/>
     <meta property="og:image:width" content="1200"/>
@@ -25,17 +27,17 @@
     {{--Twitter meta tags--}}
     <meta name="twitter:card" content="summary">
     <meta name="twitter:description"
-          content="{{ $description or 'People come to Booknshelf to create their online reading journey by organizing their books in shelves.' }}">
+          content="{{ $description or 'Your reading journey in a single place.' }}">
     <meta name="twitter:image"
           content="{{ $ogImage or 'https://booknshelf.com/img/social/homepage-screenshot-social-main-new.png' }}">
     <meta name="twitter:site" content="@booknshelf">
     <meta name="twitter:title"
-          content="{{ $title or 'Stay organized with your books & read more' }}">
+          content="{{ $title or 'Keep track of all your books online' }}">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $title or 'Booknshelf' }}</title>
+    <title>{{ $title or 'Booknshelf: Keep track of all your books online.' }}</title>
     <link rel="icon" type="image/png" href="/img/favicons/favicon-16x16.png" sizes="16x16">
     <link rel="icon" type="image/png" href="/img/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/img/favicons/favicon-96x96.png" sizes="96x96">
@@ -58,6 +60,13 @@
         ]); ?>
     </script>
     @include('shared.analytics')
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1090440830384862",
+        enable_page_level_ads: true
+      });
+    </script>
 </head>
 <body>
 <div id="app">
@@ -77,8 +86,6 @@
 
     <!-- Main Content -->
     @yield('content')
-
-    @include('shared.newsletter')
 
     @include('shared.footer')
 

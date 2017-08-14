@@ -7,10 +7,10 @@
             <div class="container">
                 <div class="columns">
                     <div class="column is-half modal-left">
-                        <div class="box book" :style="bookCoverImage"></div>
+                        <div class="box save-modal-book" :style="bookCoverImage"></div>
                     </div>
                     <div class="column is-half modal-right">
-                        <p class="subtitle"><strong>CHOOSE BOOKSHELF</strong></p>
+                        <p class="subtitle choose-bookshelf"><strong>CHOOSE BOOKSHELF</strong></p>
                         <spinner v-show="loading"></spinner>
                         <div class="shelves-list" v-show="!loading">
                             <div v-for="shelf in shelves"
@@ -20,8 +20,8 @@
                                 </p>
                             </div>
                         </div>
-                        <p class="control" style="margin-top: 5px;" v-if="!showNewShelfForm">
-                            <a class="button is-light" @click="showNewShelfForm=!showNewShelfForm">
+                        <p class="control" style="margin-top: 15px;" v-if="!showNewShelfForm">
+                            <a class="button" @click="showNewShelfForm=!showNewShelfForm">
                                 <span class="icon">
                                     <i class="fa fa-plus"></i>
                                 </span>
@@ -33,11 +33,11 @@
                                 <p class="control is-expanded has-addons">
                                     <input class="input" name="name" type="text" v-model="form.name"
                                            :class="{'is-danger': form.errors.has('name')}" placeholder="Bookshelf name">
-                                    <button class="button is-light" type="submit" :disabled="form.busy">Create</button>
+                                    <button class="button" type="submit" :disabled="form.busy">Create</button>
                                 </p>
                             </form>
                         </p>
-                        <div class="notification is-danger" style="padding:5px;" v-if="form.errors.has('name')">
+                        <div class="notification is-danger books-exists" v-if="form.errors.has('name')">
                             {{ form.errors.get('name') }}
                         </div>
                     </div>
@@ -49,7 +49,7 @@
 
 <script>
     export default {
-        props: ['user', 'book', 'show'],
+        props: ['user', 'book', 'show', 'isSearch'],
 
         data() {
             return {
@@ -84,7 +84,7 @@
                         Bus.$emit('updateUserData');
                         this.close();
                         // send a notification
-                        Vue.toast('Added the book to "' + shelfName + '"', {
+                        Vue.toast('🎉 Saved "' + this.book.title + '" in "' + shelfName + '" shelf', {
                             className: ['notification', 'is-success', 'save-book-notification'],
                             horizontalPosition: 'right',
                             verticalPosition: 'bottom',
@@ -130,8 +130,18 @@
         },
         computed: {
             bookCoverImage: function () {
-                if (this.book && (this.book.cover_image || this.book.image)) {
-                    return `background-image: url(${this.book.cover_image || this.book.image})`;
+                // search is exception
+                if (this.book && this.isSearch) {
+                    return `background-image: url(${this.book.cover_image})`;
+                }
+                if (this.book && this.book.cover_image) {
+                    var coverImageUrl = "https://booknshelf.imgix.net/book-covers/" + this.book.cover_image + "?auto=format&fit=crop&h=300&w=200";
+                    return `background-image: url(${coverImageUrl})`;
+                }
+
+                if (this.book && this.book.original_image) {
+                    var coverImageUrl = "https://booknshelf.imgix.net/book-original-covers/" + this.book.image + "?auto=format&fit=crop&h=300&w=200";
+                    return `background-image: url(${coverImageUrl})`;
                 } else {
                     return '';
                 }
@@ -142,27 +152,23 @@
 
 </script>
 <style lang="css">
+    .save-modal-book {
+        height: 300px;
+        background-position: center center;
+        background-size: cover;
+    }
     .book-save-modal-background {
         background-color: rgba(255,255,255,0.96);
     }
-    .modal-close-button {
-        position: absolute;
-        top: 40px;
-        left: 40px;
-        z-index: 200;
-        background: #bbbbbb;
-        border-radius: 50%;
-        padding: 14px 14px 13px 14px;
-        width: 34px;
-        height: 34px;
-    }
     .book-save-modal-content {
-        border: 1px solid #e8e8e8;
+        /*border: 1px solid #e8e8e8;*/
         background-color: #fff;
         border-radius: 3px;
-        height: 350px;
+        height: 650px;
+        flex-direction: column;
         /*hide horizontal scrolling*/
-        overflow: hidden;
+        /*overflow: hidden;*/
+        overflow: scroll;
     }
     .modal-left {
         padding: 60px;
@@ -174,13 +180,13 @@
     }
 
     .shelves-list {
-        max-height: 220px;
+        max-height: 400px;
         overflow-y: auto;
     }
 
     .shelf-list-item {
         cursor: pointer;
-        padding: 7px;
+        padding: 10px;
     }
     .shelf-list-item:hover {
         background-color: #dbdbdb;
@@ -190,5 +196,12 @@
         margin-bottom: 50px;
         font-weight: bold;
     }
-
+    .choose-bookshelf {
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e0dede;
+    }
+    .books-exists {
+        padding: 20px;
+        margin-top: 10px;
+    }
 </style>

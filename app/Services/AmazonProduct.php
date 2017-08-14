@@ -24,7 +24,7 @@ class AmazonProduct
         $conf->setCountry('com')
             ->setAccessKey(env('AWS_ACCESS_KEY'))
             ->setSecretKey(env('AWS_SECRET'))
-            ->setAssociateTag('ASSOCIATE_TAG')
+            ->setAssociateTag(env('ASSOCIATE_TAG'))
             ->setRequest($request);
 
         $this->searchClient = new Search();
@@ -52,5 +52,4 @@ class AmazonProduct
         $json = json_encode($xml);
         return json_decode($json, true);
     }
-
 }

@@ -1,18 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <profile :user="{{ $user }}"
-        :user-following="userFollowedUsers"
-        :user-followers="userFollowerUsers"
-        :followers-count=" {{ $followersCount}}"
-        :following-count=" {{ $followingCount}}"
-    >
-    </profile>
+    <profile :user="{{ $user }}"></profile>
     @if (Auth::check())
         <book-save-modal :user="user" :book="bookSaveModalBook" :show="bookSaveModal"></book-save-modal>
     @endif
 
-    <section class="section profile-shelves-section">
+    <section class="section profile-shelves-section is-fullheight">
         <div class="container">
             <tabs>
                 <tab name="{{ count($shelves) }} Created Bookshelves" :selected="true">
@@ -22,7 +16,7 @@
                     <profile-likes :user="{{ $user }}" :books="{{ $likedBooks }}" :likes="userLikedBooks"
                                    :saves="userSavedBooks"></profile-likes>
                 </tab>
-                <tab name="{{ count($topics) }} Topics">
+                <tab name="{{ count($topics) }} Followed Topics">
                     <profile-topics :user="{{ $user }}" :topics="{{ $topics }}" :user-topics="userTopics"></profile-topics>
                 </tab>
             </tabs>

@@ -17,6 +17,7 @@ class Book extends Model
         'title',
         'isbn_10',
         'isbn_13',
+        'goodreads_id',
         'subtitle',
         'description',
         'publisher',
@@ -26,6 +27,7 @@ class Book extends Model
         'google_ratings_count',
         'image',
         'cover_image',
+        'original_image',
         'language',
         'google_info_link',
         'detail_page_url',
@@ -50,6 +52,14 @@ class Book extends Model
     public function likes()
     {
         return $this->hasMany('App\Like');
+    }
+
+    /**
+     * Get the notes of this book
+     */
+    public function notes()
+    {
+        return $this->hasMany('App\Note');
     }
 
     /**

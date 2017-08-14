@@ -37,7 +37,6 @@ class TopicController extends Controller
     public function show(Request $request, ShelfRepository $shelfRepository, $slug)
     {
         $user = User::where(['username' => 'topic'])->firstOrFail();
-
         // find a shelf that represents this topic
         $shelf = Shelf::where([
             'slug' => $slug,

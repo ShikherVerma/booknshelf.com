@@ -7,6 +7,9 @@ use App\Shelf;
 use Illuminate\Database\Eloquent\Collection;
 use Log;
 use Mockery\CountValidator\Exception;
+use Illuminate\Http\Request;
+
+require_once base_path('app/Services/Goodreads/GoodreadsAPI.php');
 
 class ShelfRepository {
 
@@ -72,7 +75,39 @@ class ShelfRepository {
     public function books($shelf)
     {
         $books = $shelf->books()->orderBy('created_at', 'desc')->get();
-        $books->load('categories', 'authors', 'likes');
+        $books->load('authors', 'likes');
         return $books;
+    }
+
+    public function getBooksFromGoodreadsShelves($user, $shelves)
+    {
+        $token = $user->goodreads_oauth_token;
+        $tokenSecret = $user->goodreads_oauth_token_secret;
+        $goodreadsUserId = $user->goodreads_user_id;
+        $obj = new \GoodreadsApi(
+            env('GOODREADS_KEY'),
+            env('GOODREADS_SECRET'),
+            $token,
+            $tokenSecret
+        );
+
+        $booksByShelves = [];
+        foreach ($shelves as $shelf) {
+            $name = $shelf['name'];
+            $content = $obj->doGet("https://www.goodreads.com/review/list.xml?shelf=$name&v=2&id=$goodreadsUserId");
+            $userJsonData = $this->convertXmlToJson($content);
+            $reviews = $userJsonData['reviews']['review'];
+            foreach ($reviews as $review) {
+                $booksByShelves[$name][] = $review['book'];
+            }
+        }
+        return $booksByShelves;
+    }
+
+    private function convertXmlToJson($xmlString)
+    {
+        $xml = simplexml_load_string($xmlString);
+        $json = json_encode($xml);
+        return json_decode($json, true);
     }
 }

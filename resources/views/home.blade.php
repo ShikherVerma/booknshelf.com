@@ -4,11 +4,11 @@
     @if (Auth::check())
         <book-save-modal :user="user" :book="bookSaveModalBook" :show="bookSaveModal"></book-save-modal>
     @endif
-    <section class="hero is-medium home-search-bg" style="background-image: url('/img/giulia-bertelli-104575-resized.jpg')">
+    <section class="hero is-medium home-search-bg" style="background-image: url('https://booknshelf.imgix.net/giulia-bertelli-104575-resized.png?w=1280&h=720&fit=crop&fm=webp&q=25')">
         <div class="hero-body home-search-body">
             <div class="container has-text-centered">
                 <h3 class="title is-3 primary-span-home">
-                    Stay organized with your books & read more
+                    Keep track of all your books online.
                 </h3>
                 <div class="columns">
                     <div class="column is-offset-one-quarter is-half">
@@ -98,19 +98,19 @@
       </div>
     </section>
 
-    <section class="hero is-light">
+    <section class="hero">
       <div class="hero-body">
         <div class="container">
           <h1 class="title has-text-centered">
             <a class="button is-primary is-large hvr-float-shadow" href="{{ url('/auth/facebook') }}">
-                <strong style="color: white;">Get started with a single click</strong>
+                <strong>Get started with a single click</strong>
             </a>
           </h1>
         </div>
       </div>
     </section>
 
-    <section class="section is-primary is-fullheight is-bold" style="padding-bottom: 0px;" v-cloak>
+    <section class="section is-primary is-fullheight is-bold">
         <div class="container">
             <div class="notification">
                 <div class="title is-4">
@@ -126,24 +126,5 @@
 
     <home-books-section id="favorite-books" :books="{{ $books }}" :user="user" :likes="userLikedBooks"
                         :saves="userSavedBooks" title="Explore Some of Our Favorite Books"></home-books-section>
-
-    <div class="tile is-ancestor" style="display: none;">
-        <div class="tile is-parent">
-            <article class="tile is-child notification">
-                <p class="title has-text-centered">Like Booknshelf? 😊</p>
-                <p class="subtitle has-text-centered">Make a small donation to help me to keep the site
-                    running!</span>
-                <p class="has-text-centered">
-                    <a class="button is-dark" href="https://paypal.me/tiggreen" target="_blank"
-                       type="button" class="btn btn-bright">
-                        <span class="icon">
-                          <i class="fa fa-paypal"></i>
-                        </span>
-                        <span>MAKE A DONATION!</span>
-                    </a>
-                </p>
-            </article>
-        </div>
-    </div>
 
 @endsection

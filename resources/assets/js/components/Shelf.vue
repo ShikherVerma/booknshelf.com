@@ -11,16 +11,16 @@
                 <h2>
                     <div class="level">
                         <div class="level-left">
-                            <p class="level-item">
+                            <div class="level-item">
                                 <figure class="image is-48x48">
-                                    <img :src="user.avatar">
+                                    <img :src="avatarUrl" class="shelf-profile-pic">
                                 </figure>
-                            </p>
-                            <p>
+                            </div>
+                            <div class="level-item">
                                 <a :href="profileUrl">
-                                    <strong> &nbsp; {{ user.name }}</strong>
-                            </a>
-                            </p>
+                                    <strong>{{ user.name }}</strong>
+                                </a>
+                            </div>
                         </div>
                         <div class="level-right">
                             <div class="level-item">
@@ -77,6 +77,10 @@
                 return '/@' + this.user.username;
             },
 
+            avatarUrl() {
+                return "https://booknshelf.imgix.net/profiles/" + this.user.avatar + "?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=48&h=48&fit=crop";
+            },
+
             canEditOrDelete() {
                 return App.userId === this.user.id;
             },
@@ -94,4 +98,7 @@
 </script>
 
 <style lang="css">
+    .shelf-profile-pic {
+        border-radius: 50%;
+    }
 </style>

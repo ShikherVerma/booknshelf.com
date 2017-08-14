@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/welcome';
+    protected $redirectTo = '/';
     protected $username = 'username';
 
     /**
@@ -57,6 +57,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:100',
             'username' => 'required|regex:/^[a-zA-Z0-9_]+$/|max:30|unique:users',
+            'email' => 'required|unique:users,email',
             'password' => 'required|min:6',
         ], $messages);
     }
@@ -72,11 +73,11 @@ class RegisterController extends Controller
         $user = User::create([
             'name' => $data['name'],
             'username' => $data['username'],
+            'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
 
-        // TODO: Can I do this not in queue?
-        dispatch((new SetUserAvatar($user))->onQueue('users_avatar'));
+        dispatch(new SetUserAvatar($user));
 
         event(new UserRegistered($user));
 

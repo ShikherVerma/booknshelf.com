@@ -64,7 +64,9 @@
 
         computed: {
             previewStyle() {
-                return `background-image: url(${this.user.avatar});background-position: center center; background-size: cover;`;
+                console.log(this.user.avatar);
+                var avatarUrl = "https://booknshelf.imgix.net/profiles/" + this.user.avatar + "?auto=format&fit=crop&h=128&w=128";
+                return `background-image: url(${avatarUrl});background-position: center center; background-size: cover;`;
             }
         }
     }

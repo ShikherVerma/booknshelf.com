@@ -8,6 +8,7 @@ use App\Repositories\UserRepository;
 use App\Services\AmazonProduct;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use Carbon\Carbon;
 
 class BookController extends Controller
 {
@@ -16,10 +17,21 @@ class BookController extends Controller
 
     public function __construct(UserRepository $users, BookRepository $books)
     {
-        $this->middleware('auth', ['except' => ['search', 'reviews']]);
+        $this->middleware('auth', ['except' => ['search', 'reviews', 'publicNotes']]);
         $this->guzzleClient = new Client();
         $this->users = $users;
         $this->books = $books;
+    }
+
+    public function show(Request $request, $bookId)
+    {
+        $book = $this->books->findById($bookId);
+        $book->load('authors', 'likes');
+
+        return view('book', [
+            'book' => $book,
+            'user' => $request->user(),
+        ]);
     }
 
     public function search(Request $request, AmazonProduct $amazonService)
@@ -73,5 +85,37 @@ class BookController extends Controller
         $fullBody = $body->books[0];
 
         return response()->json($fullBody);
+    }
+
+    // get the public notes of the book
+    public function notes(Request $request, $bookId)
+    {
+        $book = Book::findOrFail($bookId);
+        // get all the public notes
+        $notes = $book->notes()->with('user')->where([
+            ['is_private', '=', false],
+            ['user_id', '<>', $request->user()->id],
+        ])->orderBy('created_at', 'desk')->get();
+        // get user's private notes of this book if any
+        $userNotes = $book->notes()->with('user')->where([
+            'user_id' => $request->user()->id
+        ])->orderBy('created_at', 'desk')->get();
+        return response()->json([
+            'public_notes' => $notes,
+            'user_notes' => $userNotes,
+        ]);
+    }
+
+    // get the public notes of the book
+    public function publicNotes($bookId)
+    {
+        $book = Book::findOrFail($bookId);
+        // get all public notes of this book
+        $notes = $book->notes()->with('user')->where([
+            ['is_private', '=', false],
+        ])->orderBy('created_at', 'desk')->get();
+        return response()->json([
+            'public_notes' => $notes,
+        ]);
     }
 }

@@ -11,11 +11,11 @@ $I->seeCurrentUrlEquals('/register');
 
 $I->fillField('name', 'JohnDoe');
 $I->fillField('username', 'JohnDoe123');
+$I->fillField('email', 'JohnDoe@test.com');
 $I->fillField('password', 'demo123');
 $I->click('JOIN');
 
-$I->seeCurrentUrlEquals('/welcome');
-$I->see('Choose your username', 'label');
+$I->seeCurrentUrlEquals('/');
 
 $I->seeRecord('users', [
     'username' => 'JohnDoe123',

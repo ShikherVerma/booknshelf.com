@@ -11,7 +11,7 @@
                     <figure class="media-left">
                         <p class="image is-48x48">
                             <a :href="'/@' + follower.username">
-                                <img :src="follower.avatar">
+                                <img :src="getFollowerAvatarUrl(follower.avatar)">
                             </a>
                         </p>
                     </figure>
@@ -40,6 +40,12 @@
         data() {
             return {
                 showTopicFollowersModal: false,
+            }
+        },
+
+        methods: {
+            getFollowerAvatarUrl(avatar) {
+                return "https://booknshelf.imgix.net/profiles/" + avatar + "?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=48&h=48&fit=crop";
             }
         },
 

@@ -4,14 +4,14 @@
     <section class="hero is-light">
         <div class="hero-body">
             <div class="container">
-                <h3 class="subtitle is-3">
-                    Welcome to Booknshelf!
-                </h3>
                 <div class="columns">
                     <div class="column is-half">
+                        <h3 class="subtitle is-3">
+                            👋 Welcome to Booknshelf!
+                        </h3>
                         <form role="form" method="POST" action="{{ url('/user/welcome') }}">
                             {!! csrf_field() !!}
-                            <label class="label is-4">Choose your username</label>
+                            <label class="label bigger-font-label">* Let's choose a username for you. Maybe your first name?</label>
                             <p class="control">
                                 <input class="input is-large {{ $errors->has('username') ? ' is-danger' : '' }}"
                                        type="text" name="username"  value="{{ $user->username }}" placeholder="Choose your username">
@@ -30,11 +30,22 @@
 
                             <p class="control">
                                 <button type="submit" name="register" class="button is-large is-primary">
-                                    Continue
+                                    Save & Continue
                                 </button>
                             </p>
 
                         </form>
+                    </div>
+                    <div class="column is-half">
+                        @if (isset($user->goodreads_user_id))
+                            <div class="box">
+                                <p class="subtitle">
+                                    👉 We are now importing your shelves from Goodreads. </br>
+                                    It may take a minute or two
+                                    until they show up in your profile.
+                                </p>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
