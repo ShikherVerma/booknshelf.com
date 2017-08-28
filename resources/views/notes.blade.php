@@ -11,16 +11,17 @@
                     </p>
                 </div>
             @endif
-            @foreach ($notes as $note)
+            @foreach ($notes as $book => $notesPerBook)
                 <div class="columns">
                     <div class="column is-3">
                         <aside class="test" style="margin-bottom: 100px;">
                             <figure class="image is-480x480">
-                                <img src="https://booknshelf.imgix.net/book-covers/{{ $note['book']['cover_image']}}">
+                                <img src="https://booknshelf.imgix.net/book-covers/{{ $notesPerBook[0]['book']['cover_image']}}">
                             </figure>
                         </aside>
                     </div>
                     <div class="column is-8">
+                        @foreach ($notesPerBook as $note)
                         <div class="notification" style="font-size:17px;">
                             @if($note['is_private'])
                                 <nav class="level" style="margin-bottom: 10px;">
@@ -35,6 +36,7 @@
                             @endif
                             {{ $note['text'] }}
                         </div>
+                        @endforeach
                     </div>
                 </div>
             @endforeach

@@ -67,6 +67,7 @@ class UserController extends Controller
             // return only public notes
             $notes = $user->notes()->with('book')->where('is_private', false)->get();
         }
+        $notes = $notes->groupBy("book_id");
 
         return view('notes', [
             'user' => $user,
